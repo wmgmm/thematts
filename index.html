@@ -31,7 +31,7 @@
             margin-top: 5px;
             color: #e3f2fd;
         }
-        .download-section {
+        .download-section, .prompts-section, .contact-info {
             background-color: white;
             padding: 25px;
             border-radius: 5px;
@@ -77,12 +77,6 @@
             color: #666;
             font-size: 0.9em;
         }
-        .contact-info {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-        }
         .email {
             color: #1e88e5;
             text-decoration: none;
@@ -90,7 +84,54 @@
         .email:hover {
             text-decoration: underline;
         }
+        .prompt-category {
+            margin-bottom: 25px;
+        }
+        .prompt-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1e88e5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .prompt-description {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1e88e5;
+        }
+        .copy-button {
+            display: inline-block;
+            background-color: #e0e0e0;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: #bdbdbd;
+        }
+        h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
     </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -121,6 +162,54 @@
         </div>
         
         <p><em>Note: No GitHub account is required to download these files. If you have any issues accessing the materials, please let the workshop facilitators know.</em></p>
+    </div>
+    
+    <div class="prompts-section">
+        <h2>Sample AI Prompts</h2>
+        <p>Below are some example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
+        
+        <div class="prompt-category">
+            <h3>Data Analysis Prompts</h3>
+            
+            <div class="prompt-description">Basic Marketing ROI Calculation:</div>
+            <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for March (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
+            <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
+            
+            <div class="prompt-description">REF Data Analysis:</div>
+            <div class="prompt-box" id="prompt2">Analyse this Cardiff dataset and identify:
+* 3 unexpected findings that deserve attention
+* Critical areas for improvement based on the metrics
+* Key recommendations supported by the data
+
+Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
+            <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <div class="prompt-description">Shopping Receipt Conversion:</div>
+            <div class="prompt-box" id="prompt3">Please create an Excel file from this receipt with columns for Items and Price</div>
+            <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Automation Prompts</h3>
+            
+            <div class="prompt-description">Excel Macro Creation:</div>
+            <div class="prompt-box" id="prompt4">I need a macro for my marketing spreadsheet that calculates ROI from our sales, costs, and marketing spend data. Include a chart showing spend and sales and conditional formatting to show when ROI is high or not e.g. red for ROI < 100%
+
+Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team has limited Excel expertise</div>
+            <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Content Summarization</h3>
+            
+            <div class="prompt-description">Meeting Notes Summarization:</div>
+            <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
+            <button onclick="copyToClipboard('prompt5')" class="copy-button">Copy Prompt</button>
+            
+            <div class="prompt-description">Action Learning Summary:</div>
+            <div class="prompt-box" id="prompt6">Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
+            <button onclick="copyToClipboard('prompt6')" class="copy-button">Copy Prompt</button>
+        </div>
     </div>
     
     <div class="contact-info">
