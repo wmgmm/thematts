@@ -118,6 +118,14 @@
             padding-bottom: 5px;
             color: #1e88e5;
         }
+        /* Added spacing for prompt items */
+        .prompt-item {
+            margin-bottom: 30px;
+        }
+        /* Added extra margin after copy button */
+        .copy-button {
+            margin-bottom: 20px;
+        }
     </style>
     <script>
         function copyToClipboard(id) {
@@ -164,6 +172,14 @@
         <p><em>Note: No GitHub account is required to download these files. If you have any issues accessing the materials, please let the workshop facilitators know.</em></p>
     </div>
     
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>If you have any questions about the workshop or materials, please feel free to contact us:</p>
+        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
+        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
+        <p><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team harness the power of AI while maintaining digital productivity.</p>
+    </div>
+    
     <div class="prompts-section">
         <h2>Sample AI Prompts</h2>
         <p>Below are some example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
@@ -171,52 +187,57 @@
         <div class="prompt-category">
             <h3>Data Analysis Prompts</h3>
             
-            <div class="prompt-description">Basic Marketing ROI Calculation:</div>
-            <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for March (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
-            <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
+            <div class="prompt-item">
+                <div class="prompt-description">Basic Marketing ROI Calculation:</div>
+                <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for March (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
+                <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
+            </div>
             
-            <div class="prompt-description">REF Data Analysis:</div>
-            <div class="prompt-box" id="prompt2">Analyse this Cardiff dataset and identify:
+            <div class="prompt-item">
+                <div class="prompt-description">REF Data Analysis:</div>
+                <div class="prompt-box" id="prompt2">Analyse this Cardiff dataset and identify:
 * 3 unexpected findings that deserve attention
 * Critical areas for improvement based on the metrics
 * Key recommendations supported by the data
 
 Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
-            <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
+                <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
+            </div>
             
-            <div class="prompt-description">Shopping Receipt Conversion:</div>
-            <div class="prompt-box" id="prompt3">Please create an Excel file from this receipt with columns for Items and Price</div>
-            <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
+            <div class="prompt-item">
+                <div class="prompt-description">Shopping Receipt Conversion:</div>
+                <div class="prompt-box" id="prompt3">Please create an Excel file from this receipt with columns for Items and Price</div>
+                <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
+            </div>
         </div>
         
         <div class="prompt-category">
             <h3>Automation Prompts</h3>
             
-            <div class="prompt-description">Excel Macro Creation:</div>
-            <div class="prompt-box" id="prompt4">I need a macro for my marketing spreadsheet that calculates ROI from our sales, costs, and marketing spend data. Include a chart showing spend and sales and conditional formatting to show when ROI is high or not e.g. red for ROI < 100%
+            <div class="prompt-item">
+                <div class="prompt-description">Excel Macro Creation:</div>
+                <div class="prompt-box" id="prompt4">I need a macro for my marketing spreadsheet that calculates ROI from our sales, costs, and marketing spend data. Include a chart showing spend and sales and conditional formatting to show when ROI is high or not e.g. red for ROI < 100%
 
 Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team has limited Excel expertise</div>
-            <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+                <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+            </div>
         </div>
         
         <div class="prompt-category">
             <h3>Content Summarization</h3>
             
-            <div class="prompt-description">Meeting Notes Summarization:</div>
-            <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
-            <button onclick="copyToClipboard('prompt5')" class="copy-button">Copy Prompt</button>
+            <div class="prompt-item">
+                <div class="prompt-description">Meeting Notes Summarization:</div>
+                <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
+                <button onclick="copyToClipboard('prompt5')" class="copy-button">Copy Prompt</button>
+            </div>
             
-            <div class="prompt-description">Action Learning Summary:</div>
-            <div class="prompt-box" id="prompt6">Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
-            <button onclick="copyToClipboard('prompt6')" class="copy-button">Copy Prompt</button>
+            <div class="prompt-item">
+                <div class="prompt-description">Action Learning Summary:</div>
+                <div class="prompt-box" id="prompt6">Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
+                <button onclick="copyToClipboard('prompt6')" class="copy-button">Copy Prompt</button>
+            </div>
         </div>
-    </div>
-    
-    <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>If you have any questions about the workshop or materials, please feel free to contact us:</p>
-        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
-        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
     </div>
     
     <footer>
