@@ -149,7 +149,7 @@
     
     <div class="download-section">
         <h2>Workshop Files</h2>
-        <p>Welcome to our workshop resource page. Below you'll find all the files needed for today's session. Simply click the download buttons to save the files to your computer.</p>
+        <p>Welcome to our workshop resource page. Below you'll find all the files and some of the prompts needed for today's session. Simply click the download buttons to save the files to your computer.</p>
         
         <div class="file-item">
             <div class="file-description">Marketing & Sales Data:</div>
@@ -190,6 +190,7 @@
             <div class="prompt-item">
                 <div class="prompt-description">Basic Marketing ROI Calculation:</div>
                 <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for March (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
+                <p><em>Use with the Marketing & Sales Excel file. Great for learning how to get clear financial explanations without financial jargon.</em></p>
                 <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
             </div>
             
@@ -201,12 +202,14 @@
 * Key recommendations supported by the data
 
 Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
+                <p><em>Use with the REF2021 Results Excel file. Demonstrates how to get focused insights and actionable recommendations from complex datasets.</em></p>
                 <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
             </div>
             
             <div class="prompt-item">
                 <div class="prompt-description">Shopping Receipt Conversion:</div>
                 <div class="prompt-box" id="prompt3">Please create an Excel file from this receipt with columns for Items and Price</div>
+                <p><em>Use with the Shopping Information PDF. Shows how AI can convert unstructured data into structured formats for easier analysis.</em></p>
                 <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
@@ -219,6 +222,7 @@ Present findings in clear, concise bullet points suitable for an executive summa
                 <div class="prompt-box" id="prompt4">I need a macro for my marketing spreadsheet that calculates ROI from our sales, costs, and marketing spend data. Include a chart showing spend and sales and conditional formatting to show when ROI is high or not e.g. red for ROI < 100%
 
 Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team has limited Excel expertise</div>
+                <p><em>Use with the Marketing & Sales Excel file. Demonstrates how to automate repetitive tasks for teams with limited technical skills.</em></p>
                 <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
@@ -229,13 +233,44 @@ Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team ha
             <div class="prompt-item">
                 <div class="prompt-description">Meeting Notes Summarization:</div>
                 <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
+                <p><em>Replace [INSERT TRANSCRIPT HERE] with your meeting text. Perfect for creating actionable meeting summaries from lengthy discussions.</em></p>
                 <button onclick="copyToClipboard('prompt5')" class="copy-button">Copy Prompt</button>
             </div>
             
             <div class="prompt-item">
                 <div class="prompt-description">Action Learning Summary:</div>
                 <div class="prompt-box" id="prompt6">Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
+                <p><em>Replace (INSERT URL) with any website link. Useful for extracting practical, actionable information from online resources.</em></p>
                 <button onclick="copyToClipboard('prompt6')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Document to FAQ Conversion:</div>
+                <div class="prompt-box" id="prompt9">Convert this document into a comprehensive FAQ format. Create 10-15 frequently asked questions based on the most important information in the text. For each question, provide a clear, concise answer that captures the key points. Organize questions from basic to advanced topics. [INSERT DOCUMENT TEXT HERE]</div>
+                <p><em>Replace [INSERT DOCUMENT TEXT HERE] with your document content. Excellent for transforming lengthy texts into easy-to-navigate reference materials.</em></p>
+                <button onclick="copyToClipboard('prompt9')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Format Control Prompts</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Structured Table Format Example:</div>
+                <div class="prompt-box" id="prompt8">Return a table about sunbathing with two columns, one titled 'pros' the other 'cons' and fill in five examples for each.</div>
+                <p><em>Simple demonstration of format control. Shows how to generate structured information in table format without needing any data files.</em></p>
+                <button onclick="copyToClipboard('prompt8')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Prompt Engineering Exercises</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Complete Prompt Engineering Exercise:</div>
+                <div class="prompt-box" id="prompt7">Take the Role of a male, aged 18-35 What would be the name of an alcoholic beverage that might attract you? The tone should be mildly humorous and not sound too toxically masculine. The name should not sound like any existing products in the UK. Provide ten examples in a three-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be MoonBrew, AuAle, BarleyBite.</div>
+                <p><em>This exercise combines role prompting, tone specification, constraints, structured format, and examples - perfect for learning advanced prompt engineering techniques. No data file needed.</em></p>
+                <button onclick="copyToClipboard('prompt7')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
     </div>
