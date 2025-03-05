@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Responsible AI Use</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #1e88e5;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+            color: #e3f2fd;
+        }
+        .typing-container {
+            height: 30px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 4px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        .typing-text {
+            display: inline-block;
+            margin: 0;
+            color: #ffffff;
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #ffffff;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 49% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
+            }
+        }
+        .intro-section, .principles-section, .contact-info {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .principle-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .principle-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .principle-title {
+            color: #1e88e5;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .principle-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .principle-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+        }
+        .principle-list li:before {
+            content: "•";
+            color: #2e7d32;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #1b5e20;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .email {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+        .email:hover {
+            text-decoration: underline;
+        }
+        h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
+    </style>
+    <script>
+        // Typing animation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = [
+                "Putting humans at the center of AI development...",
+                "AI should enhance human work, not replace it...",
+                "Thoughtful AI adoption starts with responsibility...",
+                "Security, quality, and ethics in every AI interaction...",
+                "Small AI experiments lead to big workplace improvements..."
+            ];
+            
+            let currentMessageIndex = 0;
+            let currentCharIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100; // milliseconds per character
+            let deletingSpeed = 50; // faster when deleting
+            let pauseBeforeDelete = 2000; // pause before starting to delete
+            let pauseBeforeNextMessage = 1000; // pause before typing the next message
+            
+            const typingTextElement = document.getElementById('typing-text');
+            
+            function typeText() {
+                const currentMessage = messages[currentMessageIndex];
+                
+                if (isDeleting) {
+                    // Deleting text
+                    typingTextElement.textContent = currentMessage.substring(0, currentCharIndex);
+                    currentCharIndex--;
+                    
+                    // Check if deletion is complete
+                    if (currentCharIndex < 0) {
+                        isDeleting = false;
+                        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                        setTimeout(typeText, pauseBeforeNextMessage);
+                        return;
+                    }
+                    
+                    setTimeout(typeText, deletingSpeed);
+                } else {
+                    // Typing text
+                    typingTextElement.textContent = currentMessage.substring(0, currentCharIndex);
+                    currentCharIndex++;
+                    
+                    // Check if typing is complete
+                    if (currentCharIndex > currentMessage.length) {
+                        isDeleting = true;
+                        setTimeout(typeText, pauseBeforeDelete);
+                        return;
+                    }
+                    
+                    setTimeout(typeText, typingSpeed);
+                }
+            }
+            
+            // Start the typing animation
+            setTimeout(typeText, 1000);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Responsible AI Use Principles</h1>
+        <div class="subtitle">How to put humans first in workplace AI adoption</div>
+        <div class="typing-container">
+            <div id="typing-text" class="typing-text"></div>
+            <div class="typing-cursor"></div>
+        </div>
+    </header>
+    
+    <div class="intro-section">
+        <h2>Introduction</h2>
+        <p>Artificial Intelligence (AI) chatbots and tools represent an advancement in technology that can enhance our work processes and productivity. However, their effective use requires a thoughtful, people-centred approach at both organisational and individual levels.</p>
+        <p>This guide outlines key principles for responsible AI adoption and usage in the workplace, focusing on how to maintain the human element while leveraging AI capabilities.</p>
+        <a href="index.html" class="back-button">← Back to Workshop Resources</a>
+    </div>
+    
+    <div class="principles-section">
+        <h2>Guiding Principles for Responsible AI Use</h2>
+        
+        <div class="principle-item">
+            <div class="principle-title">1. Data Protection and Security</div>
+            <ul class="principle-list">
+                <li>Only use IT-approved AI tools for work tasks (like Microsoft Copilot)</li>
+                <li>Never input sensitive (C1/C2) or private information about individuals into AI tools</li>
+                <li>Be cautious with intellectual property and confidential information</li>
+                <li>Consider data security before sharing any work-related content</li>
+                <li>If unsure about data sensitivity, check with your manager or IT team</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">2. Think of AI as Your Assistant</div>
+            <ul class="principle-list">
+                <li>Use AI to enhance your work, not replace your judgement</li>
+                <li>Start with small experiments in non-critical tasks</li>
+                <li>Focus on using AI for routine or repetitive work</li>
+                <li>Keep human oversight for important decisions</li>
+                <li>View AI as a collaborative tool, not a standalone solution</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">3. Choose Tasks Wisely</div>
+            <p>Select tasks that AI tends to be good at:</p>
+            <ul class="principle-list">
+                <li>Drafting initial documents</li>
+                <li>Summarising meeting notes</li>
+                <li>Basic research and information gathering</li>
+                <li>Processing routine data</li>
+                <li>Creating first drafts</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">4. Keep Critical Tasks for Humans</div>
+            <ul class="principle-list">
+                <li>Final decision-making</li>
+                <li>Creative strategy</li>
+                <li>Complex problem-solving</li>
+                <li>Relationship management</li>
+                <li>Critical analysis</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">5. Quality Control is Essential</div>
+            <ul class="principle-list">
+                <li>Always verify AI-generated content</li>
+                <li>Cross-check facts and figures</li>
+                <li>Review for context and accuracy</li>
+                <li>Look for potential biases</li>
+                <li>Make sure the tone is appropriate</li>
+                <li>Keep track of what you've modified</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">6. Improve Productivity</div>
+            <ul class="principle-list">
+                <li>Use AI to reduce digital waste</li>
+                <li>Automate repetitive email responses</li>
+                <li>Organise documents more efficiently</li>
+                <li>Make meetings more productive</li>
+                <li>Focus on effectiveness before efficiency</li>
+                <li>Build in time to learn and experiment</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">7. Professional Responsibility</div>
+            <ul class="principle-list">
+                <li>Document how you're using AI</li>
+                <li>Share successful approaches with colleagues</li>
+                <li>Stay updated on AI capabilities</li>
+                <li>Maintain your core skills</li>
+                <li>Report any concerns about AI use</li>
+                <li>Follow organisational AI policies</li>
+            </ul>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title">8. Before Using AI, Ask Yourself:</div>
+            <ul class="principle-list">
+                <li>Is this an appropriate use of AI?</li>
+                <li>Could this affect others negatively?</li>
+                <li>Am I maintaining professional standards?</li>
+                <li>Does this align with our values?</li>
+                <li>Have I checked the outputs thoroughly?</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>If you have any questions about responsible AI use or need guidance, please feel free to contact us:</p>
+        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
+        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
+        <p><strong>Need help with responsible AI adoption in your workplace?</strong> Contact us to discuss how we can help your team implement these principles.</p>
+        <a href="index.html" class="back-button">← Back to Workshop Resources</a>
+    </div>
+    
+    <footer>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+    </footer>
+</body>
+</html>
