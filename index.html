@@ -31,6 +31,36 @@
             margin-top: 5px;
             color: #e3f2fd;
         }
+        .typing-container {
+            height: 30px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 4px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        .typing-text {
+            display: inline-block;
+            margin: 0;
+            color: #ffffff;
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #ffffff;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 49% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
+            }
+        }
         .download-section, .prompts-section, .contact-info {
             background-color: white;
             padding: 25px;
@@ -139,12 +169,73 @@
                 }, 2000);
             });
         }
+
+        // Typing animation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = [
+                "Hello humans! Adventures in AI with The Matts...",
+                "The cat sat on the Matt...",
+                "Let's explore the world of AI in the workplace with the Matts...",
+                "Automate, innovate, collaborate: The Matts way...",
+                "Transforming workflows one prompt at a time..."
+            ];
+            
+            let currentMessageIndex = 0;
+            let currentCharIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100; // milliseconds per character
+            let deletingSpeed = 50; // faster when deleting
+            let pauseBeforeDelete = 2000; // pause before starting to delete
+            let pauseBeforeNextMessage = 1000; // pause before typing the next message
+            
+            const typingTextElement = document.getElementById('typing-text');
+            
+            function typeText() {
+                const currentMessage = messages[currentMessageIndex];
+                
+                if (isDeleting) {
+                    // Deleting text
+                    typingTextElement.textContent = currentMessage.substring(0, currentCharIndex);
+                    currentCharIndex--;
+                    
+                    // Check if deletion is complete
+                    if (currentCharIndex < 0) {
+                        isDeleting = false;
+                        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                        setTimeout(typeText, pauseBeforeNextMessage);
+                        return;
+                    }
+                    
+                    setTimeout(typeText, deletingSpeed);
+                } else {
+                    // Typing text
+                    typingTextElement.textContent = currentMessage.substring(0, currentCharIndex);
+                    currentCharIndex++;
+                    
+                    // Check if typing is complete
+                    if (currentCharIndex > currentMessage.length) {
+                        isDeleting = true;
+                        setTimeout(typeText, pauseBeforeDelete);
+                        return;
+                    }
+                    
+                    setTimeout(typeText, typingSpeed);
+                }
+            }
+            
+            // Start the typing animation
+            setTimeout(typeText, 1000);
+        });
     </script>
 </head>
 <body>
     <header>
         <h1>The Matts Workshop Resources</h1>
         <div class="subtitle">Digital Productivity & AI in the Workplace</div>
+        <div class="typing-container">
+            <div id="typing-text" class="typing-text"></div>
+            <div class="typing-cursor"></div>
+        </div>
     </header>
     
     <div class="download-section">
