@@ -39,11 +39,14 @@
             padding: 5px 10px;
             background-color: rgba(0, 0, 0, 0.2);
             display: inline-block;
+            max-width: 90%;
+            overflow: hidden;
         }
         .typing-text {
             display: inline-block;
             margin: 0;
             color: #ffffff;
+            white-space: nowrap;
         }
         .typing-cursor {
             display: inline-block;
@@ -52,6 +55,7 @@
             background-color: #ffffff;
             margin-left: 5px;
             animation: blink 1s infinite;
+            vertical-align: middle;
         }
         @keyframes blink {
             0%, 49% {
@@ -174,8 +178,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const messages = [
                 "Hello humans! Adventures in AI with The Matts...",
-                "The cat sat on the Matt...",
-                "Let's explore the world of AI in the workplace with the Matts...",
+                "I'm here to help you boost your digital productivity...",
+                "Let's explore the world of AI in the workplace together...",
                 "Automate, innovate, collaborate: The Matts way...",
                 "Transforming workflows one prompt at a time..."
             ];
@@ -269,6 +273,7 @@
         <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
         <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
         <p><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
+        <p><a href="responsible.html" class="back-button">View Responsible AI Principles →</a></p>
     </div>
     
     <div class="prompts-section">
