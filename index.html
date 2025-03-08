@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in the Workplace with The Matts</title>
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --secondary: #24292e;
+            --accent: #2e7d32;
+            --light: #f6f8fa;
+            --text: #333;
+            --border: #e1e4e8;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+            color: #e3f2fd;
+        }
+        
+        .values {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .navigation {
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #1b5e20;
+        }
+        
+        .contact {
+            background-color: white;
+            padding: 4rem 0;
+            text-align: left;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-person {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-person h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-link {
+            display: block;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .values-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI in the Workplace with 'The Matts'</h1>
+            <div class="subtitle">A human-centric approach to implementing AI in the workplace</div>
+        </div>
+    </header>
+    
+    <section class="values">
+        <div class="container">
+            <h2>Our Key Values</h2>
+            <p>Our approach to AI implementation is guided by four core principles that ensure technology serves people—not the other way around.</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Human-Centric Approach</h3>
+                    <p>We believe AI should enhance human capabilities, not replace them. Our solutions are designed with people at the centre, focusing on augmenting skills, reducing repetitive tasks, and creating more meaningful work experiences.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Responsible Use</h3>
+                    <p>Ethics and transparency are non-negotiable in our AI implementations. We ensure all solutions are fair, explainable, and respect privacy while providing appropriate human oversight of automated processes.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Learn by Doing</h3>
+                    <p>We advocate for practical, hands-on approaches to AI adoption. Through iterative implementation, continuous feedback, and real-world experimentation, organisations develop the expertise needed for successful AI integration.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Protect Your Data</h3>
+                    <p>Data security is paramount when implementing AI in the workplace. We emphasize using IT-approved tools, being cautious with sensitive information, and ensuring proper data governance at every stage of AI implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="navigation">
+        <div class="container">
+            <h2>Workshop Resources & Guides</h2>
+            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+            
+            <div class="nav-buttons">
+                <a href="workshop.html" class="nav-button">Workshop Materials</a>
+                <a href="responsible.html" class="nav-button">Responsible AI Use</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <p>If you have any questions about responsible AI use or need guidance, please feel free to contact us:</p>
+            
+            <div class="contact-grid">
+                <div class="contact-person">
+                    <h3>Dr. Matt Mort</h3>
+                    <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a>
+                    <a href="https://profiles.cardiff.ac.uk/staff/mortm" class="contact-link" target="_blank">Cardiff University Profile</a>
+                    <a href="https://www.linkedin.com/in/matthewmort" class="contact-link" target="_blank">LinkedIn Profile</a>
+                </div>
+                
+                <div class="contact-person">
+                    <h3>Mr. Matt Hayden</h3>
+                    <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
+                    <a href="https://profiles.cardiff.ac.uk/staff/haydenmj1" class="contact-link" target="_blank">Cardiff University Profile</a>
+                    <a href="https://www.linkedin.com/in/matt-hayden-9b2097255/" class="contact-link" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Need help with responsible AI adoption in your workplace?</strong> Contact us to discuss how we can help your team implement these principles.</p>
+            </div>
+            
+            <div>
+                <h3>For Cardiff University Staff</h3>
+                <p>Access our training resources on the Cardiff University Intranet:</p>
+                <a href="https://intranet.cardiff.ac.uk/staff/training-and-development/staff-courses-and-programmes/all-courses/digital-productivity-including-ai-in-the-workplace" class="contact-link" target="_blank">Digital Productivity Including AI in the Workplace</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI in the Workplace with The Matts. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
