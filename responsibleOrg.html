@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>'The Matts' Responsible AI Use - Organisational Level</title>
     <style>
+
+.navigation {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.nav-button {
+    display: inline-block;
+    background-color: #2e7d32;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #1b5e20;
+}
+
+@media (max-width: 768px) {
+    .nav-buttons {
+        flex-direction: column;
+    }
+}
+
+
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
