@@ -5,49 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>'The Matts' Responsible AI Use - Organisational Level</title>
     <style>
-
-.navigation {
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.nav-button {
-    display: inline-block;
-    background-color: #2e7d32;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.nav-button:hover {
-    background-color: #1b5e20;
-}
-
-@media (max-width: 768px) {
-    .nav-buttons {
-        flex-direction: column;
-    }
-}
-
-
-        
+        /* Base styles */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -58,6 +16,15 @@
             color: #333;
             background-color: #f9f9f9;
         }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header styles */
         header {
             background-color: #1e88e5;
             color: white;
@@ -66,15 +33,18 @@
             margin-bottom: 20px;
             text-align: center;
         }
+
         h1 {
             margin: 0;
         }
+
         .subtitle {
             font-style: italic;
             margin-top: 5px;
             color: #e3f2fd;
         }
 
+        /* Section styles */
         .intro-section, .principles-section, .contact-info {
             background-color: white;
             padding: 25px;
@@ -82,30 +52,45 @@
             margin: 20px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
+        /* Heading styles */
+        h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
+
+        /* Principle items */
         .principle-item {
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
+
         .principle-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
+
         .principle-title {
             color: #1e88e5;
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 10px;
         }
+
+        /* List styles */
         .principle-list {
             list-style-type: none;
             padding-left: 0;
         }
+
         .principle-list li {
             padding: 8px 0 8px 25px;
             position: relative;
         }
+
         .principle-list li:before {
             content: "•";
             color: #2e7d32;
@@ -113,42 +98,60 @@
             position: absolute;
             left: 0;
         }
-        .back-button {
+
+        /* Navigation section */
+        .navigation {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Button styles */
+        .nav-button, .back-button {
             display: inline-block;
             background-color: #2e7d32;
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
+            padding: 0.8rem 2rem;
             border-radius: 4px;
-            margin: 10px 0;
+            text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
-        .back-button:hover {
+
+        .nav-button:hover, .back-button:hover {
             background-color: #1b5e20;
         }
+
+        /* Contact info styles */
+        .email {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styles */
         footer {
             text-align: center;
             margin-top: 40px;
             color: #666;
             font-size: 0.9em;
         }
-        .email {
-            color: #1e88e5;
-            text-decoration: none;
-        }
-        .email:hover {
-            text-decoration: underline;
-        }
-        h3 {
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 5px;
-            color: #1e88e5;
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -162,8 +165,6 @@
         <h2>Introduction</h2>
         <p>While individual responsibility is essential, organisations must establish proper frameworks and practices to govern the use of AI technologies across the enterprise. Effective AI governance at the organisational level helps mitigate risks and ensures alignment with company values.</p>
         <p>This document outlines practical principles for responsible AI adoption at the organisational level, focusing on actionable steps rather than abstract concepts. Remember that AI tools are designed to meet the objectives of the companies that create them—not necessarily your organisation's specific needs and values.</p>
-        
-       
     </div>
     
     <div class="principles-section">
@@ -264,21 +265,21 @@
         <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
         <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
         <p><strong>Need help with strategic AI adoption in your organisation?</strong> Contact us to discuss how we can help your team implement these principles through workshops, training, and consultation.</p>
-        
-      
     </div>
+    
     <section class="navigation">
-    <div class="container">
-        <h2>Workshop Resources & Guides</h2>
-        <p>Access our comprehensive materials for implementing AI in your workplace</p>
-        
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-button">Main Page</a>
-            <a href="workshop.html" class="nav-button">Workshop Materials</a>
-            <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
+        <div class="container">
+            <h2>Workshop Resources & Guides</h2>
+            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">Main Page</a>
+                <a href="workshop.html" class="nav-button">Workshop Materials</a>
+                <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    
     <footer>
         <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
     </footer>
