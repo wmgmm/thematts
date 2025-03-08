@@ -1,53 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Matts - Workshop Resources</title>
     <style>
-.navigation {
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.nav-button {
-    display: inline-block;
-    background-color: #2e7d32;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.nav-button:hover {
-    background-color: #1b5e20;
-}
-
-@media (max-width: 768px) {
-    .nav-buttons {
-        flex-direction: column;
-    }
-}
-
-
-
-        
+        /* Base styles */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -58,6 +16,15 @@
             color: #333;
             background-color: #f9f9f9;
         }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header styles */
         header {
             background-color: #1e88e5;
             color: white;
@@ -66,16 +33,18 @@
             margin-bottom: 20px;
             text-align: center;
         }
+
         h1 {
             margin: 0;
         }
+
         .subtitle {
             font-style: italic;
             margin-top: 5px;
             color: #e3f2fd;
         }
 
-
+        /* Section styles */
         .download-section, .prompts-section, .contact-info {
             background-color: white;
             padding: 25px;
@@ -83,55 +52,84 @@
             margin: 20px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
+        /* Heading styles */
+        h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
+
+        /* File items */
         .file-item {
             margin-bottom: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
+
         .file-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-        .download-button {
-            display: inline-block;
-            background-color: #2e7d32;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            margin: 10px 0;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .download-button:hover {
-            background-color: #1b5e20;
-        }
+
         .file-description {
             margin-bottom: 10px;
             font-weight: bold;
         }
+
         .file-info {
             font-size: 0.9em;
             color: #666;
             margin-bottom: 10px;
         }
-        footer {
+
+        /* Navigation section */
+        .navigation {
+            padding: 2rem 0;
             text-align: center;
-            margin-top: 40px;
-            color: #666;
-            font-size: 0.9em;
         }
-        .email {
-            color: #1e88e5;
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Button styles */
+        .download-button, .nav-button, .back-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
             text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
         }
-        .email:hover {
-            text-decoration: underline;
+
+        .download-button:hover, .nav-button:hover, .back-button:hover {
+            background-color: #1b5e20;
         }
+
+        /* Prompt section styles */
         .prompt-category {
             margin-bottom: 25px;
         }
+
+        .prompt-item {
+            margin-bottom: 30px;
+        }
+
+        .prompt-description {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1e88e5;
+        }
+
         .prompt-box {
             background-color: #f5f5f5;
             border-left: 4px solid #1e88e5;
@@ -139,11 +137,7 @@
             margin: 10px 0;
             border-radius: 0 5px 5px 0;
         }
-        .prompt-description {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #1e88e5;
-        }
+
         .copy-button {
             display: inline-block;
             background-color: #e0e0e0;
@@ -152,24 +146,38 @@
             border-radius: 3px;
             font-size: 0.8em;
             margin-top: 10px;
+            margin-bottom: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .copy-button:hover {
             background-color: #bdbdbd;
         }
-        h3 {
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 5px;
+
+        /* Contact info styles */
+        .email {
             color: #1e88e5;
+            text-decoration: none;
         }
-        /* Added spacing for prompt items */
-        .prompt-item {
-            margin-bottom: 30px;
+
+        .email:hover {
+            text-decoration: underline;
         }
-        /* Added extra margin after copy button */
-        .copy-button {
-            margin-bottom: 20px;
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
         }
     </style>
     <script>
@@ -191,7 +199,7 @@
         <h1>The Matts Workshop Resources</h1>
         <div class="subtitle">Digital Productivity & AI in the Workplace</div>
     </header>
-  
+    
     <div class="download-section">
         <h2>Workshop Files</h2>
         <p>Welcome to our workshop resource page. Below you'll find all the files and some of the prompts needed for today's session. Simply click the download buttons to save the files to your computer.</p>
@@ -223,7 +231,6 @@
         <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
         <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
         <p><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
-       
     </div>
     
     <div class="prompts-section">
@@ -320,18 +327,20 @@ Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team ha
             </div>
         </div>
     </div>
+    
     <section class="navigation">
-    <div class="container">
-        <h2>Workshop Resources & Guides</h2>
-        <p>Access our comprehensive materials for implementing AI in your workplace</p>
-        
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-button">Main Page</a>
-            <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
-            <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
+        <div class="container">
+            <h2>Workshop Resources & Guides</h2>
+            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">Main Page</a>
+                <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
+                <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    
     <footer>
         <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
     </footer>
