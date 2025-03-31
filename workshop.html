@@ -348,22 +348,27 @@
         <div class="exercise-item">
             <div class="exercise-title">Exercise 4: Professional Persona with Role Prompting</div>
             <div class="exercise-description">
-                <p>Role prompting is when you ask an AI to respond as if it were a specific type of expert or character. This shapes the AI's output to match the expertise level, terminology, and perspective you need for professional communications.</p>
+                <p>Role prompting is when you ask an AI to respond as if it were a specific type of expert or character. This shapes the AI's output to match the expertise level, terminology, and perspective you need.</p>
             </div>
             <div class="exercise-application">
                 <strong>Workplace Application:</strong> Use role prompting to draft emails or documents from different professional perspectives. This helps when communicating with various stakeholders who have different concerns and information needs.
             </div>
-            <div class="example-prompt" id="role-prompt-prof">
-                "You are a [professional role, e.g., technical project manager, HR specialist, financial advisor]. Help me draft an email explaining [topic] to [audience], focusing on [specific aspects]. Use appropriate terminology and perspective for this role."
+            <div class="example-prompt" id="role-prompt-medical">
+                "You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."
             </div>
-            <button onclick="copyToClipboard('role-prompt-prof')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('role-prompt-medical')" class="copy-button">Copy Prompt</button>
             
-            <p><em>Try changing the role to different professionals to see how the tone, content focus, and terminology shifts. This helps tailor your communications to different audiences effectively.</em></p>
+            <div class="example-prompt" id="role-prompt-comedian">
+                "You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."
+            </div>
+            <button onclick="copyToClipboard('role-prompt-comedian')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>Notice how dramatically the tone, content, and terminology shifts between different roles. This technique helps tailor your communications to different audiences effectively.</em></p>
             
             <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
-                <h4 style="margin-top: 0; color: #1565c0;">Example Scenarios:</h4>
-                <p><strong>Technical to Non-Technical:</strong> "You are a technical project manager. Help me draft an email explaining our software deployment delay to non-technical stakeholders, focusing on business impact rather than technical details."</p>
-                <p><strong>HR Communication:</strong> "You are an HR specialist. Help me draft an announcement about our new flexible working policy, focusing on benefits to employees while also covering key policy guidelines."</p>
+                <h4 style="margin-top: 0; color: #1565c0;">Workplace Applications:</h4>
+                <p><strong>Technical Communication:</strong> "You are a technical project manager. Help me draft an email explaining our software deployment delay to our development team, focusing on technical challenges and next steps."</p>
+                <p><strong>Try the same prompt but change the role to:</strong> "senior executive" or "customer service representative" to see how the tone and content shifts.</p>
             </div>
         </div>
         
@@ -386,20 +391,20 @@
                 </ul>
             </div>
             
-            <div class="example-prompt" id="format-table">
-                "Return a table about [topic] with two columns, one titled '[column 1]' the other '[column 2]' and fill in five examples for each."
+            <div class="example-prompt" id="format-limerick">
+                "Write a limerick about a man named Enus."
             </div>
-            <button onclick="copyToClipboard('format-table')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('format-limerick')" class="copy-button">Copy Prompt</button>
             
             <div class="example-prompt" id="format-sop">
-                "Write an SOP (Standard Operating Procedure) on [process/task]. Use numbered steps, include purpose, scope, responsibilities, equipment needed, and quality control measures."
+                "Write an SOP on the proper use of a knife and fork."
             </div>
             <button onclick="copyToClipboard('format-sop')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="format-creative">
-                "Write a limerick about [topic or person] that highlights the key points in a memorable way."
+            <div class="example-prompt" id="format-table">
+                "Return a table about sunbathing with two columns, one titled 'pros' the other 'cons' and fill in five examples for each."
             </div>
-            <button onclick="copyToClipboard('format-creative')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('format-table')" class="copy-button">Copy Prompt</button>
             
             <p><em>These structured formats help organize information effectively and make it more accessible to your audience. Experiment with different formats to see which ones best suit your workplace communication needs.</em></p>
         </div>
@@ -415,22 +420,21 @@
             </div>
             
             <div class="example-prompt" id="evaluation-prompt">
-                "Task: Create 5 new [product/content type] ideas
-For each idea, provide: 
-- Appeal & target market
-- Potential issues (cultural/linguistic/practical)
-- Ratings (1-10): [criteria 1], [criteria 2], and [criteria 3]
-
-After generating these ideas, evaluate each one against the criteria and identify the strongest option with justification."
+                "Task: Create 5 new soft drink brand names
+For each name, provide: 
+• Appeal & target market
+• Potential issues (cultural/linguistic/trademark)
+• Ratings (1-10): Memorability, Distinctiveness and Global potential"
             </div>
             <button onclick="copyToClipboard('evaluation-prompt')" class="copy-button">Copy Prompt</button>
             
             <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
-                <h4 style="margin-top: 0; color: #1565c0;">Example Application:</h4>
-                <p><strong>Marketing Ideas:</strong> "Task: Create 5 new social media campaign ideas for our tech product launch. For each idea, provide: Appeal & target market, Potential implementation challenges, Ratings (1-10): Creativity, Feasibility, and Brand alignment. After generating these ideas, evaluate each one against the criteria and identify the strongest option with justification."</p>
+                <h4 style="margin-top: 0; color: #1565c0;">How This Works:</h4>
+                <p>This prompt gets your chatbot to "mark its own homework" by first generating options and then evaluating them against specific criteria. It's particularly useful when you need to generate and assess multiple options for a workplace task.</p>
+                <p>After generating the options, you can follow up by asking: <strong>"Based on these ratings, which option would you recommend and why?"</strong></p>
             </div>
             
-            <p><em>This self-evaluation approach is especially valuable for filtering through multiple options or when you need a structured assessment of various alternatives before making a decision.</em></p>
+            <p><em>Try adapting this technique for workplace scenarios like project proposals, marketing campaigns, training approaches, or any situation where you need to compare multiple options against defined criteria.</em></p>
         </div>
         
         <!-- NEW EXERCISE 7: PROMPT CHAINING -->
@@ -455,26 +459,21 @@ After generating these ideas, evaluate each one against the criteria and identif
             </div>
             
             <div class="example-prompt" id="prompt-chain">
-                "Task: [specific task description]
-Role: [expertise or perspective]
-Tone: [communication style], not [style to avoid]
-Constraint: [requirements or limitations]
-Format: Provide [output structure, e.g., X items in Y-column format]: [column descriptions]
-Examples: [sample 1], [sample 2], [sample 3]"
+                "Task: Suggest appealing alcoholic beverage names.
+Role: Young adult male (18-35).
+Tone: Mildly humorous, not overly masculine.
+Constraint: Avoid existing UK product names.
+Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+Examples: MoonBrew, AuAle, BarleyBite"
             </div>
             <button onclick="copyToClipboard('prompt-chain')" class="copy-button">Copy Prompt</button>
             
             <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
-                <h4 style="margin-top: 0; color: #1565c0;">Concrete Example:</h4>
-                <p>"Task: Suggest appealing product names for our new eco-friendly office supplies line.<br>
-                Role: Marketing specialist with experience in sustainable products.<br>
-                Tone: Professional but warm, not overly technical.<br>
-                Constraint: Names should be memorable, suggest sustainability, and have available domain names.<br>
-                Format: Provide 5 names in a 3-column table: Name, Rating (1-10), Reasoning<br>
-                Examples: GreenDesk, EcoWrite, NatureFolio"</p>
+                <h4 style="margin-top: 0; color: #1565c0;">How This Works:</h4>
+                <p>This technique chains together all the previous techniques (role prompting, tone specification, constraints, structured format, and examples) to create a comprehensive prompt that gives the AI clear direction. It's like creating a production line for your AI outputs.</p>
             </div>
             
-            <p><em>This comprehensive approach saves time and produces more precise results by giving the AI clear guidance on multiple aspects of your request at once.</em></p>
+            <p><em>For workplace applications, modify each element to match your specific needs - for example, change the role to "financial analyst," the tone to "professional but accessible," and the constraint to "regulatory compliance terminology." This approach works well for any complex workplace communication task.</em></p>
         </div>
     </div>
     
