@@ -241,126 +241,69 @@
     </div>
     
     <div class="exercise-section">
-        <h2>AI Workplace Exercises</h2>
-        <p>Try these practical exercises to enhance your workplace productivity with AI tools. These techniques can help you overcome blank page syndrome, draft better emails, and explain complex topics simply.</p>
+        <h2>AI Productivity Exercises</h2>
+        <p>Try these practical exercises to enhance your workplace productivity with AI tools. These techniques will help you learn progressively, extract actionable insights, and challenge your thinking.</p>
         
         <div class="exercise-item">
-            <div class="exercise-title">Exercise 1: Brainstorming - The Initial Idea</div>
+            <div class="exercise-title">Exercise 1: Progressive Learning (ELI5)</div>
             <div class="exercise-description">
-                <p>Start with your basic idea and ask the AI for assistance in developing it. Continuous chatting with an AI can generate different, and maybe better ideas. You never need to start from a blank page!</p>
+                <p>This technique helps you learn complex topics in stages, starting with simple explanations and gradually increasing in complexity. It's especially useful for mastering new concepts or technical subjects.</p>
             </div>
             <div class="exercise-application">
-                <strong>Workplace Application:</strong> Use this technique when drafting reports, creating project plans, or developing presentation outlines. Instead of staring at a blank document, let AI help you generate an initial structure that you can refine.
+                <strong>Workplace Application:</strong> Perfect for learning new technical skills, understanding complex processes, or preparing to explain difficult concepts to colleagues with different expertise levels.
             </div>
-            <div class="example-prompt" id="exercise1-prompt1">
-                "Help me brainstorm some unique social media post ideas for a coffee shop."
+            <div class="example-prompt" id="progressive-learning">
+                "Teach me [TOPIC] in stages: first like I'm 5, then gradually more advanced. Ask questions after each stage to check understanding."
             </div>
-            <button onclick="copyToClipboard('exercise1-prompt1')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('progressive-learning')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="exercise1-prompt2">
-                "Help me brainstorm some key sections for our quarterly department report. I need to cover our team's achievements, challenges we faced, and plans for next quarter."
-            </div>
-            <button onclick="copyToClipboard('exercise1-prompt2')" class="copy-button">Copy Prompt</button>
-            
-            <p><em>Remember: When the chatbot responds, don't be afraid to disagree, suggest changes, or ask for justification. You're in control of the final output.</em></p>
+            <p><em>Replace [TOPIC] with any subject you need to learn, such as "cloud computing," "cybersecurity," "agile work," "project management," etc.</em></p>
         </div>
         
         <div class="exercise-item">
-            <div class="exercise-title">Exercise 2: Giving Direction with Role Prompting</div>
+            <div class="exercise-title">Exercise 2: Strategic Summary</div>
             <div class="exercise-description">
-                <p>Role prompting is when you ask an AI to respond as if it were a specific type of expert or character. This shapes the AI's output to match the expertise level, terminology, and perspective you need.</p>
+                <p>This technique uses action learning principles to extract practical insights and actionable information from websites, documents, or other content sources.</p>
             </div>
             <div class="exercise-application">
-                <strong>Workplace Application:</strong> Use role prompting to draft emails or documents from different professional perspectives. This helps when communicating with various stakeholders who have different concerns and information needs.
+                <strong>Workplace Application:</strong> Use this approach to quickly process large volumes of information, identify key takeaways, and determine practical next steps from articles, reports, or industry resources.
             </div>
-            <div class="example-prompt" id="exercise2-prompt1">
-                "You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."
+            <div class="example-prompt" id="strategic-summary">
+                "Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data."
             </div>
-            <button onclick="copyToClipboard('exercise2-prompt1')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('strategic-summary')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="exercise2-prompt2">
-                "You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."
-            </div>
-            <button onclick="copyToClipboard('exercise2-prompt2')" class="copy-button">Copy Prompt</button>
-            
-            <div class="example-prompt" id="exercise2-prompt3">
-                "You are a technical project manager. Help me draft an email explaining our software deployment delay to our development team, focusing on technical challenges and next steps."
-            </div>
-            <button onclick="copyToClipboard('exercise2-prompt3')" class="copy-button">Copy Prompt</button>
-            
-            <p><em>Try the same prompt but change the role to "senior executive" or "customer service representative" to see how the tone and content shifts.</em></p>
+            <p><em>You can use this with a website URL or replace it with a Word document, PDF, or other text content that you need to analyze.</em></p>
         </div>
         
         <div class="exercise-item">
-            <div class="exercise-title">Exercise 3: Specify Format - Explain It Like I'm Five (ELI5)</div>
+            <div class="exercise-title">Exercise 3: Devil's Advocate - Uncovering Blind Spots</div>
             <div class="exercise-description">
-                <p>This technique simplifies complicated topics to an elementary level. It avoids jargon and uses analogies to give a more engaging and understandable response.</p>
+                <p>This exercise helps identify potential weaknesses, assumptions, or blind spots in your thinking by providing constructive criticism and alternative perspectives.</p>
             </div>
             <div class="exercise-application">
-                <strong>Workplace Application:</strong> Perfect for creating explanations for non-technical stakeholders, new team members, or preparing client-facing documentation that needs to be accessible.
+                <strong>Workplace Application:</strong> Ideal for testing the robustness of proposals, plans, or decisions before finalizing them. Helps identify risks and alternatives you might not have considered.
             </div>
-            <div class="example-prompt" id="exercise3-prompt1">
-                "Explain chemistry like I'm five."
+            <div class="example-prompt" id="devils-advocate">
+                "Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"
             </div>
-            <button onclick="copyToClipboard('exercise3-prompt1')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('devils-advocate')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="exercise3-prompt2">
-                "Explain our data backup protocol like I'm five years old. After explaining, ask me questions to check my understanding and help me learn more."
+            <p><em>After getting the initial response, try these follow-up prompts to dig deeper:</em></p>
+            <div class="example-prompt" id="devils-followup1">
+                "What important counterarguments am I missing?"
             </div>
-            <button onclick="copyToClipboard('exercise3-prompt2')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('devils-followup1')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="exercise3-prompt3">
-                "Explain [topic] with increasing complexity in three paragraphs - first for a beginner, then for someone with basic knowledge, and finally for a colleague with technical understanding."
+            <div class="example-prompt" id="devils-followup2">
+                "What assumptions am I making that could be questioned?"
             </div>
-            <button onclick="copyToClipboard('exercise3-prompt3')" class="copy-button">Copy Prompt</button>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Exercise 4: Sentiment Analysis - Understanding Feedback</div>
-            <div class="exercise-description">
-                <p>Sentiment analysis helps identify the emotional tone behind text, categorising content as positive, negative, or neutral. This technique is valuable for processing customer feedback, employee surveys, or social media mentions.</p>
-            </div>
-            <div class="exercise-application">
-                <strong>Workplace Application:</strong> Use sentiment analysis to quickly process large volumes of feedback, identify areas needing immediate attention, and track sentiment trends over time. Particularly useful for customer service teams, HR departments, and marketing professionals.
-            </div>
-            <div class="example-prompt" id="exercise4-prompt1">
-                "Conduct a sentiment analysis on these customer reviews. For each one, identify if the sentiment is positive, negative, or neutral, explain your reasoning, and highlight key phrases that influenced your determination: [INSERT 3-5 REVIEWS]"
-            </div>
-            <button onclick="copyToClipboard('exercise4-prompt1')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('devils-followup2')" class="copy-button">Copy Prompt</button>
             
-            <div class="example-prompt" id="exercise4-prompt2">
-                "Analyse the sentiment of this email from a customer who is requesting a refund. Identify emotional cues, assess the overall tone, and suggest appropriate response strategies that would address their concerns professionally."
+            <div class="example-prompt" id="devils-followup3">
+                "How might different stakeholders view this differently?"
             </div>
-            <button onclick="copyToClipboard('exercise4-prompt2')" class="copy-button">Copy Prompt</button>
-            
-            <div class="example-prompt" id="exercise4-prompt3">
-                "I need to improve the tone of this internal email about upcoming process changes. The feedback is that it sounds too negative and might create resistance. Analyse the current sentiment and rewrite it with a more positive, encouraging tone while maintaining all the key information."
-            </div>
-            <button onclick="copyToClipboard('exercise4-prompt3')" class="copy-button">Copy Prompt</button>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Exercise 5: Topic Discovery - Finding Patterns in Information</div>
-            <div class="exercise-description">
-                <p>Topic discovery identifies key themes and patterns in large volumes of text. This technique helps extract valuable insights from unstructured data like meeting notes, survey responses, or industry reports.</p>
-            </div>
-            <div class="exercise-application">
-                <strong>Workplace Application:</strong> Perfect for analysing survey responses, identifying recurring issues in customer feedback, discovering trends in competitor communications, or summarising key points from lengthy documents. Helps teams prioritise efforts based on frequency and importance of topics.
-            </div>
-            <div class="example-prompt" id="exercise5-prompt1">
-                "Analyse these meeting notes from our last quarterly review and identify the top 5 recurring themes or concerns. For each theme, provide the key points discussed and any action items mentioned: [INSERT MEETING NOTES]"
-            </div>
-            <button onclick="copyToClipboard('exercise5-prompt1')" class="copy-button">Copy Prompt</button>
-            
-            <div class="example-prompt" id="exercise5-prompt2">
-                "I have collected open-ended responses from our employee satisfaction survey. Analyse these comments to identify common themes, categorise them as strengths or areas for improvement, and suggest potential actions for each category: [INSERT SURVEY RESPONSES]"
-            </div>
-            <button onclick="copyToClipboard('exercise5-prompt2')" class="copy-button">Copy Prompt</button>
-            
-            <div class="example-prompt" id="exercise5-prompt3">
-                "I need to prepare for our department's strategic planning session. Review these industry reports and identify emerging trends that might impact our business in the next 12-18 months. Categorise them by potential impact (high, medium, low) and suggest how we might respond: [INSERT REPORT EXCERPTS]"
-            </div>
-            <button onclick="copyToClipboard('exercise5-prompt3')" class="copy-button">Copy Prompt</button>
+            <button onclick="copyToClipboard('devils-followup3')" class="copy-button">Copy Prompt</button>
         </div>
     </div>
     
@@ -391,48 +334,137 @@
     
     <div class="prompts-section">
         <h2>Sample AI Prompts</h2>
-        <p>Below are some example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
+        <p>Below are categorized example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
+        
+        <div class="prompt-category">
+            <h3>Brainstorming & Idea Generation</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Initial Idea Development:</div>
+                <div class="prompt-box" id="prompt-brainstorm1">
+                    "Help me brainstorm some unique social media post ideas for [type of business]."
+                </div>
+                <p><em>Perfect for overcoming blank page syndrome when starting creative projects.</em></p>
+                <button onclick="copyToClipboard('prompt-brainstorm1')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Report Structure Development:</div>
+                <div class="prompt-box" id="prompt-brainstorm2">
+                    "Help me brainstorm some key sections for our [type of report]. I need to cover our team's achievements, challenges we faced, and plans for next quarter."
+                </div>
+                <p><em>Useful for structuring reports, presentations, or other formal documents.</em></p>
+                <button onclick="copyToClipboard('prompt-brainstorm2')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Role-Based Communication</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Professional Role Simulation:</div>
+                <div class="prompt-box" id="prompt-role1">
+                    "You are a [type of professional, e.g., medical professional, financial analyst, HR specialist]. Reply to the statement '[insert your specific question or statement]'."
+                </div>
+                <p><em>Helpful for drafting specialized communications from different professional perspectives.</em></p>
+                <button onclick="copyToClipboard('prompt-role1')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Email Drafting with Role Perspective:</div>
+                <div class="prompt-box" id="prompt-role2">
+                    "You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic, e.g., our software deployment delay] to [audience, e.g., our development team], focusing on [specific aspects, e.g., technical challenges and next steps]."
+                </div>
+                <p><em>Great for crafting communications tailored to specific audiences and purposes.</em></p>
+                <button onclick="copyToClipboard('prompt-role2')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Simplification & Explanation</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Basic ELI5 (Explain Like I'm Five):</div>
+                <div class="prompt-box" id="prompt-eli5-1">
+                    "Explain [topic] like I'm five."
+                </div>
+                <p><em>The simplest way to get jargon-free explanations of complex topics.</em></p>
+                <button onclick="copyToClipboard('prompt-eli5-1')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Interactive ELI5 with Comprehension Check:</div>
+                <div class="prompt-box" id="prompt-eli5-2">
+                    "Explain [specific workplace process or concept] like I'm five years old. After explaining, ask me questions to check my understanding and help me learn more."
+                </div>
+                <p><em>Adds an interactive element to help reinforce understanding of complex topics.</em></p>
+                <button onclick="copyToClipboard('prompt-eli5-2')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Multi-Level Explanation:</div>
+                <div class="prompt-box" id="prompt-eli5-3">
+                    "Explain [topic] with increasing complexity in three paragraphs - first for a beginner, then for someone with basic knowledge, and finally for a colleague with technical understanding."
+                </div>
+                <p><em>Creates explanations that can be used with different audiences or as a learning progression.</em></p>
+                <button onclick="copyToClipboard('prompt-eli5-3')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
         
         <div class="prompt-category">
             <h3>Data Analysis Prompts</h3>
             
             <div class="prompt-item">
                 <div class="prompt-description">Basic Marketing ROI Calculation:</div>
-                <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for March (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
+                <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
                 <p><em>Use with the Marketing & Sales Excel file. Great for learning how to get clear financial explanations without financial jargon.</em></p>
                 <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
             </div>
             
             <div class="prompt-item">
-                <div class="prompt-description">REF Data Analysis:</div>
-                <div class="prompt-box" id="prompt2">Analyse this Cardiff dataset and identify:
+                <div class="prompt-description">Dataset Analysis & Insights:</div>
+                <div class="prompt-box" id="prompt2">Analyse this [type of] dataset and identify:
 * 3 unexpected findings that deserve attention
 * Critical areas for improvement based on the metrics
 * Key recommendations supported by the data
 
 Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
-                <p><em>Use with the REF2021 Results Excel file. Demonstrates how to get focused insights and actionable recommendations from complex datasets.</em></p>
+                <p><em>Use with the REF2021 Results Excel file or other datasets. Demonstrates how to get focused insights and actionable recommendations from complex data.</em></p>
                 <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
             </div>
             
             <div class="prompt-item">
-                <div class="prompt-description">Shopping Receipt Conversion:</div>
-                <div class="prompt-box" id="prompt3">Please create an Excel file from this receipt with columns for Items and Price</div>
-                <p><em>Use with the Shopping Information PDF. Shows how AI can convert unstructured data into structured formats for easier analysis.</em></p>
+                <div class="prompt-description">Data Extraction & Conversion:</div>
+                <div class="prompt-box" id="prompt3">Please create an Excel file from this [document type] with columns for [column 1] and [column 2]</div>
+                <p><em>Use with the Shopping Information PDF or similar documents. Shows how AI can convert unstructured data into structured formats for easier analysis.</em></p>
                 <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
         
         <div class="prompt-category">
-            <h3>Automation Prompts</h3>
+            <h3>Automation & Workflow Prompts</h3>
             
             <div class="prompt-item">
                 <div class="prompt-description">Excel Macro Creation:</div>
-                <div class="prompt-box" id="prompt4">I need a macro for my marketing spreadsheet that calculates ROI from our sales, costs, and marketing spend data. Include a chart showing spend and sales and conditional formatting to show when ROI is high or not e.g. red for ROI < 100%
+                <div class="prompt-box" id="prompt4">I need a macro for my [type] spreadsheet that calculates [specific calculation] from our [data types]. Include a chart showing [visualization elements] and conditional formatting to show when [metric] is [condition] e.g. [example].
 
-Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team has limited Excel expertise</div>
-                <p><em>Use with the Marketing & Sales Excel file. Demonstrates how to automate repetitive tasks for teams with limited technical skills.</em></p>
+Can you output a new Excel Macro-Enabled Workbook (.xlsm), the team has limited Excel expertise</div>
+                <p><em>Use with the Marketing & Sales Excel file or similar datasets. Demonstrates how to automate repetitive tasks for teams with limited technical skills.</em></p>
                 <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Email Template Generator:</div>
+                <div class="prompt-box" id="prompt-email">Create 3 reusable email templates for [specific scenario e.g., following up with clients who haven't responded]. Each template should have a slightly different tone (professional, friendly, and urgent). Include placeholder text for personalization and clear subject lines for each version.</div>
+                <p><em>Perfect for creating standardized communications that can be quickly customized and reused.</em></p>
+                <button onclick="copyToClipboard('prompt-email')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Process Documentation Creator:</div>
+                <div class="prompt-box" id="prompt-process">Create a step-by-step standard operating procedure (SOP) for [specific process]. Include the following sections: Purpose, Scope, Responsibilities, Procedure Steps, Required Resources, and Quality Control. Format it in a way that's easy to follow with numbered steps and bullet points where appropriate.</div>
+                <p><em>Helps standardize and document workflows for training, consistency, and improvement.</em></p>
+                <button onclick="copyToClipboard('prompt-process')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
         
@@ -447,9 +479,349 @@ Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team ha
             </div>
             
             <div class="prompt-item">
+                <div class="prompt-description">Document to FAQ Conversion:</div>
+                <div class="prompt-box" id="prompt9">Convert this document into a comprehensive FAQ format. Create 10-15 frequently asked questions based on the most important information in the text. For each question, provide a clear, concise answer that captures the key points. Organize questions from basic to advanced topics. [INSERT DOCUMENT TEXT HERE]</div>
+                <p><em>Replace [INSERT DOCUMENT TEXT HERE] with your document content. Excellent for transforming lengthy texts into easy-to-navigate reference materials.</em></p>
+                <button onclick="copyToClipboard('prompt9')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Format Control & Structure</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Structured Table Format:</div>
+                <div class="prompt-box" id="prompt8">Return a table about [topic] with [number] columns, titled [column 1 name], [column 2 name], etc. and fill in [number] examples for each.</div>
+                <p><em>Simple demonstration of format control. Shows how to generate structured information in table format without needing any data files.</em></p>
+                <button onclick="copyToClipboard('prompt8')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Advanced Prompt Engineering Example:</div>
+                <div class="prompt-box" id="prompt7">Take the Role of a [demographic details] What would be the name of a [product type] that might attract you? The tone should be [tone description] and not sound too [negative quality to avoid]. The name should not sound like any existing products in [market/region]. Provide [number] examples in a [number]-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be [example 1], [example 2], [example 3].</div>
+                <p><em>This exercise combines role prompting, tone specification, constraints, structured format, and examples - perfect for learning advanced prompt engineering techniques.</em></p>
+                <button onclick="copyToClipboard('prompt7')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+    </div>
+    
+    <section class="navigation">
+        <div class="container">
+            <h2>Workshop Resources & Guides</h2>
+            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">Main Page</a>
+                <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
+                <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+            border-bottom: 1px solid #eee;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #1e88e5;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .exercise-description {
+            margin-bottom: 15px;
+        }
+
+        .exercise-application {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .example-prompt {
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>The Matts Workshop Resources</h1>
+        <div class="subtitle">Digital Productivity & AI in the Workplace</div>
+    </header>
+    
+    <div style="background-color: #e0f7fa; padding: 15px; margin-bottom: 20px; border-radius: 5px; border-left: 4px solid #00acc1; text-align: center;">
+        <p style="margin: 0;">For today's exercises, log in to <a href="https://copilot.microsoft.com/" target="_blank" style="font-weight: bold; color: #00838f;">Microsoft Copilot</a> (opens in new tab). Please use your work account for work-related tasks to ensure data privacy compliance.</p>
+    </div>
+    
+    <div class="exercise-section">
+        <h2>Kaizen Productivity Exercises</h2>
+        <p>These exercises focus on the concept of Kaizen - small, continuous improvements that can significantly enhance your workplace productivity. Try these AI-powered approaches to identify and implement incremental changes in your daily workflow.</p>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 1: Digital Waste Identification</div>
+            <div class="exercise-description">
+                <p>Kaizen begins with identifying areas of waste in your digital workflow. Use AI to help you recognize inefficiencies in how you manage your time, tasks, and digital tools.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> This exercise helps you pinpoint specific activities that consume your time without adding value, such as excessive email checking, inefficient file organization, or multitasking that reduces focus and effectiveness.
+            </div>
+            <div class="example-prompt" id="kaizen1-prompt">
+                "I want to reduce digital waste in my workday. Please help me identify potential sources of digital waste in [specific area, e.g., email management, meeting practices, task organization]. For each type of waste, suggest a small, immediate change I could implement tomorrow to improve."
+            </div>
+            <button onclick="copyToClipboard('kaizen1-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="kaizen1-prompt2">
+                "Analyze my typical workday scenario: I check emails throughout the day, attend 4-5 meetings, work on multiple projects simultaneously, and often stay late to catch up. Using lean principles, identify 3 types of digital waste in this routine and suggest one small kaizen improvement for each."
+            </div>
+            <button onclick="copyToClipboard('kaizen1-prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>After receiving suggestions, consider which small change feels most doable and commit to trying it for one week.</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 2: Process Improvement Experiment</div>
+            <div class="exercise-description">
+                <p>Kaizen emphasizes experimentation with small improvements. Use AI to help design a simple process improvement experiment that follows the Plan-Do-Check-Act (PDCA) cycle.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> This structured approach helps you systematically test small changes to your work processes, measure their impact, and decide whether to adopt, modify, or discard them based on actual results.
+            </div>
+            <div class="example-prompt" id="kaizen2-prompt">
+                "Help me design a one-week kaizen experiment to improve my [specific process, e.g., meeting efficiency, email processing, focus time]. Create a simple PDCA (Plan-Do-Check-Act) framework with: 1) A specific small change to implement, 2) How I'll measure success, 3) A daily check-in process, and 4) How to evaluate and adjust after the week ends."
+            </div>
+            <button onclick="copyToClipboard('kaizen2-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="kaizen2-prompt2">
+                "I spend too much time in my inbox and feel overwhelmed by emails. Create a 5-day kaizen experiment that tests a new approach to email management. Include specific changes to implement each day, metrics to track, and a simple way to evaluate if the new approach is working."
+            </div>
+            <button onclick="copyToClipboard('kaizen2-prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>Remember that kaizen is about continuous improvement - your experiment doesn't need to be perfect, just better than your current approach.</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 3: Priority Matrix Development</div>
+            <div class="exercise-description">
+                <p>Effective prioritization is key to productivity. This exercise uses AI to help you develop a personalized priority matrix for evaluating tasks and responsibilities.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> A customized priority matrix helps you make consistent decisions about what to focus on, what to delegate, and what to eliminate, reducing the mental load of constant reprioritization throughout your day.
+            </div>
+            <div class="example-prompt" id="kaizen3-prompt">
+                "Create a personalized task priority matrix for my role as [your job title]. Include 4 quadrants with clear criteria for each. Then, take my current task list and categorize each item: [list 5-10 current tasks]. Finally, suggest a daily routine that would help me focus on the right quadrant at the right time."
+            </div>
+            <button onclick="copyToClipboard('kaizen3-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="kaizen3-prompt2">
+                "I struggle with prioritizing my work effectively. Design a simple decision-making framework I can use when new requests come in. It should help me quickly determine if a task is urgent, important, both, or neither, and guide my response accordingly. Include example scenarios to show how it works."
+            </div>
+            <button onclick="copyToClipboard('kaizen3-prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>Try using your new priority matrix for one week, then review and refine it based on what worked and what didn't.</em></p>
+        </div>
+    </div>
+    
+    <div class="exercise-section">
+        <h2>AI Communication Exercises</h2>
+        <p>Try these practical exercises to enhance your workplace communication using AI tools. These techniques can help you overcome blank page syndrome, draft better emails, and explain complex topics simply.</p>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 4: Brainstorming - The Initial Idea</div>
+            <div class="exercise-description">
+                <p>Start with your basic idea and ask the AI for assistance in developing it. Continuous chatting with an AI can generate different, and maybe better ideas. You never need to start from a blank page!</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Use this technique when drafting reports, creating project plans, or developing presentation outlines. Instead of staring at a blank document, let AI help you generate an initial structure that you can refine.
+            </div>
+            <div class="example-prompt" id="exercise1-prompt1">
+                "Help me brainstorm some unique social media post ideas for [type of business]."
+            </div>
+            <button onclick="copyToClipboard('exercise1-prompt1')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="exercise1-prompt2">
+                "Help me brainstorm some key sections for our quarterly department report. I need to cover our team's achievements, challenges we faced, and plans for next quarter."
+            </div>
+            <button onclick="copyToClipboard('exercise1-prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>Remember: When the chatbot responds, don't be afraid to disagree, suggest changes, or ask for justification. You're in control of the final output.</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 5: Giving Direction with Role Prompting</div>
+            <div class="exercise-description">
+                <p>Role prompting is when you ask an AI to respond as if it were a specific type of expert or character. This shapes the AI's output to match the expertise level, terminology, and perspective you need.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Use role prompting to draft emails or documents from different professional perspectives. This helps when communicating with various stakeholders who have different concerns and information needs.
+            </div>
+            <div class="example-prompt" id="exercise2-prompt1">
+                "You are a [type of professional, e.g., medical professional, financial analyst, HR specialist]. Reply to the statement '[insert your specific question or statement]'."
+            </div>
+            <button onclick="copyToClipboard('exercise2-prompt1')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="exercise2-prompt3">
+                "You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic, e.g., our software deployment delay] to [audience, e.g., our development team], focusing on [specific aspects, e.g., technical challenges and next steps]."
+            </div>
+            <button onclick="copyToClipboard('exercise2-prompt3')" class="copy-button">Copy Prompt</button>
+            
+            <p><em>Try the same prompt but change the role to different positions to see how the tone and content shifts.</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 6: Explain It Like I'm Five (ELI5)</div>
+            <div class="exercise-description">
+                <p>This technique simplifies complicated topics to an elementary level. It avoids jargon and uses analogies to give a more engaging and understandable response.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Perfect for creating explanations for non-technical stakeholders, new team members, or preparing client-facing documentation that needs to be accessible.
+            </div>
+            <div class="example-prompt" id="exercise3-prompt1">
+                "Explain [topic] like I'm five."
+            </div>
+            <button onclick="copyToClipboard('exercise3-prompt1')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="exercise3-prompt2">
+                "Explain [specific workplace process or concept] like I'm five years old. After explaining, ask me questions to check my understanding and help me learn more."
+            </div>
+            <button onclick="copyToClipboard('exercise3-prompt2')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="exercise3-prompt3">
+                "Explain [topic] with increasing complexity in three paragraphs - first for a beginner, then for someone with basic knowledge, and finally for a colleague with technical understanding."
+            </div>
+            <button onclick="copyToClipboard('exercise3-prompt3')" class="copy-button">Copy Prompt</button>
+        </div>
+    </div>
+    
+    <div class="download-section">
+        <h2>Workshop Files</h2>
+        <p>Welcome to our workshop resource page. Below you'll find all the files and some of the prompts needed for today's session. Simply click the download buttons to save the files to your computer.</p>
+        
+        <div class="file-item">
+            <div class="file-description">Marketing & Sales Data:</div>
+            <div class="file-info">Excel spreadsheet with sample marketing and sales data for analysis exercises</div>
+            <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="download-button">Download Excel File</a>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-description">REF2021 Results:</div>
+            <div class="file-info">Research Excellence Framework 2021 results for Cardiff University</div>
+            <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="download-button">Download Excel File</a>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-description">Shopping Information:</div>
+            <div class="file-info">Sample shopping information document (PDF format)</div>
+            <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="download-button">Download PDF</a>
+        </div>
+        
+        <p><em>Note: No GitHub account is required to download these files. If you have any issues accessing the materials, please let the workshop facilitators know.</em></p>
+    </div>
+    
+    <div class="prompts-section">
+        <h2>Sample AI Prompts</h2>
+        <p>Below are categorized example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
+        
+        <div class="prompt-category">
+            <h3>Data Analysis Prompts</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Basic Marketing ROI Calculation:</div>
+                <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
+                <p><em>Use with the Marketing & Sales Excel file. Great for learning how to get clear financial explanations without financial jargon.</em></p>
+                <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Dataset Analysis & Insights:</div>
+                <div class="prompt-box" id="prompt2">Analyse this [type of] dataset and identify:
+* 3 unexpected findings that deserve attention
+* Critical areas for improvement based on the metrics
+* Key recommendations supported by the data
+
+Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
+                <p><em>Use with the REF2021 Results Excel file or other datasets. Demonstrates how to get focused insights and actionable recommendations from complex data.</em></p>
+                <button onclick="copyToClipboard('prompt2')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Data Extraction & Conversion:</div>
+                <div class="prompt-box" id="prompt3">Please create an Excel file from this [document type] with columns for [column 1] and [column 2]</div>
+                <p><em>Use with the Shopping Information PDF or similar documents. Shows how AI can convert unstructured data into structured formats for easier analysis.</em></p>
+                <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Workflow Automation Prompts</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Excel Macro Creation:</div>
+                <div class="prompt-box" id="prompt4">I need a macro for my [type] spreadsheet that calculates [specific calculation] from our [data types]. Include a chart showing [visualization elements] and conditional formatting to show when [metric] is [condition] e.g. [example].
+
+Can you output a new Excel Macro-Enabled Workbook (.xlsm), the team has limited Excel expertise</div>
+                <p><em>Use with the Marketing & Sales Excel file or similar datasets. Demonstrates how to automate repetitive tasks for teams with limited technical skills.</em></p>
+                <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Email Template Generator:</div>
+                <div class="prompt-box" id="prompt-email">Create 3 reusable email templates for [specific scenario e.g., following up with clients who haven't responded]. Each template should have a slightly different tone (professional, friendly, and urgent). Include placeholder text for personalization and clear subject lines for each version.</div>
+                <p><em>Perfect for creating standardized communications that can be quickly customized and reused.</em></p>
+                <button onclick="copyToClipboard('prompt-email')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Process Documentation Creator:</div>
+                <div class="prompt-box" id="prompt-process">Create a step-by-step standard operating procedure (SOP) for [specific process]. Include the following sections: Purpose, Scope, Responsibilities, Procedure Steps, Required Resources, and Quality Control. Format it in a way that's easy to follow with numbered steps and bullet points where appropriate.</div>
+                <p><em>Helps standardize and document workflows for training, consistency, and improvement.</em></p>
+                <button onclick="copyToClipboard('prompt-process')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+        
+        <div class="prompt-category">
+            <h3>Content Management Prompts</h3>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Meeting Notes Summarization:</div>
+                <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
+                <p><em>Replace [INSERT TRANSCRIPT HERE] with your meeting text. Perfect for creating actionable meeting summaries from lengthy discussions.</em></p>
+                <button onclick="copyToClipboard('prompt5')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
                 <div class="prompt-description">Action Learning Summary:</div>
-                <div class="prompt-box" id="prompt6">Using action learning, summarise this website (INSERT URL) focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
-                <p><em>Replace (INSERT URL) with any website link. Useful for extracting practical, actionable information from online resources.</em></p>
+                <div class="prompt-box" id="prompt6">Using action learning, summarise this [source material, e.g., website, document, report] focusing on what to do, what choices matter and what we can learn from it. Highlight any key data.</div>
+                <p><em>Replace source material with any content you want to analyze. Useful for extracting practical, actionable information from resources.</em></p>
                 <button onclick="copyToClipboard('prompt6')" class="copy-button">Copy Prompt</button>
             </div>
             
@@ -465,21 +837,49 @@ Can you output a new Excel Macro-Enabled Workbook (.xlsm), the marketing team ha
             <h3>Format Control Prompts</h3>
             
             <div class="prompt-item">
-                <div class="prompt-description">Structured Table Format Example:</div>
-                <div class="prompt-box" id="prompt8">Return a table about sunbathing with two columns, one titled 'pros' the other 'cons' and fill in five examples for each.</div>
+                <div class="prompt-description">Structured Table Format:</div>
+                <div class="prompt-box" id="prompt8">Return a table about [topic] with [number] columns, titled [column 1 name], [column 2 name], etc. and fill in [number] examples for each.</div>
                 <p><em>Simple demonstration of format control. Shows how to generate structured information in table format without needing any data files.</em></p>
                 <button onclick="copyToClipboard('prompt8')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Bullet Point Transformer:</div>
+                <div class="prompt-box" id="prompt-bullet">Transform this paragraph into a well-organized bulleted list with clear categories and subcategories. Use formatting to make it easy to scan: [INSERT PARAGRAPH TEXT]</div>
+                <p><em>Useful for converting dense text into scannable, organized information.</em></p>
+                <button onclick="copyToClipboard('prompt-bullet')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Executive Summary Formatter:</div>
+                <div class="prompt-box" id="prompt-exec">Convert this detailed information into a one-page executive summary with the following sections: Overview, Key Findings, Recommendations, and Next Steps. Use professional, concise language suitable for senior management: [INSERT DETAILED TEXT]</div>
+                <p><em>Great for creating targeted communications for busy executives.</em></p>
+                <button onclick="copyToClipboard('prompt-exec')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
         
         <div class="prompt-category">
-            <h3>Prompt Engineering Exercises</h3>
+            <h3>Advanced Prompt Engineering</h3>
             
             <div class="prompt-item">
-                <div class="prompt-description">Complete Prompt Engineering Exercise:</div>
-                <div class="prompt-box" id="prompt7">Take the Role of a male, aged 18-35 What would be the name of an alcoholic beverage that might attract you? The tone should be mildly humorous and not sound too toxically masculine. The name should not sound like any existing products in the UK. Provide ten examples in a three-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be MoonBrew, AuAle, BarleyBite.</div>
-                <p><em>This exercise combines role prompting, tone specification, constraints, structured format, and examples - perfect for learning advanced prompt engineering techniques. No data file needed.</em></p>
+                <div class="prompt-description">Complete Prompt Engineering Example:</div>
+                <div class="prompt-box" id="prompt7">Take the Role of a [demographic details] What would be the name of a [product type] that might attract you? The tone should be [tone description] and not sound too [negative quality to avoid]. The name should not sound like any existing products in [market/region]. Provide [number] examples in a [number]-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be [example 1], [example 2], [example 3].</div>
+                <p><em>This exercise combines role prompting, tone specification, constraints, structured format, and examples - perfect for learning advanced prompt engineering techniques.</em></p>
                 <button onclick="copyToClipboard('prompt7')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Sentiment Analysis Controller:</div>
+                <div class="prompt-box" id="prompt-sentiment">Analyze the sentiment and tone of this [content type, e.g., email, customer feedback, report]. Then rewrite it to have a more [desired sentiment, e.g., positive, neutral, professional] tone while preserving all the key information and meaning: [INSERT CONTENT]</div>
+                <p><em>Helps control the emotional impact of written communications.</em></p>
+                <button onclick="copyToClipboard('prompt-sentiment')" class="copy-button">Copy Prompt</button>
+            </div>
+            
+            <div class="prompt-item">
+                <div class="prompt-description">Constructive Devil's Advocate:</div>
+                <div class="prompt-box" id="prompt-devils">Act as a constructive devil's advocate. First identify potential weaknesses or blind spots in my approach, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [INSERT YOUR PLAN OR IDEA]</div>
+                <p><em>Useful for identifying potential issues and improvements in plans before implementation.</em></p>
+                <button onclick="copyToClipboard('prompt-devils')" class="copy-button">Copy Prompt</button>
             </div>
         </div>
     </div>
