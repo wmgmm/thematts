@@ -295,30 +295,13 @@
                 </ol>
             </div>
             
-            <div style="background-color: #fff3e0; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #ef6c00;">
-                <h4 style="margin-top: 0; color: #ef6c00;">Choose any of these workplace scenarios:</h4>
-                <ul style="margin-bottom: 0;">
-                    <li>Your LinkedIn/CV</li>
-                    <li>A project proposal</li>
-                    <li>A workplace policy</li>
-                    <li>A business decision</li>
-                    <li>A marketing strategy</li>
-                </ul>
-            </div>
-            
-            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                <h4 style="margin-top: 0; color: #1565c0;">Quick Examples:</h4>
-                <p><strong>LinkedIn/CV Review:</strong> "My CV shows 3 years in customer service and 2 years in project management. I want to move into leadership."</p>
-                <p><strong>Project Proposal:</strong> "Proposal to implement new scheduling software for our team of 15 people."</p>
-                <p><strong>Business Decision:</strong> "Considering expanding our business hours to include weekends."</p>
-            </div>
-            
+            <h4 style="color: #1e88e5;">Initial Prompt:</h4>
             <div class="example-prompt" id="devils-advocate">
                 "Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"
             </div>
             <button onclick="copyToClipboard('devils-advocate')" class="copy-button">Copy Prompt</button>
             
-            <p><em>After getting the initial response, try these follow-up prompts to dig deeper:</em></p>
+            <h4 style="color: #1e88e5;">Follow-up Prompts (pick 2-3):</h4>
             <div class="example-prompt" id="devils-followup1">
                 "What important counterarguments am I missing?"
             </div>
@@ -343,6 +326,24 @@
                 "How might different stakeholders view this differently?"
             </div>
             <button onclick="copyToClipboard('devils-followup5')" class="copy-button">Copy Prompt</button>
+            
+            <div style="margin-top: 20px;">
+                <h4 style="color: #1e88e5;">Choose any of these workplace scenarios:</h4>
+                <ul>
+                    <li>Your LinkedIn/CV</li>
+                    <li>A project proposal</li>
+                    <li>A workplace policy</li>
+                    <li>A business decision</li>
+                    <li>A marketing strategy</li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                <h4 style="margin-top: 0; color: #1565c0;">Quick Examples:</h4>
+                <p><strong>LinkedIn/CV Review:</strong> "My CV shows 3 years in customer service and 2 years in project management. I want to move into leadership."</p>
+                <p><strong>Project Proposal:</strong> "Proposal to implement new scheduling software for our team of 15 people."</p>
+                <p><strong>Business Decision:</strong> "Considering expanding our business hours to include weekends."</p>
+            </div>
         </div>
     </div>
     
