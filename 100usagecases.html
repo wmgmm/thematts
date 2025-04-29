@@ -13,6 +13,7 @@
             padding: 20px;
             color: #333;
             background-color: #f8f9fa;
+            scroll-behavior: smooth;
         }
         h1 {
             color: #1e88e5;
@@ -64,11 +65,13 @@
         .use-case {
             background-color: #fff;
             border-radius: 8px;
-            padding: 15px;
+            padding: 12px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             align-items: center;
+            height: 40px; /* Set fixed height for desktop view */
+            overflow: hidden;
         }
         .use-case:hover {
             transform: translateY(-3px);
@@ -92,6 +95,9 @@
             text-decoration: none;
             font-weight: 500;
             flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         a:hover {
             color: #1e88e5;
@@ -104,6 +110,41 @@
             width: 100%;
             clear: both;
         }
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e88e5;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+            z-index: 1000;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+        }
+        /* Responsive adjustments for card height */
+        @media (max-width: 768px) {
+            .use-case {
+                height: auto;
+                min-height: 40px;
+                padding: 10px;
+            }
+            a {
+                white-space: normal;
+            }
+        }
+    </style>
     </style>
 </head>
 <body>
