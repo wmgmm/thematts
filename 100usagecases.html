@@ -1,22 +1,220 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <title>Login Page for Workplace Resources</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Matts - Workshop Resources</title>
+  <style>
+    /* Base styles from your original site */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+
+    .subtitle {
+      font-style: italic;
+      margin-top: 5px;
+      color: #e3f2fd;
+    }
+    
+    /* Login form styles */
+    .login-section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 5px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #1e88e5;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      text-align: center;
+    }
+    
+    input:focus {
+      border-color: #1e88e5;
+      outline: none;
+      box-shadow: 0 0 5px rgba(30, 136, 229, 0.3);
+    }
+    
+    .submit-btn {
+      background-color: #1e88e5;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+    
+    .submit-btn:hover {
+      background-color: #1565c0;
+    }
+    
+    .login-message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #e53935;
+      min-height: 20px;
+    }
+    
+    .login-help {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+    }
+    
+    .access-code-info {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      border-left: 4px solid #1e88e5;
+    }
+    
+    .access-code-info h3 {
+      margin-top: 0;
+      color: #1565c0;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    /* Animation for incorrect attempt */
+    @keyframes shake {
+      0%, 100% {transform: translateX(0);}
+      10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
+      20%, 40%, 60%, 80% {transform: translateX(5px);}
+    }
+    
+    .shake {
+      animation: shake 0.5s;
+    }
+    
+    /* Removed workshop logo styles */
+  </style>
 </head>
 <body>
-  <h2>Enter Access Code</h2>
-  <input type="password" id="code" placeholder="Enter code">
-  <button onclick="checkCode()">Login</button>
+  <header>
+    <h1>The Matts' Workshop Resources</h1>
+    <p class="subtitle">AI Use Cases & Practical Exercises</p>
+  </header>
+  
+  <div class="login-section">
+    <h2>Enter Workshop Access Code</h2>
+    <p>Please enter the code provided during your workshop:</p>
+    
+    <form id="loginForm" class="login-form">
+      <div class="form-group">
+        <input type="password" id="accessCode" placeholder="Access Code" required autofocus>
+      </div>
+      
+      <button type="submit" class="submit-btn">Access Resources</button>
+    </form>
+    
+    <div id="loginMessage" class="login-message"></div>
+    
+    <div class="login-help">
+      <p>The access code was provided during your workshop session.</p>
+    </div>
+    
+    <div class="access-code-info">
+      <h3>Need Help?</h3>
+      <p>If you've forgotten your access code or need assistance, please contact:</p>
+      <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a><br>
+         Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a></p>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Workshop Resources curated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+  </footer>
 
   <script>
-    function checkCode() {
-      const code = document.getElementById("code").value;
-      if (code === "thematts") {
-        window.location.href = "usagecases.html"; // this must exist
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const accessCode = document.getElementById('accessCode').value.trim();
+      const loginMessage = document.getElementById('loginMessage');
+      const loginSection = document.querySelector('.login-section');
+      
+      // Check access code
+      if (accessCode.toLowerCase() === "thematts") {
+        // Redirect to resources page
+        window.location.href = "usagecases.html";
       } else {
-        alert("Wrong code!");
+        // Incorrect access code
+        loginSection.classList.add('shake');
+        loginMessage.textContent = "Invalid access code. Please check and try again.";
+        document.getElementById('accessCode').value = "";
+        document.getElementById('accessCode').focus();
+        
+        // Remove animation class after it completes
+        setTimeout(() => {
+          loginSection.classList.remove('shake');
+        }, 500);
       }
-    }
+    });
   </script>
 </body>
 </html>
