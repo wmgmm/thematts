@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Productivity Tools - The Matts</title>
+    <style>
+        /* Color variables */
+        :root {
+            --primary: #1e88e5;
+            --secondary: #24292e;
+            --accent: #2e7d32;
+            --light: #f6f8fa;
+            --text: #333;
+            --border: #e1e4e8;
+        }
+        
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header styles */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+            color: #e3f2fd;
+        }
+        
+        /* Sections */
+        section {
+            background-color: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        /* Warning section */
+        .warning {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Tool categories */
+        .tool-category {
+            margin-bottom: 2rem;
+        }
+        
+        .tool-category h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        
+        .tool-item {
+            margin-bottom: 1rem;
+        }
+        
+        .tool-name {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Navigation section */
+        .navigation {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: var(--light);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #1b5e20;
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI & Productivity Tools</h1>
+            <div class="subtitle">Curated tools for responsible AI use in the workplace</div>
+        </div>
+    </header>
+    
+    <section>
+        <div class="container">
+            <div class="warning">
+                <h3>⚠️ Important Notice</h3>
+                <p>These tools are recommended for personal exploration or learning use only, unless your organisation holds a valid enterprise or educational licence.</p>
+                <p>Always follow your institution's policies on data protection, privacy, and responsible AI use.</p>
+                <ul>
+                    <li>Do not upload sensitive or confidential information to any external platform unless explicitly approved.</li>
+                </ul>
+            </div>
+            
+            <div class="tool-category">
+                <h3>🧠 General AI Assistants</h3>
+                <div class="tool-item">
+                    <span class="tool-name">ChatGPT</span> — Conversational AI by OpenAI for writing, coding, and research support.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Claude</span> — AI assistant by Anthropic, known for long-context understanding.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Gemini</span> — Google's AI assistant integrated with Search and productivity tools.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">NotebookLM</span> — AI research notebook for organising and analysing your documents.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Microsoft Copilot</span> — Integrated into Microsoft 365 apps for document creation and analysis.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">You.com</span> — AI search engine with apps for writing and coding.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Perplexity AI</span> — AI-powered search assistant with citations for research.
+                </div>
+            </div>
+            
+            <div class="tool-category">
+                <h3>🧾 Productivity & Communication</h3>
+                <div class="tool-item">
+                    <span class="tool-name">Otter.ai</span> — Real-time transcription and meeting summarisation.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Microsoft Teams Premium</span> — Enhanced Teams with AI meeting recaps and translation (requires licence).
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Fireflies.ai</span> — AI meeting assistant for recording and transcribing conversations.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Fathom</span> — Free Zoom assistant for summaries and action items.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Notion AI</span> — AI tools in Notion for note-taking and task management.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">GrammarlyGO</span> — AI writing assistant for rewriting and tone adjustment.
+                </div>
+            </div>
+            
+            <div class="tool-category">
+                <h3>🎨 Creative & Exploration Tools</h3>
+                <div class="tool-item">
+                    <span class="tool-name">Midjourney</span> — AI image generation tool for creative outputs (via Discord).
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Runway ML</span> — Video editing and generation powered by GenAI.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Canva AI</span> — Design platform with AI tools for images and presentations.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Chatbot Arena</span> — Platform to compare different language models side-by-side.
+                </div>
+            </div>
+            
+            <div class="tool-category">
+                <h3>🎓 Personalised Learning & Research</h3>
+                <p>Building confidence in using AI requires critical thinking and exploration. These tools support evidence-based learning and adapt to your learning style:</p>
+                
+                <div class="tool-item">
+                    <span class="tool-name">Elicit</span> — AI research assistant that helps extract findings from papers.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Consensus</span> — Summarises academic research answers using scientific consensus.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Scite.ai</span> — Smart citation tool that shows how studies support or contrast with each other.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Khanmigo (by Khan Academy)</span> — AI tutor for personalised learning in maths and science (pilot).
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Socratic by Google</span> — Mobile app that helps with problem explanations and resources.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Diffit</span> — Adapts articles to different reading levels and formats.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">Curipod</span> — Interactive lesson generator using AI-powered prompts.
+                </div>
+                <div class="tool-item">
+                    <span class="tool-name">SchoolAI</span> — Tools for personalised learning journeys in classrooms (US-based, pilot).
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <p>If you have any questions about responsible AI use or need guidance, please feel free to contact us:</p>
+            
+            <div class="contact-grid">
+                <div class="contact-person">
+                    <h3>Dr. Matt Mort</h3>
+                    <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a>
+                    <a href="https://profiles.cardiff.ac.uk/staff/mortm" class="contact-link" target="_blank">Cardiff University Profile</a>
+                    <a href="https://www.linkedin.com/in/matthewmort" class="contact-link" target="_blank">LinkedIn Profile</a>
+                </div>
+                
+                <div class="contact-person">
+                    <h3>Mr. Matt Hayden</h3>
+                    <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
+                    <a href="https://profiles.cardiff.ac.uk/staff/haydenmj1" class="contact-link" target="_blank">Cardiff University Profile</a>
+                    <a href="https://www.linkedin.com/in/matt-hayden-9b2097255/" class="contact-link" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Need help with responsible AI adoption in your workplace?</strong> Contact us to discuss how we can help your team implement these principles.</p>
+            </div>
+            
+            <div>
+                <h3>For Cardiff University Staff</h3>
+                <p>Access our training resources on the Cardiff University Intranet:</p>
+                <a href="https://intranet.cardiff.ac.uk/staff/training-and-development/staff-courses-and-programmes/all-courses/digital-productivity-including-ai-in-the-workplace" class="contact-link" target="_blank">Digital Productivity Including AI in the Workplace</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI in the Workplace with The Matts. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
