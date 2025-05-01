@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page for Workplace Resources</title>
+</head>
+<body>
+  <h2>Enter Access Code</h2>
+  <input type="password" id="code" placeholder="Enter code">
+  <button onclick="checkCode()">Login</button>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("code").value;
+      if (code === "thematts") {
+        window.location.href = "usagecases.html"; // this must exist
+      } else {
+        alert("Wrong code!");
+      }
+    }
+  </script>
+</body>
+</html>
