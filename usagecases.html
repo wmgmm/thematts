@@ -231,21 +231,23 @@
         <button class="topic-bubble" data-category="personal" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">👤 Personal Use</button>
     </div>
 
-    <!-- Search box -->
-    <div style="display: flex; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-        <input type="text" id="use-case-search" placeholder="Search use cases (e.g., 'report', 'presentation', 'customer')" style="flex-grow: 1; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px 0 0 25px; font-size: 16px; outline: none;">
-        <button id="search-button" style="background-color: #1e88e5; color: white; border: none; border-radius: 0 25px 25px 0; padding: 0 20px; cursor: pointer; font-size: 16px; font-weight: bold;">Find</button>
-    </div>
-
-    <!-- "I need help with..." quick links -->
-    <div style="text-align: center; margin: 20px 0;">
-        <p style="margin-bottom: 10px; font-weight: bold; color: #555;">I need workplace AI help with...</p>
-        <a href="#" class="need-link" data-category="email" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Professional emails</a>
-        <a href="#" class="need-link" data-category="meetings" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Meeting productivity</a>
-        <a href="#" class="need-link" data-category="writing" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Reports & documents</a>
-        <a href="#" class="need-link" data-category="creativity" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Presentations</a>
-        <a href="#" class="need-link" data-category="data" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Data analysis</a>
-        <a href="#" class="need-link" data-category="hr" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Team management</a>
+    <!-- Unified Search box with common workplace tasks -->
+    <div style="max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+        <div style="display: flex; margin: 20px 0;">
+            <input type="text" id="use-case-search" placeholder="Search or try: emails, meetings, reports, presentations..." style="flex-grow: 1; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px 0 0 25px; font-size: 16px; outline: none;">
+            <button id="search-button" style="background-color: #1e88e5; color: white; border: none; border-radius: 0 25px 25px 0; padding: 0 20px; cursor: pointer; font-size: 16px; font-weight: bold;">Find</button>
+        </div>
+        
+        <!-- Common workplace tasks as clickable chips -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px;">
+            <span onclick="quickSearch('email')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Emails</span>
+            <span onclick="quickSearch('meetings')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Meetings</span>
+            <span onclick="quickSearch('report')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Reports</span>
+            <span onclick="quickSearch('presentation')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Presentations</span>
+            <span onclick="quickSearch('data')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Data analysis</span>
+            <span onclick="quickSearch('team')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Team management</span>
+            <span onclick="quickSearch('code')" style="display: inline-block; padding: 5px 10px; background-color: #e3f2fd; color: #1e88e5; border-radius: 15px; font-size: 13px; cursor: pointer;">Coding</span>
+        </div>
     </div>
     
     <!-- Currently showing section -->
@@ -268,6 +270,12 @@
         addStyles();
     });
 
+    // Quick search function for the chips
+    function quickSearch(term) {
+        document.getElementById('use-case-search').value = term;
+        filterBySearchTerm(term);
+    }
+
     // Add necessary styles
     function addStyles() {
         const styleSheet = document.createElement("style");
@@ -286,7 +294,18 @@
                 border-color: #1e88e5 !important;
             }
             
-            .need-link:hover {
+            .search-chip {
+                display: inline-block;
+                padding: 5px 10px;
+                background-color: #e3f2fd;
+                color: #1e88e5;
+                border-radius: 15px;
+                font-size: 13px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            
+            .search-chip:hover {
                 background-color: #bbdefb !important;
             }
             
@@ -395,23 +414,23 @@
             77: ['learning', 'development', 'hr'],
             
             // HR & Team Management
-            11: ['hr', 'interviews', 'career'],
-            17: ['hr', 'development', 'learning'],
-            27: ['hr', 'communication', 'conflict'],
-            37: ['hr', 'performance', 'evaluation'],
-            39: ['hr', 'communication', 'difficult'],
-            62: ['hr', 'training', 'learning'],
-            77: ['hr', 'development', 'learning'],
+            11: ['hr', 'interviews', 'career', 'team'],
+            17: ['hr', 'development', 'learning', 'team'],
+            27: ['hr', 'communication', 'conflict', 'team'],
+            37: ['hr', 'performance', 'evaluation', 'team'],
+            39: ['hr', 'communication', 'difficult', 'team'],
+            62: ['hr', 'training', 'learning', 'team'],
+            77: ['hr', 'development', 'learning', 'team'],
             
             // Coding & IT
-            5: ['coding', 'technical', 'development'],
-            8: ['coding', 'technical', 'improvement'],
-            16: ['technical', 'support', 'it'],
-            35: ['coding', 'learning', 'technical'],
-            56: ['coding', 'technical', 'debugging'],
-            58: ['coding', 'productivity', 'technical'],
-            61: ['coding', 'data', 'technical'],
-            87: ['technical', 'office', 'productivity'],
+            5: ['coding', 'technical', 'development', 'code'],
+            8: ['coding', 'technical', 'improvement', 'code'],
+            16: ['technical', 'support', 'it', 'code'],
+            35: ['coding', 'learning', 'technical', 'code'],
+            56: ['coding', 'technical', 'debugging', 'code'],
+            58: ['coding', 'productivity', 'technical', 'code'],
+            61: ['coding', 'data', 'technical', 'code'],
+            87: ['technical', 'office', 'productivity', 'code'],
             
             // Data & Analysis
             13: ['data', 'business', 'research'],
@@ -432,17 +451,17 @@
             
             // Creativity & Innovation
             7: ['creativity', 'fun', 'team'],
-            9: ['creativity', 'business', 'innovation'],
+            9: ['creativity', 'business', 'innovation', 'presentation'],
             25: ['creativity', 'writing', 'education'],
             31: ['creativity', 'team', 'fun'],
             36: ['creativity', 'business', 'innovation'],
             64: ['creativity', 'marketing', 'copywriting'],
-            84: ['creativity', 'video', 'marketing'],
+            84: ['creativity', 'video', 'marketing', 'presentation'],
             
             // Email & Documents
             19: ['email', 'communication', 'writing'],
             46: ['email', 'communication', 'writing'],
-            51: ['email', 'writing', 'reports'],
+            51: ['email', 'writing', 'reports', 'report'],
             76: ['email', 'communication', 'productivity'],
                             
             // Personal Use (keeping these but less emphasized)
@@ -450,7 +469,7 @@
             3: ['personal', 'career', 'development'],
             10: ['personal', 'health', 'wellness'],
             15: ['personal', 'food', 'social'],
-            18: ['personal', 'confidence', 'communication'],
+            18: ['personal', 'confidence', 'communication', 'presentation'],
             21: ['personal', 'family', 'education'],
             24: ['personal', 'travel', 'business'],
             25: ['personal', 'creativity', 'family'],
@@ -512,29 +531,6 @@
             });
         });
         
-        // Quick need links
-        const needLinks = document.querySelectorAll('.need-link');
-        needLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const category = this.getAttribute('data-category');
-                filterByCategory(category);
-                
-                // Update active bubble
-                topicBubbles.forEach(b => {
-                    if (b.getAttribute('data-category') === category) {
-                        b.classList.add('active');
-                    } else {
-                        b.classList.remove('active');
-                    }
-                });
-                
-                // Update filter status
-                document.getElementById('current-filter').textContent = 
-                    this.textContent.trim() + ' use cases';
-            });
-        });
-        
         // Search button
         document.getElementById('search-button').addEventListener('click', function() {
             const searchTerm = document.getElementById('use-case-search').value.trim().toLowerCase();
@@ -563,12 +559,14 @@
     function filterByCategory(category) {
         const useCaseItems = document.querySelectorAll('.usecase-item');
         let firstVisible = null;
+        let matchCount = 0;
         
         useCaseItems.forEach(item => {
             const categories = (item.getAttribute('data-categories') || '').split(',');
             if (categories.includes(category)) {
                 item.classList.remove('hidden');
                 item.classList.add('highlight');
+                matchCount++;
                 
                 // Track first visible item for scrolling
                 if (!firstVisible) {
@@ -580,6 +578,10 @@
             }
         });
         
+        // Update filter status
+        document.getElementById('current-filter').textContent = 
+            `${matchCount} ${category} use cases`;
+        
         // Scroll to first visible item
         if (firstVisible) {
             setTimeout(() => {
@@ -588,7 +590,7 @@
         }
     }
 
-    // Filter use cases by search term
+    // Filter use cases by search term - FIXED to find ALL matches
     function filterBySearchTerm(term) {
         const useCaseItems = document.querySelectorAll('.usecase-item');
         let firstVisible = null;
@@ -597,8 +599,10 @@
         useCaseItems.forEach(item => {
             const searchContent = item.getAttribute('data-search-content') || '';
             const title = item.querySelector('.usecase-title').textContent.toLowerCase();
+            const categories = (item.getAttribute('data-categories') || '').split(',');
             
-            if (searchContent.includes(term) || title.includes(term)) {
+            // Check for matches in content, title, or categories
+            if (searchContent.includes(term) || title.includes(term) || categories.includes(term)) {
                 item.classList.remove('hidden');
                 item.classList.add('highlight');
                 matchCount++;
