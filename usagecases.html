@@ -210,9 +210,460 @@
     <p style="margin-top: 10px; text-align: center;"><strong>Hint:</strong> Try adding 'I am in the UK' to all your prompts so Copilot uses UK English.</p>
 </div>
 
+<!-- AI Use Case Explorer - Start -->
+<div class="topic-explorer" style="background-color: #f0f7ff; border-radius: 8px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+    <h3 style="color: #1e88e5; margin-top: 0; text-align: center; font-size: 1.4em;">Find AI Use Cases For The Workplace</h3>
+    
+    <!-- Topic bubbles - Workplace focused -->
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 15px 0;">
+        <button class="topic-bubble" data-category="business" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">🏢 Business Strategy</button>
+        <button class="topic-bubble" data-category="productivity" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">⏱️ Productivity</button>
+        <button class="topic-bubble" data-category="communication" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">🗣️ Communication</button>
+        <button class="topic-bubble" data-category="email" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">📧 Email & Documents</button>
+        <button class="topic-bubble" data-category="meetings" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">🗓️ Meetings</button>
+        <button class="topic-bubble" data-category="writing" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">✍️ Professional Writing</button>
+        <button class="topic-bubble" data-category="data" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">📊 Data & Analysis</button>
+        <button class="topic-bubble" data-category="learning" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">🎓 Learning & Training</button>
+        <button class="topic-bubble" data-category="coding" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">💻 Coding & IT</button>
+        <button class="topic-bubble" data-category="marketing" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">📢 Marketing</button>
+        <button class="topic-bubble" data-category="hr" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">👥 HR & Team Management</button>
+        <button class="topic-bubble" data-category="creativity" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">🎨 Creativity</button>
+        <button class="topic-bubble" data-category="personal" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">👤 Personal Use</button>
+    </div>
+
+    <!-- Search box -->
+    <div style="display: flex; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <input type="text" id="use-case-search" placeholder="Search use cases (e.g., 'report', 'presentation', 'customer')" style="flex-grow: 1; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px 0 0 25px; font-size: 16px; outline: none;">
+        <button id="search-button" style="background-color: #1e88e5; color: white; border: none; border-radius: 0 25px 25px 0; padding: 0 20px; cursor: pointer; font-size: 16px; font-weight: bold;">Find</button>
+    </div>
+
+    <!-- "I need help with..." quick links -->
+    <div style="text-align: center; margin: 20px 0;">
+        <p style="margin-bottom: 10px; font-weight: bold; color: #555;">I need workplace AI help with...</p>
+        <a href="#" class="need-link" data-category="email" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Professional emails</a>
+        <a href="#" class="need-link" data-category="meetings" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Meeting productivity</a>
+        <a href="#" class="need-link" data-category="writing" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Reports & documents</a>
+        <a href="#" class="need-link" data-category="creativity" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Presentations</a>
+        <a href="#" class="need-link" data-category="data" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Data analysis</a>
+        <a href="#" class="need-link" data-category="hr" style="display: inline-block; margin: 5px; padding: 6px 12px; background-color: #e3f2fd; color: #1e88e5; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;">Team management</a>
+    </div>
+    
+    <!-- Currently showing section -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd;">
+        <p>Showing: <span id="current-filter" style="font-weight: bold;">All use cases</span></p>
+        <button id="reset-filters" style="background-color: #f5f5f5; border: 1px solid #ddd; padding: 6px 12px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;">Reset filters</button>
+    </div>
+</div>
+
+<script>
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add category data attributes to all use cases
+        setupUseCaseCategories();
+        
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Add CSS for interactive elements
+        addStyles();
+    });
+
+    // Add necessary styles
+    function addStyles() {
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+            .topic-bubble:hover {
+                background-color: #e3f2fd !important;
+                transform: translateY(-2px);
+            }
+            
+            .topic-bubble.active {
+                background-color: #1e88e5 !important;
+                color: white !important;
+            }
+            
+            #use-case-search:focus {
+                border-color: #1e88e5 !important;
+            }
+            
+            .need-link:hover {
+                background-color: #bbdefb !important;
+            }
+            
+            #reset-filters:hover {
+                background-color: #e0e0e0 !important;
+            }
+            
+            .usecase-item.highlight {
+                animation: highlightPulse 2s 1;
+            }
+
+            @keyframes highlightPulse {
+                0% { background-color: white; }
+                50% { background-color: #e3f2fd; }
+                100% { background-color: white; }
+            }
+
+            .usecase-item.hidden {
+                display: none !important;
+            }
+            
+            @media (max-width: 768px) {
+                .topic-explorer .keyword-search {
+                    flex-direction: column;
+                }
+                
+                .topic-explorer #use-case-search {
+                    border-radius: 25px;
+                    margin-bottom: 10px;
+                }
+                
+                .topic-explorer #search-button {
+                    border-radius: 25px;
+                    padding: 10px;
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    }
+
+    // Map use cases to categories
+    function setupUseCaseCategories() {
+        // Define mappings of use case numbers to their categories
+        const categoryMap = {
+            // Business Strategy
+            6: ['business', 'creativity'],
+            13: ['business', 'data'],
+            22: ['business', 'productivity'],
+            32: ['business', 'finance'],
+            49: ['business', 'finance'],
+            65: ['business', 'startup'],
+            73: ['business', 'productivity', 'decisions'],
+            79: ['business', 'productivity', 'decisions'],
+            82: ['business', 'negotiations'],
+            95: ['business', 'startup'],
+            
+            // Professional Writing & Documents
+            19: ['writing', 'email', 'communication'],
+            45: ['writing', 'business'],
+            46: ['writing', 'email', 'communication'],
+            51: ['writing', 'business', 'reports'],
+            52: ['writing', 'business', 'communication'],
+            55: ['writing', 'creativity'],
+            67: ['writing', 'hr'],
+            72: ['writing', 'productivity', 'reports'],
+            81: ['writing', 'business', 'technical'],
+            88: ['writing', 'creativity', 'marketing'],
+            97: ['writing', 'marketing'],
+            
+            // Productivity
+            2: ['productivity', 'organization'],
+            28: ['business', 'productivity', 'legal'],
+            38: ['productivity', 'communication', 'relationships'],
+            40: ['productivity', 'organization', 'business'],
+            43: ['productivity', 'organization'],
+            58: ['productivity', 'business', 'coding'],
+            68: ['productivity', 'organization', 'meetings'],
+            71: ['productivity', 'business', 'meetings'],
+            86: ['productivity', 'business', 'meetings'],
+            
+            // Communication & Relationships
+            19: ['communication', 'email', 'writing'],
+            27: ['communication', 'hr', 'relationships'],
+            30: ['communication', 'marketing', 'social'],
+            38: ['communication', 'relationships'],
+            39: ['communication', 'hr', 'difficult'],
+            46: ['communication', 'email'],
+            52: ['communication', 'writing', 'business'],
+            98: ['communication', 'marketing', 'social'],
+            
+            // Meetings & Team Collaboration
+            68: ['meetings', 'productivity', 'organization'],
+            71: ['meetings', 'productivity', 'reports'],
+            86: ['meetings', 'productivity', 'organization'],
+            
+            // Learning & Training
+            4: ['learning', 'training', 'development'],
+            17: ['learning', 'development', 'hr'],
+            23: ['learning', 'writing', 'education'],
+            35: ['learning', 'coding', 'technical'],
+            41: ['learning', 'training', 'education'],
+            50: ['learning', 'development'],
+            57: ['learning', 'business', 'international'],
+            60: ['learning', 'research', 'technical'],
+            62: ['learning', 'training', 'hr'],
+            77: ['learning', 'development', 'hr'],
+            
+            // HR & Team Management
+            11: ['hr', 'interviews', 'career'],
+            17: ['hr', 'development', 'learning'],
+            27: ['hr', 'communication', 'conflict'],
+            37: ['hr', 'performance', 'evaluation'],
+            39: ['hr', 'communication', 'difficult'],
+            62: ['hr', 'training', 'learning'],
+            77: ['hr', 'development', 'learning'],
+            
+            // Coding & IT
+            5: ['coding', 'technical', 'development'],
+            8: ['coding', 'technical', 'improvement'],
+            16: ['technical', 'support', 'it'],
+            35: ['coding', 'learning', 'technical'],
+            56: ['coding', 'technical', 'debugging'],
+            58: ['coding', 'productivity', 'technical'],
+            61: ['coding', 'data', 'technical'],
+            87: ['technical', 'office', 'productivity'],
+            
+            // Data & Analysis
+            13: ['data', 'business', 'research'],
+            34: ['data', 'business', 'reports'],
+            47: ['data', 'business', 'excel'],
+            53: ['data', 'business', 'research'],
+            80: ['data', 'organization', 'productivity'],
+            93: ['data', 'business', 'research'],
+            94: ['data', 'business', 'analysis'],
+            
+            // Marketing & Social Media
+            30: ['marketing', 'communication', 'social'],
+            64: ['marketing', 'creativity', 'copywriting'],
+            96: ['marketing', 'business', 'branding'],
+            97: ['marketing', 'writing', 'content'],
+            98: ['marketing', 'social', 'communication'],
+            99: ['marketing', 'social', 'strategy'],
+            
+            // Creativity & Innovation
+            7: ['creativity', 'fun', 'team'],
+            9: ['creativity', 'business', 'innovation'],
+            25: ['creativity', 'writing', 'education'],
+            31: ['creativity', 'team', 'fun'],
+            36: ['creativity', 'business', 'innovation'],
+            64: ['creativity', 'marketing', 'copywriting'],
+            84: ['creativity', 'video', 'marketing'],
+            
+            // Email & Documents
+            19: ['email', 'communication', 'writing'],
+            46: ['email', 'communication', 'writing'],
+            51: ['email', 'writing', 'reports'],
+            76: ['email', 'communication', 'productivity'],
+                            
+            // Personal Use (keeping these but less emphasized)
+            1: ['personal', 'therapy', 'support'],
+            3: ['personal', 'career', 'development'],
+            10: ['personal', 'health', 'wellness'],
+            15: ['personal', 'food', 'social'],
+            18: ['personal', 'confidence', 'communication'],
+            21: ['personal', 'family', 'education'],
+            24: ['personal', 'travel', 'business'],
+            25: ['personal', 'creativity', 'family'],
+            26: ['personal', 'health', 'wellness'],
+            29: ['personal', 'philosophy', 'ethics'],
+            33: ['personal', 'emotional', 'wellbeing'],
+            42: ['personal', 'family', 'education'],
+            59: ['personal', 'health', 'education'],
+            66: ['personal', 'productivity', 'health'],
+            69: ['personal', 'thinking', 'decisions'],
+            74: ['personal', 'relationships', 'communication'],
+            78: ['personal', 'health', 'medical'],
+            85: ['personal', 'learning', 'confidence'],
+            90: ['personal', 'social', 'business'],
+            100: ['personal', 'health', 'wellness'],
+        };
+        
+        // Apply categories to use case items
+        const useCaseItems = document.querySelectorAll('.usecase-item');
+        useCaseItems.forEach(item => {
+            // Extract use case number from the title
+            const titleElement = item.querySelector('.usecase-title');
+            if (titleElement) {
+                const titleText = titleElement.textContent;
+                const match = titleText.match(/Use Case #(\d+):/);
+                if (match && match[1]) {
+                    const useCaseNumber = parseInt(match[1]);
+                    
+                    // Get categories for this use case
+                    const categories = categoryMap[useCaseNumber] || [];
+                    
+                    // Add categories as data attribute
+                    item.setAttribute('data-categories', categories.join(','));
+                    
+                    // Add the content for search functionality
+                    const searchContent = item.textContent.toLowerCase();
+                    item.setAttribute('data-search-content', searchContent);
+                }
+            }
+        });
+    }
+
+    // Set up event listeners for interactivity
+    function setupEventListeners() {
+        // Topic bubbles click
+        const topicBubbles = document.querySelectorAll('.topic-bubble');
+        topicBubbles.forEach(bubble => {
+            bubble.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                filterByCategory(category);
+                
+                // Toggle active state
+                topicBubbles.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update filter status
+                document.getElementById('current-filter').textContent = 
+                    this.textContent.trim() + ' use cases';
+            });
+        });
+        
+        // Quick need links
+        const needLinks = document.querySelectorAll('.need-link');
+        needLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-category');
+                filterByCategory(category);
+                
+                // Update active bubble
+                topicBubbles.forEach(b => {
+                    if (b.getAttribute('data-category') === category) {
+                        b.classList.add('active');
+                    } else {
+                        b.classList.remove('active');
+                    }
+                });
+                
+                // Update filter status
+                document.getElementById('current-filter').textContent = 
+                    this.textContent.trim() + ' use cases';
+            });
+        });
+        
+        // Search button
+        document.getElementById('search-button').addEventListener('click', function() {
+            const searchTerm = document.getElementById('use-case-search').value.trim().toLowerCase();
+            if (searchTerm) {
+                filterBySearchTerm(searchTerm);
+            }
+        });
+        
+        // Search input (press Enter)
+        document.getElementById('use-case-search').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim().toLowerCase();
+                if (searchTerm) {
+                    filterBySearchTerm(searchTerm);
+                }
+            }
+        });
+        
+        // Reset filters
+        document.getElementById('reset-filters').addEventListener('click', function() {
+            resetFilters();
+        });
+    }
+
+    // Filter use cases by category
+    function filterByCategory(category) {
+        const useCaseItems = document.querySelectorAll('.usecase-item');
+        let firstVisible = null;
+        
+        useCaseItems.forEach(item => {
+            const categories = (item.getAttribute('data-categories') || '').split(',');
+            if (categories.includes(category)) {
+                item.classList.remove('hidden');
+                item.classList.add('highlight');
+                
+                // Track first visible item for scrolling
+                if (!firstVisible) {
+                    firstVisible = item;
+                }
+            } else {
+                item.classList.add('hidden');
+                item.classList.remove('highlight');
+            }
+        });
+        
+        // Scroll to first visible item
+        if (firstVisible) {
+            setTimeout(() => {
+                firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+    }
+
+    // Filter use cases by search term
+    function filterBySearchTerm(term) {
+        const useCaseItems = document.querySelectorAll('.usecase-item');
+        let firstVisible = null;
+        let matchCount = 0;
+        
+        useCaseItems.forEach(item => {
+            const searchContent = item.getAttribute('data-search-content') || '';
+            const title = item.querySelector('.usecase-title').textContent.toLowerCase();
+            
+            if (searchContent.includes(term) || title.includes(term)) {
+                item.classList.remove('hidden');
+                item.classList.add('highlight');
+                matchCount++;
+                
+                // Track first visible item for scrolling
+                if (!firstVisible) {
+                    firstVisible = item;
+                }
+            } else {
+                item.classList.add('hidden');
+                item.classList.remove('highlight');
+            }
+        });
+        
+        // Update filter status
+        document.getElementById('current-filter').textContent = 
+            `${matchCount} use cases matching "${term}"`;
+        
+        // Scroll to first visible item
+        if (firstVisible) {
+            setTimeout(() => {
+                firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+        
+        // Reset topic bubbles active state
+        document.querySelectorAll('.topic-bubble').forEach(b => {
+            b.classList.remove('active');
+        });
+    }
+
+    // Reset all filters
+    function resetFilters() {
+        // Show all use cases
+        document.querySelectorAll('.usecase-item').forEach(item => {
+            item.classList.remove('hidden');
+            item.classList.remove('highlight');
+        });
+        
+        // Reset search input
+        document.getElementById('use-case-search').value = '';
+        
+        // Reset filter status
+        document.getElementById('current-filter').textContent = 'All use cases';
+        
+        // Reset active topic bubbles
+        document.querySelectorAll('.topic-bubble').forEach(bubble => {
+            bubble.classList.remove('active');
+        });
+        
+        // Scroll back to top of use cases
+        document.querySelector('.usecase-section').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+<!-- AI Use Case Explorer - End -->
+
+
+
+
+
+
+    
 <!-- Separate Image Section -->
 <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-    <h3 style="color: #00838f; margin-bottom: 15px;">100 AI Use Cases (pick one, modify & experiment)</h3>
+    <h3 style="color: #00838f; margin-bottom: 15px;">100 AI Use Cases (pick one, scroll down to find the specific use case, modify & experiment)</h3>
     <img src="100.png" alt="100 Use Cases" style="max-width: 100%; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
     
