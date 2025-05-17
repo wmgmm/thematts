@@ -231,14 +231,11 @@
         <button class="topic-bubble" data-category="personal" style="background-color: white; border: 2px solid #1e88e5; color: #1e88e5; border-radius: 25px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease;">👤 Personal Use</button>
     </div>
 
-    <!-- Unified Search box with common workplace tasks -->
-    <div style="max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
-        <div style="display: flex; margin: 20px 0;">
-            <input type="text" id="use-case-search" placeholder="Search or try: emails, meetings, reports, presentations..." style="flex-grow: 1; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px 0 0 25px; font-size: 16px; outline: none;">
-            <button id="search-button" style="background-color: #1e88e5; color: white; border: none; border-radius: 0 25px 25px 0; padding: 0 20px; cursor: pointer; font-size: 16px; font-weight: bold;">Find</button>
-        </div>
-        
-       
+    <!-- Search box -->
+    <div style="display: flex; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <input type="text" id="use-case-search" placeholder="Search use cases (e.g., 'email', 'meetings', 'reports')" style="flex-grow: 1; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px 0 0 25px; font-size: 16px; outline: none;">
+        <button id="search-button" style="background-color: #1e88e5; color: white; border: none; border-radius: 0 25px 25px 0; padding: 0 20px; cursor: pointer; font-size: 16px; font-weight: bold;">Find</button>
+    </div>
     
     <!-- Currently showing section -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd;">
@@ -260,12 +257,6 @@
         addStyles();
     });
 
-    // Quick search function for the chips
-    function quickSearch(term) {
-        document.getElementById('use-case-search').value = term;
-        filterBySearchTerm(term);
-    }
-
     // Add necessary styles
     function addStyles() {
         const styleSheet = document.createElement("style");
@@ -282,21 +273,6 @@
             
             #use-case-search:focus {
                 border-color: #1e88e5 !important;
-            }
-            
-            .search-chip {
-                display: inline-block;
-                padding: 5px 10px;
-                background-color: #e3f2fd;
-                color: #1e88e5;
-                border-radius: 15px;
-                font-size: 13px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-            }
-            
-            .search-chip:hover {
-                background-color: #bbdefb !important;
             }
             
             #reset-filters:hover {
@@ -356,7 +332,7 @@
             19: ['writing', 'email', 'communication'],
             45: ['writing', 'business'],
             46: ['writing', 'email', 'communication'],
-            51: ['writing', 'business', 'reports'],
+            51: ['writing', 'business', 'reports', 'document'],
             52: ['writing', 'business', 'communication'],
             55: ['writing', 'creativity'],
             67: ['writing', 'hr'],
@@ -451,7 +427,7 @@
             // Email & Documents
             19: ['email', 'communication', 'writing'],
             46: ['email', 'communication', 'writing'],
-            51: ['email', 'writing', 'reports', 'report'],
+            51: ['document', 'writing', 'reports', 'report'],
             76: ['email', 'communication', 'productivity'],
                             
             // Personal Use (keeping these but less emphasized)
@@ -580,19 +556,79 @@
         }
     }
 
-    // Filter use cases by search term - FIXED to find ALL matches
+    // Filter use cases by search term - IMPROVED to be more accurate
     function filterBySearchTerm(term) {
         const useCaseItems = document.querySelectorAll('.usecase-item');
         let firstVisible = null;
         let matchCount = 0;
         
+        // Make term consistent for comparison
+        term = term.toLowerCase().trim();
+        
+        // Normalize plurals
+        if (term === "emails") term = "email";
+        if (term === "meetings") term = "meeting";
+        if (term === "reports") term = "report";
+        
         useCaseItems.forEach(item => {
-            const searchContent = item.getAttribute('data-search-content') || '';
-            const title = item.querySelector('.usecase-title').textContent.toLowerCase();
-            const categories = (item.getAttribute('data-categories') || '').split(',');
+            let isMatch = false;
             
-            // Check for matches in content, title, or categories
-            if (searchContent.includes(term) || title.includes(term) || categories.includes(term)) {
+            // Check categories first (highest priority)
+            const categories = (item.getAttribute('data-categories') || '').split(',');
+            if (categories.includes(term)) {
+                isMatch = true;
+            }
+            
+            // Check title (second priority)
+            const title = item.querySelector('.usecase-title').textContent.toLowerCase();
+            if (title.includes(term)) {
+                isMatch = true;
+            }
+            
+            // For content searches, check all content areas
+            if (!isMatch) {
+                // Check description
+                const descElement = item.querySelector('.usecase-description');
+                const descContent = descElement ? descElement.textContent.toLowerCase() : '';
+                
+                // Check application section
+                const appElement = item.querySelector('.usecase-application');
+                const appContent = appElement ? appElement.textContent.toLowerCase() : '';
+                
+                // Check example prompts
+                const promptElements = item.querySelectorAll('.example-prompt');
+                let promptContent = '';
+                promptElements.forEach(el => {
+                    promptContent += ' ' + el.textContent.toLowerCase();
+                });
+                
+                // Combined content for searching
+                const fullContent = descContent + ' ' + appContent + ' ' + promptContent;
+                
+                // Special case for email
+                if (term === "email") {
+                    // More lenient matching for emails
+                    if (fullContent.includes(" email") || 
+                        fullContent.includes("email ") || 
+                        fullContent.includes("emails") || 
+                        title.includes("email")) {
+                        isMatch = true;
+                    }
+                } else {
+                    // For other terms, use improved word boundary detection
+                    if (fullContent.includes(" " + term + " ") || 
+                        fullContent.includes(" " + term + ",") || 
+                        fullContent.includes(" " + term + ".") || 
+                        fullContent.includes(" " + term + ":") || 
+                        fullContent.startsWith(term + " ") || 
+                        fullContent.endsWith(" " + term)) {
+                        isMatch = true;
+                    }
+                }
+            }
+            
+            // Update visibility based on match
+            if (isMatch) {
                 item.classList.remove('hidden');
                 item.classList.add('highlight');
                 matchCount++;
@@ -648,8 +684,6 @@
     }
 </script>
 <!-- AI Use Case Explorer - End -->
-
-
 
 
 
