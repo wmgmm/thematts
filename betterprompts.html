@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Prompt Engineering Workshop</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1e88e5;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+            color: #e3f2fd;
+        }
+
+        /* Section styles */
+        .exercise-section, .contact-info {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Heading styles */
+        h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
+
+        /* Exercise items */
+        .exercise-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #1e88e5;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .exercise-description {
+            margin-bottom: 15px;
+        }
+
+        .example-prompt {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1e88e5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .copy-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Contact info styles */
+        .email {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Navigation section */
+        .navigation {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .nav-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .nav-button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Prompt Engineering Workshop</h1>
+        <div class="subtitle">Getting the Best Out of Your Chatbot</div>
+    </header>
+    
+    <div style="background-color: #e0f7fa; padding: 15px; margin-bottom: 20px; border-radius: 5px; border-left: 4px solid #00acc1; text-align: center;">
+        <p style="margin: 0;">For today's tasks, log in to <a href="https://m365copilot.com/" target="_blank" style="font-weight: bold; color: #00838f;">Microsoft Copilot</a> (opens in new tab).</p>
+        <p style="margin-top: 10px;"><strong>Important:</strong> Start a new Copilot chat for each task.</p>
+    </div>
+    
+    <div class="exercise-section">
+        <h2>Prompt Engineering Tasks</h2>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Task 1: Giving Direction - Using Role Prompting</div>
+            <div class="exercise-description">
+                <p>Ask the AI to respond as different types of experts. This changes the tone and advice completely.</p>
+            </div>
+            
+            <div class="example-prompt" id="role-counselor">
+You are a counsellor. Reply to the statement "I'm feeling stressed".
+            </div>
+            <button onclick="copyToClipboard('role-counselor')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="role-trainer">
+You are a fitness trainer. Reply to the statement "I'm feeling stressed".
+            </div>
+            <button onclick="copyToClipboard('role-trainer')" class="copy-button">Copy Prompt</button>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Task 2: Specifying Format Structure</div>
+            <div class="exercise-description">
+                <p>Control how the AI presents information - tables, lists, step-by-step guides, etc.</p>
+            </div>
+            
+            <div class="example-prompt" id="format-poem">
+Write a poem about studying for exams.
+            </div>
+            <button onclick="copyToClipboard('format-poem')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="format-sop">
+Write an SOP on the proper use of a knife and fork.
+            </div>
+            <button onclick="copyToClipboard('format-sop')" class="copy-button">Copy Prompt</button>
+            
+            <div class="example-prompt" id="format-table">
+Return an Excel table about sunbathing with two columns (pros, cons) and fill in five examples for each.
+            </div>
+            <button onclick="copyToClipboard('format-table')" class="copy-button">Copy Prompt</button>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Task 3: Evaluation - How Good is the AI's Output?</div>
+            <div class="exercise-description">
+                <p>Get the AI to evaluate and rate its own suggestions.</p>
+            </div>
+            
+            <div class="example-prompt" id="evaluation-prompt">
+Task: Create 5 new soft drink brand names
+
+For each name provide:
+Appeal & target market
+Potential issues (cultural or trademark)
+Ratings (1-10): Memorability, Distinctiveness and Global potential
+            </div>
+            <button onclick="copyToClipboard('evaluation-prompt')" class="copy-button">Copy Prompt</button>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Task 4: Prompt Chaining - Add All Methods Together</div>
+            <div class="exercise-description">
+                <p>Combine role prompting, format control, and evaluation into one comprehensive prompt.</p>
+            </div>
+            
+            <div class="example-prompt" id="prompt-chain">
+Task: Suggest appealing cat names.
+Role: Cat shelter volunteer helping families adopt.
+Tone: Cute and friendly, suitable for all ages.
+Constraint: Easy to call out, avoid human names.
+Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+Examples: Whiskers, Luna, Paws
+            </div>
+            <button onclick="copyToClipboard('prompt-chain')" class="copy-button">Copy Prompt</button>
+        </div>
+    </div>
+    
+    <section class="navigation">
+        <div class="container">
+            <h2>Workshop Resources & Guides</h2>
+            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">Main Page</a>
+                <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
+                <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>If you have any questions about the workshop or materials, please feel free to contact us:</p>
+        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
+        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
+        <p><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
+    </div>
+    
+    <footer>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden - Upskilling with the Matts. Materials © 2025.</p>
+    </footer>
+</body>
+</html>
