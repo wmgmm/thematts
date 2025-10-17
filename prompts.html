@@ -122,6 +122,7 @@
     <!-- Sticky Navigation -->
     <nav class="sticky-nav">
         <div class="nav-container">
+            <a href="#getting-started" class="nav-button">💡 Start Here</a>
             <a href="#email-communication" class="nav-button">📧 Email</a>
             <a href="#documents-writing" class="nav-button">📄 Documents</a>
             <a href="#meetings-organisation" class="nav-button">📅 Meetings</a>
@@ -147,6 +148,39 @@
 
         <div class="no-results" id="noResults">
             <p>No prompts found matching your search. Try different keywords.</p>
+        </div>
+
+        <!-- CATEGORY: GETTING STARTED -->
+        <div id="getting-started" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">💡</span>
+                <h2 class="category-title">Start Here: Work With AI, Not Just Prompt It</h2>
+            </div>
+
+            <div class="usecase-item" style="border: none;">
+                <div class="usecase-title">Use Copilot Like a Teammate</div>
+                <div class="usecase-description">The real power of AI isn't in crafting perfect prompts—it's in having genuine conversations. Share your thinking, ask follow-up questions, and build ideas together through back-and-forth dialogue.</div>
+                <div class="usecase-application"><strong>Why this matters:</strong> A natural conversation will get you better results than any single "perfect prompt." The back-and-forth unlocks deeper insights and helps you work through complex problems.</div>
+                <div class="example-prompt" id="conversational">HOW TO HAVE A PRODUCTIVE CONVERSATION WITH AI:
+
+1. START WITH CONTEXT (not commands):
+"I'm working on [describe situation]. Here's what I'm thinking: [your thoughts]. 
+I'm stuck on [specific challenge]."
+
+2. THEN ENGAGE IN DIALOGUE:
+- Build on responses: "That's interesting. What if we also considered [new angle]?"
+- Ask for reasoning: "Walk me through your thinking on this."
+- Share uncertainty: "I'm not sure about [aspect]. Help me think through different angles."
+- Push back: "I see your point, but what about [concern]?"
+
+3. EXAMPLE CONVERSATION STARTER:
+"I need to improve our [process/system]. Here's the challenge: [describe tension or problem]. 
+I've been thinking [your initial thoughts], but I'm wondering if I'm missing something. 
+What factors should I consider?"
+
+Remember: Keep the conversation going. Don't expect perfect answers from a single message.</div>
+                <button onclick="copyToClipboard('conversational')" class="copy-button">Copy Prompt</button>
+            </div>
         </div>
 
         <!-- CATEGORY: EMAIL & COMMUNICATION -->
