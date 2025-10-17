@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - AI Prompt Library for Shared Learning</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        
+        /* Sticky Navigation */
+        .sticky-nav { position: sticky; top: 0; background-color: #1565c0; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 1000; padding: 15px 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .nav-button { background-color: white; color: #1565c0; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .nav-button:hover { background-color: #e3f2fd; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        
+        .content-wrapper { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header { background-color: #1e88e5; color: white; padding: 25px; border-radius: 5px; margin-bottom: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 2em; }
+        .subtitle { font-style: italic; margin-top: 8px; color: #e3f2fd; font-size: 1.1em; }
+        
+        .info-box { background-color: #e0f7fa; padding: 15px; margin-bottom: 20px; border-radius: 5px; border-left: 4px solid #00acc1; text-align: center; }
+        
+        .search-container { background-color: white; padding: 20px; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .search-box { width: 100%; padding: 12px 20px; font-size: 1em; border: 2px solid #1e88e5; border-radius: 25px; outline: none; transition: border-color 0.3s ease; }
+        .search-box:focus { border-color: #1565c0; box-shadow: 0 0 8px rgba(21, 101, 192, 0.3); }
+        .search-label { display: block; margin-bottom: 10px; font-weight: bold; color: #1e88e5; font-size: 1.1em; }
+        .no-results { display: none; text-align: center; padding: 30px; color: #666; font-style: italic; }
+        .no-results.show { display: block; }
+        
+        .category-section { background-color: white; padding: 30px; border-radius: 5px; margin: 25px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); scroll-margin-top: 80px; }
+        .category-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #1e88e5; }
+        .category-icon { font-size: 2em; }
+        .category-title { font-size: 1.8em; color: #1e88e5; margin: 0; }
+        
+        .usecase-item { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid #eee; }
+        .usecase-item:last-child { border-bottom: none; }
+        .usecase-title { font-weight: bold; color: #1e88e5; font-size: 1.3em; margin-bottom: 12px; }
+        .usecase-description { margin-bottom: 15px; color: #555; line-height: 1.7; }
+        .usecase-application { background-color: #f0f7ff; padding: 15px; border-radius: 5px; margin-bottom: 15px; border-left: 3px solid #1e88e5; }
+        
+        .example-prompt { background-color: #e3f2fd; padding: 15px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 0.95em; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; }
+        .copy-button { background-color: #2e7d32; color: white; padding: 8px 15px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; font-size: 0.9em; }
+        .copy-button:hover { background-color: #1b5e20; }
+        
+        .contact-info { background-color: white; padding: 25px; border-radius: 5px; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .contact-info h3 { color: #1e88e5; margin-top: 0; }
+        .email { color: #1e88e5; text-decoration: none; }
+        .email:hover { text-decoration: underline; }
+        
+        footer { text-align: center; margin-top: 40px; color: #666; font-size: 0.9em; padding: 20px 0; }
+        
+        @media (max-width: 768px) {
+            .nav-container { justify-content: flex-start; overflow-x: auto; }
+            .nav-button { flex-shrink: 0; }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector('button[onclick="copyToClipboard(\'' + id + '\')"]');
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => { button.innerText = originalText; }, 2000);
+            });
+        }
+
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.getElementById('promptSearch');
+            const noResults = document.getElementById('noResults');
+            
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const usecaseItems = document.querySelectorAll('.usecase-item');
+                const categories = document.querySelectorAll('.category-section');
+                let visibleCount = 0;
+                
+                // If search is empty, show everything
+                if (searchTerm === '') {
+                    categories.forEach(cat => cat.style.display = 'block');
+                    usecaseItems.forEach(item => item.style.display = 'block');
+                    noResults.classList.remove('show');
+                    return;
+                }
+                
+                // Search through each usecase
+                usecaseItems.forEach(item => {
+                    const title = item.querySelector('.usecase-title').textContent.toLowerCase();
+                    const description = item.querySelector('.usecase-description')?.textContent.toLowerCase() || '';
+                    const prompt = item.querySelector('.example-prompt')?.textContent.toLowerCase() || '';
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || prompt.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide categories based on whether they have visible items
+                categories.forEach(category => {
+                    const visibleItems = category.querySelectorAll('.usecase-item[style="display: block;"]');
+                    if (visibleItems.length > 0) {
+                        category.style.display = 'block';
+                    } else {
+                        category.style.display = 'none';
+                    }
+                });
+                
+                // Show "no results" message if nothing found
+                if (visibleCount === 0) {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="#email-communication" class="nav-button">📧 Email</a>
+            <a href="#documents-writing" class="nav-button">📄 Documents</a>
+            <a href="#meetings-organisation" class="nav-button">📅 Meetings</a>
+            <a href="#data-analysis" class="nav-button">📊 Data & Files</a>
+            <a href="#productivity-skills" class="nav-button">⚡ Productivity</a>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <header>
+            <h1>AI Prompt Library for Shared Learning</h1>
+            <p class="subtitle">Admin, Operations & Personal Productivity</p>
+        </header>
+        
+        <div class="info-box">
+            <p style="margin: 0;">Log in to <a href="https://m365copilot.com/" target="_blank" style="font-weight: bold; color: #00838f;">Microsoft Copilot</a> (opens in new tab). Please use your work account to keep your data safe.</p>
+        </div>
+
+        <div class="search-container">
+            <label for="promptSearch" class="search-label">🔍 Search Prompts</label>
+            <input type="text" id="promptSearch" class="search-box" placeholder="Type to search prompts (e.g., 'email', 'Excel', 'SOP', 'meeting')...">
+        </div>
+
+        <div class="no-results" id="noResults">
+            <p>No prompts found matching your search. Try different keywords.</p>
+        </div>
+
+        <!-- CATEGORY: EMAIL & COMMUNICATION -->
+        <div id="email-communication" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">📧</span>
+                <h2 class="category-title">Email & Communication</h2>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Adjusting Email Tone</div>
+                <div class="usecase-description">Rewrite emails for different audiences whilst maintaining your core message.</div>
+                <div class="example-prompt" id="email-tone">Rewrite this email in three versions:
+1. FORMAL (for senior leadership)
+2. FRIENDLY (for team members)  
+3. DIPLOMATIC (for challenging situation)
+
+Original message:
+[PASTE YOUR EMAIL]
+
+Use British English and keep key points consistent.</div>
+                <button onclick="copyToClipboard('email-tone')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Drafting Professional Emails</div>
+                <div class="example-prompt" id="email-draft">Draft a professional email:
+
+TO: [recipient and role]
+SUBJECT: [topic]
+TONE: [professional/friendly/formal]
+
+KEY POINTS:
+- [Point 1]
+- [Point 2]
+- [Point 3]
+
+CALL TO ACTION: [what you need]
+
+Use British English with proper greeting and sign-off.</div>
+                <button onclick="copyToClipboard('email-draft')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+
+        <!-- CATEGORY: DOCUMENTS & WRITING -->
+        <div id="documents-writing" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">📄</span>
+                <h2 class="category-title">Documents & Writing</h2>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Merging Multiple Word Documents</div>
+                <div class="usecase-description">Combine three or more Word documents into a single cohesive document whilst maintaining formatting and logical flow.</div>
+                <div class="usecase-application"><strong>Why this matters:</strong> Saves hours of manual copy-pasting and reformatting. Ensures consistency across merged content.</div>
+                <div class="example-prompt" id="merge-docs">I've uploaded [number] Word documents. Please merge them into one cohesive document.
+
+DOCUMENTS TO MERGE:
+1. [Document 1 name] - [brief description]
+2. [Document 2 name] - [brief description]
+3. [Document 3 name] - [brief description]
+
+REQUIREMENTS:
+- Merge in this order: [specify order]
+- Maintain formatting: [headings, fonts, spacing]
+- Create smooth transitions between sections
+- Remove any duplicate content
+- Use British English conventions
+- [Any specific sections to include/exclude]
+
+Please ensure the final document flows logically as a single unified piece.</div>
+                <button onclick="copyToClipboard('merge-docs')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Updating SOPs from Requirements Documents</div>
+                <div class="usecase-description">Revise existing Standard Operating Procedures based on new requirements, regulations, or process changes.</div>
+                <div class="usecase-application"><strong>Why this matters:</strong> Keeps procedures compliant and up-to-date. Identifies gaps between current SOPs and new requirements.</div>
+                <div class="example-prompt" id="update-sop">I've uploaded our existing SOP and a new requirements document. Please help update the SOP.
+
+CURRENT SOP: [SOP title/topic]
+NEW REQUIREMENTS: [brief description of what's changed]
+
+TASKS:
+1. Identify all sections affected by new requirements
+2. Highlight gaps or contradictions between current SOP and new requirements
+3. Suggest specific revisions with reasoning
+4. Maintain existing formatting and structure
+5. Ensure compliance with [relevant standards/regulations]
+6. Provide a summary of all changes made
+
+Please preserve the SOP's clarity and usability whilst incorporating necessary updates.</div>
+                <button onclick="copyToClipboard('update-sop')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Workflow Process Documentation</div>
+                <div class="usecase-description">Create clear, step-by-step documentation for any business process or workflow.</div>
+                <div class="usecase-application"><strong>Why this matters:</strong> Ensures consistency, aids training, reduces errors, and preserves institutional knowledge when team members change roles.</div>
+                <div class="example-prompt" id="workflow-doc">Document this workflow/process:
+
+PROCESS NAME: [e.g., New Customer Onboarding]
+PURPOSE: [why this process exists]
+
+CURRENT PROCESS (describe in detail):
+[Explain the process as it currently works]
+
+CREATE DOCUMENTATION WITH:
+1. Process overview (2-3 sentences)
+2. Step-by-step instructions (numbered, detailed)
+3. Responsible parties for each step
+4. Tools/systems used
+5. Typical timeframes
+6. Decision points or exceptions
+7. Common issues and solutions
+8. Success metrics
+
+FORMAT: Clear, scannable structure suitable for a new team member.</div>
+                <button onclick="copyToClipboard('workflow-doc')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Vendor/Supplier Comparison</div>
+                <div class="usecase-description">Compare multiple vendors or suppliers to make informed procurement decisions.</div>
+                <div class="usecase-application"><strong>Why this matters:</strong> Saves money, reduces risk, ensures quality, and provides documentation for procurement decisions.</div>
+                <div class="example-prompt" id="vendor-compare">Compare these vendors for our procurement decision:
+
+WHAT WE NEED: [product/service description]
+ANNUAL VOLUME/BUDGET: [estimated spend]
+
+VENDORS TO COMPARE:
+1. [Vendor A name] - [brief details, pricing]
+2. [Vendor B name] - [brief details, pricing]
+3. [Vendor C name] - [brief details, pricing]
+
+EVALUATION CRITERIA (in order of importance):
+- Price/value for money
+- Quality/reliability
+- Delivery times
+- Customer service
+- [Any other specific requirements]
+
+PROVIDE:
+1. Comparison table with scores
+2. Strengths and weaknesses of each
+3. Total cost of ownership analysis
+4. Risk assessment for each vendor
+5. Clear recommendation with justification
+6. Questions to ask shortlisted vendors
+
+Use UK business standards and currency (£).</div>
+                <button onclick="copyToClipboard('vendor-compare')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Analysing Word Documents</div>
+                <div class="usecase-description">Upload Word documents to extract key information, check for errors, or restructure content.</div>
+                <div class="example-prompt" id="word-analysis">I've attached a Word document. Please:
+
+1. Summarise the main points (5 bullets max)
+2. Identify any inconsistencies or contradictions
+3. Check for spelling/grammar errors
+4. Highlight action items or decisions needed
+5. Suggest improvements to structure/clarity
+
+Focus on: [specific aspect if needed]</div>
+                <button onclick="copyToClipboard('word-analysis')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Summarising Documents</div>
+                <div class="example-prompt" id="summary">Summarise this content:
+
+[PASTE CONTENT OR URL]
+
+FORMAT:
+1. ONE-SENTENCE SUMMARY
+2. KEY FINDINGS (5 bullets max)
+3. ACTIONABLE INSIGHTS
+4. RISKS OR CONCERNS
+
+Target audience: [your role]</div>
+                <button onclick="copyToClipboard('summary')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Editing for Clarity & Impact</div>
+                <div class="example-prompt" id="edit">Edit this text for maximum effectiveness:
+
+[PASTE TEXT]
+
+GOALS:
+- Improve clarity
+- Reduce by 20%
+- Strengthen impact
+- Use British English
+
+Provide edited version + list of improvements made.</div>
+                <button onclick="copyToClipboard('edit')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+
+        <!-- CATEGORY: MEETINGS & ORGANISATION -->
+        <div id="meetings-organisation" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">📅</span>
+                <h2 class="category-title">Meetings & Organisation</h2>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Meeting Summaries with Action Items</div>
+                <div class="example-prompt" id="meeting-summary">Create meeting summary from these notes:
+
+MEETING: [date, attendees, duration]
+
+NOTES:
+[PASTE NOTES]
+
+FORMAT:
+1. KEY DECISIONS
+2. ACTION ITEMS (Owner | Task | Deadline)
+3. OPEN QUESTIONS
+4. NEXT MEETING
+
+Keep to 1 page max.</div>
+                <button onclick="copyToClipboard('meeting-summary')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Organising Scattered Notes</div>
+                <div class="example-prompt" id="notes-organise">Organise these scattered notes:
+
+[PASTE MESSY NOTES]
+
+ORGANISE INTO:
+1. DECISIONS MADE
+2. ACTION ITEMS (with owners)
+3. IDEAS TO EXPLORE
+4. QUESTIONS TO ANSWER
+5. REFERENCE INFO
+
+Remove duplicates and group related items.</div>
+                <button onclick="copyToClipboard('notes-organise')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Task Prioritisation</div>
+                <div class="example-prompt" id="task-priority">Help prioritise these tasks:
+
+MY TASKS:
+[LIST ALL TASKS]
+
+CONTEXT:
+- Time available: [hours this week]
+- Working style: [morning/afternoon focus]
+- Urgent deadlines: [dates]
+
+CREATE:
+1. MUST DO THIS WEEK (urgent + important)
+2. SHOULD DO (important, not urgent)
+3. COULD DO (if time permits)
+4. DELEGATE/DEFER
+
+For top 5: suggest best time of day + duration.</div>
+                <button onclick="copyToClipboard('task-priority')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+
+        <!-- CATEGORY: DATA & FILE ANALYSIS -->
+        <div id="data-analysis" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">📊</span>
+                <h2 class="category-title">Data & File Analysis</h2>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Finding Outliers in Excel Data</div>
+                <div class="usecase-description">Upload Excel files to identify unusual patterns, anomalies, or data quality issues.</div>
+                <div class="example-prompt" id="excel-outliers">Analyse this Excel file for outliers and anomalies:
+
+FOCUS ON:
+- [Column name] - flag values significantly different from norm
+- [Column name] - identify unusual patterns or gaps
+- [Column name] - spot duplicates or suspicious entries
+
+PROVIDE:
+1. Statistical outliers (>2 standard deviations)
+2. Logical inconsistencies (negative values, future dates)
+3. Suspicious patterns (round numbers, repeated values)
+4. Data quality issues (blanks, errors, formatting)
+
+For each: row number, value, why flagged, suggested action.</div>
+                <button onclick="copyToClipboard('excel-outliers')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Excel Data Summary & Insights</div>
+                <div class="example-prompt" id="excel-summary">Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language.</div>
+                <button onclick="copyToClipboard('excel-summary')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Excel Formula Creation</div>
+                <div class="example-prompt" id="excel-formula">Create an Excel formula:
+
+GOAL: [what to calculate]
+
+DATA STRUCTURE:
+- Column A: [contents]
+- Column B: [contents]
+- Column C: [contents]
+
+CONDITIONS:
+- [Condition 1]
+- Use UK formats: DD/MM/YYYY dates
+
+PROVIDE:
+1. Complete formula
+2. Step-by-step explanation
+3. Example with sample data
+4. Common errors to avoid</div>
+                <button onclick="copyToClipboard('excel-formula')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Data Extraction & Formatting</div>
+                <div class="example-prompt" id="data-extract">Extract and format this data:
+
+RAW DATA:
+[PASTE UNSTRUCTURED DATA]
+
+EXTRACT:
+- [Field 1]
+- [Field 2]
+- [Field 3]
+
+OUTPUT: [CSV / Table / Excel-ready]
+
+FORMATTING:
+- Dates: DD/MM/YYYY
+- Phone: UK standard
+- Currency: GBP (£)
+
+Flag unclear entries.</div>
+                <button onclick="copyToClipboard('data-extract')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+
+        <!-- CATEGORY: PRODUCTIVITY & SKILLS -->
+        <div id="productivity-skills" class="category-section">
+            <div class="category-header">
+                <span class="category-icon">⚡</span>
+                <h2 class="category-title">Personal Productivity & Skills</h2>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Enhanced Decision-Making</div>
+                <div class="example-prompt" id="decision">Help me decide between options:
+
+DECISION: [what you're choosing]
+
+OPTIONS:
+1. [Option A + details]
+2. [Option B + details]
+3. [Option C + details]
+
+CRITERIA (ranked):
+- [Criterion 1]
+- [Criterion 2]
+- [Criterion 3]
+
+CONSTRAINTS:
+- Budget: [amount]
+- Timeline: [deadline]
+
+PROVIDE:
+1. Decision matrix with weighted scores
+2. Pros/cons for each
+3. Recommendation with reasoning
+4. Risk assessment
+5. Implementation considerations</div>
+                <button onclick="copyToClipboard('decision')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Interview Preparation</div>
+                <div class="example-prompt" id="interview">Help prepare for this interview:
+
+JOB:
+- Position: [title]
+- Company: [name and sector]
+- Location: [city, UK]
+- Salary: £[range]
+
+REQUIREMENTS:
+- [Requirement 1]
+- [Requirement 2]
+
+MY BACKGROUND: [brief summary]
+
+PROVIDE:
+1. 10 likely questions for this role
+2. STAR method framework
+3. Example answers using my background
+4. Questions I should ask
+5. UK interview etiquette tips</div>
+                <button onclick="copyToClipboard('interview')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Difficult Conversations</div>
+                <div class="example-prompt" id="difficult">Help prepare for difficult conversation:
+
+SITUATION: [what needs addressing]
+OTHER PERSON: [their role]
+RELATIONSHIP: [manager/peer/direct report]
+GOAL: [desired outcome]
+
+POTENTIAL REACTIONS:
+- Defensive
+- Emotional
+- Confrontational
+
+ROLE-PLAY as them and coach me on responses.
+Include opening statements, staying calm, UK standards, what to document.</div>
+                <button onclick="copyToClipboard('difficult')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Improving AI Prompts</div>
+                <div class="example-prompt" id="prompt-improve">Improve this AI prompt:
+
+CURRENT: "[PASTE YOUR PROMPT]"
+
+GOAL: [what you're trying to achieve]
+
+PROBLEMS: [too vague / wrong tone / etc.]
+
+PROVIDE:
+1. Analysis of weaknesses
+2. Three improved versions:
+   - More specific
+   - Better structured
+   - Optimised for context
+3. Explanation of improvements
+4. General prompting tips</div>
+                <button onclick="copyToClipboard('prompt-improve')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">Learning Plans</div>
+                <div class="example-prompt" id="learning">Create learning plan:
+
+SKILL: [be specific]
+CURRENT LEVEL: [beginner/some basics/intermediate]
+GOAL: [what you want to do]
+TIMEFRAME: [e.g., 4 weeks]
+TIME AVAILABLE: [e.g., 30 mins daily]
+LEARNING STYLE: [reading/videos/practice]
+
+CREATE:
+1. Week-by-week objectives
+2. Daily/weekly tasks
+3. Free UK resources where possible
+4. Practical exercises with examples
+5. Mini-projects to test understanding
+6. How to measure progress</div>
+                <button onclick="copyToClipboard('learning')" class="copy-button">Copy Prompt</button>
+            </div>
+
+            <div class="usecase-item">
+                <div class="usecase-title">CV/Résumé Optimisation</div>
+                <div class="example-prompt" id="cv">Improve this CV section:
+
+CURRENT: [paste bullet points]
+
+TARGET ROLE: [what position]
+
+TRANSFORM INTO:
+- Achievement-focused bullets
+- Strong action verbs
+- Quantified results
+- Transferable skills highlighted
+- UK CV conventions
+- Max 5-6 bullets per role
+
+Suggest:
+- ATS keywords
+- Skills to emphasise
+- How to address gaps</div>
+                <button onclick="copyToClipboard('cv')" class="copy-button">Copy Prompt</button>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-info">
+            <h3>Need Help or Have Questions?</h3>
+            <p><strong>Dr. Matt Mort:</strong> <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
+            <p><strong>Mr. Matt Hayden:</strong> <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
+            <p style="margin-top: 15px;"><strong>Interested in AI training for your team?</strong> Contact us about bespoke workshops.</p>
+        </div>
+        
+        <footer>
+            <p><strong>AI Prompt Library for Shared Learning</strong></p>
+            <p>Curated by Dr. Matt Mort and Mr. Matt Hayden | © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
