@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Assistance with AI - The Matts Workshop</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1e88e5;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+            color: #e3f2fd;
+        }
+
+        /* Section styles */
+        .exercise-section, .contact-info {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Heading styles */
+        h2, h3 {
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 5px;
+            color: #1e88e5;
+        }
+
+        /* Exercise items */
+        .exercise-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #1e88e5;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .exercise-description {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .prompt-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1e88e5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .copy-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .copy-button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background-color: #e0f7fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #00acc1;
+        }
+
+        .tip-box {
+            background-color: #fff3e0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .warning-box {
+            background-color: #ffebee;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #f44336;
+        }
+
+        /* Navigation section */
+        .navigation {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: white;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .nav-button {
+            display: inline-block;
+            background-color: #1e88e5;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #1565c0;
+        }
+
+        /* Contact info styles */
+        .email {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>AI in Practice: Career Assistance</h1>
+        <div class="subtitle">Helping to Upskill Your Career</div>
+    </header>
+    
+    <div class="info-box">
+        <p style="margin: 0;"><strong>Getting Started:</strong> For today's exercises, log in to <a href="https://m365copilot.com/" target="_blank" style="font-weight: bold; color: #00838f;">Microsoft Copilot</a> (opens in new tab).</p>
+        <p style="margin-top: 10px;"><strong>Top Tip:</strong> Start a new Copilot chat for each exercise to keep the AI focused on your specific task.</p>
+    </div>
+
+
+    <div class="exercise-section">
+        <h2>Career Development Exercises</h2>
+        <p>Use these AI-powered prompts to explore career opportunities, improve your interview skills, craft compelling applications, and optimise your CV for applicant tracking systems.</p>
+        
+        <!-- EXERCISE 1 -->
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 1: Which Direction Do You Want to Go?</div>
+            <div class="exercise-description">
+                <p>Discover potential career paths you might not have considered based on your existing skills and interests. This prompt acts as a career coach to help you explore new opportunities.</p>
+            </div>
+            
+            <h4 style="color: #1e88e5;">The Prompt:</h4>
+            <div class="prompt-box" id="prompt1">
+Act as a career coach. Based on my skills in [Skill 1], [Skill 2], and my interest in [Industry/Topic], what are 5 potential job titles I might not have considered? For each, explain why it's a good fit.
+            </div>
+            <button onclick="copyToClipboard('prompt1')" class="copy-button">Copy Prompt</button>
+            
+            <div class="info-box">
+                <p style="margin: 0;"><strong>How to use:</strong> Replace [Skill 1], [Skill 2], and [Industry/Topic] with your own details. For example: "Based on my skills in <em>data analysis</em>, <em>public speaking</em>, and my interest in <em>healthcare</em>..."</p>
+            </div>
+        </div>
+        
+        <!-- EXERCISE 2 -->
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 2: The Virtual Interview Gym - Master STAR</div>
+            <div class="exercise-description">
+                <p>AI is becoming a popular method to improve interview and communication skills due to its 'safe space' nature. Use AI as your simulator and coach to practice the STAR framework (Situation, Task, Action, Result).</p>
+            </div>
+            
+            <div class="warning-box">
+                <p style="margin: 0;"><strong>Important:</strong> Use the structure, not the script. Do NOT memorise AI-generated answers. The goal is to practise the STAR framework and develop your own authentic responses.</p>
+            </div>
+            
+            <h4 style="color: #1e88e5;">Setup Prompt (Run This First):</h4>
+            <div class="prompt-box" id="prompt2a">
+You are an expert interviewer. Conduct a mock interview by asking three questions in total. Ask one question at a time.
+            </div>
+            <button onclick="copyToClipboard('prompt2a')" class="copy-button">Copy Prompt</button>
+            
+            <p style="margin-top: 20px;"><em>After you've answered the interview questions, use this coaching prompt:</em></p>
+            
+            <h4 style="color: #1e88e5;">Coaching Prompt (Run After Interview):</h4>
+            <div class="prompt-box" id="prompt2b">
+Act as my interview coach. Analyse my previous answers using STAR. Grade Situation, Task, Action, Result. Rewrite as a model response.
+            </div>
+            <button onclick="copyToClipboard('prompt2b')" class="copy-button">Copy Prompt</button>
+            
+            <div class="info-box">
+                <p style="margin: 0;"><strong>STAR Framework:</strong></p>
+                <ul style="margin: 10px 0;">
+                    <li><strong>Situation:</strong> Set the context</li>
+                    <li><strong>Task:</strong> Explain your role</li>
+                    <li><strong>Action:</strong> What you did</li>
+                    <li><strong>Result:</strong> The outcome</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- EXERCISE 3 -->
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 3: Struggling with a Blank Page When Writing a Cover Letter</div>
+            <div class="exercise-description">
+                <p>This prompt helps you overcome the blank page problem by asking you thoughtful questions first, then using your answers to draft a professional cover letter. The AI will wait for your responses before creating the draft.</p>
+            </div>
+            
+            <h4 style="color: #1e88e5;">The Prompt:</h4>
+            <div class="prompt-box" id="prompt3">
+Act as a helpful writing assistant. I'm a UK university employee applying for the role of [INSERT ROLE] at [INSERT ORGANISATION].
+I need you to help me draft a professional cover letter (approx. 300 words).
+
+To do this, you MUST first generate and ask me two key questions that will help you gather the most useful information for the letter.
+
+Once you have asked your two questions, wait for my answers. Then, use my responses to draft the cover letter.
+            </div>
+            <button onclick="copyToClipboard('prompt3')" class="copy-button">Copy Prompt</button>
+            
+            <div class="tip-box">
+                <p style="margin: 0;"><strong>Pro Tip:</strong> For best results, you can also attach additional documents to Copilot:</p>
+                <ul style="margin: 10px 0;">
+                    <li>Your CV/resume</li>
+                    <li>The job description</li>
+                </ul>
+                <p style="margin-bottom: 0;">Use the attachment button in Copilot to upload these files before running the prompt.</p>
+            </div>
+            
+            <div class="warning-box">
+                <p style="margin: 0;"><strong>Authenticity Matters:</strong> This is a DRAFT. Add your authentic voice and verify all connections to your experience. Recruiters may use AI detection tools, compare applications with interviews, and spot unnatural language. Use AI to draft, edit, or enhance - but it is NOT you. Your authentic voice will make you stand apart.</p>
+            </div>
+        </div>
+        
+        <!-- EXERCISE 4 -->
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 4: The Job Decoder - Beat the ATS</div>
+            <div class="exercise-description">
+                <p>Applicant Tracking Systems (ATS) scan CVs for keywords before recruiters see them. Missing keywords? You're filtered out. This prompt helps you identify which keywords from the job description are missing from your CV.</p>
+            </div>
+            
+            <h4 style="color: #1e88e5;">The Prompt:</h4>
+            <div class="prompt-box" id="prompt4">
+What are the top 5-10 keywords from this job description that are missing from my CV? For each one, tell me if it's something I should add and where it would fit.
+            </div>
+            <button onclick="copyToClipboard('prompt4')" class="copy-button">Copy Prompt</button>
+            
+            <div class="info-box">
+                <p style="margin: 0;"><strong>How to use:</strong> Attach both your CV and the job description to Copilot before running this prompt. The AI will compare them and identify missing keywords.</p>
+            </div>
+            
+            <div class="tip-box">
+                <p style="margin: 0;"><strong>Remember:</strong> The AI needs YOUR facts and metrics. When it suggests adding keywords, weave them naturally into your existing achievements. Transform duties into achievements using specific examples from your experience.</p>
+            </div>
+        </div>
+    
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>If you have any questions about the workshop or materials, please feel free to contact us:</p>
+        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
+        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
+        <p><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
+    </div>
+    
+    <footer>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+    </footer>
+</body>
+</html>
