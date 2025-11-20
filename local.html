@@ -528,6 +528,24 @@ You help people improve their work productivity. Give practical, actionable advi
             <p><em>Ask the same question again: "How do I improve my productivity at work?" - Notice the massive difference!</em></p>
         </div>
         
+        <div class="exercise-item">
+            <div class="exercise-title">🔍 Bonus: Look at a Real-World System Prompt</div>
+            <p>Want to see how professional AI systems use system prompts? Have a look at Microsoft Copilot's actual system prompt:</p>
+            
+            <a href="https://github.com/jujumilk3/leaked-system-prompts/blob/main/microsoft-copilot_20241219.md" target="_blank" class="secondary-button">View Copilot System Prompt</a>
+            
+            <div class="info-box">
+                <strong>What to notice:</strong>
+                <ul>
+                    <li><strong>Very detailed:</strong> Commercial AI systems have complex instructions covering many scenarios</li>
+                    <li><strong>Safety guidelines:</strong> Lots of rules about what not to do</li>
+                    <li><strong>Personality traits:</strong> Instructions on tone, helpfulness, and behaviour</li>
+                    <li><strong>Structured sections:</strong> Different parts for different functions</li>
+                </ul>
+                <p><strong>Learning point:</strong> Your simple prompts like "You are Gandalf" follow the same principle - you're just keeping it simpler! Professional prompts are longer because they need to handle thousands of different situations, but the core idea is identical: tell the AI who to be and how to behave.</p>
+            </div>
+        </div>
+        
         <div class="warning-box">
             <strong>Important:</strong> After trying these fun characters, <strong>start a new chat (click the + button)</strong> and clear the system prompt (click "Add Instructions" and delete the text) before moving to the practical work exercises. You probably don't want Gandalf writing your professional emails! (Unless you do, which would be brilliant.)
             
@@ -644,6 +662,38 @@ You explain complex topics to complete beginners. Use simple analogies, everyday
     <div class="tips-section">
         <h2>When to Use Local AI vs Cloud AI</h2>
         
+        <div class="info-box">
+            <h3>🔒 Privacy & Security Advantages of Local AI</h3>
+            <p><strong>Your data stays on your laptop:</strong></p>
+            <ul>
+                <li><strong>No IP address leaks:</strong> Cloud AI services log your IP address with every request. Local AI never phones home.</li>
+                <li><strong>Air-gapped operation:</strong> Local AI has no internet connection - it can't accidentally send your data anywhere.</li>
+                <li><strong>No search keyword leaks:</strong> Cloud AI often searches the web to answer questions, potentially revealing what you're working on through search queries. Local AI can't search, so nothing leaks.</li>
+                <li><strong>Truly private:</strong> Your sensitive documents, personal data, and confidential work never leave your device.</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <h3>⚡ Practical Advantages of Local AI</h3>
+            <ul>
+                <li><strong>Works without WiFi:</strong> On trains, planes, in the field - anywhere your laptop goes, your AI goes too.</li>
+                <li><strong>Lower energy usage:</strong> No data centres, no transmission overhead - just your laptop's processor doing the work.</li>
+                <li><strong>No subscription costs:</strong> Once downloaded, use it as much as you want, forever.</li>
+                <li><strong>Instant responses:</strong> No waiting for server queues or network latency.</li>
+            </ul>
+        </div>
+        
+        <div class="warning-box">
+            <h3>⏰ Understanding Knowledge Cutoff</h3>
+            <p>Local AI models have a <strong>training cutoff date</strong> - they only know information up until they were trained. For example:</p>
+            <ul>
+                <li>LFM2 was trained in late 2024 - it won't know about events from 2025</li>
+                <li>They can't search the web to get current information</li>
+                <li><strong>The upside?</strong> This air-gapped limitation is actually a privacy feature - no search queries means no data leaks!</li>
+            </ul>
+            <p><strong>For current events or recent information, use cloud AI.</strong> For everything else, local AI's privacy advantage often outweighs having slightly older knowledge.</p>
+        </div>
+        
         <table class="model-table">
             <tr>
                 <th>Use Local AI (LM Studio + LFM2) For:</th>
@@ -655,28 +705,33 @@ You explain complex topics to complete beginners. Use simple analogies, everyday
                         <li>Sensitive documents</li>
                         <li>Personal information</li>
                         <li>Unpublished work</li>
-                        <li>Working offline</li>
+                        <li>Working offline/without WiFi</li>
+                        <li>No IP logging required</li>
                         <li>No subscription costs</li>
+                        <li>Lower energy footprint</li>
                         <li>Quick text tasks (summaries, rewrites, drafts)</li>
                         <li>Learning and experimentation</li>
+                        <li>When you don't need latest 2025 info</li>
                     </ul>
                 </td>
                 <td>
                     <ul>
                         <li>Complex reasoning tasks</li>
                         <li>Internet research required</li>
+                        <li>Current events (post-training cutoff)</li>
+                        <li>Real-time information</li>
                         <li>Image generation</li>
                         <li>Very large documents (10,000+ words)</li>
-                        <li>Real-time information</li>
                         <li>Specialist domain knowledge</li>
                         <li>Mission-critical work content</li>
+                        <li>When collaboration features needed</li>
                     </ul>
                 </td>
             </tr>
         </table>
         
         <div class="success-box">
-            <strong>Pro Tip:</strong> LFM2 is perfect for learning how local AI works and understanding system prompts. For everyday work tasks and privacy-sensitive content, consider the Granite model or larger local models. For the most demanding tasks, use cloud AI. Many professionals use all three!
+            <strong>Pro Tip:</strong> LFM2 is perfect for learning how local AI works and understanding system prompts. For everyday work tasks and privacy-sensitive content, consider the Granite model or larger local models. For the most demanding tasks, use cloud AI. Many professionals use all three - choosing the right tool for each job!
         </div>
     </div>
 
@@ -752,6 +807,15 @@ You explain complex topics to complete beginners. Use simple analogies, everyday
     <div class="contact-info">
         <h2>Need Help?</h2>
         <p>If you have questions or need assistance with the workshop materials:</p>
-        <p>Dr. Matt Mort: <a href="/cdn-cgi/l/email-protection#c4a9abb6b0a984a7a5b6a0ada2a2eaa5a7eab1af" class="email"><span class="__cf_email__" data-cfemail="92fffde0e6ffd2f1f3e0f6fbf4f4bcf3f1bce7f9">[email&#160;protected]</span></a></p>
-        <p>Mr. Matt Hayden: <a href="/cdn-cgi/l/email-protection#4a222b332e2f2427207b0a292b382e232c2c642b29643f21" class="email"><span class="__cf_email__" data-cfemail="7119100815141f1c1b4031121003151817175f10125f041a">[email&#160;protected]</span></a></p>
-        <p style="margin-top: 20px;"><strong>Want to bring this workshop to your organisation?</stron
+        <p>Dr. Matt Mort: <a href="mailto:mortmj@cardiff.ac.uk" class="email">mortmj@cardiff.ac.uk</a></p>
+        <p>Mr. Matt Hayden: <a href="mailto:haydenm@cardiff.ac.uk" class="email">haydenm@cardiff.ac.uk</a></p>
+        <p style="margin-top: 20px;"><strong>Want to bring this workshop to your organisation?</strong> Get in touch - we're happy to help!</p>
+    </div>
+
+    <footer>
+        <p>© 2025 Cardiff University Digital Transformation Team</p>
+        <p>This workshop material is provided for educational purposes.</p>
+    </footer>
+
+</body>
+</html>
