@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local LLM Workshop - LM Studio</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1e88e5;
+            color: white;
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+            color: #e3f2fd;
+            font-size: 1.1em;
+        }
+
+        /* Section styles */
+        .intro-section, .step-section, .exercise-section, .tips-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Heading styles */
+        h2 {
+            color: #1e88e5;
+            border-bottom: 3px solid #e3f2fd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #1565c0;
+            margin-top: 25px;
+        }
+
+        /* Step counter */
+        .step-number {
+            display: inline-block;
+            background-color: #1e88e5;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1565c0;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #1e88e5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .success-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Button styles */
+        .download-button, .action-button {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 10px 10px 10px 0;
+            font-size: 1.1em;
+        }
+
+        .download-button:hover, .action-button:hover {
+            background-color: #1b5e20;
+        }
+
+        .secondary-button {
+            background-color: #1e88e5;
+        }
+
+        .secondary-button:hover {
+            background-color: #1565c0;
+        }
+
+        /* Prompt boxes */
+        .prompt-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1e88e5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .copy-button {
+            display: inline-block;
+            background-color: #e0e0e0;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .copy-button:hover {
+            background-color: #bdbdbd;
+        }
+
+        /* Exercise items */
+        .exercise-item {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #1e88e5;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* Images */
+        .screenshot {
+            max-width: 100%;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Model recommendation table */
+        .model-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .model-table th, .model-table td {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .model-table th {
+            background-color: #1e88e5;
+            color: white;
+            font-weight: bold;
+        }
+
+        .model-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        /* Contact info */
+        .contact-info {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .email {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+            padding: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .step-number {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 1em;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Running AI on Your Laptop</h1>
+        <div class="subtitle">A Practical Workshop Using IBM Granite with LM Studio</div>
+    </header>
+    
+    <div class="intro-section">
+        <h2>Welcome!</h2>
+        <p>Today you'll learn how to run powerful AI language models directly on your own laptop - no internet connection required, no subscriptions, and complete privacy for your work.</p>
+        
+        <div class="info-box">
+            <strong>What you'll achieve today:</strong>
+            <ul>
+                <li>Install free software to run AI on your laptop</li>
+                <li>Download and set up an AI model</li>
+                <li>Make your AI talk like Gandalf or Mario (and learn from a terrible prompt!)</li>
+                <li>Try practical exercises for your work</li>
+                <li>Learn when to use local AI vs cloud services</li>
+            </ul>
+        </div>
+        
+        <div class="warning-box">
+            <strong>Before we start:</strong> This workshop uses free, open-source software. You'll need about 2GB of free disk space for the software and AI model.
+        </div>
+    </div>
+
+    <div style="background-color: #fff3e0; padding: 20px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #ff9800;">
+        <h2 style="margin-top: 0; color: #e65100;">📋 Pre-Workshop Setup (Do This Before/At Start)</h2>
+        <p><strong>If possible, complete Steps 1 and 2 before the workshop starts.</strong> This saves time and ensures everyone's ready to go. If you can't do it beforehand, don't worry - we'll do it together at the beginning.</p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <span class="step-title">Download and Install LM Studio (Pre-Workshop)</span>
+        </div>
+        
+        <p>LM Studio is free software that makes it easy to run AI models on your computer. It works on Windows, Mac, and Linux.</p>
+        
+        <a href="https://lmstudio.ai/" target="_blank" class="download-button">Download LM Studio</a>
+        
+        <div class="info-box">
+            <strong>Installation steps:</strong>
+            <ol>
+                <li>Click the download button above to visit the LM Studio website</li>
+                <li>Download the version for your operating system (Windows/Mac/Linux)</li>
+                <li>Install it like any other application</li>
+                <li>Open LM Studio when installation is complete</li>
+            </ol>
+        </div>
+        
+        <p><em>Note: The first time you open LM Studio, it may ask for permissions - this is normal. Just click "Allow" when prompted.</em></p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <span class="step-title">Download Your First AI Model (Pre-Workshop)</span>
+        </div>
+        
+        <p>AI models are like different "brains" you can use. We'll download one that works well on most laptops.</p>
+        
+        <h3>Today's Model: Liquid LFM2 1.2B</h3>
+        
+        <p>We'll be using Liquid LFM2 1.2B - an ultra-lightweight, fast AI model that works on virtually any laptop. It's tiny but surprisingly capable!</p>
+        
+        <div class="info-box">
+            <strong>Model details:</strong>
+            <ul>
+                
+                <li><strong>Works on:</strong> Most laptops, even older ones</li>
+                <li><strong>Speed:</strong> Very fast responses</li>
+                <li><strong>Best for:</strong> Learning, quick tasks, understanding system prompts</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <strong>How to download the model in LM Studio:</strong>
+            <ol>
+                <li>Open LM Studio</li>
+                <li>Click the <strong>Search</strong> icon (magnifying glass) on the left sidebar</li>
+                <li>In the search box, copy and paste this exact text: <strong>lfm2-1.2b</strong></li>
+                <li>Click the <strong>Download</strong> button next to it</li>
+                <li>Wait for it to download - should only take a minute or two!</li>
+            </ol>
+        </div>
+        
+        <div class="warning-box">
+            <strong>Got a more powerful laptop?</strong> If you have 16GB+ RAM and want better quality responses, you can download the backup model instead:
+            <ul>
+                <li>Search for: <strong>granite-4-h-tiny</strong></li>
+                <li>Click the <strong>Download</strong> button</li>
+
+                <li>This model gives more detailed responses but needs more resources</li>
+            </ul>
+        </div>
+        
+        <div class="success-box">
+            <strong>✓ Download complete?</strong> Great! You now have an AI model on your laptop. At only ~800MB, LFM2 downloads quickly even on slower connections. Let's put it to work.
+        </div>
+    </div>
+
+    <div style="background-color: #e8f5e9; padding: 25px; margin: 30px 0; border-radius: 5px; border-left: 4px solid #4caf50; text-align: center;">
+        <h2 style="margin-top: 0; color: #2e7d32;">🚀 Workshop Starts Here!</h2>
+        <p style="margin-bottom: 0; font-size: 1.1em;"><strong>Ready to go? Everyone got their model downloaded? Great! Let's start using it.</strong></p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <span class="step-title">Exercise 1: Start Chatting with Your AI</span>
+        </div>
+        
+        <p>Now let's load your model and start using it.</p>
+        
+        <div class="info-box">
+            <strong>Starting a chat:</strong>
+            <ol>
+                <li>In LM Studio, click the <strong>Chat</strong> icon (speech bubble) on the left sidebar</li>
+                <li>At the top, click <strong>Select a model to load</strong></li>
+                <li>Choose the model you just downloaded</li>
+                <li>Wait a moment while it loads (you'll see "Model loaded" when ready)</li>
+                <li>Type your first message in the chat box at the bottom</li>
+            </ol>
+        </div>
+        
+        <h3>Quick Test:</h3>
+        <p>Try this simple prompt to test everything is working:</p>
+        
+        <div class="prompt-box" id="test-prompt">
+Explain in simple terms: What's the difference between AI running on my laptop versus AI running in the cloud?
+        </div>
+        <button onclick="copyToClipboard('test-prompt')" class="copy-button">Copy Prompt</button>
+        
+        <p>You should get a clear, helpful response in a few seconds. If you do, you're all set! If not, ask for help.</p>
+        
+        <div class="info-box">
+            <strong>What to expect from LFM2:</strong> Responses will be quick and clear, though simpler than larger models like GPT-4 or Claude. That's perfectly fine for learning - the trade-off for speed and working on any laptop is worth it!
+        </div>
+        
+        <div class="success-box">
+            <strong>✨ Good Habit to Start Now:</strong> Get used to clicking the <strong>+ button</strong> (New Chat) regularly. Each time you switch topics or finish a task, start fresh. This keeps your AI sharp and prevents confusion. Think of it like starting a new document for each project!
+        </div>
+    </div>
+
+    <div class="step-section">
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <span class="step-title">Exercise 2: Make It Fun with System Prompts</span>
+        </div>
+        
+        <p>Here's where things get interesting. You can give your AI a personality by using a <strong>system prompt</strong>. This tells the AI who to "be" and how to respond.</p>
+        
+        <div class="success-box">
+            <strong>Why LFM2 is perfect for this:</strong> This tiny model is brilliant for learning about system prompts. The characters might be simpler than with larger models, but you'll clearly see how system prompts shape AI behaviour!
+        </div>
+        
+        <div class="info-box">
+            <strong>How to set a system prompt in LM Studio:</strong>
+            <ol>
+                <li>In the Chat window, look at the top right for the <strong>"Add Instructions"</strong> button</li>
+                <li>Click it - you'll see "Provide custom instructions or guidelines to the AI"</li>
+                <li>Type or paste your character description there</li>
+                <li>Start chatting - your AI will now respond in character!</li>
+            </ol>
+        </div>
+        
+        <h3>Try These Fun Characters:</h3>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">🧙‍♂️ Gandalf the Wise</div>
+            <p>Turn your AI into a wise wizard who speaks in riddles and epic language.</p>
+            
+            <div class="prompt-box" id="gandalf-system">
+You are Gandalf. Speak wisely using metaphors from your adventures.
+            </div>
+            <button onclick="copyToClipboard('gandalf-system')" class="copy-button">Copy System Prompt</button>
+            
+            <p><strong>Try asking:</strong> "Gandalf, how do I learn to code?"</p>
+            <p><em>Expected response style: "Ah, young one, the path of the code-smith is not unlike the journey to Mordor - it seems impossible at first, but taken one step at a time..."</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">🍄 Super Mario</div>
+            <p>Make your AI respond like everyone's favourite Italian plumber!</p>
+            
+            <div class="prompt-box" id="mario-system">
+You are Mario! Use Italian phrases like "Let's-a-go!" and relate everything to saving Princess Peach.
+            </div>
+            <button onclick="copyToClipboard('mario-system')" class="copy-button">Copy System Prompt</button>
+            
+            <p><strong>Try asking:</strong> "Mario, I'm struggling with a difficult project at work."</p>
+            <p><em>Expected response style: "Mamma mia! Even Mario struggled to save-a the Princess at first! But you know what? I just-a keep jumping, collecting power-ups along the way. When the Goombas get tough, the tough get-a the Super Star! Let's-a-go!"</em></p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">⚠️ The Bad System Prompt (Learn What NOT to Do)</div>
+            <p>Here's a terrible system prompt. Try it to see what happens when prompts are confusing and contradictory!</p>
+            
+            <div class="prompt-box" id="bad-system">
+Okay, you're a helpful assistant that generates random stories. You have no constraints on what kind of story to write, so be creative and generate a unique story every time. Don't worry about being boring or uninteresting; just make up something completely absurd and nonsensical. The more confusing and illogical the story is, the better! Oh, and please write everything in all caps for added effect.
+            </div>
+            <button onclick="copyToClipboard('bad-system')" class="copy-button">Copy Bad System Prompt</button>
+            
+            <p><strong>Try asking:</strong> "How do I improve my productivity at work?"</p>
+            
+            <div class="warning-box">
+                <strong>What makes this prompt terrible:</strong>
+                <ul>
+                    <li>❌ <strong>Contradictory:</strong> "Helpful assistant" vs "absurd and nonsensical"</li>
+                    <li>❌ <strong>Unfocused:</strong> Random stories when you want work advice?</li>
+                    <li>❌ <strong>Annoying formatting:</strong> ALL CAPS makes everything harder to read</li>
+                    <li>❌ <strong>Too many instructions:</strong> Confuses the AI about what to actually do</li>
+                    <li>❌ <strong>No clear purpose:</strong> What is this AI actually supposed to help with?</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <strong>The lesson:</strong> Compare this mess to your earlier prompts (Gandalf, Mario, Devil's Advocate, ELI5 teacher). Good system prompts are:
+                <ul>
+                    <li>✅ <strong>Clear and focused</strong> - one role, one purpose</li>
+                    <li>✅ <strong>Short</strong> - 1-3 sentences maximum</li>
+                    <li>✅ <strong>No contradictions</strong> - consistent instructions</li>
+                    <li>✅ <strong>Practical</strong> - specify what you actually want</li>
+                </ul>
+                <p><strong>Remember:</strong> If your system prompt confuses YOU, it'll definitely confuse the AI!</p>
+            </div>
+            
+            <p><strong>After trying the bad prompt, start a NEW CHAT and compare with this good one:</strong></p>
+            
+            <div class="prompt-box" id="good-productivity">
+You help people improve their work productivity. Give practical, actionable advice.
+            </div>
+            <button onclick="copyToClipboard('good-productivity')" class="copy-button">Copy Good System Prompt</button>
+            
+            <p><em>Ask the same question again: "How do I improve my productivity at work?" - Notice the massive difference!</em></p>
+        </div>
+        
+        <div class="warning-box">
+            <strong>Important:</strong> After trying these fun characters, <strong>start a new chat (click the + button)</strong> and clear the system prompt (click "Add Instructions" and delete the text) before moving to the practical work exercises. You probably don't want Gandalf writing your professional emails! (Unless you do, which would be brilliant.)
+            
+            <p style="margin-top: 10px;"><strong>Pro tip:</strong> Always start a new chat when switching between fun and work tasks - it keeps things clean and prevents characters from sneaking into your professional work!</p>
+        </div>
+        
+        <div class="success-box">
+            <strong>Why bother with characters?</strong> 
+            <p>Beyond being fun, character prompts teach you how AI behaviour can be shaped. The same technique works for professional roles: "You are a technical writer who explains complex topics simply" or "You are a project manager focused on clear action items." Understanding system prompts = controlling your AI's personality and expertise.</p>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <h2>Practical Work Exercise</h2>
+        <p>Now that you understand system prompts, let's apply this to a real work scenario.</p>
+        
+        <div class="warning-box">
+            <strong>⚡ Important: Start Each Exercise with a New Chat</strong>
+            <p>Click the <strong>+ button</strong> in LM Studio before each exercise. This gives the AI a fresh start and prevents it from getting confused by mixing different tasks together. It's like having a clean sheet of paper for each task!</p>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-title">Exercise 3: Explain It Like I'm 5 (ELI5)</div>
+            <p><strong>Scenario:</strong> You need to understand a complex topic quickly, or explain something difficult in simple terms.</p>
+            
+            <div class="info-box">
+                <strong>What to do:</strong>
+                <ol>
+                    <li>Start a <strong>new chat</strong> (click the + button in LM Studio)</li>
+                    <li>First, try WITHOUT a system prompt - just paste the prompt below</li>
+                    <li>Then start ANOTHER new chat and try WITH the system prompt</li>
+                    <li>Compare the difference!</li>
+                </ol>
+            </div>
+            
+            <h4 style="color: #1e88e5;">Try WITHOUT system prompt first:</h4>
+            <div class="prompt-box" id="eli5-basic">
+Teach me about quantum computing like I am 5 (ELI5)
+            </div>
+            <button onclick="copyToClipboard('eli5-basic')" class="copy-button">Copy Prompt</button>
+            
+            <h4 style="color: #1e88e5; margin-top: 25px;">Now try WITH this system prompt:</h4>
+            <p><em>Click the <strong>"Add Instructions"</strong> button at the top right and paste this:</em></p>
+            <div class="prompt-box" id="eli5-system">
+You explain complex topics to complete beginners. Use simple analogies, everyday examples, and no jargon. Break ideas into simple components.
+            </div>
+            <button onclick="copyToClipboard('eli5-system')" class="copy-button">Copy System Prompt</button>
+            
+            <p><em>Now paste the same prompt: "Teach me about quantum computing like I am 5 (ELI5)"</em></p>
+            
+            <div class="success-box">
+                <strong>What you'll notice:</strong> The version WITH the system prompt should give you a more focused, simpler explanation with better analogies. That's the power of system prompts - they set the AI's expertise and communication style!
+            </div>
+            
+            <p><strong>Why this matters:</strong> Perfect for learning new technical skills, understanding complex processes, or preparing to explain difficult concepts to colleagues with different expertise levels.</p>
+            
+            <p><strong>Try with your own topics:</strong> Replace the topic with anything you need to learn - "blockchain," "GDPR regulations," "machine learning," "how mortgages work," etc.</p>
+        </div>
+        
+        <div class="warning-box">
+            <strong>💡 Performance Tip: Start New Chats Regularly</strong>
+            <p>Your AI works best with a fresh start! Here's why:</p>
+            <ul>
+                <li><strong>Prevents confusion:</strong> Long conversations can make the AI lose focus or contradict itself</li>
+                <li><strong>Saves memory:</strong> Each message uses RAM - new chats free up resources</li>
+                <li><strong>Better responses:</strong> Starting fresh gives the AI a clean slate for each new task</li>
+            </ul>
+            <p><strong>Rule of thumb:</strong> Click the <strong>+ (New Chat)</strong> button when switching topics or after 10-15 exchanges. Think of it like clearing your desk before starting a new project!</p>
+        </div>
+    </div>
+
+    <div class="tips-section">
+        <h2>Tips for Getting Better Results</h2>
+        
+        <div class="warning-box">
+            <h3>0. Start New Chats Regularly (Most Important!)</h3>
+            <p><strong>Click the + button to start fresh when:</strong></p>
+            <ul>
+                <li>Switching to a different topic or task</li>
+                <li>After 10-15 message exchanges</li>
+                <li>If responses start feeling "off" or confused</li>
+                <li>Before important work tasks</li>
+            </ul>
+            <p>Long conversations drain memory and confuse the AI. Fresh chats = better responses!</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>1. Be Specific</h3>
+            <p>Instead of: "Write about climate change"</p>
+            <p>Try: "Write a 200-word summary of the main causes of climate change for a general audience"</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>2. Set the Context</h3>
+            <p>Tell the AI what role to take: "You are a technical writer..." or "You are a project manager..."</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>3. Specify the Format</h3>
+            <p>Ask for bullet points, paragraphs, tables, or other specific formats when needed.</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>4. Iterate</h3>
+            <p>If the first response isn't quite right, refine your prompt or ask follow-up questions.</p>
+        </div>
+        
+        <div class="warning-box">
+            <h3>Remember: AI Can Make Mistakes</h3>
+            <p>Always fact-check important information. Local AI is a tool to help you work faster, not a replacement for your expertise.</p>
+        </div>
+    </div>
+
+    <div class="tips-section">
+        <h2>When to Use Local AI vs Cloud AI</h2>
+        
+        <table class="model-table">
+            <tr>
+                <th>Use Local AI (LM Studio + LFM2) For:</th>
+                <th>Use Cloud AI (Copilot Work Account) For:</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>Sensitive documents</li>
+                        <li>Personal information</li>
+                        <li>Unpublished work</li>
+                        <li>Working offline</li>
+                        <li>No subscription costs</li>
+                        <li>Quick text tasks (summaries, rewrites, drafts)</li>
+                        <li>Learning and experimentation</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Complex reasoning tasks</li>
+                        <li>Internet research required</li>
+                        <li>Image generation</li>
+                        <li>Very large documents (10,000+ words)</li>
+                        <li>Real-time information</li>
+                        <li>Specialist domain knowledge</li>
+                        <li>Mission-critical work content</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="success-box">
+            <strong>Pro Tip:</strong> LFM2 is perfect for learning how local AI works and understanding system prompts. For everyday work tasks and privacy-sensitive content, consider the Granite model or larger local models. For the most demanding tasks, use cloud AI. Many professionals use all three!
+        </div>
+    </div>
+
+    <div class="tips-section">
+        <h2>Troubleshooting</h2>
+        
+        <h3>Model won't load?</h3>
+        <ul>
+            <li>Check you have enough disk space (need 2-3GB free)</li>
+            <li>Try restarting LM Studio</li>
+            <li>Check your laptop meets minimum requirements (4GB+ RAM recommended)</li>
+            <li>Make sure the model finished downloading completely</li>
+        </ul>
+        
+        <h3>Responses are very slow?</h3>
+        <ul>
+            <li>LFM2 is designed to be very fast - if it's slow, your laptop may be running other programs</li>
+            <li>Close other applications while using LM Studio</li>
+            <li>Keep prompts shorter for faster responses</li>
+            <li>Make sure your laptop isn't in power-saving mode</li>
+        </ul>
+        
+        <h3>Getting strange responses?</h3>
+        <ul>
+            <li><strong>First, try starting a new chat</strong> (click the + button) - this fixes most issues!</li>
+            <li>Make your prompts more specific</li>
+            <li>Try rephrasing your question</li>
+            <li>Check if you have a system prompt set - look for the "Add Instructions" button at top right and clear any text there</li>
+        </ul>
+        
+        <h3>Can't find the "Add Instructions" button?</h3>
+        <ul>
+            <li>Look at the top right of the chat window</li>
+            <li>It's near where you see "Model loaded" or the model name</li>
+            <li>Try making your LM Studio window bigger if the button is hidden</li>
+        </ul>
+    </div>
+
+    <div class="tips-section">
+        <h2>Next Steps</h2>
+        
+        <p>Now that you have LM Studio set up, here are some ways to continue learning:</p>
+        
+        <div class="info-box">
+            <strong>Explore other models:</strong>
+            <ul>
+                <li>Once you're comfortable with LFM2, try the Granite model for better quality responses</li>
+                <li>Search for models like "mistral," "phi-3," or "Gemma" to try larger, more capable options</li>
+                <li>Note: Larger models = better quality but slower and need more RAM</li>
+                <li>You can have multiple models downloaded and switch between them</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <strong>Create your own prompt library:</strong>
+            <ul>
+                <li>Save prompts that work well for your specific tasks</li>
+                <li>Refine them over time as you learn what works</li>
+                <li>Share useful prompts with colleagues</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <strong>Explore advanced features:</strong>
+            <ul>
+                <li>LM Studio can run a local API server (for developers)</li>
+                <li>You can attach documents to your chats</li>
+                <li>Adjust model settings for different use cases</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <h2>Need Help?</h2>
+        <p>If you have questions or need assistance with the workshop materials:</p>
+        <p>Dr. Matt Mort: <a href="/cdn-cgi/l/email-protection#c4a9abb6b0a984a7a5b6a0ada2a2eaa5a7eab1af" class="email"><span class="__cf_email__" data-cfemail="92fffde0e6ffd2f1f3e0f6fbf4f4bcf3f1bce7f9">[email&#160;protected]</span></a></p>
+        <p>Mr. Matt Hayden: <a href="/cdn-cgi/l/email-protection#4a222b332e2f2427207b0a292b382e232c2c642b29643f21" class="email"><span class="__cf_email__" data-cfemail="7119100815141f1c1b4031121003151817175f10125f041a">[email&#160;protected]</span></a></p>
+        <p style="margin-top: 20px;"><strong>Want to bring this workshop to your organisation?</stron
