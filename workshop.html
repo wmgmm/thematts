@@ -436,7 +436,7 @@
             
             <div class="example-prompt" id="evaluation-prompt">
                 "I need a name for a new pensioner dating app, provide five examples please.
-For each name justify its selection and ensure its not condescending or offensive to the target market, though don’t be afraid to be humorous.
+For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
 Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."
             </div>
             <button onclick="copyToClipboard('evaluation-prompt')" class="copy-button">Copy Prompt</button>
@@ -487,6 +487,132 @@ Score each example on a 1-10 scale for Memorability, Distinctiveness and Global 
             </div>
             
             <p><em>For workplace applications, modify each element to match your specific needs - for example, change the role to "financial analyst," the tone to "professional but accessible," and the constraint to "regulatory compliance terminology." This approach works well for any complex workplace communication task.</em></p>
+        </div>
+        
+        <!-- USAGE CASE 1: AI MEETING NOTES -->
+        <div class="exercise-item">
+            <div class="exercise-title">AI Usage Case #71: AI Meeting Notes</div>
+            <div class="exercise-description">
+                <p>Transform lengthy meeting transcripts into clear, actionable summaries that capture the essential information your team needs to move forward.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Save hours of manual note-taking and ensure nothing important is missed. Perfect for team meetings, client calls, training sessions, or any discussion where you need to distribute clear action items and decisions to stakeholders.
+            </div>
+            
+            <div class="example-prompt" id="meeting-notes-prompt">
+                "Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"
+            </div>
+            <button onclick="copyToClipboard('meeting-notes-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                <h4 style="margin-top: 0; color: #1565c0;">Tips for Best Results:</h4>
+                <ul>
+                    <li>Use Teams/Zoom transcription features to generate the initial transcript</li>
+                    <li>You can adjust the word count limit based on meeting complexity</li>
+                    <li>For recurring meetings, ask AI to compare with previous summaries to highlight changes</li>
+                    <li>Consider asking for specific sections like "Action Items" or "Decisions" separately if needed</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- USAGE CASE 2: EXCEL DATA ANALYSIS -->
+        <div class="exercise-item">
+            <div class="exercise-title">AI Usage Case: Insights from Excel Data</div>
+            <div class="exercise-description">
+                <p>Upload your Excel file and ask AI to provide a comprehensive summary including an overview of the data structure, key statistics, and the most interesting insights.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Perfect for analysing survey results, customer feedback, employee responses, sales data, or any structured dataset where you need to quickly identify patterns and make data-driven decisions. Particularly useful when you have free-text responses that need interpretation.
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                <h4 style="margin-top: 0; color: #1e88e5;">Example Scenarios:</h4>
+                <ul>
+                    <li><strong>Employee Feedback:</strong> Analyse open-ended survey responses to identify common themes</li>
+                    <li><strong>Customer Complaints:</strong> Review feedback columns to spot recurring issues</li>
+                    <li><strong>Sales Data:</strong> Examine performance metrics to identify trends and anomalies</li>
+                </ul>
+            </div>
+            
+            <div class="example-prompt" id="excel-analysis-prompt">
+                "Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."
+            </div>
+            <button onclick="copyToClipboard('excel-analysis-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                <h4 style="margin-top: 0; color: #1565c0;">How to Use:</h4>
+                <ol>
+                    <li>Upload your Excel file to Copilot using the attachment button</li>
+                    <li>Copy and paste the prompt</li>
+                    <li>Review the overview, statistics, and insights provided</li>
+                    <li>Follow up with specific questions about areas of interest</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- USAGE CASE 3: TEXT CATEGORISATION -->
+        <div class="exercise-item">
+            <div class="exercise-title">AI Usage Case: Turn Free Text into Categories</div>
+            <div class="exercise-description">
+                <p>Automatically classify unstructured text responses into predefined categories, turning messy free-text data into structured, analysable information.</p>
+            </div>
+            <div class="exercise-application">
+                <strong>Workplace Application:</strong> Essential for processing survey feedback, customer complaints, employee suggestions, or any situation where you have free-text responses that need to be sorted into categories for reporting or analysis. Saves hours of manual classification work.
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                <h4 style="margin-top: 0; color: #1e88e5;">Common Use Cases:</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 10px;">
+                    <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>📚 Content Type</strong>
+                        <p style="font-size: 0.9em; margin: 5px 0 0 0;">Books, Sports, Art, etc.</p>
+                    </div>
+                    <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>💼 HR Feedback</strong>
+                        <p style="font-size: 0.9em; margin: 5px 0 0 0;">Compensation, Management, Tools</p>
+                    </div>
+                    <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>📊 Customer Issues</strong>
+                        <p style="font-size: 0.9em; margin: 5px 0 0 0;">Product, Service, Delivery</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-prompt" id="categorisation-prompt">
+                "Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."
+            </div>
+            <button onclick="copyToClipboard('categorisation-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                <h4 style="margin-top: 0; color: #1565c0;">Customisation Tips:</h4>
+                <ul>
+                    <li>Replace the example categories with ones relevant to your data</li>
+                    <li>Be specific about your categories to get more accurate classification</li>
+                    <li>Always include an "Other" category for edge cases</li>
+                    <li>After categorisation, you can ask: "Create a summary showing the count and percentage for each category"</li>
+                    <li>Follow up with: "Show me 2-3 example entries from each category"</li>
+                </ul>
+                
+                <h4 style="margin-top: 15px; color: #1565c0;">Template for Other Scenarios:</h4>
+                <p style="font-style: italic; background: white; padding: 10px; border-radius: 5px;">
+                    "Analyze the [Column Name] column. Add a new column named 'Category'. Classify each row into exactly one of these categories: '[Category 1]', '[Category 2]', '[Category 3]'. If the entry doesn't fit, label it 'Other'."
+                </p>
+            </div>
         </div>
     </div>
     
