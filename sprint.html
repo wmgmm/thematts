@@ -75,7 +75,7 @@
                 </div>
                 <h1 class="text-3xl font-bold tracking-tight text-[#1D1D1F] mb-2">AI Discovery Sprint</h1>
                 <p class="text-xl text-[#1D1D1F] font-semibold mb-2">Could this be useful?</p>
-                <p class="text-sm text-[#86868B] mb-8 max-w-[260px] leading-relaxed">5 minutes. 100 possibilities.<br>Go with your gut.</p>
+                <p class="text-sm text-[#86868B] mb-8 max-w-[260px] leading-relaxed">5 minutes. 100 possibilities.<br>Find your next experiment.</p>
 
                 <div class="bg-[#F2F2F7] p-5 rounded-2xl w-full mb-8 border border-gray-100">
                     <div class="space-y-4">
@@ -139,7 +139,7 @@
                 </button>
                 <div class="text-[10px] font-bold text-[#86868B] tracking-widest uppercase opacity-60">Swipe</div>
                 <button onclick="handleSwipe('right')" class="ios-btn w-14 h-14 rounded-full bg-[#0071E3] text-white flex items-center justify-center shadow-lg shadow-blue-500/25">
-                    <i data-lucide="check" class="w-6 h-6"></i>
+                    <i data-lucide="heart" class="w-6 h-6 fill-current"></i>
                 </button>
             </div>
         </div>
@@ -294,6 +294,7 @@ let timerInterval;
 let timeLeft = 300; // 5 minutes
 let gameActive = false;
 let shuffledIndices = [];
+let isSwiping = false; // CHANGED: Added debounce flag
 
 // DOM Elements
 const startScreen = document.getElementById('startScreen');
@@ -321,6 +322,7 @@ function startGame() {
     currentIndex = 0;
     likedCases = [];
     gameActive = true;
+    isSwiping = false;
     
     renderCard();
     startTimer();
@@ -397,10 +399,13 @@ function renderCard() {
 }
 
 function handleSwipe(direction) {
-    if (!gameActive) return;
+    // CHANGED: Added check for isSwiping
+    if (!gameActive || isSwiping) return;
     
     const card = document.getElementById('activeCard');
     if (!card) return;
+
+    isSwiping = true; // Lock interaction
 
     if (direction === 'right') {
         card.classList.add('swipe-right');
@@ -413,6 +418,7 @@ function handleSwipe(direction) {
     setTimeout(() => {
         currentIndex++;
         renderCard();
+        isSwiping = false; // Unlock interaction
     }, 300);
 }
 
