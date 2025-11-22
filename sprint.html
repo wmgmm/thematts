@@ -22,8 +22,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
-            /* Fix for mobile viewport height issues */
-            height: 100dvh; 
+            height: 100dvh; /* Dynamic Viewport Height for Mobile */
             width: 100vw;
             overflow: hidden;
         }
@@ -52,7 +51,7 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: saturate(180%) blur(20px);
             border-top: 1px solid rgba(0,0,0,0.05);
-            padding-bottom: env(safe-area-inset-bottom); /* iPhone X+ fix */
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -130,7 +129,7 @@
             </div>
 
             <div class="flex-1 relative p-4 flex flex-col justify-center items-center overflow-hidden">
-                <div id="cardContainer" class="w-full h-full max-h-[550px] relative">
+                <div id="cardContainer" class="w-full h-full max-h-[600px] relative">
                     </div>
             </div>
 
@@ -288,14 +287,15 @@ const useCases = [
     { id: 100, cat: "Personal", title: "Planning Workouts 🏋️", desc: "Fitness planning.", prompt: "Design a 30-minute home workout routine. Equipment: [Available Equipment]. Focus: [Goal]. Include warm-up and cool-down." }
 ];
 
-// --- GAME LOGIC ---
+// --- LOGIC ---
 let currentIndex = 0;
 let likedCases = [];
 let timerInterval;
-let timeLeft = 300;
+let timeLeft = 300; // 5 minutes
 let gameActive = false;
 let shuffledIndices = [];
 
+// DOM Elements
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const resultsScreen = document.getElementById('resultsScreen');
@@ -308,11 +308,13 @@ const matchesList = document.getElementById('matchesList');
 const finalMatchCount = document.getElementById('finalMatchCount');
 const topCategoryEl = document.getElementById('topCategory');
 
+// Initialization
 function startGame() {
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     gameScreen.classList.add('flex');
     
+    // Shuffle
     shuffledIndices = Array.from({length: useCases.length}, (_, i) => i)
         .sort(() => Math.random() - 0.5);
     
@@ -323,26 +325,31 @@ function startGame() {
     renderCard();
     startTimer();
     
+    // Init Icons
     lucide.createIcons();
 }
 
 function startTimer() {
     const totalTime = 300;
-    const circleLength = 251.2;
+    const circleLength = 251.2; // 2 * pi * 40
     
     timerInterval = setInterval(() => {
         if (!gameActive) return;
         
         timeLeft--;
         
+        // Update Text
         const m = Math.floor(timeLeft / 60);
         const s = timeLeft % 60;
         timerText.textContent = `${m}:${s.toString().padStart(2, '0')}`;
         
+        // Update Ring
         const offset = circleLength - (timeLeft / totalTime) * circleLength;
         timerRing.style.strokeDashoffset = offset;
         
-        if (timeLeft <= 0) endGame();
+        if (timeLeft <= 0) {
+            endGame();
+        }
     }, 1000);
 }
 
@@ -358,14 +365,14 @@ function renderCard() {
     cardContainer.innerHTML = `
         <div id="activeCard" class="w-full h-full bg-white rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 p-8 flex flex-col relative overflow-hidden cursor-grab active:cursor-grabbing select-none">
             
-            <div class="mb-6">
+            <div class="flex-none mb-4">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest bg-[#F2F2F7] text-[#86868B]">
                     #${item.id} • ${item.cat}
                 </span>
             </div>
 
-            <div class="flex-grow flex flex-col justify-center mb-6">
-                <h2 class="text-[28px] font-bold text-[#1D1D1F] leading-tight mb-4 tracking-tight">
+            <div class="flex-none mb-4">
+                <h2 class="text-[28px] font-bold text-[#1D1D1F] leading-tight mb-3 tracking-tight">
                     ${item.title}
                 </h2>
                 <p class="text-[17px] text-[#86868B] leading-relaxed">
@@ -373,16 +380,17 @@ function renderCard() {
                 </p>
             </div>
 
-            <div class="mt-auto bg-[#F5F5F7] rounded-2xl p-5 border border-gray-100/50 relative group">
-                <div class="absolute top-3 left-3">
+            <div class="flex-1 min-h-0 bg-[#F5F5F7] rounded-2xl p-5 border border-gray-100/50 relative group overflow-hidden flex flex-col">
+                <div class="absolute top-3 left-3 z-10">
                     <i data-lucide="message-square" class="w-4 h-4 text-[#0071E3]"></i>
                 </div>
-                <div class="pl-6 max-h-[140px] overflow-y-auto no-scrollbar">
+                <div class="pl-6 h-full overflow-y-auto no-scrollbar">
                     <p class="text-[13px] font-medium text-[#1D1D1F] font-mono leading-relaxed">
                         "${item.prompt}"
                     </p>
                 </div>
             </div>
+
         </div>
     `;
     lucide.createIcons();
