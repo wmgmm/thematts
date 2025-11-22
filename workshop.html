@@ -181,7 +181,8 @@
             font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
             font-size: 14px;
             line-height: 1.6;
-            border: 1px solid transparent; /* No left border */
+            border: 1px solid transparent; 
+            white-space: pre-wrap; /* Preserves line breaks in prompts */
         }
         
         .exercise-application {
@@ -329,8 +330,8 @@
 
     <div class="container">
         <header>
-            <h1>Workshop Resources</h1>
-            <div class="subtitle">The Matts: Digital Productivity & AI</div>
+            <h1>The Matts Workshop Resources</h1>
+            <div class="subtitle">Digital Productivity & AI in the Workplace</div>
         </header>
         
         <div class="login-hint">
@@ -340,18 +341,19 @@
         
         <div id="exercises" class="card">
             <div style="text-align: center; margin-bottom: 40px;">
-                <h2>Productivity Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">Practical techniques to enhance workplace efficiency. Tap an exercise to begin.</p>
+                <h2>AI Productivity Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">Try these practical exercises to enhance your workplace productivity with AI tools. These techniques will help you learn progressively, extract actionable insights, and challenge your thinking.</p>
             </div>
             
             <details>
                 <summary>Exercise 1: Explain it like I am 5 (ELI5)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Perfect for learning new technical skills or simplifying complex concepts for stakeholders.
+                        <strong>Workplace Application:</strong> Perfect for learning new technical skills, understanding complex processes, or preparing to explain difficult concepts to colleagues with different expertise levels.
                     </div>
                     <div class="prompt-box" id="progressive-learning">"Teach me [TOPIC] like I am 5 (ELI5)"</div>
                     <button onclick="copyToClipboard('progressive-learning')" class="btn btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:14px; color:var(--apple-text-secondary);"><em>Replace [TOPIC] with any subject you need to learn, such as "cloud computing," "tennis," "genetics," "project management," etc.</em></p>
                 </div>
             </details>
 
@@ -359,125 +361,154 @@
                 <summary>Exercise 2: Roleplay for Difficult Conversations</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Rehearse performance reviews, conflict resolution, or customer complaints in a safe environment.
+                        <strong>Workplace Application:</strong> Perfect for practicing difficult conversations with colleagues, customers, or stakeholders. Use this to rehearse performance reviews, conflict resolution, customer complaints, or any challenging interpersonal scenario before the real conversation.
                     </div>
-                    <div class="prompt-box" id="roleplay-conversation">
-                        "Roleplay: You're Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats. I'm trying to calm you down. Stay in character and wait for my replies."
-                    </div>
+                    <div class="prompt-box" id="roleplay-conversation">"Roleplay: You're Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats (Knox, Missy, Phoebe). I'm a witty cat owner trying to calm you down and win you over. Stay in character and wait for my replies."</div>
                     <button onclick="copyToClipboard('roleplay-conversation')" class="btn btn-copy">Copy Prompt</button>
                     
                     <div style="margin-top: 20px; font-size: 14px; color: var(--apple-text-secondary);">
-                        <strong>Workplace Examples:</strong> "You're an upset customer..." or "You're a team member missing deadlines..."
+                        <p><strong>Workplace Examples:</strong></p>
+                        <p><strong>Customer Service:</strong> "You're an upset customer whose order was delivered late. I'm a customer service representative trying to resolve the issue and retain your business."</p>
+                        <p><strong>Team Management:</strong> "You're a team member who's consistently missing deadlines. I'm your manager conducting a performance conversation to understand the issues and find solutions."</p>
                     </div>
                 </div>
             </details>
 
             <details>
-                <summary>Exercise 3: Devil's Advocate</summary>
+                <summary>Exercise 3: Devil's Advocate - Uncovering Blind Spots</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Test proposals and identify blind spots before finalization.
+                        <strong>Workplace Application:</strong> Ideal for testing the robustness of proposals, plans, or decisions before finalizing them. Helps identify risks and alternatives you might not have considered.
                     </div>
-                    <div class="prompt-box" id="devils-advocate">
-                        "Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. My scenario is: [scenario here]"
-                    </div>
+                    <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
                     <button onclick="copyToClipboard('devils-advocate')" class="btn btn-copy">Copy Prompt</button>
                     
-                    <p style="margin-top: 20px; font-size: 15px; font-weight: 600;">Follow-up:</p>
+                    <p style="margin-top: 20px; font-size: 15px; font-weight: 600;">Follow-up Prompts (pick 2-3):</p>
                     <div class="prompt-box" id="devils-followup1">"What important counterarguments am I missing?"</div>
                     <button onclick="copyToClipboard('devils-followup1')" class="btn btn-copy">Copy Prompt</button>
+                    
+                    <div class="prompt-box" id="devils-followup2">"What assumptions am I making that could be questioned?"</div>
+                    <button onclick="copyToClipboard('devils-followup2')" class="btn btn-copy">Copy Prompt</button>
+
+                    <div class="prompt-box" id="devils-followup3">"What alternative approaches should I consider?"</div>
+                    <button onclick="copyToClipboard('devils-followup3')" class="btn btn-copy">Copy Prompt</button>
+                    
+                    <div class="prompt-box" id="devils-followup4">"What skills or resources might I need that I haven't considered?"</div>
+                    <button onclick="copyToClipboard('devils-followup4')" class="btn btn-copy">Copy Prompt</button>
+                    
+                    <div class="prompt-box" id="devils-followup5">"How might different stakeholders view this differently?"</div>
+                    <button onclick="copyToClipboard('devils-followup5')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 4: Role Prompting</summary>
+                <summary>Exercise 4: Professional Persona with Role Prompting</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Draft emails or documents from specific professional perspectives (e.g., Technical, Executive, Support).
+                        <strong>Workplace Application:</strong> Use role prompting to draft emails or documents from different professional perspectives. This helps when communicating with various stakeholders who have different concerns and information needs.
                     </div>
-                    <div class="prompt-box" id="role-prompt-medical">
-                        "For a script: You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."
-                    </div>
+                    <div class="prompt-box" id="role-prompt-medical">"For a script: You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."</div>
                     <button onclick="copyToClipboard('role-prompt-medical')" class="btn btn-copy">Copy Prompt</button>
                     
-                    <div class="prompt-box" id="role-prompt-comedian">
-                        "For a script: You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."
-                    </div>
+                    <div class="prompt-box" id="role-prompt-comedian">"For a script: You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."</div>
                     <button onclick="copyToClipboard('role-prompt-comedian')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
             <details>
-                <summary>Exercise 5: Format & Structure</summary>
+                <summary>Exercise 5: Format: Structure</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Force AI to output specific formats like Tables, SOPs, SWOT analyses, or JSON.
+                        <strong>Workplace Application:</strong> Perfect for creating structured documents, reports, or data presentations that follow specific formats required by your organisation.
                     </div>
                     
-                    <div class="prompt-box" id="format-prompt1">
-                        "You run "Knights of the Round Table Pizza". Write a catchy jingle for your horse-drawn pizza delivery adverts."
-                    </div>
+                    <div class="prompt-box" id="format-prompt1">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
+                Write a catchy jingle for your horse-drawn pizza delivery adverts."</div>
                     <button onclick="copyToClipboard('format-prompt1')" class="btn btn-copy">Copy Prompt</button>
                     
-                    <div class="prompt-box" id="format-prompt3">
-                        "You run "Knights of the Round Table Pizza". Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times."
-                    </div>
+                    <div class="prompt-box" id="format-prompt2">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
+                Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance."</div>
+                    <button onclick="copyToClipboard('format-prompt2')" class="btn btn-copy">Copy Prompt</button>
+                    
+                    <div class="prompt-box" id="format-prompt3">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
+                Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
                     <button onclick="copyToClipboard('format-prompt3')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 6: Self-Evaluation</summary>
+                <summary>Exercise 6: Self-Evaluation of AI Outputs</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Have the AI grade its own output to improve quality before you review it.
+                        <strong>Workplace Application:</strong> Useful for getting an initial quality assessment of AI-generated content before you review it yourself. Helps identify potential issues or areas for improvement in first drafts of reports, proposals, or creative content.
                     </div>
-                    <div class="prompt-box" id="evaluation-prompt">
-                        "I need a name for a new pensioner dating app. Provide five examples. Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."
-                    </div>
+                    <div class="prompt-box" id="evaluation-prompt">"I need a name for a new pensioner dating app, provide five examples please.
+For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
+Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."</div>
                     <button onclick="copyToClipboard('evaluation-prompt')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 7: Prompt Chaining</summary>
+                <summary>Exercise 7: Prompt Chaining for Comprehensive Results</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Application:</strong> Combine Role, Tone, Constraints, and Format into a single "Super Prompt" for complex tasks.
+                        <strong>Workplace Application:</strong> Ideal for complex workplace tasks where you need specific expertise, tone, constraints and output format all aligned. This approach minimizes back-and-forth by giving the AI complete instructions in one go.
                     </div>
-                    <div class="prompt-box" id="prompt-chain">
-                        "Task: Suggest appealing fizzy drink names. Role: Young consumers (15-25). Tone: Humorous, but not childish. Constraint: Avoid existing UK product names. Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning."
-                    </div>
+                    <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
+                Role: Young consumers (15-25).
+                Tone: Humorous, but not childish.
+                Constraint: Avoid existing UK product names.
+                Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+                Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                     <button onclick="copyToClipboard('prompt-chain')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Usage Case: AI Meeting Notes</summary>
+                <summary>AI Usage Case #71: AI Meeting Notes</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="meeting-notes-prompt">
-                        "Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines... [INSERT TRANSCRIPT HERE]"
+                    <div class="exercise-application">
+                        <strong>Workplace Application:</strong> Save hours of manual note-taking and ensure nothing important is missed. Perfect for team meetings, client calls, training sessions, or any discussion where you need to distribute clear action items and decisions to stakeholders.
                     </div>
+                    <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"</div>
                     <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Usage Case: Excel Data Analysis</summary>
+                <summary>AI Usage Case: Insights from Excel Data</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="excel-analysis-prompt">
-                        "Summarise this Excel file: PROVIDE: 1. OVERVIEW (rows/columns...) 2. KEY STATISTICS... 3. TOP INSIGHTS... Present in clear business language."
+                    <div class="exercise-application">
+                         <strong>Workplace Application:</strong> Perfect for analysing survey results, customer feedback, employee responses, sales data, or any structured dataset where you need to quickly identify patterns and make data-driven decisions. Particularly useful when you have free-text responses that need interpretation.
                     </div>
+                    <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."</div>
                     <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Usage Case: Text Categorisation</summary>
+                <summary>AI Usage Case: Turn Free Text into Categories</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="categorisation-prompt">
-                        "Analyze the [Feedback] column. Add a new column named 'Category'. Classify each row into exactly one of these specific categories: 'Compensation', 'Management', 'Work Environment'... If unknown, label 'Other'."
+                    <div class="exercise-application">
+                         <strong>Workplace Application:</strong> Essential for processing survey feedback, customer complaints, employee suggestions, or any situation where you have free-text responses that need to be sorted into categories for reporting or analysis. Saves hours of manual classification work.
                     </div>
+                    <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."</div>
                     <button onclick="copyToClipboard('categorisation-prompt')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -486,53 +517,53 @@
         <div id="downloads" class="card">
             <div style="text-align: center;">
                 <h2>Workshop Files</h2>
-                <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Secure downloads for today's session.</p>
+                <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Welcome to our workshop resource page. Below you'll find all the files and some of the prompts needed for today's session. Simply click the download buttons to save the files to your computer.</p>
             </div>
             
             <div class="file-grid">
                 <div class="file-item">
                     <div>
-                        <span class="file-description">Marketing Data</span>
-                        <div class="file-info">Excel spreadsheet for analysis exercises</div>
+                        <span class="file-description">Marketing & Sales Data</span>
+                        <div class="file-info">Excel spreadsheet with sample marketing and sales data for analysis exercises</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="btn btn-download">Download</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="btn btn-download">Download Excel File</a>
                 </div>
                 
                 <div class="file-item">
                     <div>
                         <span class="file-description">REF2021 Results</span>
-                        <div class="file-info">Cardiff University research results data</div>
+                        <div class="file-info">Research Excellence Framework 2021 results for Cardiff University</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="btn btn-download">Download</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="btn btn-download">Download Excel File</a>
                 </div>
                 
                 <div class="file-item">
                     <div>
-                        <span class="file-description">Shopping Info</span>
-                        <div class="file-info">Sample shopping document (PDF)</div>
+                        <span class="file-description">Shopping Information</span>
+                        <div class="file-info">Sample shopping information document (PDF format)</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="btn btn-download">Download</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="btn btn-download">Download PDF</a>
                 </div>
             </div>
         </div>
         
         <div id="prompts" class="card">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h2>Prompt Library</h2>
-                <p style="color: var(--apple-text-secondary);">Curated prompts for rapid reuse.</p>
+                <h2>Sample AI Prompts</h2>
+                <p style="color: var(--apple-text-secondary);">Below are categorized example prompts you can use with AI tools like ChatGPT or Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
             </div>
             
             <details>
-                <summary>Brainstorming & Ideas</summary>
+                <summary>Brainstorming & Idea Generation</summary>
                 <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Initial Idea Development</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Initial Idea Development:</div>
                     <div class="prompt-box" id="prompt-brainstorm1">"Help me brainstorm some unique social media post ideas for [type of business]."</div>
                     <button onclick="copyToClipboard('prompt-brainstorm1')" class="btn btn-copy">Copy Prompt</button>
                     
                     <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
                     
-                    <div class="file-description" style="font-size: 15px;">Report Structure</div>
-                    <div class="prompt-box" id="prompt-brainstorm2">"Help me brainstorm some key sections for our [type of report]. Cover achievements, challenges, and plans."</div>
+                    <div class="file-description" style="font-size: 15px;">Report Structure Development:</div>
+                    <div class="prompt-box" id="prompt-brainstorm2">"Help me brainstorm some key sections for our [type of report]. I need to cover our team's achievements, challenges we faced, and plans for next quarter."</div>
                     <button onclick="copyToClipboard('prompt-brainstorm2')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -540,65 +571,114 @@
             <details>
                 <summary>Role-Based Communication</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="prompt-role1">"You are a [professional role]. Reply to the statement '[insert question]'."</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Professional Role Simulation:</div>
+                    <div class="prompt-box" id="prompt-role1">"You are a [type of professional, e.g., medical professional, financial analyst, HR specialist]. Reply to the statement '[insert your specific question or statement]'."</div>
                     <button onclick="copyToClipboard('prompt-role1')" class="btn btn-copy">Copy Prompt</button>
                     
-                    <div class="prompt-box" id="prompt-role2">"You are a [role]. Help me draft an email explaining [topic] to [audience]."</div>
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Email Drafting with Role Perspective:</div>
+                    <div class="prompt-box" id="prompt-role2">"You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic, e.g., our software deployment delay] to [audience, e.g., our development team], focusing on [specific aspects, e.g., technical challenges and next steps]."</div>
                     <button onclick="copyToClipboard('prompt-role2')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Simplification (ELI5)</summary>
+                <summary>Simplification & Explanation</summary>
                 <div class="details-content">
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Basic ELI5 (Explain Like I'm Five):</div>
                     <div class="prompt-box" id="prompt-eli5-1">"Explain [topic] like I'm five."</div>
                     <button onclick="copyToClipboard('prompt-eli5-1')" class="btn btn-copy">Copy Prompt</button>
-                    <div style="margin-top:10px;"></div>
-                    <div class="prompt-box" id="prompt-eli5-2">"Explain [process] like I'm five. Then ask me questions to check my understanding."</div>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+                    
+                    <div class="file-description" style="font-size: 15px;">Interactive ELI5 with Comprehension Check:</div>
+                    <div class="prompt-box" id="prompt-eli5-2">"Explain [specific workplace process or concept] like I'm five years old. After explaining, ask me questions to check my understanding and help me learn more."</div>
                     <button onclick="copyToClipboard('prompt-eli5-2')" class="btn btn-copy">Copy Prompt</button>
+
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+
+                    <div class="file-description" style="font-size: 15px;">Multi-Level Explanation:</div>
+                    <div class="prompt-box" id="prompt-eli5-3">"Explain [topic] with increasing complexity in three paragraphs - first for a beginner, then for someone with basic knowledge, and finally for a colleague with technical understanding."</div>
+                    <button onclick="copyToClipboard('prompt-eli5-3')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Data Analysis</summary>
+                <summary>Data Analysis Prompts</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="prompt1">"Looking at this sales data, calculate the Marketing ROI %. Explain the formula step by step..."</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Basic Marketing ROI Calculation:</div>
+                    <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
                     <button onclick="copyToClipboard('prompt1')" class="btn btn-copy">Copy Prompt</button>
-                    <div style="margin-top:10px;"></div>
-                    <div class="prompt-box" id="prompt2">"Analyse this dataset and identify: 3 unexpected findings, Critical areas for improvement, Key recommendations..."</div>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+                    
+                    <div class="file-description" style="font-size: 15px;">Dataset Analysis & Insights:</div>
+                    <div class="prompt-box" id="prompt2">Analyse this [type of] dataset and identify:
+* 3 unexpected findings that deserve attention
+* Critical areas for improvement based on the metrics
+* Key recommendations supported by the data
+
+Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
                     <button onclick="copyToClipboard('prompt2')" class="btn btn-copy">Copy Prompt</button>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+
+                    <div class="file-description" style="font-size: 15px;">Data Extraction & Conversion:</div>
+                    <div class="prompt-box" id="prompt3">Please create an Excel file from this [document type] with columns for [column 1] and [column 2]</div>
+                    <button onclick="copyToClipboard('prompt3')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Automation & Workflow</summary>
+                <summary>Automation & Workflow Prompts</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="prompt4">"I need a macro for my spreadsheet that calculates [calculation]. Include a chart... output a new Excel Macro-Enabled Workbook."</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Excel Macro Creation:</div>
+                    <div class="prompt-box" id="prompt4">I need a macro for my [type] spreadsheet that calculates [specific calculation] from our [data types]. Include a chart showing [visualization elements] and conditional formatting to show when [metric] is [condition] e.g. [example].
+
+Can you output a new Excel Macro-Enabled Workbook (.xlsm), the team has limited Excel expertise</div>
                     <button onclick="copyToClipboard('prompt4')" class="btn btn-copy">Copy Prompt</button>
-                    <div style="margin-top:10px;"></div>
-                    <div class="prompt-box" id="prompt-email">"Create 3 reusable email templates for [scenario]. Each template should have a slightly different tone..."</div>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+
+                    <div class="file-description" style="font-size: 15px;">Email Template Generator:</div>
+                    <div class="prompt-box" id="prompt-email">Create 3 reusable email templates for [specific scenario e.g., following up with clients who haven't responded]. Each template should have a slightly different tone (professional, friendly, and urgent). Include placeholder text for personalization and clear subject lines for each version.</div>
                     <button onclick="copyToClipboard('prompt-email')" class="btn btn-copy">Copy Prompt</button>
+
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+
+                    <div class="file-description" style="font-size: 15px;">Process Documentation Creator:</div>
+                    <div class="prompt-box" id="prompt-process">Create a step-by-step standard operating procedure (SOP) for [specific process]. Include the following sections: Purpose, Scope, Responsibilities, Procedure Steps, Required Resources, and Quality Control. Format it in a way that's easy to follow with numbered steps and bullet points where appropriate.</div>
+                    <button onclick="copyToClipboard('prompt-process')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
                 <summary>Content Summarization</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="prompt5">"Please summarize the following meeting transcript. Focus on key points, decisions, action items... [INSERT TRANSCRIPT]"</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Meeting Notes Summarization:</div>
+                    <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
                     <button onclick="copyToClipboard('prompt5')" class="btn btn-copy">Copy Prompt</button>
-                    <div style="margin-top:10px;"></div>
-                    <div class="prompt-box" id="prompt9">"Convert this document into a comprehensive FAQ format... [INSERT DOCUMENT TEXT]"</div>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+                    
+                    <div class="file-description" style="font-size: 15px;">Document to FAQ Conversion:</div>
+                    <div class="prompt-box" id="prompt9">Convert this document into a comprehensive FAQ format. Create 10-15 frequently asked questions based on the most important information in the text. For each question, provide a clear, concise answer that captures the key points. Organize questions from basic to advanced topics. [INSERT DOCUMENT TEXT HERE]</div>
                     <button onclick="copyToClipboard('prompt9')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Format Control</summary>
+                <summary>Format Control & Structure</summary>
                 <div class="details-content">
-                    <div class="prompt-box" id="prompt8">"Return a table about [topic] with [number] columns..."</div>
+                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Structured Table Format:</div>
+                    <div class="prompt-box" id="prompt8">Return a table about [topic] with [number] columns, titled [column 1 name], [column 2 name], etc. and fill in [number] examples for each.</div>
                     <button onclick="copyToClipboard('prompt8')" class="btn btn-copy">Copy Prompt</button>
-                    <div style="margin-top:10px;"></div>
-                    <div class="prompt-box" id="prompt7">"Take the Role of a [demographic]. What would be the name of a [product]... Provide examples in a column array..."</div>
+                    
+                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
+                    
+                    <div class="file-description" style="font-size: 15px;">Advanced Prompt Engineering Example:</div>
+                    <div class="prompt-box" id="prompt7">Take the Role of a [demographic details] What would be the name of a [product type] that might attract you? The tone should be [tone description] and not sound too [negative quality to avoid]. The name should not sound like any existing products in [market/region]. Provide [number] examples in a [number]-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be [example 1], [example 2], [example 3].</div>
                     <button onclick="copyToClipboard('prompt7')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -607,24 +687,25 @@
     
     <section id="resources" class="container" style="margin-bottom: 60px;">
         <div class="card" style="text-align: center; background-color: white; border: none; box-shadow: none;">
-            <h2>Further Reading</h2>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Guides for implementing AI responsibly.</p>
+            <h2>Workshop Resources & Guides</h2>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Access our comprehensive materials for implementing AI in your workplace</p>
             <div class="nav-buttons">
                 <a href="index.html" class="nav-button btn">Main Page</a>
-                <a href="responsible.html" class="nav-button btn">Responsible AI (Individual)</a>
-                <a href="responsibleOrg.html" class="nav-button btn">Responsible AI (Org)</a>
+                <a href="responsible.html" class="nav-button btn">Responsible AI - Individual</a>
+                <a href="responsibleOrg.html" class="nav-button btn">Responsible AI - Organisation</a>
             </div>
         </div>
     </section>
     
     <div class="container">
         <div class="contact-info" style="text-align: center; padding: 40px;">
-            <h3 style="color: var(--apple-text-main);">Get in Touch</h3>
+            <h3 style="color: var(--apple-text-main);">Contact Information</h3>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 10px;">If you have any questions about the workshop or materials, please feel free to contact us:</p>
             <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">
                 Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a><br>
                 Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a>
             </p>
-            <p style="font-size: 14px; color: var(--apple-text-secondary);">Need help with AI upskilling? Contact us to discuss how we can help your team.</p>
+            <p style="font-size: 14px; color: var(--apple-text-secondary);"><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
         </div>
     </div>
     
