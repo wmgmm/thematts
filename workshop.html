@@ -13,18 +13,15 @@
             --apple-text-secondary: #86868b;
             --apple-bg-page: #f5f5f7;
             --apple-bg-card: #ffffff;
-            --apple-bg-gray: #f5f5f7;
-            --radius-card: 18px;
-            --radius-btn: 980px; /* Full Pill Shape */
+            --radius-card: 24px;
+            --radius-btn: 980px;
             --font-stack: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
         }
 
         /* --- Base & Reset --- */
         body {
             font-family: var(--font-stack);
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
+            line-height: 1.5;
             margin: 0;
             padding: 0;
             color: var(--apple-text-main);
@@ -32,14 +29,13 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Layout --- */
         .container {
-            max-width: 980px; /* Apple's standard container width */
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* --- Sticky Glassmorphism Nav --- */
+        /* --- Navigation --- */
         .quick-nav {
             position: sticky;
             top: 0;
@@ -50,253 +46,122 @@
             border-bottom: 1px solid rgba(0,0,0,0.1);
             text-align: center;
             padding: 15px 0;
-            transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
         }
         .quick-nav a {
             margin: 0 15px;
             text-decoration: none;
             color: var(--apple-text-main);
-            font-size: 12px;
-            font-weight: 400;
+            font-size: 13px;
+            font-weight: 500;
             opacity: 0.8;
-            transition: opacity 0.3s;
+            transition: opacity 0.2s;
         }
-        .quick-nav a:hover {
-            opacity: 1;
-            color: var(--apple-blue);
-        }
+        .quick-nav a:hover { opacity: 1; color: var(--apple-blue); }
 
-        /* --- Typography --- */
-        header {
-            text-align: center;
-            padding: 60px 0 40px;
-            background: transparent;
-            box-shadow: none;
-        }
-        h1 {
-            margin: 0;
-            font-size: 48px;
-            line-height: 1.08349;
-            font-weight: 700;
-            letter-spacing: -0.003em;
-            color: var(--apple-text-main);
-        }
-        .subtitle {
-            margin-top: 10px;
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 400;
-            letter-spacing: .009em;
-            color: var(--apple-text-secondary);
-        }
-        
-        h2 {
-            font-size: 32px;
-            line-height: 1.125;
-            font-weight: 600;
-            letter-spacing: .004em;
-            margin-bottom: 20px;
-            border: none;
-            color: var(--apple-text-main);
-        }
-        
-        p { font-size: 17px; color: var(--apple-text-main); }
+        /* --- Header --- */
+        header { text-align: center; padding: 50px 0 40px; }
+        h1 { margin: 0; font-size: 48px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+        .subtitle { margin-top: 10px; font-size: 24px; font-weight: 400; color: var(--apple-text-secondary); }
+        h2 { font-size: 32px; font-weight: 600; margin-bottom: 20px; }
 
-        /* --- Cards --- */
-        .card {
-            background-color: var(--apple-bg-card);
-            padding: 40px;
-            border-radius: var(--radius-card);
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255,255,255,0.5);
-        }
-
-        /* --- Login Hint (Styled as a Tip) --- */
-        .login-hint {
-            background-color: var(--apple-bg-card);
-            padding: 20px;
-            margin: 0 auto 40px;
-            max-width: 700px;
-            border-radius: var(--radius-card);
-            text-align: center;
-            font-size: 15px;
-            color: var(--apple-text-secondary);
-            border: 1px solid #e5e5e5;
-        }
-        .login-hint a { color: var(--apple-blue); text-decoration: none; }
-        .login-hint a:hover { text-decoration: underline; }
-
-        /* --- Accordions (Apple Settings Style) --- */
-        details {
-            border-bottom: 1px solid #d2d2d7;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-        }
-        details:last-child { border-bottom: none; }
-        details:hover { background-color: rgba(0,0,0,0.01); }
-        
-        summary {
-            padding: 20px 5px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 19px;
-            color: var(--apple-text-main);
-            background-color: transparent;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            outline: none;
-        }
-        summary::-webkit-details-marker { display: none; }
-        
-        /* Animated Chevron */
-        summary::after {
-            content: '';
-            width: 10px;
-            height: 10px;
-            border-right: 2px solid #86868b;
-            border-bottom: 2px solid #86868b;
-            transform: rotate(45deg);
-            transition: transform 0.2s ease;
-            margin-right: 10px;
-        }
-        details[open] summary::after { transform: rotate(225deg); margin-top: 5px; }
-        details[open] summary { color: var(--apple-blue); }
-        
-        .details-content {
-            padding: 10px 5px 40px 5px;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- Prompts (Code Block Style) --- */
-        .prompt-box {
-            background-color: var(--apple-bg-gray);
-            color: var(--apple-text-main);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 12px;
-            font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            border: 1px solid transparent; 
-            white-space: pre-wrap; /* Preserves line breaks in prompts */
-        }
-        
-        .exercise-application {
-            font-size: 15px;
-            color: var(--apple-text-secondary);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        /* --- Buttons (Pills) --- */
-        .btn {
-            display: inline-block;
-            padding: 12px 22px;
-            border-radius: var(--radius-btn);
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-align: center;
-            letter-spacing: -0.01em;
-        }
-        
-        /* Primary Action (Download) */
-        .btn-download {
-            background-color: var(--apple-blue);
-            color: white;
-            min-width: 120px;
-        }
-        .btn-download:hover {
-            background-color: var(--apple-blue-hover);
-            transform: scale(1.02);
-        }
-        
-        /* Secondary Action (Copy) */
-        .btn-copy {
-            background-color: #e5e5ea; /* Apple System Gray 5 */
-            color: black;
-            font-size: 12px;
-            padding: 8px 16px;
-            margin-top: 10px;
-        }
-        .btn-copy:hover {
-            background-color: #d1d1d6;
-        }
-
-        /* Nav Buttons */
-        .nav-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-        .nav-button {
-            background-color: white;
-            color: var(--apple-blue);
-            border: 1px solid var(--apple-blue);
-            padding: 12px 24px;
-        }
-        .nav-button:hover {
-            background-color: var(--apple-blue);
-            color: white;
-        }
-
-        /* --- Download Grid --- */
-        .file-grid {
+        /* --- BENTO GRID DASHBOARD (The New UI) --- */
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
         }
-        .file-item {
-            background: var(--apple-bg-gray);
-            padding: 30px;
+
+        .dashboard-card {
+            background: #fff;
             border-radius: var(--radius-card);
-            text-align: center;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            box-sizing: border-box;
-            transition: transform 0.3s ease;
-        }
-        .file-item:hover { transform: translateY(-5px); }
-        
-        .file-description {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-            color: var(--apple-text-main);
-        }
-        .file-info {
-            font-size: 14px;
-            color: var(--apple-text-secondary);
-            margin-bottom: 25px;
-            flex-grow: 1;
         }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 40px 0;
-            border-top: 1px solid #d2d2d7;
-            color: var(--apple-text-secondary);
-            font-size: 12px;
-        }
+        /* Left Side: Instructions */
+        .instruction-step { margin-bottom: 20px; }
+        .step-title { font-size: 14px; text-transform: uppercase; color: var(--apple-text-secondary); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 8px; display: block; }
+        .step-content { font-size: 17px; font-weight: 600; color: var(--apple-text-main); margin: 0; }
         
-        .contact-info h3 { font-size: 24px; margin-bottom: 15px; }
-        .contact-info a { color: var(--apple-blue); text-decoration: none; }
+        .copilot-btn {
+            display: block;
+            background: #000; /* Black like Apple generic buttons */
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .copilot-btn:hover { transform: scale(1.02); background: #333; }
+
+        .tip-box {
+            background: #fff5e6; /* Soft Orange */
+            border-left: 4px solid #ff9500;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: auto; /* Push to bottom */
+            line-height: 1.4;
+        }
+
+        /* Right Side: Activity Links */
+        .activity-link {
+            display: flex;
+            align-items: center;
+            background: var(--apple-bg-page);
+            padding: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--apple-text-main);
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .activity-link:hover { background: #fff; border-color: var(--apple-blue); box-shadow: 0 2px 10px rgba(0,113,227,0.1); transform: translateX(5px); }
+        .activity-icon { font-size: 24px; margin-right: 15px; }
+        .activity-info strong { display: block; font-size: 16px; }
+        .activity-info span { font-size: 12px; color: var(--apple-text-secondary); font-family: 'SF Mono', monospace; }
+
+        /* --- Accordions --- */
+        .card { background-color: var(--apple-bg-card); padding: 40px; border-radius: var(--radius-card); margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        details { border-bottom: 1px solid #d2d2d7; margin-bottom: 0; transition: all 0.3s ease; }
+        details:last-child { border-bottom: none; }
+        summary { padding: 20px 5px; cursor: pointer; font-weight: 500; font-size: 19px; color: var(--apple-text-main); list-style: none; display: flex; justify-content: space-between; outline: none; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 20px; color: #86868b; transition: transform 0.2s; }
+        details[open] summary::after { content: '−'; color: var(--apple-blue); }
+        details[open] summary { color: var(--apple-blue); }
+        .details-content { padding: 10px 5px 40px 5px; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Prompts --- */
+        .prompt-box { background-color: var(--apple-bg-page); color: var(--apple-text-main); padding: 20px; margin: 15px 0; border-radius: 12px; font-family: "SF Mono", monospace; font-size: 14px; line-height: 1.6; white-space: pre-wrap; border-left: 4px solid var(--apple-blue); }
+        .exercise-application { font-size: 15px; color: var(--apple-text-secondary); margin-bottom: 15px; font-weight: 500; }
+
+        /* --- Buttons --- */
+        .btn-copy { background-color: #e5e5ea; color: black; font-size: 13px; padding: 8px 16px; border-radius: 99px; border: none; cursor: pointer; font-weight: 600; }
+        .btn-copy:hover { background-color: #d1d1d6; }
+        
+        /* --- Download Grid --- */
+        .file-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .file-item { background: var(--apple-bg-page); padding: 25px; border-radius: 16px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s; }
+        .file-item:hover { transform: translateY(-3px); }
+        .btn-download { background-color: var(--apple-blue); color: white; padding: 10px 20px; border-radius: 99px; text-decoration: none; font-weight: 500; font-size: 14px; display: inline-block; margin-top: 15px; }
+        .btn-download:hover { background-color: var(--apple-blue-hover); }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
             h1 { font-size: 36px; }
-            .subtitle { font-size: 20px; }
-            .card { padding: 25px; }
-            summary { font-size: 17px; }
+            .card { padding: 20px; }
         }
     </style>
     <script>
@@ -305,8 +170,8 @@
             navigator.clipboard.writeText(promptText).then(() => {
                 const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
                 const originalText = button.innerText;
-                button.innerText = "Copied";
-                button.style.backgroundColor = "#34c759"; // Apple Green
+                button.innerText = "Copied ✓";
+                button.style.backgroundColor = "#34c759"; 
                 button.style.color = "white";
                 setTimeout(() => {
                     button.innerText = originalText;
@@ -321,81 +186,89 @@
 
     <nav class="quick-nav">
         <div style="max-width: 980px; margin: 0 auto; display: flex; justify-content: center;">
+            <a href="#dashboard">Start Here</a>
             <a href="#exercises">Exercises</a>
             <a href="#downloads">Downloads</a>
             <a href="#prompts">Sample Prompts</a>
-            <a href="#resources">Resources</a>
         </div>
     </nav>
 
     <div class="container">
         <header>
-            <h1>The Matts Workshop Resources</h1>
+            <h1>The Matts Workshop</h1>
             <div class="subtitle">Digital Productivity & AI in the Workplace</div>
         </header>
         
-        <div class="login-hint">
-            <p style="margin: 0 0 5px 0; font-weight: 600; color: var(--apple-text-main);">Getting Started</p>
-            <p style="margin: 0;">Log in to <a href="https://m365copilot.com/" target="_blank">Microsoft Copilot</a> using your work account. Start a new chat for each exercise to maintain context.</p>
-        </div>
-        
-        <div id="activities" class="card">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2>Workshop Activity Links</h2>
-                <p style="color: var(--apple-text-secondary);">Quick access to the interactive tools for today's session.</p>
-            </div>
+        <div id="dashboard" class="dashboard-grid">
             
-            <div class="file-grid">
-                <div class="file-item">
-                    <div>
-                        <span class="file-description" style="font-size: 20px;">👥 AI SWOT Analysis</span>
-                        <div class="file-info">
-                            Complete this interactive exercise in pairs.<br>
-                            <span style="font-family: 'SF Mono', monospace; background: #e5e5ea; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #333; margin-top:5px; display:inline-block;">swot.html</span>
-                        </div>
-                    </div>
-                    <a href="swot.html" target="_blank" class="btn btn-download">Open SWOT</a>
+            <div class="dashboard-card">
+                <div class="instruction-step">
+                    <span class="step-title">Step 1: Launch Tool</span>
+                    <p class="step-content">Log in to Microsoft Copilot with your work account to ensure data safety.</p>
+                    <a href="https://m365copilot.com/" target="_blank" class="copilot-btn">Open Microsoft Copilot ↗</a>
                 </div>
                 
-                <div class="file-item">
-                    <div>
-                        <span class="file-description" style="font-size: 20px;">⚡ AI Discovery Sprint</span>
-                        <div class="file-info">
-                            Find your use cases (5-minute timed sprint).<br>
-                            <span style="font-family: 'SF Mono', monospace; background: #e5e5ea; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #333; margin-top:5px; display:inline-block;">sprint.html</span>
-                        </div>
-                    </div>
-                    <a href="sprint.html" target="_blank" class="btn btn-download">Start Sprint</a>
+                <div class="instruction-step">
+                    <span class="step-title">Step 2: Select Activity</span>
+                    <p class="step-content" style="font-weight: 400; font-size: 15px;">Choose an interactive tool from the right, or scroll down for the prompt exercises.</p>
                 </div>
+
+                <div class="tip-box">
+                    <strong>💡 Important Tip:</strong><br>
+                    Start a <strong>New Chat</strong> for every single exercise. If you don't, Copilot gets confused by previous context!
+                </div>
+            </div>
+
+            <div class="dashboard-card" style="background-color: #f5f5f7; border: none;">
+                <h3 style="margin-top: 0; margin-bottom: 15px; color: var(--apple-text-secondary); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Activities</h3>
                 
-                <div class="file-item">
-                    <div>
-                        <span class="file-description" style="font-size: 20px;">📚 100 Use Cases</span>
-                        <div class="file-info">
-                            Browse the full library of prompts [Optional].<br>
-                            <span style="font-family: 'SF Mono', monospace; background: #e5e5ea; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #333; margin-top:5px; display:inline-block;">usagecases.html</span>
-                        </div>
+                <a href="swot.html" target="_blank" class="activity-link">
+                    <div class="activity-icon">👥</div>
+                    <div class="activity-info">
+                        <strong>AI SWOT Analysis</strong>
+                        <span>swot.html • Pair Work</span>
                     </div>
-                    <a href="usagecases.html" target="_blank" class="btn btn-download" style="background-color: #86868b;">Browse List</a>
+                </a>
+
+                <a href="sprint.html" target="_blank" class="activity-link">
+                    <div class="activity-icon">⚡</div>
+                    <div class="activity-info">
+                        <strong>Discovery Sprint</strong>
+                        <span>sprint.html • 5 Min Timer</span>
+                    </div>
+                </a>
+
+                <a href="usagecases.html" target="_blank" class="activity-link">
+                    <div class="activity-icon">📚</div>
+                    <div class="activity-info">
+                        <strong>100 AI Use Cases</strong>
+                        <span>usagecases.html • Browse All</span>
+                    </div>
+                </a>
+                
+                <div style="text-align: center; margin-top: 20px; color: var(--apple-text-secondary); font-size: 13px;">
+                    👇 Scroll down for Copy/Paste Prompts
                 </div>
             </div>
         </div>
         
         <div id="exercises" class="card">
             <div style="text-align: center; margin-bottom: 40px;">
-                <h2>AI Copilot Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">Try these practical exercises to enhance your workplace expertise with AI tools. You can copy and paste these prompts into Copilot (or just type them in). These techniques will help you learn progressively, extract actionable insights, and challenge your thinking.</p>
+                <h2>Copy & Paste Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
+                    Tap an exercise below to reveal the prompt. Copy it, paste it into Copilot, and see the results. Remember to reset your chat after each one!
+                </p>
             </div>
             
             <details>
                 <summary>Exercise 1: Explain it like I am 5 (ELI5)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Perfect for learning new technical skills, understanding complex processes, or preparing to explain difficult concepts to colleagues with different expertise levels.
+                        <strong>Application:</strong> Quickly understand complex topics or prepare simple explanations for others.
                     </div>
                     <div class="prompt-box" id="progressive-learning">"Teach me [TOPIC] like I am 5 (ELI5)"</div>
-                    <button onclick="copyToClipboard('progressive-learning')" class="btn btn-copy">Copy Prompt</button>
-                    <p style="margin-top:15px; font-size:14px; color:var(--apple-text-secondary);"><em>Replace [TOPIC] with any subject you need to learn, such as "cloud computing," "tennis," "genetics," "project management," etc.</em></p>
+                    <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Replace [TOPIC] with: "cloud computing", "quantum physics", "project management", etc.</em></p>
                 </div>
             </details>
 
@@ -403,99 +276,73 @@
                 <summary>Exercise 2: Roleplay for Difficult Conversations</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Perfect for practicing difficult conversations with colleagues, customers, or stakeholders. Use this to rehearse performance reviews, conflict resolution, customer complaints, or any challenging interpersonal scenario before the real conversation.
+                        <strong>Application:</strong> Rehearse performance reviews, client complaints, or conflict resolution in a safe space.
                     </div>
                     <div class="prompt-box" id="roleplay-conversation">"Roleplay: You're Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats (Knox, Missy, Phoebe). I'm a witty cat owner trying to calm you down and win you over. Stay in character and wait for my replies."</div>
-                    <button onclick="copyToClipboard('roleplay-conversation')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin-top: 20px; font-size: 14px; color: var(--apple-text-secondary);">
-                        <p><strong>Workplace Examples:</strong></p>
-                        <p><strong>Customer Service:</strong> "You're an upset customer whose order was delivered late. I'm a customer service representative trying to resolve the issue and retain your business."</p>
-                        <p><strong>Team Management:</strong> "You're a team member who's consistently missing deadlines. I'm your manager conducting a performance conversation to understand the issues and find solutions."</p>
-                    </div>
+                    <button onclick="copyToClipboard('roleplay-conversation')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
             <details>
-                <summary>Exercise 3: Devil's Advocate - Uncovering Blind Spots</summary>
+                <summary>Exercise 3: Devil's Advocate (Blind Spots)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Ideal for testing the robustness of proposals, plans, or decisions before finalizing them. Helps identify risks and alternatives you might not have considered.
+                        <strong>Application:</strong> Stress-test your proposals, decisions, or emails before sending them.
                     </div>
                     <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
-                    <button onclick="copyToClipboard('devils-advocate')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
                     
-                    <p style="margin-top: 20px; font-size: 15px; font-weight: 600;">Follow-up Prompts (pick 2-3):</p>
+                    <p style="margin-top: 20px; font-size: 14px; font-weight: 600;">Follow-up Questions:</p>
                     <div class="prompt-box" id="devils-followup1">"What important counterarguments am I missing?"</div>
-                    <button onclick="copyToClipboard('devils-followup1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div class="prompt-box" id="devils-followup2">"What assumptions am I making that could be questioned?"</div>
-                    <button onclick="copyToClipboard('devils-followup2')" class="btn btn-copy">Copy Prompt</button>
-
-                    <div class="prompt-box" id="devils-followup3">"What alternative approaches should I consider?"</div>
-                    <button onclick="copyToClipboard('devils-followup3')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div class="prompt-box" id="devils-followup4">"What skills or resources might I need that I haven't considered?"</div>
-                    <button onclick="copyToClipboard('devils-followup4')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div class="prompt-box" id="devils-followup5">"How might different stakeholders view this differently?"</div>
-                    <button onclick="copyToClipboard('devils-followup5')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('devils-followup1')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 4: Professional Persona with Role Prompting</summary>
+                <summary>Exercise 4: Professional Persona (Role Prompting)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Use role prompting to draft emails or documents from different professional perspectives. This helps when communicating with various stakeholders who have different concerns and information needs.
+                        <strong>Application:</strong> Tailor communication tone for specific audiences (Technical vs Executive vs Customer).
                     </div>
                     <div class="prompt-box" id="role-prompt-medical">"For a script: You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."</div>
-                    <button onclick="copyToClipboard('role-prompt-medical')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('role-prompt-medical')" class="btn-copy">Copy Prompt</button>
                     
                     <div class="prompt-box" id="role-prompt-comedian">"For a script: You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."</div>
-                    <button onclick="copyToClipboard('role-prompt-comedian')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('role-prompt-comedian')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
             <details>
-                <summary>Exercise 5: Format: Structure</summary>
+                <summary>Exercise 5: Format & Structure</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Perfect for creating structured documents, reports, or data presentations that follow specific formats required by your organisation.
+                        <strong>Application:</strong> Force AI to output exactly what you need (Table, JSON, SOP, Email).
                     </div>
-                    
-                    <div class="prompt-box" id="format-prompt1">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-                Write a catchy jingle for your horse-drawn pizza delivery adverts."</div>
-                    <button onclick="copyToClipboard('format-prompt1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div class="prompt-box" id="format-prompt2">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-                Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance."</div>
-                    <button onclick="copyToClipboard('format-prompt2')" class="btn btn-copy">Copy Prompt</button>
                     
                     <div class="prompt-box" id="format-prompt3">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
                 Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
-                    <button onclick="copyToClipboard('format-prompt3')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('format-prompt3')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 6: Self-Evaluation of AI Outputs</summary>
+                <summary>Exercise 6: Self-Evaluation (Mark Your Homework)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Useful for getting an initial quality assessment of AI-generated content before you review it yourself. Helps identify potential issues or areas for improvement in first drafts of reports, proposals, or creative content.
+                        <strong>Application:</strong> Get AI to critique its own work to improve quality before you review it.
                     </div>
                     <div class="prompt-box" id="evaluation-prompt">"I need a name for a new pensioner dating app, provide five examples please.
 For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
 Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."</div>
-                    <button onclick="copyToClipboard('evaluation-prompt')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('evaluation-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Exercise 7: Prompt Chaining for Comprehensive Results</summary>
+                <summary>Exercise 7: Prompt Chaining</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Ideal for complex workplace tasks where you need specific expertise, tone, constraints and output format all aligned. This approach minimizes back-and-forth by giving the AI complete instructions in one go.
+                        <strong>Application:</strong> Combine Role, Tone, Constraints, and Format into one "Super Prompt".
                     </div>
                     <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
                 Role: Young consumers (15-25).
@@ -503,28 +350,22 @@ Score each example on a 1-10 scale for Memorability, Distinctiveness and Global 
                 Constraint: Avoid existing UK product names.
                 Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
                 Examples: CitrusBurst, AquaFizz, SolarPop."</div>
-                    <button onclick="copyToClipboard('prompt-chain')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>AI Usage Case #71: AI Meeting Notes</summary>
+                <summary>Usage Case: AI Meeting Notes</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Workplace Application:</strong> Save hours of manual note-taking and ensure nothing important is missed. Perfect for team meetings, client calls, training sessions, or any discussion where you need to distribute clear action items and decisions to stakeholders.
-                    </div>
                     <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
 [INSERT TRANSCRIPT HERE]"</div>
-                    <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>AI Usage Case: Insights from Excel Data</summary>
+                <summary>Usage Case: Excel Data Analysis</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                         <strong>Workplace Application:</strong> Perfect for analysing survey results, customer feedback, employee responses, sales data, or any structured dataset where you need to quickly identify patterns and make data-driven decisions. Particularly useful when you have free-text responses that need interpretation.
-                    </div>
                     <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
 
 PROVIDE:
@@ -533,16 +374,13 @@ PROVIDE:
 3. TOP INSIGHTS (3-5 interesting findings)
 
 Present in clear business language."</div>
-                    <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>AI Usage Case: Turn Free Text into Categories</summary>
+                <summary>Usage Case: Text Categorisation</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                         <strong>Workplace Application:</strong> Essential for processing survey feedback, customer complaints, employee suggestions, or any situation where you have free-text responses that need to be sorted into categories for reporting or analysis. Saves hours of manual classification work.
-                    </div>
                     <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
 
 Add a new column named 'Category'.
@@ -551,52 +389,21 @@ Classify each row into exactly one of these specific categories:
 'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
 
 If the feedback doesn't fit these, label it 'Other'."</div>
-                    <button onclick="copyToClipboard('categorisation-prompt')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>AI Hacks - MegaDoc (Context Booster)</summary>
+                <summary>AI Hack: MegaDoc (Context Booster)</summary>
                 <div class="details-content">
                     <div class="exercise-application">
-                         <strong>Concept:</strong> Stop typing the same background info. Create a simple Word doc with your org's specific context to copy-paste into prompts.
+                         <strong>Concept:</strong> Stop typing background info repeatedly. Create a "MegaDoc" with your Acronyms, Style Guide, Key Facts, and Project Overview.
                     </div>
-                    
-                    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
-                        Without help, AI will guess what your acronyms mean and write in a generic, robotic tone. A "MegaDoc" solves this by giving the AI immediate situational awareness.
-                    </p>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 25px;">
-                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 28px; margin-bottom: 10px;">🔤</div>
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Acronyms</strong>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Define your internal language (e.g. "DCG = Division of Cancer & Genetics")</p>
-                        </div>
-                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 28px; margin-bottom: 10px;">✒️</div>
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Style Guide</strong>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Set the tone: "Formal but warm," "Use UK English," "Use bullet points"</p>
-                        </div>
-                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 28px; margin-bottom: 10px;">📋</div>
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Key Facts</strong>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Boilerplate info, key personnel names, and standard operating procedures</p>
-                        </div>
-                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 28px; margin-bottom: 10px;">🚀</div>
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Project Overview</strong>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Goals, status, and blockers. Give the AI immediate situational awareness</p>
-                        </div>
-                    </div>
-                    
-                    <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Create your own today:</p>
-                    <p style="font-size: 14px; margin-top: 0; margin-bottom: 15px;">Open a blank document and list your top 10 acronyms and one Project Snapshot. The next time you prompt, paste it in to see the difference immediately.</p>
-                    
                     <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
 [PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
 
 Based on this context, draft an update email to the team about [Your Topic]..."</div>
-                    <button onclick="copyToClipboard('megadoc-prompt')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
         </div>
@@ -604,195 +411,65 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
         <div id="downloads" class="card">
             <div style="text-align: center;">
                 <h2>Workshop Files</h2>
-                <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Welcome to our workshop resource page. Below you'll find all the files and some of the prompts needed for today's session. Simply click the download buttons to save the files to your computer.</p>
+                <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Data files needed for the analysis exercises.</p>
             </div>
             
             <div class="file-grid">
                 <div class="file-item">
                     <div>
-                        <span class="file-description">Marketing & Sales Data</span>
-                        <div class="file-info">Excel spreadsheet with sample marketing and sales data for analysis exercises</div>
+                        <span class="file-description">Marketing Data</span>
+                        <div class="file-info">Excel (.xlsx)</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="btn btn-download">Download Excel File</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="btn-download">Download</a>
                 </div>
                 
                 <div class="file-item">
                     <div>
                         <span class="file-description">REF2021 Results</span>
-                        <div class="file-info">Research Excellence Framework 2021 results for Cardiff University</div>
+                        <div class="file-info">Excel (.xlsx)</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="btn btn-download">Download Excel File</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="btn-download">Download</a>
                 </div>
                 
                 <div class="file-item">
                     <div>
-                        <span class="file-description">Shopping Information</span>
-                        <div class="file-info">Sample shopping information document (PDF format)</div>
+                        <span class="file-description">Shopping Info</span>
+                        <div class="file-info">Document (.pdf)</div>
                     </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="btn btn-download">Download PDF</a>
+                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="btn-download">Download</a>
                 </div>
             </div>
         </div>
         
         <div id="prompts" class="card">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h2>Sample AI Prompts</h2>
-                <p style="color: var(--apple-text-secondary);">Below are categorized example prompts you can use with Microsoft Copilot. These prompts demonstrate how to effectively interact with AI for various productivity tasks. Simply click the "Copy" button to copy a prompt to your clipboard.</p>
+                <h2>Prompt Library</h2>
+                <p style="color: var(--apple-text-secondary);">Additional templates for your daily work.</p>
             </div>
             
             <details>
-                <summary>Brainstorming & Idea Generation</summary>
+                <summary>Brainstorming & Ideas</summary>
                 <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Initial Idea Development:</div>
                     <div class="prompt-box" id="prompt-brainstorm1">"Help me brainstorm some unique social media post ideas for [type of business]."</div>
-                    <button onclick="copyToClipboard('prompt-brainstorm1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-                    
-                    <div class="file-description" style="font-size: 15px;">Report Structure Development:</div>
-                    <div class="prompt-box" id="prompt-brainstorm2">"Help me brainstorm some key sections for our [type of report]. I need to cover our team's achievements, challenges we faced, and plans for next quarter."</div>
-                    <button onclick="copyToClipboard('prompt-brainstorm2')" class="btn btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('prompt-brainstorm1')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
                 <summary>Role-Based Communication</summary>
                 <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Professional Role Simulation:</div>
-                    <div class="prompt-box" id="prompt-role1">"You are a [type of professional, e.g., medical professional, financial analyst, HR specialist]. Reply to the statement '[insert your specific question or statement]'."</div>
-                    <button onclick="copyToClipboard('prompt-role1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Email Drafting with Role Perspective:</div>
-                    <div class="prompt-box" id="prompt-role2">"You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic, e.g., our software deployment delay] to [audience, e.g., our development team], focusing on [specific aspects, e.g., technical challenges and next steps]."</div>
-                    <button onclick="copyToClipboard('prompt-role2')" class="btn btn-copy">Copy Prompt</button>
+                    <div class="prompt-box" id="prompt-role2">"You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic] to [audience], focusing on [specific aspects]."</div>
+                    <button onclick="copyToClipboard('prompt-role2')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
             
             <details>
-                <summary>Simplification & Explanation</summary>
+                <summary>Data Analysis</summary>
                 <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Basic ELI5 (Explain Like I'm Five):</div>
-                    <div class="prompt-box" id="prompt-eli5-1">"Explain [topic] like I'm five."</div>
-                    <button onclick="copyToClipboard('prompt-eli5-1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-                    
-                    <div class="file-description" style="font-size: 15px;">Interactive ELI5 with Comprehension Check:</div>
-                    <div class="prompt-box" id="prompt-eli5-2">"Explain [specific workplace process or concept] like I'm five years old. After explaining, ask me questions to check my understanding and help me learn more."</div>
-                    <button onclick="copyToClipboard('prompt-eli5-2')" class="btn btn-copy">Copy Prompt</button>
-
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-
-                    <div class="file-description" style="font-size: 15px;">Multi-Level Explanation:</div>
-                    <div class="prompt-box" id="prompt-eli5-3">"Explain [topic] with increasing complexity in three paragraphs - first for a beginner, then for someone with basic knowledge, and finally for a colleague with technical understanding."</div>
-                    <button onclick="copyToClipboard('prompt-eli5-3')" class="btn btn-copy">Copy Prompt</button>
+                    <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel.</div>
+                    <button onclick="copyToClipboard('prompt1')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
-            <details>
-                <summary>Data Analysis Prompts</summary>
-                <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Basic Marketing ROI Calculation:</div>
-                    <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel. Make it easy to understand for someone who isn't a finance expert!</div>
-                    <button onclick="copyToClipboard('prompt1')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-                    
-                    <div class="file-description" style="font-size: 15px;">Dataset Analysis & Insights:</div>
-                    <div class="prompt-box" id="prompt2">Analyse this [type of] dataset and identify:
-* 3 unexpected findings that deserve attention
-* Critical areas for improvement based on the metrics
-* Key recommendations supported by the data
-
-Present findings in clear, concise bullet points suitable for an executive summary. Don't make things up!</div>
-                    <button onclick="copyToClipboard('prompt2')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-
-                    <div class="file-description" style="font-size: 15px;">Data Extraction & Conversion:</div>
-                    <div class="prompt-box" id="prompt3">Please create an Excel file from this [document type] with columns for [column 1] and [column 2]</div>
-                    <button onclick="copyToClipboard('prompt3')" class="btn btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Automation & Workflow Prompts</summary>
-                <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Excel Macro Creation:</div>
-                    <div class="prompt-box" id="prompt4">I need a macro for my [type] spreadsheet that calculates [specific calculation] from our [data types]. Include a chart showing [visualization elements] and conditional formatting to show when [metric] is [condition] e.g. [example].
-
-Can you output a new Excel Macro-Enabled Workbook (.xlsm), the team has limited Excel expertise</div>
-                    <button onclick="copyToClipboard('prompt4')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-
-                    <div class="file-description" style="font-size: 15px;">Email Template Generator:</div>
-                    <div class="prompt-box" id="prompt-email">Create 3 reusable email templates for [specific scenario e.g., following up with clients who haven't responded]. Each template should have a slightly different tone (professional, friendly, and urgent). Include placeholder text for personalization and clear subject lines for each version.</div>
-                    <button onclick="copyToClipboard('prompt-email')" class="btn btn-copy">Copy Prompt</button>
-
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-
-                    <div class="file-description" style="font-size: 15px;">Process Documentation Creator:</div>
-                    <div class="prompt-box" id="prompt-process">Create a step-by-step standard operating procedure (SOP) for [specific process]. Include the following sections: Purpose, Scope, Responsibilities, Procedure Steps, Required Resources, and Quality Control. Format it in a way that's easy to follow with numbered steps and bullet points where appropriate.</div>
-                    <button onclick="copyToClipboard('prompt-process')" class="btn btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Content Summarization</summary>
-                <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Meeting Notes Summarization:</div>
-                    <div class="prompt-box" id="prompt5">Please summarize the following meeting transcript. Focus on the key points discussed, decisions made, action items, and any important deadlines mentioned. Ensure the summary is clear, concise, and organized. The summary should be no longer than 200 words: [INSERT TRANSCRIPT HERE]</div>
-                    <button onclick="copyToClipboard('prompt5')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-                    
-                    <div class="file-description" style="font-size: 15px;">Document to FAQ Conversion:</div>
-                    <div class="prompt-box" id="prompt9">Convert this document into a comprehensive FAQ format. Create 10-15 frequently asked questions based on the most important information in the text. For each question, provide a clear, concise answer that captures the key points. Organize questions from basic to advanced topics. [INSERT DOCUMENT TEXT HERE]</div>
-                    <button onclick="copyToClipboard('prompt9')" class="btn btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Format Control & Structure</summary>
-                <div class="details-content">
-                    <div class="file-description" style="font-size: 15px; margin-top:10px;">Structured Table Format:</div>
-                    <div class="prompt-box" id="prompt8">Return a table about [topic] with [number] columns, titled [column 1 name], [column 2 name], etc. and fill in [number] examples for each.</div>
-                    <button onclick="copyToClipboard('prompt8')" class="btn btn-copy">Copy Prompt</button>
-                    
-                    <div style="margin: 20px 0; border-top: 1px solid #eee;"></div>
-                    
-                    <div class="file-description" style="font-size: 15px;">Advanced Prompt Engineering Example:</div>
-                    <div class="prompt-box" id="prompt7">Take the Role of a [demographic details] What would be the name of a [product type] that might attract you? The tone should be [tone description] and not sound too [negative quality to avoid]. The name should not sound like any existing products in [market/region]. Provide [number] examples in a [number]-column array. Column one should contain the name. Column two should be what you rate that suggestion in order of one to ten, column three should explain your reasoning. Some examples would be [example 1], [example 2], [example 3].</div>
-                    <button onclick="copyToClipboard('prompt7')" class="btn btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-        </div>
-    </div>
-    
-    <section id="resources" class="container" style="margin-bottom: 60px;">
-        <div class="card" style="text-align: center; background-color: white; border: none; box-shadow: none;">
-            <h2>Workshop Resources & Guides</h2>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 30px;">Access our comprehensive materials for implementing AI in your workplace</p>
-            <div class="nav-buttons">
-                <a href="index.html" class="nav-button btn">Main Page</a>
-                <a href="responsible.html" class="nav-button btn">Responsible AI - Individual</a>
-                <a href="responsibleOrg.html" class="nav-button btn">Responsible AI - Organisation</a>
-            </div>
-        </div>
-    </section>
-    
-    <div class="container">
-        <div class="contact-info" style="text-align: center; padding: 40px;">
-            <h3 style="color: var(--apple-text-main);">Contact Information</h3>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 10px;">If you have any questions about the workshop or materials, please feel free to contact us:</p>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">
-                Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a><br>
-                Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a>
-            </p>
-            <p style="font-size: 14px; color: var(--apple-text-secondary);"><strong>Need help with AI upskilling in your workplace?</strong> Contact us to discuss how we can help your team get started with AI in a responsible way.</p>
         </div>
     </div>
     
