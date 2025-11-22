@@ -4,288 +4,394 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Matts - Responsible AI Use</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <style>
-        /* Base styles */
+        /* --- Apple Design System Variables --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-main: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --radius-card: 24px;
+            --radius-btn: 980px;
+            --shadow-soft: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.06);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- Base & Reset --- */
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-stack);
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #333;
-            background-color: #f9f9f9;
+            padding: 0;
+            color: var(--apple-text-main);
+            background-color: var(--apple-bg-page);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Container styles */
         .container {
-            max-width: 800px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 40px 24px;
         }
 
-        /* Header styles */
-        header {
-            background-color: #1e88e5;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+        a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { text-decoration: underline; }
+
+        /* --- Navigation --- */
+        .quick-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             text-align: center;
+            padding: 15px 0;
+        }
+        .quick-nav a {
+            margin: 0 15px;
+            color: var(--apple-text-main);
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        .quick-nav a:hover { opacity: 1; color: var(--apple-blue); }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
         }
 
         h1 {
-            margin: 0;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0 0 12px 0;
+            color: var(--apple-text-main);
+            line-height: 1.1;
         }
 
         .subtitle {
-            font-style: italic;
-            margin-top: 5px;
-            color: #e3f2fd;
+            font-size: 24px;
+            color: var(--apple-text-secondary);
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
-        /* Section styles */
-        .intro-section, .principles-section, .contact-info {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* --- Cards & Sections --- */
+        section { margin-bottom: 40px; }
+
+        .card {
+            background-color: var(--apple-bg-card);
+            padding: 40px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        /* Heading styles */
-        h3 {
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 5px;
-            color: #1e88e5;
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            color: var(--apple-text-main);
         }
 
-        /* Principle items */
-        .principle-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        .intro-text {
+            font-size: 17px;
+            color: var(--apple-text-main);
+            max-width: 800px;
+            margin: 0 auto 1.5em;
         }
 
-        .principle-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        /* --- Principles Grid (New Layout) --- */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
         }
 
-        .principle-title {
-            color: #1e88e5;
-            font-weight: bold;
-            font-size: 18px;
+        .principle-card {
+            background: var(--apple-bg-card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .p-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--apple-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 10px;
         }
 
-        /* List styles */
-        .principle-list {
-            list-style-type: none;
+        .p-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: var(--apple-blue);
+        }
+
+        .p-list {
+            margin: 0;
             padding-left: 0;
+            list-style: none;
         }
 
-        .principle-list li {
-            padding: 8px 0 8px 25px;
+        .p-list li {
             position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: var(--apple-text-main);
         }
 
-        .principle-list li:before {
+        .p-list li::before {
             content: "•";
-            color: #2e7d32;
-            font-weight: bold;
+            color: var(--apple-blue);
             position: absolute;
             left: 0;
+            font-weight: bold;
         }
 
-        /* Navigation section */
-        .navigation {
-            padding: 2rem 0;
+        /* --- Contact Section --- */
+        .contact-box {
             text-align: center;
+            background: #e8f2ff; /* Very light blue/gray tint */
+            padding: 40px;
+            border-radius: var(--radius-card);
+            margin-top: 40px;
         }
 
+        .contact-info h3 { margin-bottom: 15px; font-size: 24px; }
+        .email-link { font-weight: 600; margin: 0 10px; display: inline-block; }
+
+        /* --- Navigation Buttons --- */
         .nav-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        /* Button styles */
-        .nav-button, .back-button {
-            display: inline-block;
-            background-color: #2e7d32;
+        .btn-nav {
+            background-color: #ffffff;
+            color: var(--apple-blue);
+            padding: 12px 24px;
+            border-radius: var(--radius-btn);
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--apple-blue);
             color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,113,227,0.2);
         }
 
-        .nav-button:hover, .back-button:hover {
-            background-color: #1b5e20;
-        }
-
-        /* Contact info styles */
-        .email {
-            color: #1e88e5;
-            text-decoration: none;
-        }
-
-        .email:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer styles */
+        /* Footer */
         footer {
             text-align: center;
+            padding: 60px 0;
             margin-top: 40px;
-            color: #666;
-            font-size: 0.9em;
+            border-top: 1px solid #e5e5ea;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-            }
+            h1 { font-size: 36px; }
+            .principles-grid { grid-template-columns: 1fr; }
+            .card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
+
+    <nav class="quick-nav">
+        <div style="max-width: 980px; margin: 0 auto; display: flex; justify-content: center;">
+            <a href="index.html">Main Page</a>
+            <a href="workshop.html">Workshop</a>
+            <a href="responsibleOrg.html">Organisation</a>
+        </div>
+    </nav>
+
     <header>
-        <h1>'The Matts' Responsible AI Use Guiding Principles</h1>
-        <div class="subtitle">Individual Level for the Workplace</div>
-    </header>
-   
-    <div class="intro-section">
-        <h2>Introduction</h2>
-        <p>Artificial Intelligence (AI) chatbots and tools represent an advancement in technology that can enhance our work processes and productivity. However, their effective use requires a thoughtful, people-centred approach at both organisational and individual levels.</p>
-        <p>This document outlines our personal principles for responsible AI adoption and usage in the workplace, focusing on keeping humans at the center of AI implementation. These are not official organisational guidelines but rather our perspective on how to approach AI ethically and productively.</p>
-    </div>
-    
-    <div class="principles-section">
-        <h2>Our Personal Values on Responsible AI Use</h2>
-        
-        <div class="principle-item">
-            <div class="principle-title">1. Data Protection and Security</div>
-            <ul class="principle-list">
-                <li>Only use IT-approved AI tools for work tasks (like Microsoft Copilot signed in with Work account)</li>
-                <li>Never input highly sensitive, confidential or private information about individuals into AI tools without explicit IT approval and Data Processing Agreements in place</li>
-                <li>Be cautious with intellectual property and confidential information</li>
-                <li>Consider data security before sharing any work-related content</li>
-                <li>If unsure about data sensitivity, check with your manager or IT team</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">2. Think of AI as Your Assistant</div>
-            <ul class="principle-list">
-                <li>Use AI to enhance your work, not replace your judgement</li>
-                <li>Start with small experiments in non-critical tasks</li>
-                <li>Focus on using AI for routine or repetitive work</li>
-                <li>Keep human oversight for important decisions</li>
-                <li>View AI as a collaborative tool, not a standalone solution</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">3. Choose Tasks Wisely</div>
-            <p>Select tasks that AI tends to be good at:</p>
-            <ul class="principle-list">
-                <li>Drafting initial documents</li>
-                <li>Summarising meeting notes</li>
-                <li>Basic research and information gathering</li>
-                <li>Processing routine data</li>
-                <li>Creating first drafts</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">4. Keep Critical Tasks for Humans</div>
-            <ul class="principle-list">
-                <li>Final decision-making</li>
-                <li>Creative strategy</li>
-                <li>Complex problem-solving</li>
-                <li>Relationship management</li>
-                <li>Critical analysis</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">5. Quality Control is Essential</div>
-            <ul class="principle-list">
-                <li>Always verify AI-generated content</li>
-                <li>Cross-check facts and figures</li>
-                <li>Review for context and accuracy</li>
-                <li>Look for potential biases</li>
-                <li>Make sure the tone is appropriate</li>
-                <li>Keep track of what you've modified</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">6. Improve Productivity</div>
-            <ul class="principle-list">
-                <li>Use AI to reduce digital waste</li>
-                <li>Automate repetitive email responses</li>
-                <li>Organise documents more efficiently</li>
-                <li>Make meetings more productive</li>
-                <li>Focus on effectiveness before efficiency</li>
-                <li>Build in time to learn and experiment</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">7. Professional Responsibility</div>
-            <ul class="principle-list">
-                <li>Document how you're using AI</li>
-                <li>Share successful approaches with colleagues</li>
-                <li>Stay updated on AI capabilities</li>
-                <li>Maintain your core skills</li>
-                <li>Report any concerns about AI use</li>
-                <li>Follow organisational AI policies</li>
-            </ul>
-        </div>
-        
-        <div class="principle-item">
-            <div class="principle-title">8. Before Using AI, Ask Yourself:</div>
-            <ul class="principle-list">
-                <li>Is this an appropriate use of AI?</li>
-                <li>Could this affect others negatively?</li>
-                <li>Am I maintaining professional standards?</li>
-                <li>Does this align with our values?</li>
-                <li>Have I checked the outputs thoroughly?</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>If you have any questions about responsible AI use or need guidance, please feel free to contact us:</p>
-        <p>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="email">mortm@cardiff.ac.uk</a></p>
-        <p>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="email">haydenmj1@cardiff.ac.uk</a></p>
-        <p><strong>Need help with responsible AI adoption in your workplace?</strong> Contact us to discuss how we can help your team implement these principles.</p>
-    </div>
-    
-    <section class="navigation">
         <div class="container">
-            <h2>Workshop Resources & Guides</h2>
-            <p>Access our comprehensive materials for implementing AI in your workplace</p>
-            
-            <div class="nav-buttons">
-                <a href="index.html" class="nav-button">Main Page</a>
-                <a href="workshop.html" class="nav-button">Workshop Materials</a>
-                <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
-            </div>
+            <h1>Responsible AI Use</h1>
+            <div class="subtitle">Guiding Principles for Individuals</div>
         </div>
-    </section>
+    </header>
+    
+    <div class="container">
+        
+        <section class="card" style="text-align: center;">
+            <p class="intro-text">
+                Artificial Intelligence (AI) chatbots and tools represent an advancement in technology that can enhance our work processes and productivity. However, their effective use requires a thoughtful, people-centred approach.
+            </p>
+            <p class="intro-text" style="margin-bottom: 0;">
+                This document outlines our personal principles for responsible AI adoption, focusing on keeping humans at the center of implementation. These are our perspectives on ethical and productive approaches.
+            </p>
+        </section>
+        
+        <div class="principles-grid">
+            
+            <div class="principle-card">
+                <span class="p-number">Principle 01</span>
+                <h3 class="p-title">Data Protection & Security</h3>
+                <ul class="p-list">
+                    <li>Only use IT-approved AI tools (e.g., Copilot with Work account).</li>
+                    <li>Never input sensitive, confidential, or private data without approval.</li>
+                    <li>Be cautious with intellectual property.</li>
+                    <li>Consider security before sharing content.</li>
+                    <li>When unsure, ask IT or your manager.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 02</span>
+                <h3 class="p-title">AI as Your Assistant</h3>
+                <ul class="p-list">
+                    <li>Enhance your work, don't replace judgment.</li>
+                    <li>Start with small, non-critical experiments.</li>
+                    <li>Focus on routine or repetitive tasks first.</li>
+                    <li>Maintain human oversight on decisions.</li>
+                    <li>View AI as a collaborative partner.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 03</span>
+                <h3 class="p-title">Choose Tasks Wisely</h3>
+                <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 10px;">AI excels at:</p>
+                <ul class="p-list">
+                    <li>Drafting initial documents.</li>
+                    <li>Summarising meeting notes.</li>
+                    <li>Basic research & info gathering.</li>
+                    <li>Processing routine data.</li>
+                    <li>Creating first drafts.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 04</span>
+                <h3 class="p-title">Keep Critical Tasks Human</h3>
+                <ul class="p-list">
+                    <li>Final decision-making.</li>
+                    <li>Creative strategy & direction.</li>
+                    <li>Complex problem-solving.</li>
+                    <li>Relationship management.</li>
+                    <li>Critical analysis & ethics.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 05</span>
+                <h3 class="p-title">Quality Control is Essential</h3>
+                <ul class="p-list">
+                    <li>Always verify AI outputs.</li>
+                    <li>Cross-check facts and figures.</li>
+                    <li>Review for context and tone.</li>
+                    <li>Check for potential biases.</li>
+                    <li>Track your edits and modifications.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 06</span>
+                <h3 class="p-title">Improve Productivity</h3>
+                <ul class="p-list">
+                    <li>Reduce digital waste & admin.</li>
+                    <li>Automate repetitive responses.</li>
+                    <li>Organise documents efficiently.</li>
+                    <li>Make meetings more productive.</li>
+                    <li>Focus on effectiveness first.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <span class="p-number">Principle 07</span>
+                <h3 class="p-title">Professional Responsibility</h3>
+                <ul class="p-list">
+                    <li>Document your AI usage.</li>
+                    <li>Share successes with colleagues.</li>
+                    <li>Stay updated on capabilities.</li>
+                    <li>Maintain your core skills.</li>
+                    <li>Report concerns immediately.</li>
+                </ul>
+            </div>
+
+            <div class="principle-card" style="background-color: #e8f2ff; border: 1px solid #d0e1f9;">
+                <span class="p-number" style="color: #0055a5;">Checklist</span>
+                <h3 class="p-title" style="color: #0055a5;">Before Using AI:</h3>
+                <ul class="p-list">
+                    <li style="color: #003366;">Is this an appropriate use?</li>
+                    <li style="color: #003366;">Could this affect others negatively?</li>
+                    <li style="color: #003366;">Am I maintaining standards?</li>
+                    <li style="color: #003366;">Does this align with our values?</li>
+                    <li style="color: #003366;">Have I checked the outputs?</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <section style="margin-top: 60px; text-align: center;">
+            <div class="card" style="text-align: center;">
+                <h2>Resources & Guides</h2>
+                <p style="color: var(--apple-text-secondary);">Explore more materials for your AI journey.</p>
+                <div class="nav-buttons">
+                    <a href="index.html" class="btn-nav">Main Page</a>
+                    <a href="workshop.html" class="btn-nav">Workshop Materials</a>
+                    <a href="responsibleOrg.html" class="btn-nav">Organisation Guide</a>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <h3>Contact Information</h3>
+                <p style="margin-bottom: 20px;">Questions? We're here to help.</p>
+                <div>
+                    <a href="mailto:mortm@cardiff.ac.uk" class="email-link">Dr. Matt Mort</a>
+                    <span style="color:#ccc;">|</span>
+                    <a href="mailto:haydenmj1@cardiff.ac.uk" class="email-link">Mr. Matt Hayden</a>
+                </div>
+                <p style="font-size: 14px; color: var(--apple-text-secondary); margin-top: 20px;">
+                    <strong>Need help with adoption?</strong> Contact us to discuss team implementation.
+                </p>
+            </div>
+        </section>
+
+    </div>
     
     <footer>
         <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
     </footer>
+
 </body>
 </html>
