@@ -406,24 +406,20 @@
                     <li>Download the version for your operating system (Windows/Mac/Linux)</li>
                     <li>Install it like any other application</li>
                     <li>Launch the app and click <strong>Set up Local AI</strong> when prompted</li>
-                    <li>That's it! A small AI model (Qwen 3 0.6B) will download automatically</li>
                 </ol>
             </div>
             
-            <div class="success-box">
-                <strong>✓ Installation complete?</strong> Great! Msty has automatically downloaded a small, fast AI model called Qwen 3 0.6B (around 600MB). This tiny model is perfect for learning and responds very quickly. We'll use this for the workshop - just do your best with it!
-            </div>
-            
             <div class="info-box">
-                <strong>Optional: Got an Amazing Machine?</strong>
-                <p>If you have a really powerful laptop (16GB+ RAM and good processing power), you could optionally try Gemma 3 which follows instructions better:</p>
-                <ul>
-                    <li>In Msty Studio, click the <strong>Model Hub</strong> icon on the left sidebar</li>
-                    <li>Search for: <strong>Gemma 3</strong></li>
-                    <li>Click the <strong>Download</strong> button</li>
-                    <li>Once downloaded, select it from the model dropdown at the top of the chat</li>
-                </ul>
-                <p><strong>But honestly, stick with Qwen 3 unless you've got a beast of a machine.</strong> The exercises will still work and you'll learn the concepts!</p>
+                <strong>Recommended: Use Gemma 3</strong>
+                <p>For the best workshop experience, please download <strong>Gemma 3</strong>. This should be your main model for the workshop as it follows instructions much better.</p>
+                
+                <ol>
+                    <li>Click the <strong>Model Hub</strong> icon (left sidebar)</li>
+                    <li>Search for <strong>Gemma 3</strong> and click <strong>Download</strong></li>
+                    <li>Once downloaded, select it from the dropdown menu at the top of your chat</li>
+                </ol>
+
+                <p style="font-size: 13px; color: #86868b; margin-top: 15px; margin-bottom: 0;"><em>Note: You can stick with the default Qwen model if you have an older laptop.</em></p>
             </div>
             
             <p style="color: #86868b; font-size: 13px;"><em>Note: The first time you open Msty Studio, it may ask for permissions - this is normal. Just click "Allow" when prompted.</em></p>
@@ -498,10 +494,6 @@
             <h3>Let's Try It: Explain It Like I'm 5 (ELI5)</h3>
             <p>We're going to ask the same question four different ways to see how system prompts change the AI's personality and response style.</p>
             
-            <div class="warning-box">
-                <strong>Important:</strong> Start a <strong>NEW CHAT</strong> for each part below. This keeps each personality separate and prevents them from mixing together!
-            </div>
-            
             <div class="exercise-item">
                 <div class="exercise-title">Part 1: No System Prompt (Normal Response)</div>
                 <p>Start a fresh chat with NO system prompt. Just ask the question normally:</p>
@@ -560,26 +552,32 @@
                 <p><strong>Try with your own topics:</strong> Replace quantum computing with anything you need to learn - "blockchain," "GDPR regulations," "machine learning," "how mortgages work," etc.</p>
             </div>
             
-            <div class="exercise-item">
-                <div class="exercise-title">🔍 Bonus: Look at a Real-World System Prompt</div>
-                <p>Want to see how professional AI systems use system prompts? Have a look at Microsoft Copilot's actual system prompt:</p>
-                
-                <a href="https://github.com/jujumilk3/leaked-system-prompts/blob/main/microsoft-copilot_20241219.md" target="_blank" class="secondary-button">View Copilot System Prompt</a>
-                
-                <div class="info-box">
-                    <strong>What to notice:</strong>
-                    <ul>
-                        <li><strong>Very detailed:</strong> Commercial AI systems have complex instructions covering many scenarios</li>
-                        <li><strong>Safety guidelines:</strong> Lots of rules about what not to do</li>
-                        <li><strong>Personality traits:</strong> Instructions on tone, helpfulness, and behaviour</li>
-                        <li><strong>Structured sections:</strong> Different parts for different functions</li>
-                    </ul>
-                    <p><strong>Learning point:</strong> Your simple prompts like "You are Gandalf" follow the same principle - you're just keeping it simpler! Professional prompts are longer because they need to handle thousands of different situations, but the core idea is identical: tell the AI who to be and how to behave.</p>
-                </div>
-            </div>
-            
             <div class="warning-box">
                 <strong>Pro tip:</strong> Always start a new chat when switching tasks - it keeps things clean and prevents personalities from mixing. Remember to add length limits to your prompts (like "Keep your answer to 3-4 sentences") to stop the AI rambling!
+            </div>
+        </div>
+
+        <div class="step-section">
+            <div class="step-header">
+                <span class="step-number">3</span>
+                <span class="step-title">Exercise 3: Analyzing a Real-World System Prompt</span>
+            </div>
+            
+            <p>Want to see how professional AI systems use system prompts? Have a look at Microsoft Copilot's actual system prompt.</p>
+            
+            <p style="margin-bottom: 25px;">
+                <a href="https://github.com/jujumilk3/leaked-system-prompts/blob/main/microsoft-copilot_20241219.md" target="_blank" class="secondary-button">View Copilot System Prompt</a>
+            </p>
+            
+            <div class="info-box">
+                <strong>What to notice:</strong>
+                <ul>
+                    <li><strong>Very detailed:</strong> Commercial AI systems have complex instructions covering many scenarios</li>
+                    <li><strong>Safety guidelines:</strong> Lots of rules about what not to do</li>
+                    <li><strong>Personality traits:</strong> Instructions on tone, helpfulness, and behaviour</li>
+                    <li><strong>Structured sections:</strong> Different parts for different functions</li>
+                </ul>
+                <p><strong>Learning point:</strong> Your simple prompts like "You are Gandalf" follow the same principle - you're just keeping it simpler! Professional prompts are longer because they need to handle thousands of different situations, but the core idea is identical: tell the AI who to be and how to behave.</p>
             </div>
         </div>
 
