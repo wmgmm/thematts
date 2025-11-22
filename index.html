@@ -4,254 +4,314 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI in the Workplace with 'The Matts'</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <style>
-        /* Color variables */
+        /* --- Apple Design System Variables --- */
         :root {
-            --primary: #1e88e5;
-            --secondary: #24292e;
-            --accent: #2e7d32;
-            --light: #f6f8fa;
-            --text: #333;
-            --border: #e1e4e8;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-main: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --radius-card: 24px;
+            --radius-btn: 980px;
+            --shadow-soft: 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-hover: 0 12px 30px rgba(0,0,0,0.08);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        
-        /* Base styles */
+
+        /* --- Base & Reset --- */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
+            font-family: var(--font-stack);
+            line-height: 1.5;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            color: var(--apple-text-main);
+            background-color: var(--apple-bg-page);
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Container styles */
+
         .container {
-            max-width: 800px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 24px;
         }
-        
-        /* Header styles */
+
+        a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { text-decoration: underline; }
+
+        /* --- Header --- */
         header {
-            background: var(--primary);
-            color: white;
-            padding: 2rem 0;
             text-align: center;
+            padding: 100px 0 60px;
+            background: linear-gradient(180deg, #fff 0%, var(--apple-bg-page) 100%);
         }
-        
+
         h1 {
-            margin: 0;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0 0 16px 0;
+            color: var(--apple-text-main);
+            line-height: 1.05;
         }
-        
+
         .subtitle {
-            font-style: italic;
-            margin-top: 5px;
-            color: #e3f2fd;
+            font-size: 24px;
+            color: var(--apple-text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            letter-spacing: -0.01em;
         }
-        
-        /* Intro section */
-        .intro {
-            background-color: white;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
+
+        /* --- Section Styles --- */
+        section { padding: 40px 0; }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            color: var(--apple-text-main);
         }
-        
-        .intro h2 {
-            color: var(--primary);
-            margin-top: 0;
+
+        p {
+            font-size: 17px;
+            color: var(--apple-text-main);
+            line-height: 1.6;
+            margin-bottom: 1.5em;
         }
-        
-        /* Values section */
-        .values {
-            padding: 4rem 0;
-            background-color: var(--light);
+
+        /* --- Cards --- */
+        .card {
+            background-color: var(--apple-bg-card);
+            padding: 40px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
-        
+
+        .intro-text {
+            font-size: 19px;
+            font-weight: 400;
+            color: var(--apple-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- Values Grid --- */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 24px;
+            margin-top: 30px;
         }
-        
+
         .value-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background-color: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .value-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
         }
-        
+
         .value-card h3 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            color: var(--apple-text-main);
         }
-        
-        /* Navigation section */
-        .navigation {
-            padding: 2rem 0;
-            text-align: center;
+
+        .value-card p {
+            font-size: 15px;
+            color: var(--apple-text-secondary);
+            margin: 0;
+            line-height: 1.6;
         }
+
+        /* --- Navigation Buttons --- */
+        .nav-section { text-align: center; margin: 40px 0; }
         
         .nav-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 16px;
+            margin-top: 24px;
         }
-        
-        .nav-button {
+
+        .btn-nav {
             display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
+            background-color: #ffffff;
+            color: var(--apple-blue);
+            padding: 14px 30px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            font-size: 15px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
         }
-        
-        .nav-button:hover {
-            background-color: #1b5e20;
+
+        .btn-nav:hover {
+            background-color: var(--apple-blue);
+            color: white;
+            transform: scale(1.02);
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.2);
         }
-        
-        /* Contact section */
-        .contact {
-            background-color: white;
-            padding: 4rem 0;
-            text-align: left;
-        }
-        
+
+        /* --- Contact Grid --- */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 24px;
+            margin-top: 30px;
         }
-        
-        .contact-person {
-            margin-bottom: 2rem;
+
+        .contact-card {
+            background: var(--apple-bg-card);
+            padding: 32px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.02);
         }
-        
+
         .contact-person h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
-        
+
         .contact-link {
             display: block;
-            color: var(--primary);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 15px;
         }
-        
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-        
-        .highlight {
-            font-weight: bold;
-            margin: 2rem 0;
-        }
-        
-        /* Footer styles */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 2rem 0;
+
+        .highlight-box {
+            background: #e8f2ff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 30px;
             text-align: center;
+            color: #004d99;
         }
-        
-        /* Responsive styles */
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 40px;
+            border-top: 1px solid #e5e5ea;
+            color: var(--apple-text-secondary);
+            font-size: 13px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .values-grid, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-            }
+            h1 { font-size: 40px; }
+            .subtitle { font-size: 20px; }
+            .container { padding: 30px 20px; }
+            header { padding: 60px 0 30px; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="container">
-            <h1>AI in the Workplace with 'The Matts'</h1>
-            <div class="subtitle">A human-centric approach to implementing AI in the workplace</div>
+            <h1>AI in the Workplace</h1>
+            <div class="subtitle">A human-centric approach with 'The Matts'</div>
         </div>
     </header>
     
-    <section class="intro">
-        <div class="container">
-            <h2>AI as Your Co-Pilot: Start AI upskilling with "The Matts"</h2>
-            <p>Curious about leveraging AI responsibly in your work or confused and don't know where to start? Join the conversation with Dr Matthew Mort and Matthew Hayden for a practical 'AI in the Workplace' session. Get a taste of how to work alongside AI as a collaborative assistant (co-creation), with a focus on responsible AI use and data governance best practices. The Matts understand that adopting AI is more about mindset than technology. Cut through the hype and start your AI journey with guides who've been exactly where you are.</p>
-        </div>
-    </section>
-    
-    <section class="values">
-        <div class="container">
-            <h2>Our Key Values</h2>
-            <p>Our approach to AI implementation is guided by four core principles that ensure technology serves people—not the other way around.</p>
+    <div class="container">
+        
+        <!-- INTRO SECTION -->
+        <section>
+            <div class="card">
+                <h2>AI as Your Co-Pilot</h2>
+                <p class="intro-text">
+                    Curious about leveraging AI responsibly in your work? Join the conversation with Dr Matthew Mort and Matthew Hayden. Get a taste of how to work alongside AI as a collaborative assistant (co-creation), with a focus on responsible AI use and data governance best practices.
+                </p>
+                <p class="intro-text" style="margin-bottom: 0;">
+                    The Matts understand that adopting AI is more about mindset than technology. Cut through the hype and start your AI journey with guides who've been exactly where you are.
+                </p>
+            </div>
+        </section>
+        
+        <!-- VALUES SECTION -->
+        <section>
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2>Our Core Values</h2>
+                <p style="color: var(--apple-text-secondary);">Guided by four principles that ensure technology serves people—not the other way around.</p>
+            </div>
             
             <div class="values-grid">
                 <div class="value-card">
-                    <h3>Human-Centric Approach</h3>
-                    <p>AI should enhance human work, not replace it. We focus on reducing repetitive tasks and creating more meaningful work experiences whilst keeping humans in control of the technology.</p>
+                    <h3>Human-Centric</h3>
+                    <p>AI should enhance human work, not replace it. We focus on reducing repetitive tasks and creating more meaningful work experiences whilst keeping humans in control.</p>
                 </div>
                 
                 <div class="value-card">
                     <h3>Responsible Use</h3>
-                    <p>Use AI tools ethically and transparently. Always verify AI outputs, protect sensitive data, and maintain appropriate human oversight of automated processes. Be organised and deliberate in your AI adoption.</p>
+                    <p>Use AI tools ethically and transparently. Always verify AI outputs, protect sensitive data, and maintain appropriate human oversight of automated processes.</p>
                 </div>
                 
                 <div class="value-card">
                     <h3>Learn by Doing</h3>
-                    <p>Be curious and run experiments on non-critical tasks. Build confidence through hands-on practice and discover what works best for your specific needs. The best way to learn is by trying and adapting.</p>
+                    <p>Be curious and run experiments on non-critical tasks. Build confidence through hands-on practice and discover what works best for your specific needs.</p>
                 </div>
                 
                 <div class="value-card">
                     <h3>Protect Your Data</h3>
-                    <p>Only use IT-approved AI tools for work tasks. Avoid "shadow AI" (using unauthorised tools) which puts your organisation at risk. Never input sensitive information into public AI tools and be vigilant about data security.</p>
+                    <p>Only use IT-approved AI tools for work tasks. Avoid "shadow AI" and never input sensitive information into public AI tools. Be vigilant about security.</p>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="navigation">
-        <div class="container">
-            <h2>Workshop Resources & Guides</h2>
-            <p>Access our comprehensive materials for implementing AI in your workplace</p>
+        </section>
+        
+        <!-- RESOURCES NAVIGATION (Workshop Link Removed) -->
+        <section class="nav-section">
+            <h2>Resources & Guides</h2>
+            <p style="color: var(--apple-text-secondary);">Access our guides for implementing AI in your workplace.</p>
             
             <div class="nav-buttons">
-                <a href="workshop.html" class="nav-button">Workshop Materials</a>
-                <a href="responsible.html" class="nav-button">Responsible AI - Individual</a>
-                <a href="responsibleOrg.html" class="nav-button">Responsible AI - Organisation</a>
+                <a href="responsible.html" class="btn-nav">Responsible AI - Individual</a>
+                <a href="responsibleOrg.html" class="btn-nav">Responsible AI - Organisation</a>
             </div>
-        </div>
-    </section>
-    
-    <section class="contact">
-        <div class="container">
-            <h2>Contact Information</h2>
-            <p>If you have any questions about responsible AI use or need guidance, please feel free to contact us:</p>
+        </section>
+        
+        <!-- CONTACT SECTION -->
+        <section>
+            <h2 style="text-align: center;">Get in Touch</h2>
+            <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 30px;">Questions about responsible AI or need guidance?</p>
             
             <div class="contact-grid">
-                <div class="contact-person">
+                <div class="contact-card contact-person">
                     <h3>Dr. Matt Mort</h3>
                     <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a>
                     <a href="https://profiles.cardiff.ac.uk/staff/mortm" class="contact-link" target="_blank">Cardiff University Profile</a>
                     <a href="https://www.linkedin.com/in/matthewmort" class="contact-link" target="_blank">LinkedIn Profile</a>
                 </div>
                 
-                <div class="contact-person">
+                <div class="contact-card contact-person">
                     <h3>Mr. Matt Hayden</h3>
                     <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
                     <a href="https://profiles.cardiff.ac.uk/staff/haydenmj1" class="contact-link" target="_blank">Cardiff University Profile</a>
@@ -259,22 +319,24 @@
                 </div>
             </div>
             
-            <div class="highlight">
-                <p><strong>Need help with responsible AI adoption in your workplace?</strong> Contact us to discuss how we can help your team implement these principles.</p>
+            <div class="highlight-box">
+                <p style="font-weight: 600; margin-bottom: 5px;">Need help with responsible AI adoption?</p>
+                <p style="margin: 0; font-size: 15px;">Contact us to discuss how we can help your team implement these principles.</p>
             </div>
             
-            <div>
-                <h3>For Cardiff University Staff</h3>
-                <p>Access our training resources on the Cardiff University Intranet:</p>
-                <a href="https://intranet.cardiff.ac.uk/staff/training-and-development/staff-courses-and-programmes/all-courses/digital-productivity-including-ai-in-the-workplace" class="contact-link" target="_blank">Digital Productivity Including AI in the Workplace</a>
+            <div style="text-align: center; margin-top: 40px; padding: 20px; border: 1px solid #e5e5ea; border-radius: 16px;">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">For Cardiff University Staff</h3>
+                <a href="https://intranet.cardiff.ac.uk/staff/training-and-development/staff-courses-and-programmes/all-courses/digital-productivity-including-ai-in-the-workplace" class="contact-link" target="_blank">Access Training on Intranet ↗</a>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
     
     <footer>
         <div class="container">
             <p>&copy; 2025 AI in the Workplace with The Matts. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 </html>
