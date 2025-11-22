@@ -512,6 +512,51 @@ If the feedback doesn't fit these, label it 'Other'."</div>
                     <button onclick="copyToClipboard('categorisation-prompt')" class="btn btn-copy">Copy Prompt</button>
                 </div>
             </details>
+            
+            <details>
+                <summary>AI Hacks - MegaDoc (Context Booster)</summary>
+                <div class="details-content">
+                    <div class="exercise-application">
+                         <strong>Concept:</strong> Stop typing the same background info. Create a simple Word doc with your org's specific context to copy-paste into prompts.
+                    </div>
+                    
+                    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
+                        Without help, AI will guess what your acronyms mean and write in a generic, robotic tone. A "MegaDoc" solves this by giving the AI immediate situational awareness.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 10px;">🔤</div>
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Acronyms</strong>
+                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Define your internal language (e.g. "DCG = Division of Cancer & Genetics")</p>
+                        </div>
+                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 10px;">✒️</div>
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Style Guide</strong>
+                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Set the tone: "Formal but warm," "Use UK English," "Use bullet points"</p>
+                        </div>
+                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 10px;">📋</div>
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Key Facts</strong>
+                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Boilerplate info, key personnel names, and standard operating procedures</p>
+                        </div>
+                        <div style="background: var(--apple-bg-page); padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 10px;">🚀</div>
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-main);">Project Overview</strong>
+                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0;">Goals, status, and blockers. Give the AI immediate situational awareness</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px;">Create your own today:</p>
+                    <p style="font-size: 14px; margin-top: 0; margin-bottom: 15px;">Open a blank document and list your top 10 acronyms and one Project Snapshot. The next time you prompt, paste it in to see the difference immediately.</p>
+                    
+                    <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
+[PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
+
+Based on this context, draft an update email to the team about [Your Topic]..."</div>
+                    <button onclick="copyToClipboard('megadoc-prompt')" class="btn btn-copy">Copy Prompt</button>
+                </div>
+            </details>
         </div>
         
         <div id="downloads" class="card">
