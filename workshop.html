@@ -5,40 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Matts - Workshop Resources</title>
     <style>
-        /* --- Apple Design System Variables --- */
+        /* --- Apple Design System (Modern) --- */
         :root {
             --apple-blue: #0071e3;
             --apple-blue-hover: #0077ed;
-            --apple-text-main: #1d1d1f;
+            --apple-text-primary: #1d1d1f;
             --apple-text-secondary: #86868b;
             --apple-bg-page: #f5f5f7;
             --apple-bg-card: #ffffff;
-            --radius-card: 20px;
-            --radius-btn: 980px;
-            --shadow-soft: 0 4px 12px rgba(0,0,0,0.03);
-            --shadow-hover: 0 8px 24px rgba(0,0,0,0.06);
-            --font-stack: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            --radius-card: 22px;
+            --radius-button: 980px; /* Pill shape */
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         /* --- Base & Reset --- */
         body {
             font-family: var(--font-stack);
-            line-height: 1.5;
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
             margin: 0;
             padding: 0;
-            color: var(--apple-text-main);
-            background-color: var(--apple-bg-page);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
         }
 
         .container {
             max-width: 980px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 22px;
         }
 
-        /* --- Navigation (Glassmorphism) --- */
-        .quick-nav {
+        /* --- Navigation (Frosted Glass) --- */
+        .global-nav {
             position: sticky;
             top: 0;
             z-index: 9999;
@@ -46,63 +49,100 @@
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            text-align: center;
-            padding: 15px 0;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
         }
-        .quick-nav a {
-            margin: 0 15px;
+
+        .nav-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
             text-decoration: none;
-            color: var(--apple-text-main);
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 400;
             opacity: 0.8;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s ease;
         }
-        .quick-nav a:hover { opacity: 1; color: var(--apple-blue); }
 
-        /* --- Header --- */
-        header { text-align: center; padding: 50px 0 30px; }
-        h1 { margin: 0; font-size: 48px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
-        .subtitle { margin-top: 10px; font-size: 24px; font-weight: 400; color: var(--apple-text-secondary); }
-        h2 { font-size: 28px; font-weight: 600; margin-bottom: 20px; color: var(--apple-text-main); }
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
 
-        /* --- Cards & Layout --- */
-        .card {
-            background-color: var(--apple-bg-card);
-            padding: 40px;
+        /* --- Typography --- */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            color: var(--apple-text-secondary);
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* --- Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
             border-radius: var(--radius-card);
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255,255,255,0.5);
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
         }
 
-        /* --- Getting Started Section (The Upgrade) --- */
-        .getting-started-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .instruction-list {
+        /* --- Getting Started Grid --- */
+        .step-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 30px 0;
+            margin: 0 auto 50px auto;
+            max-width: 700px;
         }
-        
-        .instruction-list li {
+
+        .step-list li {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: var(--apple-text-main);
+            align-items: baseline;
+            margin-bottom: 20px;
+            font-size: 19px;
+            line-height: 1.4211;
+            font-weight: 400;
         }
-        
-        .step-num {
-            background: var(--apple-text-main);
+
+        .step-badge {
+            background-color: var(--apple-text-primary);
             color: white;
+            border-radius: 50%;
             width: 24px;
             height: 24px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,126 +150,162 @@
             font-weight: 700;
             margin-right: 15px;
             flex-shrink: 0;
-            margin-top: 2px;
+            transform: translateY(2px);
         }
 
-        /* Activity Buttons Grid */
-        .activity-grid {
+        /* --- Activity Grid --- */
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        .activity-card {
-            background: var(--apple-bg-page);
-            border-radius: 16px;
-            padding: 20px;
+        .grid-item {
+            background-color: #fbfbfd; /* Very subtle grey */
+            border-radius: 18px;
+            padding: 30px;
             text-decoration: none;
-            color: var(--apple-text-main);
-            transition: all 0.2s ease;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            border: 1px solid transparent;
+            height: 100%;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        .activity-card:hover {
-            background: #fff;
+        .grid-item:hover {
+            transform: scale(1.02);
+            background-color: #fff;
             box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-            border-color: rgba(0,0,0,0.05);
+            z-index: 2;
         }
 
-        .activity-icon { font-size: 24px; margin-bottom: 10px; }
-        .activity-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
-        .activity-desc { font-size: 13px; color: var(--apple-text-secondary); margin-bottom: 10px; }
-        .activity-meta { 
-            font-family: "SF Mono", monospace; 
-            font-size: 11px; 
-            background: rgba(0,0,0,0.05); 
-            padding: 4px 8px; 
-            border-radius: 4px; 
+        .icon-large { font-size: 32px; margin-bottom: 15px; display: block; }
+        .item-title { font-size: 19px; font-weight: 600; display: block; margin-bottom: 5px; }
+        .item-desc { font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px; flex-grow: 1; }
+        .item-meta {
+            font-size: 11px;
             color: var(--apple-text-secondary);
+            font-family: "SF Mono", Menlo, monospace;
+            background: rgba(0,0,0,0.05);
+            padding: 4px 8px;
+            border-radius: 6px;
+            align-self: flex-start;
         }
 
         /* --- Accordions (Clean) --- */
-        details { border-bottom: 1px solid #e5e5ea; transition: all 0.3s ease; }
+        details {
+            border-bottom: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+        
         details:last-child { border-bottom: none; }
-        summary { padding: 22px 0; cursor: pointer; font-weight: 600; font-size: 18px; color: var(--apple-text-main); list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none; }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 22px; color: #c7c7cc; font-weight: 300; transition: transform 0.2s; }
-        details[open] summary::after { content: '−'; color: var(--apple-blue); }
-        details[open] summary { color: var(--apple-blue); }
-        .details-content { padding-bottom: 30px; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Prompts --- */
+        summary {
+            padding: 24px 0;
+            cursor: pointer;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        /* Custom animated plus icon */
+        summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--apple-blue);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg); /* Turns + to x */
+        }
+
+        details[open] summary {
+            color: var(--apple-blue);
+        }
+
+        .details-content {
+            padding-bottom: 30px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 15px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* --- Prompt Box (Code style) --- */
         .prompt-box {
-            background-color: var(--apple-bg-page);
+            background-color: #f5f5f7;
             padding: 20px;
             border-radius: 12px;
             font-family: "SF Mono", Menlo, monospace;
             font-size: 13px;
             line-height: 1.6;
             color: #333;
-            border-left: 3px solid var(--apple-blue);
-            margin: 20px 0;
+            margin: 15px 0 20px 0;
             white-space: pre-wrap;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        
-        .exercise-application { font-size: 15px; color: var(--apple-text-secondary); margin-bottom: 10px; }
 
         /* --- Buttons --- */
         .btn-copy {
-            background-color: #e5e5ea;
-            color: black;
-            font-size: 13px;
+            background-color: #e8e8ed;
+            color: var(--apple-text-primary);
+            font-size: 12px;
             padding: 8px 16px;
-            border-radius: 99px;
+            border-radius: var(--radius-button);
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background-color 0.2s;
         }
-        .btn-copy:hover { background-color: #d1d1d6; }
 
-        .btn-download {
-            display: inline-block;
-            background-color: var(--apple-blue);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 99px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
+        .btn-copy:hover {
+            background-color: #d2d2d7;
         }
-        .btn-download:hover { background-color: var(--apple-blue-hover); transform: scale(1.02); }
 
-        /* --- File Grid --- */
-        .file-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .file-item {
-            background: var(--apple-bg-page);
-            padding: 25px;
-            border-radius: 16px;
+        /* --- Footer --- */
+        footer {
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            padding: 40px 0;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            border-top: 1px solid #e5e5ea;
+            margin-top: 60px;
         }
-        .file-desc { font-weight: 600; font-size: 16px; margin-bottom: 5px; display: block; }
-        .file-sub { font-size: 13px; color: var(--apple-text-secondary); margin-bottom: 20px; }
+        
+        .contact-link { color: var(--apple-blue); text-decoration: none; }
+        .contact-link:hover { text-decoration: underline; }
 
-        /* Footer */
-        footer { text-align: center; margin-top: 60px; padding: 40px 0; border-top: 1px solid #e5e5ea; color: var(--apple-text-secondary); font-size: 12px; }
-        .contact-info a { color: var(--apple-blue); text-decoration: none; }
+        /* --- Utilities --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 36px; }
-            .card { padding: 25px; }
-            .activity-grid { grid-template-columns: 1fr; }
+        @media (max-width: 734px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            .section-card { padding: 30px 24px; }
+            .container { padding-top: 20px; }
         }
     </style>
     <script>
@@ -239,12 +315,12 @@
                 const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
                 const originalText = button.innerText;
                 button.innerText = "Copied";
-                button.style.backgroundColor = "#34c759";
+                button.style.backgroundColor = "#34c759"; // Apple Success Green
                 button.style.color = "white";
                 setTimeout(() => {
                     button.innerText = originalText;
-                    button.style.backgroundColor = "#e5e5ea";
-                    button.style.color = "black";
+                    button.style.backgroundColor = "#e8e8ed";
+                    button.style.color = "var(--apple-text-primary)";
                 }, 2000);
             });
         }
@@ -252,12 +328,10 @@
 </head>
 <body>
 
-    <nav class="quick-nav">
-        <div style="max-width: 980px; margin: 0 auto; display: flex; justify-content: center;">
+    <nav class="global-nav">
+        <div class="nav-content">
             <a href="#getting-started">Start Here</a>
-            <a href="#exercises">Exercises</a>
-            <a href="#downloads">Downloads</a>
-            <a href="#prompts">Prompts</a>
+            <a href="#exercises">Copilot Exercises</a>
         </div>
     </nav>
 
@@ -266,64 +340,65 @@
             <h1>The Matts Workshop</h1>
             <div class="subtitle">Digital Productivity & AI in the Workplace</div>
         </header>
-        
-        <div id="getting-started" class="card">
-            <h2 style="text-align: center; margin-bottom: 30px;">Getting Started</h2>
-            
-            <ul class="instruction-list" style="max-width: 700px; margin: 0 auto 40px auto;">
+
+        <section id="getting-started" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Getting Started</h2>
+            </div>
+
+            <ul class="step-list">
                 <li>
-                    <span class="step-num">1</span>
+                    <span class="step-badge">1</span>
                     <span>
-                        <strong>Log In:</strong> Open <a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a> (work account) in a new tab.
+                        <strong>Log In:</strong>&nbsp;Open&nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>&nbsp;(work account) in a new tab.
                     </span>
                 </li>
                 <li>
-                    <span class="step-num">2</span>
+                    <span class="step-badge">2</span>
                     <span>
-                        <strong>Activity Links:</strong> These are links for the workshop activities, or scroll down for the Copilot exercises.
+                        <strong>Activity Links:</strong>&nbsp;Use the links below for workshop activities, or scroll down for exercises.
                     </span>
-                </li>
-               
                 </li>
             </ul>
 
-            <div class="activity-grid">
-                <a href="swot.html" target="_blank" class="activity-card">
-                    <div class="activity-icon">👥</div>
-                    <div class="activity-title">AI SWOT Analysis</div>
-                    <div class="activity-desc">Complete this interactive exercise in pairs.</div>
-                    <div class="activity-meta">swot.html</div>
+            <div class="grid-container">
+                <a href="swot.html" target="_blank" class="grid-item">
+                    <span class="icon-large">👥</span>
+                    <span class="item-title">AI SWOT Analysis</span>
+                    <span class="item-desc">Complete this interactive exercise in pairs.</span>
+                    <span class="item-meta">swot.html</span>
                 </a>
 
-                <a href="sprint.html" target="_blank" class="activity-card">
-                    <div class="activity-icon">⚡</div>
-                    <div class="activity-title">Discovery Sprint</div>
-                    <div class="activity-desc">Find your use cases (5 min timer).</div>
-                    <div class="activity-meta">sprint.html</div>
+                <a href="sprint.html" target="_blank" class="grid-item">
+                    <span class="icon-large">⚡</span>
+                    <span class="item-title">Discovery Sprint</span>
+                    <span class="item-desc">Find your use cases (5 min timer).</span>
+                    <span class="item-meta">sprint.html</span>
                 </a>
 
-                <a href="usagecases.html" target="_blank" class="activity-card">
-                    <div class="activity-icon">📚</div>
-                    <div class="activity-title">100 AI Use Cases</div>
-                    <div class="activity-desc">Browse the full library of prompts.</div>
-                    <div class="activity-meta">usagecases.html</div>
+                <a href="usagecases.html" target="_blank" class="grid-item">
+                    <span class="icon-large">📚</span>
+                    <span class="item-title">100 AI Use Cases</span>
+                    <span class="item-desc">Browse the full library of prompts.</span>
+                    <span class="item-meta">usagecases.html</span>
                 </a>
             </div>
-        </div>
-        
-        <div id="exercises" class="card">
-            <div style="text-align: center; margin-bottom: 40px;">
+        </section>
+
+        <section id="exercises" class="section-card">
+            <div style="text-align: center; margin-bottom: 50px;">
                 <h2>AI Copilot Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
-                    Click an exercise to reveal the prompt. Copy and paste it into Copilot (or type it in). <strong>Reset Context:</strong> For the exercises below, always click <strong>"New Chat"</strong> between tasks so Copilot doesn't get confused!
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
+                    Click an exercise to reveal the prompt. Copy and paste it into Copilot. <br>
+                    <strong>Important:</strong> Always click <strong>"New Chat"</strong> between tasks.
                 </p>
             </div>
-            
+
             <details>
                 <summary>Exercise 1: Explain it like I am 5 (ELI5)</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Quickly understand complex topics or prepare simple explanations.
+                    <div class="exercise-note">
+                        Application: Quickly understand complex topics or prepare simple explanations.
                     </div>
                     <div class="prompt-box" id="progressive-learning">"Teach me [TOPIC] like I am 5 (ELI5)"</div>
                     <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
@@ -334,8 +409,8 @@
             <details>
                 <summary>Exercise 2: Roleplay for Difficult Conversations</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Rehearse performance reviews or conflict resolution in a safe space.
+                    <div class="exercise-note">
+                        Application: Rehearse performance reviews or conflict resolution in a safe space.
                     </div>
                     <div class="prompt-box" id="roleplay-conversation">"Roleplay: You're Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats (Knox, Missy, Phoebe). I'm a witty cat owner trying to calm you down and win you over. Stay in character and wait for my replies."</div>
                     <button onclick="copyToClipboard('roleplay-conversation')" class="btn-copy">Copy Prompt</button>
@@ -345,8 +420,8 @@
             <details>
                 <summary>Exercise 3: Devil's Advocate (Blind Spots)</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Stress-test your proposals or decisions before finalizing them.
+                    <div class="exercise-note">
+                        Application: Stress-test your proposals or decisions before finalizing them.
                     </div>
                     <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
                     <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
@@ -356,12 +431,12 @@
                     <button onclick="copyToClipboard('devils-followup1')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Exercise 4: Professional Persona (Role Prompting)</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Tailor communication tone for specific audiences.
+                    <div class="exercise-note">
+                        Application: Tailor communication tone for specific audiences.
                     </div>
                     <div class="prompt-box" id="role-prompt-medical">"For a script: You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."</div>
                     <button onclick="copyToClipboard('role-prompt-medical')" class="btn-copy">Copy Prompt</button>
@@ -374,21 +449,20 @@
             <details>
                 <summary>Exercise 5: Format & Structure</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Force AI to output exactly what you need (Table, SOP, etc.).
+                    <div class="exercise-note">
+                        Application: Force AI to output exactly what you need (Table, SOP, etc.).
                     </div>
-                    
                     <div class="prompt-box" id="format-prompt3">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-                Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
+Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
                     <button onclick="copyToClipboard('format-prompt3')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Exercise 6: Self-Evaluation (Mark Your Homework)</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Get AI to critique its own work to improve quality before you review it.
+                    <div class="exercise-note">
+                        Application: Get AI to critique its own work to improve quality before you review it.
                     </div>
                     <div class="prompt-box" id="evaluation-prompt">"I need a name for a new pensioner dating app, provide five examples please.
 For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
@@ -396,23 +470,23 @@ Score each example on a 1-10 scale for Memorability, Distinctiveness and Global 
                     <button onclick="copyToClipboard('evaluation-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Exercise 7: Prompt Chaining</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                        <strong>Application:</strong> Combine Role, Tone, Constraints, and Format into one request.
+                    <div class="exercise-note">
+                        Application: Combine Role, Tone, Constraints, and Format into one request.
                     </div>
                     <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
-                Role: Young consumers (15-25).
-                Tone: Humorous, but not childish.
-                Constraint: Avoid existing UK product names.
-                Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
-                Examples: CitrusBurst, AquaFizz, SolarPop."</div>
+Role: Young consumers (15-25).
+Tone: Humorous, but not childish.
+Constraint: Avoid existing UK product names.
+Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                     <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Usage Case: AI Meeting Notes</summary>
                 <div class="details-content">
@@ -421,7 +495,7 @@ Score each example on a 1-10 scale for Memorability, Distinctiveness and Global 
                     <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Usage Case: Excel Data Analysis</summary>
                 <div class="details-content">
@@ -436,7 +510,7 @@ Present in clear business language."</div>
                     <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>Usage Case: Text Categorisation</summary>
                 <div class="details-content">
@@ -451,12 +525,12 @@ If the feedback doesn't fit these, label it 'Other'."</div>
                     <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-            
+
             <details>
                 <summary>AI Hack: MegaDoc (Context Booster)</summary>
                 <div class="details-content">
-                    <div class="exercise-application">
-                         <strong>Concept:</strong> Stop typing background info repeatedly. Create a "MegaDoc" with your Acronyms, Style Guide, Key Facts, and Project Overview.
+                    <div class="exercise-note">
+                         Concept: Stop typing background info repeatedly. Create a "MegaDoc" with your Acronyms, Style Guide, Key Facts, and Project Overview.
                     </div>
                     <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
 [PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
@@ -465,86 +539,21 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                     <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-        </div>
-        
-        <div id="downloads" class="card">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2>Workshop Files</h2>
-                <p style="color: var(--apple-text-secondary);">Files needed for analysis exercises.</p>
-            </div>
-            
-            <div class="file-grid">
-                <div class="file-item">
-                    <div>
-                        <span class="file-desc">Marketing Data</span>
-                        <span class="file-sub">Excel (.xlsx)</span>
-                    </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/MarketingSales.xlsx" class="btn-download">Download</a>
-                </div>
-                
-                <div class="file-item">
-                    <div>
-                        <span class="file-desc">REF2021 Results</span>
-                        <span class="file-sub">Excel (.xlsx)</span>
-                    </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/REF2021_Results_CU.xlsx" class="btn-download">Download</a>
-                </div>
-                
-                <div class="file-item">
-                    <div>
-                        <span class="file-desc">Shopping Info</span>
-                        <span class="file-sub">Document (.pdf)</span>
-                    </div>
-                    <a href="https://raw.githubusercontent.com/wmgmm/thematts/main/Shopping_No_BankInfo.pdf" class="btn-download">Download</a>
-                </div>
-            </div>
-        </div>
-        
-        <div id="prompts" class="card">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2>Prompt Library</h2>
-                <p style="color: var(--apple-text-secondary);">Additional templates for your daily work.</p>
-            </div>
-            
-            <details>
-                <summary>Brainstorming & Ideas</summary>
-                <div class="details-content">
-                    <div class="prompt-box" id="prompt-brainstorm1">"Help me brainstorm some unique social media post ideas for [type of business]."</div>
-                    <button onclick="copyToClipboard('prompt-brainstorm1')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Role-Based Communication</summary>
-                <div class="details-content">
-                    <div class="prompt-box" id="prompt-role2">"You are a [role, e.g., technical project manager]. Help me draft an email explaining [topic] to [audience], focusing on [specific aspects]."</div>
-                    <button onclick="copyToClipboard('prompt-role2')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Data Analysis</summary>
-                <div class="details-content">
-                    <div class="prompt-box" id="prompt1">Looking at this sales data, I need to calculate the Marketing ROI % for [specific time period] (marketing is included in the costs total). Please explain the formula step by step and show me how to set it up in Excel.</div>
-                    <button onclick="copyToClipboard('prompt1')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="card" style="text-align: center;">
+        </section>
+
+        <section class="section-card" style="text-align: center; padding: 50px;">
             <h3>Contact Information</h3>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 10px;">Questions? Feel free to contact us:</p>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;" class="contact-info">
-                Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a><br>
-                Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? Feel free to contact us:</p>
+            <p style="margin-bottom: 0;">
+                Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a><br>
+                Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
             </p>
-        </div>
+        </section>
     </div>
-    
+
     <footer>
         <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
     </footer>
+
 </body>
 </html>
