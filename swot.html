@@ -89,7 +89,7 @@
             </div>
             
             <div id="unassigned-container" class="flex flex-wrap gap-4 min-h-[160px] p-6 bg-white rounded-[24px] shadow-sm border border-gray-200/60 items-start transition-all">
-                </div>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -100,7 +100,7 @@
                     <h3 class="text-lg font-semibold text-gray-800">Strengths</h3>
                 </div>
                 <div onclick="handleCategoryClick('strengths')" id="strengths-container" class="target-zone flex-1 min-h-[280px] p-4 rounded-[24px] bg-white border-2 border-transparent hover:border-gray-300 shadow-sm transition-all cursor-pointer">
-                    </div>
+                </div>
             </div>
 
             <div class="flex flex-col h-full">
@@ -109,7 +109,7 @@
                     <h3 class="text-lg font-semibold text-gray-800">Weaknesses</h3>
                 </div>
                 <div onclick="handleCategoryClick('weaknesses')" id="weaknesses-container" class="target-zone flex-1 min-h-[280px] p-4 rounded-[24px] bg-white border-2 border-transparent hover:border-gray-300 shadow-sm transition-all cursor-pointer">
-                    </div>
+                </div>
             </div>
 
             <div class="flex flex-col h-full">
@@ -118,7 +118,7 @@
                     <h3 class="text-lg font-semibold text-gray-800">Opportunities</h3>
                 </div>
                 <div onclick="handleCategoryClick('opportunities')" id="opportunities-container" class="target-zone flex-1 min-h-[280px] p-4 rounded-[24px] bg-white border-2 border-transparent hover:border-gray-300 shadow-sm transition-all cursor-pointer">
-                    </div>
+                </div>
             </div>
 
             <div class="flex flex-col h-full">
@@ -127,7 +127,7 @@
                     <h3 class="text-lg font-semibold text-gray-800">Threats</h3>
                 </div>
                 <div onclick="handleCategoryClick('threats')" id="threats-container" class="target-zone flex-1 min-h-[280px] p-4 rounded-[24px] bg-white border-2 border-transparent hover:border-gray-300 shadow-sm transition-all cursor-pointer">
-                    </div>
+                </div>
             </div>
 
         </div>
@@ -253,7 +253,7 @@
 
         function handleCategoryClick(category) {
             if (selectedScenarioId) {
-                // Remove from current location
+                // Remove from current location (to ensure no duplicates)
                 for (let cat of categories) {
                     const index = assignments[cat].indexOf(selectedScenarioId);
                     if (index > -1) {
@@ -262,9 +262,11 @@
                 }
 
                 // Add to new category
+                // FIX: There is NO condition checking array length here.
+                // You can add as many items as you want.
                 assignments[category].push(selectedScenarioId);
                 
-                // Clear selection and trigger haptic feedback (visual)
+                // Clear selection
                 selectedScenarioId = null;
                 render();
             }
