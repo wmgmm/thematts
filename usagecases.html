@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Matts - 100 AI Use Cases</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <style>
         /* --- Apple Design System Variables --- */
         :root {
             --apple-blue: #0071e3;
-            --apple-blue-hover: #0077ed;
-            --apple-text-main: #1d1d1f;
-            --apple-text-secondary: #86868b;
-            --apple-bg-page: #f5f5f7;
-            --apple-bg-card: #ffffff;
-            --radius-card: 18px;
-            --radius-btn: 980px;
-            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg-page: #f5f5f7;
+            --bg-card: #ffffff;
+            --radius-l: 24px;
+            --radius-m: 18px;
+            --radius-s: 12px;
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.04);
+            --shadow-float: 0 8px 32px rgba(0,0,0,0.08);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         /* --- Base Styles --- */
         body {
             font-family: var(--font-stack);
-            background-color: var(--apple-bg-page);
-            color: var(--apple-text-main);
+            background-color: var(--bg-page);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
             line-height: 1.5;
@@ -33,81 +36,95 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* --- Header --- */
         header {
             text-align: center;
-            padding: 60px 0 40px;
+            padding: 80px 0 50px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 10px;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px 0;
+            color: var(--text-primary);
+            line-height: 1.1;
         }
 
         .subtitle {
-            font-size: 21px;
-            color: var(--apple-text-secondary);
+            font-size: 24px;
+            color: var(--text-secondary);
             font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
-        /* --- Sticky Controls (Search & Filter) --- */
+        /* --- Sticky Controls (Glass Island) --- */
         .controls-wrapper {
             position: sticky;
-            top: 20px;
-            z-index: 100;
-            margin-bottom: 40px;
+            top: 24px;
+            z-index: 1000;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: center;
         }
 
         .controls-inner {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            padding: 15px;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(24px);
+            -webkit-backdrop-filter: saturate(180%) blur(24px);
+            padding: 16px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-float);
+            border: 1px solid rgba(255,255,255,0.4);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
             align-items: center;
+            width: 100%;
+            max-width: 700px;
+            transition: all 0.3s ease;
         }
 
-        .search-bar {
-            width: 100%;
-            max-width: 600px;
+        /* Search Input styled like iOS */
+        .search-container {
             position: relative;
+            width: 100%;
         }
 
         .search-input {
             width: 100%;
-            padding: 12px 20px 12px 45px;
-            font-size: 16px;
-            border-radius: 12px;
-            border: 1px solid #d2d2d7;
-            background: rgba(255,255,255,0.8);
+            padding: 14px 20px 14px 48px;
+            font-size: 17px;
+            border-radius: 16px;
+            border: none;
+            background: #E8E8ED; /* iOS Search Gray */
+            color: var(--text-primary);
             box-sizing: border-box;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            font-weight: 500;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--apple-blue);
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+            background: #ffffff;
+            box-shadow: 0 0 0 2px var(--apple-blue);
         }
 
         .search-icon {
             position: absolute;
-            left: 15px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--apple-text-secondary);
+            color: var(--text-secondary);
+            opacity: 0.7;
         }
 
+        /* Apple-style Filter Pills */
         .filter-pills {
             display: flex;
             gap: 10px;
@@ -116,153 +133,182 @@
         }
 
         .pill {
-            padding: 8px 16px;
-            background: #e5e5ea;
-            border-radius: 20px;
-            font-size: 13px;
+            padding: 10px 20px;
+            background: #ffffff;
+            border-radius: 24px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--apple-text-main);
+            color: var(--text-primary);
             cursor: pointer;
-            border: none;
-            transition: all 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .pill:hover {
-            background: #d1d1d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .pill.active {
-            background: var(--apple-text-main);
-            color: white;
+            background: #1d1d1f; /* Apple Black */
+            color: #ffffff;
+            border-color: #1d1d1f;
         }
 
         /* --- Grid Layout --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            padding-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+            padding-bottom: 80px;
         }
 
         /* --- Use Case Card --- */
         .card {
-            background: var(--apple-bg-card);
-            border-radius: var(--radius-card);
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            background: var(--bg-card);
+            border-radius: var(--radius-l);
+            padding: 32px;
+            box-shadow: var(--shadow-card);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
+            overflow: hidden;
             box-sizing: border-box;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .card-header {
+            margin-bottom: 20px;
+        }
+
+        .case-meta {
             display: flex;
-            align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: 15px;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .case-number {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--apple-text-secondary);
+            color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            background: #f2f2f7;
+            padding: 4px 8px;
+            border-radius: 6px;
         }
 
         .case-title {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
-            margin: 5px 0 10px 0;
-            color: var(--apple-text-main);
-            line-height: 1.3;
+            color: var(--text-primary);
+            line-height: 1.25;
+            letter-spacing: -0.015em;
         }
 
         .case-desc {
-            font-size: 14px;
-            color: var(--apple-text-secondary);
-            margin-bottom: 15px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
             flex-grow: 1;
         }
 
+        /* Modern Prompt Box */
         .prompt-box {
             background: #f5f5f7;
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: var(--radius-m);
+            padding: 20px;
             font-family: "SF Mono", "Menlo", monospace;
             font-size: 13px;
             color: #333;
-            border-left: 4px solid var(--apple-blue);
-            margin-bottom: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* --- Buttons --- */
+        /* Sleek Copy Button */
         .btn-copy {
-            background: var(--apple-blue);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 20px;
-            font-size: 13px;
+            background: #ffffff;
+            color: var(--text-primary);
+            border: 1px solid #e5e5ea;
+            border-radius: 99px;
+            padding: 12px 24px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: background 0.2s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .btn-copy:hover {
-            background: var(--apple-blue-hover);
+            background: #f5f5f7;
+            border-color: #d1d1d6;
         }
 
         .btn-copy.copied {
-            background: #34c759; /* Apple Green */
+            background: #34c759;
+            color: white;
+            border-color: #34c759;
         }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             border-top: 1px solid #e5e5ea;
             margin-top: 40px;
-            color: var(--apple-text-secondary);
+            color: var(--text-secondary);
             font-size: 13px;
         }
 
         footer a {
-            color: var(--apple-blue);
+            color: var(--text-primary);
             text-decoration: none;
+            border-bottom: 1px dotted var(--text-secondary);
         }
 
         /* --- Login Hint --- */
         .login-hint {
-            background-color: #e0f7fa;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #b2ebf2;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            background-color: #ffffff;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
             text-align: center;
-            margin-bottom: 30px;
-            color: #006064;
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
-        /* Responsive adjustments */
+        .login-hint a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 36px; }
-            .subtitle { font-size: 18px; }
+            h1 { font-size: 40px; }
+            .subtitle { font-size: 20px; }
+            .controls-inner { padding: 12px; }
             .grid { grid-template-columns: 1fr; }
+            .filter-pills { gap: 8px; }
+            .pill { padding: 8px 16px; font-size: 13px; }
         }
     </style>
 </head>
@@ -271,18 +317,20 @@
     <div class="container">
         <header>
             <h1>The Matts' 100 AI Use Cases</h1>
-            <div class="subtitle">Practical prompts to unlock productivity in the workplace</div>
+            <div class="subtitle">Unlock your productivity potential.</div>
         </header>
 
         <div class="login-hint">
-            <strong>Log in first:</strong> <a href="https://m365copilot.com/" target="_blank" style="font-weight: bold; color: #00838f;">Microsoft Copilot</a> (opens in new tab). Use your work account for compliance.
+            For the best experience, ensure you are logged into <a href="https://m365copilot.com/" target="_blank">Microsoft Copilot</a> with your work account.
         </div>
 
         <div class="controls-wrapper">
             <div class="controls-inner">
-                <div class="search-bar">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by topic, keyword, or number...">
+                <div class="search-container">
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Find a use case (e.g., 'Excel', 'Email', 'Meeting')...">
                 </div>
                 <div class="filter-pills" id="filterContainer">
                     <button class="pill active" onclick="filterCases('all')">All</button>
@@ -300,119 +348,119 @@
             </div>
 
         <footer>
-            <div style="margin-bottom: 20px;">
-                <strong>Contact The Matts:</strong><br>
+            <div style="margin-bottom: 20px; line-height: 1.8;">
+                <strong>Contact The Matts</strong><br>
                 Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a><br>
                 Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a>
             </div>
-            <p>Materials © 2025. Designed for AI Upskilling.</p>
+            <p>Curated Materials © 2025. Designed for Workplace AI Upskilling.</p>
         </footer>
     </div>
 
 <script>
 // --- Data Source: 100 AI Use Cases ---
-// Note: Prompts have been optimized for effectiveness/brevity without losing intent.
+// Prompts optimized for clarity and effectiveness (Chain of thought / Role prompting included where applicable)
 const useCases = [
-    { id: 1, cat: "Personal", title: "Therapy/Companionship 🗣️", desc: "Process work stress or difficult conversations.", prompt: "Act as a calm sounding board. I will describe a work situation. Ask 3 clarifying questions, then propose 2 solution options and 1 immediate next step." },
-    { id: 2, cat: "Productivity", title: "Organizing My Life 📅", desc: "Structure tasks and priorities.", prompt: "Here is my task list: [Insert Tasks]. Create a prioritized schedule. Balance urgent deadlines with deep work blocks. Assume I am most productive in the morning." },
-    { id: 3, cat: "Personal", title: "Finding Purpose 🎯", desc: "Explore career paths and values.", prompt: "Guide me through a values assessment to identify career paths aligning with my strengths: [List Strengths]. Ask one question at a time to dig deeper." },
-    { id: 4, cat: "Personal", title: "Enhanced Learning 📚", desc: "Accelerate skill acquisition.", prompt: "Create a 10-day intensive learning plan for [Skill]. Break it into daily 30-min lessons with one practical exercise per day. Adapt for a [Beginner/Intermediate] level." },
-    { id: 5, cat: "Technical", title: "Generating Code (for pros) 💻", desc: "Write professional-grade code.", prompt: "Write a [Language] script to [Function]. Requirements: Handle errors, include logging, use efficient algorithms for large datasets, and add comments." },
-    { id: 6, cat: "Creativity", title: "Generating Ideas 💡", desc: "Brainstorm creative solutions.", prompt: "List 10 unconventional solutions to [Problem]. For each, provide a one-sentence summary and a 'First Step'. Rank by ease of implementation." },
-    { id: 7, cat: "Creativity", title: "Fun and Nonsense 🎪", desc: "Lighten the mood or ice-breaking.", prompt: "Write a humorous, work-appropriate short story about [Topic] to use as an ice-breaker. Include 3 puns related to our industry." },
-    { id: 8, cat: "Technical", title: "Improving Code (for pros) 🔧", desc: "Optimize and refactor.", prompt: "Review this code for: 1. Performance bottlenecks, 2. Security flaws, 3. Readability. Suggest specific refactoring improvements: [Paste Code]." },
-    { id: 9, cat: "Creativity", title: "Creativity 🎨", desc: "Design thinking and workshops.", prompt: "Outline a 1-hour creative workshop for my team to reimagine [Product/Process]. Include 3 distinct lateral thinking exercises." },
-    { id: 10, cat: "Personal", title: "Healthier Living 🏃", desc: "Wellness for desk workers.", prompt: "Design a 'Desk Worker Wellness' plan. Include 3 ergonomic tips, a 5-minute stretching routine, and 3 healthy snack ideas for energy management." },
-    { id: 11, cat: "Business", title: "Preparing for Interviews 🎤", desc: "Practice and preparation.", prompt: "I am interviewing for [Role]. Act as the interviewer. Ask me a challenging question, wait for my response, then grade my answer on the STAR method." },
-    { id: 12, cat: "Creativity", title: "Generating Relevant Images 🖼️", desc: "Create image prompts.", prompt: "Write 3 detailed AI image generation prompts for [Subject]. Style: [e.g., Photorealistic/Minimalist]. Include lighting, mood, and composition details." },
-    { id: 13, cat: "Business", title: "Specific Search 🔍", desc: "Find precise information.", prompt: "Find 3 specific real-world examples of [Topic]. For each, provide: Company Name, The Outcome/Metric, and a source link." },
-    { id: 14, cat: "Writing", title: "Simple Explainers 📝", desc: "Simplify complex topics.", prompt: "Explain [Complex Topic] in two ways: 1. An analogy suitable for a child. 2. A concise executive summary for a non-technical CEO." },
-    { id: 15, cat: "Personal", title: "Cooking with What You Have 🍳", desc: "Recipe generation.", prompt: "Create 3 recipes using these ingredients: [List]. Dietary restriction: [e.g., Gluten Free]. Include prep time and step-by-step instructions." },
-    { id: 16, cat: "Technical", title: "Troubleshooting 🔧", desc: "Diagnose and fix problems.", prompt: "Create a troubleshooting flowchart for [Issue]. Format as a step-by-step guide with 'If Yes/If No' decision points." },
-    { id: 17, cat: "Personal", title: "Personalized Learning 🎓", desc: "Custom learning paths.", prompt: "I want to learn [Topic]. My current level is [Level]. Create a 4-week curriculum with specific resources (articles, videos) and weekly milestones." },
-    { id: 18, cat: "Personal", title: "Boosting Confidence 💪", desc: "Preparation for pressure.", prompt: "I am nervous about [Event]. Act as a coach. Give me a pep talk, then help me rehearse the first 2 minutes of my opening." },
-    { id: 19, cat: "Writing", title: "Adjusting Tone of Email ✉️", desc: "Refine communication style.", prompt: "Rewrite this email in 3 tones: 1. Formal Executive, 2. Friendly/Casual, 3. Diplomatic/Firm. Text: [Paste Draft]." },
-    { id: 20, cat: "Business", title: "Explaining Legalese ⚖️", desc: "Understand contracts.", prompt: "Translate this legal clause into plain English. Highlight: 1. My obligations, 2. The risks, 3. Any red flags. Text: [Paste Clause]." },
-    { id: 21, cat: "Personal", title: "Entertaining Kids 🤹‍♂️", desc: "Activities and stories.", prompt: "List 5 educational activities for a [Age] year old using only household items found in a kitchen. Each must teach a basic math or science concept." },
-    { id: 22, cat: "Business", title: "Corporate LLM/Copilot 🏢", desc: "SOPs and processes.", prompt: "Draft a Standard Operating Procedure (SOP) for [Process]. Format: Checklist with columns for 'Task', 'Responsible Party', and 'Success Criteria'." },
-    { id: 23, cat: "Writing", title: "Writing Student Essays ✍️", desc: "Structure and arguments.", prompt: "Create a detailed outline for an essay on [Topic]. Include: Thesis statement, 3 main arguments with supporting evidence points, and a conclusion." },
-    { id: 24, cat: "Personal", title: "Creating a Travel Itinerary 🧳", desc: "Trip planning.", prompt: "Plan a 3-day business trip to [City]. Include: Hotel options near [Location], quiet places for coffee meetings, and efficient transport routes." },
-    { id: 25, cat: "Personal", title: "Personalized Kid's Story 📖", desc: "Custom storytelling.", prompt: "Write a bedtime story for a [Age]-year-old named [Name] who loves [Interest]. Theme: Solving a problem using kindness. Length: 500 words." },
-    { id: 26, cat: "Personal", title: "Medical Advice 🏥", desc: "Prep for doctor visits.", prompt: "I have these symptoms: [List]. Generate a list of 5 specific medical questions I should ask my doctor to ensure I get a thorough check-up." },
-    { id: 27, cat: "Business", title: "Reconciling Personal Disputes 🤝", desc: "Conflict resolution.", prompt: "Act as a mediator. Two team members have a conflict over [Issue]. Script a neutral opening statement for a mediation meeting to find common ground." },
-    { id: 28, cat: "Business", title: "Generating a Legal Document 📋", desc: "Draft basic agreements.", prompt: "Draft a basic NDA (Non-Disclosure Agreement) between [Party A] and [Party B]. Include clauses for Confidentiality, Exclusions, and Term. (For review by counsel)." },
-    { id: 29, cat: "Personal", title: "Deep and Meaningful Conversations 🗨️", desc: "Philosophical exploration.", prompt: "I want to explore the ethics of [Topic]. Play devil's advocate. Challenge my assumption that [My Opinion] is the only correct view." },
-    { id: 30, cat: "Business", title: "Anti-trolling 🚫", desc: "Social media management.", prompt: "Draft 3 professional responses to a negative comment saying [Comment]. Goal: De-escalate, show empathy, and move the conversation offline." },
-    { id: 31, cat: "Creativity", title: "Dungeons & Dragons 🐉", desc: "Team building/Gaming.", prompt: "Create a D&D encounter based on a corporate office. The 'Monster' is a [Bureaucracy Dragon]. List 3 special attacks based on office jargon." },
-    { id: 32, cat: "Business", title: "Tax Advice 💸", desc: "Understand implications.", prompt: "Explain the general tax implications of [Action] for a [Entity Type] in the UK. List 3 potential deductions to investigate with an accountant." },
-    { id: 33, cat: "Personal", title: "Interacting with the Deceased 👻", desc: "Processing grief/Memorials.", prompt: "Write a respectful eulogy for a colleague who was known for [Quality]. Tone: Warm, celebratory of their work, and comforting." },
+    { id: 1, cat: "Personal", title: "Therapy/Companionship 🗣️", desc: "A safe space to process stress or rehearse conversations.", prompt: "Act as a supportive sounding board. I'm dealing with [Situation]. Ask 3 clarifying questions to help me process my thoughts, then suggest one practical next step." },
+    { id: 2, cat: "Productivity", title: "Organizing My Life 📅", desc: "Structure chaotic tasks into a clear plan.", prompt: "Here is a list of tasks I need to do: [Insert List]. Create a prioritized schedule. Group similar tasks together and suggest realistic time blocks for each." },
+    { id: 3, cat: "Personal", title: "Finding Purpose 🎯", desc: "Explore values and career alignment.", prompt: "I am feeling stuck in my role as [Job Title]. Guide me through a short values assessment. Ask me one question at a time to help identify what truly motivates me." },
+    { id: 4, cat: "Personal", title: "Enhanced Learning 📚", desc: "Accelerate skill acquisition with a plan.", prompt: "Create a 10-day intensive learning plan for [Skill/Topic]. Break it down into daily 30-minute modules with one practical exercise per day." },
+    { id: 5, cat: "Technical", title: "Generating Code (for pros) 💻", desc: "Draft scripts and algorithms.", prompt: "Write a [Language] script to [Function]. Include error handling, comments explaining the logic, and follow standard naming conventions." },
+    { id: 6, cat: "Creativity", title: "Generating Ideas 💡", desc: "Brainstorming assistance.", prompt: "I need 10 unconventional ideas to solve [Problem]. For each idea, write one sentence describing it and one sentence on the 'First Step' to implement it." },
+    { id: 7, cat: "Creativity", title: "Fun and Nonsense 🎪", desc: "Lighten the mood.", prompt: "Write a humorous, work-appropriate story about [Topic] to use as a team meeting ice-breaker. Include 3 industry-specific puns." },
+    { id: 8, cat: "Technical", title: "Improving Code (for pros) 🔧", desc: "Refactoring and optimization.", prompt: "Review this code snippet for: 1. Performance issues, 2. Security vulnerabilities, 3. Readability. Suggest specific improvements: [Paste Code]." },
+    { id: 9, cat: "Creativity", title: "Creativity 🎨", desc: "Design thinking workshops.", prompt: "Design a 45-minute creative workshop agenda for my team to reimagine [Product/Process]. Include 2 specific lateral thinking exercises." },
+    { id: 10, cat: "Personal", title: "Healthier Living 🏃", desc: "Wellness for desk workers.", prompt: "Create a 'Desk Worker Wellness' plan. Include 3 ergonomic checks, a 5-minute chair yoga routine, and 3 healthy snack ideas for energy." },
+    { id: 11, cat: "Business", title: "Preparing for Interviews 🎤", desc: "Roleplay interview scenarios.", prompt: "I am interviewing for [Role]. Act as the interviewer. Ask me a tough behavioral question, wait for my answer, then grade my response using the STAR method." },
+    { id: 12, cat: "Creativity", title: "Generating Relevant Images 🖼️", desc: "Create detailed image prompts.", prompt: "Write 3 detailed AI image generation prompts for [Subject]. Specify the art style, lighting, composition, and mood for each variation." },
+    { id: 13, cat: "Business", title: "Specific Search 🔍", desc: "Find precise examples.", prompt: "Find 3 specific real-world examples of companies that successfully implemented [Strategy]. For each, state the Company, the Action, and the Result." },
+    { id: 14, cat: "Writing", title: "Simple Explainers 📝", desc: "Simplify complex topics.", prompt: "Explain [Complex Topic] in two ways: 1. An analogy suitable for a 10-year-old. 2. A concise 3-bullet summary for a busy executive." },
+    { id: 15, cat: "Personal", title: "Cooking with What You Have 🍳", desc: "Recipe generation.", prompt: "I have these ingredients: [List]. Create 3 dinner recipes (one must be [Dietary Restriction]). Include prep time and step-by-step instructions." },
+    { id: 16, cat: "Technical", title: "Troubleshooting 🔧", desc: "Diagnose problems.", prompt: "Create a troubleshooting flowchart for [Issue]. Format as a numbered list where each step asks a 'Yes/No' question leading to a solution or next step." },
+    { id: 17, cat: "Personal", title: "Personalized Learning 🎓", desc: "Custom curriculum.", prompt: "I want to learn [Topic]. Assess my current level (I know [Current Knowledge]). Create a 4-week curriculum with articles, videos, and milestones." },
+    { id: 18, cat: "Personal", title: "Boosting Confidence 💪", desc: "Prep for high-pressure moments.", prompt: "I am nervous about [Event]. Act as a coach. Give me a short pep talk, then help me rehearse my opening 2 sentences. Critique my delivery." },
+    { id: 19, cat: "Writing", title: "Adjusting Tone of Email ✉️", desc: "Refine communication.", prompt: "Rewrite this email draft in 3 distinct tones: 1. Formal & Professional, 2. Warm & Collaborative, 3. Direct & Brief. Draft: [Paste Text]." },
+    { id: 20, cat: "Business", title: "Explaining Legalese ⚖️", desc: "Understand contracts.", prompt: "Translate this legal clause into plain English. Highlight: 1. What I must do, 2. What I cannot do, 3. Any potential risks. Clause: [Paste Text]." },
+    { id: 21, cat: "Personal", title: "Entertaining Kids 🤹‍♂️", desc: "Educational activities.", prompt: "Suggest 5 educational activities for a [Age] year old using only items found in a standard kitchen. Each must teach a science or math concept." },
+    { id: 22, cat: "Business", title: "Corporate LLM/Copilot 🏢", desc: "SOPs and processes.", prompt: "Draft a Standard Operating Procedure (SOP) for [Process]. Format as a checklist with columns for 'Task', 'Role Responsible', and 'Verification'." },
+    { id: 23, cat: "Writing", title: "Writing Student Essays ✍️", desc: "Structure and arguments.", prompt: "Create a detailed outline for an essay on [Topic]. Include a Thesis Statement, 3 Main Body Paragraph arguments, and a Conclusion summary." },
+    { id: 24, cat: "Personal", title: "Creating a Travel Itinerary 🧳", desc: "Business trip planning.", prompt: "Plan a 2-day business trip itinerary for [City]. Include: A hotel near [Office Location], 2 quiet coffee shops for meetings, and efficient transport options." },
+    { id: 25, cat: "Personal", title: "Personalized Kid's Story 📖", desc: "Custom storytelling.", prompt: "Write a bedtime story for a child named [Name] who loves [Interest]. Theme: Courage. Length: 500 words. Include a happy ending." },
+    { id: 26, cat: "Personal", title: "Medical Advice 🏥", desc: "Prep for appointments.", prompt: "I have an appointment about [Condition]. List 5 prioritized questions I should ask the doctor to ensure I understand my treatment options. (Not medical advice)." },
+    { id: 27, cat: "Business", title: "Reconciling Personal Disputes 🤝", desc: "Conflict mediation.", prompt: "Act as a mediator. I have a conflict with a colleague about [Issue]. Draft a neutral opening statement I can use to start a resolution meeting." },
+    { id: 28, cat: "Business", title: "Generating a Legal Document 📋", desc: "Draft agreements.", prompt: "Draft a simple Non-Disclosure Agreement (NDA) template between [Party A] and [Party B]. Include standard clauses for Confidentiality, Term, and Exclusions." },
+    { id: 29, cat: "Personal", title: "Deep and Meaningful Conversations 🗨️", desc: "Critical thinking.", prompt: "I believe [Opinion]. Play Devil's Advocate. Provide 3 strong counter-arguments to help me test the strength of my view." },
+    { id: 30, cat: "Business", title: "Anti-trolling 🚫", desc: "Social media response.", prompt: "Draft 3 professional responses to a negative comment saying [Comment]. Goal: De-escalate the situation and move the conversation to a private channel." },
+    { id: 31, cat: "Creativity", title: "Dungeons & Dragons 🐉", desc: "Team building.", prompt: "Create a D&D encounter set in a modern office. The monster is 'The Micromanager'. List its special attacks and weaknesses based on office tropes." },
+    { id: 32, cat: "Business", title: "Tax Advice 💸", desc: "General understanding.", prompt: "Explain the general tax implications of [Action] for a UK-based freelancer. List 3 potential deductions I should research further." },
+    { id: 33, cat: "Personal", title: "Interacting with the Deceased 👻", desc: "Eulogies and memories.", prompt: "Write a respectful eulogy for a colleague who was known for [Quality]. Tone: Professional, warm, and celebrating their contributions." },
     { id: 34, cat: "Writing", title: "Summarizing Content 📊", desc: "Executive summaries.", prompt: "Summarize this text into: 1. A one-sentence 'Hook', 2. Three bullet points of key data, 3. One actionable takeaway. Text: [Paste Text]." },
-    { id: 35, cat: "Technical", title: "Coding for Amateurs 👩‍💻", desc: "Basic scripting.", prompt: "Explain how to write a Python script to [Task] as if I am a complete beginner. Break it into 5 simple steps and explain what every line of code does." },
-    { id: 36, cat: "Creativity", title: "Imagination 🎨", desc: "Innovative concepts.", prompt: "Apply the 'SCAMPER' method to [Product]. Give me one idea for each letter (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse)." },
-    { id: 37, cat: "Business", title: "Generating Appraisals 📝", desc: "Performance reviews.", prompt: "Draft a performance review for an employee who [Strength] but needs to improve [Weakness]. Use the 'Situation-Behavior-Impact' framework." },
-    { id: 38, cat: "Personal", title: "Relationship Advice ❤️", desc: "Communication dynamics.", prompt: "I am frustrated that [Partner/Colleague] does [Action]. Help me draft a conversation starter using 'I' statements to express my needs without blaming." },
-    { id: 39, cat: "Business", title: "Practicing Difficult Conversations 💬", desc: "Roleplay scenarios.", prompt: "I need to fire a client. Act as the difficult client. I will start the conversation. Respond realistically so I can practice holding my boundaries." },
-    { id: 40, cat: "Productivity", title: "Building Lists 🗒️", desc: "Checklists and planning.", prompt: "Create a comprehensive checklist for [Project]. Categorize items by: 'Immediate', 'Pre-Launch', and 'Post-Launch'." },
-    { id: 41, cat: "Personal", title: "Homework 📚", desc: "Tutoring assistance.", prompt: "Create 3 practice problems for [Subject/Concept] with increasing difficulty. Provide the answer key and step-by-step solutions separately." },
-    { id: 42, cat: "Personal", title: "Raising/Guiding Kids 👨‍👩‍👧‍👦", desc: "Parenting advice.", prompt: "Suggest 3 strategies to help a [Age] child deal with [Emotion/Situation]. Base the advice on positive reinforcement techniques." },
-    { id: 43, cat: "Productivity", title: "Work Buddy 👥", desc: "Co-working partner.", prompt: "I have 3 tasks: [A, B, C]. Help me apply the Eisenhower Matrix to these. Which one should I do now, schedule, or delegate? Explain why." },
-    { id: 44, cat: "Technical", title: "Refining Prompts 🎯", desc: "Meta-prompting.", prompt: "I want AI to [Task]. My current prompt is: '[Prompt]'. Rewrite this prompt to be more effective, specific, and less prone to hallucinations." },
-    { id: 45, cat: "Writing", title: "Editing Text ✏️", desc: "Proofreading.", prompt: "Edit this text for conciseness and clarity. Remove passive voice. Target audience: [Audience]. Text: [Paste Text]." },
-    { id: 46, cat: "Writing", title: "Drafting Emails 📧", desc: "Professional correspondence.", prompt: "Draft an email to [Recipient] asking for [Request]. Context: [Context]. Tone: Professional but urgent. Include a clear deadline." },
-    { id: 47, cat: "Technical", title: "Excel Formulas 📈", desc: "Data manipulation.", prompt: "Write an Excel formula to [Calculation]. Explain how it works. Also, explain how to handle errors (like #DIV/0!) within the formula." },
-    { id: 48, cat: "Business", title: "Evaluating Copy ✍️", desc: "Marketing review.", prompt: " critique this marketing copy based on: 1. Clarity, 2. Persuasion, 3. Call to Action. Suggest 3 specific improvements. Copy: [Paste Copy]." },
-    { id: 49, cat: "Personal", title: "Personal Finance 💰", desc: "Budgeting basics.", prompt: "Create a monthly budget template for a salary of [Amount]. Use the 50/30/20 rule. List categories for Needs, Wants, and Savings." },
-    { id: 50, cat: "Personal", title: "Help with Reading Books 📚", desc: "Summaries and insights.", prompt: "Summarize the key concepts of the book [Title]. List the top 5 actionable takeaways I can apply to my [Job/Life]." },
-    { id: 51, cat: "Writing", title: "Drafting a Document 📝", desc: "Proposals and reports.", prompt: "Outline a [Document Type] for [Topic]. Include standard sections (Intro, Methodology, Analysis, Recommendations) and bullet points for what to include in each." },
-    { id: 52, cat: "Writing", title: "Drafting Formal Letter ✉️", desc: "Official correspondence.", prompt: "Write a formal letter of [Complaint/Resignation/Request] to [Entity]. Adhere to strict business letter formatting. State the purpose clearly in the first sentence." },
-    { id: 53, cat: "Business", title: "Fact-checking ✓", desc: "Verification.", prompt: "I am writing about [Topic]. List 5 common misconceptions about this topic and provide the correct facts for each." },
-    { id: 54, cat: "Personal", title: "Shopping 🛒", desc: "Comparison and research.", prompt: "Compare [Product A] vs [Product B]. Create a comparison table with rows for: Price, Key Features, Durability, and Best Use Case." },
-    { id: 55, cat: "Writing", title: "Getting Past Writer's Block ✍️", desc: "Creative unblocking.", prompt: "I am writing about [Topic] but stuck on the opening. Give me 5 different opening sentences (e.g., a quote, a statistic, a question, a story)." },
-    { id: 56, cat: "Technical", title: "Fixing Bugs in Code 🐛", desc: "Debugging help.", prompt: "I have an error: [Error Message]. Here is the code block: [Code]. Explain why this error is happening and provide the corrected code." },
-    { id: 57, cat: "Personal", title: "Language Learning 🌐", desc: "Practice and conversation.", prompt: "Act as a native [Language] speaker. Have a conversation with me about [Topic] at an A2 (Beginner) level. Correct my grammar after every response." },
-    { id: 58, cat: "Technical", title: "Rubber Duck Debugging 🦆", desc: "Verbal processing.", prompt: "I am going to explain my logic for [Problem] step-by-step. Stop me if you spot a flaw in my reasoning. Step 1: [Explanation]." },
-    { id: 59, cat: "Personal", title: "Understanding Sex 🔞", desc: "Educational health info.", prompt: "Provide factual, medically accurate information about [Topic]. Include safety precautions and consent considerations." },
-    { id: 60, cat: "Business", title: "Making Sense of Academic Papers 📄", desc: "Research analysis.", prompt: "Explain the abstract of this paper in plain English. What is the hypothesis, the methodology, and the main conclusion? Text: [Paste Abstract]." },
-    { id: 61, cat: "Technical", title: "Generating Synthetic Data 🧪", desc: "Test data creation.", prompt: "Generate a CSV-formatted list of 10 fake customers. Columns: ID, Name, Email, Date of Birth, Purchase Amount. Ensure emails differ." },
-    { id: 62, cat: "Business", title: "Generating a Lesson Plan 📋", desc: "Training and education.", prompt: "Create a lesson plan for a 1-hour workshop on [Topic]. Include: Learning Objectives, 15-min intro, 30-min activity, and 15-min review." },
-    { id: 63, cat: "Productivity", title: "Classifying by Criteria 🗂️", desc: "Data sorting.", prompt: "Categorize this list of items into [Category A] and [Category B]. Present the result as a table. List: [Insert List]." },
-    { id: 64, cat: "Business", title: "Ad/Marketing Copy 📢", desc: "Persuasive writing.", prompt: "Write 3 headlines and 2 body text variations for a Facebook ad selling [Product]. Target audience: [Audience]. Pain point: [Pain Point]." },
-    { id: 65, cat: "Business", title: "For Entrepreneurs/Startups 🚀", desc: "Business planning.", prompt: "Draft a Lean Canvas for a startup idea: [Idea]. Fill in: Problem, Solution, Unique Value Prop, Channels, and Revenue Streams." },
-    { id: 66, cat: "Personal", title: "For People with ADHD 🧠", desc: "Executive function tools.", prompt: "Break down the task '[Large Task]' into micro-steps that take less than 10 minutes each. Format as a checklist." },
-    { id: 67, cat: "Writing", title: "Writing/Editing CV/Résumé 📄", desc: "Career documents.", prompt: "Rewrite this job description bullet point to be achievement-oriented. Use strong action verbs and quantify results. Original: [Paste Text]." },
-    { id: 68, cat: "Productivity", title: "Organizing a Brain Dump 🗃️", desc: "Structuring chaos.", prompt: "Organize these random notes into a structured outline with headings and sub-bullets. Notes: [Paste Text]." },
-    { id: 69, cat: "Business", title: "Thinking Better 🤔", desc: "Mental models.", prompt: "Help me analyze [Decision] using the 'Six Thinking Hats' method. List 2 points for each Hat (White, Red, Black, Yellow, Green, Blue)." },
-    { id: 70, cat: "Personal", title: "Recommending Movies, Books, etc. 🎬", desc: "Personalized suggestions.", prompt: "I liked [Book/Movie A] and [Book/Movie B]. Suggest 5 similar titles. For each, explain why I would like it based on my previous choices." },
-    { id: 71, cat: "Business", title: "Meeting Summaries 📝", desc: "Minutes and actions.", prompt: "Convert these meeting notes into a formal summary. Sections: 1. Attendees, 2. Key Decisions, 3. Action Items (with owners/deadlines). Notes: [Paste Notes]." },
-    { id: 72, cat: "Productivity", title: "Cleaning Up Notes 🧹", desc: "Formatting and polish.", prompt: "Fix the grammar, formatting, and clarity of these rough notes. Use bullet points for lists. Notes: [Paste Notes]." },
-    { id: 73, cat: "Business", title: "Enhanced Decision-Making 🎯", desc: "Analysis frameworks.", prompt: "I need to choose between [Option A] and [Option B]. Create a decision matrix comparing them on: Cost, Time, Quality, and Risk." },
-    { id: 74, cat: "Personal", title: "Navigating Love Lives 💘", desc: "Relationship communication.", prompt: "I want to express [Feeling] to my partner. Help me draft a letter that is vulnerable but clear. Avoid accusatory language." },
-    { id: 75, cat: "Writing", title: "Language Translation 🌍", desc: "Multilingual support.", prompt: "Translate this text to [Language]. Maintain a [Formal/Casual] tone. Flag any idioms that don't translate directly. Text: [Paste Text]." },
-    { id: 76, cat: "Writing", title: "Replying to Emails 📬", desc: "Quick responses.", prompt: "Draft a polite decline to this invitation: [Paste Invite]. Reason: [Reason]. Propose a specific future date to reconnect." },
-    { id: 77, cat: "Business", title: "Learning at Work 👷‍♂️", desc: "Professional development.", prompt: "Explain the concept of [Industry Concept] as it applies to [My Role]. Give a concrete example of how I might use it tomorrow." },
-    { id: 78, cat: "Personal", title: "Enabling Better Conversations with Doctors 🩺", desc: "Health advocacy.", prompt: "I am seeing a specialist for [Condition]. List 5 prioritized questions I must ask to understand my treatment options and side effects." },
-    { id: 79, cat: "Business", title: "Structured Thinking 🧩", desc: "Logic and reasoning.", prompt: "Apply 'First Principles Thinking' to [Problem]. Break it down to its fundamental truths, then rebuild a solution from scratch." },
-    { id: 80, cat: "Productivity", title: "Data Entry 📊", desc: "Formatting and parsing.", prompt: "Extract the Name, Email, and Phone Number from this text block. Format it as a CSV line. Text: [Paste Text]." },
-    { id: 81, cat: "Technical", title: "Explaining Technical Documents 📚", desc: "Simplification.", prompt: "Summarize this technical spec sheet for a non-technical salesperson. Highlight the 3 main selling points and 1 limitation." },
-    { id: 82, cat: "Business", title: "Negotiating a Deal 🤝", desc: "Strategy and prep.", prompt: "I am negotiating [Deal]. The other party wants [X]. I want [Y]. Suggest 3 creative trade-offs (concessions) I can offer to get what I want." },
+    { id: 35, cat: "Technical", title: "Coding for Amateurs 👩‍💻", desc: "Explain code logic.", prompt: "Explain how to write a Python script to [Task] as if I am a complete beginner. Break it into 5 steps and explain what every line does." },
+    { id: 36, cat: "Creativity", title: "Imagination 🎨", desc: "SCAMPER technique.", prompt: "Apply the SCAMPER method to [Product]. Give me one innovative idea for each letter (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse)." },
+    { id: 37, cat: "Business", title: "Generating Appraisals 📝", desc: "Performance feedback.", prompt: "Draft a performance review comment for an employee who excels at [Strength] but struggles with [Weakness]. Use the 'Situation-Behavior-Impact' model." },
+    { id: 38, cat: "Personal", title: "Relationship Advice ❤️", desc: "Communication skills.", prompt: "I feel frustrated when [Action] happens. Help me draft a conversation starter using 'I' statements to express my feelings without blaming the other person." },
+    { id: 39, cat: "Business", title: "Practicing Difficult Conversations 💬", desc: "Scenario rehearsal.", prompt: "I need to tell a client we are missing a deadline. Act as the disappointed client. I will start. Respond realistically so I can practice managing your expectations." },
+    { id: 40, cat: "Productivity", title: "Building Lists 🗒️", desc: "Comprehensive planning.", prompt: "Create a comprehensive checklist for [Project]. Organize items into phases: 'Planning', 'Execution', and 'Review'. Include potential blockers." },
+    { id: 41, cat: "Personal", title: "Homework 📚", desc: "Tutoring aid.", prompt: "Create 3 practice problems for [Math/Science Topic] with increasing difficulty. Provide the answer key and step-by-step working separately." },
+    { id: 42, cat: "Personal", title: "Raising/Guiding Kids 👨‍👩‍👧‍👦", desc: "Parenting strategies.", prompt: "Suggest 3 positive reinforcement strategies to help a [Age]-year-old with [Behavioral Issue]. Include a script for how to explain the new rule to them." },
+    { id: 43, cat: "Productivity", title: "Work Buddy 👥", desc: "Prioritization aid.", prompt: "I have these tasks: [List]. Help me apply the Eisenhower Matrix. Which tasks should I Do, Decide, Delegate, or Delete? Explain why." },
+    { id: 44, cat: "Technical", title: "Refining Prompts 🎯", desc: "Meta-prompting.", prompt: "I want AI to [Task]. My current prompt is '[Current Prompt]'. Rewrite this prompt to be more effective, specific, and less prone to error." },
+    { id: 45, cat: "Writing", title: "Editing Text ✏️", desc: "Polish and clarity.", prompt: "Edit this text for conciseness and clarity. Remove passive voice. Target audience: [Audience]. Text: [Paste Draft]." },
+    { id: 46, cat: "Writing", title: "Drafting Emails 📧", desc: "Professional requests.", prompt: "Draft an email to [Recipient] asking for [Request]. Context: [Context]. Tone: Urgent but polite. Include a clear deadline." },
+    { id: 47, cat: "Technical", title: "Excel Formulas 📈", desc: "Data processing.", prompt: "Write an Excel formula to [Calculation]. Explain how it works step-by-step. Also, explain how to handle errors (like #N/A) within the formula." },
+    { id: 48, cat: "Business", title: "Evaluating Copy ✍️", desc: "Marketing critique.", prompt: "Critique this marketing copy based on: 1. Clarity, 2. Persuasion, 3. Call to Action strength. Suggest 3 specific improvements. Copy: [Paste Copy]." },
+    { id: 49, cat: "Personal", title: "Personal Finance 💰", desc: "Budgeting templates.", prompt: "Create a monthly budget template for a salary of [Amount]. Use the 50/30/20 rule. List specific categories for Needs, Wants, and Savings." },
+    { id: 50, cat: "Personal", title: "Help with Reading Books 📚", desc: "Key insights.", prompt: "Summarize the book [Title]. List the top 5 actionable takeaways I can apply to my [Career/Life]. Include one famous quote." },
+    { id: 51, cat: "Writing", title: "Drafting a Document 📝", desc: "Report outlines.", prompt: "Outline a [Document Type] about [Topic]. Include standard headers (Executive Summary, Methodology, Findings) and bullet points for what to cover in each." },
+    { id: 52, cat: "Writing", title: "Drafting Formal Letter ✉️", desc: "Official notices.", prompt: "Write a formal letter of [Complaint/Resignation] to [Entity]. Adhere to standard business formatting. State the purpose clearly in the first paragraph." },
+    { id: 53, cat: "Business", title: "Fact-checking ✓", desc: "Verifying claims.", prompt: "I am writing about [Topic]. List 5 common misconceptions about this topic and provide the corrected fact for each one." },
+    { id: 54, cat: "Personal", title: "Shopping 🛒", desc: "Product comparison.", prompt: "Compare [Product A] vs [Product B]. Create a table comparing: Price, Key Features, Pros, Cons, and 'Best For' recommendation." },
+    { id: 55, cat: "Writing", title: "Getting Past Writer's Block ✍️", desc: "Opening hooks.", prompt: "I am writing about [Topic] but stuck on the opening. Give me 5 different opening hooks (e.g., a shocking stat, a quote, a question, a story)." },
+    { id: 56, cat: "Technical", title: "Fixing Bugs in Code 🐛", desc: "Code correction.", prompt: "I have an error: [Error Message]. Here is the code: [Code]. Explain why this error is happening and provide the corrected code block." },
+    { id: 57, cat: "Personal", title: "Language Learning 🌐", desc: "Conversation practice.", prompt: "Act as a native [Language] speaker. Have a conversation with me about [Topic] at an A2 level. Correct my grammar after every response." },
+    { id: 58, cat: "Technical", title: "Rubber Duck Debugging 🦆", desc: "Logic checking.", prompt: "I am going to explain my logic for [Problem] step-by-step. Listen, and stop me only if you spot a logical flaw. Step 1: [Start Explanation]." },
+    { id: 59, cat: "Personal", title: "Understanding Sex 🔞", desc: "Health education.", prompt: "Provide factual, medically accurate information about [Topic]. Include relevant safety precautions and consent considerations." },
+    { id: 60, cat: "Business", title: "Making Sense of Academic Papers 📄", desc: "Research summary.", prompt: "Explain the abstract of this paper in plain English. What is the hypothesis, the methodology, and the main conclusion? Text: [Paste Abstract]." },
+    { id: 61, cat: "Technical", title: "Generating Synthetic Data 🧪", desc: "Test datasets.", prompt: "Generate a CSV-formatted list of 10 fake customers. Columns: ID, Name, Email, Region, Purchase Amount. Ensure data looks realistic." },
+    { id: 62, cat: "Business", title: "Generating a Lesson Plan 📋", desc: "Workshop planning.", prompt: "Create a lesson plan for a 1-hour workshop on [Topic]. Include: Learning Objectives, 10-min Intro, 30-min Activity, and 20-min Review." },
+    { id: 63, cat: "Productivity", title: "Classifying by Criteria 🗂️", desc: "Data sorting.", prompt: "Categorize this list of items into [Group A] and [Group B]. Present the result as a table. List: [Insert List]." },
+    { id: 64, cat: "Business", title: "Ad/Marketing Copy 📢", desc: "Social ads.", prompt: "Write 3 headlines and 2 body text variations for a Facebook ad selling [Product]. Target audience: [Audience]. Highlight this benefit: [Benefit]." },
+    { id: 65, cat: "Business", title: "For Entrepreneurs/Startups 🚀", desc: "Lean Canvas.", prompt: "Draft a Lean Canvas for a startup idea: [Idea]. Fill in: Problem, Solution, Unique Value Prop, Channels, and Revenue Streams." },
+    { id: 66, cat: "Personal", title: "For People with ADHD 🧠", desc: "Task breakdown.", prompt: "Break down the task '[Large Task]' into micro-steps that take less than 10 minutes each. Format as a checklist to help me get started." },
+    { id: 67, cat: "Writing", title: "Writing/Editing CV/Résumé 📄", desc: "CV improvements.", prompt: "Rewrite this CV bullet point to be achievement-oriented. Use strong action verbs and quantify results. Original: [Paste Text]." },
+    { id: 68, cat: "Productivity", title: "Organizing a Brain Dump 🗃️", desc: "Structuring notes.", prompt: "Organize these random notes into a structured outline with main headings and sub-bullets. Notes: [Paste Text]." },
+    { id: 69, cat: "Business", title: "Thinking Better 🤔", desc: "Six Thinking Hats.", prompt: "Help me analyze [Decision] using the 'Six Thinking Hats' method. List 2 points for each Hat (White, Red, Black, Yellow, Green, Blue)." },
+    { id: 70, cat: "Personal", title: "Recommending Movies, Books, etc. 🎬", desc: "Recommendations.", prompt: "I liked [Title A] and [Title B]. Suggest 5 similar titles. For each, explain why I would like it based on my previous choices." },
+    { id: 71, cat: "Business", title: "Meeting Summaries 📝", desc: "Minutes.", prompt: "Convert these rough notes into a formal meeting summary. Sections: 1. Attendees, 2. Key Decisions, 3. Action Items (with owners/deadlines). Notes: [Paste]." },
+    { id: 72, cat: "Productivity", title: "Cleaning Up Notes 🧹", desc: "Polish notes.", prompt: "Fix the grammar, formatting, and clarity of these rough notes. Use bullet points for lists. Keep the tone professional. Notes: [Paste]." },
+    { id: 73, cat: "Business", title: "Enhanced Decision-Making 🎯", desc: "Decision matrix.", prompt: "I need to choose between [Option A] and [Option B]. Create a decision matrix comparing them on: Cost, Time, Quality, and Risk." },
+    { id: 74, cat: "Personal", title: "Navigating Love Lives 💘", desc: "Vulnerable communication.", prompt: "I want to tell my partner [Feeling]. Help me draft a letter that is vulnerable and honest, but avoids accusatory language." },
+    { id: 75, cat: "Writing", title: "Language Translation 🌍", desc: "Multilingual text.", prompt: "Translate this text to [Language]. Maintain a [Formal/Casual] tone. Flag any idioms that don't translate directly. Text: [Paste Text]." },
+    { id: 76, cat: "Writing", title: "Replying to Emails 📬", desc: "Quick replies.", prompt: "Draft a polite decline to this invitation: [Paste Invite]. Reason: [Reason]. Propose a specific future date to reconnect." },
+    { id: 77, cat: "Business", title: "Learning at Work 👷‍♂️", desc: "Concept application.", prompt: "Explain the concept of [Industry Concept] as it applies to [My Role]. Give a concrete example of how I might use it in my daily work." },
+    { id: 78, cat: "Personal", title: "Enabling Better Conversations with Doctors 🩺", desc: "Medical advocacy.", prompt: "I am seeing a specialist for [Condition]. List 5 prioritized questions I must ask to fully understand my prognosis and treatment plan." },
+    { id: 79, cat: "Business", title: "Structured Thinking 🧩", desc: "First Principles.", prompt: "Apply 'First Principles Thinking' to [Problem]. Break it down to its fundamental truths, then rebuild a solution from scratch." },
+    { id: 80, cat: "Productivity", title: "Data Entry 📊", desc: "Text extraction.", prompt: "Extract the Name, Email, and Phone Number from this text block. Format it as a CSV line. Text: [Paste Text]." },
+    { id: 81, cat: "Technical", title: "Explaining Technical Documents 📚", desc: "Tech summaries.", prompt: "Summarize this technical spec sheet for a non-technical sales team. Highlight the 3 main selling points and 1 limitation. Text: [Paste Text]." },
+    { id: 82, cat: "Business", title: "Negotiating a Deal 🤝", desc: "Negotiation prep.", prompt: "I am negotiating [Deal]. The other party wants [X]. I want [Y]. Suggest 3 creative trade-offs (concessions) I can offer to bridge the gap." },
     { id: 83, cat: "Personal", title: "Disputing a Fine 🏛️", desc: "Formal appeals.", prompt: "Draft a formal letter appealing a [Parking/Speeding] fine. Argument: [Reason]. Tone: Respectful, factual, and firm. Cite the attached evidence." },
-    { id: 84, cat: "Creativity", title: "Generating Video 🎥", desc: "Scripting and storyboards.", prompt: "Write a script for a 60-second TikTok/Reel about [Topic]. Include visual cues (e.g., [Cut to...]) and voiceover text." },
-    { id: 85, cat: "Personal", title: "Safe Space to Ask 🛡️", desc: "No stupid questions.", prompt: "I feel dumb asking this, but explain [Basic Concept] to me. Don't use jargon. Just tell me how it works in plain English." },
-    { id: 86, cat: "Business", title: "Eliminating Meetings ❌", desc: "Async communication.", prompt: "Convert this meeting agenda into an async update email. Structure it so recipients can reply with their updates by EOD. Agenda: [Paste]." },
-    { id: 87, cat: "Technical", title: "Using MS Office Apps 💻", desc: "Software mastery.", prompt: "Step-by-step guide: How do I create an Excel Pivot Table to analyze [Data Type] by [Category]? Include tips for dynamic updating." },
-    { id: 88, cat: "Writing", title: "Creative Writing ✍️📚", desc: "Storytelling.", prompt: "Write a 200-word scene where [Character A] meets [Character B]. Setting: [Setting]. Mood: [Mood]. Focus on sensory details." },
-    { id: 89, cat: "Personal", title: "Exploring Religion 🛐", desc: "Cultural understanding.", prompt: "Explain the core beliefs and major holidays of [Religion]. Focus on respectful understanding and cultural etiquette." },
-    { id: 90, cat: "Personal", title: "Choosing Wine 🍷", desc: "Pairing assistance.", prompt: "I am serving [Dish]. Suggest 3 wine pairings (Red, White, and Budget). Explain why each complements the food." },
+    { id: 84, cat: "Creativity", title: "Generating Video 🎥", desc: "Scripting.", prompt: "Write a script for a 60-second social media video about [Topic]. Include visual cues (e.g., [Cut to...]) and voiceover text." },
+    { id: 85, cat: "Personal", title: "Safe Space to Ask 🛡️", desc: "Basic explanations.", prompt: "I feel dumb asking this, but explain [Basic Concept] to me. Don't use jargon. Just tell me how it works in plain English." },
+    { id: 86, cat: "Business", title: "Eliminating Meetings ❌", desc: "Async updates.", prompt: "Convert this meeting agenda into an async update email. Structure it so recipients can reply with their updates by 5 PM. Agenda: [Paste]." },
+    { id: 87, cat: "Technical", title: "Using MS Office Apps 💻", desc: "Office tips.", prompt: "Step-by-step guide: How do I create an Excel Pivot Table to analyze [Data Type] by [Category]? Include a tip for filtering." },
+    { id: 88, cat: "Writing", title: "Creative Writing ✍️📚", desc: "Scene setting.", prompt: "Write a 200-word scene where [Character A] meets [Character B]. Setting: [Setting]. Mood: [Mood]. Focus on sensory details (smell, sound)." },
+    { id: 89, cat: "Personal", title: "Exploring Religion 🛐", desc: "Cultural education.", prompt: "Explain the core beliefs and major holidays of [Religion]. Focus on respectful understanding and workplace etiquette." },
+    { id: 90, cat: "Personal", title: "Choosing Wine 🍷", desc: "Pairing suggestions.", prompt: "I am serving [Dish]. Suggest 3 wine pairings (Red, White, and Budget option). Explain why each complements the flavor profile." },
     { id: 91, cat: "Business", title: "Customer Service 🎧", desc: "Support scripts.", prompt: "Draft a customer service script for handling an angry customer who [Issue]. Structure: Acknowledge, Apologize, Solve, Thank (AAST)." },
-    { id: 92, cat: "Business", title: "Breaking the Rules 🚨", desc: "Innovation/Disruption.", prompt: "Identify 3 industry norms in [Industry] that are outdated. For each, suggest a 'disruptive' alternative approach." },
-    { id: 93, cat: "Business", title: "Sampling Data 📈", desc: "Analysis prep.", prompt: "I have a dataset of [Description]. Explain how to create a 'Stratified Random Sample' of this data to ensure I represent all user groups." },
-    { id: 94, cat: "Technical", title: "Spotting Anomalies 🔍", desc: "Data auditing.", prompt: "Analyze this list of transactions. Flag any that look suspicious based on [Criteria]. Explain why they are outliers. Data: [Paste Data]." },
-    { id: 95, cat: "Business", title: "Building a Business Plan 📑", desc: "Strategy documents.", prompt: "Draft the 'Executive Summary' for a business plan. Business: [Description]. Key Highlights: [Success A, Success B, Goal]." },
-    { id: 96, cat: "Business", title: "Creating Products and Branding 🛠️", desc: "Brand identity.", prompt: "Suggest 5 brand names for [Product]. Vibe: [Vibe]. For each, explain the rationale and check if the .com domain might be available." },
-    { id: 97, cat: "Writing", title: "Writing Blog Posts 📝", desc: "Content marketing.", prompt: "Write a blog post outline about [Topic]. Include a catchy H1, 4 subheadings (H2), and bullet points for key keywords to include for SEO." },
-    { id: 98, cat: "Business", title: "Writing Social Media Copy 📱", desc: "Engagement posts.", prompt: "Write a LinkedIn post about [Topic]. Format: Hook, Story/Insight, Bullet points, Call to Action. Tone: Professional but personal." },
-    { id: 99, cat: "Business", title: "Systematizing Social Media 📊", desc: "Content calendars.", prompt: "Create a 1-week content calendar for [Brand]. Platforms: Instagram and LinkedIn. Theme: [Theme]. Include post type and caption ideas." },
-    { id: 100, cat: "Personal", title: "Planning Workouts 🏋️", desc: "Fitness routines.", prompt: "Design a 30-minute home workout routine. Equipment: [Available Equipment]. Focus: [Goal, e.g., Core Strength]. Include warm-up and cool-down." }
+    { id: 92, cat: "Business", title: "Breaking the Rules 🚨", desc: "Disruptive thinking.", prompt: "Identify 3 industry norms in [Industry] that are outdated. For each, suggest a 'disruptive' alternative approach that adds value." },
+    { id: 93, cat: "Business", title: "Sampling Data 📈", desc: "Statistical methods.", prompt: "I have a large dataset of [Description]. Explain how to create a 'Stratified Random Sample' to ensure I represent all user groups evenly." },
+    { id: 94, cat: "Technical", title: "Spotting Anomalies 🔍", desc: "Data audit.", prompt: "Analyze this list of transactions. Flag any that look suspicious based on [Criteria]. Explain why they are outliers. Data: [Paste Data]." },
+    { id: 95, cat: "Business", title: "Building a Business Plan 📑", desc: "Executive Summary.", prompt: "Draft the 'Executive Summary' for a business plan. Business: [Description]. Key Highlights: [Market Size, Problem, Solution, Ask]." },
+    { id: 96, cat: "Business", title: "Creating Products and Branding 🛠️", desc: "Brand naming.", prompt: "Suggest 5 brand names for [Product]. Vibe: [Vibe]. For each, explain the rationale and check if it sounds available as a .com." },
+    { id: 97, cat: "Writing", title: "Writing Blog Posts 📝", desc: "Content outlines.", prompt: "Write a blog post outline about [Topic]. Include a catchy H1, 4 subheadings (H2), and a bullet list of keywords for SEO." },
+    { id: 98, cat: "Business", title: "Writing Social Media Copy 📱", desc: "Engagement posts.", prompt: "Write a LinkedIn post about [Topic]. Format: Hook, Story/Insight, Bullet points, Call to Action. Tone: Professional but authentic." },
+    { id: 99, cat: "Business", title: "Systematizing Social Media 📊", desc: "Content calendar.", prompt: "Create a 1-week content calendar for [Brand]. Platforms: Instagram & LinkedIn. Theme: [Theme]. Include post type and caption ideas." },
+    { id: 100, cat: "Personal", title: "Planning Workouts 🏋️", desc: "Fitness planning.", prompt: "Design a 30-minute home workout routine. Equipment: [Available Equipment]. Focus: [Goal]. Include warm-up and cool-down." }
 ];
 
 // --- Render Logic ---
@@ -423,32 +471,38 @@ const btns = document.querySelectorAll('.pill');
 function renderCases(filterCat = 'all', searchText = '') {
     grid.innerHTML = '';
     
+    const lowerSearch = searchText.toLowerCase();
+    
     const filtered = useCases.filter(item => {
         const matchesCat = filterCat === 'all' || item.cat === filterCat;
-        const matchesSearch = item.title.toLowerCase().includes(searchText.toLowerCase()) || 
-                              item.desc.toLowerCase().includes(searchText.toLowerCase()) ||
-                              item.id.toString().includes(searchText);
+        const matchesSearch = item.title.toLowerCase().includes(lowerSearch) || 
+                              item.desc.toLowerCase().includes(lowerSearch) ||
+                              item.id.toString().includes(lowerSearch);
         return matchesCat && matchesSearch;
     });
 
     if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #86868b;">No use cases found. Try a different search.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #86868b; font-size: 18px;">No use cases found. Try a different keyword.</div>`;
         return;
     }
 
     filtered.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
+        // SVG Icons for visual flair (optional but nice)
+        const copyIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+        
         card.innerHTML = `
             <div class="card-header">
-                <div>
-                    <div class="case-number">Use Case #${item.id}</div>
-                    <div class="case-title">${item.title}</div>
+                <div class="case-meta">
+                    <span class="case-number">CASE #${item.id}</span>
                 </div>
+                <div class="case-title">${item.title}</div>
             </div>
             <div class="case-desc">${item.desc}</div>
             <div class="prompt-box" id="prompt-${item.id}">${item.prompt}</div>
             <button class="btn-copy" onclick="copyToClipboard(${item.id})">
+                ${copyIcon}
                 <span>Copy Prompt</span>
             </button>
         `;
@@ -458,7 +512,6 @@ function renderCases(filterCat = 'all', searchText = '') {
 
 // --- Interactivity ---
 function filterCases(category) {
-    // Update active pill state
     btns.forEach(btn => {
         if(btn.innerText === category || (category === 'all' && btn.innerText === 'All')) {
             btn.classList.add('active');
@@ -466,13 +519,10 @@ function filterCases(category) {
             btn.classList.remove('active');
         }
     });
-    
-    // Render with current search text
     renderCases(category, searchInput.value);
 }
 
 searchInput.addEventListener('input', (e) => {
-    // Find active category
     const activeBtn = document.querySelector('.pill.active');
     const cat = activeBtn ? (activeBtn.innerText === 'All' ? 'all' : activeBtn.innerText) : 'all';
     renderCases(cat, e.target.value);
@@ -482,19 +532,19 @@ function copyToClipboard(id) {
     const text = document.getElementById(`prompt-${id}`).innerText;
     navigator.clipboard.writeText(text).then(() => {
         const btn = document.querySelector(`button[onclick="copyToClipboard(${id})"]`);
-        const originalText = btn.innerHTML;
+        const originalContent = btn.innerHTML;
         
         btn.classList.add('copied');
-        btn.innerHTML = `<span>✓ Copied</span>`;
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Copied</span>`;
         
         setTimeout(() => {
             btn.classList.remove('copied');
-            btn.innerHTML = `<span>Copy Prompt</span>`;
+            btn.innerHTML = originalContent;
         }, 2000);
     });
 }
 
-// --- Init ---
+// Initial Render
 renderCases();
 
 </script>
