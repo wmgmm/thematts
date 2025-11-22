@@ -2,36 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>AI Discovery Sprint</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <style>
-        /* --- Apple Design System --- */
         :root {
-            --bg-primary: #F2F2F7; /* iOS System Gray 6 */
-            --card-bg: #FFFFFF;
+            --bg-primary: #F2F2F7;
             --text-primary: #1D1D1F;
             --text-secondary: #86868B;
             --apple-blue: #0071E3;
             --apple-red: #FF3B30;
             --apple-green: #34C759;
-            --shadow-soft: 0 8px 40px rgba(0,0,0,0.08);
-            --shadow-card: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
-            overflow: hidden; /* App-like feel */
+            /* Fix for mobile viewport height issues */
+            height: 100dvh; 
+            width: 100vw;
+            overflow: hidden;
         }
 
         /* Animations */
-        .animate-enter { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .animate-enter { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .swipe-left { animation: swipeLeft 0.4s ease forwards; }
         @keyframes swipeLeft { to { transform: translateX(-120%) rotate(-15deg); opacity: 0; } }
@@ -39,23 +38,26 @@
         .swipe-right { animation: swipeRight 0.4s ease forwards; }
         @keyframes swipeRight { to { transform: translateX(120%) rotate(15deg); opacity: 0; } }
 
-        /* UI Components */
-        .ios-btn {
-            transition: transform 0.1s ease, opacity 0.2s;
-        }
+        /* UI Utilities */
+        .ios-btn { transition: transform 0.1s ease, opacity 0.2s; }
         .ios-btn:active { transform: scale(0.96); opacity: 0.8; }
 
-        .glass-header {
+        .glass-nav {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Scrollbar Hiding */
+        .glass-footer {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: env(safe-area-inset-bottom); /* iPhone X+ fix */
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Progress Ring */
         .progress-ring__circle {
             transition: stroke-dashoffset 0.35s;
             transform: rotate(-90deg);
@@ -63,54 +65,51 @@
         }
     </style>
 </head>
-<body class="h-screen w-full flex flex-col items-center justify-center">
+<body class="flex items-center justify-center">
 
-    <div id="app" class="w-full h-full max-w-md relative bg-white md:h-[85vh] md:rounded-[40px] md:shadow-2xl md:border md:border-gray-200/50 overflow-hidden flex flex-col">
+    <div id="app" class="w-full h-full md:h-[85vh] md:max-w-md md:rounded-[40px] md:shadow-2xl md:border md:border-gray-200/50 bg-white relative overflow-hidden flex flex-col">
 
-        <div id="startScreen" class="flex-1 flex flex-col p-8 animate-enter bg-white">
-            <div class="flex-1 flex flex-col items-center justify-center text-center">
-                <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+        <div id="startScreen" class="flex-1 flex flex-col relative z-10 overflow-y-auto no-scrollbar bg-white">
+            <div class="flex-1 flex flex-col items-center justify-center p-8 text-center animate-enter min-h-[500px]">
+                <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 shadow-sm">
                     <i data-lucide="sparkles" class="w-10 h-10 text-[#0071E3]"></i>
                 </div>
-                <h1 class="text-3xl font-bold tracking-tight text-[#1D1D1F] mb-3">AI Discovery Sprint</h1>
-                <p class="text-lg text-[#86868B] font-medium">Could this be useful?</p>
-                <p class="text-sm text-[#86868B] mt-2 max-w-[260px]">5 minutes. 100 possibilities. Swipe right on the ones that spark an idea.</p>
-            </div>
+                <h1 class="text-3xl font-bold tracking-tight text-[#1D1D1F] mb-2">AI Discovery Sprint</h1>
+                <p class="text-xl text-[#1D1D1F] font-semibold mb-2">Could this be useful?</p>
+                <p class="text-sm text-[#86868B] mb-8 max-w-[260px] leading-relaxed">5 minutes. 100 possibilities.<br>Go with your gut.</p>
 
-            <div class="bg-[#F2F2F7] p-5 rounded-2xl mb-8">
-                <div class="flex justify-between items-center text-sm font-semibold text-[#1D1D1F] mb-4">
-                    <span>Controls</span>
-                    <span class="bg-white px-2 py-0.5 rounded text-[10px] text-[#86868B] shadow-sm">KEYBOARD</span>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm">
-                        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-[#FF3B30]">
-                            <i data-lucide="x" class="w-4 h-4"></i>
+                <div class="bg-[#F2F2F7] p-5 rounded-2xl w-full mb-8 border border-gray-100">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#FF3B30]">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-[#1D1D1F]">Swipe Left</p>
+                                <p class="text-xs text-[#86868B]">Not for me</p>
+                            </div>
                         </div>
-                        <div class="text-left">
-                            <p class="text-sm font-semibold">Left Arrow</p>
-                            <p class="text-xs text-[#86868B]">Not for me</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm">
-                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[#0071E3]">
-                            <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
-                        </div>
-                        <div class="text-left">
-                            <p class="text-sm font-semibold">Right Arrow</p>
-                            <p class="text-xs text-[#86868B]">I might use this</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0071E3]">
+                                <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-[#1D1D1F]">Swipe Right</p>
+                                <p class="text-xs text-[#86868B]">I might use this</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <button onclick="startGame()" class="ios-btn w-full bg-[#0071E3] text-white text-[17px] font-semibold py-4 rounded-2xl shadow-lg shadow-blue-500/20">
-                Start 5-Minute Sprint
-            </button>
+                <button onclick="startGame()" class="ios-btn w-full bg-[#0071E3] text-white text-[17px] font-semibold py-4 rounded-2xl shadow-lg shadow-blue-500/20 mb-4">
+                    Start Sprint
+                </button>
+                <a href="usagecases.html" class="text-xs font-medium text-[#86868B] hover:text-[#0071E3]">View full list</a>
+            </div>
         </div>
 
-        <div id="gameScreen" class="hidden flex-1 flex-col bg-[#F2F2F7] relative">
-            <div class="glass-header px-6 py-4 flex items-center justify-between z-10 relative">
+        <div id="gameScreen" class="hidden h-full w-full flex-col bg-[#F2F2F7] relative">
+            <div class="glass-nav px-5 py-3 flex items-center justify-between z-20 relative shadow-sm">
                 <div class="flex items-center gap-3">
                     <div class="relative w-10 h-10">
                         <svg class="w-10 h-10" viewBox="0 0 100 100">
@@ -120,67 +119,72 @@
                         <div id="timerText" class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-[10px] font-bold text-[#1D1D1F]">5:00</div>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-xs font-medium text-[#86868B] uppercase tracking-wide">Remaining</span>
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase tracking-wide">Cards Left</span>
                         <span id="cardsLeft" class="text-sm font-bold text-[#1D1D1F]">100</span>
                     </div>
                 </div>
-                <div class="bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
-                    <i data-lucide="heart" class="w-3 h-3 text-[#FF3B30] fill-current"></i>
+                <div class="bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-1.5">
+                    <i data-lucide="heart" class="w-3.5 h-3.5 text-[#FF3B30] fill-current"></i>
                     <span id="matchCount" class="text-sm font-bold text-[#1D1D1F]">0</span>
                 </div>
             </div>
 
             <div class="flex-1 relative p-4 flex flex-col justify-center items-center overflow-hidden">
-                <div id="cardContainer" class="w-full max-w-[360px] h-[500px] relative">
+                <div id="cardContainer" class="w-full h-full max-h-[550px] relative">
                     </div>
             </div>
 
-            <div class="bg-white px-8 py-6 pb-8 flex justify-between items-center shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-20">
-                <button onclick="handleSwipe('left')" class="ios-btn w-16 h-16 rounded-full bg-[#F2F2F7] text-[#FF3B30] flex items-center justify-center shadow-sm border border-gray-100">
-                    <i data-lucide="x" class="w-8 h-8"></i>
+            <div class="bg-white px-8 py-5 pb-8 flex justify-between items-center shadow-[0_-4px_20px_rgba(0,0,0,0.03)] z-20">
+                <button onclick="handleSwipe('left')" class="ios-btn w-14 h-14 rounded-full bg-[#F2F2F7] text-[#FF3B30] flex items-center justify-center shadow-sm border border-gray-100">
+                    <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
-                <div class="text-xs font-medium text-[#86868B] tracking-wide">SWIPE OR USE ARROWS</div>
-                <button onclick="handleSwipe('right')" class="ios-btn w-16 h-16 rounded-full bg-[#0071E3] text-white flex items-center justify-center shadow-lg shadow-blue-500/25">
-                    <i data-lucide="check" class="w-8 h-8"></i>
+                <div class="text-[10px] font-bold text-[#86868B] tracking-widest uppercase opacity-60">Swipe</div>
+                <button onclick="handleSwipe('right')" class="ios-btn w-14 h-14 rounded-full bg-[#0071E3] text-white flex items-center justify-center shadow-lg shadow-blue-500/25">
+                    <i data-lucide="check" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
-        <div id="resultsScreen" class="hidden flex-1 flex-col bg-white animate-enter">
-            <div class="p-8 pb-4 text-center border-b border-gray-100">
-                <h2 class="text-3xl font-bold text-[#1D1D1F] mb-2">Sprint Complete</h2>
-                <div class="flex justify-center gap-8 mt-6 mb-2">
-                    <div class="flex flex-col">
-                        <span id="finalMatchCount" class="text-3xl font-bold text-[#0071E3]">0</span>
-                        <span class="text-xs text-[#86868B] uppercase font-medium tracking-wide">Saved</span>
+        <div id="resultsScreen" class="hidden h-full w-full flex-col bg-white animate-enter relative">
+            
+            <div class="bg-[#F2F2F7] p-6 pb-6 border-b border-gray-200 z-10 shadow-sm">
+                <h2 class="text-2xl font-bold text-[#1D1D1F] mb-1 text-center">Sprint Report</h2>
+                <p class="text-xs text-center text-[#86868B] mb-5 uppercase tracking-wide font-semibold">Discovery Complete</p>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center">
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase">Saved</span>
+                        <span id="finalMatchCount" class="text-2xl font-bold text-[#0071E3]">0</span>
                     </div>
-                    <div class="flex flex-col">
-                        <span id="matchPercentage" class="text-3xl font-bold text-[#1D1D1F]">0%</span>
-                        <span class="text-xs text-[#86868B] uppercase font-medium tracking-wide">Match Rate</span>
+                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center">
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase">Top Vibe</span>
+                        <span id="topCategory" class="text-sm font-bold text-[#1D1D1F] mt-1 line-clamp-1">N/A</span>
                     </div>
                 </div>
             </div>
 
-            <div class="flex-1 overflow-y-auto no-scrollbar p-4 bg-[#F2F2F7]">
-                <h3 class="text-sm font-bold text-[#86868B] uppercase tracking-wide mb-3 ml-2">Your Saved Use Cases</h3>
-                <div id="matchesList" class="space-y-3">
+            <div class="flex-1 overflow-y-auto bg-white p-4">
+                <div class="text-xs font-bold text-[#86868B] uppercase tracking-wide mb-3 ml-1">Your Saved Collection</div>
+                <div id="matchesList" class="space-y-3 pb-32">
                     </div>
             </div>
 
-            <div class="p-4 bg-white border-t border-gray-100 flex gap-3">
-                <button onclick="location.reload()" class="ios-btn flex-1 bg-[#F2F2F7] text-[#1D1D1F] font-semibold py-3.5 rounded-xl">
-                    Restart
-                </button>
-                <a href="index.html" class="ios-btn flex-1 bg-[#1D1D1F] text-white font-semibold py-3.5 rounded-xl text-center flex items-center justify-center">
-                    View All
-                </a>
+            <div class="glass-footer absolute bottom-0 left-0 w-full p-4 px-6">
+                <div class="flex gap-3">
+                    <button onclick="location.reload()" class="ios-btn flex-1 bg-[#F2F2F7] text-[#1D1D1F] font-semibold py-3.5 rounded-xl text-sm">
+                        Restart
+                    </button>
+                    <a href="usagecases.html" class="ios-btn flex-1 bg-[#1D1D1F] text-white font-semibold py-3.5 rounded-xl text-center text-sm flex items-center justify-center shadow-lg">
+                        Explore Full List
+                    </a>
+                </div>
             </div>
         </div>
 
     </div>
 
 <script>
-// --- COMPLETE DATA: 100 Use Cases ---
+// --- DATA ---
 const useCases = [
     { id: 1, cat: "Personal", title: "Therapy/Companionship 🗣️", desc: "A safe space to process stress or rehearse conversations.", prompt: "Act as a supportive sounding board. I'm dealing with [Situation]. Ask 3 clarifying questions to help me process my thoughts, then suggest one practical next step." },
     { id: 2, cat: "Productivity", title: "Organizing My Life 📅", desc: "Structure chaotic tasks into a clear plan.", prompt: "Here is a list of tasks I need to do: [Insert List]. Create a prioritized schedule. Group similar tasks together and suggest realistic time blocks for each." },
@@ -199,7 +203,7 @@ const useCases = [
     { id: 15, cat: "Personal", title: "Cooking with What You Have 🍳", desc: "Recipe generation.", prompt: "I have these ingredients: [List]. Create 3 dinner recipes (one must be [Dietary Restriction]). Include prep time and step-by-step instructions." },
     { id: 16, cat: "Technical", title: "Troubleshooting 🔧", desc: "Diagnose problems.", prompt: "Create a troubleshooting flowchart for [Issue]. Format as a numbered list where each step asks a 'Yes/No' question leading to a solution or next step." },
     { id: 17, cat: "Personal", title: "Personalized Learning 🎓", desc: "Custom curriculum.", prompt: "I want to learn [Topic]. Assess my current level (I know [Current Knowledge]). Create a 4-week curriculum with articles, videos, and milestones." },
-    { id: 18, cat: "Personal", title: "Boosting Confidence 💪", desc: "Prep for high-pressure moments.", prompt: "I am nervous about [Event]. Act as a coach. Give me a short pep talk, then help me rehearse my opening 2 sentences. Critique my delivery." },
+    { id: 18, cat: "Personal", title: "Boosting Confidence 💪", desc: "Prep for high-pressure moments.", prompt: "I am nervous about [Event]. Act as a coach. Give me a short pep talk, then help me rehearse the first 2 minutes of my opening. Critique my delivery." },
     { id: 19, cat: "Writing", title: "Adjusting Tone of Email ✉️", desc: "Refine communication.", prompt: "Rewrite this email draft in 3 distinct tones: 1. Formal & Professional, 2. Warm & Collaborative, 3. Direct & Brief. Draft: [Paste Text]." },
     { id: 20, cat: "Business", title: "Explaining Legalese ⚖️", desc: "Understand contracts.", prompt: "Translate this legal clause into plain English. Highlight: 1. What I must do, 2. What I cannot do, 3. Any potential risks. Clause: [Paste Text]." },
     { id: 21, cat: "Personal", title: "Entertaining Kids 🤹‍♂️", desc: "Educational activities.", prompt: "Suggest 5 educational activities for a [Age] year old using only items found in a standard kitchen. Each must teach a science or math concept." },
@@ -284,15 +288,14 @@ const useCases = [
     { id: 100, cat: "Personal", title: "Planning Workouts 🏋️", desc: "Fitness planning.", prompt: "Design a 30-minute home workout routine. Equipment: [Available Equipment]. Focus: [Goal]. Include warm-up and cool-down." }
 ];
 
-// --- LOGIC ---
+// --- GAME LOGIC ---
 let currentIndex = 0;
 let likedCases = [];
 let timerInterval;
-let timeLeft = 300; // 5 minutes
+let timeLeft = 300;
 let gameActive = false;
 let shuffledIndices = [];
 
-// DOM Elements
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const resultsScreen = document.getElementById('resultsScreen');
@@ -303,15 +306,13 @@ const matchCountEl = document.getElementById('matchCount');
 const cardsLeftEl = document.getElementById('cardsLeft');
 const matchesList = document.getElementById('matchesList');
 const finalMatchCount = document.getElementById('finalMatchCount');
-const matchPercentage = document.getElementById('matchPercentage');
+const topCategoryEl = document.getElementById('topCategory');
 
-// Initialization
 function startGame() {
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     gameScreen.classList.add('flex');
     
-    // Shuffle
     shuffledIndices = Array.from({length: useCases.length}, (_, i) => i)
         .sort(() => Math.random() - 0.5);
     
@@ -322,31 +323,26 @@ function startGame() {
     renderCard();
     startTimer();
     
-    // Init Icons
     lucide.createIcons();
 }
 
 function startTimer() {
     const totalTime = 300;
-    const circleLength = 251.2; // 2 * pi * 40
+    const circleLength = 251.2;
     
     timerInterval = setInterval(() => {
         if (!gameActive) return;
         
         timeLeft--;
         
-        // Update Text
         const m = Math.floor(timeLeft / 60);
         const s = timeLeft % 60;
         timerText.textContent = `${m}:${s.toString().padStart(2, '0')}`;
         
-        // Update Ring
         const offset = circleLength - (timeLeft / totalTime) * circleLength;
         timerRing.style.strokeDashoffset = offset;
         
-        if (timeLeft <= 0) {
-            endGame();
-        }
+        if (timeLeft <= 0) endGame();
     }, 1000);
 }
 
@@ -387,7 +383,6 @@ function renderCard() {
                     </p>
                 </div>
             </div>
-
         </div>
     `;
     lucide.createIcons();
@@ -421,16 +416,23 @@ function endGame() {
     resultsScreen.classList.remove('hidden');
     resultsScreen.classList.add('flex');
     
-    // Stats
+    // Insights Logic
     finalMatchCount.textContent = likedCases.length;
-    const percentage = Math.round((likedCases.length / (currentIndex || 1)) * 100);
-    matchPercentage.textContent = `${percentage}%`;
+    
+    if(likedCases.length > 0) {
+        const counts = {};
+        likedCases.forEach(c => counts[c.cat] = (counts[c.cat] || 0) + 1);
+        const topCat = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+        topCategoryEl.textContent = topCat;
+    } else {
+        topCategoryEl.textContent = "None";
+    }
     
     // Render List
     if (likedCases.length === 0) {
         matchesList.innerHTML = `
             <div class="text-center p-8 text-[#86868B]">
-                <p>No matches found. Try again?</p>
+                <p>No matches found. Try another sprint?</p>
             </div>
         `;
     } else {
@@ -472,14 +474,12 @@ function copyText(text, btn) {
     });
 }
 
-// Keyboard Inputs
 document.addEventListener('keydown', (e) => {
     if (!gameActive) return;
     if (e.key === "ArrowLeft") handleSwipe('left');
     if (e.key === "ArrowRight") handleSwipe('right');
 });
 
-// Init
 lucide.createIcons();
 </script>
 </body>
