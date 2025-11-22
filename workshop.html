@@ -110,6 +110,13 @@
             font-size: 24px;
             font-weight: 600;
         }
+        
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 25px 0 10px 0;
+        }
 
         /* --- Cards --- */
         .section-card {
@@ -156,7 +163,7 @@
         /* --- Activity Grid --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
@@ -172,6 +179,7 @@
             height: 100%;
             box-sizing: border-box;
             border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
         }
 
         .grid-item:hover {
@@ -180,8 +188,18 @@
             box-shadow: var(--shadow-hover);
             z-index: 2;
         }
+        
+        .activity-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--apple-blue);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
 
-        .icon-large { font-size: 32px; margin-bottom: 15px; display: block; }
+        .icon-large { font-size: 32px; margin-bottom: 10px; display: block; }
         .item-title { font-size: 19px; font-weight: 600; display: block; margin-bottom: 5px; }
         .item-desc { font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px; flex-grow: 1; }
         .item-meta {
@@ -251,6 +269,23 @@
             font-weight: 500;
         }
 
+        /* --- MegaDoc Specific Styles --- */
+        .megadoc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .megadoc-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .megadoc-icon { font-size: 28px; margin-bottom: 10px; }
+        .megadoc-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
+        .megadoc-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+
         /* --- Prompt Box (Code style) --- */
         .prompt-box {
             background-color: #f5f5f7;
@@ -260,7 +295,7 @@
             font-size: 13px;
             line-height: 1.6;
             color: #333;
-            margin: 15px 0 20px 0;
+            margin: 10px 0 15px 0;
             white-space: pre-wrap;
             border: 1px solid rgba(0,0,0,0.05);
         }
@@ -306,6 +341,7 @@
             h2 { font-size: 32px; }
             .section-card { padding: 30px 24px; }
             .container { padding-top: 20px; }
+            .megadoc-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
     <script>
@@ -363,6 +399,7 @@
 
             <div class="grid-container">
                 <a href="swot.html" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 01</span>
                     <span class="icon-large">👥</span>
                     <span class="item-title">AI SWOT Analysis</span>
                     <span class="item-desc">Complete this interactive exercise in pairs.</span>
@@ -370,6 +407,7 @@
                 </a>
 
                 <a href="sprint.html" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 02</span>
                     <span class="icon-large">⚡</span>
                     <span class="item-title">Discovery Sprint</span>
                     <span class="item-desc">Find your use cases (5 min timer).</span>
@@ -377,6 +415,7 @@
                 </a>
 
                 <a href="usagecases.html" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 03</span>
                     <span class="icon-large">📚</span>
                     <span class="item-title">100 AI Use Cases</span>
                     <span class="item-desc">Browse the full library of prompts.</span>
@@ -452,6 +491,18 @@
                     <div class="exercise-note">
                         Application: Force AI to output exactly what you need (Table, SOP, etc.).
                     </div>
+                    
+                    <h4>Prompt 1:</h4>
+                    <div class="prompt-box" id="format-prompt1">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
+Write a catchy jingle for your horse-drawn pizza delivery adverts."</div>
+                    <button onclick="copyToClipboard('format-prompt1')" class="btn-copy">Copy Prompt</button>
+            
+                    <h4>Prompt 2:</h4>
+                    <div class="prompt-box" id="format-prompt2">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
+Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance."</div>
+                    <button onclick="copyToClipboard('format-prompt2')" class="btn-copy">Copy Prompt</button>
+            
+                    <h4>Prompt 3:</h4>
                     <div class="prompt-box" id="format-prompt3">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
 Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
                     <button onclick="copyToClipboard('format-prompt3')" class="btn-copy">Copy Prompt</button>
@@ -527,11 +578,42 @@ If the feedback doesn't fit these, label it 'Other'."</div>
             </details>
 
             <details>
-                <summary>AI Hack: MegaDoc (Context Booster)</summary>
+                <summary>AI Hacks - MegaDoc (Context Booster)</summary>
                 <div class="details-content">
                     <div class="exercise-note">
-                         Concept: Stop typing background info repeatedly. Create a "MegaDoc" with your Acronyms, Style Guide, Key Facts, and Project Overview.
+                        <strong>Concept:</strong> Stop typing the same background info. Create a simple Word doc with your org's specific context to copy-paste into prompts.
                     </div>
+                    
+                    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6; color: var(--apple-text-secondary);">
+                        Without help, AI will guess what your acronyms mean and write in a generic, robotic tone. A "MegaDoc" solves this by giving the AI immediate situational awareness.
+                    </p>
+
+                    <div class="megadoc-grid">
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🔤</div>
+                            <strong class="megadoc-title">Acronyms</strong>
+                            <p class="megadoc-desc">Define your internal language (e.g. "DCG = Division of Cancer & Genetics")</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">✒️</div>
+                            <strong class="megadoc-title">Style Guide</strong>
+                            <p class="megadoc-desc">Set the tone: "Formal but warm," "Use UK English," "Use bullet points"</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">📋</div>
+                            <strong class="megadoc-title">Key Facts</strong>
+                            <p class="megadoc-desc">Boilerplate info, key personnel names, and standard operating procedures</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🚀</div>
+                            <strong class="megadoc-title">Project Overview</strong>
+                            <p class="megadoc-desc">Goals, status, and blockers. Give the AI immediate situational awareness</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px; color: var(--apple-text-primary);">Create your own today:</p>
+                    <p style="font-size: 14px; margin-top: 0; margin-bottom: 15px; color: var(--apple-text-secondary);">Open a blank document and list your top 10 acronyms and one Project Snapshot. The next time you prompt, paste it in to see the difference immediately.</p>
+                    
                     <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
 [PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
 
