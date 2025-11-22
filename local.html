@@ -5,275 +5,334 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local LLM Workshop - Msty Studio</title>
     <style>
-        /* Base styles */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #333;
-            background-color: #f9f9f9;
+        /* * APPLE PROFESSIONAL THEME
+         * Design Language: Clean, Breathable, San Francisco Typography, Off-White Backgrounds
+         */
+
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-white: #ffffff;
+            --apple-text-heading: #1d1d1f;
+            --apple-text-body: #424245;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-green: #34c759;
+            --apple-orange: #ff9500;
+            --apple-code-bg: #1d1d1f;
+            --apple-radius: 20px;
+            --apple-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 15px -1px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
-        /* Header styles */
+        /* Base Reset & Typography */
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--apple-text-body);
+            background-color: var(--apple-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container-wrapper {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        /* Header - Big, Bold, Clean */
         header {
-            background-color: #1e88e5;
-            color: white;
-            padding: 30px;
-            border-radius: 5px;
-            margin-bottom: 20px;
             text-align: center;
+            padding: 60px 0 40px;
+            margin-bottom: 20px;
+            background: transparent;
+            color: var(--apple-text-heading);
+            animation: fadeIn 0.8s ease-out;
         }
 
         h1 {
-            margin: 0;
-            font-size: 2.2em;
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin: 0 0 10px 0;
+            color: var(--apple-text-heading);
         }
 
         .subtitle {
-            font-style: italic;
+            font-size: 24px;
+            font-weight: 400;
+            color: #86868b;
             margin-top: 10px;
-            color: #e3f2fd;
-            font-size: 1.1em;
+            font-style: normal;
         }
 
-        /* Section styles */
-        .intro-section, .step-section, .exercise-section, .tips-section {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* Sections - The "Card" Look */
+        .intro-section, .step-section, .exercise-section, .tips-section, .contact-info, 
+        div[style*="background-color: #fff3e0"], div[style*="background-color: #e8f5e9"] {
+            background-color: var(--apple-white) !important; /* Force override inline styles */
+            padding: 40px;
+            border-radius: var(--apple-radius);
+            margin: 30px 0;
+            box-shadow: var(--apple-shadow);
+            border: none !important; /* Remove inline borders */
+            border-left: none !important;
         }
 
-        /* Heading styles */
+        /* Special overrides for the colored sections to make them subtle */
+        div[style*="background-color: #fff3e0"] {
+            background-color: rgba(255, 149, 0, 0.05) !important;
+            border: 1px solid rgba(255, 149, 0, 0.2) !important;
+        }
+        
+        div[style*="background-color: #e8f5e9"] {
+            background-color: rgba(52, 199, 89, 0.05) !important;
+            border: 1px solid rgba(52, 199, 89, 0.2) !important;
+        }
+
+        /* Headings */
         h2 {
-            color: #1e88e5;
-            border-bottom: 3px solid #e3f2fd;
-            padding-bottom: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--apple-text-heading) !important;
+            letter-spacing: 0.005em;
+            border-bottom: none;
             margin-top: 0;
+            margin-bottom: 20px;
         }
 
         h3 {
-            color: #1565c0;
-            margin-top: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--apple-text-heading);
+            margin-top: 30px;
         }
 
-        /* Step counter */
+        /* Step Counter */
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
         .step-number {
-            display: inline-block;
-            background-color: #1e88e5;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--apple-text-heading);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            font-size: 1.2em;
+            font-weight: 600;
+            font-size: 16px;
             margin-right: 15px;
             flex-shrink: 0;
         }
 
-        .step-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
         .step-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #1565c0;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--apple-text-heading);
+            letter-spacing: -0.01em;
         }
 
-        /* Info boxes */
+        /* Alert Boxes - Redesigned as clean sub-cards */
+        .info-box, .warning-box, .success-box {
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            border: none;
+            border-left: none;
+            font-size: 15px;
+        }
+
         .info-box {
-            background-color: #e3f2fd;
-            border-left: 4px solid #1e88e5;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            background-color: #f5f5f7;
+            color: var(--apple-text-body);
+        }
+
+        .info-box strong, .warning-box strong, .success-box strong {
+            color: var(--apple-text-heading);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
 
         .warning-box {
-            background-color: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            background-color: rgba(255, 149, 0, 0.1);
+            color: #9c5b00;
         }
 
         .success-box {
-            background-color: #e8f5e9;
-            border-left: 4px solid #4caf50;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            background-color: rgba(52, 199, 89, 0.1);
+            color: #006020;
         }
 
-        /* Button styles */
-        .download-button, .action-button {
+        /* Buttons - The Apple "Pill" */
+        .download-button, .action-button, .secondary-button {
             display: inline-block;
-            background-color: #2e7d32;
+            background-color: var(--apple-blue);
             color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 980px; /* Pill shape */
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 15px;
+            transition: var(--transition);
             margin: 10px 10px 10px 0;
-            font-size: 1.1em;
+            border: 1px solid transparent;
         }
 
         .download-button:hover, .action-button:hover {
-            background-color: #1b5e20;
+            background-color: var(--apple-blue-hover);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
         }
 
         .secondary-button {
-            background-color: #1e88e5;
+            background-color: transparent;
+            color: var(--apple-blue);
+            border: 1px solid var(--apple-blue);
         }
 
         .secondary-button:hover {
-            background-color: #1565c0;
+            background-color: var(--apple-blue);
+            color: white;
         }
 
-        /* Prompt boxes */
+        /* Prompt Boxes - Dark Mode Terminal Style */
         .prompt-box {
-            background-color: #f5f5f5;
-            border-left: 4px solid #1e88e5;
-            padding: 15px;
+            background-color: var(--apple-code-bg);
+            color: #e0e0e0;
+            border: none;
+            padding: 20px;
             margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-            font-family: 'Courier New', monospace;
+            border-radius: 12px;
+            font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .prompt-box::before {
+            content: "PROMPT";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #86868b;
+            color: white;
+            font-size: 9px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .copy-button {
-            display: inline-block;
-            background-color: #e0e0e0;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 3px;
-            font-size: 0.9em;
-            margin-top: 10px;
+            background-color: #f5f5f7;
+            color: var(--apple-text-heading);
+            border: 1px solid #d2d2d7;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: bold;
+            transition: var(--transition);
         }
 
         .copy-button:hover {
-            background-color: #bdbdbd;
+            background-color: #e8e8ed;
+            border-color: #86868b;
         }
 
-        /* Exercise items */
+        /* Exercise Items */
         .exercise-item {
-            margin: 25px 0;
-            padding: 20px;
-            background-color: #fafafa;
-            border-radius: 5px;
-            border: 1px solid #e0e0e0;
+            margin: 30px 0;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+            border: none;
+            border-top: 1px solid #d2d2d7;
+            padding-top: 30px;
         }
 
         .exercise-title {
-            font-weight: bold;
-            color: #1e88e5;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--apple-text-heading);
+            font-size: 18px;
+            margin-bottom: 12px;
         }
 
         /* Lists */
-        ul, ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
+        ul, ol { margin: 15px 0; padding-left: 20px; }
+        li { margin: 8px 0; color: var(--apple-text-body); }
 
-        li {
-            margin: 8px 0;
-        }
-
-        /* Images */
-        .screenshot {
-            max-width: 100%;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            margin: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* Model recommendation table */
+        /* Tables */
         .model-table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .model-table th, .model-table td {
-            border: 1px solid #e0e0e0;
-            padding: 12px;
+            border: none;
+            padding: 15px 20px;
             text-align: left;
+            border-bottom: 1px solid #d2d2d7;
         }
 
         .model-table th {
-            background-color: #1e88e5;
-            color: white;
-            font-weight: bold;
+            background-color: #f5f5f7;
+            color: var(--apple-text-heading);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .model-table tr:nth-child(even) {
-            background-color: #f5f5f5;
-        }
+        .model-table tr:last-child td { border-bottom: none; }
+        .model-table tr:nth-child(even) { background-color: transparent; }
+        .model-table td { vertical-align: top; }
 
-        /* Contact info */
-        .contact-info {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .email {
-            color: #1e88e5;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .email:hover {
-            text-decoration: underline;
-        }
+        /* Links */
+        a { color: var(--apple-blue); text-decoration: none; transition: 0.2s; }
+        a:hover { text-decoration: underline; }
 
         /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
-            color: #666;
-            font-size: 0.9em;
-            padding: 20px;
+            margin-top: 60px;
+            color: #86868b;
+            font-size: 12px;
+            padding-bottom: 40px;
+            border-top: 1px solid #d2d2d7;
+            padding-top: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            header {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            .step-number {
-                width: 35px;
-                height: 35px;
-                line-height: 35px;
-                font-size: 1em;
-            }
+            body { padding: 20px 10px; }
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 18px; }
+            .intro-section, .step-section, .exercise-section, .tips-section { padding: 25px 20px; }
+            .model-table th, .model-table td { display: block; width: 100%; border-bottom: 1px solid #eee; }
+            .model-table tr:last-child td:first-child { border-bottom: 1px solid #eee; }
         }
     </style>
     <script>
@@ -282,431 +341,422 @@
             navigator.clipboard.writeText(promptText).then(() => {
                 const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
                 const originalText = button.innerText;
-                button.innerText = "Copied!";
+                button.innerText = "Copied";
+                button.style.backgroundColor = "#34c759";
+                button.style.color = "white";
+                button.style.borderColor = "#34c759";
+                
                 setTimeout(() => {
                     button.innerText = originalText;
+                    button.style.backgroundColor = "";
+                    button.style.color = "";
+                    button.style.borderColor = "";
                 }, 2000);
             });
         }
     </script>
 </head>
 <body>
-    <header>
-        <h1>Running AI on Your Laptop</h1>
-        <div class="subtitle">A Practical Workshop Using Msty Studio</div>
-    </header>
-    
-    <div class="intro-section">
-        <h2>Welcome!</h2>
-        <p>Today you'll learn how to run powerful AI language models directly on your own laptop - no internet connection required, no subscriptions, and complete privacy for your work.</p>
+    <div class="container-wrapper">
+        <header>
+            <h1>Running AI on Your Laptop</h1>
+            <div class="subtitle">A Practical Workshop Using Msty Studio</div>
+        </header>
         
-        <div class="info-box">
-            <strong>What you'll achieve today:</strong>
-            <ul>
-                <li>Install free software to run AI on your laptop</li>
-                <li>Get set up with an AI model (downloads automatically!)</li>
-                <li>Make your AI talk like Gandalf or Mario (and learn from a terrible prompt!)</li>
-                <li>Try practical exercises for your work</li>
-                <li>Learn when to use local AI vs cloud services</li>
-            </ul>
-        </div>
-        
-        <div class="warning-box">
-            <strong>Before we start:</strong> This workshop uses free, open-source software. You'll need about 1-2GB of free disk space for the software and AI model.
-        </div>
-    </div>
-
-    <div style="background-color: #fff3e0; padding: 20px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #ff9800;">
-        <h2 style="margin-top: 0; color: #e65100;">📋 Pre-Workshop Setup (Do This Before/At Start)</h2>
-        <p><strong>If possible, complete Step 1 before the workshop starts.</strong> This saves time and ensures everyone's ready to go. If you can't do it beforehand, don't worry - we'll do it together at the beginning.</p>
-    </div>
-
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">1</span>
-            <span class="step-title">Download and Install Msty Studio (Pre-Workshop)</span>
-        </div>
-        
-        <p>Msty Studio is free software that makes it easy to run AI models on your computer. It works on Windows, Mac, and Linux. The best part? It automatically downloads a small AI model during setup!</p>
-        
-        <a href="https://msty.ai" target="_blank" class="download-button">Download Msty Studio</a>
-        
-        <div class="info-box">
-            <strong>Installation steps:</strong>
-            <ol>
-                <li>Click the download button above to visit the Msty Studio website</li>
-                <li>Click <strong>Download Msty Studio</strong></li>
-                <li>Download the version for your operating system (Windows/Mac/Linux)</li>
-                <li>Install it like any other application</li>
-                <li>Launch the app and click <strong>Set up Local AI</strong> when prompted</li>
-                <li>That's it! A small AI model (Qwen 3 0.6B) will download automatically</li>
-            </ol>
-        </div>
-        
-        <div class="success-box">
-            <strong>✓ Installation complete?</strong> Great! Msty has automatically downloaded a small, fast AI model called Qwen 3 0.6B (around 600MB). This tiny model is perfect for learning and responds very quickly. We'll use this for the workshop - just do your best with it!
-        </div>
-        
-        <div class="info-box">
-            <strong>Optional: Got an Amazing Machine?</strong>
-            <p>If you have a really powerful laptop (16GB+ RAM and good processing power), you could optionally try Gemma 3 which follows instructions better:</p>
-            <ul>
-                <li>In Msty Studio, click the <strong>Model Hub</strong> icon on the left sidebar</li>
-                <li>Search for: <strong>Gemma 3</strong></li>
-                <li>Click the <strong>Download</strong> button</li>
-                <li>Once downloaded, select it from the model dropdown at the top of the chat</li>
-            </ul>
-            <p><strong>But honestly, stick with Qwen 3 unless you've got a beast of a machine.</strong> The exercises will still work and you'll learn the concepts!</p>
-        </div>
-        
-        <p><em>Note: The first time you open Msty Studio, it may ask for permissions - this is normal. Just click "Allow" when prompted.</em></p>
-    </div>
-
-    <div style="background-color: #e8f5e9; padding: 25px; margin: 30px 0; border-radius: 5px; border-left: 4px solid #4caf50; text-align: center;">
-        <h2 style="margin-top: 0; color: #2e7d32;">🚀 Workshop Starts Here!</h2>
-        <p style="margin-bottom: 0; font-size: 1.1em;"><strong>Ready to go? Everyone got Msty installed? Great! Let's start using it.</strong></p>
-    </div>
-
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">1</span>
-            <span class="step-title">Exercise 1: Start Chatting with Your AI</span>
-        </div>
-        
-        <p>Now let's start using your AI model. The Qwen 3 model should already be loaded and ready to go!</p>
-        
-        <div class="info-box">
-            <strong>Starting a chat:</strong>
-            <ol>
-                <li>Open Msty Studio if it's not already open</li>
-                <li>You should see a chat interface ready to use</li>
-                <li>If you need to select a model, click the model name at the top and choose your model</li>
-                <li>Type your first message in the chat box at the bottom</li>
-            </ol>
-        </div>
-        
-        <h3>Quick Test:</h3>
-        <p>Try this simple prompt to test everything is working:</p>
-        
-        <div class="prompt-box" id="test-prompt">
-Explain in simple terms: What's it like working at a UK university? Keep your answer to 3-4 sentences.
-        </div>
-        <button onclick="copyToClipboard('test-prompt')" class="copy-button">Copy Prompt</button>
-        
-        <p>You should get a clear, helpful response in a few seconds. If you do, you're all set! If not, ask for help.</p>
-        
-        <div class="info-box">
-            <strong>What to expect:</strong> 
-            <ul>
-                <li><strong>If using Qwen 3 0.6B:</strong> Responses will be very quick and simple. This is the model we're using for the workshop - it's perfect for learning the basics!</li>
-                <li><strong>If using Gemma 3:</strong> Responses will be more detailed and follow instructions better, but slower. Only use this if you have a powerful laptop.</li>
-            </ul>
-        </div>
-        
-        <div class="success-box">
-            <strong>✨ Good Habit to Start Now:</strong> Get used to starting new chats regularly. Each time you switch topics or finish a task, start fresh. This keeps your AI sharp and prevents confusion. Think of it like starting a new document for each project! In Msty, you can usually start a new chat with a button at the top or side of the interface.
-        </div>
-    </div>
-
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">2</span>
-            <span class="step-title">Exercise 2: Understanding System Prompts</span>
-        </div>
-        
-        <p>Here's where things get interesting. You can give your AI specific instructions by using a <strong>system prompt</strong>. This tells the AI how to respond and what personality to use.</p>
-        
-        <div class="info-box">
-            <strong>How to set a system prompt in Msty Studio:</strong>
-            <ol>
-                <li>Start a new chat and Look for the button 'Click to add system prompt'</li>
-                <li>Enter or paste your instructions there</li>
-                <li>Start chatting - your AI will follow those instructions!</li>
-            </ol>
-            
-        </div>
-        
-        <div class="info-box">
-            <strong>Note about small models:</strong> Qwen 3 0.6B is very small, so it won't follow system prompts as reliably as larger models. Don't worry - you'll still see some difference! If you have Gemma 3 downloaded, the results will be more consistent, but the exercise works either way.
-        </div>
-        
-        <h3>Let's Try It: Explain It Like I'm 5 (ELI5)</h3>
-        <p>We're going to ask the same question four different ways to see how system prompts change the AI's personality and response style.</p>
-        
-        <div class="warning-box">
-            <strong>Important:</strong> Start a <strong>NEW CHAT</strong> for each part below. This keeps each personality separate and prevents them from mixing together!
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Part 1: No System Prompt (Normal Response)</div>
-            <p>Start a fresh chat with NO system prompt. Just ask the question normally:</p>
-            
-            <div class="prompt-box" id="eli5-normal">
-Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.
-            </div>
-            <button onclick="copyToClipboard('eli5-normal')" class="copy-button">Copy Prompt</button>
-            
-            <p><strong>What to expect:</strong> A straightforward explanation in the AI's default style.</p>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Part 2: 🧙‍♂️ As Gandalf the Wise</div>
-            <p>Start a <strong>NEW CHAT</strong>, then set this system prompt:</p>
-            
-            <div class="prompt-box" id="gandalf-system">
-You are Gandalf. Speak wisely using metaphors from your adventures. Keep responses to 3-4 sentences.
-            </div>
-            <button onclick="copyToClipboard('gandalf-system')" class="copy-button">Copy System Prompt</button>
-            
-            <p>Now ask the SAME question:</p>
-            <div class="prompt-box" id="eli5-gandalf">
-Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.
-            </div>
-            <button onclick="copyToClipboard('eli5-gandalf')" class="copy-button">Copy Prompt</button>
-            
-            <p><em>Expected style: "Ah, young one, quantum computing is not unlike the paths through Moria - particles can take many routes at once..."</em></p>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Part 3: 🍄 As Super Mario</div>
-            <p>Start a <strong>NEW CHAT</strong>, then set this system prompt:</p>
-            
-            <div class="prompt-box" id="mario-system">
-You are Super Mario! Speak using Italian Mario phrases like "Let's-a-go!" and "Mamma mia!". Keep responses to 3-4 sentences.
-            </div>
-            <button onclick="copyToClipboard('mario-system')" class="copy-button">Copy System Prompt</button>
-            
-            <p>Now ask the SAME question:</p>
-            <div class="prompt-box" id="eli5-mario">
-Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.
-            </div>
-            <button onclick="copyToClipboard('eli5-mario')" class="copy-button">Copy Prompt</button>
-            
-            <p><em>Expected style: "Mamma mia! Quantum computing is like-a having many power-ups at once! Let's-a-go!"</em></p>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">Part 4: ⚠️ The Disaster System Prompt (Learn What NOT to Do)</div>
-            <p>Start a <strong>NEW CHAT</strong>, then set this terrible, confusing system prompt:</p>
-            
-            <div class="prompt-box" id="bad-system">
-You're a helpful assistant that generates random stories. You have no constraints on what kind of story to write, so be creative and generate a unique story every time. Don't worry about being boring or uninteresting; just make up something completely absurd and nonsensical. The more confusing and illogical the story is, the better! Oh, and please write everything in all caps for added effect.
-            </div>
-            <button onclick="copyToClipboard('bad-system')" class="copy-button">Copy Bad System Prompt</button>
-            
-            <p>Now ask the SAME question:</p>
-            <div class="prompt-box" id="eli5-bad">
-Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.
-            </div>
-            <button onclick="copyToClipboard('eli5-bad')" class="copy-button">Copy Prompt</button>
-            
-            <p><strong>What you'll see:</strong> The AI gets confused by contradictory instructions. It's being told to write random absurd stories AND explain quantum computing simply. This is what happens when system prompts are poorly written!</p>
-        </div>
-        
-        <div class="success-box">
-            <strong>What you've learned:</strong> 
-            <p>The SAME question can get completely different answers depending on the system prompt! This shows you can control your AI's personality, expertise, and communication style. Use this for work: "You are a technical writer who explains complex topics simply" or "You are a project manager focused on clear action items."</p>
-            <p><strong>Try with your own topics:</strong> Replace quantum computing with anything you need to learn - "blockchain," "GDPR regulations," "machine learning," "how mortgages work," etc.</p>
-        </div>
-        
-        <div class="exercise-item">
-            <div class="exercise-title">🔍 Bonus: Look at a Real-World System Prompt</div>
-            <p>Want to see how professional AI systems use system prompts? Have a look at Microsoft Copilot's actual system prompt:</p>
-            
-            <a href="https://github.com/jujumilk3/leaked-system-prompts/blob/main/microsoft-copilot_20241219.md" target="_blank" class="secondary-button">View Copilot System Prompt</a>
+        <div class="intro-section">
+            <h2>Welcome</h2>
+            <p>Today you'll learn how to run powerful AI language models directly on your own laptop - no internet connection required, no subscriptions, and complete privacy for your work.</p>
             
             <div class="info-box">
-                <strong>What to notice:</strong>
+                <strong>What you'll achieve today:</strong>
                 <ul>
-                    <li><strong>Very detailed:</strong> Commercial AI systems have complex instructions covering many scenarios</li>
-                    <li><strong>Safety guidelines:</strong> Lots of rules about what not to do</li>
-                    <li><strong>Personality traits:</strong> Instructions on tone, helpfulness, and behaviour</li>
-                    <li><strong>Structured sections:</strong> Different parts for different functions</li>
+                    <li>Install free software to run AI on your laptop</li>
+                    <li>Get set up with an AI model (downloads automatically!)</li>
+                    <li>Make your AI talk like Gandalf or Mario (and learn from a terrible prompt!)</li>
+                    <li>Try practical exercises for your work</li>
+                    <li>Learn when to use local AI vs cloud services</li>
                 </ul>
-                <p><strong>Learning point:</strong> Your simple prompts like "You are Gandalf" follow the same principle - you're just keeping it simpler! Professional prompts are longer because they need to handle thousands of different situations, but the core idea is identical: tell the AI who to be and how to behave.</p>
+            </div>
+            
+            <div class="warning-box">
+                <strong>Before we start:</strong> This workshop uses free, open-source software. You'll need about 1-2GB of free disk space for the software and AI model.
             </div>
         </div>
-        
-        <div class="warning-box">
-            <strong>Pro tip:</strong> Always start a new chat when switching tasks - it keeps things clean and prevents personalities from mixing. Remember to add length limits to your prompts (like "Keep your answer to 3-4 sentences") to stop the AI rambling!
-        </div>
-    </div>
 
-    <div class="tips-section">
-        <h2>Tips for Getting Better Results</h2>
-        
-        <div class="warning-box">
-            <h3>0. Start New Chats Regularly (Most Important!)</h3>
-            <p><strong>Start a new chat when:</strong></p>
-            <ul>
-                <li>Switching to a different topic or task</li>
-                <li>After 10-15 message exchanges</li>
-                <li>If responses start feeling "off" or confused</li>
-                <li>Before important work tasks</li>
-            </ul>
-            <p>Long conversations drain memory and confuse the AI. Fresh chats = better responses!</p>
+        <div style="background-color: #fff3e0; padding: 20px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #ff9800;">
+            <h2 style="margin-top: 0; color: #e65100;">📋 Pre-Workshop Setup (Do This Before/At Start)</h2>
+            <p><strong>If possible, complete Step 1 before the workshop starts.</strong> This saves time and ensures everyone's ready to go. If you can't do it beforehand, don't worry - we'll do it together at the beginning.</p>
         </div>
-        
-      
 
-    <div class="tips-section">
-        <h2>When to Use Local AI vs Cloud AI</h2>
-        
-        <div class="info-box">
-            <h3>🔒 Privacy & Security Advantages of Local AI</h3>
-            <p><strong>Your data stays on your laptop:</strong></p>
-            <ul>
-                <li><strong>No IP address leaks:</strong> Cloud AI services log your IP address with every request. Local AI never phones home.</li>
-                <li><strong>Air-gapped operation:</strong> Local AI has no internet connection - it can't accidentally send your data anywhere.</li>
-                <li><strong>No search keyword leaks:</strong> Cloud AI often searches the web to answer questions, potentially revealing what you're working on through search queries. Local AI can't search, so nothing leaks.</li>
-                <li><strong>Truly private:</strong> Your sensitive documents, personal data, and confidential work never leave your device.</li>
-            </ul>
+        <div class="step-section">
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <span class="step-title">Download and Install Msty Studio (Pre-Workshop)</span>
+            </div>
+            
+            <p>Msty Studio is free software that makes it easy to run AI models on your computer. It works on Windows, Mac, and Linux. The best part? It automatically downloads a small AI model during setup!</p>
+            
+            <a href="https://msty.ai" target="_blank" class="download-button">Download Msty Studio</a>
+            
+            <div class="info-box">
+                <strong>Installation steps:</strong>
+                <ol>
+                    <li>Click the download button above to visit the Msty Studio website</li>
+                    <li>Click <strong>Download Msty Studio</strong></li>
+                    <li>Download the version for your operating system (Windows/Mac/Linux)</li>
+                    <li>Install it like any other application</li>
+                    <li>Launch the app and click <strong>Set up Local AI</strong> when prompted</li>
+                    <li>That's it! A small AI model (Qwen 3 0.6B) will download automatically</li>
+                </ol>
+            </div>
+            
+            <div class="success-box">
+                <strong>✓ Installation complete?</strong> Great! Msty has automatically downloaded a small, fast AI model called Qwen 3 0.6B (around 600MB). This tiny model is perfect for learning and responds very quickly. We'll use this for the workshop - just do your best with it!
+            </div>
+            
+            <div class="info-box">
+                <strong>Optional: Got an Amazing Machine?</strong>
+                <p>If you have a really powerful laptop (16GB+ RAM and good processing power), you could optionally try Gemma 3 which follows instructions better:</p>
+                <ul>
+                    <li>In Msty Studio, click the <strong>Model Hub</strong> icon on the left sidebar</li>
+                    <li>Search for: <strong>Gemma 3</strong></li>
+                    <li>Click the <strong>Download</strong> button</li>
+                    <li>Once downloaded, select it from the model dropdown at the top of the chat</li>
+                </ul>
+                <p><strong>But honestly, stick with Qwen 3 unless you've got a beast of a machine.</strong> The exercises will still work and you'll learn the concepts!</p>
+            </div>
+            
+            <p style="color: #86868b; font-size: 13px;"><em>Note: The first time you open Msty Studio, it may ask for permissions - this is normal. Just click "Allow" when prompted.</em></p>
         </div>
-        
-        <div class="info-box">
-            <h3>⚡ Practical Advantages of Local AI</h3>
-            <ul>
-                <li><strong>Works without WiFi:</strong> On trains, planes, in the field - anywhere your laptop goes, your AI goes too.</li>
-                <li><strong>Lower energy usage:</strong> No data centres, no transmission overhead - just your laptop's processor doing the work.</li>
-                <li><strong>No subscription costs:</strong> Once downloaded, use it as much as you want, forever.</li>
-                <li><strong>Instant responses:</strong> No waiting for server queues or network latency.</li>
-            </ul>
+
+        <div style="background-color: #e8f5e9; padding: 25px; margin: 30px 0; border-radius: 5px; border-left: 4px solid #4caf50; text-align: center;">
+            <h2 style="margin-top: 0; color: #2e7d32;">🚀 Workshop Starts Here!</h2>
+            <p style="margin-bottom: 0; font-size: 1.1em;"><strong>Ready to go? Everyone got Msty installed? Great! Let's start using it.</strong></p>
         </div>
-        
-        <div class="warning-box">
-            <h3>⏰ Understanding Knowledge Cutoff</h3>
-            <p>Local AI models have a <strong>training cutoff date</strong> - they only know information up until they were trained. For example:</p>
-            <ul>
-                <li>Qwen 3 was trained in 2024 - it won't know about events from 2025</li>
-                <li>Local models can't search the web to get current information</li>
-                <li><strong>The upside?</strong> This air-gapped limitation is actually a privacy feature - no search queries means no data leaks!</li>
-            </ul>
-            <p><strong>For current events or recent information, use cloud AI.</strong> For everything else, local AI's privacy advantage often outweighs having slightly older knowledge.</p>
+
+        <div class="step-section">
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <span class="step-title">Exercise 1: Start Chatting with Your AI</span>
+            </div>
+            
+            <p>Now let's start using your AI model. The Qwen 3 model should already be loaded and ready to go!</p>
+            
+            <div class="info-box">
+                <strong>Starting a chat:</strong>
+                <ol>
+                    <li>Open Msty Studio if it's not already open</li>
+                    <li>You should see a chat interface ready to use</li>
+                    <li>If you need to select a model, click the model name at the top and choose your model</li>
+                    <li>Type your first message in the chat box at the bottom</li>
+                </ol>
+            </div>
+            
+            <h3>Quick Test:</h3>
+            <p>Try this simple prompt to test everything is working:</p>
+            
+            <div class="prompt-box" id="test-prompt">Explain in simple terms: What's it like working at a UK university? Keep your answer to 3-4 sentences.</div>
+            <button onclick="copyToClipboard('test-prompt')" class="copy-button">Copy Prompt</button>
+            
+            <p style="margin-top: 20px;">You should get a clear, helpful response in a few seconds. If you do, you're all set! If not, ask for help.</p>
+            
+            <div class="info-box">
+                <strong>What to expect:</strong> 
+                <ul>
+                    <li><strong>If using Qwen 3 0.6B:</strong> Responses will be very quick and simple. This is the model we're using for the workshop - it's perfect for learning the basics!</li>
+                    <li><strong>If using Gemma 3:</strong> Responses will be more detailed and follow instructions better, but slower. Only use this if you have a powerful laptop.</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <strong>✨ Good Habit to Start Now:</strong> Get used to starting new chats regularly. Each time you switch topics or finish a task, start fresh. This keeps your AI sharp and prevents confusion. Think of it like starting a new document for each project! In Msty, you can usually start a new chat with a button at the top or side of the interface.
+            </div>
         </div>
-        
-        <table class="model-table">
-            <tr>
-                <th>Use Local AI (Msty Studio + Qwen 3) For:</th>
-                <th>Use Cloud AI (Copilot Work Account) For:</th>
-            </tr>
-            <tr>
-                <td>
+
+        <div class="step-section">
+            <div class="step-header">
+                <span class="step-number">2</span>
+                <span class="step-title">Exercise 2: Understanding System Prompts</span>
+            </div>
+            
+            <p>Here's where things get interesting. You can give your AI specific instructions by using a <strong>system prompt</strong>. This tells the AI how to respond and what personality to use.</p>
+            
+            <div class="info-box">
+                <strong>How to set a system prompt in Msty Studio:</strong>
+                <ol>
+                    <li>Start a new chat and Look for the button 'Click to add system prompt'</li>
+                    <li>Enter or paste your instructions there</li>
+                    <li>Start chatting - your AI will follow those instructions!</li>
+                </ol>
+                
+            </div>
+            
+            <div class="info-box">
+                <strong>Note about small models:</strong> Qwen 3 0.6B is very small, so it won't follow system prompts as reliably as larger models. Don't worry - you'll still see some difference! If you have Gemma 3 downloaded, the results will be more consistent, but the exercise works either way.
+            </div>
+            
+            <h3>Let's Try It: Explain It Like I'm 5 (ELI5)</h3>
+            <p>We're going to ask the same question four different ways to see how system prompts change the AI's personality and response style.</p>
+            
+            <div class="warning-box">
+                <strong>Important:</strong> Start a <strong>NEW CHAT</strong> for each part below. This keeps each personality separate and prevents them from mixing together!
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-title">Part 1: No System Prompt (Normal Response)</div>
+                <p>Start a fresh chat with NO system prompt. Just ask the question normally:</p>
+                
+                <div class="prompt-box" id="eli5-normal">Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.</div>
+                <button onclick="copyToClipboard('eli5-normal')" class="copy-button">Copy Prompt</button>
+                
+                <p><strong>What to expect:</strong> A straightforward explanation in the AI's default style.</p>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-title">Part 2: 🧙‍♂️ As Gandalf the Wise</div>
+                <p>Start a <strong>NEW CHAT</strong>, then set this system prompt:</p>
+                
+                <div class="prompt-box" id="gandalf-system">You are Gandalf. Speak wisely using metaphors from your adventures. Keep responses to 3-4 sentences.</div>
+                <button onclick="copyToClipboard('gandalf-system')" class="copy-button">Copy System Prompt</button>
+                
+                <p>Now ask the SAME question:</p>
+                <div class="prompt-box" id="eli5-gandalf">Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.</div>
+                <button onclick="copyToClipboard('eli5-gandalf')" class="copy-button">Copy Prompt</button>
+                
+                <p style="color:#86868b; font-style: italic;">Expected style: "Ah, young one, quantum computing is not unlike the paths through Moria - particles can take many routes at once..."</p>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-title">Part 3: 🍄 As Super Mario</div>
+                <p>Start a <strong>NEW CHAT</strong>, then set this system prompt:</p>
+                
+                <div class="prompt-box" id="mario-system">You are Super Mario! Speak using Italian Mario phrases like "Let's-a-go!" and "Mamma mia!". Keep responses to 3-4 sentences.</div>
+                <button onclick="copyToClipboard('mario-system')" class="copy-button">Copy System Prompt</button>
+                
+                <p>Now ask the SAME question:</p>
+                <div class="prompt-box" id="eli5-mario">Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.</div>
+                <button onclick="copyToClipboard('eli5-mario')" class="copy-button">Copy Prompt</button>
+                
+                <p style="color:#86868b; font-style: italic;">Expected style: "Mamma mia! Quantum computing is like-a having many power-ups at once! Let's-a-go!"</p>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-title">Part 4: ⚠️ The Disaster System Prompt (Learn What NOT to Do)</div>
+                <p>Start a <strong>NEW CHAT</strong>, then set this terrible, confusing system prompt:</p>
+                
+                <div class="prompt-box" id="bad-system">You're a helpful assistant that generates random stories. You have no constraints on what kind of story to write, so be creative and generate a unique story every time. Don't worry about being boring or uninteresting; just make up something completely absurd and nonsensical. The more confusing and illogical the story is, the better! Oh, and please write everything in all caps for added effect.</div>
+                <button onclick="copyToClipboard('bad-system')" class="copy-button">Copy Bad System Prompt</button>
+                
+                <p>Now ask the SAME question:</p>
+                <div class="prompt-box" id="eli5-bad">Teach me about quantum computing like I am 5 (ELI5). Keep your answer to 3-4 sentences maximum.</div>
+                <button onclick="copyToClipboard('eli5-bad')" class="copy-button">Copy Prompt</button>
+                
+                <p><strong>What you'll see:</strong> The AI gets confused by contradictory instructions. It's being told to write random absurd stories AND explain quantum computing simply. This is what happens when system prompts are poorly written!</p>
+            </div>
+            
+            <div class="success-box">
+                <strong>What you've learned:</strong> 
+                <p>The SAME question can get completely different answers depending on the system prompt! This shows you can control your AI's personality, expertise, and communication style. Use this for work: "You are a technical writer who explains complex topics simply" or "You are a project manager focused on clear action items."</p>
+                <p><strong>Try with your own topics:</strong> Replace quantum computing with anything you need to learn - "blockchain," "GDPR regulations," "machine learning," "how mortgages work," etc.</p>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-title">🔍 Bonus: Look at a Real-World System Prompt</div>
+                <p>Want to see how professional AI systems use system prompts? Have a look at Microsoft Copilot's actual system prompt:</p>
+                
+                <a href="https://github.com/jujumilk3/leaked-system-prompts/blob/main/microsoft-copilot_20241219.md" target="_blank" class="secondary-button">View Copilot System Prompt</a>
+                
+                <div class="info-box">
+                    <strong>What to notice:</strong>
                     <ul>
-                        <li>Sensitive documents</li>
-                        <li>Personal information</li>
-                        <li>Unpublished work</li>
-                        <li>Working offline/without WiFi</li>
-                        <li>No IP logging required</li>
-                        <li>No subscription costs</li>
-                        <li>Lower energy footprint</li>
-                        <li>Quick text tasks (summaries, rewrites, drafts)</li>
-                        <li>Learning and experimentation</li>
-                        <li>When you don't need latest 2025 info</li>
+                        <li><strong>Very detailed:</strong> Commercial AI systems have complex instructions covering many scenarios</li>
+                        <li><strong>Safety guidelines:</strong> Lots of rules about what not to do</li>
+                        <li><strong>Personality traits:</strong> Instructions on tone, helpfulness, and behaviour</li>
+                        <li><strong>Structured sections:</strong> Different parts for different functions</li>
                     </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>Complex reasoning tasks</li>
-                        <li>Internet research required</li>
-                        <li>Current events (post-training cutoff)</li>
-                        <li>Real-time information</li>
-                        <li>Image generation</li>
-                        <li>Very large documents (10,000+ words)</li>
-                        <li>Specialist domain knowledge</li>
-                        <li>Mission-critical work content</li>
-                        <li>When collaboration features needed</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-        
-        <div class="success-box">
-            <strong>Pro Tip:</strong> Qwen 3 is great for learning how local AI works - it's fast and shows you the core concepts. If you have a powerful machine, Gemma 3 or larger models follow instructions better. For the most demanding tasks, use cloud AI. Many professionals use both local and cloud AI - choosing the right tool for each job!
+                    <p><strong>Learning point:</strong> Your simple prompts like "You are Gandalf" follow the same principle - you're just keeping it simpler! Professional prompts are longer because they need to handle thousands of different situations, but the core idea is identical: tell the AI who to be and how to behave.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <strong>Pro tip:</strong> Always start a new chat when switching tasks - it keeps things clean and prevents personalities from mixing. Remember to add length limits to your prompts (like "Keep your answer to 3-4 sentences") to stop the AI rambling!
+            </div>
         </div>
-    </div>
 
-    <div class="tips-section">
-        <h2>Troubleshooting</h2>
-        
-        <h3>Model won't load?</h3>
-        <ul>
-            <li>Check you have enough disk space (need 1-2GB free)</li>
-            <li>Try restarting Msty Studio</li>
-            <li>Check your laptop meets minimum requirements (4GB+ RAM recommended)</li>
-            <li>Make sure the model finished downloading completely</li>
-        </ul>
-        
-        <h3>Responses are very slow?</h3>
-        <ul>
-            <li>Qwen 3 0.6B should be very fast - if it's slow, close other programs on your laptop</li>
-            <li>If you're using Gemma 3, it's larger so will naturally be a bit slower</li>
-            <li>Keep prompts shorter for faster responses</li>
-            <li>Make sure your laptop isn't in power-saving mode</li>
-        </ul>
-        
-        <h3>Getting strange responses?</h3>
-        <ul>
-            <li><strong>First, try starting a new chat</strong> - this fixes most issues!</li>
-            <li>Make your prompts more specific</li>
-            <li>Try rephrasing your question</li>
-            <li>Check if you have a system prompt set and clear it if needed</li>
-        </ul>
-        
-        <h3>Can't find the system prompt area?</h3>
-        <ul>
-            <li>Look for "System Prompt", "Instructions", or settings icons</li>
-            <li>Check near the model selector at the top of the chat</li>
-            <li>Try looking in the settings or preferences menu</li>
-        </ul>
-    </div>
+        <div class="tips-section">
+            <h2>Tips for Getting Better Results</h2>
+            
+            <div class="warning-box">
+                <strong>0. Start New Chats Regularly (Most Important!)</strong>
+                <p><strong>Start a new chat when:</strong></p>
+                <ul>
+                    <li>Switching to a different topic or task</li>
+                    <li>After 10-15 message exchanges</li>
+                    <li>If responses start feeling "off" or confused</li>
+                    <li>Before important work tasks</li>
+                </ul>
+                <p>Long conversations drain memory and confuse the AI. Fresh chats = better responses!</p>
+            </div>
+        </div>
 
-    <div class="tips-section">
-        <h2>Next Steps</h2>
-        
-        <p>Now that you have Msty Studio set up, here are some ways to continue learning:</p>
-        
-        <div class="info-box">
-            <strong>Explore other models:</strong>
+        <div class="tips-section">
+            <h2>When to Use Local AI vs Cloud AI</h2>
+            
+            <div class="info-box">
+                <strong>🔒 Privacy & Security Advantages of Local AI</strong>
+                <p><strong>Your data stays on your laptop:</strong></p>
+                <ul>
+                    <li><strong>No IP address leaks:</strong> Cloud AI services log your IP address with every request. Local AI never phones home.</li>
+                    <li><strong>Air-gapped operation:</strong> Local AI has no internet connection - it can't accidentally send your data anywhere.</li>
+                    <li><strong>No search keyword leaks:</strong> Cloud AI often searches the web to answer questions, potentially revealing what you're working on through search queries. Local AI can't search, so nothing leaks.</li>
+                    <li><strong>Truly private:</strong> Your sensitive documents, personal data, and confidential work never leave your device.</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <strong>⚡ Practical Advantages of Local AI</strong>
+                <ul>
+                    <li><strong>Works without WiFi:</strong> On trains, planes, in the field - anywhere your laptop goes, your AI goes too.</li>
+                    <li><strong>Lower energy usage:</strong> No data centres, no transmission overhead - just your laptop's processor doing the work.</li>
+                    <li><strong>No subscription costs:</strong> Once downloaded, use it as much as you want, forever.</li>
+                    <li><strong>Instant responses:</strong> No waiting for server queues or network latency.</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⏰ Understanding Knowledge Cutoff</strong>
+                <p>Local AI models have a <strong>training cutoff date</strong> - they only know information up until they were trained. For example:</p>
+                <ul>
+                    <li>Qwen 3 was trained in 2024 - it won't know about events from 2025</li>
+                    <li>Local models can't search the web to get current information</li>
+                    <li><strong>The upside?</strong> This air-gapped limitation is actually a privacy feature - no search queries means no data leaks!</li>
+                </ul>
+                <p><strong>For current events or recent information, use cloud AI.</strong> For everything else, local AI's privacy advantage often outweighs having slightly older knowledge.</p>
+            </div>
+            
+            <table class="model-table">
+                <tr>
+                    <th width="50%">Use Local AI (Msty Studio + Qwen 3) For:</th>
+                    <th width="50%">Use Cloud AI (Copilot Work Account) For:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Sensitive documents</li>
+                            <li>Personal information</li>
+                            <li>Unpublished work</li>
+                            <li>Working offline/without WiFi</li>
+                            <li>No IP logging required</li>
+                            <li>No subscription costs</li>
+                            <li>Lower energy footprint</li>
+                            <li>Quick text tasks (summaries, rewrites, drafts)</li>
+                            <li>Learning and experimentation</li>
+                            <li>When you don't need latest 2025 info</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Complex reasoning tasks</li>
+                            <li>Internet research required</li>
+                            <li>Current events (post-training cutoff)</li>
+                            <li>Real-time information</li>
+                            <li>Image generation</li>
+                            <li>Very large documents (10,000+ words)</li>
+                            <li>Specialist domain knowledge</li>
+                            <li>Mission-critical work content</li>
+                            <li>When collaboration features needed</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            
+            <div class="success-box">
+                <strong>Pro Tip:</strong> Qwen 3 is great for learning how local AI works - it's fast and shows you the core concepts. If you have a powerful machine, Gemma 3 or larger models follow instructions better. For the most demanding tasks, use cloud AI. Many professionals use both local and cloud AI - choosing the right tool for each job!
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <h2>Troubleshooting</h2>
+            
+            <h3>Model won't load?</h3>
             <ul>
-                <li>You've been using Qwen 3 which is great for learning the basics</li>
-                <li>If you have a powerful laptop (16GB+ RAM), you could try Gemma 3 from the Model Hub for better quality</li>
-                <li>Search the Model Hub for larger models like "Mistral," "Llama," or "Phi" if you want even better capabilities (requires lots of RAM!)</li>
-                <li>Note: Larger models = better quality but slower and need more resources</li>
-                <li>You can have multiple models downloaded and switch between them depending on your task</li>
+                <li>Check you have enough disk space (need 1-2GB free)</li>
+                <li>Try restarting Msty Studio</li>
+                <li>Check your laptop meets minimum requirements (4GB+ RAM recommended)</li>
+                <li>Make sure the model finished downloading completely</li>
+            </ul>
+            
+            <h3>Responses are very slow?</h3>
+            <ul>
+                <li>Qwen 3 0.6B should be very fast - if it's slow, close other programs on your laptop</li>
+                <li>If you're using Gemma 3, it's larger so will naturally be a bit slower</li>
+                <li>Keep prompts shorter for faster responses</li>
+                <li>Make sure your laptop isn't in power-saving mode</li>
+            </ul>
+            
+            <h3>Getting strange responses?</h3>
+            <ul>
+                <li><strong>First, try starting a new chat</strong> - this fixes most issues!</li>
+                <li>Make your prompts more specific</li>
+                <li>Try rephrasing your question</li>
+                <li>Check if you have a system prompt set and clear it if needed</li>
+            </ul>
+            
+            <h3>Can't find the system prompt area?</h3>
+            <ul>
+                <li>Look for "System Prompt", "Instructions", or settings icons</li>
+                <li>Check near the model selector at the top of the chat</li>
+                <li>Try looking in the settings or preferences menu</li>
             </ul>
         </div>
-        
-        <div class="info-box">
-            <strong>Create your own prompt library:</strong>
-            <ul>
-                <li>Save prompts that work well for your specific tasks</li>
-                <li>Refine them over time as you learn what works</li>
-                <li>Share useful prompts with colleagues</li>
-            </ul>
+
+        <div class="tips-section">
+            <h2>Next Steps</h2>
+            
+            <p>Now that you have Msty Studio set up, here are some ways to continue learning:</p>
+            
+            <div class="info-box">
+                <strong>Explore other models:</strong>
+                <ul>
+                    <li>You've been using Qwen 3 which is great for learning the basics</li>
+                    <li>If you have a powerful laptop (16GB+ RAM), you could try Gemma 3 from the Model Hub for better quality</li>
+                    <li>Search the Model Hub for larger models like "Mistral," "Llama," or "Phi" if you want even better capabilities (requires lots of RAM!)</li>
+                    <li>Note: Larger models = better quality but slower and need more resources</li>
+                    <li>You can have multiple models downloaded and switch between them depending on your task</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <strong>Create your own prompt library:</strong>
+                <ul>
+                    <li>Save prompts that work well for your specific tasks</li>
+                    <li>Refine them over time as you learn what works</li>
+                    <li>Share useful prompts with colleagues</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <strong>Explore advanced features:</strong>
+                <ul>
+                    <li>Msty Studio may have API capabilities (for developers)</li>
+                    <li>You can often attach documents to your chats</li>
+                    <li>Adjust model settings for different use cases</li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="info-box">
-            <strong>Explore advanced features:</strong>
-            <ul>
-                <li>Msty Studio may have API capabilities (for developers)</li>
-                <li>You can often attach documents to your chats</li>
-                <li>Adjust model settings for different use cases</li>
-            </ul>
+
+        <div class="contact-info">
+            <h2>Need Help?</h2>
+            <p>If you have questions or need assistance with the workshop materials:</p>
+            <p>Dr. Matt Mort: <a href="mailto:mortmj@cardiff.ac.uk" class="email">mortmj@cardiff.ac.uk</a></p>
+            <p>Mr. Matt Hayden: <a href="mailto:haydenm@cardiff.ac.uk" class="email">haydenm@cardiff.ac.uk</a></p>
+            <p style="margin-top: 20px;"><strong>Want to bring this workshop to your organisation?</strong> Get in touch - we're happy to help!</p>
         </div>
+
+        <footer>
+            <p>© 2025 Cardiff University Digital Transformation Team</p>
+            <p>This workshop material is provided for educational purposes.</p>
+        </footer>
     </div>
-
-    <div class="contact-info">
-        <h2>Need Help?</h2>
-        <p>If you have questions or need assistance with the workshop materials:</p>
-        <p>Dr. Matt Mort: <a href="mailto:mortmj@cardiff.ac.uk" class="email">mortmj@cardiff.ac.uk</a></p>
-        <p>Mr. Matt Hayden: <a href="mailto:haydenm@cardiff.ac.uk" class="email">haydenm@cardiff.ac.uk</a></p>
-        <p style="margin-top: 20px;"><strong>Want to bring this workshop to your organisation?</strong> Get in touch - we're happy to help!</p>
-    </div>
-
-    <footer>
-        <p>© 2025 Cardiff University Digital Transformation Team</p>
-        <p>This workshop material is provided for educational purposes.</p>
-    </footer>
-
 </body>
 </html>
