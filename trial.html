@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - M365 Copilot Trial Workshop</title>
+    <style>
+        /* --- Apple Design System (Modern) --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --radius-card: 22px;
+            --radius-button: 980px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --copilot-purple: #6264a7;
+            --copilot-gradient: linear-gradient(135deg, #6264a7 0%, #464775 100%);
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 22px;
+        }
+
+        /* --- Navigation --- */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
+        }
+
+        .nav-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
+
+        /* --- Typography --- */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            color: var(--apple-text-secondary);
+        }
+
+        .trial-badge {
+            display: inline-block;
+            background: var(--copilot-gradient);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-top: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--copilot-purple);
+            margin: 25px 0 10px 0;
+        }
+
+        /* --- Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* --- Getting Started --- */
+        .quick-launch {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--copilot-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: var(--radius-button);
+            font-size: 15px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(98, 100, 167, 0.3);
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(98, 100, 167, 0.4);
+        }
+
+        .launch-btn-secondary {
+            background: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            box-shadow: none;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .launch-btn-secondary:hover {
+            background: white;
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- Integration Grid --- */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .integration-card {
+            background: #fbfbfd;
+            border-radius: 18px;
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .integration-card:hover {
+            transform: scale(1.02);
+            background: #fff;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .integration-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .integration-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .integration-desc {
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .try-prompt {
+            font-size: 13px;
+            font-family: "SF Mono", Menlo, monospace;
+            background: rgba(98, 100, 167, 0.08);
+            color: var(--copilot-purple);
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: block;
+            margin-top: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .try-prompt:hover {
+            background: rgba(98, 100, 167, 0.15);
+        }
+
+        /* --- Activity Card --- */
+        .activity-card {
+            background: linear-gradient(135deg, #f8f8fa 0%, #fff 100%);
+            border-radius: 18px;
+            padding: 30px;
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 2px solid rgba(98, 100, 167, 0.2);
+        }
+
+        .activity-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--copilot-purple);
+        }
+
+        .activity-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--copilot-purple);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* --- Accordions --- */
+        details {
+            border-bottom: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+        
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 24px 0;
+            cursor: pointer;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--copilot-purple);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details[open] summary {
+            color: var(--copilot-purple);
+        }
+
+        .details-content {
+            padding-bottom: 30px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 15px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* --- Prompt Box --- */
+        .prompt-box {
+            background-color: #f5f5f7;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: "SF Mono", Menlo, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px 0 15px 0;
+            white-space: pre-wrap;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- Buttons --- */
+        .btn-copy {
+            background-color: #e8e8ed;
+            color: var(--apple-text-primary);
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: #d2d2d7;
+        }
+
+        /* --- Info Cards Grid --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-card-left {
+            text-align: left;
+        }
+
+        .info-icon { font-size: 28px; margin-bottom: 10px; }
+        .info-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
+        .info-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+
+        /* --- Meeting Value Highlight --- */
+        .value-highlight {
+            background: linear-gradient(135deg, rgba(98, 100, 167, 0.08) 0%, rgba(98, 100, 167, 0.03) 100%);
+            border-left: 4px solid var(--copilot-purple);
+            padding: 20px 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .value-highlight strong {
+            color: var(--copilot-purple);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            border-top: 1px solid #e5e5ea;
+            margin-top: 60px;
+        }
+        
+        .contact-link { color: var(--apple-blue); text-decoration: none; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- Utilities --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 734px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            .section-card { padding: 30px 24px; }
+            .container { padding-top: 20px; }
+            .quick-launch { flex-direction: column; align-items: center; }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied";
+                button.style.backgroundColor = "#34c759";
+                button.style.color = "white";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.backgroundColor = "#e8e8ed";
+                    button.style.color = "var(--apple-text-primary)";
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="global-nav">
+        <div class="nav-content">
+            <a href="#getting-started">Get Started</a>
+            <a href="#integrations">App Integrations</a>
+            <a href="#exercises">Exercises</a>
+            <a href="#more-examples">More Examples</a>
+            <a href="#best-practices">Best Practices</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>M365 Copilot Trial</h1>
+            <p style="color: var(--apple-text-secondary); max-width: 650px; margin: 15px auto 25px; font-size: 19px; line-height: 1.5;">
+                Your Copilot licence gives you AI assistance across Teams, Outlook, Word, Excel, PowerPoint and more. Here's how to begin.
+            </p>
+            <div class="quick-launch">
+                <a href="https://m365.cloud.microsoft/chat" target="_blank" class="launch-btn">
+                    💬 Open Copilot Chat
+                </a>
+                <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" class="launch-btn launch-btn-secondary">
+                    📚 Prompt Gallery
+                </a>
+            </div>
+        </header>
+
+        <section id="getting-started" class="section-card">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2>Getting Started</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🔑</div>
+                    <strong class="info-title">Sign In</strong>
+                    <p class="info-desc">Use your work Microsoft account to access Copilot features</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">💬</div>
+                    <strong class="info-title">Start Chatting</strong>
+                    <p class="info-desc">Ask questions, catch up on emails, prepare for meetings</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <strong class="info-title">Use In Apps</strong>
+                    <p class="info-desc">Look for the Copilot icon in Teams, Outlook, Word, Excel</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="integrations" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>App Integrations</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 10px auto 0;">
+                    Copilot works inside the apps you already use. Click the Copilot icon in each app or try these starter prompts.
+                </p>
+            </div>
+
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <span class="integration-icon">🎥</span>
+                    <span class="integration-title">Meetings</span>
+                    <p class="integration-desc">Record &amp; transcribe meetings to unlock AI summaries, action items, and searchable history.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Look at my recent emails and chats with [Name] and list 3 unresolved issues to discuss in our meeting.')">
+                        <strong>Before:</strong> "List 3 unresolved issues for meeting"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Identify all action items, assign an owner to each, and format them as a table.')">
+                        <strong>During:</strong> "Action items as a table with owners"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise this meeting and draft a follow-up email to all participants listing the key decisions.')">
+                        <strong>After:</strong> "Summarise &amp; draft follow-up email"
+                    </div>
+                </div>
+
+                <div class="integration-card">
+                    <span class="integration-icon">💬</span>
+                    <span class="integration-title">Copilot Chat</span>
+                    <p class="integration-desc">Your central hub. Ask anything about your work data — emails, meetings, files, and chats.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What are the critical updates on [Project Name] from my emails, Teams chats, and meetings over the last 24 hours?')">
+                        <strong>Catch Up:</strong> "Critical updates on [Project] last 24h"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Which emails from [Key Stakeholder] are waiting for a reply? Draft a response to the most urgent one based on /[File].')">
+                        <strong>Triage:</strong> "Urgent emails + draft reply from file"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Search my recent chats and emails for mentions of [Topic] and list every time [Person] promised a deliverable.')">
+                        <strong>Search:</strong> "Find specific promises made by people"
+                    </div>
+                </div>
+
+                <div class="integration-card">
+                    <span class="integration-icon">👥</span>
+                    <span class="integration-title">Teams Chats</span>
+                    <p class="integration-desc">Catch up on chat threads and channel conversations you've missed.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise the open questions assigned to me in this thread that I haven\'t answered yet.')">
+                        <strong>Filter:</strong> "Open questions I haven't answered"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Extract the key decisions from this chat and list them in a bulleted list.')">
+                        <strong>Extract:</strong> "List key decisions made here"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What was the general sentiment of this discussion regarding the deadline?')">
+                        <strong>Sentiment:</strong> "Was the team happy about the deadline?"
+                    </div>
+                </div>
+
+                <div class="integration-card">
+                    <span class="integration-icon">📧</span>
+                    <span class="integration-title">Outlook</span>
+                    <p class="integration-desc">Draft emails, summarise threads, and manage your inbox more efficiently.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a reply confirming my attendance and suggesting we discuss [Topic] based on the attached /[File].')">
+                        <strong>Reply:</strong> "Confirm attendance + suggest agenda from file"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise this thread and highlight any deadlines or financial commitments mentioned.')">
+                        <strong>Review:</strong> "Highlight deadlines/commitments"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review this draft email and suggest changes to make it sound more confident and professional.')">
+                        <strong>Coach:</strong> "Coach me to sound more professional"
+                    </div>
+                </div>
+
+                <div class="integration-card">
+                    <span class="integration-icon">📝</span>
+                    <span class="integration-title">Word</span>
+                    <p class="integration-desc">Draft documents, rewrite sections, and get writing assistance.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Rewrite this section to align with the tone of /[Style Guide.docx].')">
+                        <strong>Style:</strong> "Rewrite to match /[Style Guide] tone"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Compare this document with /[Competitor Analysis.pdf] and list the key differences.')">
+                        <strong>Compare:</strong> "Compare with /[File] + list differences"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a one-page executive summary based on the content of /[Report.docx].')">
+                        <strong>Draft:</strong> "Draft Executive Summary from /[File]"
+                    </div>
+                </div>
+
+                <div class="integration-card">
+                    <span class="integration-icon">📊</span>
+                    <span class="integration-title">Excel</span>
+                    <p class="integration-desc">Analyse data, create formulas, and generate insights from spreadsheets.</p>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Analyze this data with Python to find the correlation between [Column A] and [Column B].')">
+                        <strong>Analyze:</strong> "Find correlation with Python"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Create a formula to calculate [Metric] and then visualize the distribution as a heatmap.')">
+                        <strong>Visualize:</strong> "Calculate [Metric] + create heatmap"
+                    </div>
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Identify any outliers in the sales data that are more than 2 standard deviations from the mean.')">
+                        <strong>Investigate:</strong> "Find statistical outliers"
+                    </div>
+                </div>
+
+            </div>
+
+            <p style="text-align: center; margin-top: 25px; font-size: 13px; color: var(--apple-text-secondary);">
+                <em>Click any prompt to copy it to your clipboard</em>
+            </p>
+        </section>
+
+        <section id="exercises" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 10px auto 0;">
+                    Hands-on activities to explore Copilot's capabilities.
+                </p>
+            </div>
+
+            <details open>
+                <summary>Exercise 1 – Find My First Experiment</summary>
+                <div class="details-content">
+                    <ol style="font-size: 15px; line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
+                        <li>Click <a href="sprint.html" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">Activity 1: AI Discovery Sprint</a></li>
+                        <li>Browse the <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">Prompt Library</a></li>
+                        <li>Find some prompts that interest you</li>
+                    </ol>
+                    
+                    <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 10px;">I liked this one:</p>
+                    <div class="prompt-box" id="ex1-prompt">"Create a briefing note on [Project/Person] pulling from my recent emails, chats, and files."</div>
+                    <button onclick="copyToClipboard('ex1-prompt')" class="btn-copy">Copy Prompt</button>
+                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 10px;">
+                        <em>Type <strong>/</strong> to reference specific people or files</em>
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Exercise 2 – Word Integration</summary>
+                <div class="details-content">
+                    <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Word and use Copilot to generate content:</p>
+                    
+                    <h4>Prompt 1: Business Proposal</h4>
+                    <div class="prompt-box" id="ex2-prompt1">"Generate a 3-page proposal for a new coffee shop business, including a budget table, marketing strategy, and timeline."</div>
+                    <button onclick="copyToClipboard('ex2-prompt1')" class="btn-copy">Copy Prompt</button>
+                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 10px 0 20px 0;">
+                        <strong>Grounding:</strong> Try adding <strong>/</strong> to reference your own files
+                    </p>
+
+                    <h4>Prompt 2: Meeting Transcript</h4>
+                    <div class="prompt-box" id="ex2-prompt2">"Generate a transcript of a fictitious chaotic project meeting between three people (Alice, Bob, Charlie) discussing a delayed software launch. Include interruptions, jargon, and at least 5 vague action items."</div>
+                    <button onclick="copyToClipboard('ex2-prompt2')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Exercise 3 – Excel Integration</summary>
+                <div class="details-content">
+                    <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
+                    
+                    <h4>Step 1: Create Data</h4>
+                    <div class="prompt-box" id="ex3-prompt1">"Create a table of 50 fictitious employees with columns for Name, Department, Salary, and Hire Date."</div>
+                    <button onclick="copyToClipboard('ex3-prompt1')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 2: Calculate Years of Service</h4>
+                    <div class="prompt-box" id="ex3-prompt2">"Add a new column that calculates 'Years of Service' based on the Hire Date and today's date."</div>
+                    <button onclick="copyToClipboard('ex3-prompt2')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 3: Add Bonus Column</h4>
+                    <div class="prompt-box" id="ex3-prompt3">"Add a column called 'Bonus'. If the Department is Sales, the bonus is 10% of Salary. For everyone else, it is 5%."</div>
+                    <button onclick="copyToClipboard('ex3-prompt3')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 4: Generate Emails</h4>
+                    <div class="prompt-box" id="ex3-prompt4">"Add a column called 'Email' that combines the first letter of their name and their full last name @company.com, all in lowercase."</div>
+                    <button onclick="copyToClipboard('ex3-prompt4')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 5: Department Summary</h4>
+                    <div class="prompt-box" id="ex3-prompt5">"Create a new sheet showing the total salary cost breakdown by Department."</div>
+                    <button onclick="copyToClipboard('ex3-prompt5')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 6: Highlight Top Earners</h4>
+                    <div class="prompt-box" id="ex3-prompt6">"Highlight the top 10% of earners in Red."</div>
+                    <button onclick="copyToClipboard('ex3-prompt6')" class="btn-copy">Copy Prompt</button>
+
+                    <h4>Step 7: Data Labels</h4>
+                    <div class="prompt-box" id="ex3-prompt7">"Add data labels to the line so I can see the exact number for each year."</div>
+                    <button onclick="copyToClipboard('ex3-prompt7')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+        </section>
+
+        <section id="more-examples" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>More Copilot Chat Examples</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 10px auto 0;">
+                    Advanced prompts that combine multiple M365 data sources.
+                </p>
+            </div>
+
+            <details>
+                <summary>Conflict Resolution</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Uses semantic search to find conflict (not just keywords), saving you hours of cross-referencing threads.</p>
+                    <div class="prompt-box" id="more-conflict">"Search my recent Teams chats and emails with [Person A] and [Person B] from the last 2 weeks. List every instance where they gave conflicting instructions on [Project Name] and summarize the discrepancy in a table."</div>
+                    <button onclick="copyToClipboard('more-conflict')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Audit Trail</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Acts as a forensic tool, finding the exact metadata of a past action to use as evidence in a new action.</p>
+                    <div class="prompt-box" id="more-audit">"I need to prove we sent the deliverables. Find the specific email where I sent the final [Project] PDF to [Client Name] last month, and draft a follow-up email that references the date and time of that original message."</div>
+                    <button onclick="copyToClipboard('more-audit')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Meeting Prep</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
+                    <div class="prompt-box" id="more-meetprep">"I have a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
+                    <button onclick="copyToClipboard('more-meetprep')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Commitment Tracking</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Connects two data points: the promise made in a transcript and the lack of a confirmation signal in the chat.</p>
+                    <div class="prompt-box" id="more-commitment">"Scan all meeting transcripts from [Project Alpha] series in the last month. List every action item assigned to me that does not yet have a corresponding 'Done' or 'Completed' status update in the chat."</div>
+                    <button onclick="copyToClipboard('more-commitment')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Pricing History</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Turns unstructured email history into structured data (a price trend analysis) without you opening a single PDF.</p>
+                    <div class="prompt-box" id="more-pricing">"Check my email history for quotes received from [Vendor X] over the last two years. Extract the total price and line-item cost for [Service Y] from each email and plot the price increase trend."</div>
+                    <button onclick="copyToClipboard('more-pricing')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Contract Review (Word)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Compares two documents (the open file vs. the reference file) and performs a specific redlining task.</p>
+                    <div class="prompt-box" id="more-contract">"Review this MSA against our standard /[Risk_Framework.docx]. Comment on every clause that exceeds our standard liability cap, and suggest a redline edit that aligns with the 'Low Risk' definition in the framework."</div>
+                    <button onclick="copyToClipboard('more-contract')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Root Cause (Excel)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Uses the Python in Excel integration to perform clustering analysis that standard Excel formulas cannot do.</p>
+                    <div class="prompt-box" id="more-rootcause">"Analyze this error log. Use Python to cluster the failure types by time of day and machine ID. Identify which single machine is responsible for the majority of 'Type B' errors and visualize the correlation."</div>
+                    <button onclick="copyToClipboard('more-rootcause')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Slide Mirroring (PowerPoint)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Solves the biggest pain point of AI slides (bad formatting) by forcing it to "clone" the style of an existing, approved slide.</p>
+                    <div class="prompt-box" id="more-slides">"Create a new slide for 'Q4 Strategy' that mirrors the exact layout, font size, and visual style of slide 3 in /[Q3_Review.pptx], but populate it with the bullet points from /[Q4_Memo.docx]."</div>
+                    <button onclick="copyToClipboard('more-slides')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Inbox Triage (Outlook)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Uses the Agent capability to perform an action (Delete) and a filter (Deadline search) simultaneously.</p>
+                    <div class="prompt-box" id="more-inbox">"Review the 50 unread emails in my 'Notifications' folder. Delete anything that is a system alert or newsletter. For the rest, summarize the 3 that require a reply today based on deadline keywords like 'ASAP' or 'by Friday'."</div>
+                    <button onclick="copyToClipboard('more-inbox')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Knowledge Transfer (Teams)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Uses "Graph Signal" (activity/popularity) to determine what is "important" rather than just giving you a list of everything.</p>
+                    <div class="prompt-box" id="more-knowledge">"I am onboarding @[New Hire] to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
+                    <button onclick="copyToClipboard('more-knowledge')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Useful Symbols</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Key symbols to power up your prompts.</p>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
+                            <thead>
+                                <tr style="background: var(--apple-bg-page); text-align: left;">
+                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Symbol</th>
+                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Name</th>
+                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Function</th>
+                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 18px; font-weight: bold;">/</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">The Grounding Key</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Opens the menu to insert Files, Meetings, or Emails as context.</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 12px;">"Summarize /[File Name]"</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 18px; font-weight: bold;">@</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">The Agent Key</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Invokes specific colleagues or "Agents" (Skills/Apps).</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 12px;">"@Web find the latest news on..."</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; font-family: monospace; font-size: 18px; font-weight: bold;">" "</td>
+                                    <td style="padding: 12px 15px;">The Anchor</td>
+                                    <td style="padding: 12px 15px;">Forces an "Exact Phrase" search (stops fuzzy guessing).</td>
+                                    <td style="padding: 12px 15px; font-family: monospace; font-size: 12px;">"Find emails about 'Project Falcon'"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Work vs Web Mode</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Choose the right mode for your question.</p>
+                    <div class="info-grid" style="grid-template-columns: 1fr 1fr; margin-top: 15px;">
+                        <div class="info-card info-card-left" style="border-left: 4px solid #34c759;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🟢</div>
+                            <strong class="info-title">Work Mode (The Green Shield)</strong>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>What it sees:</strong> Your emails, files, Teams, Calendar</p>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>Privacy:</strong> Total. Your data never leaves the company.</p>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>Use when:</strong> The answer is inside your company.</p>
+                            <div style="background: #f5f5f7; padding: 10px; border-radius: 8px; font-size: 12px; font-family: monospace; margin-top: 10px;">
+                                "Catch me up on the Project Alpha email thread."
+                            </div>
+                        </div>
+                        <div class="info-card info-card-left" style="border-left: 4px solid var(--apple-blue);">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🌐</div>
+                            <strong class="info-title">Web Mode (The Globe)</strong>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>What it sees:</strong> The Internet (News, Stocks, Wikipedia, Public Info)</p>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>Privacy:</strong> Protected. Microsoft doesn't save it, but don't paste secrets.</p>
+                            <p class="info-desc" style="margin: 10px 0;"><strong>Use when:</strong> The answer is outside your company.</p>
+                            <div style="background: #f5f5f7; padding: 10px; border-radius: 8px; font-size: 12px; font-family: monospace; margin-top: 10px;">
+                                "What are the latest trends in AI for 2025?"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="value-highlight" style="margin-top: 20px;">
+                        <strong>💡 The "Web Content" Toggle:</strong> Found inside Work Mode. When ON, Work Mode is allowed to "peek" at Google/Bing to add outside context (e.g. stock prices) to your internal search.
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <section id="best-practices" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Best Practices</h2>
+            </div>
+
+            <details>
+                <summary>Responsible AI</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>The Human in the Loop:</strong> AI is a tool to enhance your work, not replace your judgement.
+                    </div>
+
+                    <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); align-items: start;">
+                        <div class="info-card info-card-left">
+                            <div class="info-icon">🤝</div>
+                            <strong class="info-title">Human-Centric Approach</strong>
+                            <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li>It's your assistant (augment, don't replace)</li>
+                                <li>Protect critical skills: use AI to enhance them</li>
+                                <li>Target repetitive tasks first</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card-left">
+                            <div class="info-icon">✅</div>
+                            <strong class="info-title">Practical Checks</strong>
+                            <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li><strong>Always</strong> review the output</li>
+                                <li>Be transparent: "I used AI for this"</li>
+                                <li>Use IT-approved AI tools only</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card-left">
+                            <div class="info-icon">⚖️</div>
+                            <strong class="info-title">Responsibility & Ethics</strong>
+                            <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li>Watch for bias and hallucinations</li>
+                                <li>Own the results: AI doesn't take the blame</li>
+                                <li>Align usage with your values</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Private AI (Running Models Locally)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>You Are In Charge:</strong> You don't always need the cloud. Running AI locally offers total privacy, zero fees, and works offline.
+                    </div>
+
+                    <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="info-card info-card-left">
+                            <div class="info-icon">🛡️</div>
+                            <strong class="info-title">Total Privacy & Control</strong>
+                            <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
+                                <li>No data leaves your device</li>
+                                <li>Safe for sensitive information</li>
+                                <li>Full IP protection</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card-left">
+                            <div class="info-icon">⚡</div>
+                            <strong class="info-title">Cost & Efficiency</strong>
+                            <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
+                                <li>Open source models = zero fees</li>
+                                <li>Offline capable</li>
+                                <li>Lower energy use</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card-left" style="background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
+                            <div class="info-icon">🎓</div>
+                            <strong class="info-title" style="color: var(--apple-blue);">Private AI Workshop</strong>
+                            <p class="info-desc" style="font-weight: 500;">
+                                We run a 2-hour practical session to get you started with Private AI on your laptop.
+                            </p>
+                            <a href="mailto:haydenmj1@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Contact us for details →</a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Your AI Road Map (Community Approach)</summary>
+                <div class="details-content">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <p style="color: var(--apple-text-secondary); margin: 5px 0 15px 0; font-size: 17px;">
+                            No one knows everything about AI, but together we can figure it out faster.
+                        </p>
+                        <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" style="display: inline-block; font-size: 13px; font-weight: 600; color: var(--copilot-purple); text-decoration: none; background: rgba(98, 100, 167, 0.1); padding: 8px 16px; border-radius: 980px;">
+                            📄 Read our Paper on the AI Community Approach ↗
+                        </a>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🧠</div>
+                            <strong class="info-title">Mindset</strong>
+                            <p class="info-desc">Be curious. Ask: "Could this be useful?"</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">💬</div>
+                            <strong class="info-title">Conversations</strong>
+                            <p class="info-desc">Share learning, wins, and fails.</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🧪</div>
+                            <strong class="info-title">Experiments</strong>
+                            <p class="info-desc">Learn by doing. Build expertise.</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🤝</div>
+                            <strong class="info-title">Community</strong>
+                            <p class="info-desc">Turn scattered experiments into shared learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <section class="section-card" style="text-align: center; padding: 50px;">
+            <h3>Contact Information</h3>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? We're here to help:</p>
+            <p style="margin-bottom: 0;">
+                Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a><br>
+                Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+        <p style="margin-top: 12px;">
+            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" class="contact-link">
+                Read our paper: AI The Community Approach ↗
+            </a>
+        </p>
+    </footer>
+
+</body>
+</html>
