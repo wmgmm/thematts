@@ -491,7 +491,7 @@
             <div style="text-align: center; margin-bottom: 40px;">
                 <h2>App Integrations</h2>
                 <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 10px auto 0;">
-                    One "Killer Feature" per app. Use the <strong>/ (Forward Slash)</strong> to anchor your prompts to specific files or people.
+                    One "Killer Feature" per app. Use the <strong>/ (Forward Slash)</strong> to anchor your prompts to specific files, people, meetings, sharepoints etc.
                 </p>
             </div>
 
@@ -508,7 +508,7 @@
 
                 <div class="integration-card">
                     <span class="integration-icon">💬</span>
-                    <span class="integration-title">Copilot Chat (BizChat)</span>
+                    <span class="integration-title">Copilot Chat</span>
                     <p class="integration-desc">Your central brain. It connects the dots between your files, emails, and chats.</p>
                     
                     <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a briefing note on [Project Name] by synthesizing the key points from /[File: Strategy Doc] and my recent emails with /[Person: Project Lead].')">
@@ -855,37 +855,64 @@
 
            
 
-            <details>
-                <summary>Work vs Web Mode</summary>
-                <div class="details-content">
-                    <p class="exercise-note">Choose the right mode for your question.</p>
-                    <div class="info-grid" style="grid-template-columns: 1fr 1fr; margin-top: 15px;">
-                        <div class="info-card info-card-left" style="border-left: 4px solid #34c759;">
-                            <div style="font-size: 24px; margin-bottom: 10px;">🟢</div>
-                            <strong class="info-title">Work Mode (The Green Shield)</strong>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>What it sees:</strong> Your emails, files, Teams, Calendar</p>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>Privacy:</strong> Total. Your data never leaves the company.</p>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>Use when:</strong> The answer is inside your company.</p>
-                            <div style="background: #f5f5f7; padding: 10px; border-radius: 8px; font-size: 12px; font-family: monospace; margin-top: 10px;">
-                                "Catch me up on the Project Alpha email thread."
-                            </div>
-                        </div>
-                        <div class="info-card info-card-left" style="border-left: 4px solid var(--apple-blue);">
-                            <div style="font-size: 24px; margin-bottom: 10px;">🌐</div>
-                            <strong class="info-title">Web Mode (The Globe)</strong>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>What it sees:</strong> The Internet (News, Stocks, Wikipedia, Public Info)</p>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>Privacy:</strong> Protected. Microsoft doesn't save it, but don't paste secrets.</p>
-                            <p class="info-desc" style="margin: 10px 0;"><strong>Use when:</strong> The answer is outside your company.</p>
-                            <div style="background: #f5f5f7; padding: 10px; border-radius: 8px; font-size: 12px; font-family: monospace; margin-top: 10px;">
-                                "What are the latest trends in AI for 2025?"
-                            </div>
-                        </div>
-                    </div>
-                    <div class="value-highlight" style="margin-top: 20px;">
-                        <strong>💡 The "Web Content" Toggle:</strong> Found inside Work Mode. When ON, Work Mode is allowed to "peek" at Google/Bing to add outside context (e.g. stock prices) to your internal search.
-                    </div>
+    <details>
+    <summary>Work vs Web Mode</summary>
+    <div class="details-content">
+        <p class="exercise-note">Choose the right mode for your question to ensure data safety.</p>
+        
+        <div class="info-grid">
+            
+            <div class="info-card info-card-left" style="position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: #34c759;"></div>
+                
+                <div style="margin-top: 10px; margin-bottom: 15px;">
+                    <span style="font-size: 32px;">🛡️</span>
                 </div>
-            </details>
+                
+                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work Mode</strong>
+                
+                <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
+                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> Your internal data (Emails, Teams, OneDrive, SharePoint).</p>
+                    <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: #34c759; font-weight: 600;">Total.</span> Your data never leaves the tenant and is never used to train models.</p>
+                </div>
+                
+                <div style="background: rgba(52, 199, 89, 0.1); color: #004d1a; padding: 12px; border-radius: 12px; font-size: 12px; font-family: 'SF Mono', Menlo, monospace; margin-top: 20px;">
+                    "Catch me up on the Alpha Project email thread."
+                </div>
+            </div>
+
+            <div class="info-card info-card-left" style="position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--apple-blue);"></div>
+                
+                <div style="margin-top: 10px; margin-bottom: 15px;">
+                    <span style="font-size: 32px;">🌐</span>
+                </div>
+                
+                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Web Mode</strong>
+                
+                <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
+                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> The Public Internet (News, Stocks, Wikipedia).</p>
+                    <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: var(--apple-blue); font-weight: 600;">Protected.</span> Microsoft doesn't save your prompts, but don't paste secrets here.</p>
+                </div>
+                
+                <div style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); padding: 12px; border-radius: 12px; font-size: 12px; font-family: 'SF Mono', Menlo, monospace; margin-top: 20px;">
+                    "What are the top AI trends for 2025?"
+                </div>
+            </div>
+
+        </div>
+
+        <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-top: 20px; display: flex; gap: 15px; align-items: start;">
+            <div style="font-size: 24px;">💡</div>
+            <div>
+                <strong style="display: block; font-size: 14px; margin-bottom: 4px; color: var(--apple-text-primary);">The "Web Content" Toggle</strong>
+                <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">
+                    Found inside Work Mode. When switched <strong>ON</strong>, it allows Work Mode to "peek" at Google/Bing to add outside context (like stock prices) to your internal answer.
+                </p>
+            </div>
+        </div>
+    </div>
+</details>
         </section>
 
         <section id="best-practices" class="section-card">
