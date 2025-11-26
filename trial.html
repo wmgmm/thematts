@@ -617,7 +617,22 @@
                     </p>
                 </div>
             </details>
-      <details>
+    <details>
+    <summary>Exercise 2 – The "Triage Assistant - Email+Teams"</summary>
+    <div class="details-content">
+        <p class="exercise-note">
+            <strong>The Goal:</strong> We want to catch items you might have opened on your phone but haven't actually answered. We will swap the "Unread" filter for a "Time" filter to ensure nothing slips through the cracks.
+        </p>
+        
+        <div class="prompt-box" id="ex2-triage">"Review my emails and Teams chats from the last 3 days. Identify the top 3 items containing a deadline or question that I haven't replied to yet."</div>
+        
+        <button onclick="copyToClipboard('ex2-triage')" class="btn-copy">Copy Prompt</button>
+        
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
+            <strong>Why this is better:</strong> If you ask for "Unread," Copilot ignores that important email you opened while queuing for coffee. By asking for "Last 3 days" + "Haven't replied," you catch the work you effectively "read and forgot."
+        </p>
+    </div>
+</details>
     <summary>Exercise 3 – The "Catch Up" Challenge (Broad vs. Targeted)</summary>
     <div class="details-content">
         <p class="exercise-note">
@@ -647,25 +662,9 @@
         </p>
     </div>
 </details>
-            <details>
-                <summary>Exercise 2 – Find some more Experiments</summary>
-                <div class="details-content">
-                    <ol style="font-size: 15px; line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
-                        <li>Click <a href="sprint.html" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">Activity 1: AI Discovery Sprint, this will give you ideas</a></li>
-                        <li>Browse the <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" style="color: var(--copilot-purple); font-weight: 600;"> Prompt Library</a></li>
-                        <li>Find some prompts that interest you, experiments build expertise</li>
-                    </ol>
-                    
-                    <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 10px;">I liked this one:</p>
-                    <div class="prompt-box" id="ex1-prompt">"Create a briefing note on [Project/Person] pulling from my recent emails, chats, and files."</div>
-                    <button onclick="copyToClipboard('ex1-prompt')" class="btn-copy">Copy Prompt</button>
-                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 10px;">
-                        <em>Type <strong>/</strong> to reference specific people or files</em>
-                    </p>
-                </div>
-            </details>
+            
  <details>
-                <summary>Exercise 3 – Word Integration</summary>
+                <summary>Exercise 4 – Word Integration</summary>
                 <div class="details-content">
                     <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Word and use Copilot to generate content:</p>
                     
@@ -683,7 +682,7 @@
             </details>
 
             <details>
-                <summary>Exercise 4 – Excel Integration</summary>
+                <summary>Exercise 5 – Excel Integration</summary>
                 <div class="details-content">
                     <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
                     
@@ -716,6 +715,89 @@
                     <button onclick="copyToClipboard('ex3-prompt7')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
+            <details>
+    <summary>Exercise 6 – Meet Your Specialists (Built-in Agents)</summary>
+    <div class="details-content">
+        <p class="exercise-note">
+            <strong>Copilot is a generalist, but these Agents are specialists.</strong> Microsoft has built these three dedicated tools to handle complex tasks that standard Copilot might find too heavy.
+        </p>
+
+        <div style="display: grid; gap: 15px; margin-top: 20px;">
+            
+            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
+                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">1. Researcher</div>
+                <p style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>The Deep Thinker.</strong> Unlike standard chat, this agent takes its time. It searches both the Web and your internal files to write a full report with citations.
+                </p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_552e6eda-fc18-7fb9-0ef6-1bf2de3393e4" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Researcher</a>
+                <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
+                    <em>Try: "Research the latest trends in [Industry] and compare them to our internal strategy documents."</em>
+                </p>
+            </div>
+
+            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
+                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">2. Analyst</div>
+                <p style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>The Data Scientist.</strong> Upload a CSV or Excel file, and this agent writes and runs real Python code to clean data, find anomalies, and generate charts.
+                </p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_8cfc4e6f-267e-db15-c6e7-3fc47a54f61e" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Analyst</a>
+                <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
+                    <em>Try: Upload a spreadsheet and ask "Visualize the top cost drivers in this data."</em>
+                </p>
+            </div>
+
+            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
+                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">3. Prompt Coach</div>
+                <p style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>The Teacher.</strong> Not sure how to ask? Paste your draft prompt here, and this agent will critique it and rewrite it to be more effective.
+                </p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_f0ff38f1-4d81-a9b7-dbf1-b161328daa1f" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Coach</a>
+                <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
+                    <em>Try: "Help me improve a prompt to summarize a meeting."</em>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</details>
+            <details>
+    <summary>Exercise 7 – Choose Your Own Adventure (Explore & Share)</summary>
+    <div class="details-content">
+        <p class="exercise-note">
+            <strong>Part A: Exploration.</strong> You don't master Copilot by reading a manual; you master it by trying, failing, and tweaking.
+        </p>
+
+        <ol style="font-size: 15px; line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
+            <li><strong>Get Inspired:</strong> Check the <a href="sprint.html" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">AI Discovery Sprint</a> for role-specific challenges.</li>
+            <li><strong>Get Templates:</strong> Browse Microsoft's official <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">Prompt Library</a>.</li>
+            <li><strong>The Golden Rule:</strong> Pick a prompt, <em>modify</em> it to fit your style, and see what works.</li>
+        </ol>
+        
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 10px;">Here is a strong "Synthesis" prompt to start modifying:</p>
+        
+        <div class="prompt-box" id="ex2-explore">"Draft a briefing note on [Project Name] by synthesizing the key points from /[File: Strategy Doc] and my recent emails with /[Person: Project Lead]."</div>
+        
+        <button onclick="copyToClipboard('ex2-explore')" class="btn-copy">Copy Prompt</button>
+
+        <hr style="border: 0; border-top: 1px solid var(--apple-border); margin: 25px 0;">
+
+        <p class="exercise-note">
+            <strong>Part B: Log your Experiment.</strong> Found a prompt that worked? Help us build our team library.
+        </p>
+
+        <p style="font-size: 14px; margin-bottom: 15px;">
+            Click here to open the <a href="https://m365.cloud.microsoft/chat/?titleId=T_e8c40b8d-d4d6-337e-967d-6175a3e2e23a" target="_blank" style="color: var(--copilot-purple); font-weight: 600; text-decoration: underline;">M365 Copilot Trial Agent</a> and tell it what you found.
+        </p>
+
+        <div class="prompt-box" id="ex2-share">"I found a good prompt for searching emails: 'top 3 messages in inbox'"</div>
+        
+        <button onclick="copyToClipboard('ex2-share')" class="btn-copy">Copy Sharing Template</button>
+        
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 10px;">
+            <em>This agent captures your feedback and successful experiments for the wider team.</em>
+        </p>
+    </div>
+</details>
         </section>
 
         <section id="more-examples" class="section-card">
@@ -771,20 +853,13 @@
                 </div>
             </details>
 
-            <details>
-                <summary>Contract Review (Word)</summary>
-                <div class="details-content">
-                    <p class="exercise-note">Compares two documents (the open file vs. the reference file) and performs a specific redlining task.</p>
-                    <div class="prompt-box" id="more-contract">"Review this MSA against our standard /[Risk_Framework.docx]. Comment on every clause that exceeds our standard liability cap, and suggest a redline edit that aligns with the 'Low Risk' definition in the framework."</div>
-                    <button onclick="copyToClipboard('more-contract')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
+   
 
             <details>
                 <summary>Root Cause (Excel)</summary>
                 <div class="details-content">
                     <p class="exercise-note">Uses the Python in Excel integration to perform clustering analysis that standard Excel formulas cannot do.</p>
-                    <div class="prompt-box" id="more-rootcause">"Analyze this error log. Use Python to cluster the failure types by time of day and machine ID. Identify which single machine is responsible for the majority of 'Type B' errors and visualize the correlation."</div>
+                    <div class="prompt-box" id="more-rootcause">"Analyze this xlsx file. Use Python to cluster this date [ADD SOME SIMPLE CONTEXT]"</div>
                     <button onclick="copyToClipboard('more-rootcause')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -798,62 +873,18 @@
                 </div>
             </details>
 
-            <details>
-                <summary>Inbox Triage (Outlook)</summary>
-                <div class="details-content">
-                    <p class="exercise-note">Uses the Agent capability to perform an action (Delete) and a filter (Deadline search) simultaneously.</p>
-                    <div class="prompt-box" id="more-inbox">"Review the 50 unread emails in my 'Notifications' folder. Delete anything that is a system alert or newsletter. For the rest, summarize the 3 that require a reply today based on deadline keywords like 'ASAP' or 'by Friday'."</div>
-                    <button onclick="copyToClipboard('more-inbox')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
+           
 
             <details>
                 <summary>Knowledge Transfer (Teams)</summary>
                 <div class="details-content">
                     <p class="exercise-note">Uses "Graph Signal" (activity/popularity) to determine what is "important" rather than just giving you a list of everything.</p>
-                    <div class="prompt-box" id="more-knowledge">"I am onboarding @[New Hire] to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
+                    <div class="prompt-box" id="more-knowledge">"I am onboarding a New Hire to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
                     <button onclick="copyToClipboard('more-knowledge')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
-            <details>
-                <summary>Useful Symbols</summary>
-                <div class="details-content">
-                    <p class="exercise-note">Key symbols to power up your prompts.</p>
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
-                            <thead>
-                                <tr style="background: var(--apple-bg-page); text-align: left;">
-                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Symbol</th>
-                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Name</th>
-                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Function</th>
-                                    <th style="padding: 12px 15px; border-bottom: 2px solid #e5e5ea;">Example</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 18px; font-weight: bold;">/</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">The Grounding Key</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Opens the menu to insert Files, Meetings, or Emails as context.</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 12px;">"Summarize /[File Name]"</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 18px; font-weight: bold;">@</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">The Agent Key</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Invokes specific "Agents" (Skills/Apps).</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 12px;">"@Web find the latest news on..."</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 12px 15px; font-family: monospace; font-size: 18px; font-weight: bold;">" "</td>
-                                    <td style="padding: 12px 15px;">The Anchor</td>
-                                    <td style="padding: 12px 15px;">Forces an "Exact Phrase" search (stops fuzzy guessing).</td>
-                                    <td style="padding: 12px 15px; font-family: monospace; font-size: 12px;">"Find emails about 'Project Falcon'"</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </details>
+           
 
             <details>
                 <summary>Work vs Web Mode</summary>
