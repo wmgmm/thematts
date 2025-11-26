@@ -488,112 +488,117 @@
 
         </section>
 
-        <section id="integrations" class="section-card">
+     <section id="integrations" class="section-card">
             <div style="text-align: center; margin-bottom: 40px;">
                 <h2>App Integrations</h2>
                 <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 10px auto 0;">
-                    Copilot works inside the apps you already use. Click the Copilot icon in each app or try these starter prompts.
+                    Copilot works inside the apps you already use. Use the <strong>/ (Forward Slash)</strong> to anchor your prompts to specific files, people, or meetings.
                 </p>
             </div>
 
             <div class="integration-grid">
                 <div class="integration-card">
                     <span class="integration-icon">🎥</span>
-                    <span class="integration-title">Meetings</span>
-                    <p class="integration-desc">Record &amp; transcribe meetings to unlock AI summaries, action items, and searchable history.</p>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review the full content of my recent emails and Teams chats with [INSERT NAME]. Identify three topics or tasks that appear unresolved—such as pending decisions, unanswered questions, or incomplete actions and summarize them clearly for discussion in our upcoming meeting.')">
-                        <strong>Before:</strong> "List 3 unresolved issues for meeting"
+                    <span class="integration-title">Meetings (Teams)</span>
+                    <p class="integration-desc">Turn transcripts into action items. Access this via the "Recap" tab after a meeting.</p>
+                    
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review the transcript of /[Meeting Name] and list 3 unresolved issues we need to discuss next time.')">
+                        <strong>Recap:</strong> "List 3 unresolved issues from /[Meeting]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Identify all action items, assign an owner to each, and format them as a table.')">
-                        <strong>During:</strong> "Action items as a table with owners"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a follow-up email to the participants of /[Meeting Name] summarizing the key decisions and deadlines.')">
+                        <strong>Email:</strong> "Draft follow-up for /[Meeting]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise this meeting and draft a follow-up email to all participants listing the key decisions.')">
-                        <strong>After:</strong> "Summarise &amp; draft follow-up email"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What was /[Person Name]\'s specific feedback regarding the budget in this meeting?')">
+                        <strong>Specifics:</strong> "What did /[Person] say about budget?"
                     </div>
                 </div>
 
                 <div class="integration-card">
                     <span class="integration-icon">💬</span>
-                    <span class="integration-title">Copilot Chat</span>
-                    <p class="integration-desc">Your central hub. Ask anything about your work data — emails, meetings, files, and chats.</p>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What are the critical updates on [Project Name] from my emails, Teams chats, and meetings over the last 24 hours?')">
-                        <strong>Catch Up:</strong> "Critical updates on [Project] last 24h"
+                    <span class="integration-title">Copilot Chat (BizChat)</span>
+                    <p class="integration-desc">Your central hub. It connects data across apps (Emails + Files + Chats).</p>
+                    
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What are the latest updates from /[Person Name] regarding the /[File: Project Plan]?')">
+                        <strong>Catch Up:</strong> "Updates from /[Person] on /[File]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Which emails from [Key Stakeholder] are waiting for a reply? Draft a response to the most urgent one based on /[File].')">
-                        <strong>Triage:</strong> "Urgent emails + draft reply from file"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a briefing note based on /[File: Strategy Doc] and my recent emails with /[Person: Project Lead].')">
+                        <strong>Synthesis:</strong> "Combine /[File] + Emails into a note"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Search my recent chats and emails for mentions of [Topic] and list every time [Person] promised a deliverable.')">
-                        <strong>Search:</strong> "Find specific promises made by people"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Search my recent chats and emails for mentions of [Topic] and list every deadline promised by /[Person Name].')">
+                        <strong>Audit:</strong> "Find deadlines promised by /[Person]"
                     </div>
                 </div>
 
                 <div class="integration-card">
                     <span class="integration-icon">👥</span>
                     <span class="integration-title">Teams Chats</span>
-                    <p class="integration-desc">Catch up on chat threads and channel conversations you've missed.</p>
+                    <p class="integration-desc">Catch up on long chat threads without scrolling back 3 days.</p>
+                    
                     <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise the open questions assigned to me in this thread that I haven\'t answered yet.')">
-                        <strong>Filter:</strong> "Open questions I haven't answered"
+                        <strong>Triage:</strong> "Find questions I haven't answered"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Extract the key decisions from this chat and list them in a bulleted list.')">
-                        <strong>Extract:</strong> "List key decisions made here"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Catch me up on this chat thread. Highlight any decisions made regarding [Topic].')">
+                        <strong>Highlights:</strong> "Catch up on [Topic] decisions"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('What was the general sentiment of this discussion regarding the deadline?')">
-                        <strong>Sentiment:</strong> "Was the team happy about the deadline?"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Rewrite this message to be more concise and confident before I send it.')">
+                        <strong>Rewrite:</strong> "Make this message more confident"
                     </div>
                 </div>
 
                 <div class="integration-card">
                     <span class="integration-icon">📧</span>
                     <span class="integration-title">Outlook</span>
-                    <p class="integration-desc">Draft emails, summarise threads, and manage your inbox more efficiently.</p>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a reply confirming my attendance and suggesting we discuss [Topic] based on the attached /[File].')">
-                        <strong>Reply:</strong> "Confirm attendance + suggest agenda from file"
+                    <p class="integration-desc">Draft emails using real file data and summarize long threads.</p>
+                    
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a reply confirming my attendance and suggesting we discuss the points in /[File: Agenda.docx].')">
+                        <strong>Reply:</strong> "Reply + suggest agenda from /[File]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise this thread and highlight any deadlines or financial commitments mentioned.')">
-                        <strong>Review:</strong> "Highlight deadlines/commitments"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Summarise this email thread and highlight any financial commitments or deadlines mentioned.')">
+                        <strong>Summary:</strong> "Find money/deadlines in this thread"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review this draft email and suggest changes to make it sound more confident and professional.')">
-                        <strong>Coach:</strong> "Coach me to sound more professional"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review this draft and give me suggestions to make the tone more diplomatic.')">
+                        <strong>Coaching:</strong> "Coach me to be diplomatic"
                     </div>
                 </div>
 
                 <div class="integration-card">
                     <span class="integration-icon">📝</span>
                     <span class="integration-title">Word</span>
-                    <p class="integration-desc">Draft documents, rewrite sections, and get writing assistance.</p>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Rewrite this section to align with the tone of /[Style Guide.docx].')">
-                        <strong>Style:</strong> "Rewrite to match /[Style Guide] tone"
+                    <p class="integration-desc">Never start with a blank page. Draft based on existing knowledge.</p>
+                    
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a proposal based on the data in /[File: Budget.xlsx] and the structure of /[File: Template.docx].')">
+                        <strong>Draft:</strong> "Proposal from /[Data] + /[Template]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Compare this document with /[Competitor Analysis.pdf] and list the key differences.')">
-                        <strong>Compare:</strong> "Compare with /[File] + list differences"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Compare this document with /[File: Previous Version] and list the material differences in a table.')">
+                        <strong>Compare:</strong> "Table differences vs /[Old Version]"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a one-page executive summary based on the content of /[Report.docx].')">
-                        <strong>Draft:</strong> "Draft Executive Summary from /[File]"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Rewrite this paragraph to align with the tone of /[File: Brand Guidelines].')">
+                        <strong>Style:</strong> "Rewrite to match /[Brand Voice]"
                     </div>
                 </div>
 
                 <div class="integration-card">
                     <span class="integration-icon">📊</span>
                     <span class="integration-title">Excel</span>
-                    <p class="integration-desc">Analyse data, create formulas, and generate insights from spreadsheets.</p>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Analyze this data with Python to find the correlation between [Column A] and [Column B].')">
-                        <strong>Analyze:</strong> "Find correlation with Python"
+                    <p class="integration-desc">Analyze tables. Ensure your data is formatted as a Table first!</p>
+                    
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Analyze this table with Python to visualize the correlation between [Column A] and [Column B].')">
+                        <strong>Analyze:</strong> "Visualize correlation (Python)"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Create a formula to calculate [Metric] and then visualize the distribution as a heatmap.')">
-                        <strong>Visualize:</strong> "Calculate [Metric] + create heatmap"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Add a column to calculate the difference between [Column Actual] and [Column Budget].')">
+                        <strong>Formula:</strong> "Calculate Variance Column"
                     </div>
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Identify any outliers in the sales data that are more than 2 standard deviations from the mean.')">
-                        <strong>Investigate:</strong> "Find statistical outliers"
+                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Highlight the top 5 values in [Column Sales] in Green and the bottom 5 in Red.')">
+                        <strong>Format:</strong> "Highlight Top/Bottom performers"
                     </div>
                 </div>
 
             </div>
 
             <p style="text-align: center; margin-top: 25px; font-size: 13px; color: var(--apple-text-secondary);">
-                <em>Click any prompt to copy it to your clipboard</em>
+                <em>Click any prompt to copy it to your clipboard. Replace [Brackets] with your specific context.</em>
             </p>
         </section>
-
         <section id="exercises" class="section-card">
             <div style="text-align: center; margin-bottom: 40px;">
                 <h2>Exercises</h2>
