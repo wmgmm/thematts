@@ -617,7 +617,32 @@
                     </p>
                 </div>
             </details>
-            
+         <details>
+    <summary>Exercise 3 – The "Catch Up" Challenge (Broad vs. Targeted)</summary>
+    <div class="details-content">
+        <p class="exercise-note">
+            <strong>Part A (The "Broad" Way):</strong> First, let's try a standard natural language request. Observe how Copilot has to "guess" what is important to you across your whole inbox.
+        </p>
+        
+        <div class="prompt-box" id="ex3-broad">"I've been away for a week. Summarize my missed emails and Teams messages and tell me what is urgent."</div>
+        
+        <button onclick="copyToClipboard('ex3-broad')" class="btn-copy">Copy Prompt</button>
+        
+        <hr style="border: 0; border-top: 1px solid var(--apple-border); margin: 20px 0;">
+
+        <p class="exercise-note">
+            <strong>Part B (The "Pro" Way):</strong> Now, use the <strong>/ (Forward Slash)</strong> to anchor Copilot. Replace <em>[Manager Name]</em> with your actual boss or a close colleague.
+        </p>
+
+        <div class="prompt-box" id="ex3-targeted">"I've been away for a week. Summarize all communication from /[Manager Name] and highlight any direct questions they asked me."</div>
+        
+        <button onclick="copyToClipboard('ex3-targeted')" class="btn-copy">Copy Prompt</button>
+        
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px; background-color: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
+            <strong>💡 Pro Tip:</strong> The forward slash <strong>/</strong> isn't just for People. You can use it to anchor specific <strong>Files</strong>, <strong>Meetings</strong>, <strong>Chats</strong>, and even <strong>SharePoint Sites</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
+        </p>
+    </div>
+</details>
             <details>
                 <summary>Exercise 2 – Find some more Experiments</summary>
                 <div class="details-content">
@@ -811,7 +836,7 @@
                                 <tr>
                                     <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 18px; font-weight: bold;">@</td>
                                     <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">The Agent Key</td>
-                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Invokes specific colleagues or "Agents" (Skills/Apps).</td>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea;">Invokes specific "Agents" (Skills/Apps).</td>
                                     <td style="padding: 12px 15px; border-bottom: 1px solid #e5e5ea; font-family: monospace; font-size: 12px;">"@Web find the latest news on..."</td>
                                 </tr>
                                 <tr>
