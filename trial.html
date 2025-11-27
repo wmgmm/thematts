@@ -628,25 +628,43 @@ Present the results in a simple list."</div>
                 </div>
             </details>
             
- <details>
-                <summary>Exercise 4 – Word Integration</summary>
-                <div class="details-content">
-                    <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Word and use Copilot to generate content:</p>
-                    
-                    <h4>Prompt 1: Business Proposal</h4>
-                    <div class="prompt-box" id="ex2-prompt1">"Generate a 3-page proposal for a new coffee shop business, including a budget table, marketing strategy, and timeline."</div>
-                    <button onclick="copyToClipboard('ex2-prompt1')" class="btn-copy">Copy Prompt</button>
-                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 10px 0 20px 0;">
-                        <strong>Grounding:</strong> Try adding <strong>/</strong> to reference your own files
-                    </p>
+<details>
+    <summary>Exercise 4 – Word Integrations</summary>
+    <div class="details-content">
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">
+            Open a blank Word document to complete these tasks.
+        </p>
+        
+        <h4>Exercise 4a: Rough text to meeting agenda</h4>
+        
+        <p style="font-size: 13px; margin-bottom: 5px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
+        <div style="background-color: #f5f5f7; border: 1px dashed #d1d1d6; padding: 10px; border-radius: 8px; font-size: 13px; font-style: italic; margin-bottom: 15px; color: #333;">
+            “Team meeting regarding Project Skylark launch date is Friday November 24th at 10am and attendees are Sarah, Mike, and Dave. First we need to review the Q3 bug report which should take 15 mins led by Sarah. Then strictly 30 mins to discuss the marketing budget for the holiday season led by Mike. After that Dave wants to demo the new login feature 15 mins. Finally we need 10 mins for open Q&A. Action items from last time were verify server costs and book the conference room.”
+        </div>
 
-                    <h4>Prompt 2: Meeting Transcript</h4>
-                    <div class="prompt-box" id="ex2-prompt2">"Generate a transcript of a fictitious chaotic project meeting between three people (Alice, Bob, Charlie) discussing a delayed software launch. Include interruptions, jargon, and at least 5 vague action items."</div>
-                    <button onclick="copyToClipboard('ex2-prompt2')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
+        <p style="font-size: 13px; margin-bottom: 5px;">
+            <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
+        </p>
+        <div class="prompt-box" id="ex4-prompt1">"Convert this text into a professional Meeting Agenda. Create a table for the schedule with columns for Topic, Time, and Owner. Put the Action Items in a separate bulleted list at the bottom."</div>
+        <button onclick="copyToClipboard('ex4-prompt1')" class="btn-copy">Copy Prompt</button>
 
-            <details>
+        <div style="margin: 25px 0; border-top: 1px solid #eaeaea;"></div>
+
+        <h4>Exercise 4b: Rough text to Invoice</h4>
+
+        <p style="font-size: 13px; margin-bottom: 5px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
+        <div style="background-color: #f5f5f7; border: 1px dashed #d1d1d6; padding: 10px; border-radius: 8px; font-size: 13px; font-style: italic; margin-bottom: 15px; color: #333;">
+            “Hi team, here are the billable hours for Project Falcon for last month. On Oct 3rd I did 4 hours of Server Maintenance at a rate of £150/hr. Then on the 5th of October, Sarah did 6 hours of UI Design which we bill at £120. On Oct 12, I did another 2 hours of Server Maint. Finally on Oct 20th, Dave did 10 hours of Backend coding at our premium rate of £200/hr. Please process payment net 30. Cheers Steve”
+        </div>
+
+        <p style="font-size: 13px; margin-bottom: 5px;">
+            <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
+        </p>
+        <div class="prompt-box" id="ex4-prompt2">"Convert this text into a formal Invoice Table. Create columns for: Date, Description, Staff Member, Hours, Rate, and Total Cost. Calculate the Total Cost for each row automatically. Format the table: Bold the header row, shade it light blue, and align all money columns to the right. Add a final row summing up the Grand Total."</div>
+        <button onclick="copyToClipboard('ex4-prompt2')" class="btn-copy">Copy Prompt</button>
+
+    </div>
+</details>
                 <summary>Exercise 5 – Excel Integration</summary>
                 <div class="details-content">
                     <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
