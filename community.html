@@ -76,13 +76,13 @@
 
     <!-- Navigation -->
     <header class="fixed w-full top-0 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <!-- Abstract Representation of Cardiff Logo for this demo -->
-                <div class="w-8 h-8 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-lg">C</div>
-                <span class="font-semibold tracking-tight text-lg">Cardiff University</span>
+                <div class="w-7 h-7 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-base">C</div>
+                <span class="font-semibold tracking-tight text-base">Cardiff University</span>
             </div>
-            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+            <nav class="hidden md:flex gap-6 text-xs font-medium text-gray-600">
                 <a href="#" class="hover:text-[#d3374a] transition-colors">Digital Transformation</a>
                 <a href="#" class="hover:text-[#d3374a] transition-colors">AI Community</a>
                 <a href="#" class="hover:text-[#d3374a] transition-colors">Join Us</a>
@@ -90,121 +90,117 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 overflow-hidden">
-        <!-- Decorational Blur -->
-        <div class="blob w-96 h-96 bg-red-100 rounded-full top-0 right-0 mix-blend-multiply"></div>
-        <div class="blob w-96 h-96 bg-gray-100 rounded-full top-20 left-20 mix-blend-multiply animation-delay-2000"></div>
-
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="reveal text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8 text-gray-900">
-                Driving AI success through <span class="text-[#d3374a]">Communities</span> to foster responsible AI
+    <!-- NEW Top Banner / Hero Section (Dark Theme) -->
+    <section class="relative pt-24 pb-12 px-6 bg-black text-white overflow-hidden">
+        <!-- Subtle red glow -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#d3374a] opacity-10 rounded-full blur-[100px]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            <span class="uppercase tracking-widest text-[#d3374a] font-bold text-xs mb-3 block">Digital Transformation</span>
+            <h1 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">
+                Communities Are the New Competitive Edge in AI
             </h1>
-            <p class="reveal delay-100 text-xl md:text-2xl leading-relaxed text-gray-500 font-medium max-w-3xl mx-auto">
-                AI is impacting almost all areas of society from healthcare to materials, research to accelerated authoring and decision making. That’s why we need people as well as machines to navigate the way forward.
+            <p class="reveal delay-100 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                We're part of Cardiff University's digital transformation helping teams find new ways of working, make better use of data, and free up time for the work that matters.
             </p>
         </div>
     </section>
 
-    <!-- The Insight Section (Dark contrast) -->
-    <section class="bg-[#f5f5f7] py-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="reveal space-y-8">
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
-                    The Community Approach
+    <!-- Consolidated Content Grid (White) -->
+    <section class="py-12 px-6 bg-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Original Hero Content moved here -->
+            <div class="reveal">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4 text-gray-900">
+                    Driving AI success through <span class="text-[#d3374a]">Communities</span> to foster responsible AI
                 </h2>
-                <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
-                    <p>
-                        No one knows everything about AI and that's exactly why we need each other. This insight underpins Cardiff University's Community Approach to AI, a strategic approach within the Digital Transformation Programme. 
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    AI is impacting almost all areas of society from healthcare to materials, research to accelerated authoring and decision making. That’s why we need people as well as machines to navigate the way forward.
+                </p>
+                
+                <!-- Insight Text Merged Here -->
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <h3 class="font-semibold text-gray-900 mb-2">The Community Approach</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        No one knows everything about AI and that's exactly why we need each other. This insight underpins Cardiff University's Community Approach to AI.
                     </p>
-                    <p>
+                    <p class="text-sm text-gray-600">
                         Rather than positioning AI as a purely technical challenge, we're building collaborative communities that explore its opportunities, risks and real-world applications.
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- The Challenge & Solution (White) -->
-    <section class="py-24 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h3 class="text-3xl font-bold mb-6 text-gray-900 tracking-tight">Navigating Complexity</h3>
-                <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                    AI raises complex questions such as how to protect critical skills, keep our data safe and addressing environmental impacts.
-                </p>
-                <p class="text-lg text-gray-600 leading-relaxed">
-                    To ensure Cardiff University responds to these appropriately we've created a space for conversations, safe experimentation and shared learning.
-                </p>
-            </div>
-            <div class="reveal delay-100 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm flex items-center justify-center text-center">
-                <div>
-                    <i class="fas fa-quote-left text-[#d3374a] text-3xl mb-6 opacity-50"></i>
-                    <p class="text-2xl md:text-3xl font-semibold text-gray-900 leading-snug">
+            <!-- Challenge & Solution -->
+            <div class="reveal delay-100 space-y-6">
+                 <!-- Quote Box -->
+                 <div class="bg-[#d3374a]/5 rounded-2xl p-6 md:p-8 border border-[#d3374a]/10 flex items-start gap-4">
+                    <i class="fas fa-quote-left text-[#d3374a] text-xl mt-1"></i>
+                    <p class="text-lg font-medium text-gray-900 leading-snug">
                         "AI tools change fast. Communities last. The universities that thrive won't have the best AI tools, but the best AI communities."
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 tracking-tight">Navigating Complexity</h3>
+                    <p class="text-gray-600 leading-relaxed mb-3">
+                        AI raises complex questions such as how to protect critical skills, keep our data safe and addressing environmental impacts.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        To ensure Cardiff University responds to these appropriately we've created a space for conversations, safe experimentation and shared learning.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The 4 Pillars Grid (Bento Box Style) -->
-    <section class="py-24 px-6 bg-black text-white relative overflow-hidden">
-        <!-- Subtle red glow -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#d3374a] opacity-5 rounded-full blur-[100px]"></div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-20 reveal">
-                <span class="uppercase tracking-widest text-[#d3374a] font-bold text-xs mb-3 block">Digital Transformation</span>
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Communities Are the New Competitive Edge in AI</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    We're part of Cardiff University's digital transformation helping teams find new ways of working, make better use of data, and free up time for the work that matters.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- The 4 Pillars Grid (Compact) -->
+    <section class="py-12 px-6 bg-[#f5f5f7]">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-xl font-semibold mb-6 text-gray-900">Our Pillars</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- Mindset -->
-                <div class="reveal group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
-                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
-                        <i class="fas fa-brain text-xl"></i>
+                <div class="reveal group p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#d3374a] transition-colors duration-300">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mb-4 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-sm"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Mindset</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed">
+                    <h3 class="text-lg font-bold mb-2">Mindset</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         Cultivate curiosity and critical thinking. Move from binary thinking to nuanced evaluation. AI isn't perfect but could it be useful?
                     </p>
                 </div>
 
                 <!-- Conversations -->
-                <div class="reveal delay-100 group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
-                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
-                        <i class="fas fa-comments text-xl"></i>
+                <div class="reveal delay-100 group p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#d3374a] transition-colors duration-300">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mb-4 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-comments text-sm"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Conversations</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed">
+                    <h3 class="text-lg font-bold mb-2">Conversations</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         Share what worked and what didn't. Create safe spaces for staff to admit confusion, seek help, and learn together.
                     </p>
                 </div>
 
                 <!-- Community -->
-                <div class="reveal group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
-                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
-                        <i class="fas fa-globe text-xl"></i>
+                <div class="reveal delay-200 group p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#d3374a] transition-colors duration-300">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mb-4 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe text-sm"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Community</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed">
+                    <h3 class="text-lg font-bold mb-2">Community</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
                         AI is actually about people, not just technology. Nobody has AI figured out yet. Shared learning means we all navigate this better.
                     </p>
                 </div>
 
                 <!-- Experiments -->
-                <div class="reveal delay-100 group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
-                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
-                        <i class="fas fa-flask text-xl"></i>
+                <div class="reveal delay-300 group p-6 bg-white border border-gray-200 rounded-2xl hover:border-[#d3374a] transition-colors duration-300">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mb-4 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-flask text-sm"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Experiments</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed">
-                        Learn by doing. Run small-scale pilots in safe-to-fail environments. Every experiment teaches something valuable and the best ones deliver real impact.
+                    <h3 class="text-lg font-bold mb-2">Experiments</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Learn by doing. Run small-scale pilots in safe-to-fail environments. Every experiment teaches something valuable.
                     </p>
                 </div>
 
@@ -213,24 +209,23 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 pt-16 pb-12">
+    <footer class="bg-white border-t border-gray-200 pt-8 pb-8">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                <div class="mb-8 md:mb-0">
-                    <div class="flex items-center gap-2 mb-4">
-                         <div class="w-6 h-6 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-xs">C</div>
-                        <span class="font-semibold text-gray-900">Cardiff University</span>
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center gap-2 mb-2">
+                         <div class="w-5 h-5 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-[10px]">C</div>
+                        <span class="font-semibold text-sm text-gray-900">Cardiff University</span>
                     </div>
-                    <p class="text-xs text-gray-500">Digital Transformation Programme</p>
+                    <p class="text-[10px] text-gray-500">Digital Transformation Programme</p>
                 </div>
-                <div class="flex gap-6">
-                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Accessibility</a>
-                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Privacy</a>
-                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Cookies</a>
-                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Modern Slavery Statement</a>
+                <div class="flex gap-4">
+                    <a href="#" class="text-[10px] text-gray-500 hover:text-[#d3374a] hover:underline">Accessibility</a>
+                    <a href="#" class="text-[10px] text-gray-500 hover:text-[#d3374a] hover:underline">Privacy</a>
+                    <a href="#" class="text-[10px] text-gray-500 hover:text-[#d3374a] hover:underline">Cookies</a>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-gray-100 text-xs text-gray-400">
+            <div class="mt-4 pt-4 border-t border-gray-100 text-[10px] text-gray-400">
                 &copy; 2024 Cardiff University. All rights reserved. Registered charity no. 1136855.
             </div>
         </div>
