@@ -1,430 +1,262 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The AI Community Approach | A Cardiff University Initiative</title>
-    <meta name="description" content="Discover Cardiff University's people-first approach to responsible AI adoption.">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Driving AI Success | Cardiff University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Color variables matching your index page */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* Cardiff Brand Colors */
         :root {
-            --primary: #1e88e5;
-            --secondary: #24292e;
-            --accent: #2e7d32;
-            --cardiff-red: #D50032;
-            --light: #f6f8fa;
-            --text: #333;
-            --border: #e1e4e8;
-            --white: #ffffff;
-        }
-        
-        /* Base styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --cardiff-red: #d3374a;
+            --cardiff-red-dark: #b02b3b;
+            --apple-gray: #f5f5f7;
+            --text-dark: #1d1d1f;
+            --text-light: #86868b;
         }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: #f9f9f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        
-        /* Container styles */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        /* Header styles matching your index */
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Header */
         header {
-            background: var(--primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        
-        .subtitle {
-            font-style: italic;
-            margin-top: 5px;
-            color: #e3f2fd;
-            font-size: 1.1rem;
-        }
-        
-        /* Intro section */
-        .intro {
-            background-color: white;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .intro h2 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .intro p {
-            margin: 1rem 0;
-            font-size: 1rem;
-        }
-        
-        /* Values section matching your approach */
-        .values {
-            padding: 4rem 0;
-            background-color: var(--light);
+        /* Apple-style Typography utils */
+        .text-gradient {
+            background: linear-gradient(135deg, #1d1d1f 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .values h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .value-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
-        }
-        
-        .value-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .value-card h3 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+        .cardiff-accent {
+            color: var(--cardiff-red);
         }
 
-        .value-card p {
-            color: var(--text);
-            line-height: 1.6;
+        /* Subtle background decoration */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: move 20s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(20px, -20px) scale(1.1); }
         }
 
-        .value-card .emoji {
-            font-size: 1.5rem;
-            margin-right: 0.5rem;
-        }
-        
-        /* Navigation section */
-        .navigation {
-            padding: 2rem 0;
-            text-align: center;
-            background-color: white;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navigation h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .nav-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background-color: #1b5e20;
-        }
-
-        .nav-button.primary {
-            background-color: var(--primary);
-        }
-
-        .nav-button.primary:hover {
-            background-color: #1565c0;
-        }
-        
-        /* Contact section */
-        .contact {
-            background-color: white;
-            padding: 4rem 0;
-        }
-
-        .contact h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-person {
-            background-color: var(--light);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-        
-        .contact-person h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .contact-link {
-            display: block;
-            color: var(--primary);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-        
-        .highlight {
-            background: #fff7f9;
-            border-left: 6px solid var(--cardiff-red);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-        }
-
-        .highlight p {
-            margin: 0;
-        }
-
-        /* Stats section */
-        .stats {
-            background-color: var(--secondary);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .stats h2 {
-            color: white;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2rem;
-            color: #4fc3f7;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
-        /* Benefits section */
-        .benefits {
-            background-color: var(--light);
-            padding: 4rem 0;
-        }
-
-        .benefits h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .benefits-list {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .benefits-list ul {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-
-        .benefits-list li {
-            margin: 1rem 0;
-            color: var(--text);
-        }
-
-        .benefits-list li strong {
-            color: var(--primary);
-        }
-        
-        /* Footer styles */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #4fc3f7;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .values-grid, 
-            .contact-grid, 
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* Link styles */
-        a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Paragraph margins */
-        p {
-            margin: 0 0 1rem;
-        }
-
-        /* Section spacing */
-        section {
-            border-bottom: 1px solid var(--border);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Header matching your index style -->
-    <header>
-        <div class="container">
-            <h1>The AI Community Approach</h1>
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <!-- Abstract Representation of Cardiff Logo for this demo -->
+                <div class="w-8 h-8 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-lg">C</div>
+                <span class="font-semibold tracking-tight text-lg">Cardiff University</span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+                <a href="#" class="hover:text-[#d3374a] transition-colors">Digital Transformation</a>
+                <a href="#" class="hover:text-[#d3374a] transition-colors">AI Community</a>
+                <a href="#" class="hover:text-[#d3374a] transition-colors">Join Us</a>
+            </nav>
         </div>
     </header>
-    
-    <!-- Intro section -->
-    <section class="intro">
-        <div class="container">
-            <h2>🤝 Building AI Communities to Foster Responsible AI</h2>
-            <p><strong>No one knows everything about AI and that's exactly why we need each other. Because AI is actually about people.</strong></p>
-            <p>This insight underpins Cardiff University's <strong>Community Approach to AI</strong>, a strategic approach within the Digital Transformation Programme. Rather than positioning AI as a purely technical challenge, we're building collaborative communities that explore its opportunities, risks and real-world applications.</p>
-            <p>AI raises complex questions from protecting critical skills and ensuring data security to addressing environmental impacts. Instead of claiming to have all the answers, we've created a space for conversations, safe experimentation and shared learning.</p>
-            <p>The universities that thrive won't have the best AI tools, but the best AI communities</p>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 overflow-hidden">
+        <!-- Decorational Blur -->
+        <div class="blob w-96 h-96 bg-red-100 rounded-full top-0 right-0 mix-blend-multiply"></div>
+        <div class="blob w-96 h-96 bg-gray-100 rounded-full top-20 left-20 mix-blend-multiply animation-delay-2000"></div>
+
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="reveal text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8 text-gray-900">
+                Driving AI success through <span class="text-[#d3374a]">Communities</span> to foster responsible AI
+            </h1>
+            <p class="reveal delay-100 text-xl md:text-2xl leading-relaxed text-gray-500 font-medium max-w-3xl mx-auto">
+                AI is impacting almost all areas of society from healthcare to materials, research to accelerated authoring and decision making. That’s why we need people as well as machines to navigate the way forward.
+            </p>
         </div>
     </section>
-    
-    <!-- Values section matching your approach -->
-    <section class="values">
-        <div class="container">
-            <h2>🌱 Our Community Approach</h2>
-            <p>We align with Cardiff University's digital journey to create frictionless, data-informed experiences and unlock capacity for innovation.</p>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <h3><span class="emoji">🧠</span>Mindset</h3>
-                    <p>Cultivate curiosity and critical thinking. Move from binary thinking to nuanced evaluation. AI isn't perfect but could it be useful?</p>
-                </div>
-                
-                <div class="value-card">
-                    <h3><span class="emoji">💬</span>Conversations</h3>
-                    <p>Share what worked and what didn't. Create safe spaces for staff to admit confusion, seek help, and learn together.</p>
-                </div>
-                
-                <div class="value-card">
-                    <h3><span class="emoji">🌐</span>Community</h3>
-                    <p>AI is actually about people, not just technology. Nobody has AI figured out yet. Shared learning means we all navigate this better.</p>
-                </div>
-                
-                <div class="value-card">
-                    <h3><span class="emoji">🧪</span>Experiments</h3>
-                    <p>Learn by doing. Run small-scale pilots in safe-to-fail environments. Every experiment teaches something valuable.</p>
+
+    <!-- The Insight Section (Dark contrast) -->
+    <section class="bg-[#f5f5f7] py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal space-y-8">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+                    The Community Approach
+                </h2>
+                <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                    <p>
+                        No one knows everything about AI and that's exactly why we need each other. This insight underpins Cardiff University's Community Approach to AI, a strategic approach within the Digital Transformation Programme. 
+                    </p>
+                    <p>
+                        Rather than positioning AI as a purely technical challenge, we're building collaborative communities that explore its opportunities, risks and real-world applications.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-  
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Cardiff University AI Community Initiative.</p>
+    <!-- The Challenge & Solution (White) -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h3 class="text-3xl font-bold mb-6 text-gray-900 tracking-tight">Navigating Complexity</h3>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    AI raises complex questions such as how to protect critical skills, keep our data safe and addressing environmental impacts.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    To ensure Cardiff University responds to these appropriately we've created a space for conversations, safe experimentation and shared learning.
+                </p>
+            </div>
+            <div class="reveal delay-100 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm flex items-center justify-center text-center">
+                <div>
+                    <i class="fas fa-quote-left text-[#d3374a] text-3xl mb-6 opacity-50"></i>
+                    <p class="text-2xl md:text-3xl font-semibold text-gray-900 leading-snug">
+                        "AI tools change fast. Communities last. The universities that thrive won't have the best AI tools, but the best AI communities."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 4 Pillars Grid (Bento Box Style) -->
+    <section class="py-24 px-6 bg-black text-white relative overflow-hidden">
+        <!-- Subtle red glow -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#d3374a] opacity-5 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="uppercase tracking-widest text-[#d3374a] font-bold text-xs mb-3 block">Digital Transformation</span>
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Communities Are the New Competitive Edge in AI</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    We're part of Cardiff University's digital transformation helping teams find new ways of working, make better use of data, and free up time for the work that matters.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Mindset -->
+                <div class="reveal group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
+                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Mindset</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Cultivate curiosity and critical thinking. Move from binary thinking to nuanced evaluation. AI isn't perfect but could it be useful?
+                    </p>
+                </div>
+
+                <!-- Conversations -->
+                <div class="reveal delay-100 group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
+                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-comments text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Conversations</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Share what worked and what didn't. Create safe spaces for staff to admit confusion, seek help, and learn together.
+                    </p>
+                </div>
+
+                <!-- Community -->
+                <div class="reveal group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
+                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Community</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        AI is actually about people, not just technology. Nobody has AI figured out yet. Shared learning means we all navigate this better.
+                    </p>
+                </div>
+
+                <!-- Experiments -->
+                <div class="reveal delay-100 group p-8 md:p-12 bg-[#1d1d1f] border border-gray-800 rounded-3xl hover:border-[#d3374a] transition-colors duration-500">
+                    <div class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 text-[#d3374a] group-hover:scale-110 transition-transform">
+                        <i class="fas fa-flask text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Experiments</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Learn by doing. Run small-scale pilots in safe-to-fail environments. Every experiment teaches something valuable and the best ones deliver real impact.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center gap-2 mb-4">
+                         <div class="w-6 h-6 bg-[#d3374a] rounded-sm flex items-center justify-center text-white font-bold text-xs">C</div>
+                        <span class="font-semibold text-gray-900">Cardiff University</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Digital Transformation Programme</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Accessibility</a>
+                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Privacy</a>
+                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Cookies</a>
+                    <a href="#" class="text-xs text-gray-500 hover:text-[#d3374a] hover:underline">Modern Slavery Statement</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-100 text-xs text-gray-400">
+                &copy; 2024 Cardiff University. All rights reserved. Registered charity no. 1136855.
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
