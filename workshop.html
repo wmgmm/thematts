@@ -571,6 +571,79 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
     </div>
 </details>
             <details>
+    <summary>Exercise 9 – Create the Sentence Categorizer Agent</summary>
+    <div class="details-content">
+        
+        <div class="exercise-note" style="margin-bottom: 20px;">
+            <strong>Advanced Agent:</strong> This exercise builds an agent that uses Python (Code Interpreter) to analyze text and generate visual charts.
+        </div>
+
+        <ol style="padding-left: 20px; line-height: 1.6; font-size: 15px;">
+            <li style="margin-bottom: 12px;">
+                <strong>Describe the Agent</strong> – Ensure you are on the <strong>Describe</strong> tab. Copy and paste the description below into the chat box and hit the submit arrow:
+                <br><br>
+                <div style="background-color: #f9f9f9; padding: 10px; border-left: 4px solid #007aff; font-style: italic;">
+                    "The User will provide sentences to analyse (via attached .xlsx or pasted below). Assign a high-level parent category to each (e.g., generalize 'Spreadsheet' to Work, 'Tacos' to Food). 1. Output a table with columns: Sentence, Category. 2. Execute Python code to generate and display the word cloud image based on the category counts."
+                </div>
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Configure Settings</strong> – Switch to the <strong>Configure</strong> tab (next to Describe). Name your agent <strong>"Sentence Categorizer"</strong>.
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Enable Code Generation</strong> – Scroll down to the "Capabilities" section. Toggle the slider for <strong>"Create documents, charts, and code"</strong> to the <strong>On</strong> position (it will turn blue).
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Create Agent</strong> – Click the <strong>Create</strong> button and wait for the success message.
+            </li>
+            <li>
+                <strong>Test it</strong> – Click "Go to agent". Use the sample data below (either upload the file or copy the text) to see it generate a category table and a word cloud image.
+            </li>
+        </ol>
+
+        <div class="sample-data-section" style="margin-top: 30px; padding: 20px; background-color: #f0f4f8; border-radius: 8px;">
+            <h3 style="margin-top: 0;">📂 Sample Data for Testing</h3>
+            
+            <p style="margin-bottom: 15px;">
+                You can either download the Excel file to upload to your agent, or copy the text below directly into the chat.
+            </p>
+
+            <div style="margin-bottom: 20px;">
+                <a href="sentences.xlsx" download style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                    ⬇️ Download sentences.xlsx
+                </a>
+            </div>
+
+            <div style="margin-bottom: 10px;"><strong>Or copy these sentences:</strong></div>
+            <textarea style="width: 100%; height: 200px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: monospace;" readonly>
+I survived another meeting that should have been an email.
+My therapist has a wet nose and a wagging tail.
+I apologize for what I said when I was hungry.
+There is no 'we' in fries.
+I run like the winded.
+My head says gym, but my heart says tacos.
+Excel is my love language.
+I earn a salary just so my cat can have a better life.
+It's raining in Cardiff... again.
+I need a six-month holiday, twice a year.
+Be the person your dog thinks you are.
+Stressed is just desserts spelled backwards.
+Please do not 'reply all' to my existence.
+My favorite cardio is running out of patience.
+A balanced diet is a slice of pizza in each hand.
+Sent from my iPhone (not really, I'm at my desk).
+I thought they said 'extra fries', not 'exercise'.
+Llanfairpwllgwyngyll... never mind, just meet me at the pub.
+My boss told me to have a good day, so I went home.
+Traffic was stopped by a flock of sheep on the road.
+My outfit is incomplete without a little bit of fur on it.
+I love the whooshing sound deadlines make as they fly by.
+My only skill is pretending to listen in Zoom calls.
+            </textarea>
+        </div>
+
+    </div>
+</details>
+            <details>
                 <summary>AI Usage Case: Meeting Notes</summary>
                 <div class="details-content">
                     <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
