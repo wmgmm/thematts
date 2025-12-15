@@ -489,29 +489,19 @@
                 </div>
             </details>
 
-            <details>
-                <summary>Exercise 5: Format & Structure</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        Application: Force AI to output exactly what you need (Table, SOP, etc.).
-                    </div>
-                    
-                    <h4>Prompt 1:</h4>
-                    <div class="prompt-box" id="format-prompt1">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-Write a catchy jingle for your horse-drawn pizza delivery adverts."</div>
-                    <button onclick="copyToClipboard('format-prompt1')" class="btn-copy">Copy Prompt</button>
-            
-                    <h4>Prompt 2:</h4>
-                    <div class="prompt-box" id="format-prompt2">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance."</div>
-                    <button onclick="copyToClipboard('format-prompt2')" class="btn-copy">Copy Prompt</button>
-            
-                    <h4>Prompt 3:</h4>
-                    <div class="prompt-box" id="format-prompt3">"You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service. 
-Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
-                    <button onclick="copyToClipboard('format-prompt3')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
+        <details>
+    <summary>Exercise 5: Format & Structure (Merging Tasks)</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
+        </div>
+        
+        <div class="prompt-box" id="format-prompt-merged">"You run 'Knights of the Round Table Pizza' - a medieval-themed pizza delivery service. Please generate the following three items:<br><br>1. Write a catchy jingle for your horse-drawn pizza delivery adverts.<br>2. Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance.<br>3. Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
+        
+        <button onclick="copyToClipboard('format-prompt-merged')" class="btn-copy">Copy Prompt</button>
+        <br>
+    </div>
+</details>
 
             <details>
                 <summary>Exercise 6: Self-Evaluation (Mark Your Homework)</summary>
@@ -674,49 +664,39 @@ Consider what key elements, criteria, or details matter, what output format is m
         <div class="exercise-note">
             <strong>Application:</strong> Use this when you have a "Gold Standard" document and you want all future documents to follow that exact structure.
         </div>
-        <div class="prompt-box" id="reverse-prompt-meeting">
-            "Analyse these meeting notes. Create a single, reusable prompt that I could give an AI to generate notes in this exact format, style, and structure from a raw meeting transcript."
-        </div>
+        <div class="prompt-box" id="reverse-prompt-meeting">"Analyze the meeting notes below. Create a single, reusable prompt that instructs an AI to generate notes using this exact format, style, and structure from a raw transcript.<br><br>[PASTE GOLD STANDARD NOTES HERE]"</div>
         <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copy Prompt</button>
         <br><br>
 
         <h3>2. Corporate Tone Persona</h3>
         <div class="exercise-note">
-            <strong>Application:</strong> Essential for marketing and branding. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
+            <strong>Application:</strong> Essential for marketing. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
         </div>
-        <div class="prompt-box" id="reverse-prompt-persona">
-            "Analyse the tone of voice, vocabulary choice, and sentence structure used in this text. Write a persona prompt that defines these characteristics so an AI can consistently write new articles in this exact style."
-        </div>
+        <div class="prompt-box" id="reverse-prompt-persona">"Analyze the tone, vocabulary, and sentence structure of the text below. Write a 'Persona Prompt' defining these characteristics so an AI can consistently write new articles in this exact style.<br><br>[PASTE BRAND TEXT HERE]"</div>
         <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copy Prompt</button>
         <br><br>
 
         <h3>3. Academic Abstract Summarizer</h3>
         <div class="exercise-note">
-            <strong>Application:</strong> Use this for technical or formal writing where constraints (word count, objectivity) are strict and you want to summerise new content in the voice.
+            <strong>Application:</strong> Use this for technical writing where constraints (word count, objectivity) are strict and you want to summarize new content in that voice.
         </div>
-        <div class="prompt-box" id="reverse-prompt-abstract">
-            "Deconstruct this academic abstract. Identify the implied constraints on word count, the formal objective tone, and the specific structural elements included. Write a reusable prompt designed to generate similar abstracts from new content."
-        </div>
+        <div class="prompt-box" id="reverse-prompt-abstract">"Deconstruct the academic abstract below. Identify the implied word count constraints, formal tone, and structural elements. Write a reusable prompt designed to generate similar abstracts from new content.<br><br>[PASTE ABSTRACT HERE]"</div>
         <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copy Prompt</button>
         <br><br>
 
         <h3>4. Image-to-Text Style Transfer</h3>
         <div class="exercise-note">
-            <strong>Application:</strong> Use this to generate the text description of a image you like, which you can then use to create a new AI generated image.
+            <strong>Application:</strong> Use this to generate a detailed text description of an image, which you can then use to generate new images in that style.
         </div>
-        <div class="prompt-box" id="reverse-prompt-image">
-            "Act as a professional photographer. Analyze this image and write a detailed text-to-image AI Chatbot prompt in JSON that captures the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style."
-        </div>
+        <div class="prompt-box" id="reverse-prompt-image">"Act as a professional photographer. Analyze the attached image. Write a detailed text-to-image prompt capturing the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style.<br><br>[UPLOAD IMAGE]"</div>
         <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copy Prompt</button>
         <br><br>
 
         <h3>5. Website Style & Format</h3>
         <div class="exercise-note">
-            <strong>Application:</strong> Use this to extract UI/UX design schemas from screenshots OR copy a paste a websites html to produce websites with a similar look and feel.
+            <strong>Application:</strong> Use this to extract design schemas from screenshots or HTML code to produce new sites with a similar look and feel.
         </div>
-        <div class="prompt-box" id="reverse-prompt-website">
-            "Analyze the visual design, color palette, typography, layout structure, and interactive elements of this website. Write a detailed prompt that defines this specific look and feel to an AI that a can apply to an existing website"
-        </div>
+        <div class="prompt-box" id="reverse-prompt-website">"Analyze the visual design, color palette, typography, and layout of the website below. Write a design system prompt that instructs an AI to apply this exact look and feel to new code.<br><br>[PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
         <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
     </div>
 </details>
