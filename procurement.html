@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Procurement - Workshop Resources</title>
+    <style>
+        /* --- Apple Design System (Modern) --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --radius-card: 22px;
+            --radius-button: 980px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* --- Base & Reset --- */
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 22px;
+        }
+
+        /* --- Navigation (Frosted Glass) --- */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
+        }
+
+        .nav-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
+
+        /* --- Typography --- */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            color: var(--apple-text-secondary);
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* --- Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* --- Getting Started --- */
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 50px auto;
+            max-width: 700px;
+        }
+
+        .step-list li {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+            font-size: 19px;
+            line-height: 1.4211;
+            font-weight: 400;
+        }
+
+        .step-badge {
+            background-color: var(--apple-text-primary);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+            transform: translateY(2px);
+        }
+
+        /* --- Accordions (Clean) --- */
+        details {
+            border-bottom: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+        
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 24px 0;
+            cursor: pointer;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--apple-blue);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details[open] summary {
+            color: var(--apple-blue);
+        }
+
+        .details-content {
+            padding-bottom: 30px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 15px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* --- Prompt Box (Code style) --- */
+        .prompt-box {
+            background-color: #f5f5f7;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: "SF Mono", Menlo, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px 0 15px 0;
+            white-space: pre-wrap;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- Buttons --- */
+        .btn-copy {
+            background-color: #e8e8ed;
+            color: var(--apple-text-primary);
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: #d2d2d7;
+        }
+
+        /* --- Key Takeaways Grid --- */
+        .megadoc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .megadoc-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .megadoc-icon { font-size: 28px; margin-bottom: 10px; }
+        .megadoc-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
+        .megadoc-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            border-top: 1px solid #e5e5ea;
+            margin-top: 60px;
+        }
+        
+        .contact-link { color: var(--apple-blue); text-decoration: none; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- Utilities --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 734px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            .section-card { padding: 30px 24px; }
+            .container { padding-top: 20px; }
+            .megadoc-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied";
+                button.style.backgroundColor = "#34c759";
+                button.style.color = "white";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.backgroundColor = "#e8e8ed";
+                    button.style.color = "var(--apple-text-primary)";
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="global-nav">
+        <div class="nav-content">
+            <a href="#getting-started">Start Here</a>
+            <a href="#exercises">Copilot Exercises</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>AI in Procurement</h1>
+            <div class="subtitle">Workshop Resources</div>
+        </header>
+
+        <section id="getting-started" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Getting Started</h2>
+            </div>
+
+            <ul class="step-list">
+                <li>
+                    <span class="step-badge">1</span>
+                    <span>
+                        <strong>Log In:</strong>&nbsp;Click to open &nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>&nbsp; (work account).
+                    </span>
+                </li>
+                <li>
+                    <span class="step-badge">2</span>
+                    <span>
+                        <strong>Copy Prompts:</strong>&nbsp;Scroll down for Copilot exercises.
+                    </span>
+                </li>
+                <li>
+                    <span class="step-badge">3</span>
+                    <span>
+                        <strong>New Chat:</strong>&nbsp;Always click <strong>"New Chat"</strong> between tasks.
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="exercises" class="section-card">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2>Copilot Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
+                    Click an exercise to reveal the prompt. Copy and paste it into Copilot.
+                </p>
+            </div>
+
+            <details open>
+                <summary>Exercise 1: Explain it Like I am 5 (ELI5)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Quickly understand complex topics or prepare simple explanations.
+                    </div>
+                    <div class="prompt-box" id="prompt1">"Explain [TOPIC] to me like I am 5 (ELI5)"</div>
+                    <button onclick="copyToClipboard('prompt1')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Replace [TOPIC] with: "framework agreements", "social value in procurement", "dynamic purchasing systems", etc.</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 2: What Did I Miss? (AI as Your Teammate)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Use AI to stress-test your plans before they fail.
+                    </div>
+                    <div class="prompt-box" id="prompt2">"I am planning to [TASK]; tell me 3 things I've probably overlooked that will cause this to fail."</div>
+                    <button onclick="copyToClipboard('prompt2')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Replace [TASK] with your real scenario: "switch laboratory supplies provider", "tender for a new catering contract", etc.</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 3: Market Research — Generic Prompt</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: See what happens with a vague prompt. Notice what assumptions the AI makes.
+                    </div>
+                    <div class="prompt-box" id="prompt3">"Research Merck Life Science for pricing review."</div>
+                    <button onclick="copyToClipboard('prompt3')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Try this first. What do you think of the output? Starting to see where it could be improved?</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 4: Market Research — Professional Prompt</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Your domain knowledge makes the difference. Generic prompts = generic answers.
+                    </div>
+                    <div class="prompt-box" id="prompt4">Conduct structured market research on Merck Life Science for Cardiff University's annual reagent pricing review (covering molecular biology reagents, cell culture media, and chromatography supplies). Include:
+
+• Financial performance 2023-2024 (focus on life science reagents division)
+• Competitor comparison: Thermo Fisher Scientific and Agilent Technologies (market positioning, pricing strategies)
+• Benchmark recent price increases against UK CPI/PPI and specialty chemical indexes
+• Supply chain factors affecting pricing (post-Brexit, global supply pressures)
+• Pricing models and discount structures for academic institutions
+• Recent strategic moves (acquisitions, product launches, sustainability initiatives)
+
+Provide bullet-point insights with data sources cited. Suggest 3-5 evidence-based negotiation angles for our upcoming renewal discussions.</div>
+                    <button onclick="copyToClipboard('prompt4')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Experiment to see where this can be improved.</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 5: Drafting Specifications — Generic Prompt</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Another vague prompt. What incorrect assumptions does the AI make?
+                    </div>
+                    <div class="prompt-box" id="prompt5">"Write a specification for ergonomic office chairs."</div>
+                    <button onclick="copyToClipboard('prompt5')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Try this first. Starting to see where it could be improved? Are there incorrect assumptions being made?</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 6: Drafting Specifications — Professional Prompt</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: See how your procurement expertise transforms the output quality.
+                    </div>
+                    <div class="prompt-box" id="prompt6">Draft a complete procurement specification and evaluation criteria for ergonomic office chairs for Cardiff University administrative staff (requirement: 150 units).
+
+Specification requirements:
+• Performance outcomes: adjustable height (420-550mm), lumbar support, breathable fabric, 5-star wheeled base
+• Compliance: UK DSE regulations, BIFMA standards, fire safety (BS 5852)
+• Sustainability: minimum 30% recycled content, take-back scheme
+• Delivery: 6 weeks to multiple campus buildings, installation included
+• Warranty: minimum 5 years
+
+Evaluation framework:
+• Price (40%): total cost of ownership including delivery and installation
+• Quality (35%): ergonomic features, durability testing, user comfort ratings
+• Sustainability (15%): environmental certifications, circular economy approach
+• Social value (10%): ethical labour practices, local supplier benefits
+
+Include 5 tender questions suppliers should answer on ergonomic design, innovation, and end-of-life management.</div>
+                    <button onclick="copyToClipboard('prompt6')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Experiment to see where this can be improved.</em></p>
+                </div>
+            </details>
+
+            <details>
+                <summary>AI Usage Case: Meeting Notes</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Summarise meeting transcripts quickly and consistently.
+                    </div>
+                    <div class="prompt-box" id="prompt-meeting">"Please summarise the following meeting transcript. 
+Focus on the key points, decisions made, action items and any important deadlines. 
+The summary should be clear and no longer than 200 words.
+Optional – Include any specific extra context or areas to focus on
+[UPLOAD WORD DOC OR INSERT TRANSCRIPT HERE]"</div>
+                    <button onclick="copyToClipboard('prompt-meeting')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+        </section>
+
+        <section class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Key Takeaways</h2>
+            </div>
+
+            <div class="megadoc-grid">
+                <div class="megadoc-card">
+                    <div class="megadoc-icon">🧙‍♂️</div>
+                    <strong class="megadoc-title">It's Not the Magic Prompt</strong>
+                    <p class="megadoc-desc">It's the magic <em>staff</em>. Your domain knowledge is vital.</p>
+                </div>
+                <div class="megadoc-card">
+                    <div class="megadoc-icon">🤝</div>
+                    <strong class="megadoc-title">AI is Your Teammate</strong>
+                    <p class="megadoc-desc">Iterate, refine, and have a conversation. Don't expect perfection first time.</p>
+                </div>
+                <div class="megadoc-card">
+                    <div class="megadoc-icon">✅</div>
+                    <strong class="megadoc-title">Always Verify</strong>
+                    <p class="megadoc-desc">AI can hallucinate. Check facts, prices, and supplier details.</p>
+                </div>
+                <div class="megadoc-card">
+                    <div class="megadoc-icon">🔄</div>
+                    <strong class="megadoc-title">Experiment & Share</strong>
+                    <p class="megadoc-desc">Try things out. Share what works with colleagues.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card" style="text-align: center; padding: 50px;">
+            <h3>Contact Information</h3>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? Feel free to contact us:</p>
+            <p style="margin-bottom: 0;">
+                Dr Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a><br>
+                Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Workshop facilitated by Dr Matt Mort and Matt Hayden. Materials © Cardiff University 2026.</p>
+    </footer>
+
+</body>
+</html>
