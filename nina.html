@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nina's Assistant — Functional Skills English</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f5f5f7; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
+    @keyframes popIn   { from { opacity:0; transform:scale(0.97) }       to { opacity:1; transform:scale(1) } }
+    @keyframes shake   { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+    input:focus { border-color:#1d1d1f !important; background:white !important; box-shadow:0 0 0 3px rgba(0,0,0,0.05); outline:none; }
+    button:hover  { opacity: 0.86; }
+    button:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const TASKS = [
+      // E3 READING
+      { id:"r-e3-01", level:"E3", type:"READING", prompt:"Read this notice", text:'"Staff meeting on Tuesday at 9 AM.\nPlease wear your black uniform."', question:"What day is the meeting?", accept:["tuesday"], hint:"Look at the word right after 'meeting'.", model:"Tuesday" },
+      { id:"r-e3-02", level:"E3", type:"READING", prompt:"Read this text", text:'"Recycling in blue bins on Thursdays,\ngeneral waste in black bins on Fridays."', question:"Which bin goes out on Thursday?", accept:["blue","recycling","blue bin","recycling bin"], hint:"Which bin is mentioned first?", model:"The blue bin" },
+      { id:"r-e3-03", level:"E3", type:"READING", prompt:"Read this shop sign", text:'"Open Mon–Fri 9am to 6pm. Closed weekends."', question:"Is the shop open on Saturday?", accept:["no","closed","no it's closed","no it is closed"], hint:"What does it say about weekends?", model:"No — closed at weekends" },
+      { id:"r-e3-04", level:"E3", type:"READING", prompt:"Card through your door", text:'"We tried to deliver your parcel.\nCollect from: Argos, High Street, by Friday 14 June."', question:"Where do you collect the parcel?", accept:["argos","argos high street","the argos"], hint:"Look at the word after 'from'.", model:"Argos, High Street" },
+      { id:"r-e3-05", level:"E3", type:"READING", prompt:"Read this food label", text:'"Best before: 23 June.\nOnce opened, consume within 3 days."', question:"You opened it on 23 June. By when must you finish it?", accept:["26 june","june 26","26th","26"], hint:"Add 3 days to 23 June.", model:"26 June" },
+      // E3 SPELLING
+      { id:"s-e3-01", level:"E3", type:"SPELLING", prompt:"Spell this word", text:"\"It's necessary to bring your ID.\"", question:"NECESSARY", accept:["necessary"], hint:"One Collar, two Socks → 1C 2S", model:"n-e-c-e-s-s-a-r-y" },
+      { id:"s-e3-02", level:"E3", type:"SPELLING", prompt:"Spell this word", text:'"Write your address on the form."', question:"ADDRESS", accept:["address"], hint:"Double D, double S.", model:"a-d-d-r-e-s-s" },
+      { id:"s-e3-03", level:"E3", type:"SPELLING", prompt:"Spell this word", text:'"Keep them separate."', question:"SEPARATE", accept:["separate"], hint:"There's A RAT in sep-a-rat-e.", model:"s-e-p-a-r-a-t-e" },
+      { id:"s-e3-04", level:"E3", type:"SPELLING", prompt:"Spell this word", text:'"I have received your letter."', question:"RECEIVED", accept:["received"], hint:"I before E, after the C.", model:"r-e-c-e-i-v-e-d" },
+      // E3 GRAMMAR
+      { id:"g-e3-01", level:"E3", type:"GRAMMAR", prompt:"Fill in the gap", text:'"I went to ___ shop."', question:"Which article: a · an · the?", accept:["the","the shop"], hint:"Specific, known shop.", model:"the shop" },
+      { id:"g-e3-02", level:"E3", type:"GRAMMAR", prompt:"Fill in the gap", text:'"She is ___ engineer."', question:"Which article: a · an · the?", accept:["an","an engineer"], hint:"'An' before a vowel sound.", model:"an engineer" },
+      { id:"g-e3-03", level:"E3", type:"GRAMMAR", prompt:"Fix the tense error", text:'"Yesterday I go to the supermarket."', question:"Correct the verb.", accept:["yesterday i went","i went to the supermarket","went"], hint:"'Yesterday' = past tense.", model:"Yesterday I went to the supermarket." },
+      { id:"g-e3-04", level:"E3", type:"GRAMMAR", prompt:"Fix the tense error", text:'"I am going to work every day."', question:"This is a habit — correct the tense.", accept:["i go to work every day","i go to work","go to work every day"], hint:"Habits use simple present.", model:"I go to work every day." },
+      // L1 READING
+      { id:"r-l1-01", level:"L1", type:"READING", prompt:"Read this job advert", text:'"Café Assistant. Part-time, 20 hrs/week.\nPay: £11.50/hr. Apply by 30 June."', question:"How many hours per week is the job?", accept:["20","20 hours","twenty"], hint:"Look for 'hrs' in the text.", model:"20 hours per week" },
+      { id:"r-l1-02", level:"L1", type:"READING", prompt:"Read this letter extract", text:'"Your rent will increase from £655 to £685\nper month from 1 May."', question:"How much MORE will you pay each month?", accept:["£30","30","30 pounds","thirty"], hint:"Subtract the old amount from the new.", model:"£30 more per month" },
+      { id:"r-l1-03", level:"L1", type:"READING", prompt:"Two reviews — same café", text:'A: "Staff very friendly, great coffee."\nB: "Staff seemed uninterested."', question:"Name ONE thing they disagree about.", accept:["staff","service","the staff","staff attitude"], hint:"What does each review say about the people working there?", model:"The staff / attitude of staff" },
+      { id:"r-l1-04", level:"L1", type:"READING", prompt:"Read this NHS text", text:'"Reminder: Your appointment at Westfield Surgery\nis on Weds 12 July at 10:45.\nReply YES to confirm."', question:"What must you do to confirm the appointment?", accept:["reply yes","text yes","say yes","yes","reply"], hint:"Look at the last sentence.", model:"Reply YES to the text" },
+      // L1 SPELLING
+      { id:"s-l1-01", level:"L1", type:"SPELLING", prompt:"Spell this word", text:'"I need accommodation for two nights."', question:"ACCOMMODATION", accept:["accommodation"], hint:"One Coat, one Mattress → 2C 2M", model:"a-c-c-o-m-m-o-d-a-t-i-o-n" },
+      { id:"s-l1-02", level:"L1", type:"SPELLING", prompt:"Spell this word", text:'"I am definitely applying."', question:"DEFINITELY", accept:["definitely"], hint:"def-in-ITE-ly — no A anywhere.", model:"d-e-f-i-n-i-t-e-l-y" },
+      { id:"s-l1-03", level:"L1", type:"SPELLING", prompt:"UK or US — type the UK spelling", text:'"colour  vs  color"', question:"COLOUR or COLOR?", accept:["colour"], hint:"British English keeps the 'u'.", model:"colour" },
+      { id:"s-l1-04", level:"L1", type:"SPELLING", prompt:"UK or US — type the UK spelling", text:'"travelling  vs  traveling"', question:"TRAVELLING or TRAVELING?", accept:["travelling"], hint:"British English doubles the L.", model:"travelling" },
+      // L1 GRAMMAR
+      { id:"g-l1-01", level:"L1", type:"GRAMMAR", prompt:"Join with a connective", text:'"She was tired. She finished the report."', question:"Rewrite using 'despite'.", accept:["despite being tired she finished","despite her tiredness","despite being tired, she finished"], hint:"Despite + -ing verb…", model:"Despite being tired, she finished the report." },
+      { id:"g-l1-02", level:"L1", type:"GRAMMAR", prompt:"Fact or opinion?", text:'"The new leisure centre cost £2.4 million."', question:"Is this a FACT or an OPINION?", accept:["fact","a fact","it's a fact","it is a fact"], hint:"Could you look this up and prove it?", model:"Fact — it's a verifiable figure." },
+      // L2 READING
+      { id:"r-l2-01", level:"L2", type:"READING", prompt:"From a newspaper article", text:'"Are we really going to stand by and watch our high streets die?"', question:"What writing technique is this?", accept:["rhetorical question","rhetorical","a rhetorical question"], hint:"It's a question that doesn't expect an answer.", model:"A rhetorical question" },
+      { id:"r-l2-02", level:"L2", type:"READING", prompt:"Read this café review", text:'"The food arrived quickly and was hot.\nThe décor was... interesting."', question:"What does the reviewer REALLY think about the décor?", accept:["didn't like it","they didn't like it","bad","sarcasm","irony","hated it","negative","not impressed"], hint:"Why the '...' before 'interesting'?", model:"They didn't like it — sarcasm/irony" },
+      { id:"r-l2-03", level:"L2", type:"READING", prompt:"Read these two sentences", text:'A: "The centre cost £2.4 million to build."\nB: "It\'s a great investment for the community."', question:"Which is a FACT and which is an OPINION?", accept:["a is fact b is opinion","a fact b opinion","first is fact","a is the fact"], hint:"Which one could you look up and prove?", model:"A = Fact.  B = Opinion" },
+      // L2 SPELLING
+      { id:"s-l2-01", level:"L2", type:"SPELLING", prompt:"Spell this word", text:'"Don\'t exaggerate."', question:"EXAGGERATE", accept:["exaggerate"], hint:"exa-GG-erate — two Gs.", model:"e-x-a-g-g-e-r-a-t-e" },
+      { id:"s-l2-02", level:"L2", type:"SPELLING", prompt:"Spell this word", text:'"This is a common occurrence."', question:"OCCURRENCE", accept:["occurrence"], hint:"oc-CUR-rence — two Cs, two Rs.", model:"o-c-c-u-r-r-e-n-c-e" },
+      // L2 GRAMMAR
+      { id:"g-l2-01", level:"L2", type:"GRAMMAR", prompt:"Name the technique", text:'"We all know the truth about plastic."', question:"What does 'we' do to the reader here?", accept:["inclusive","solidarity","involves the reader","includes the reader","draws in","creates solidarity"], hint:"Think about how it makes the reader feel included.", model:"Creates solidarity — inclusive pronoun" },
+      { id:"g-l2-02", level:"L2", type:"GRAMMAR", prompt:"Make it formal", text:'"Loads of people are struggling to pay rent."', question:"Replace 'loads of people' with formal English.", accept:["significant proportion","many residents","a large number","numerous","a significant number","many people"], hint:"Think academic vocabulary.", model:"A significant proportion of people…" },
+      // BONUS
+      { id:"b-01", level:"BONUS", type:"READING", prompt:"Advanced reading", text:'"Despite the council\'s pledge to revitalise the high street, footfall has declined by 34% over the past decade, with analysts attributing this primarily to the unchecked proliferation of out-of-town retail parks."', question:"What does 'proliferation' mean in this context?", accept:["rapid growth","spread","increase","rapid spread","expansion","growth"], hint:"Think about what has happened to out-of-town retail parks.", model:"Rapid spread / growth" },
+      { id:"b-02", level:"BONUS", type:"GRAMMAR", prompt:"Identify TWO techniques", text:'"Every second we delay, another species vanishes. Another forest falls. Another future is stolen from our children."', question:"Name ONE language technique used here.", accept:["repetition","rule of three","tricolon","anaphora","emotive language","list of three","three"], hint:"Look at how each sentence begins.", model:"Repetition / Rule of three (anaphora)" },
+      { id:"b-03", level:"BONUS", type:"SPELLING", prompt:"Advanced spelling", text:'"The committee reached a unanimous decision."', question:"UNANIMOUS", accept:["unanimous"], hint:"u-NAN-i-mous — think 'nan' in the middle.", model:"u-n-a-n-i-m-o-u-s" },
+      { id:"b-04", level:"BONUS", type:"READING", prompt:"Implicit meaning", text:'"The minister smiled warmly and said the government was \'exploring all available options\'."', question:"What does 'exploring all available options' really suggest?", accept:["nothing will happen","no decision","avoiding commitment","no action","delaying","vague","not committed","doing nothing"], hint:"Politicians use this phrase when they don't want to commit to anything.", model:"They're avoiding commitment — political non-answer" },
+      { id:"b-05", level:"BONUS", type:"GRAMMAR", prompt:"Advanced punctuation", text:'"The report identified three key issues housing shortages rising unemployment and inadequate transport links."', question:"Add the correct punctuation after 'issues'.", accept:["colon","a colon",":"], hint:"You're about to introduce a list.", model:"A colon (:) — introduces the list" },
+      { id:"b-06", level:"BONUS", type:"SPELLING", prompt:"Advanced spelling", text:'"Her argument was truly conscientious."', question:"CONSCIENTIOUS", accept:["conscientious"], hint:"con-SCI-en-tious — science is hiding inside.", model:"c-o-n-s-c-i-e-n-t-i-o-u-s" },
+      { id:"b-07", level:"BONUS", type:"READING", prompt:"Evaluate the argument", text:'Text A uses statistics: "74% of young people report feeling anxious daily."\nText B says: "Young people today are simply too sensitive."', question:"Which argument is stronger and why? Give the reason in one word.", accept:["a","text a","statistics","evidence","data","proof"], hint:"Which one uses actual evidence?", model:"Text A — it uses statistics (evidence)" },
+      { id:"b-08", level:"BONUS", type:"GRAMMAR", prompt:"Sophisticated connective", text:'"The project was well-funded. It still failed."', question:"Join these using 'notwithstanding'.", accept:["notwithstanding","notwithstanding the funding","notwithstanding its funding","notwithstanding this"], hint:"Notwithstanding = despite / in spite of.", model:"Notwithstanding its funding, the project still failed." },
+    ];
+
+    const LEVEL_CFG = {
+      E3:    { accent:"#34c759", soft:"#f0faf2", border:"#c8eed0", label:"Entry 3",  pts:1, emoji:"🌱" },
+      L1:    { accent:"#ff9f0a", soft:"#fffaf0", border:"#fde8b4", label:"Level 1",  pts:2, emoji:"📈" },
+      L2:    { accent:"#ff3b30", soft:"#fff5f4", border:"#ffd0ce", label:"Level 2",  pts:3, emoji:"🎯" },
+      BONUS: { accent:"#7c3aed", soft:"#f5f0ff", border:"#ddd0fa", label:"Bonus ⚡", pts:5, emoji:"⚡" },
+    };
+
+    const ALL_LEVELS = ["E3","L1","L2","BONUS"];
+    const TYPE_ICON  = { READING:"◎", SPELLING:"✦", GRAMMAR:"⟁" };
+    const WINS = ["Spot on.","Nailed it.","Brilliant.","Yes — exactly.","That's the one.","Perfect.","Right first time.","Sharp.","You got it.","Nice work."];
+
+    function rand(a){ return a[Math.floor(Math.random()*a.length)]; }
+
+    function check(input, accept){
+      const c = input.trim().toLowerCase().replace(/['".,!?]/g,"");
+      return accept.some(a => c.includes(a.toLowerCase()));
+    }
+
+    function getNext(cur, hist, activeLevels){
+      const order = ["READING","SPELLING","GRAMMAR"];
+      const i  = order.indexOf(cur?.type || "GRAMMAR");
+      const nt = order[(i+1) % order.length];
+      const pool = TASKS.filter(t => activeLevels.includes(t.level) && t.type===nt && !hist.includes(t.id));
+      if (pool.length) return rand(pool);
+      const fallback = TASKS.filter(t => activeLevels.includes(t.level));
+      return fallback.length ? rand(fallback) : TASKS[0];
+    }
+
+    // ── LEVEL SELECTOR ──────────────────────────────────────────
+    function LevelSelect({ onStart }) {
+      const [selected, setSelected] = useState(["E3"]);
+
+      function toggle(lv) {
+        setSelected(s => s.includes(lv) ? (s.length > 1 ? s.filter(x => x !== lv) : s) : [...s, lv]);
+      }
+
+      return (
+        <div style={{minHeight:"100vh", background:"#f5f5f7", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"24px"}}>
+          <div style={{width:"100%", maxWidth:400}}>
+            <div style={{textAlign:"center", marginBottom:32}}>
+              <div style={{width:48, height:48, borderRadius:"50%", background:"linear-gradient(135deg,#34c759,#30b350)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:20, fontWeight:800, color:"white", margin:"0 auto 14px"}}>N</div>
+              <h1 style={{margin:"0 0 6px", fontSize:24, fontWeight:800, color:"#1d1d1f", letterSpacing:"-0.5px"}}>Nina's Assistant</h1>
+              <p style={{margin:0, color:"#86868b", fontSize:14}}>Functional Skills English</p>
+            </div>
+
+            <p style={{textAlign:"center", color:"#1d1d1f", fontWeight:600, fontSize:15, marginBottom:16}}>Choose your level</p>
+
+            <div style={{display:"flex", flexDirection:"column", gap:10, marginBottom:28}}>
+              {ALL_LEVELS.map(lv => {
+                const cfg = LEVEL_CFG[lv];
+                const on  = selected.includes(lv);
+                return (
+                  <button key={lv} onClick={() => toggle(lv)} style={{
+                    display:"flex", alignItems:"center", justifyContent:"space-between",
+                    padding:"14px 18px", borderRadius:14,
+                    background: on ? cfg.soft : "white",
+                    border: `1.5px solid ${on ? cfg.accent : "#e5e5ea"}`,
+                    cursor:"pointer", transition:"all 0.2s ease", textAlign:"left",
+                  }}>
+                    <div style={{display:"flex", alignItems:"center", gap:12}}>
+                      <span style={{fontSize:22}}>{cfg.emoji}</span>
+                      <div>
+                        <div style={{fontWeight:700, fontSize:15, color: on ? cfg.accent : "#1d1d1f"}}>{cfg.label}</div>
+                        <div style={{fontSize:12, color:"#86868b", marginTop:1}}>
+                          {lv==="E3"    && "Simple texts, everyday vocabulary"}
+                          {lv==="L1"    && "Inference, formal writing, fact vs opinion"}
+                          {lv==="L2"    && "Analysis, persuasion, writer's technique"}
+                          {lv==="BONUS" && "Beyond the exam — expert challenge ⚡"}
+                        </div>
+                      </div>
+                    </div>
+                    <div style={{width:22, height:22, borderRadius:"50%", border:`2px solid ${on ? cfg.accent : "#d1d1d6"}`, background: on ? cfg.accent : "transparent", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, transition:"all 0.2s"}}>
+                      {on && <span style={{color:"white", fontSize:12, fontWeight:800}}>✓</span>}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <p style={{textAlign:"center", color:"#aeaeb2", fontSize:12, marginBottom:16}}>
+              {selected.length > 1 ? "Mix of selected levels" : `${LEVEL_CFG[selected[0]].label} only`}
+            </p>
+
+            <button onClick={() => onStart(selected)} style={{
+              width:"100%", padding:"15px", borderRadius:14,
+              background: LEVEL_CFG[selected[selected.length-1]].accent,
+              border:"none", color:"white", fontSize:16, fontWeight:700,
+              cursor:"pointer", transition:"opacity 0.15s",
+              boxShadow:`0 4px 16px ${LEVEL_CFG[selected[selected.length-1]].accent}44`,
+            }}>
+              Start →
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // ── MAIN GAME ────────────────────────────────────────────────
+    function App() {
+      const [screen, setScreen]       = useState("select");
+      const [activeLevels, setActive] = useState(["E3"]);
+      const [task, setTask]           = useState(null);
+      const [answer, setAnswer]       = useState("");
+      const [phase, setPhase]         = useState("input");
+      const [msg, setMsg]             = useState("");
+      const [score, setScore]         = useState(0);
+      const [streak, setStreak]       = useState(0);
+      const [best, setBest]           = useState(0);
+      const [total, setTotal]         = useState(0);
+      const [hist, setHist]           = useState([]);
+      const [wrongN, setWrongN]       = useState(0);
+      const [shake, setShake]         = useState(false);
+      const [counts, setCounts]       = useState({E3:0,L1:0,L2:0,BONUS:0});
+      const [cardKey, setCardKey]     = useState(0);
+      const [hintShown, setHintShown] = useState(false);
+      const inputRef = useRef(null);
+
+      function startGame(levels) {
+        setActive(levels);
+        const pool = TASKS.filter(t => levels.includes(t.level));
+        setTask(rand(pool));
+        setScreen("game");
+        setScore(0); setStreak(0); setBest(0); setTotal(0);
+        setHist([]); setCounts({E3:0,L1:0,L2:0,BONUS:0});
+        setPhase("input"); setAnswer(""); setMsg(""); setWrongN(0);
+        setCardKey(0); setHintShown(false);
+      }
+
+      useEffect(() => {
+        if (phase === "input" && screen === "game") inputRef.current?.focus();
+      }, [phase, task, screen]);
+
+      if (screen === "select") return <LevelSelect onStart={startGame} />;
+      if (!task) return null;
+
+      const lv = LEVEL_CFG[task.level];
+
+      function submit(e) {
+        e?.preventDefault();
+        if (!answer.trim()) return;
+        setTotal(t => t + 1);
+        if (check(answer, task.accept)) {
+          setScore(s => s + lv.pts);
+          const ns = streak + 1;
+          setStreak(ns); setBest(b => Math.max(b, ns));
+          setCounts(cc => ({...cc, [task.level]: cc[task.level] + 1}));
+          setMsg(rand(WINS)); setPhase("correct"); setWrongN(0);
+        } else {
+          const nw = wrongN + 1; setWrongN(nw); setStreak(0);
+          setShake(true); setTimeout(() => setShake(false), 420);
+          const autoHint = task.level === "E3" && nw >= 2;
+          setPhase(autoHint ? "hint" : "wrong");
+          setMsg(autoHint ? task.hint : "Not quite — try again.");
+        }
+      }
+
+      function advance() {
+        const h = [...hist, task.id].slice(-20);
+        setHist(h); setTask(getNext(task, h, activeLevels));
+        setAnswer(""); setPhase("input"); setMsg(""); setWrongN(0);
+        setHintShown(false); setCardKey(k => k + 1);
+      }
+
+      const maxPts    = activeLevels.includes("BONUS") ? 50 : 30;
+      const progress  = Math.min((score / maxPts) * 100, 100);
+      const isCorrect = phase === "correct";
+
+      return (
+        <div style={{minHeight:"100vh", background:"#f5f5f7", display:"flex", flexDirection:"column", alignItems:"center"}}>
+
+          {/* NAV */}
+          <nav style={{width:"100%", background:"rgba(255,255,255,0.88)", backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", borderBottom:"1px solid rgba(0,0,0,0.08)", padding:"0 20px", height:52, display:"flex", alignItems:"center", justifyContent:"space-between", boxSizing:"border-box", position:"sticky", top:0, zIndex:100}}>
+            <div style={{display:"flex", alignItems:"center", gap:9}}>
+              <div style={{width:28, height:28, borderRadius:"50%", background:`linear-gradient(135deg,${lv.accent},${lv.accent}99)`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:800, color:"white", transition:"background 0.4s", flexShrink:0}}>N</div>
+              <div>
+                <div style={{fontWeight:700, fontSize:14, color:"#1d1d1f", lineHeight:1, letterSpacing:"-0.2px"}}>Nina's Assistant</div>
+                <div style={{fontSize:10, color:"#aeaeb2", marginTop:1}}>Functional Skills English</div>
+              </div>
+            </div>
+            <div style={{display:"flex", gap:20, alignItems:"center"}}>
+              {[["Score",score,"#1d1d1f"],["Streak",streak,lv.accent],["Best",best,"#86868b"]].map(([l,v,col]) => (
+                <div key={l} style={{textAlign:"center"}}>
+                  <div style={{color:col, fontWeight:700, fontSize:16, lineHeight:1, transition:"color 0.3s"}}>{v}</div>
+                  <div style={{color:"#aeaeb2", fontSize:10, marginTop:1}}>{l}</div>
+                </div>
+              ))}
+              <button onClick={() => setScreen("select")} style={{background:"none", border:"1px solid #e5e5ea", borderRadius:8, padding:"4px 10px", color:"#86868b", fontSize:11, cursor:"pointer", fontWeight:600}}>Levels</button>
+            </div>
+          </nav>
+
+          {/* LEVEL COUNTERS */}
+          <div style={{display:"flex", gap:8, padding:"14px 20px 0", width:"100%", maxWidth:540, boxSizing:"border-box"}}>
+            {activeLevels.map(lev => {
+              const lc = LEVEL_CFG[lev]; const active = task.level === lev;
+              return (
+                <div key={lev} style={{flex:1, padding:"9px 6px", borderRadius:12, textAlign:"center", background:active?lc.soft:"white", border:`1.5px solid ${active?lc.border:"#e5e5ea"}`, transition:"all 0.3s"}}>
+                  <div style={{color:active?lc.accent:"#aeaeb2", fontWeight:700, fontSize:10, letterSpacing:"0.06em"}}>{lc.label.toUpperCase()}</div>
+                  <div style={{color:active?lc.accent:"#c7c7cc", fontSize:22, fontWeight:800, lineHeight:1.2, marginTop:2}}>{counts[lev]}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* CARD */}
+          <div key={cardKey} style={{width:"100%", maxWidth:540, padding:"14px 20px 24px", boxSizing:"border-box", animation:"fadeUp 0.32s cubic-bezier(0.16,1,0.3,1)"}}>
+            <div style={{background:"white", borderRadius:18, boxShadow:"0 1px 16px rgba(0,0,0,0.07),0 0 0 1px rgba(0,0,0,0.04)", overflow:"hidden"}}>
+
+              <div style={{background:lv.soft, borderBottom:`1px solid ${lv.border}`, padding:"11px 18px", display:"flex", alignItems:"center", justifyContent:"space-between", transition:"background 0.4s,border-color 0.4s"}}>
+                <div style={{display:"flex", alignItems:"center", gap:7}}>
+                  <span style={{color:lv.accent, fontSize:13, fontWeight:700}}>{lv.label}</span>
+                  <span style={{color:"#d1d1d6", fontSize:11}}>·</span>
+                  <span style={{color:"#86868b", fontSize:12, fontWeight:500}}>{TYPE_ICON[task.type]} {task.type}</span>
+                </div>
+                <span style={{background:lv.accent, color:"white", padding:"2px 9px", borderRadius:20, fontSize:11, fontWeight:600}}>+{lv.pts} pt{lv.pts>1?"s":""}</span>
+              </div>
+
+              <div style={{padding:"18px 18px 20px"}}>
+                <div style={{color:"#aeaeb2", fontSize:11, fontWeight:600, letterSpacing:"0.05em", textTransform:"uppercase", marginBottom:10}}>{task.prompt}</div>
+
+                <div style={{background:lv.soft, border:`1px solid ${lv.border}`, borderRadius:11, padding:"13px 15px", marginBottom:18, transition:"background 0.4s"}}>
+                  <p style={{margin:0, color:"#1d1d1f", fontSize:15, lineHeight:1.65, whiteSpace:"pre-wrap", fontFamily:"Georgia,serif"}}>{task.text}</p>
+                </div>
+
+                <p style={{margin:"0 0 16px", color:"#1d1d1f", fontSize:17, fontWeight:700, lineHeight:1.35, letterSpacing:"-0.3px"}}>{task.question}</p>
+
+                {!isCorrect && (
+                  <form onSubmit={submit} style={{display:"flex", gap:8}}>
+                    <input
+                      ref={inputRef}
+                      value={answer}
+                      onChange={e => setAnswer(e.target.value)}
+                      placeholder="Type your answer…"
+                      style={{
+                        flex:1,
+                        background: phase==="wrong"||phase==="hint" ? "#fff9f0" : "#f5f5f7",
+                        border: `1.5px solid ${shake?"#ff3b30":phase==="hint"?"#ff9f0a":phase==="wrong"?"#ffd0ce":"transparent"}`,
+                        borderRadius:11, padding:"11px 13px", color:"#1d1d1f", fontSize:15,
+                        fontFamily:"inherit", transition:"border-color 0.2s,background 0.2s",
+                        animation: shake ? "shake 0.4s ease" : "none"
+                      }}
+                    />
+                    <button type="submit" style={{background:lv.accent, border:"none", borderRadius:11, width:44, color:"white", fontSize:17, cursor:"pointer", flexShrink:0, transition:"background 0.3s"}}>→</button>
+                  </form>
+                )}
+
+                {phase !== "input" && (
+                  <div style={{marginTop: isCorrect ? 0 : 10}}>
+                    <div style={{padding:"11px 14px", borderRadius:11, background:isCorrect?lv.soft:phase==="hint"?"#fffaf0":"#fff5f4", border:`1px solid ${isCorrect?lv.border:phase==="hint"?"#fde8b4":"#ffd0ce"}`, animation:"popIn 0.28s cubic-bezier(0.16,1,0.3,1)"}}>
+                      <div style={{display:"flex", alignItems:"center", gap:7, color:isCorrect?lv.accent:phase==="hint"?"#ff9f0a":"#ff3b30", fontWeight:700, fontSize:14}}>
+                        <span>{isCorrect?"✓":phase==="hint"?"💡":"✗"}</span>
+                        {msg}
+                      </div>
+                      {isCorrect && <div style={{color:"#86868b", fontSize:13, marginTop:4}}>{task.model}</div>}
+                    </div>
+
+                    {/* Click-to-reveal hint for L1, L2, BONUS */}
+                    {!isCorrect && phase==="wrong" && ["L1","L2","BONUS"].includes(task.level) && (
+                      <div style={{marginTop:8}}>
+                        {!hintShown ? (
+                          <button onClick={() => setHintShown(true)} style={{
+                            background:"none", border:`1px dashed ${lv.accent}`, borderRadius:9,
+                            padding:"7px 13px", color:lv.accent, fontSize:12, fontWeight:600,
+                            cursor:"pointer", display:"flex", alignItems:"center", gap:6, transition:"all 0.2s"
+                          }}>
+                            <span>💡</span> Show hint
+                          </button>
+                        ) : (
+                          <div style={{padding:"10px 14px", borderRadius:11, background:"#fffaf0", border:"1px solid #fde8b4", animation:"popIn 0.28s cubic-bezier(0.16,1,0.3,1)", display:"flex", alignItems:"center", gap:7}}>
+                            <span>💡</span>
+                            <span style={{color:"#ff9f0a", fontWeight:600, fontSize:13}}>{task.hint}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginTop:14}}>
+                  {isCorrect
+                    ? <button onClick={advance} style={{flex:1, background:lv.accent, border:"none", borderRadius:11, padding:"12px", color:"white", fontSize:14, fontWeight:700, cursor:"pointer", transition:"opacity 0.15s,background 0.3s"}}>Next challenge →</button>
+                    : <><div/><button onClick={advance} style={{background:"none", border:"none", color:"#aeaeb2", fontSize:13, cursor:"pointer", padding:"4px 0"}}>Skip</button></>
+                  }
+                </div>
+              </div>
+            </div>
+
+            {/* PROGRESS */}
+            <div style={{marginTop:14, padding:"0 2px"}}>
+              <div style={{display:"flex", justifyContent:"space-between", marginBottom:6}}>
+                <span style={{color:"#aeaeb2", fontSize:11}}>{total} answered</span>
+                <span style={{color:lv.accent, fontSize:11, fontWeight:600, transition:"color 0.3s"}}>{score} / {maxPts} pts</span>
+              </div>
+              <div style={{background:"#e5e5ea", borderRadius:100, height:4, overflow:"hidden"}}>
+                <div style={{height:"100%", borderRadius:100, background:lv.accent, width:`${progress}%`, transition:"width 0.7s cubic-bezier(0.16,1,0.3,1),background 0.4s"}}/>
+              </div>
+              {streak >= 3 && (
+                <div style={{marginTop:10, padding:"8px 13px", background:"white", borderRadius:10, border:`1px solid ${lv.border}`, display:"flex", alignItems:"center", gap:8, animation:"popIn 0.28s cubic-bezier(0.16,1,0.3,1)"}}>
+                  <span style={{fontSize:16}}>{streak>=5?"🏆":streak>=4?"🔥":"🎯"}</span>
+                  <span style={{color:"#1d1d1f", fontWeight:700, fontSize:13}}>{streak>=5?"Legendary run":"On fire — "+streak+" in a row"}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
