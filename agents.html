@@ -14,8 +14,8 @@
             --apple-bg-card: #ffffff;
             --radius-card: 22px;
             --radius-button: 980px;
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
             --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 
@@ -82,7 +82,7 @@
         .global-nav a {
             color: var(--apple-text-primary);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 400;
             opacity: 0.8;
             transition: opacity 0.2s ease;
@@ -98,7 +98,7 @@
         }
 
         h1 {
-            font-size: 56px;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
             line-height: 1.07143;
             font-weight: 700;
             letter-spacing: -0.005em;
@@ -106,7 +106,7 @@
         }
 
         .subtitle {
-            font-size: 24px;
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
             font-weight: 400;
             letter-spacing: 0.009em;
             color: var(--apple-text-secondary);
@@ -114,7 +114,7 @@
         }
 
         .tagline {
-            font-size: 16px;
+            font-size: 1rem;
             color: var(--apple-blue);
             font-weight: 600;
             letter-spacing: 0.02em;
@@ -122,13 +122,13 @@
         }
 
         h2 {
-            font-size: 40px;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 15px;
         }
 
-        h3 { font-size: 24px; font-weight: 600; }
+        h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
 
         /* ── Cards ── */
         .section-card {
@@ -146,7 +146,7 @@
         summary {
             padding: 24px 0;
             cursor: pointer;
-            font-size: 19px;
+            font-size: clamp(1rem, 2vw, 1.1875rem);
             font-weight: 600;
             color: var(--apple-text-primary);
             list-style: none;
@@ -156,13 +156,14 @@
             outline: none;
             user-select: none;
             -webkit-user-select: none;
+            gap: 12px;
         }
 
         summary::-webkit-details-marker { display: none; }
 
         summary::after {
             content: '+';
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 300;
             color: var(--apple-blue);
             transition: transform 0.3s ease;
@@ -183,14 +184,14 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Intent Header - the "What you're doing" block ── */
+        /* ── Intent Header ── */
         .exercise-intent {
             background: linear-gradient(135deg, #f0f7ff 0%, #f5f5f7 100%);
             border-left: 3px solid var(--apple-blue);
             border-radius: 0 12px 12px 0;
             padding: 16px 20px;
             margin-bottom: 24px;
-            font-size: 15px;
+            font-size: 0.9375rem;
             line-height: 1.55;
             color: var(--apple-text-primary);
         }
@@ -207,13 +208,13 @@
 
         .exercise-intent ol li {
             margin-bottom: 3px;
-            font-size: 14px;
+            font-size: 0.875rem;
             color: var(--apple-text-secondary);
         }
 
-        /* ── Exercise note (secondary info) ── */
+        /* ── Exercise note ── */
         .exercise-note {
-            font-size: 15px;
+            font-size: 0.9375rem;
             color: var(--apple-text-secondary);
             margin-bottom: 20px;
             font-weight: 500;
@@ -226,7 +227,7 @@
             border: 1px solid var(--guardrail-border);
             border-radius: 12px;
             padding: 16px 20px;
-            font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.55;
             color: var(--guardrail-text);
             margin-top: 18px;
@@ -239,19 +240,19 @@
             background: var(--safe-bg);
             border-radius: 12px;
             padding: 14px 18px;
-            font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.55;
             color: var(--safe-text);
             margin-bottom: 20px;
         }
 
-        /* ── Rule box (hard rule callouts) ── */
+        /* ── Rule box ── */
         .rule-box {
             background: #f5f5f7;
             border: 1px dashed #c5c5c7;
             border-radius: 10px;
             padding: 14px 18px;
-            font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.5;
             color: var(--apple-text-secondary);
             margin: 14px 0;
@@ -263,11 +264,13 @@
             padding: 20px;
             border-radius: 12px;
             font-family: "SF Mono", Menlo, monospace;
-            font-size: 13px;
+            font-size: 0.8125rem;
             line-height: 1.6;
             color: #333;
             margin: 10px 0 15px 0;
             white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
             border: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -275,43 +278,57 @@
         .btn-copy {
             background-color: #e8e8ed;
             color: var(--apple-text-primary);
-            font-size: 12px;
+            font-size: 0.75rem;
             padding: 8px 16px;
             border-radius: var(--radius-button);
             border: none;
             cursor: pointer;
             font-weight: 600;
             transition: background-color 0.2s;
+            /* Accessible touch target */
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-copy:hover { background-color: #d2d2d7; }
+        .btn-copy:focus-visible {
+            outline: 2px solid var(--apple-blue);
+            outline-offset: 2px;
+        }
 
         /* ── Exercise badge ── */
         .exercise-label {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
         .ex-badge {
             background: var(--apple-blue);
             color: white;
-            font-size: 10px;
+            font-size: 0.625rem;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             padding: 4px 10px;
             border-radius: 980px;
             flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .copilot-badge {
-            font-size: 11px;
+            font-size: 0.6875rem;
             font-weight: 600;
             padding: 3px 10px;
             border-radius: 980px;
             flex-shrink: 0;
             letter-spacing: 0.01em;
+            white-space: nowrap;
         }
 
         .copilot-badge.yes {
@@ -324,7 +341,7 @@
             color: var(--apple-text-secondary);
         }
 
-        /* ── Numbered circle (reusable) ── */
+        /* ── Numbered circle ── */
         .step-circle {
             border-radius: 50%;
             width: 36px;
@@ -332,7 +349,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 700;
             flex-shrink: 0;
             margin-top: 2px;
@@ -349,7 +366,7 @@
             border: 2px solid var(--apple-blue);
             border-radius: 14px;
             padding: 20px 24px;
-            font-size: 17px;
+            font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
             font-weight: 700;
             color: var(--apple-blue);
             text-align: center;
@@ -357,36 +374,205 @@
             letter-spacing: -0.01em;
         }
 
+        /* ── Activity card grid (matching workshop.html) ── */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .activity-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .activity-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .activity-card:focus-visible {
+            outline: 2px solid var(--apple-blue);
+            outline-offset: 2px;
+        }
+
+        .activity-card .icon-large {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .activity-card .card-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .activity-card .card-desc {
+            font-size: 0.875rem;
+            color: var(--apple-text-secondary);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .activity-card--primary {
+            background: #f0f7ff;
+            border-color: rgba(0,113,227,0.2);
+        }
+
+        .activity-card--primary .card-title {
+            color: var(--apple-blue);
+        }
+
+        .activity-card--secondary {
+            background: #fbfbfd;
+        }
+
+        /* ── Steps row for Exercise 6 ── */
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .step-card {
+            background: #f5f5f7;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .step-card--highlight {
+            background: #f0f7ff;
+            border: 1px solid rgba(0,113,227,0.15);
+        }
+
+        .step-card .step-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .step-card .step-label { font-size: 0.875rem; font-weight: 600; margin: 0 0 6px 0; }
+        .step-card .step-desc { font-size: 0.8125rem; color: var(--apple-text-secondary); margin: 0; line-height: 1.5; }
+
+        /* ── Colour legend for Exercise 5 ── */
+        .colour-legend {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f5f5f7;
+            border-radius: 10px;
+            padding: 10px 14px;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .legend-swatch {
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .legend-item .legend-title {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .legend-item .legend-desc {
+            font-size: 0.75rem;
+            color: var(--apple-text-secondary);
+            margin: 0;
+        }
+
+        /* ── Problem prompts grid (Exercise 5) ── */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .problem-card {
+            background: white;
+            border-left: 3px solid var(--step-pink);
+            border-radius: 6px;
+            padding: 10px 12px;
+        }
+
+        .problem-card .problem-title {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            margin: 0 0 2px 0;
+        }
+
+        .problem-card .problem-desc {
+            font-size: 0.75rem;
+            color: var(--apple-text-secondary);
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        /* ── Tech-type grid (PA / AI / PA+AI) ── */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .tech-card .tech-label { font-size: 0.8125rem; font-weight: 700; margin: 0 0 2px 0; }
+        .tech-card .tech-title { font-size: 0.75rem; font-weight: 600; color: var(--apple-text-primary); margin: 0 0 4px 0; }
+        .tech-card .tech-desc { font-size: 0.75rem; color: var(--apple-text-secondary); margin: 0; line-height: 1.35; }
+
+        /* ── Agent build steps (Exercise 4) ── */
+        .agent-steps {
+            padding-left: 20px;
+            line-height: 1.8;
+            font-size: 0.9375rem;
+            margin: 0;
+        }
+
+        .agent-steps li {
+            margin-bottom: 10px;
+        }
+
+        .agent-steps a {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .agent-steps a:hover {
+            text-decoration: underline;
+        }
+
         /* ── Footer ── */
         footer {
             text-align: center;
             padding: 40px 0;
             color: var(--apple-text-secondary);
-            font-size: 12px;
+            font-size: 0.75rem;
             border-top: 1px solid #e5e5ea;
             margin-top: 60px;
-        }
-
-        /* ── Progress tracker ── */
-        .progress-tracker {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .progress-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #d2d2d7;
-            transition: var(--transition);
-        }
-
-        .progress-dot.active {
-            background: var(--apple-blue);
-            width: 24px;
-            border-radius: 4px;
         }
 
         /* ── Animations ── */
@@ -395,14 +581,119 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Responsive ── */
+        /* ── Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ── Responsive: Tablet ── */
         @media (max-width: 734px) {
-            h1 { font-size: 40px; }
-            h2 { font-size: 32px; }
-            .section-card { padding: 30px 24px; }
-            .container { padding-top: 20px; }
+            .section-card { padding: 30px 20px; }
+            .container { padding: 20px 16px; }
             header { padding: 50px 0 30px; }
-            .key-question { font-size: 15px; padding: 16px 18px; }
+
+            .colour-legend {
+                flex-direction: column;
+            }
+
+            .legend-item {
+                min-width: 0;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* Give step blocks full width */
+            .step-block {
+                padding: 14px 14px;
+            }
+        }
+
+        /* ── Responsive: Small phone ── */
+        @media (max-width: 480px) {
+            .section-card { padding: 24px 16px; }
+            .container { padding: 16px 12px; }
+            header { padding: 36px 0 24px; }
+
+            summary {
+                padding: 18px 0;
+                gap: 8px;
+            }
+
+            .exercise-label {
+                gap: 6px;
+            }
+
+            /* Stack badges below title on very small screens */
+            .exercise-label .ex-badge,
+            .exercise-label .copilot-badge {
+                font-size: 0.5625rem;
+                padding: 3px 8px;
+            }
+
+            .prompt-box {
+                padding: 14px;
+                font-size: 0.75rem;
+            }
+
+            .exercise-intent {
+                padding: 14px 16px;
+            }
+
+            .key-question {
+                padding: 14px 16px;
+            }
+
+            .step-circle {
+                width: 30px;
+                height: 30px;
+                font-size: 0.875rem;
+            }
+
+            .nav-content {
+                gap: 20px;
+            }
+        }
+
+        /* ── High contrast / forced colours ── */
+        @media (forced-colors: active) {
+            .ex-badge,
+            .copilot-badge,
+            .step-circle {
+                border: 1px solid currentColor;
+            }
+
+            .activity-card,
+            .step-card,
+            .legend-item {
+                border: 1px solid currentColor;
+            }
+        }
+
+        /* ── Print styles ── */
+        @media print {
+            .global-nav { display: none; }
+            .btn-copy { display: none; }
+            details { break-inside: avoid; }
+            details[open] summary::after { content: ''; }
+            .section-card { box-shadow: none; border: 1px solid #ccc; }
         }
     </style>
     <script>
@@ -425,7 +716,7 @@
 </head>
 <body>
 
-    <nav class="global-nav">
+    <nav class="global-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="#exercises">Exercises</a>
             <a href="#contact">Contact</a>
@@ -444,9 +735,9 @@
         <section id="exercises" class="section-card">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2>Workshop Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 560px; margin: 10px auto 0 auto; font-size: 17px; line-height: 1.5;">
+                <p style="color: var(--apple-text-secondary); max-width: 560px; margin: 10px auto 0 auto; font-size: 1.0625rem; line-height: 1.5;">
                     Work through each exercise in order. Copy and paste prompts directly into
-                    <a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>
+                    <a href="https://m365copilot.com/" target="_blank" rel="noopener" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>
                     and click <strong style="color: var(--apple-text-primary);">"New Chat"</strong> between each exercise.
                 </p>
             </div>
@@ -467,20 +758,20 @@
                     </div>
 
                     <div class="exercise-note">
-                        5 minutes to look at up to 100 AI use cases. Just think - could this be useful?
+                        5 minutes to look at up to 100 AI use cases. Just think – could this be useful?
                     </div>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
-                        <a href="sprint.html" target="_blank" style="display: flex; flex-direction: column; background: #f0f7ff; border: 1px solid rgba(0,113,227,0.2); border-radius: 16px; padding: 24px; text-decoration: none; color: var(--apple-text-primary); transition: var(--transition);" onmouseover="this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.boxShadow='none'">
-                            <div style="font-size: 32px; margin-bottom: 10px;">&#9889;</div>
-                            <span style="font-size: 17px; font-weight: 600; margin-bottom: 6px; color: var(--apple-blue);">Open Discovery Sprint</span>
-                            <span style="font-size: 14px; color: var(--apple-text-secondary); line-height: 1.5; flex-grow: 1;">Interactive activity with a 5-minute timer. Find your AI use cases.</span>
+                    <div class="activity-grid">
+                        <a href="sprint.html" target="_blank" rel="noopener" class="activity-card activity-card--primary">
+                            <span class="icon-large">&#9889;</span>
+                            <span class="card-title">Open Discovery Sprint</span>
+                            <span class="card-desc">Interactive activity with a 5-minute timer. Find your AI use cases.</span>
                         </a>
 
-                        <a href="usagecases.html" target="_blank" style="display: flex; flex-direction: column; background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 16px; padding: 24px; text-decoration: none; color: var(--apple-text-primary); transition: var(--transition);" onmouseover="this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.boxShadow='none'">
-                            <div style="font-size: 32px; margin-bottom: 10px;">&#128218;</div>
-                            <span style="font-size: 17px; font-weight: 600; margin-bottom: 6px;">Backup: 100 AI Use Cases</span>
-                            <span style="font-size: 14px; color: var(--apple-text-secondary); line-height: 1.5; flex-grow: 1;">Browse the full library of prompts if the sprint is not loading.</span>
+                        <a href="usagecases.html" target="_blank" rel="noopener" class="activity-card activity-card--secondary">
+                            <span class="icon-large">&#128218;</span>
+                            <span class="card-title">Backup: 100 AI Use Cases</span>
+                            <span class="card-desc">Browse the full library of prompts if the sprint is not loading.</span>
                         </a>
                     </div>
                 </div>
@@ -501,11 +792,8 @@
                         <strong>What you are doing:</strong> Testing how AI simplifies complex ideas. Try "AI-Enabled working with Copilot Chat", "machine learning", "procurement frameworks", or "the offside rule in football".
                     </div>
 
-                   
-
                     <div class="prompt-box" id="eli5-prompt">"Explain [TOPIC] to me like I am 5 (ELI5)"</div>
                     <button onclick="copyToClipboard('eli5-prompt')" class="btn-copy">Copy Prompt</button>
-
                 </div>
             </details>
 
@@ -531,7 +819,7 @@
                     <div class="prompt-box" id="meta-prompt-helper">"Act as a Copilot Productivity expert. Start by asking: "What repetitive task would you like help with?" and wait for a reply.  After the user replies:  Ask 1 clarifying question (only if needed) and wait for their reply.  Provide 3 ready-to-use Copilot AI prompts.  Rules: Prompts must rely only on pasted text. No email, calendar, or app access.  Skip tasks AI genuinely cannot do."</div>
                     <button onclick="copyToClipboard('meta-prompt-helper')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top: 15px; font-size: 13px; color: var(--apple-text-secondary);">
+                    <p style="margin-top: 15px; font-size: 0.8125rem; color: var(--apple-text-secondary);">
                         <em>Try: "I spend a lot of time writing meeting summaries" or "I categorise customer feedback emails every Monday".</em>
                     </p>
                 </div>
@@ -549,36 +837,36 @@
                 </summary>
                 <div class="details-content">
                     <div class="exercise-intent">
-                        <strong>What you are doing:</strong> Building a small, reusable Copilot assistant to see how agents work - no coding required.
+                        <strong>What you are doing:</strong> Building a small, reusable Copilot assistant to see how agents work – no coding required.
                     </div>
 
                     <div class="exercise-note">
                         Agents are reusable Copilot assistants with a specific focus. Build one once, use it every day, and share it with your team.
                     </div>
 
-                    <ol style="padding-left: 20px; line-height: 1.8; font-size: 15px; margin: 0;">
-                        <li style="margin-bottom: 10px;">
-                            <strong>Open Copilot</strong> - Go to <a href="https://m365copilot.com" target="_blank" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <strong>Enter the Description</strong> - In the "Describe" tab, type the following and hit the submit arrow:<br>
-                            <strong style="font-size: 14px;">"The user will provide a word and you must generate 3 possible crossword style clues for that word"</strong>
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <strong>Click Create</strong> - You may be prompted to name your agent. Reply to that, then click <strong>Create</strong>.
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <strong>Click Go to Agent</strong> - Wait for the success message, then click the blue <strong>"Go to Agent"</strong> button.
+                    <ol class="agent-steps">
+                        <li>
+                            <strong>Open Copilot</strong> – Go to <a href="https://m365copilot.com" target="_blank" rel="noopener">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
                         </li>
                         <li>
-                            <strong>Test It</strong> - Type a single word like <strong>"Book"</strong> and check it generates 3 crossword clues.
+                            <strong>Enter the Description</strong> – In the "Describe" tab, type the following and hit the submit arrow:<br>
+                            <strong style="font-size: 0.875rem;">"The user will provide a word and you must generate 3 possible crossword style clues for that word"</strong>
+                        </li>
+                        <li>
+                            <strong>Click Create</strong> – You may be prompted to name your agent. Reply to that, then click <strong>Create</strong>.
+                        </li>
+                        <li>
+                            <strong>Click Go to Agent</strong> – Wait for the success message, then click the blue <strong>"Go to Agent"</strong> button.
+                        </li>
+                        <li>
+                            <strong>Test It</strong> – Type a single word like <strong>"Book"</strong> and check it generates 3 crossword clues.
                         </li>
                     </ol>
                 </div>
             </details>
 
 
-            <!-- ─── Exercise 5 - REVISED ─── -->
+            <!-- ─── Exercise 5 ─── -->
             <details open>
                 <summary>
                     <span class="exercise-label">
@@ -589,7 +877,6 @@
                 </summary>
                 <div class="details-content">
 
-                    <!-- Intent header with 3-layer lens -->
                     <div class="exercise-intent">
                         <strong>What you are doing:</strong> Mapping a real task from your role to understand:
                         <ol>
@@ -599,111 +886,110 @@
                         </ol>
                     </div>
 
-                    <!-- Colour legend - compact horizontal -->
-                    <div style="display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap;">
-                        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f7; border-radius: 10px; padding: 10px 14px; flex: 1; min-width: 180px;">
-                            <div style="background: var(--step-yellow); border-radius: 6px; width: 32px; height: 32px; flex-shrink: 0;"></div>
+                    <!-- Colour legend -->
+                    <div class="colour-legend">
+                        <div class="legend-item">
+                            <div class="legend-swatch" style="background: var(--step-yellow);"></div>
                             <div>
-                                <p style="font-size: 13px; font-weight: 700; margin: 0;">Steps</p>
-                                <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0;">One action per note</p>
+                                <p class="legend-title">Steps</p>
+                                <p class="legend-desc">One action per note</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f7; border-radius: 10px; padding: 10px 14px; flex: 1; min-width: 180px;">
-                            <div style="background: var(--step-pink); border-radius: 6px; width: 32px; height: 32px; flex-shrink: 0;"></div>
+                        <div class="legend-item">
+                            <div class="legend-swatch" style="background: var(--step-pink);"></div>
                             <div>
-                                <p style="font-size: 13px; font-weight: 700; margin: 0;">Problems</p>
-                                <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0;">Delays, errors, frustration</p>
+                                <p class="legend-title">Problems</p>
+                                <p class="legend-desc">Delays, errors, frustration</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f7; border-radius: 10px; padding: 10px 14px; flex: 1; min-width: 180px;">
-                            <div style="background: var(--step-orange); border-radius: 6px; width: 32px; height: 32px; flex-shrink: 0;"></div>
+                        <div class="legend-item">
+                            <div class="legend-swatch" style="background: var(--step-orange);"></div>
                             <div>
-                                <p style="font-size: 13px; font-weight: 700; margin: 0;">Automate</p>
-                                <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0;">Write "PA", "AI", or "PA+AI"</p>
+                                <p class="legend-title">Automate</p>
+                                <p class="legend-desc">Write "PA", "AI", or "PA+AI"</p>
                             </div>
                         </div>
                     </div>
 
 
-                    <!-- Step 1 - Map the Work -->
-                    <div style="display: flex; gap: 14px; align-items: flex-start; background: #f5f5f7; border-radius: 14px; padding: 16px 18px; margin-bottom: 10px;">
+                    <!-- Step 1 -->
+                    <div class="step-block" style="display: flex; gap: 14px; align-items: flex-start; background: #f5f5f7; border-radius: 14px; padding: 16px 18px; margin-bottom: 10px;">
                         <div class="step-circle" style="background: var(--apple-blue);">1</div>
                         <div>
-                            <p style="font-size: 15px; font-weight: 700; margin: 0 0 4px 0;">Map the Steps</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">Write every action on a yellow note, left to right. Map what <strong>actually happens</strong>, not what you wish happened.</p>
+                            <p style="font-size: 0.9375rem; font-weight: 700; margin: 0 0 4px 0;">Map the Steps</p>
+                            <p style="font-size: 0.8125rem; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">Write every action on a yellow note, left to right. Map what <strong>actually happens</strong>, not what you wish happened.</p>
                         </div>
                     </div>
 
 
-                    <!-- Step 2 - Find the Problems -->
-                    <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--step-pink-bg); border: 1px solid var(--step-pink-border); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px;">
+                    <!-- Step 2 -->
+                    <div class="step-block" style="display: flex; gap: 14px; align-items: flex-start; background: var(--step-pink-bg); border: 1px solid var(--step-pink-border); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px;">
                         <div class="step-circle" style="background: var(--step-pink);">2</div>
-                        <div style="width: 100%;">
-                            <p style="font-size: 15px; font-weight: 700; margin: 0 0 4px 0;">Find the Problems</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0 0 10px 0; line-height: 1.5;">Stick a pink note next to any step that causes delays, errors, or frustration. These show <strong style="color: var(--apple-text-primary);">where time, effort, or patience is being wasted</strong>.</p>
+                        <div style="width: 100%; min-width: 0;">
+                            <p style="font-size: 0.9375rem; font-weight: 700; margin: 0 0 4px 0;">Find the Problems</p>
+                            <p style="font-size: 0.8125rem; color: var(--apple-text-secondary); margin: 0 0 10px 0; line-height: 1.5;">Stick a pink note next to any step that causes delays, errors, or frustration. These show <strong style="color: var(--apple-text-primary);">where time, effort, or patience is being wasted</strong>.</p>
 
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
-                                <div style="background: white; border-left: 3px solid var(--step-pink); border-radius: 6px; padding: 10px 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">Where do you wait?</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Approvals, replies, access</p>
+                            <div class="problem-grid">
+                                <div class="problem-card">
+                                    <p class="problem-title">Where do you wait?</p>
+                                    <p class="problem-desc">Approvals, replies, access</p>
                                 </div>
-                                <div style="background: white; border-left: 3px solid var(--step-pink); border-radius: 6px; padding: 10px 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">Where do mistakes happen?</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Wrong data, duplicated effort</p>
+                                <div class="problem-card">
+                                    <p class="problem-title">Where do mistakes happen?</p>
+                                    <p class="problem-desc">Wrong data, duplicated effort</p>
                                 </div>
-                                <div style="background: white; border-left: 3px solid var(--step-pink); border-radius: 6px; padding: 10px 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">What is boring or repetitive?</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Copy-paste, chasing people</p>
+                                <div class="problem-card">
+                                    <p class="problem-title">What is boring or repetitive?</p>
+                                    <p class="problem-desc">Copy-paste, chasing people</p>
                                 </div>
-                                <div style="background: white; border-left: 3px solid var(--step-pink); border-radius: 6px; padding: 10px 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">What takes way too long?</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Low value for time spent</p>
+                                <div class="problem-card">
+                                    <p class="problem-title">What takes way too long?</p>
+                                    <p class="problem-desc">Low value for time spent</p>
                                 </div>
                             </div>
-                            <div style="background: var(--safe-bg); border-radius: 8px; padding: 9px 12px; font-size: 13px; color: var(--safe-text); line-height: 1.4;">
+                            <div style="background: var(--safe-bg); border-radius: 8px; padding: 9px 12px; font-size: 0.8125rem; color: var(--safe-text); line-height: 1.4;">
                                 Clusters of pink = process hotspots. Biggest wins come from fixing these.
                             </div>
                         </div>
                     </div>
 
 
-                    <!-- Step 3 - Decide How Technology Might Help -->
-                    <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--step-orange-bg); border: 1px solid var(--step-orange-border); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px;">
+                    <!-- Step 3 -->
+                    <div class="step-block" style="display: flex; gap: 14px; align-items: flex-start; background: var(--step-orange-bg); border: 1px solid var(--step-orange-border); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px;">
                         <div class="step-circle" style="background: var(--step-orange);">3</div>
-                        <div style="width: 100%;">
-                            <p style="font-size: 15px; font-weight: 700; margin: 0 0 4px 0;">Decide How Technology Might Help</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0 0 10px 0; line-height: 1.5;">Look only at the pink problem steps. Ask one question:</p>
+                        <div style="width: 100%; min-width: 0;">
+                            <p style="font-size: 0.9375rem; font-weight: 700; margin: 0 0 4px 0;">Decide How Technology Might Help</p>
+                            <p style="font-size: 0.8125rem; color: var(--apple-text-secondary); margin: 0 0 10px 0; line-height: 1.5;">Look only at the pink problem steps. Ask one question:</p>
 
-                            <div class="key-question" style="font-size: 15px; padding: 14px 18px; margin: 0 0 12px 0;">
+                            <div class="key-question">
                                 "Is this problem caused by repetition, rules, or thinking?"
                             </div>
 
-                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px;">
-                                <div style="background: white; border-top: 3px solid var(--apple-blue); border-radius: 6px; padding: 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">PA</p>
-                                    <p style="font-size: 12px; font-weight: 600; color: var(--apple-text-primary); margin: 0 0 4px 0;">Predictable work</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Same steps, moving data, reminders, clear rules</p>
+                            <div class="tech-grid">
+                                <div class="tech-card" style="border-top: 3px solid var(--apple-blue);">
+                                    <p class="tech-label">PA</p>
+                                    <p class="tech-title">Predictable work</p>
+                                    <p class="tech-desc">Same steps, moving data, reminders, clear rules</p>
                                 </div>
-                                <div style="background: white; border-top: 3px solid #00897b; border-radius: 6px; padding: 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">AI</p>
-                                    <p style="font-size: 12px; font-weight: 600; color: var(--apple-text-primary); margin: 0 0 4px 0;">Cognitive work</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">Reading, writing, summarising, answering questions</p>
+                                <div class="tech-card" style="border-top: 3px solid #00897b;">
+                                    <p class="tech-label">AI</p>
+                                    <p class="tech-title">Cognitive work</p>
+                                    <p class="tech-desc">Reading, writing, summarising, answering questions</p>
                                 </div>
-                                <div style="background: white; border-top: 3px solid #7c4dff; border-radius: 6px; padding: 12px;">
-                                    <p style="font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">PA+AI</p>
-                                    <p style="font-size: 12px; font-weight: 600; color: var(--apple-text-primary); margin: 0 0 4px 0;">Trigger + judgement</p>
-                                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0; line-height: 1.35;">PA kicks it off, AI does the thinking</p>
+                                <div class="tech-card" style="border-top: 3px solid #7c4dff;">
+                                    <p class="tech-label">PA+AI</p>
+                                    <p class="tech-title">Trigger + judgement</p>
+                                    <p class="tech-desc">PA kicks it off, AI does the thinking</p>
                                 </div>
                             </div>
 
-                            <!-- Guardrail -->
-                            <div class="guardrail" style="padding: 12px 16px; font-size: 13px; margin-top: 10px;">
+                            <div class="guardrail" style="padding: 12px 16px; font-size: 0.8125rem; margin-top: 10px;">
                                 &#9888;&#65039; <strong>Not every problem should be automated.</strong> If fixing it would only save seconds or add risk, leave it alone.
                             </div>
                         </div>
                     </div>
 
-                    <p style="font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6; margin: 0;">
+                    <p style="font-size: 0.875rem; color: var(--apple-text-secondary); line-height: 1.6; margin: 0;">
                         <strong style="color: var(--apple-text-primary);">Hold onto your map.</strong> You will use it in Exercise 6.
                     </p>
                 </div>
@@ -724,21 +1010,21 @@
                         <strong>What you are doing:</strong> Uploading a photo of your process map so Copilot can suggest where AI might help across your workflow.
                     </div>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px;">
-                        <div style="background: #f5f5f7; border-radius: 14px; padding: 20px; text-align: center;">
-                            <div style="font-size: 32px; margin-bottom: 10px;">&#128241;</div>
-                            <p style="font-size: 14px; font-weight: 600; margin: 0 0 6px 0;">Step 1</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">Take a photo of your process map from Exercise 5.</p>
+                    <div class="steps-row">
+                        <div class="step-card">
+                            <span class="step-icon">&#128241;</span>
+                            <p class="step-label">Step 1</p>
+                            <p class="step-desc">Take a photo of your process map from Exercise 5.</p>
                         </div>
-                        <div style="background: #f5f5f7; border-radius: 14px; padding: 20px; text-align: center;">
-                            <div style="font-size: 32px; margin-bottom: 10px;">&#128228;</div>
-                            <p style="font-size: 14px; font-weight: 600; margin: 0 0 6px 0;">Step 2</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">Open a <strong>New Chat</strong> in Copilot, click the attachment icon, and upload your photo.</p>
+                        <div class="step-card">
+                            <span class="step-icon">&#128228;</span>
+                            <p class="step-label">Step 2</p>
+                            <p class="step-desc">Open a <strong>New Chat</strong> in Copilot, click the attachment icon, and upload your photo.</p>
                         </div>
-                        <div style="background: #f0f7ff; border-radius: 14px; padding: 20px; text-align: center; border: 1px solid rgba(0,113,227,0.15);">
-                            <div style="font-size: 32px; margin-bottom: 10px;">&#128172;</div>
-                            <p style="font-size: 14px; font-weight: 600; margin: 0 0 6px 0;">Step 3</p>
-                            <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">Paste the prompt below alongside your image.</p>
+                        <div class="step-card step-card--highlight">
+                            <span class="step-icon">&#128172;</span>
+                            <p class="step-label">Step 3</p>
+                            <p class="step-desc">Paste the prompt below alongside your image.</p>
                         </div>
                     </div>
 
@@ -766,7 +1052,7 @@ Rule: The prompts must only work with text the user pastes into the chat. No ema
     <footer>
         <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials &copy; 2025.</p>
         <p style="margin-top: 12px;">
-            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" class="contact-link">
+            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">
                 Read our paper: AI - The Community Approach &#8599;
             </a>
         </p>
