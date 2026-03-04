@@ -91,6 +91,7 @@
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid var(--border);
+            will-change: transform;
         }
 
         .controls {
@@ -107,7 +108,7 @@
         .filter-group { display: flex; flex-wrap: wrap; gap: 6px; }
 
         .filter-btn {
-            padding: 6px 16px;
+            padding: 10px 16px;
             border-radius: 980px;
             border: 1px solid var(--border);
             background: var(--surface);
@@ -128,7 +129,11 @@
             border-color: var(--text-primary);
         }
 
-        .search-wrap { position: relative; }
+        .search-wrap {
+            position: relative;
+            flex-grow: 1;
+            max-width: 220px;
+        }
 
         .search-wrap svg {
             position: absolute;
@@ -147,9 +152,10 @@
             font-family: var(--font);
             background: var(--surface);
             color: var(--text-primary);
-            width: 220px;
+            width: 100%;
             transition: border-color 0.2s, box-shadow 0.2s;
             outline: none;
+            outline-offset: -2px;
         }
 
         #searchInput:focus {
@@ -218,6 +224,7 @@
         .badge-summary   { background: #e3f2fd; color: #0d47a1; }
         .badge-learning  { background: #e8f5e9; color: #1b5e20; }
         .badge-slidedeck { background: #e8eaf6; color: #283593; }
+        .badge-synthesis { background: #fff3e0; color: #e65100; }
 
         /* Pencil indicator */
         .studio-badge {
@@ -391,17 +398,18 @@
 
 <div class="controls-wrap">
     <div class="controls">
-        <div class="filter-group">
-            <button class="filter-btn active" onclick="filterPrompts('All', this)">All</button>
-            <button class="filter-btn" onclick="filterPrompts('Content', this)">Content</button>
-            <button class="filter-btn" onclick="filterPrompts('Analysis', this)">Analysis</button>
-            <button class="filter-btn" onclick="filterPrompts('Summary', this)">Summary</button>
-            <button class="filter-btn" onclick="filterPrompts('Learning', this)">Learning</button>
-            <button class="filter-btn" onclick="filterPrompts('Slide Deck', this)">Slide Deck</button>
+        <div class="filter-group" role="group" aria-label="Filter prompts by category">
+            <button class="filter-btn active" aria-pressed="true" onclick="filterPrompts('All', this)">All</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Content', this)">Content</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Analysis', this)">Analysis</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Summary', this)">Summary</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Learning', this)">Learning</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Slide Deck', this)">Slide Deck</button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Synthesis', this)">Synthesis</button>
         </div>
         <div class="search-wrap">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" id="searchInput" onkeyup="searchPrompts()" placeholder="Search prompts…">
+            <input type="text" id="searchInput" onkeyup="searchPrompts()" placeholder="Search prompts…" aria-label="Search prompts">
         </div>
     </div>
 </div>
@@ -421,14 +429,24 @@
 
 <script>
 const prompts = [
+    /* ── ZERO-EDIT, HIGH VALUE ──────────────────────────── */
     {
-        id: 1,
-        title: "The Presentation Architect",
-        category: "Slide Deck",
-        badgeClass: "badge-slidedeck",
-        studioRevise: true,
-        description: "Turn your notebook into a structured slide deck outline. Fill in [INSERT ...] placeholders per slide. Use Studio Pencil icon to apply.",
-        text: "Generate a 10-slide presentation outline based on these sources. For every slide, strictly follow this format:\n\n1. Slide [N]: [INSERT SUGGESTED TITLE]\n2. Purpose: [INSERT PURPOSE e.g., Contextualising the problem, presenting key data]\n3. Visual Content: Describe what charts, diagrams, or imagery should appear.\n4. Body Copy: Max 3 high-impact bullet points.\n5. Speaker Notes: A 1-paragraph script explaining the 'so what?'\n6. Source Citations: State which document supports this slide."
+        id: 3,
+        title: "The CEO Briefing",
+        category: "Summary",
+        badgeClass: "badge-summary",
+        studioRevise: false,
+        description: "High-level executive summary. No filler, just problems, solutions, and actions.",
+        text: "You are briefing a busy CEO. Do not use filler or banter. Go straight to the bottom line:\n\n- What is the core problem?\n- What is the proposed solution?\n- What are the financial/operational implications?\n- List 3 immediate action items clearly.\n\nKeep the tone professional, crisp, and urgent."
+    },
+    {
+        id: 6,
+        title: "The Meeting Intel Extractor",
+        category: "Summary",
+        badgeClass: "badge-summary",
+        studioRevise: false,
+        description: "Convert transcriptions into action items, key decisions, and owners.",
+        text: "Based on these meeting transcripts, provide:\n\n- Meeting Summary: (2 to 3 sentences)\n- Key Decisions: (Who decided what?)\n- Action Items Table: Columns for Task, Owner, Deadline, and Priority.\n- Open Questions: List any issues deferred to future meetings or left unresolved."
     },
     {
         id: 2,
@@ -449,13 +467,22 @@ const prompts = [
         text: "Do not summarise what is in these documents. Instead, analyse them to identify the 'White Space' or missing information. What obvious questions are left unanswered? What opposing viewpoints or variables are completely ignored? List 5 specific blind spots, limitations, or gaps in the provided research, and explain why their absence matters."
     },
     {
-        id: 3,
-        title: "The CEO Briefing",
-        category: "Summary",
-        badgeClass: "badge-summary",
+        id: 17,
+        title: "The Pattern Matcher",
+        category: "Synthesis",
+        badgeClass: "badge-synthesis",
         studioRevise: false,
-        description: "High-level executive summary. No filler, just problems, solutions, and actions.",
-        text: "You are briefing a busy CEO. Do not use filler or banter. Go straight to the bottom line:\n\n- What is the core problem?\n- What is the proposed solution?\n- What are the financial/operational implications?\n- List 3 immediate action items clearly.\n\nKeep the tone professional, crisp, and urgent."
+        description: "Find the hidden golden thread connecting multiple unrelated documents together.",
+        text: "I have uploaded multiple distinct documents. Ignore the individual details. Instead, find the 'golden thread'\u2014the single underlying theme or assumption that connects all these documents together, even if they seem unrelated. Explain this connection in one paragraph."
+    },
+    {
+        id: 7,
+        title: "The Devil's Advocate Debate",
+        category: "Analysis",
+        badgeClass: "badge-analysis",
+        studioRevise: false,
+        description: "Automatically detects the central tension in your sources and simulates a debate to find logic gaps.",
+        text: "Step 1: Analyze the uploaded sources to identify the single most contentious, complex, or critical topic present. State this topic clearly as the debate title.\n\nStep 2: Structure a debate between two perspectives on this topic:\n\n- Proponent (The Optimist): Argues for the primary thesis using the strongest data points from the sources.\n- The Devil's Advocate (The Skeptic): Challenges the assumptions, points out missing variables, and highlights risks or weak evidence.\n\nCite specific documents for every claim. Conclude with a verdict: Which side has better evidence in the text?"
     },
     {
         id: 4,
@@ -476,24 +503,6 @@ const prompts = [
         text: "Act as a strict but encouraging Socratic tutor. Based on the uploaded sources, ask me a single, challenging, open-ended question to test my comprehension. Wait for my answer. After I answer, grade my response from 1 to 10, correct any misconceptions using citations from the text, and then ask the next question."
     },
     {
-        id: 5,
-        title: "Competitive Intelligence Matrix",
-        category: "Analysis",
-        badgeClass: "badge-analysis",
-        studioRevise: false,
-        description: "Create a SWOT analysis and feature comparison table from competitor reports.",
-        text: "Analyse the uploaded competitor reports and data. Create a comparative table that maps:\n\n- Feature/service offering\n- Pricing strategy (if mentioned)\n- Self-identified strengths vs. external weaknesses\n- Market gaps where our project could differentiate.\n\nFollow the table with a SWOT analysis based strictly on source evidence."
-    },
-    {
-        id: 6,
-        title: "The Meeting Intel Extractor",
-        category: "Summary",
-        badgeClass: "badge-summary",
-        studioRevise: false,
-        description: "Convert transcriptions into action items, key decisions, and owners.",
-        text: "Based on these meeting transcripts, provide:\n\n- Meeting Summary: (2 to 3 sentences)\n- Key Decisions: (Who decided what?)\n- Action Items Table: Columns for Task, Owner, Deadline, and Priority.\n- Open Questions: List any issues deferred to future meetings or left unresolved."
-    },
-    {
         id: 13,
         title: "The SOP Generator",
         category: "Content",
@@ -501,33 +510,6 @@ const prompts = [
         studioRevise: false,
         description: "Turn messy process docs or call transcripts into a clean Standard Operating Procedure.",
         text: "Transform the provided transcripts and notes into a formal Standard Operating Procedure (SOP). Structure it as follows:\n\n1. Purpose of the procedure.\n2. Prerequisites and tools needed.\n3. Step-by-step instructions (numbered, starting with active verbs).\n4. Troubleshooting (If X happens, do Y).\n\nUse clear formatting for readability."
-    },
-    {
-        id: 7,
-        title: "The Devil's Advocate Debate",
-        category: "Analysis",
-        badgeClass: "badge-analysis",
-        studioRevise: false,
-        description: "Simulate a critic to stress-test your assumptions and find logic gaps. Edit [INSERT TOPIC] before use.",
-        text: "Structure a debate between two experts on [INSERT TOPIC] based on these sources.\n\n- Expert A: Argues for the primary thesis of the sources.\n- Expert B: Challenges the assumptions, points out evidence gaps, and suggests risks.\n\nInclude citations for every argument made. End with a summary of which side has the most evidence-backed ground."
-    },
-    {
-        id: 8,
-        title: "Storytelling and Scenario Builder",
-        category: "Content",
-        badgeClass: "badge-content",
-        studioRevise: false,
-        description: "Create a 'Day in the Life' narrative to humanise data and specs. Edit [User/Customer] and the year before use.",
-        text: "Based on the technical data and facts in these sources, write a 'Day in the Life' story of [INSERT USER/CUSTOMER TYPE] in the year [INSERT YEAR e.g. 2030].\n\nThe story must demonstrate how the technologies and concepts in the sources solve their specific problems.\nUse footnotes to link story elements back to specific source data."
-    },
-    {
-        id: 9,
-        title: "The Macro Trend Audit",
-        category: "Analysis",
-        badgeClass: "badge-analysis",
-        studioRevise: false,
-        description: "Identify long-term patterns, anomalies, and predictive indicators.",
-        text: "Identify the 'Macro Trends' across these documents:\n\n- What is changing over time?\n- What are the recurring patterns of success or failure?\n- Identify 'Anomalies': What breaks the pattern or seems unexpected?\n- Suggest 3 'Predictive Indicators' we should watch based on these patterns."
     },
     {
         id: 10,
@@ -539,13 +521,51 @@ const prompts = [
         text: "Transform the core insights of these sources into the following formats (uk spelling, no em-dashes):\n\n1. A 5-post LinkedIn thread (educational and hook-driven).\n2. A 'Frequently Asked Questions' (FAQ) section for a website.\n3. A catchy headline for a blog post.\n4. A 100-word newsletter blurb."
     },
     {
-        id: 14,
-        title: "Premium Presentation Mockup Spec",
+        id: 9,
+        title: "The Macro Trend Audit",
+        category: "Analysis",
+        badgeClass: "badge-analysis",
+        studioRevise: false,
+        description: "Identify long-term patterns, anomalies, and predictive indicators.",
+        text: "Identify the 'Macro Trends' across these documents:\n\n- What is changing over time?\n- What are the recurring patterns of success or failure?\n- Identify 'Anomalies': What breaks the pattern or seems unexpected?\n- Suggest 3 'Predictive Indicators' we should watch based on these patterns."
+    },
+    {
+        id: 5,
+        title: "Competitive Intelligence Matrix",
+        category: "Analysis",
+        badgeClass: "badge-analysis",
+        studioRevise: false,
+        description: "Create a SWOT analysis and feature comparison table from competitor reports.",
+        text: "Analyse the uploaded competitor reports and data. Create a comparative table that maps:\n\n- Feature/service offering\n- Pricing strategy (if mentioned)\n- Self-identified strengths vs. external weaknesses\n- Market gaps where our project could differentiate.\n\nFollow the table with a SWOT analysis based strictly on source evidence."
+    },
+    /* ── STUDIO REVISE / SPECIALIST ─────────────────────── */
+    {
+        id: 16,
+        title: "The Comic Strip Explainer",
         category: "Slide Deck",
         badgeClass: "badge-slidedeck",
         studioRevise: true,
-        description: "Generate highly specific, premium Apple-style design specs for slide decks. Best used in the Studio panel.",
-        text: "# slide deck notebooklm prompt presentation_design_spec_premium_mockup\n# Style: Premium Mockup / Modern UI / Clean Tech\n\nGlobal Design Settings:\n  Tone: 'High-quality, advanced, clean, refined, professional'\n\nColour Palette:\n  Background:\n    - '#FFFFFF (pure white)'\n    - '#F5F5F7 (very light grey, studio-like)'\n    - '#000000 (jet black, switching by slide)'\n  Accent Colours:\n    - '#8D59E9 (Electric Purple)'\n    - '#EBE021 (Acid Yellow)'\n\nVisual Identity:\n  Devices: 'High-quality 3D mockups of Apple products (Studio Display, MacBook Pro, iPad, iPhone)'\n\nTypography:\n  Headings: 'Blocky sans serif type with a large jump ratio.'\n  Body: 'Thin grey gothic font.'\n\nLayout Variations:\n  - Hero Display: Centre device with black-background UI and ultra-bold white title.\n  - Floating Mobile: Float an iPhone mockup in mid-air with blurred accent lighting.\n  - Grid Interface: Inside MacBook screen, arrange colourful UI cards in a clean grid.\n  - Dark Mode: Device screen in dark mode with white and Acid Yellow emphasis.\n  - Split Screen: Half device mockup left, large typography right.\n  - Big Typography: Black background with massive white ultra-bold text.\n\nDesign Rules:\n  - High resolution mockup images only.\n  - Realistic screen reflections for premium feel.\n  - Device UI follows spacious, minimal layout.\n  - Studio lighting with soft shadows under devices."
+        description: "Turn complex information into a comic-style story to make it memorable and fun. Use Studio Pencil icon to apply to slides.",
+        text: "Transform the key ideas from these sources into a comic-strip style slide deck narrative.\n\nFor each of 6 slides, produce:\n1. Scene: Describe a simple illustration or panel (characters, setting, action).\n2. Dialogue/Caption: Max 2 speech bubbles or caption lines — keep language playful and clear.\n3. The Point: One sentence explaining the real-world idea the scene represents.\n4. Personal Hook: A prompt for the audience to relate it to their own situation (e.g., 'When have you felt this?').\n\nTone: Warm, witty, and accessible — like a good infographic brought to life.\nGoal: The audience should remember the idea because they felt something, not just read something."
+    },
+    {
+        id: 1,
+        title: "The Presentation Architect",
+        category: "Slide Deck",
+        badgeClass: "badge-slidedeck",
+        studioRevise: true,
+        description: "Turn your notebook into a structured slide deck outline. Fill in [INSERT ...] placeholders per slide. Use Studio Pencil icon to apply.",
+        text: "Generate a 10-slide presentation outline based on these sources. For every slide, strictly follow this format:\n\n1. Slide [N]: [INSERT SUGGESTED TITLE]\n2. Purpose: [INSERT PURPOSE e.g., Contextualising the problem, presenting key data]\n3. Visual Content: Describe what charts, diagrams, or imagery should appear.\n4. Body Copy: Max 3 high-impact bullet points.\n5. Speaker Notes: A 1-paragraph script explaining the 'so what?'\n6. Source Citations: State which document supports this slide."
+    },
+    /* ── REQUIRES EDITING BEFORE USE ────────────────────── */
+    {
+        id: 8,
+        title: "Storytelling and Scenario Builder",
+        category: "Content",
+        badgeClass: "badge-content",
+        studioRevise: false,
+        description: "Create a 'Day in the Life' narrative to humanise data and specs. Edit [User/Customer] and the year before use.",
+        text: "Based on the technical data and facts in these sources, write a 'Day in the Life' story of [INSERT USER/CUSTOMER TYPE] in the year [INSERT YEAR e.g. 2030].\n\nThe story must demonstrate how the technologies and concepts in the sources solve their specific problems.\nUse footnotes to link story elements back to specific source data."
     },
     {
         id: 15,
@@ -555,16 +575,15 @@ const prompts = [
         studioRevise: false,
         description: "Decompose any idea through four lenses — emotional, philosophical, psychological, and social. Edit {IDEA} and {TEXT} before use.",
         text: "You are a multidisciplinary analyst.\n\n### Task\nDecompose [INSERT IDEA e.g. leadership, trust, innovation] in [INSERT TEXT/TOPIC] into four lenses.\nCreate a table with columns: Lens | Interpretation | Tension/Overlap.\nRows: Emotional, Philosophical, Psychological, Social.\nReturn only the Markdown table.\n\nIf the idea is unclear, ask one clarifying question before proceeding."
-    }
-    ,
+    },
     {
-        id: 16,
-        title: "The Comic Strip Explainer",
+        id: 14,
+        title: "Premium Presentation Mockup Spec",
         category: "Slide Deck",
         badgeClass: "badge-slidedeck",
         studioRevise: true,
-        description: "Turn complex information into a comic-style story to make it memorable and fun. Use Studio Pencil icon to apply to slides.",
-        text: "Transform the key ideas from these sources into a comic-strip style slide deck narrative.\n\nFor each of 6 slides, produce:\n1. Scene: Describe a simple illustration or panel (characters, setting, action).\n2. Dialogue/Caption: Max 2 speech bubbles or caption lines — keep language playful and clear.\n3. The Point: One sentence explaining the real-world idea the scene represents.\n4. Personal Hook: A prompt for the audience to relate it to their own situation (e.g., \'When have you felt this?\').\n\nTone: Warm, witty, and accessible — like a good infographic brought to life.\nGoal: The audience should remember the idea because they felt something, not just read something."
+        description: "Generate highly specific, premium Apple-style design specs for slide decks. Best used in the Studio panel.",
+        text: "# slide deck notebooklm prompt presentation_design_spec_premium_mockup\n# Style: Premium Mockup / Modern UI / Clean Tech\n\nGlobal Design Settings:\n  Tone: 'High-quality, advanced, clean, refined, professional'\n\nColour Palette:\n  Background:\n    - '#FFFFFF (pure white)'\n    - '#F5F5F7 (very light grey, studio-like)'\n    - '#000000 (jet black, switching by slide)'\n  Accent Colours:\n    - '#8D59E9 (Electric Purple)'\n    - '#EBE021 (Acid Yellow)'\n\nVisual Identity:\n  Devices: 'High-quality 3D mockups of Apple products (Studio Display, MacBook Pro, iPad, iPhone)'\n\nTypography:\n  Headings: 'Blocky sans serif type with a large jump ratio.'\n  Body: 'Thin grey gothic font.'\n\nLayout Variations:\n  - Hero Display: Centre device with black-background UI and ultra-bold white title.\n  - Floating Mobile: Float an iPhone mockup in mid-air with blurred accent lighting.\n  - Grid Interface: Inside MacBook screen, arrange colourful UI cards in a clean grid.\n  - Dark Mode: Device screen in dark mode with white and Acid Yellow emphasis.\n  - Split Screen: Half device mockup left, large typography right.\n  - Big Typography: Black background with massive white ultra-bold text.\n\nDesign Rules:\n  - High resolution mockup images only.\n  - Realistic screen reflections for premium feel.\n  - Device UI follows spacious, minimal layout.\n  - Studio lighting with soft shadows under devices."
     }
 ];
 
@@ -638,8 +657,12 @@ function toggleExpand(id, btn) {
 
 function filterPrompts(category, btn) {
     currentFilter = category;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     filterAndSearch();
 }
 
@@ -702,6 +725,19 @@ function checkOverflow() {
             btn.style.display = '';
             if (fade) fade.style.display = '';
         }
+    });
+}
+
+// Re-check overflow on resize/orientation change
+if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(() => {
+        requestAnimationFrame(checkOverflow);
+    });
+    ro.observe(document.getElementById('prompt-grid'));
+} else {
+    // Fallback for older browsers
+    window.addEventListener('resize', () => {
+        requestAnimationFrame(checkOverflow);
     });
 }
 </script>
