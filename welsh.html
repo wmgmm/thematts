@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Cymraeg Sprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+        :root {
+            --bg-primary: #F2F2F7;
+            --card-bg: #FFFFFF;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+            --apple-blue: #0071E3;
+            --apple-red: #FF3B30;
+            --apple-green: #34C759;
+            --apple-orange: #FF9500;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            height: 100dvh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* Animations */
+        .animate-enter { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .swipe-left { animation: swipeLeft 0.4s ease forwards; }
+        @keyframes swipeLeft { to { transform: translateX(-120%) rotate(-15deg); opacity: 0; } }
+
+        .swipe-right { animation: swipeRight 0.4s ease forwards; }
+        @keyframes swipeRight { to { transform: translateX(120%) rotate(15deg); opacity: 0; } }
+
+        /* UI Utilities */
+        .ios-btn { transition: transform 0.1s ease, opacity 0.2s; }
+        .ios-btn:active { transform: scale(0.96); opacity: 0.8; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .glass-footer {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Card Typography */
+        .welsh-text { letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+
+    <div id="app" class="w-full h-full md:h-[85vh] md:max-w-md md:rounded-[40px] md:shadow-2xl md:border md:border-gray-200/50 bg-[#F2F2F7] relative overflow-hidden flex flex-col">
+
+        <div id="startScreen" class="flex-1 flex flex-col relative z-10 overflow-y-auto no-scrollbar bg-white">
+            <div class="flex-1 flex flex-col items-center justify-center p-8 text-center animate-enter min-h-[500px]">
+                <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mb-6 shadow-sm relative">
+                    <i data-lucide="book-open" class="w-10 h-10 text-[#FF3B30]"></i>
+                    <div class="absolute -bottom-1 -right-1 bg-[#34C759] text-white text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white">
+                        CYM
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl font-extrabold tracking-tight text-[#1D1D1F] mb-2">Cymraeg Sprint</h1>
+                <p class="text-xl text-[#1D1D1F] font-medium mb-2">3 Minute Speed Round</p>
+                <p class="text-sm text-[#86868B] mb-10 max-w-[260px] leading-relaxed">
+                    Swipe right if you know it.<br>Swipe left to practice later.
+                </p>
+
+                <div class="bg-[#F2F2F7] p-5 rounded-3xl w-full mb-8 border border-gray-100">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#FF9500]">
+                                <i data-lucide="rotate-ccw" class="w-6 h-6"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-[#1D1D1F]">Swipe Left</p>
+                                <p class="text-xs text-[#86868B]">I need to practice this</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#34C759]">
+                                <i data-lucide="check" class="w-6 h-6"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-[#1D1D1F]">Swipe Right</p>
+                                <p class="text-xs text-[#86868B]">I know this word</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="startGame()" class="ios-btn w-full bg-[#1D1D1F] text-white text-[17px] font-bold py-4 rounded-2xl shadow-lg shadow-black/10 mb-4">
+                    Dechrau (Start)
+                </button>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="hidden h-full w-full flex-col bg-[#F2F2F7] relative">
+            <div class="glass-nav px-5 py-4 flex items-center justify-between z-20 relative shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="relative w-10 h-10">
+                        <svg class="w-10 h-10" viewBox="0 0 100 100">
+                            <circle class="text-gray-200 stroke-current" stroke-width="8" cx="50" cy="50" r="40" fill="transparent"></circle>
+                            <circle id="timerRing" class="text-[#FF3B30] progress-ring__circle stroke-current" stroke-width="8" stroke-linecap="round" cx="50" cy="50" r="40" fill="transparent" stroke-dasharray="251.2" stroke-dashoffset="0"></circle>
+                        </svg>
+                        <div id="timerText" class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-[11px] font-bold text-[#1D1D1F] tabular-nums">3:00</div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase tracking-wide">To Go</span>
+                        <span id="cardsLeft" class="text-sm font-bold text-[#1D1D1F]">--</span>
+                    </div>
+                </div>
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#34C759]"></div>
+                    <span id="matchCount" class="text-sm font-bold text-[#1D1D1F]">0</span>
+                    <span class="text-xs text-[#86868B] font-medium">Mastered</span>
+                </div>
+            </div>
+
+            <div class="flex-1 relative p-6 flex flex-col justify-center items-center overflow-hidden">
+                <div id="cardContainer" class="w-full h-full max-h-[500px] relative perspective-1000">
+                    </div>
+            </div>
+
+            <div class="px-8 py-5 pb-8 flex justify-between items-center z-20">
+                <button onclick="handleSwipe('left')" class="ios-btn w-16 h-16 rounded-full bg-white text-[#FF9500] flex items-center justify-center shadow-lg shadow-orange-500/10 border border-gray-100">
+                    <i data-lucide="rotate-ccw" class="w-7 h-7 stroke-[3]"></i>
+                </button>
+                <div class="text-[10px] font-bold text-[#86868B] tracking-[0.2em] uppercase opacity-40">Swipe</div>
+                <button onclick="handleSwipe('right')" class="ios-btn w-16 h-16 rounded-full bg-[#34C759] text-white flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <i data-lucide="check" class="w-7 h-7 stroke-[3]"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="resultsScreen" class="hidden h-full w-full flex-col bg-white animate-enter relative">
+            
+            <div class="bg-[#F2F2F7] p-6 pb-6 border-b border-gray-200 z-10 shadow-sm">
+                <h2 class="text-2xl font-bold text-[#1D1D1F] mb-1 text-center">Cyflawnwyd!</h2>
+                <p class="text-xs text-center text-[#86868B] mb-5 uppercase tracking-wide font-semibold">Session Complete</p>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center">
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase">Mastered</span>
+                        <span id="finalMatchCount" class="text-3xl font-bold text-[#34C759]">0</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center">
+                        <span class="text-[10px] font-bold text-[#86868B] uppercase">Needs Work</span>
+                        <span id="practiceCount" class="text-3xl font-bold text-[#FF9500]">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto bg-white p-4">
+                <div class="text-xs font-bold text-[#86868B] uppercase tracking-wide mb-3 ml-1">Practice List</div>
+                <div id="missedList" class="space-y-3 pb-32">
+                    </div>
+            </div>
+
+            <div class="glass-footer absolute bottom-0 left-0 w-full p-4 px-6">
+                <div class="flex gap-3">
+                    <button onclick="location.reload()" class="ios-btn flex-1 bg-[#1D1D1F] text-white font-semibold py-4 rounded-2xl text-center text-sm shadow-lg">
+                        Start New Sprint
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+// --- WELSH DATA ---
+// Categories: Greetings, Essentials, Food, Numbers, Places
+const vocabList = [
+    { id: 1, cat: "Greetings", welsh: "Bore da", eng: "Good morning", phon: "Boh-reh dah", type: "phrase" },
+    { id: 2, cat: "Greetings", welsh: "Prynhawn da", eng: "Good afternoon", phon: "Prin-hown dah", type: "phrase" },
+    { id: 3, cat: "Greetings", welsh: "Nos da", eng: "Good night", phon: "Nohs dah", type: "phrase" },
+    { id: 4, cat: "Essentials", welsh: "Diolch", eng: "Thank you", phon: "Dee-olch", type: "common" },
+    { id: 5, cat: "Essentials", welsh: "Os gwelwch yn dda", eng: "Please", phon: "Os gwel-oo-ch un th-ah", type: "phrase" },
+    { id: 6, cat: "Essentials", welsh: "Ie", eng: "Yes", phon: "Yeh", type: "common" },
+    { id: 7, cat: "Essentials", welsh: "Nage", eng: "No", phon: "Nag-eh", type: "common" },
+    { id: 8, cat: "Intro", welsh: "Pwy wyt ti?", eng: "Who are you?", phon: "Poy oyt tee", type: "question" },
+    { id: 9, cat: "Intro", welsh: "Sut dych chi?", eng: "How are you? (Formal)", phon: "Sit dich chee", type: "question" },
+    { id: 10, cat: "Essentials", welsh: "Da iawn", eng: "Very good", phon: "Dah yow-n", type: "common" },
+    { id: 11, cat: "People", welsh: "Ffrind", eng: "Friend", phon: "Frind", type: "noun" },
+    { id: 12, cat: "Essentials", welsh: "Esgusodwch fi", eng: "Excuse me", phon: "Es-gis-od-ooch vee", type: "phrase" },
+    { id: 13, cat: "Drink", welsh: "Coffi", eng: "Coffee", phon: "Koff-ee", type: "noun" },
+    { id: 14, cat: "Drink", welsh: "Te", eng: "Tea", phon: "Teh", type: "noun" },
+    { id: 15, cat: "Food", welsh: "Bara", eng: "Bread", phon: "Ba-rah", type: "noun" },
+    { id: 16, cat: "Drink", welsh: "Cwrw", eng: "Beer", phon: "Koo-roo", type: "noun" },
+    { id: 17, cat: "Drink", welsh: "Dŵr", eng: "Water", phon: "Door", type: "noun" },
+    { id: 18, cat: "Numbers", welsh: "Un", eng: "One", phon: "Een", type: "number" },
+    { id: 19, cat: "Numbers", welsh: "Dau", eng: "Two", phon: "Dye", type: "number" },
+    { id: 20, cat: "Numbers", welsh: "Tri", eng: "Three", phon: "Tree", type: "number" },
+    { id: 21, cat: "Travel", welsh: "Gorsaf", eng: "Station", phon: "Gor-sav", type: "noun" },
+    { id: 22, cat: "Travel", welsh: "Trên", eng: "Train", phon: "Tren", type: "noun" },
+    { id: 23, cat: "Question", welsh: "Ble mae...?", eng: "Where is...?", phon: "Bleh my", type: "question" },
+    { id: 24, cat: "Weather", welsh: "Bwrw glaw", eng: "Raining", phon: "Boo-roo glow", type: "phrase" },
+    { id: 25, cat: "Essentials", welsh: "Hwyl fawr", eng: "Goodbye", phon: "Hoo-il vowr", type: "phrase" },
+    { id: 26, cat: "Colors", welsh: "Coch", eng: "Red", phon: "Koch", type: "adj" },
+    { id: 27, cat: "Colors", welsh: "Glas", eng: "Blue", phon: "Glahs", type: "adj" },
+    { id: 28, cat: "Time", welsh: "Heddiw", eng: "Today", phon: "Heth-ew", type: "noun" },
+    { id: 29, cat: "Time", welsh: "Yfory", eng: "Tomorrow", phon: "Uh-vor-ee", type: "noun" },
+    { id: 30, cat: "Self", welsh: "Dwi'n hoffi...", eng: "I like...", phon: "Dween hoff-ee", type: "phrase" },
+    { id: 31, cat: "Self", welsh: "Dwi eisiau...", eng: "I want...", phon: "Dween ay-shy", type: "phrase" },
+    { id: 32, cat: "Food", welsh: "Caws", eng: "Cheese", phon: "Kows", type: "noun" },
+    { id: 33, cat: "Places", welsh: "Ysgol", eng: "School", phon: "Uh-skol", type: "noun" },
+    { id: 34, cat: "Places", welsh: "Gwaith", eng: "Work", phon: "Gwy-th", type: "noun" },
+    { id: 35, cat: "Feelings", welsh: "Hapus", eng: "Happy", phon: "Hap-is", type: "adj" },
+    { id: 36, cat: "Feelings", welsh: "Trist", eng: "Sad", phon: "Treest", type: "adj" },
+    { id: 37, cat: "Animals", welsh: "Ci", eng: "Dog", phon: "Key", type: "noun" },
+    { id: 38, cat: "Animals", welsh: "Cath", eng: "Cat", phon: "Kath", type: "noun" },
+    { id: 39, cat: "Connect", welsh: "Ac", eng: "And", phon: "Ak", type: "conj" },
+    { id: 40, cat: "Connect", welsh: "Ond", eng: "But", phon: "Ond", type: "conj" }
+];
+
+// --- LOGIC ---
+let currentIndex = 0;
+let masteredItems = [];
+let practiceItems = [];
+let timerInterval;
+let timeLeft = 180; // 3 minutes
+let gameActive = false;
+let shuffledIndices = [];
+let isSwiping = false;
+
+// DOM Elements
+const startScreen = document.getElementById('startScreen');
+const gameScreen = document.getElementById('gameScreen');
+const resultsScreen = document.getElementById('resultsScreen');
+const cardContainer = document.getElementById('cardContainer');
+const timerText = document.getElementById('timerText');
+const timerRing = document.getElementById('timerRing');
+const matchCountEl = document.getElementById('matchCount');
+const cardsLeftEl = document.getElementById('cardsLeft');
+const missedList = document.getElementById('missedList');
+const finalMatchCount = document.getElementById('finalMatchCount');
+const practiceCountEl = document.getElementById('practiceCount');
+
+function startGame() {
+    startScreen.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
+    gameScreen.classList.add('flex');
+    
+    // Shuffle
+    shuffledIndices = Array.from({length: vocabList.length}, (_, i) => i)
+        .sort(() => Math.random() - 0.5);
+    
+    currentIndex = 0;
+    masteredItems = [];
+    practiceItems = [];
+    gameActive = true;
+    isSwiping = false;
+    
+    renderCard();
+    startTimer();
+    lucide.createIcons();
+}
+
+function startTimer() {
+    const totalTime = 180;
+    const circleLength = 251.2; 
+    
+    timerInterval = setInterval(() => {
+        if (!gameActive) return;
+        
+        timeLeft--;
+        
+        const m = Math.floor(timeLeft / 60);
+        const s = timeLeft % 60;
+        timerText.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+        
+        const offset = circleLength - (timeLeft / totalTime) * circleLength;
+        timerRing.style.strokeDashoffset = offset;
+        
+        if (timeLeft <= 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+function getTypeColor(type) {
+    const map = {
+        'phrase': 'bg-blue-100 text-blue-700',
+        'noun': 'bg-purple-100 text-purple-700',
+        'verb': 'bg-green-100 text-green-700',
+        'adj': 'bg-orange-100 text-orange-700',
+        'question': 'bg-red-100 text-red-700',
+        'number': 'bg-gray-100 text-gray-700',
+        'common': 'bg-teal-100 text-teal-700'
+    };
+    return map[type] || 'bg-gray-100 text-gray-700';
+}
+
+function renderCard() {
+    if (currentIndex >= shuffledIndices.length) {
+        endGame();
+        return;
+    }
+
+    const item = vocabList[shuffledIndices[currentIndex]];
+    cardsLeftEl.textContent = vocabList.length - currentIndex;
+    
+    const typeClass = getTypeColor(item.type);
+
+    cardContainer.innerHTML = `
+        <div id="activeCard" class="w-full h-full bg-white rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-gray-100 p-8 flex flex-col items-center justify-between text-center relative cursor-grab active:cursor-grabbing select-none transition-transform will-change-transform">
+            
+            <div class="w-full flex justify-between items-center">
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-gray-50 text-gray-400">
+                    ${item.cat}
+                </span>
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${typeClass}">
+                    ${item.type}
+                </span>
+            </div>
+
+            <div class="flex-1 flex flex-col items-center justify-center w-full">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#1D1D1F] mb-4 welsh-text tracking-tight">
+                    ${item.welsh}
+                </h2>
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#F2F2F7] rounded-full mb-8">
+                    <i data-lucide="volume-2" class="w-4 h-4 text-[#86868B]"></i>
+                    <span class="text-sm font-medium text-[#86868B] italic">${item.phon}</span>
+                </div>
+            </div>
+
+            <div class="w-full pt-6 border-t border-gray-100">
+                <p class="text-lg font-semibold text-[#1D1D1F] text-opacity-90">
+                    ${item.eng}
+                </p>
+                <p class="text-[10px] text-[#86868B] mt-2 uppercase tracking-wide font-medium">Definition</p>
+            </div>
+
+        </div>
+    `;
+    lucide.createIcons();
+}
+
+function handleSwipe(direction) {
+    if (!gameActive || isSwiping) return;
+    
+    const card = document.getElementById('activeCard');
+    if (!card) return;
+
+    isSwiping = true; 
+
+    const currentItem = vocabList[shuffledIndices[currentIndex]];
+
+    if (direction === 'right') {
+        // Mastered
+        card.classList.add('swipe-right');
+        card.style.borderColor = '#34C759'; // Green Border
+        masteredItems.push(currentItem);
+        matchCountEl.textContent = masteredItems.length;
+    } else {
+        // Practice Needed
+        card.classList.add('swipe-left');
+        card.style.borderColor = '#FF9500'; // Orange Border
+        practiceItems.push(currentItem);
+    }
+
+    setTimeout(() => {
+        currentIndex++;
+        renderCard();
+        isSwiping = false; 
+    }, 350);
+}
+
+function endGame() {
+    gameActive = false;
+    clearInterval(timerInterval);
+    
+    gameScreen.classList.add('hidden');
+    resultsScreen.classList.remove('hidden');
+    resultsScreen.classList.add('flex');
+    
+    finalMatchCount.textContent = masteredItems.length;
+    practiceCountEl.textContent = practiceItems.length;
+    
+    if (practiceItems.length === 0 && masteredItems.length === 0) {
+        missedList.innerHTML = `<div class="text-center p-8 text-[#86868B]">No activity recorded.</div>`;
+    } else if (practiceItems.length === 0) {
+        missedList.innerHTML = `
+            <div class="text-center p-8">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="trophy" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#1D1D1F]">Da iawn!</h3>
+                <p class="text-sm text-[#86868B]">You mastered every word!</p>
+            </div>
+        `;
+    } else {
+        missedList.innerHTML = practiceItems.map(item => `
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex justify-between items-center">
+                <div>
+                    <h4 class="text-lg font-bold text-[#1D1D1F] welsh-text">${item.welsh}</h4>
+                    <p class="text-sm text-[#86868B]">${item.eng}</p>
+                </div>
+                <div class="flex flex-col items-end">
+                     <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded-md mb-1">${item.phon}</span>
+                     <span class="text-[10px] font-bold text-[#FF9500] uppercase tracking-wide">Review</span>
+                </div>
+            </div>
+        `).join('');
+    }
+    lucide.createIcons();
+}
+
+// Keyboard nav
+document.addEventListener('keydown', (e) => {
+    if (!gameActive) return;
+    if (e.key === "ArrowLeft") handleSwipe('left');
+    if (e.key === "ArrowRight") handleSwipe('right');
+});
+
+lucide.createIcons();
+</script>
+</body>
+</html>
