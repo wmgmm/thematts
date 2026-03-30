@@ -702,6 +702,26 @@ Consider what key elements, criteria, or details matter, what output format is m
         <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
     </div>
 </details>
+<details>
+    <summary>No More AI Slop? (Style Guide)</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
+        </div>
+        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
+
+STYLE AND TONE CONSTRAINTS
+Apply these strict rules to the task above:
+* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
+* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
+* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
+* Punctuation & Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
+        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
+        <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</em></p>
+    </div>
+</details>
+
+
             
             <details>
                 <summary>AI Usage Case: Meeting Notes</summary>
