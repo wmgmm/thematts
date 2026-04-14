@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Workshop Resources</title>
+    <style>
+        /* --- Apple Design System (Modern) --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --radius-card: 22px;
+            --radius-button: 980px; /* Pill shape */
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* --- Base & Reset --- */
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 22px;
+        }
+
+        /* --- Navigation (Frosted Glass) --- */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
+        }
+
+        .nav-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
+
+        /* --- Typography --- */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            color: var(--apple-text-secondary);
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 25px 0 10px 0;
+        }
+
+        /* --- Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* --- Getting Started Grid --- */
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 50px auto;
+            max-width: 700px;
+        }
+
+        .step-list li {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+            font-size: 19px;
+            line-height: 1.4211;
+            font-weight: 400;
+        }
+
+        .step-badge {
+            background-color: var(--apple-text-primary);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+            transform: translateY(2px);
+        }
+
+        /* --- Activity Grid --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #fbfbfd; /* Very subtle grey */
+            border-radius: 18px;
+            padding: 30px;
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+            background-color: #fff;
+            box-shadow: var(--shadow-hover);
+            z-index: 2;
+        }
+        
+        .activity-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--apple-blue);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .icon-large { font-size: 32px; margin-bottom: 10px; display: block; }
+        .item-title { font-size: 19px; font-weight: 600; display: block; margin-bottom: 5px; }
+        .item-desc { font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px; flex-grow: 1; }
+        .item-meta {
+            font-size: 11px;
+            color: var(--apple-text-secondary);
+            font-family: "SF Mono", Menlo, monospace;
+            background: rgba(0,0,0,0.05);
+            padding: 4px 8px;
+            border-radius: 6px;
+            align-self: flex-start;
+        }
+
+        /* --- Accordions (Clean) --- */
+        details {
+            border-bottom: 1px solid #e5e5ea;
+            transition: all 0.3s ease;
+        }
+        
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 24px 0;
+            cursor: pointer;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        /* Custom animated plus icon */
+        summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--apple-blue);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg); /* Turns + to x */
+        }
+
+        details[open] summary {
+            color: var(--apple-blue);
+        }
+
+        .details-content {
+            padding-bottom: 30px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 15px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* --- MegaDoc Specific Styles --- */
+        .megadoc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .megadoc-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .megadoc-icon { font-size: 28px; margin-bottom: 10px; }
+        .megadoc-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
+        .megadoc-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+
+        /* --- Prompt Box (Code style) --- */
+        .prompt-box {
+            background-color: #f5f5f7;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: "SF Mono", Menlo, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px 0 15px 0;
+            white-space: pre-wrap;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- Buttons --- */
+        .btn-copy {
+            background-color: #e8e8ed;
+            color: var(--apple-text-primary);
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: #d2d2d7;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            border-top: 1px solid #e5e5ea;
+            margin-top: 60px;
+        }
+        
+        .contact-link { color: var(--apple-blue); text-decoration: none; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- Utilities --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 734px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            .section-card { padding: 30px 24px; }
+            .container { padding-top: 20px; }
+            .megadoc-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+    <script>
+        function copyToClipboard(id) {
+            const promptText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const originalText = button.innerText;
+                button.innerText = "Copied";
+                button.style.backgroundColor = "#34c759"; // Apple Success Green
+                button.style.color = "white";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.backgroundColor = "#e8e8ed";
+                    button.style.color = "var(--apple-text-primary)";
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="global-nav">
+        <div class="nav-content">
+            <a href="#getting-started">Start Here</a>
+            <a href="#exercises">Copilot Exercises</a>
+            <a href="#bring-it-home">Bring It Home</a>
+            
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>The Matts Workshop</h1>
+            <div class="subtitle">Digital Productivity & AI in the Workplace</div>
+        </header>
+
+        <section id="getting-started" class="section-card">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Getting Started</h2>
+            </div>
+
+            <ul class="step-list">
+                <li>
+                    <span class="step-badge">1</span>
+                    <span>
+                        <strong>Log In:</strong>&nbsp;Click to open &nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>&nbsp; (work account).
+                    </span>
+                </li>
+                <li>
+                    <span class="step-badge">2</span>
+                    <span>
+                        <strong>Activity Links:</strong>&nbsp;Use the links below for workshop activities.
+                    </span>
+                </li>
+                  <li>
+                    <span class="step-badge">3</span>
+                    <span>
+                        <strong>Copy Prompts:</strong>&nbsp;Scroll down for Copilot exercises.
+                    </span>
+                </li>
+            </ul>
+
+            <div class="grid-container">
+                <a href="swot.html" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 01</span>
+                    <span class="icon-large">👥</span>
+                    <span class="item-title">AI SWOT Analysis</span>
+                    <span class="item-desc">Complete this interactive exercise in pairs.</span>
+                    <span class="item-meta">swot.html</span>
+                </a>
+
+                <a href="https://wmgmm.github.io/sprint/" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 02</span>
+                    <span class="icon-large">⚡</span>
+                    <span class="item-title">AI Discovery Sprint</span>
+                    <span class="item-desc">Find your use cases (5 min timer).</span>
+                    <span class="item-meta">sprint.html</span>
+                </a>
+
+                <a href="usagecases.html" target="_blank" class="grid-item">
+                    <span class="activity-number">Activity 03</span>
+                    <span class="icon-large">📚</span>
+                    <span class="item-title">100 AI Use Cases</span>
+                    <span class="item-desc">Browse the full library of prompts.</span>
+                    <span class="item-meta">usagecases.html</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="exercises" class="section-card">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2>AI Copilot Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
+                    Click an exercise to reveal the prompt. Copy and paste it into Copilot. <br>
+                    <strong>Important:</strong> Always click <strong>"New Chat"</strong> between tasks.
+                </p>
+            </div>
+
+            <details open>
+                <summary>Exercise 1: Get simple ideas to improve productivity</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Quickly get a few productivity hacks that might save you time.
+                    </div>
+                    <div class="prompt-box" id="progressive-learning">"Give me 3 quick fixes for [TARGET AREA e.g. Meeting waste] at work that I can try today. Keep them simple and practical."</div>
+                    <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Replace [TARGET AREA] with on of the following: "Email overload", "Meeting Waste", "Focus drain", "Task Overload", "Collaboration Issues" etc.</em></p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>Exercise 2: Roleplay for Learning</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Conversations can be a different way to learn about a topic. Replace [INSERT TOPIC HERE] with your topic e.g. quantum computing, mortages or the off side rule in football (instead of a topic you could upload the new travel policy).
+                    </div>
+                    <div class="prompt-box" id="roleplay-conversation">"Roleplay: You’re Mrs Grudge, who is grumpy, witty, and exceptionally good at making complicated things obvious. ​I’m a student learning about: [INSERT TOPIC HERE]. ​Explain first in a witty way, then ask 1 single simple question to see if I’m keeping up along the way, Stay in character. No waffle."</div>
+                    <button onclick="copyToClipboard('roleplay-conversation')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+       <details open>
+    <summary>Exercise 3: Second Pair of Eyes (Critical Peer Review)</summary>
+
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Interrogate a paper, report, or draft to identify overreach, hidden assumptions, and missing context before submission or circulation.
+        </div>
+
+        <div class="prompt-box" id="second-pair-of-eyes">
+            "Act as a critical but fair peer reviewer. Answer the following questions clearly and directly.
+
+            Question one: What can and cannot be legitimately concluded from the methodology and results alone? Where does the abstract overreach?
+
+            Question two: What did this study not measure that would have changed what it found? What is the methodology quietly assuming it never defends?
+
+            Question three: What debate is this paper entering? Who is it responding to, and what could those people respond with?
+
+            Question four: What is the most important paper missing from the references?
+
+            Here is the paper or extract: [paste text or upload document]"
+        </div>
+
+        <button onclick="copyToClipboard('second-pair-of-eyes')" class="btn-copy">
+            Copy Prompt
+        </button>
+
+        <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);">
+            <em>
+                Paste an abstract, methods section, results, or full draft. Upload a PDF or Word file if easier. Use before submission, response to reviewers, or internal review.
+            </em>
+        </p>
+    </div>
+
+    <div style="margin-top:20px; padding-top:15px; border-top: 1px solid rgba(0,0,0,0.05);">
+        <strong style="font-size:13px; color:#1d1d1f; display:block; margin-bottom:8px;">
+            💡 You could experiment with alternative versions of the peer‑review prompt.
+        </strong>
+        <ul style="margin:0; padding-left:20px; font-size:13px; color:var(--apple-text-secondary); line-height:1.6;">
+            <li>
+                <strong>Hostile Reviewer:</strong>
+                "Act as a sceptical reviewer at a top‑tier journal. Assume the burden of proof has not been met. Identify only weaknesses, omissions, and risks of misinterpretation."
+            </li>
+        </ul>
+    </div>
+</details>
+<details open>
+    <summary>Exercise 4: Breaking Down Large Tasks (Risk Assessment)</summary>
+
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Break a large or uncertain project into stakeholders, milestones, risks, and mitigations before committing time or resources.
+        </div>
+
+        <!-- Prompt 1 -->
+        <div class="prompt-box" id="risk-assessment-1">
+            "I'm planning a project to [one sentence description]. Who are the main stakeholders and what are the key milestones?"
+        </div>
+        <button onclick="copyToClipboard('risk-assessment-1')" class="btn-copy">
+            Copy Prompt 1
+        </button>
+
+        <!-- Prompt 2 -->
+        <div class="prompt-box" id="risk-assessment-2" style="margin-top:15px;">
+            "Based on that project, what are the five most likely risks? For each, rate the likelihood (high/medium/low) and potential impact (high/medium/low)."
+        </div>
+        <button onclick="copyToClipboard('risk-assessment-2')" class="btn-copy">
+            Copy Prompt 2
+        </button>
+
+        <!-- Prompt 3 -->
+        <div class="prompt-box" id="risk-assessment-3" style="margin-top:15px;">
+            "For the three highest-priority risks, suggest one practical mitigation for each. Keep them realistic for a small team with limited budget."
+        </div>
+        <button onclick="copyToClipboard('risk-assessment-3')" class="btn-copy">
+            Copy Prompt 3
+        </button>
+
+        <!-- Prompt 4 -->
+        <div class="prompt-box" id="risk-assessment-4" style="margin-top:15px;">
+            "Now combine all of this into a one-page risk assessment summary I could share with my manager. Use plain language and include a simple table for the risks."
+        </div>
+        <button onclick="copyToClipboard('risk-assessment-4')" class="btn-copy">
+            Copy Prompt 4
+        </button>
+
+        <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);">
+            <em>
+                Start with Prompt 1 and reuse the outputs step‑by‑step. You can paste text between prompts or upload a short project brief instead.
+            </em>
+        </p>
+    </div>
+
+    <div style="margin-top:20px; padding-top:15px; border-top: 1px solid rgba(0,0,0,0.05);">
+        <strong style="font-size:13px; color:#1d1d1f; display:block; margin-bottom:8px;">
+            💡 This works well for projects that feel overwhelming or politically sensitive.
+        </strong>
+    </div>
+</details>
+
+          
+
+        <details>
+    <summary>Exercise 5: Format & Structure</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
+        </div>
+        
+        <div class="prompt-box" id="format-prompt-merged">"You run 'Knights of the Round Table Pizza' - a medieval-themed pizza delivery service. Please generate the following three items:<br><br>1. Write a catchy jingle for your horse-drawn pizza delivery adverts.<br>2. Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance.<br>3. Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
+        
+        <button onclick="copyToClipboard('format-prompt-merged')" class="btn-copy">Copy Prompt</button>
+        <br>
+    </div>
+</details>
+
+            <details>
+                <summary>Exercise 6: Self-Evaluation (Mark Your Homework)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Get AI to critique its own work to improve quality before you review it.
+                    </div>
+                    <div class="prompt-box" id="evaluation-prompt">"I need a name for a new pensioner dating app, provide five examples please.
+For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
+Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."</div>
+                    <button onclick="copyToClipboard('evaluation-prompt')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Exercise 7: Prompt Chaining</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        Application: Combine Role, Tone, Constraints, and Format into one request.
+                    </div>
+                    <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
+Role: Young consumers (15-25).
+Tone: Humorous, but not childish.
+Constraint: Avoid existing UK product names.
+Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+Examples: CitrusBurst, AquaFizz, SolarPop."</div>
+                    <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+<details>
+    <summary>Exercise 8 – Create My First Agent</summary>
+    <div class="details-content">
+        
+        <div class="exercise-note" style="margin-bottom: 20px;">
+            <strong>What are Agents?</strong> They are reusable Copilot assistants with a specific focus – saved prompts with personality that you can share with your team.
+        </div>
+
+        <ol style="padding-left: 20px; line-height: 1.6; font-size: 15px;">
+            <li style="margin-bottom: 12px;">
+                <strong>Open Copilot</strong> – go to <a href="https://m365copilot.com" target="_blank" style="color: #007aff; text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Enter Description then submit</strong> – In the "Describe" tab, type the following in the box at the bottom and hit the submit arrow:
+                <br>
+                <em>"The user will provide a word and you must generate 3 possible crossword style clues for that word"</em>
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Click Create</strong> You might get prompted to give the Agent a name, reply to that then  click the <strong>Create</strong> button.
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Click Go to Agent</strong> – Wait for the success message, then click the blue 'Go to Agent' button.
+            </li>
+            <li>
+                <strong>Test e.g. Book</strong> – Type a single word like "Book" into the chat to see if it generates 3 crossword clues.
+            </li>
+        </ol>
+    </div>
+</details>
+   <details>
+    <summary>Exercise 9 – Build a New Agent: Sentence Categoriser</summary>
+    <div class="details-content">
+        
+        <div class="exercise-note" style="margin-bottom: 20px;">
+            <strong>New Agent Task:</strong> In this exercise, you will build a <strong>new agent</strong> designed for a completely different task: analyzing text data and generating visual word clouds using Python.
+        </div>
+
+        <ol style="padding-left: 20px; line-height: 1.6; font-size: 15px;">
+            <li style="margin-bottom: 12px;">
+                <strong>Open Copilot</strong> – Go to <a href="https://m365copilot.com" target="_blank" style="color: #007aff; text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu to start a fresh agent.
+            </li>
+            <li style="margin-bottom: 20px;">
+                <strong>Describe the Agent</strong> – Ensure you are on the <strong>Describe</strong> tab. Copy and paste the description below into the chat box and hit the submit arrow:
+                <br><br>
+                <div style="background-color: #f0f7ff; border: 1px solid #cce5ff; border-left: 5px solid #007aff; padding: 15px; border-radius: 4px;">
+                    <strong style="display: block; margin-bottom: 8px; color: #0056b3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">📋 Copy this Prompt:</strong>
+                    <div style="font-family: 'Segoe UI', sans-serif; font-style: italic; color: #2c3e50; line-height: 1.5;">
+                        "The user will provide sentences (via attached .xlsx or pasted below). For each sentence, assign only one broad, high-level parent category as a SINGLE word (e.g., generalize ‘Spreadsheet’ to Work, ‘Tacos’ to Food).  Use CONSISTANT category names and avoid splitting similar concepts into separate categories. REVIEW YOUR CATEGORIES FOR CONSISTANCY ONCE YOU HAVE BEEN THROUGH THE FULL LIST.
+                        <br><br>
+                        DO ALL OF THE FOLLOWING 3 THINGS AUTOMATICALLY:<br>
+                        1, Output a table with columns: Sentence, Category.<br>
+                        2, Calculate topic frequency by counting how many sentences fall under each category.<br>
+                        3, Write and Execute Python code to generate and DISPLAY on screen a word cloud where each category’s size is proportional to its topic frequency."
+                    </div>
+                </div>
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Configure Settings</strong> – Switch to the <strong>Configure</strong> tab (next to Describe). Name your agent <strong>"Sentence Categorizer"</strong>.
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Enable Code Generation</strong> – Scroll down to the "Capabilities" section. Toggle the slider for <strong>"Create documents, charts, and code"</strong> to the <strong>On</strong> position (it will turn blue).
+            </li>
+            <li style="margin-bottom: 12px;">
+                <strong>Create Agent</strong> – Click the <strong>Create</strong> button and wait for the success message.
+            </li>
+            <li>
+                <strong>Test it</strong> – Click "Go to agent". Use the sample data below (either upload the file or copy the text) to see it generate a category table and a word cloud image.
+            </li>
+        </ol>
+
+        <div class="sample-data-section" style="margin-top: 30px; padding: 20px; background-color: #f0f4f8; border-radius: 8px; border: 1px solid #dce6f0;">
+            <h3 style="margin-top: 0; color: #333;">📂 Sample Data for Testing</h3>
+            
+            <p style="margin-bottom: 15px; color: #555;">
+                You can either download the Excel file called <em>sentences.xlsx</em> to upload to your agent, or copy the text below directly into the Agent's chat.
+            </p>
+
+            <div style="margin-bottom: 20px;">
+                <a href="sentences.xlsx" download style="display: inline-block; background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px;">
+                    ⬇️ Download sentences.xlsx
+                </a>
+            </div>
+
+            <div style="margin-bottom: 10px; font-weight: 600; color: #444;">Or copy these sentences:</div>
+            <textarea style="width: 100%; height: 200px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Consolas', 'Monaco', monospace; font-size: 13px; line-height: 1.5; background-color: #fff; color: #333;" readonly>I survived another meeting that should have been an email.
+My therapist has a wet nose and a wagging tail.
+I apologize for what I said when I was hungry.
+There is no 'we' in fries.
+I run like the winded.
+My head says gym, but my heart says tacos.
+Excel is my love language.
+I earn a salary just so my cat can have a better life.
+It's raining in Cardiff... again.
+I need a six-month holiday, twice a year.
+Be the person your dog thinks you are.
+Stressed is just desserts spelled backwards.
+Please do not 'reply all' to my existence.
+My favorite cardio is running out of patience.
+A balanced diet is a slice of pizza in each hand.
+Sent from my iPhone (not really, I'm at my desk).
+I thought they said 'extra fries', not 'exercise'.
+Llanfairpwllgwyngyll... never mind, just meet me at the pub.
+My boss told me to have a good day, so I went home.
+Traffic was stopped by a flock of sheep on the road.
+My outfit is incomplete without a little bit of fur on it.
+I love the whooshing sound deadlines make as they fly by.
+My only skill is pretending to listen in Zoom calls.</textarea>
+        </div>
+
+    </div>
+</details>
+<details>
+    <summary>Role-Specific Document Extraction</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Upload a document and force the AI to only show you the tasks, deadlines, and information relevant to your specific job title.
+        </div>
+        <div class="prompt-box" id="role-extraction">Read this Document from the perspective of a [INSERT ROLE HERE e.g. project manager]. Only pull out the information,action items and deadlines that would impact my role.</div>
+        <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copy Prompt</button>
+        <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Attach your document to Copilot, paste this prompt, and replace the bracketed text with your actual job title to instantly cut through the noise.</em></p>
+    </div>
+</details>
+
+            
+<details>
+    <summary>Meta-Prompting: Let AI Write the Prompt</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Leverage the AI's knowledge to design expert prompts for tasks in specific domains e.g. 'Triage Helpdesk Emails in IT'.
+        </div>
+        <div class="prompt-box" id="meta-prompt-technique">"You are an expert AI prompt designer. Please design the most effective prompt to: [INSERT SPECIFIC TASK AND DOMAIN]. 
+
+Consider what key elements, criteria, or details matter, what output format is most actionable, and the reasoning steps that are essential."</div>
+        <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copy Prompt</button>
+    </div>
+</details>
+<details>
+    <summary>Reverse Engineering (Creating Prompts from Gold Standard Outputs)</summary>
+    <div class="details-content">
+        <p><strong>Concept:</strong> "Meta-Prompting" or Reverse Engineering. Instead of guessing how to prompt, feed the AI the desired output (or a stylistic reference) and ask it to write the prompt for you.</p>
+        <hr>
+
+        <h3>1. Meeting Notes Template</h3>
+        <div class="exercise-note">
+            <strong>Application:</strong> Use this when you have a "Gold Standard" document and you want all future documents to follow that exact structure.
+        </div>
+        <div class="prompt-box" id="reverse-prompt-meeting">"Analyze the meeting notes below. Create a single, reusable prompt that instructs an AI to generate notes using this exact format, style, and structure from a raw transcript.<br><br>[PASTE GOLD STANDARD NOTES HERE]"</div>
+        <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copy Prompt</button>
+        <br><br>
+
+        <h3>2. Corporate Tone Persona</h3>
+        <div class="exercise-note">
+            <strong>Application:</strong> Essential for marketing. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
+        </div>
+        <div class="prompt-box" id="reverse-prompt-persona">"Analyze the tone, vocabulary, and sentence structure of the text below. Write a 'Persona Prompt' defining these characteristics so an AI can consistently write new articles in this exact style.<br><br>[PASTE BRAND TEXT HERE]"</div>
+        <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copy Prompt</button>
+        <br><br>
+
+        <h3>3. Academic Abstract Summarizer</h3>
+        <div class="exercise-note">
+            <strong>Application:</strong> Use this for technical writing where constraints (word count, objectivity) are strict and you want to summarize new content in that voice.
+        </div>
+        <div class="prompt-box" id="reverse-prompt-abstract">"Deconstruct the academic abstract below. Identify the implied word count constraints, formal tone, and structural elements. Write a reusable prompt designed to generate similar abstracts from new content.<br><br>[PASTE ABSTRACT HERE]"</div>
+        <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copy Prompt</button>
+        <br><br>
+
+        <h3>4. Image-to-Text Style Transfer</h3>
+        <div class="exercise-note">
+            <strong>Application:</strong> Use this to generate a detailed text description of an image, which you can then use to generate new images in that style.
+        </div>
+        <div class="prompt-box" id="reverse-prompt-image">"Act as a professional photographer. Analyze the attached image. Write a detailed text-to-image prompt capturing the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style.<br><br>[UPLOAD IMAGE]"</div>
+        <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copy Prompt</button>
+        <br><br>
+
+        <h3>5. Website Style & Format</h3>
+        <div class="exercise-note">
+            <strong>Application:</strong> Use this to extract design schemas from screenshots or HTML code to produce new sites with a similar look and feel.
+        </div>
+        <div class="prompt-box" id="reverse-prompt-website">"Analyze the visual design, color palette, typography, and layout of the website below. Write a design system prompt that instructs an AI to apply this exact look and feel to new code.<br><br>[PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
+        <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
+    </div>
+</details>
+<details>
+    <summary>No More AI Slop? (Style Guide)</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
+        </div>
+        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
+
+STYLE AND TONE CONSTRAINTS
+Apply these strict rules to the task above:
+* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
+* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
+* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
+* Punctuation & Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
+        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
+        <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</em></p>
+    </div>
+</details>
+
+
+            
+            <details>
+                <summary>AI Usage Case: Meeting Notes</summary>
+                <div class="details-content">
+                    <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"</div>
+                    <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>AI Usage Case: Excel Data Analysis</summary>
+                <div class="details-content">
+                    <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."</div>
+                    <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>AI Usage Case: Text Categorisation</summary>
+                <div class="details-content">
+                    <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."</div>
+                    <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+<details>
+                <summary>Responsible AI (Best Practices)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>The Human in the Loop:</strong> AI is a tool to enhance your work, not replace your judgment. Always keep these three pillars in mind.
+                    </div>
+
+                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); align-items: start;">
+
+                        <div class="megadoc-card" style="text-align: left;">
+                            <div class="megadoc-icon">🤝</div>
+                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Human-Centric Approach</strong>
+                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li style="margin-bottom: 8px;">It's your assistant (augment over replace).</li>
+                                <li style="margin-bottom: 8px;">Protect critical skills: use AI to enhance them.</li>
+                                <li>Target repetitive manual tasks first.</li>
+                            </ul>
+                        </div>
+
+                        <div class="megadoc-card" style="text-align: left;">
+                            <div class="megadoc-icon">✅</div>
+                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Practical Checks</strong>
+                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li style="margin-bottom: 8px;"><strong>Always</strong> double-check the output.</li>
+                                <li style="margin-bottom: 8px;">Be Transparent: "I used AI for this."</li>
+                                <li>Protect your data (use IT approved AI tools).</li>
+                            </ul>
+                        </div>
+
+                        <div class="megadoc-card" style="text-align: left;">
+                            <div class="megadoc-icon">⚖️</div>
+                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Responsibility & Ethics</strong>
+                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
+                                <li style="margin-bottom: 8px;">Watch out for AI's blind spots (bias/hallucinations).</li>
+                                <li style="margin-bottom: 8px;">Own the results: AI doesn't take the blame.</li>
+                                <li>Align your usage of AI with your values.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            
+<details>
+    <summary>It's Your Teammate (The Conversation)</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            <strong>The Reality:</strong> You rarely get a perfect draft from a human colleague on the first try—don't expect it from AI. The magic happens in the follow-up.
+        </div>
+
+        <div style="margin: 30px 0 20px 0; text-align: center;">
+            <img src="YOUR_IMAGE_PATH/image_3.png" alt="Comparison: The Vending Machine mindset vs The Teammate mindset" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        </div>
+
+        <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-bottom: 30px; border: 1px solid #eaeaea;">
+            <strong style="display: block; margin-bottom: 10px; font-size: 16px;">🚀 Use the "Teammate" Boilerplate Prompt</strong>
+            <p style="margin-bottom: 15px; font-size: 14px; color: var(--apple-text-secondary);">
+                As illustrated on the right side above, stop asking for instant, giant deliverables. Instead, frame the interaction as a guided collaboration using this structure:
+            </p>
+            <div style="background: white; border-left: 4px solid #0071e3; border-radius: 6px; padding: 15px; font-family: Menlo, Monaco, 'Courier New', monospace; font-size: 13px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                "I want you to help me <strong>[INSERT BIG TASK HERE]</strong>, but don't try to solve it all at once. Instead, act as a helpful guide..."
+            </div>
+        </div>
+        <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+
+            <div class="megadoc-card" style="text-align: left;">
+                <div class="megadoc-icon">🤝</div>
+                <strong class="megadoc-title" style="font-size: 17px;">The "Teammate" Mindset</strong>
+                <p class="megadoc-desc" style="margin-bottom: 15px;">
+                    Stop treating Copilot like a vending machine (input coin -> get product). Treat it like a clever intern.
+                </p>
+                <p class="megadoc-desc">
+                    If the output isn't right, don't rewrite the prompt from scratch. <strong>Just talk to it.</strong> Tell it what it did wrong and guide it to the answer.
+                </p>
+            </div>
+
+            <div class="megadoc-card" style="text-align: left; background: #f5f5f7;">
+                <strong class="megadoc-title" style="margin-bottom: 15px; display:block;">Try these follow-up phrases:</strong>
+
+                <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
+                    "Actually, can you make it more formal?"
+                </div>
+
+                <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
+                    "That's good, but what if we tried a friendlier approach?"
+                </div>
+
+                <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
+                    "Can you expand on that second point? It's a bit too brief."
+                </div>
+            </div>
+
+        </div>
+    </div>
+</details>
+        <details>
+                <summary>Practical Prompting (The 1-2-3 Method)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>The Golden Rule:</strong> Better inputs equal better outputs. Follow this 3-step flow for every prompt to get the best results.
+                    </div>
+
+                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+
+                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">1.</div>
+                                <strong class="megadoc-title" style="font-size: 17px;">Give Context</strong>
+                                <p class="megadoc-desc" style="margin-bottom: 15px;">Provide relevant background information (Role, Data, Reports).</p>
+                            </div>
+                            <div style="background: #f5f5f7; padding: 12px; border-radius: 12px; font-size: 22px; display: flex; justify-content: space-around; color: #555;">
+                                <span title="Role & Background">👤</span>
+                                <span title="Spreadsheet Data">📊</span>
+                                <span title="Website/Research">🌐</span>
+                                <span title="Word Doc/Report">📄</span>
+                            </div>
+                        </div>
+
+                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">2.</div>
+                                <strong class="megadoc-title" style="font-size: 17px;">Make Request</strong>
+                                <p class="megadoc-desc">Be specific about exactly what you want the AI to do.</p>
+                            </div>
+                            <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                "Review my email for clarity..."
+                            </div>
+                        </div>
+
+                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">3.</div>
+                                <strong class="megadoc-title" style="font-size: 17px;">Explain Purpose</strong>
+                                <p class="megadoc-desc">Share <em>why</em> you need this (The "So That").</p>
+                            </div>
+                            <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                "...to maximize the chances of a quick response."
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+
+            
+            <details>
+                <summary>AI Hacks - MegaDoc (Context Booster/External memory)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>Concept:</strong> Stop typing the same background info. Create a simple Word doc with your org's specific context to copy-paste into prompts.
+                    </div>
+                    
+                    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6; color: var(--apple-text-secondary);">
+                        Without help, AI will guess what your acronyms mean and write in a generic, robotic tone. A "MegaDoc" solves this by giving the AI immediate situational awareness.
+                    </p>
+
+                    <div class="megadoc-grid">
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🔤</div>
+                            <strong class="megadoc-title">Acronyms</strong>
+                            <p class="megadoc-desc">Define your internal language (e.g. "DCG = Division of Cancer & Genetics")</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">✒️</div>
+                            <strong class="megadoc-title">Style Guide</strong>
+                            <p class="megadoc-desc">Set the tone: "Formal but warm," "Use UK English," "Use bullet points"</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">📋</div>
+                            <strong class="megadoc-title">Key Facts</strong>
+                            <p class="megadoc-desc">Boilerplate info, key personnel names, and standard operating procedures</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🚀</div>
+                            <strong class="megadoc-title">Project Overview</strong>
+                            <p class="megadoc-desc">Goals, status, and blockers. Give the AI immediate situational awareness</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px; color: var(--apple-text-primary);">Create your own today:</p>
+                    <p style="font-size: 14px; margin-top: 0; margin-bottom: 15px; color: var(--apple-text-secondary);">Open a blank document and list your top 10 acronyms and one Project Snapshot. The next time you prompt, paste it in to see the difference immediately.</p>
+                    
+                    <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
+[PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
+
+Based on this context, draft an update email to the team about [Your Topic]..."</div>
+                    <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+<details>
+                <summary>Private AI (Running Models Locally)</summary>
+                <div class="details-content">
+                    <div class="exercise-note">
+                        <strong>You Are In Charge:</strong> Running AI locally using on-device storage offers a secure environment, total privacy, zero fees, and works without Wi-Fi.
+                    </div>
+
+                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+
+                        <div class="megadoc-card" style="text-align: left;">
+                            <div class="megadoc-icon">🛡️</div>
+                            <strong class="megadoc-title">Total Privacy & Control</strong>
+                            <p class="megadoc-desc" style="margin-bottom: 10px;">
+                                <strong>Data Sovereignty:</strong> No data leaves your device.
+                            </p>
+                            <ul style="padding-left: 20px; margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
+                                <li>Safe for sensitive/classified info.</li>
+                                <li>Full IP protection & ownership.</li>
+                                <li>No third-party platform risks.</li>
+                            </ul>
+                        </div>
+
+                        <div class="megadoc-card" style="text-align: left;">
+                            <div class="megadoc-icon">⚡</div>
+                            <strong class="megadoc-title">Cost & Efficiency</strong>
+                            <p class="megadoc-desc" style="margin-bottom: 10px;">
+                                <strong>Operational Benefits:</strong> Lower overheads.
+                            </p>
+                            <ul style="padding-left: 20px; margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
+                                <li><strong>Zero Fees:</strong> Open source models</li>
+                                <li>Offline Capable</li>
+                                <li>Lower energy consumption.</li>
+                            </ul>
+                        </div>
+
+                        <div class="megadoc-card" style="text-align: left; background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
+                            <div class="megadoc-icon">🎓</div>
+                            <strong class="megadoc-title" style="color: var(--apple-blue);">Private AI Workshop</strong>
+                            <p class="megadoc-desc" style="font-weight: 600; margin-bottom: 10px;">
+                                We run a 2-hour practical session to get you started with Private AI on your laptop.
+                            </p>
+                            <a href="mailto:haydenmj1@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Contact us for details →</a>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+<details>
+    <summary>NotebookLM Prompt Library</summary>
+    <div class="details-content">
+        <div class="exercise-note">
+            <strong>The Tool:</strong> Google's NotebookLM allows you to "ground" AI in your specific documents. We have curated a library of NotebookLM prompts to help you analyse them.
+        </div>
+
+        <ul style="list-style: none; padding: 0; margin: 20px 0 30px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
+                <span style="font-size: 20px; display: block; margin-bottom: 5px;">🎧</span>
+                <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Audio Overviews</strong>
+                <span style="font-size: 13px; color: var(--apple-text-secondary);">Turn dry reports into engaging "Deep Dive" podcasts.</span>
+            </li>
+            <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
+                <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕵️</span>
+                <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Critical Analysis</strong>
+                <span style="font-size: 13px; color: var(--apple-text-secondary);">Identify blind spots, contradictions, and missing data.</span>
+            </li>
+            <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
+                <span style="font-size: 20px; display: block; margin-bottom: 5px;">🏗️</span>
+                <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Structured Output</strong>
+                <span style="font-size: 13px; color: var(--apple-text-secondary);">Convert notes into Slide Decks, Briefs, and SOPs.</span>
+            </li>
+        </ul>
+
+        <div style="text-align: center;">
+            <a href="notebooklm.html" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px; transition: opacity 0.2s;">
+                Open Prompt Library (click link) ↗
+            </a>
+            <p style="margin-top: 10px; font-size: 12px; color: var(--apple-text-secondary);">
+                Includes 15+ specialised prompts for Research & Strategy
+            </p>
+        </div>
+    </div>
+</details>
+<details>                                                                                                                                                                      
+    <summary>AI for Coding Support</summary>                
+    <div class="details-content">                                                                                                                                                     
+      <div class="exercise-note">
+        You can use AI to support coding by <strong>chatting</strong> with it directly paste in your code, errors, or questions or use an <strong>Coding Agent</strong> that connects to your system and can read, write, and run files on your behalf. You can run an Agent with a local model (to keep your data safe) but you need a decent GPU<br><br>                                                                         
+        Have a look at these prompts that might help support your coding:
+        <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener noreferrer">AI Coding Prompt Ideas</a>                                                          
+      </div>                                                                                                                                                                          
+    </div>                                                                                                                                                                            
+  </details> 
+
+            
+<details>
+                <summary>Your AI Road Map</summary>
+                <div class="details-content">
+                    <div style="text-align: center; margin-bottom: 35px; padding: 0 10px;">
+                        <h4 style="margin-top: 0; font-size: 18px; color: var(--apple-text-primary);">No one knows everything about AI, but together we can figure it out faster.</h4>
+                        <p style="color: var(--apple-text-secondary); margin: 5px 0 15px 0;">This is the AI Community Approach.</p>
+                        
+                        <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" style="display: inline-block; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 8px 16px; border-radius: 980px; transition: background 0.2s;">
+                            📄 Read our Paper on the AI Community Approach ↗
+                        </a>
+                    </div>
+
+                    <div class="megadoc-grid">
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🧠</div>
+                            <strong class="megadoc-title">Mindset</strong>
+                            <p class="megadoc-desc">Be curious. Ask: "Could this be useful?"</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">💬</div>
+                            <strong class="megadoc-title">Conversations</strong>
+                            <p class="megadoc-desc">Shared learning, wins, and fails.</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🧪</div>
+                            <strong class="megadoc-title">Experiments</strong>
+                            <p class="megadoc-desc">Learn by doing. Build expertise.</p>
+                        </div>
+                        <div class="megadoc-card">
+                            <div class="megadoc-icon">🤝</div>
+                            <strong class="megadoc-title">Community</strong>
+                            <p class="megadoc-desc">Turn scattered experiments into shared learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+
+        
+            </section>
+<!-- BRING IT HOME -->
+<section id="bring-it-home" class="section-card">
+
+    <div style="text-align: center; margin-bottom: 50px;">
+        <p style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 12px;">Next Steps</p>
+        <h2>Loved the Workshop?<br>Bring It Home.</h2>
+        <p style="font-size: 19px; color: var(--apple-text-secondary); max-width: 620px; margin: 0 auto; line-height: 1.6;">
+            You've seen what AI can do. Now imagine your whole team working this way.
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+
+        <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" style="background: linear-gradient(145deg, #e8f4ff 0%, #d0e8ff 100%); border: 1px solid rgba(0,113,227,0.15); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; color: var(--apple-text-primary); transition: all 0.3s ease;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #0071e3; margin-bottom: 16px;">📣 Workshop Flyer</span>
+            <span style="font-size: 44px; margin-bottom: 16px;">📄</span>
+            <span style="font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2;">Share the Workshop</span>
+            <p style="font-size: 15px; color: var(--apple-text-secondary); line-height: 1.55; flex-grow: 1; margin-bottom: 28px;">
+                Download and share this one-pager with your manager or team. We can come to you — it covers everything they need to know about booking an on-site session.
+            </p>
+            <span style="background: #0071e3; color: white; font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 980px; align-self: flex-start;">⬇ Download Flyer</span>
+        </a>
+
+        <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" style="background: linear-gradient(145deg, #f0f0ff 0%, #e2e2ff 100%); border: 1px solid rgba(88,86,214,0.15); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; color: var(--apple-text-primary); transition: all 0.3s ease;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5856d6; margin-bottom: 16px;">🎓 Train the Trainer</span>
+            <span style="font-size: 44px; margin-bottom: 16px;">🏠</span>
+            <span style="font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2;">We Train Your Trainers</span>
+            <p style="font-size: 15px; color: var(--apple-text-secondary); line-height: 1.55; flex-grow: 1; margin-bottom: 28px;">
+                The Matts offer a dedicated Train the Trainer service — we equip your internal champions to deliver this workshop confidently across your organisation.
+            </p>
+            <span style="background: #5856d6; color: white; font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 980px; align-self: flex-start;">⬇ Find Out More</span>
+        </a>
+
+    </div>
+
+</section>
+        <section class="section-card" style="text-align: center; padding: 50px;">
+            <h3>Contact Information</h3>
+            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? Want us to deliver the workshop at your site or Train the Trainer, Feel free to contact us:</p>
+            <p style="margin-bottom: 0;">
+                Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a><br>
+                Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a>
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+<p style="margin-top: 12px;">
+            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" class="contact-link">
+                Read our paper: AI The Community Approach ↗
+            </a>
+        </p>
+        
+    </footer>
+
+</body>
+</html>
