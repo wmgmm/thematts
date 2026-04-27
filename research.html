@@ -37,7 +37,7 @@
         .container {
             max-width: 980px;
             margin: 0 auto;
-            padding: 40px 22px;
+            padding: 32px 22px;
         }
 
         /* --- Navigation (Frosted Glass) --- */
@@ -78,7 +78,7 @@
         /* --- Typography --- */
         header {
             text-align: center;
-            padding: 80px 0 50px;
+            padding: 56px 0 32px;
             animation: fadeIn 0.8s ease-out;
         }
 
@@ -122,25 +122,31 @@
         .section-card {
             background: var(--apple-bg-card);
             border-radius: var(--radius-card);
-            padding: 60px;
-            margin-bottom: 40px;
+            padding: 48px 60px;
+            margin-bottom: 28px;
             box-shadow: var(--shadow-card);
         }
 
-        /* --- Getting Started Grid --- */
-        .step-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto 50px auto;
-            max-width: 700px;
+        /* --- Quick start strip (top of merged card) --- */
+        .quick-start {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            background: var(--apple-bg-page);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 0 auto 32px auto;
+            max-width: 760px;
         }
 
-        .step-list li {
+        .quick-start-item {
             display: flex;
-            align-items: baseline;
-            margin-bottom: 20px;
-            font-size: 19px;
-            line-height: 1.4211;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            line-height: 1.4;
             font-weight: 400;
         }
 
@@ -148,16 +154,20 @@
             background-color: var(--apple-text-primary);
             color: white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            margin-right: 15px;
             flex-shrink: 0;
-            transform: translateY(2px);
+        }
+
+        .quick-start-divider {
+            width: 1px;
+            height: 22px;
+            background: rgba(0,0,0,0.1);
         }
 
         /* --- Accordions (Clean) --- */
@@ -169,7 +179,7 @@
         details:last-child { border-bottom: none; }
 
         summary {
-            padding: 24px 0;
+            padding: 20px 0;
             cursor: pointer;
             font-size: 19px;
             font-weight: 600;
@@ -201,7 +211,7 @@
         }
 
         .details-content {
-            padding-bottom: 30px;
+            padding-bottom: 26px;
             animation: slideDown 0.3s ease-out;
         }
 
@@ -268,11 +278,11 @@
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 32px 0;
             color: var(--apple-text-secondary);
             font-size: 12px;
             border-top: 1px solid #e5e5ea;
-            margin-top: 60px;
+            margin-top: 40px;
         }
         
         .contact-link { color: var(--apple-blue); text-decoration: none; }
@@ -290,6 +300,9 @@
             .section-card { padding: 30px 24px; }
             .container { padding-top: 20px; }
             .megadoc-grid { grid-template-columns: 1fr 1fr; }
+            .quick-start { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+            .quick-start-divider { display: none; }
+            header { padding: 40px 0 24px; }
         }
     </style>
     <script>
@@ -314,7 +327,6 @@
 
     <nav class="global-nav">
         <div class="nav-content">
-            <a href="#getting-started">Start Here</a>
             <a href="#exercises">Copilot Exercises</a>
             <a href="#bring-it-home">Bring It Home</a>
         </div>
@@ -326,34 +338,24 @@
             <div class="subtitle">AI in Research</div>
         </header>
 
-        <section id="getting-started" class="section-card">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2>Getting Started</h2>
+        <section id="exercises" class="section-card">
+            <div style="text-align: center; margin-bottom: 28px;">
+                <h2>AI Copilot Exercises</h2>
+                <p style="color: var(--apple-text-secondary); max-width: 620px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
+                    Click an exercise to reveal the prompt, then copy it into Copilot. Always click <strong>"New Chat"</strong> between tasks.
+                </p>
             </div>
 
-            <ul class="step-list">
-                <li>
+            <div class="quick-start">
+                <div class="quick-start-item">
                     <span class="step-badge">1</span>
-                    <span>
-                        <strong>Log In:</strong>&nbsp;Click to open &nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a>&nbsp; (work account).
-                    </span>
-                </li>
-                <li>
+                    <span><strong>Log in:</strong>&nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a> (work account)</span>
+                </div>
+                <div class="quick-start-divider"></div>
+                <div class="quick-start-item">
                     <span class="step-badge">2</span>
-                    <span>
-                        <strong>Copy Prompts:</strong>&nbsp;Scroll down for Copilot exercises.
-                    </span>
-                </li>
-            </ul>
-        </section>
-
-        <section id="exercises" class="section-card">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2>AI Copilot Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
-                    Click an exercise to reveal the prompt. Copy and paste it into Copilot. <br>
-                    <strong>Important:</strong> Always click <strong>"New Chat"</strong> between tasks.
-                </p>
+                    <span><strong>Pick an exercise</strong>&nbsp;below and copy the prompt</span>
+                </div>
             </div>
 
               <details open>
@@ -760,7 +762,7 @@ Here is the paper or extract: [paste text or upload document]"</div>
         <!-- BRING IT HOME -->
         <section id="bring-it-home" class="section-card">
 
-            <div style="text-align: center; margin-bottom: 50px;">
+            <div style="text-align: center; margin-bottom: 40px;">
                 <p style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 12px;">Next Steps</p>
                 <h2>Loved the Workshop?<br>Bring It Home.</h2>
                 <p style="font-size: 19px; color: var(--apple-text-secondary); max-width: 620px; margin: 0 auto; line-height: 1.6;">
@@ -794,7 +796,7 @@ Here is the paper or extract: [paste text or upload document]"</div>
 
         </section>
 
-        <section class="section-card" style="text-align: center; padding: 50px;">
+        <section class="section-card" style="text-align: center; padding: 40px 50px;">
             <h3>Contact Information</h3>
             <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? Want us to deliver the workshop at your site or Train the Trainer, Feel free to contact us:</p>
             <p style="margin-bottom: 0;">
