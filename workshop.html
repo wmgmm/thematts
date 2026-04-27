@@ -488,7 +488,7 @@
 
         .inline-view-btn {
             display: inline-block;
-            background: var(--apple-blue);
+            background: #424245;
             color: white;
             padding: 2px 11px;
             border-radius: var(--radius-button);
@@ -512,8 +512,8 @@
 
         .tab-btn {
             flex: 1;
-            min-width: 120px;
-            padding: 10px 16px;
+            min-width: 0;
+            padding: 10px 14px;
             border: none;
             background: transparent;
             border-radius: 9px;
@@ -524,6 +524,20 @@
             cursor: pointer;
             transition: var(--transition);
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .tab-label-short { display: none; }
+
+        @media (max-width: 640px) {
+            .tab-bar { padding: 4px; gap: 3px; }
+            .tab-btn { padding: 8px 6px; font-size: 13px; }
+            .tab-label-full { display: none; }
+            .tab-label-short { display: inline; }
+            .tab-count { margin-left: 4px !important; padding: 1px 6px !important; font-size: 10px !important; }
         }
 
         .tab-btn:hover {
@@ -547,8 +561,8 @@
         }
 
         .tab-btn.active .tab-count {
-            background: rgba(0, 113, 227, 0.15);
-            color: var(--apple-blue);
+            background: rgba(0, 0, 0, 0.08);
+            color: var(--apple-text-primary);
         }
 
         .tab-panel { display: none; }
@@ -609,7 +623,7 @@
         }
 
         details[open] .ex-num {
-            background: var(--apple-blue);
+            background: var(--apple-text-primary);
             color: white;
         }
 
@@ -618,7 +632,7 @@
             font-size: 12px;
             font-weight: 700;
             color: white;
-            background: var(--apple-blue);
+            background: #424245;
             padding: 6px 14px;
             border-radius: var(--radius-button);
             transition: var(--transition);
@@ -628,17 +642,18 @@
         }
 
         details:hover summary::after {
-            background: var(--apple-blue-hover);
+            background: var(--apple-text-primary);
             transform: translateX(2px);
         }
 
         details[open] summary::after {
             content: 'Hide prompt';
-            background: var(--apple-text-secondary);
+            background: #d2d2d7;
+            color: var(--apple-text-primary);
         }
 
         details[open]:hover summary::after {
-            background: var(--apple-text-primary);
+            background: #c7c7cc;
             transform: none;
         }
 
@@ -965,15 +980,15 @@
                     <span class="copilot-url">m365copilot.com&nbsp;↗</span>
                 </a>
                 <div class="instruction-text">
-                    Click <span class="inline-view-btn">View prompt</span> on a row to see it.
+                    Click <span class="inline-view-btn">View prompt</span> on a row to see the prompt.
                     <div class="instruction-tip">Click <strong>"New Chat"</strong> in Copilot between tasks.</div>
                 </div>
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab">Copilot Exercises<span class="tab-count">9</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab">Workplace Prompts<span class="tab-count">7</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab">Concepts &amp; Reference<span class="tab-count">8</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">9</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
 
             <!-- ============ TAB 1: EXERCISES ============ -->
