@@ -4,24 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Matts - Workshop Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Apple Design System (Modern) --- */
+        /* --- Apple-inspired Design System --- */
         :root {
             --apple-blue: #0071e3;
             --apple-blue-hover: #0077ed;
             --apple-text-primary: #1d1d1f;
-            --apple-text-secondary: #86868b;
+            --apple-text-secondary: #6e6e73;
+            --apple-text-tertiary: #86868b;
             --apple-bg-page: #f5f5f7;
             --apple-bg-card: #ffffff;
+            --apple-bg-subtle: #fbfbfd;
+            --apple-border: #e5e5ea;
+            --apple-border-light: rgba(0, 0, 0, 0.06);
+            --accent-blue: #0071e3;
+            --accent-orange: #ff8a1f;
+            --accent-purple: #5e5ce6;
+            --accent-green: #34c759;
             --radius-card: 22px;
-            --radius-button: 980px; /* Pill shape */
-            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
-            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --radius-medium: 14px;
+            --radius-button: 980px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+            --shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+            --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --hero-mesh-base: #0b1220;
+            --border-soft: #e5e7eb;
+            --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
-        /* --- Base & Reset --- */
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: var(--font-stack);
             background-color: var(--apple-bg-page);
@@ -30,44 +47,51 @@
             padding: 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            line-height: 1.47059;
+            line-height: 1.47;
             letter-spacing: -0.022em;
         }
 
         .container {
-            max-width: 980px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 32px 22px;
+            padding: 24px 22px 40px;
         }
 
-        /* --- Navigation (Frosted Glass) --- */
+        /* --- Sticky Navigation --- */
         .global-nav {
             position: sticky;
             top: 0;
             z-index: 9999;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            height: 48px;
+            border-bottom: 1px solid var(--apple-border-light);
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.5s;
         }
 
         .nav-content {
             display: flex;
-            gap: 30px;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.01em;
         }
 
         .global-nav a {
             color: var(--apple-text-primary);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 400;
-            opacity: 0.8;
-            transition: opacity 0.2s ease;
+            opacity: 0.75;
+            transition: opacity 0.2s ease, color 0.2s ease;
         }
 
         .global-nav a:hover {
@@ -75,322 +99,1063 @@
             color: var(--apple-blue);
         }
 
-        /* --- Typography --- */
-        header {
+        @media (max-width: 600px) {
+            .nav-content { gap: 18px; }
+            .nav-brand { display: none; }
+            .global-nav a { font-size: 12px; }
+        }
+
+        /* --- Hero --- */
+        header.hero {
             text-align: center;
-            padding: 56px 0 32px;
-            animation: fadeIn 0.8s ease-out;
+            padding: 64px 0 40px;
         }
 
         h1 {
-            font-size: 56px;
-            line-height: 1.07143;
+            font-size: 48px;
+            line-height: 1.05;
             font-weight: 700;
-            letter-spacing: -0.005em;
-            margin-bottom: 10px;
+            letter-spacing: -0.025em;
+            margin: 0 0 14px;
         }
 
         .subtitle {
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 400;
-            letter-spacing: 0.009em;
-            color: var(--apple-text-secondary);
+            font-size: 12px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: var(--apple-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin: 0;
         }
 
         h2 {
-            font-size: 40px;
-            line-height: 1.1;
+            font-size: 30px;
+            line-height: 1.15;
             font-weight: 700;
-            letter-spacing: 0;
-            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+            margin: 0 0 8px;
         }
 
         h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
-        }
-        
-        h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--apple-blue);
-            margin: 25px 0 10px 0;
+            margin: 0 0 12px;
         }
 
-        /* --- Cards --- */
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 20px 0 8px 0;
+        }
+
+        /* --- Section Cards --- */
         .section-card {
             background: var(--apple-bg-card);
             border-radius: var(--radius-card);
-            padding: 48px 60px;
-            margin-bottom: 28px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
             box-shadow: var(--shadow-card);
         }
 
-        /* --- Quick start strip (top of merged card) --- */
-        .quick-start {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            background: var(--apple-bg-page);
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin: 0 auto 32px auto;
-            max-width: 760px;
+        @media (max-width: 734px) {
+            .section-card { padding: 24px 20px; }
         }
 
-        .quick-start-item {
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--apple-text-secondary);
+            font-size: 15px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--apple-blue);
+            margin-bottom: 8px;
+        }
+
+        /* --- Quick Start Steps (compact horizontal) --- */
+        .quick-start {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .quick-step {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 15px;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--apple-bg-subtle);
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--apple-border-light);
+            font-size: 14px;
             line-height: 1.4;
-            font-weight: 400;
         }
 
         .step-badge {
             background-color: var(--apple-text-primary);
             color: white;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            min-width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             flex-shrink: 0;
         }
 
-        .quick-start-divider {
-            width: 1px;
-            height: 22px;
-            background: rgba(0,0,0,0.1);
+        .quick-step a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        /* --- Accordions (Clean) --- */
-        details {
-            border-bottom: 1px solid #e5e5ea;
-            transition: all 0.3s ease;
+        .quick-step a:hover { text-decoration: underline; }
+
+        /* --- Activity Launchpad (PROMINENT) --- */
+        .launchpad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
-        
+
+        @media (max-width: 820px) {
+            .launchpad { grid-template-columns: 1fr; }
+        }
+
+        .activity-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 24px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: white;
+            min-height: 200px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            transition: filter 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .activity-card.blue {
+            background: linear-gradient(135deg, #0071e3 0%, #0a5fcc 100%);
+        }
+
+        .activity-card.orange {
+            background: linear-gradient(135deg, #ff8a1f 0%, #ff6b00 100%);
+        }
+
+        .activity-card.purple {
+            background: linear-gradient(135deg, #6a64ff 0%, #4f46d8 100%);
+        }
+
+        .activity-card > * { position: relative; z-index: 1; }
+
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .activity-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            opacity: 0.85;
+        }
+
+        .activity-icon {
+            font-size: 32px;
+        }
+
+        .activity-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .activity-desc {
+            font-size: 13px;
+            opacity: 0.92;
+            line-height: 1.45;
+            margin-bottom: 18px;
+        }
+
+        .activity-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.2);
+            border-radius: var(--radius-button);
+            align-self: flex-start;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .activity-card:hover .activity-cta {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* --- Activity Hero (single prominent card) --- */
+        .activity-hero-wrap {
+            margin-bottom: 32px;
+        }
+
+        .activity-hero {
+            display: block;
+            padding: 4px;
+            border-radius: var(--radius-card);
+            text-decoration: none;
+            color: white;
+            background: var(--hero-mesh-base);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .activity-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 22%, rgba(56, 189, 248, 0.55) 0%, transparent 42%),
+                radial-gradient(circle at 82% 18%, rgba(99, 102, 241, 0.50) 0%, transparent 46%),
+                radial-gradient(circle at 70% 88%, rgba(139, 92, 246, 0.42) 0%, transparent 48%),
+                radial-gradient(circle at 8% 90%, rgba(14, 165, 233, 0.35) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .activity-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 18, 32, 0.10) 0%, rgba(11, 18, 32, 0.45) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .activity-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-glass {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 22px;
+            border-radius: calc(var(--radius-card) - 4px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+        }
+
+        .activity-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-icon {
+            width: 36px;
+            height: 36px;
+            color: #E0F2FE;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+        .hero-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hero-eyebrow {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 600;
+            color: #BAE6FD;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0;
+            color: white;
+            letter-spacing: -0.015em;
+        }
+
+        .hero-desc {
+            font-size: 13px;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.72);
+            margin: 0;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 18px;
+            background: var(--apple-blue);
+            color: #ffffff;
+            border-radius: var(--radius-button);
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .activity-hero:hover .hero-cta {
+            background: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+        }
+
+        @media (max-width: 700px) {
+            .hero-glass { flex-wrap: wrap; padding: 16px; gap: 14px; }
+            .hero-content { flex-basis: calc(100% - 56px); }
+            .hero-cta { width: 100%; }
+            .hero-desc { display: none; }
+        }
+
+        /* --- Library Instructions Bar --- */
+        .library-instructions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 14px 18px;
+            background: var(--apple-bg-page);
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        .copilot-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #201F1E;
+            padding: 10px 18px 10px 12px;
+            border: 1px solid #E1DFDD;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            font-family: 'Segoe UI', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .copilot-card:hover {
+            background: #FAF9F8;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .copilot-card:focus-visible {
+            outline: 2px solid #0078D4;
+            outline-offset: 2px;
+        }
+
+        .copilot-logo {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .copilot-card-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .copilot-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #201F1E;
+        }
+
+        .copilot-url {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Inter Tight', sans-serif;
+            color: #0078D4;
+            margin-top: 2px;
+        }
+
+        .instruction-text {
+            font-size: 15px;
+            color: var(--apple-text-primary);
+            line-height: 1.5;
+        }
+
+        .instruction-text strong { color: var(--apple-text-primary); }
+
+        .instruction-tip {
+            font-size: 13px;
+            color: var(--apple-text-secondary);
+            margin-left: 6px;
+        }
+
+        .inline-view-btn {
+            display: inline-block;
+            background: #424245;
+            color: white;
+            padding: 2px 11px;
+            border-radius: var(--radius-button);
+            font-size: 12px;
+            font-weight: 700;
+            vertical-align: 1px;
+            margin: 0 3px;
+        }
+
+        /* --- Tab System --- */
+        .tab-bar {
+            display: flex;
+            gap: 28px;
+            background: transparent;
+            padding: 8px 0 0;
+            margin: 8px 0 28px;
+            border-bottom: 1px solid var(--border-soft);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            position: relative;
+            min-width: 0;
+            padding: 14px 0;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .tab-label-short { display: none; }
+
+        @media (max-width: 640px) {
+            .tab-bar { gap: 18px; }
+            .tab-btn { padding: 12px 0; font-size: 13px; }
+            .tab-label-full { display: none; }
+            .tab-label-short { display: inline; }
+        }
+
+        .tab-btn:hover {
+            color: var(--apple-text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--apple-text-primary);
+            font-weight: 600;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            height: 2px;
+            background: var(--apple-blue);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .tab-count {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--apple-text-tertiary);
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        .tab-btn.active .tab-count {
+            background: transparent;
+            color: var(--apple-text-secondary);
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeIn 0.25s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Details / Accordions --- */
+        details {
+            border-bottom: 1px solid var(--apple-border);
+            transition: background-color 0.2s ease;
+        }
+
         details:last-child { border-bottom: none; }
 
         summary {
-            padding: 20px 0;
+            padding: 16px 12px;
+            margin: 0 -12px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 19px;
+            font-size: 17px;
             font-weight: 600;
             color: var(--apple-text-primary);
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             outline: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: var(--apple-bg-page);
+            color: var(--apple-blue);
         }
 
         summary::-webkit-details-marker { display: none; }
+        summary::-moz-list-bullet { list-style-type: none; }
 
-        /* Custom animated plus icon */
-        summary::after {
-            content: '+';
-            font-size: 24px;
-            font-weight: 300;
+        .ex-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 8px;
+            background: transparent;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        details[open] .ex-num {
+            background: transparent;
             color: var(--apple-blue);
-            transition: transform 0.3s ease;
+            border-color: var(--apple-blue);
+        }
+
+        summary::after {
+            content: 'View prompt →';
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            background: #424245;
+            padding: 6px 14px;
+            border-radius: var(--radius-button);
+            transition: var(--transition);
+            margin-left: auto;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        details:hover summary::after {
+            background: var(--apple-text-primary);
+            transform: translateX(2px);
         }
 
         details[open] summary::after {
-            transform: rotate(45deg); /* Turns + to x */
+            content: 'Hide prompt';
+            background: #d2d2d7;
+            color: var(--apple-text-primary);
         }
 
-        details[open] summary {
-            color: var(--apple-blue);
+        details[open]:hover summary::after {
+            background: #c7c7cc;
+            transform: none;
         }
+
+        details[open] summary { color: var(--apple-blue); }
 
         .details-content {
-            padding-bottom: 26px;
-            animation: slideDown 0.3s ease-out;
+            padding: 0 0 24px 40px;
+            animation: slideDown 0.25s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            .details-content { padding-left: 0; }
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .exercise-note {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--apple-text-secondary);
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 14px;
+            line-height: 1.5;
         }
 
-        /* --- MegaDoc Specific Styles --- */
-        .megadoc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .megadoc-card {
-            background: var(--apple-bg-page);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .megadoc-icon { font-size: 28px; margin-bottom: 10px; }
-        .megadoc-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
-        .megadoc-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+        .exercise-note strong { color: var(--apple-text-primary); }
 
-        /* --- Prompt Box (Code style) --- */
+        /* --- Prompt Box --- */
         .prompt-box {
-            background-color: #f5f5f7;
+            background-color: #ffffff;
             padding: 20px;
-            border-radius: 12px;
-            font-family: "SF Mono", Menlo, monospace;
+            border-radius: var(--radius-medium);
+            font-family: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
             font-size: 13px;
             line-height: 1.6;
-            color: #333;
-            margin: 10px 0 15px 0;
+            color: #2c2c2e;
+            margin: 12px 0 14px 0;
             white-space: pre-wrap;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
         }
 
-        /* --- Buttons --- */
         .btn-copy {
-            background-color: #e8e8ed;
-            color: var(--apple-text-primary);
+            background-color: var(--apple-blue);
+            color: white;
             font-size: 12px;
-            padding: 8px 16px;
+            padding: 9px 18px;
             border-radius: var(--radius-button);
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background-color 0.2s;
+            transition: var(--transition);
+            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0, 113, 227, 0.22);
         }
 
         .btn-copy:hover {
-            background-color: #d2d2d7;
+            background-color: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.32);
         }
+
+        .btn-copy.success {
+            background-color: var(--accent-green);
+            box-shadow: 0 2px 6px rgba(52, 199, 89, 0.28);
+        }
+
+        /* --- Inner content blocks --- */
+        .inner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .inner-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .inner-card-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+        .inner-card strong { font-size: 14px; display: block; margin-bottom: 4px; }
+        .inner-card p { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.45; }
+
+        /* --- Take it Home (compact dual CTA) --- */
+        .take-home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .take-home-grid { grid-template-columns: 1fr; }
+        }
+
+        .take-home-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 24px 26px;
+            border-radius: var(--radius-medium);
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+            position: relative;
+        }
+
+        .take-home-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            border-color: #d4d4d8;
+        }
+
+        .take-home-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .take-home-card.purple .take-home-icon {
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 2px;
+        }
+
+        .take-home-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--apple-text-tertiary);
+            display: block;
+        }
+
+        .take-home-card.purple .take-home-tag { color: var(--apple-text-tertiary); }
+
+        .take-home-title {
+            font-size: 17px;
+            font-weight: 600;
+            display: block;
+            letter-spacing: -0.01em;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-desc {
+            font-size: 13.5px;
+            color: var(--apple-text-secondary);
+            display: block;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        .take-home-arrow {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .take-home-card:hover .take-home-arrow {
+            background: var(--apple-text-primary);
+            border-color: var(--apple-text-primary);
+            color: white;
+            transform: translate(2px, -2px);
+        }
+
+        .take-home-card.purple .take-home-arrow { color: var(--apple-text-secondary); }
+
+        /* --- Contact (slim) --- */
+        .contact-strip {
+            text-align: center;
+            padding: 28px 24px;
+        }
+
+        .contact-strip h3 { margin-bottom: 6px; }
+        .contact-strip p { color: var(--apple-text-secondary); margin: 0 0 14px; font-size: 14px; }
+
+        .contact-emails {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+        .contact-link { color: var(--apple-blue); text-decoration: none; font-weight: 600; }
+        .contact-link:hover { text-decoration: underline; }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 32px 0;
-            color: var(--apple-text-secondary);
+            padding: 32px 0 24px;
+            color: var(--apple-text-tertiary);
             font-size: 12px;
-            border-top: 1px solid #e5e5ea;
-            margin-top: 40px;
-        }
-        
-        .contact-link { color: var(--apple-blue); text-decoration: none; }
-        .contact-link:hover { text-decoration: underline; }
-
-        /* --- Utilities --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 734px) {
-            h1 { font-size: 40px; }
-            h2 { font-size: 32px; }
-            .section-card { padding: 30px 24px; }
-            .container { padding-top: 20px; }
-            .megadoc-grid { grid-template-columns: 1fr 1fr; }
-            .quick-start { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
-            .quick-start-divider { display: none; }
-            header { padding: 40px 0 24px; }
+        footer a { color: var(--apple-text-secondary); }
+
+        /* --- Reverse engineering subsections --- */
+        .sub-recipe {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--apple-border-light);
+        }
+
+        .sub-recipe:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        /* --- Bordered callout --- */
+        .callout {
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-left: 4px solid var(--apple-blue);
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #0056b3;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .callout-body {
+            font-style: italic;
+            color: #2c3e50;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .sample-data {
+            margin-top: 22px;
+            padding: 18px;
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            border: 1px solid #dce6f0;
+        }
+
+        .sample-data h4 { color: #333; margin: 0 0 10px; }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 9px 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .sample-textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            background-color: #fff;
+            color: #333;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; letter-spacing: -0.02em; }
+            h2 { font-size: 24px; }
+            header.hero { padding: 40px 0 28px; }
+            .subtitle { letter-spacing: 0.14em; }
+            .activity-card { min-height: 170px; padding: 22px 20px; }
+            .activity-title { font-size: 19px; }
+        }
+
+        /* Print-friendly */
+        @media print {
+            .global-nav, .activity-card, .take-home-grid { break-inside: avoid; }
+            details { break-inside: avoid; }
+            details[open] summary::after { display: none; }
         }
     </style>
-    <script>
-        function copyToClipboard(id) {
-            const promptText = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(promptText).then(() => {
-                const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
-                const originalText = button.innerText;
-                button.innerText = "Copied";
-                button.style.backgroundColor = "#34c759"; // Apple Success Green
-                button.style.color = "white";
-                setTimeout(() => {
-                    button.innerText = originalText;
-                    button.style.backgroundColor = "#e8e8ed";
-                    button.style.color = "var(--apple-text-primary)";
-                }, 2000);
-            });
-        }
-    </script>
 </head>
 <body>
 
     <nav class="global-nav">
         <div class="nav-content">
-            <a href="#exercises">Copilot Exercises</a>
-            <a href="#bring-it-home">Bring It Home</a>
+            <span class="nav-brand">The Matts</span>
+            <a href="#library">Copilot Exercises</a>
+            <a href="#take-home">Take Home</a>
         </div>
     </nav>
 
     <div class="container">
-        <header>
+
+        <header class="hero">
             <h1>The Matts Workshop</h1>
-            <div class="subtitle">AI in Research</div>
+            <p class="subtitle">Digital Productivity &amp; AI in Research</p>
         </header>
 
-        <section id="exercises" class="section-card">
-            <div style="text-align: center; margin-bottom: 28px;">
-                <h2>AI Copilot Exercises</h2>
-                <p style="color: var(--apple-text-secondary); max-width: 620px; margin: 0 auto; font-size: 17px; line-height: 1.5;">
-                    Click an exercise to reveal the prompt, then copy it into Copilot. Always click <strong>"New Chat"</strong> between tasks.
-                </p>
-            </div>
-
-            <div class="quick-start">
-                <div class="quick-start-item">
-                    <span class="step-badge">1</span>
-                    <span><strong>Log in:</strong>&nbsp;<a href="https://m365copilot.com/" target="_blank" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Microsoft Copilot</a> (work account)</span>
-                </div>
-                <div class="quick-start-divider"></div>
-                <div class="quick-start-item">
-                    <span class="step-badge">2</span>
-                    <span><strong>Pick an exercise</strong>&nbsp;below and copy the prompt</span>
+        <!-- ============ LIBRARY (TABBED) ============ -->
+        <section id="library" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Copilot Prompt Library</div>
+                    <h2>Copilot Exercises, Workplace Prompts &amp; Reference</h2>
                 </div>
             </div>
 
-              <details open>
-                <summary>Exercise 1: Explain it like I am 5 (ELI5)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        Application: Quickly understand complex topics or prepare simple explanations.
-                    </div>
-                    <div class="prompt-box" id="progressive-learning">"Explain [TOPIC] to me like I am 5 (ELI5)"</div>
-                    <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
-                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>You can either type a topic or upload a pdf of a research paper (click the + plus button then click upload). Replace [TOPIC] with: "cloud computing", "DNA", "quantum physics", "offside rule in football" etc.</em></p>
+            <div class="library-instructions">
+                <a href="https://m365copilot.com/" target="_blank" rel="noopener" class="copilot-card">
+                    <img src="CopilotLogo.png" alt="" class="copilot-logo">
+                    <span class="copilot-card-text">
+                        <span class="copilot-label">Click to open Copilot</span>
+                        <span class="copilot-url">m365copilot.com&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    Click <strong>"New Chat"</strong> in Copilot between tasks.
                 </div>
-            </details>
+            </div>
 
-              <details open>
-                <summary>Exercise 2: Devil's Advocate (Blind Spots)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        Application: Stress-test your challenges, new ideas, or decisions before finalising them.
+            <div class="tab-bar" role="tablist">
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">4</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
+            </div>
+
+            <!-- ============ TAB 1: EXERCISES ============ -->
+            <div id="tab-exercises" class="tab-panel active" role="tabpanel">
+
+                <details open>
+                    <summary><span class="ex-num">01</span><span style="flex:1;">Explain it like I am 5 (ELI5)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Quickly understand complex topics or documents!
+                        </div>
+                        <div class="prompt-box" id="progressive-learning">"Explain [TOPIC] to me like I am 5 (ELI5)"</div>
+                        <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Two ways to use it:<br>1. Type a topic: replace [TOPIC] with e.g. "CRISPR", "p-values", "cloud computing", "the offside rule".<br>2. Upload a research paper: click the <strong>+</strong> button, press <strong>Upload document</strong>, attach the PDF, then send the prompt (you can leave [TOPIC] as-is or write "this paper").</em></p>
                     </div>
-                    <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
-                    <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
-                    <p style="margin-top:15px; font-size:13px; color:var(--apple-text-secondary);"><em>Add in your own scenario: "I want to move from sales to leadership role", "dealing with a difficult client", provide some useful context as well. You could upload a document instead of typing a scenario e.g. upload your new travel policy</em></p>
-                   
-                </div>
-            </details>
+                </details>
 
-            <details open>
-                <summary>Exercise 3: Second Pair of Eyes (Critical Peer Review)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        Application: Interrogate a paper, report, or draft to identify overreach, hidden assumptions, and missing context before submission or circulation.
+                <details>
+                    <summary><span class="ex-num">02</span><span style="flex:1;">Devil's Advocate (Blind Spots)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Stress-test ideas, plans, or decisions before finalising them.
+                        </div>
+                        <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
+                        <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Drop in your own scenario, or upload a document instead, e.g. a draft grant section or new lab protocol.</em></p>
+
+                        <div style="margin-top:18px; padding-top:14px; border-top: 1px solid var(--apple-border-light);">
+                            <strong style="font-size:13px; color:var(--apple-text-primary); display:block; margin-bottom:8px;">💡 You could experiment with alternative versions of the Devil's Advocate prompt.</strong>
+                            <ul style="margin:0; padding-left:20px; font-size:13px; color:var(--apple-text-secondary); line-height:1.6;">
+                                <li><strong>Red Team Auditor:</strong> "Act as a ruthless Red Team auditor. Do not compliment my idea. Only expose its fatal flaws and vulnerabilities. My scenario is: [scenario here]"</li>
+                            </ul>
+                        </div>
                     </div>
+                </details>
 
-                    <div style="margin-top: 25px;">
+                <details>
+                    <summary><span class="ex-num">03</span><span style="flex:1;">Second Pair of Eyes (Critical Peer Review)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Interrogate a paper, methods section, or draft for overreach, hidden assumptions, and missing context.
+                        </div>
                         <div class="prompt-box" id="second-pair-of-eyes">"Act as a critical but fair peer reviewer. Answer the following questions clearly and directly.
 
 Question one: What can and cannot be legitimately concluded from the methodology and results alone? Where does the abstract overreach?
@@ -402,418 +1167,632 @@ Question three: What debate is this paper entering? Who is it responding to, and
 Question four: What is the most important paper missing from the references?
 
 Here is the paper or extract: [paste text or upload document]"</div>
-                        <div style="margin-top: 12px;">
-                            <button onclick="copyToClipboard('second-pair-of-eyes')" class="btn-copy">Copy Prompt</button>
+                        <button onclick="copyToClipboard('second-pair-of-eyes')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste an abstract, methods, results, or a full draft. Or upload a PDF/Word file. Use before submission or response to reviewers.</em></p>
+
+                        <div style="margin-top:18px; padding-top:14px; border-top: 1px solid var(--apple-border-light);">
+                            <strong style="font-size:13px; color:var(--apple-text-primary); display:block; margin-bottom:8px;">💡 You could experiment with alternative versions of the peer-review prompt.</strong>
+                            <ul style="margin:0; padding-left:20px; font-size:13px; color:var(--apple-text-secondary); line-height:1.6;">
+                                <li><strong>Hostile Reviewer:</strong> "Act as a sceptical reviewer at a top‑tier journal. Assume the burden of proof has not been met. Identify only weaknesses, omissions, and risks of misinterpretation."</li>
+                            </ul>
                         </div>
                     </div>
+                </details>
 
-                    <p style="margin-top: 20px; font-size: 13px; color: var(--apple-text-secondary);">
-                        <em>
-                            Paste an abstract, methods section, results, or full draft. Upload a PDF or Word file if easier. Use before submission, response to reviewers, or internal review.
-                        </em>
-                    </p>
+                <details>
+                    <summary><span class="ex-num">04</span><span style="flex:1;">Breaking Down Large Tasks (Risk Assessment)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Break a large or uncertain project into stakeholders, milestones, risks, and mitigations.
+                        </div>
 
-                    <div style="margin-top: 25px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.05);">
-                        <strong style="font-size: 13px; color: #1d1d1f; display: block; margin-bottom: 8px;">
-                            💡 You could experiment with alternative versions of the peer‑review prompt.
-                        </strong>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6;">
-                            <li>
-                                <strong>Hostile Reviewer:</strong>
-                                "Act as a sceptical reviewer at a top‑tier journal. Assume the burden of proof has not been met. Identify only weaknesses, omissions, and risks of misinterpretation."
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </details>
-
-            <details open>
-                <summary>Exercise 4: Breaking Down Large Tasks (Risk Assessment)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        Application: Break a large or uncertain project into stakeholders, milestones, risks, and mitigations before committing time or resources.
-                    </div>
-
-                    <!-- Prompt 1 -->
-                    <div style="margin-top: 25px;">
                         <div class="prompt-box" id="risk-assessment-1">"I'm planning a project to [one sentence description]. Who are the main stakeholders and what are the key milestones?"</div>
-                        <div style="margin-top: 12px;">
-                            <button onclick="copyToClipboard('risk-assessment-1')" class="btn-copy">Copy Prompt 1</button>
-                        </div>
+                        <button onclick="copyToClipboard('risk-assessment-1')" class="btn-copy">Copy Prompt 1</button>
+
+                        <div class="prompt-box" id="risk-assessment-2" style="margin-top:14px;">"Based on that project, what are the five most likely risks? For each, rate the likelihood (high/medium/low) and potential impact (high/medium/low)."</div>
+                        <button onclick="copyToClipboard('risk-assessment-2')" class="btn-copy">Copy Prompt 2</button>
+
+                        <div class="prompt-box" id="risk-assessment-3" style="margin-top:14px;">"For the three highest-priority risks, suggest one practical mitigation for each. Keep them realistic for a small team with limited budget."</div>
+                        <button onclick="copyToClipboard('risk-assessment-3')" class="btn-copy">Copy Prompt 3</button>
+
+                        <div class="prompt-box" id="risk-assessment-4" style="margin-top:14px;">"Now combine all of this into a one-page risk assessment summary I could share with my manager. Use plain language and include a simple table for the risks."</div>
+                        <button onclick="copyToClipboard('risk-assessment-4')" class="btn-copy">Copy Prompt 4</button>
+
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Run the prompts in order, reusing each output. Useful when a project feels overwhelming or politically sensitive.</em></p>
                     </div>
+                </details>
 
-                    <!-- Prompt 2 -->
-                    <div style="margin-top: 28px;">
-                        <div class="prompt-box" id="risk-assessment-2">"Based on that project, what are the five most likely risks? For each, rate the likelihood (high/medium/low) and potential impact (high/medium/low)."</div>
-                        <div style="margin-top: 12px;">
-                            <button onclick="copyToClipboard('risk-assessment-2')" class="btn-copy">Copy Prompt 2</button>
-                        </div>
-                    </div>
-
-                    <!-- Prompt 3 -->
-                    <div style="margin-top: 28px;">
-                        <div class="prompt-box" id="risk-assessment-3">"For the three highest-priority risks, suggest one practical mitigation for each. Keep them realistic for a small team with limited budget."</div>
-                        <div style="margin-top: 12px;">
-                            <button onclick="copyToClipboard('risk-assessment-3')" class="btn-copy">Copy Prompt 3</button>
-                        </div>
-                    </div>
-
-                    <!-- Prompt 4 -->
-                    <div style="margin-top: 28px;">
-                        <div class="prompt-box" id="risk-assessment-4">"Now combine all of this into a one-page risk assessment summary I could share with my manager. Use plain language and include a simple table for the risks."</div>
-                        <div style="margin-top: 12px;">
-                            <button onclick="copyToClipboard('risk-assessment-4')" class="btn-copy">Copy Prompt 4</button>
-                        </div>
-                    </div>
-
-                    <p style="margin-top: 24px; font-size: 13px; color: var(--apple-text-secondary);">
-                        <em>
-                            Start with Prompt 1 and reuse the outputs step‑by‑step. You can paste text between prompts or upload a short project brief instead.
-                        </em>
-                    </p>
-
-                    <div style="margin-top: 25px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.05);">
-                        <strong style="font-size: 13px; color: #1d1d1f; display: block; margin-bottom: 8px;">
-                            💡 This works well for projects that feel overwhelming or politically sensitive.
-                        </strong>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>Responsible AI (Best Practices)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        <strong>The Human in the Loop:</strong> AI is a tool to enhance your work, not replace your judgment. Always keep these three pillars in mind.
-                    </div>
-
-                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); align-items: start;">
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">🤝</div>
-                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Human-Centric Approach</strong>
-                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
-                                <li style="margin-bottom: 8px;">It's your assistant (augment over replace).</li>
-                                <li style="margin-bottom: 8px;">Protect critical skills: use AI to enhance them.</li>
-                                <li>Target repetitive manual tasks first.</li>
-                            </ul>
-                        </div>
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">✅</div>
-                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Practical Checks</strong>
-                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
-                                <li style="margin-bottom: 8px;"><strong>Always</strong> double-check the output.</li>
-                                <li style="margin-bottom: 8px;">Be Transparent: "I used AI for this."</li>
-                                <li>Protect your data (use IT approved AI tools).</li>
-                            </ul>
-                        </div>
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">⚖️</div>
-                            <strong class="megadoc-title" style="font-size: 16px; margin-bottom: 10px;">Responsibility & Ethics</strong>
-                            <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: var(--apple-text-secondary); line-height: 1.6;">
-                                <li style="margin-bottom: 8px;">Watch out for AI's blind spots (bias/hallucinations).</li>
-                                <li style="margin-bottom: 8px;">Own the results: AI doesn't take the blame.</li>
-                                <li>Align your usage of AI with your values.</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>It's Your Teammate (The Conversation)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        <strong>The Reality:</strong> You rarely get a perfect draft from a human colleague on the first try—don't expect it from AI. The magic happens in the follow-up.
-                    </div>
-
-                    <div style="margin: 30px 0 20px 0; text-align: center;">
-                        <img src="YOUR_IMAGE_PATH/image_3.png" alt="Comparison: The Vending Machine mindset vs The Teammate mindset" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    </div>
-
-                    <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-bottom: 30px; border: 1px solid #eaeaea;">
-                        <strong style="display: block; margin-bottom: 10px; font-size: 16px;">🚀 Use the "Teammate" Boilerplate Prompt</strong>
-                        <p style="margin-bottom: 15px; font-size: 14px; color: var(--apple-text-secondary);">
-                            As illustrated on the right side above, stop asking for instant, giant deliverables. Instead, frame the interaction as a guided collaboration using this structure:
-                        </p>
-                        <div style="background: white; border-left: 4px solid #0071e3; border-radius: 6px; padding: 15px; font-family: Menlo, Monaco, 'Courier New', monospace; font-size: 13px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                            "I want you to help me <strong>[INSERT BIG TASK HERE]</strong>, but don't try to solve it all at once. Instead, act as a helpful guide..."
-                        </div>
-                    </div>
-                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">🤝</div>
-                            <strong class="megadoc-title" style="font-size: 17px;">The "Teammate" Mindset</strong>
-                            <p class="megadoc-desc" style="margin-bottom: 15px;">
-                                Stop treating Copilot like a vending machine (input coin -> get product). Treat it like a clever intern.
-                            </p>
-                            <p class="megadoc-desc">
-                                If the output isn't right, don't rewrite the prompt from scratch. <strong>Just talk to it.</strong> Tell it what it did wrong and guide it to the answer.
-                            </p>
-                        </div>
-
-                        <div class="megadoc-card" style="text-align: left; background: #f5f5f7;">
-                            <strong class="megadoc-title" style="margin-bottom: 15px; display:block;">Try these follow-up phrases:</strong>
-
-                            <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
-                                "Actually, can you make it more formal?"
-                            </div>
-
-                            <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
-                                "That's good, but what if we tried a friendlier approach?"
-                            </div>
-
-                            <div style="background: white; border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--apple-text-primary);">
-                                "Can you expand on that second point? It's a bit too brief."
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>Practical Prompting (The 1-2-3 Method)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        <strong>The Golden Rule:</strong> Better inputs equal better outputs. Follow this 3-step flow for every prompt to get the best results.
-                    </div>
-
-                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-
-                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">1.</div>
-                                <strong class="megadoc-title" style="font-size: 17px;">Give Context</strong>
-                                <p class="megadoc-desc" style="margin-bottom: 15px;">Provide relevant background information (Role, Data, Reports).</p>
-                            </div>
-                            <div style="background: #f5f5f7; padding: 12px; border-radius: 12px; font-size: 22px; display: flex; justify-content: space-around; color: #555;">
-                                <span title="Role & Background">👤</span>
-                                <span title="Spreadsheet Data">📊</span>
-                                <span title="Website/Research">🌐</span>
-                                <span title="Word Doc/Report">📄</span>
-                            </div>
-                        </div>
-
-                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">2.</div>
-                                <strong class="megadoc-title" style="font-size: 17px;">Make Request</strong>
-                                <p class="megadoc-desc">Be specific about exactly what you want the AI to do.</p>
-                            </div>
-                            <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                                "Review my email for clarity..."
-                            </div>
-                        </div>
-
-                        <div class="megadoc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <div style="font-size: 36px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 5px;">3.</div>
-                                <strong class="megadoc-title" style="font-size: 17px;">Explain Purpose</strong>
-                                <p class="megadoc-desc">Share <em>why</em> you need this (The "So That").</p>
-                            </div>
-                            <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                                "...to maximize the chances of a quick response."
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>Private AI (Running Models Locally)</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        <strong>You Are In Charge:</strong> Running AI locally using on-device storage offers a secure environment, total privacy, zero fees, and works without Wi-Fi.
-                    </div>
-
-                    <div class="megadoc-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">🛡️</div>
-                            <strong class="megadoc-title">Total Privacy & Control</strong>
-                            <p class="megadoc-desc" style="margin-bottom: 10px;">
-                                <strong>Data Sovereignty:</strong> No data leaves your device.
-                            </p>
-                            <ul style="padding-left: 20px; margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
-                                <li>Safe for sensitive/classified info.</li>
-                                <li>Full IP protection & ownership.</li>
-                                <li>No third-party platform risks.</li>
-                            </ul>
-                        </div>
-
-                        <div class="megadoc-card" style="text-align: left;">
-                            <div class="megadoc-icon">⚡</div>
-                            <strong class="megadoc-title">Cost & Efficiency</strong>
-                            <p class="megadoc-desc" style="margin-bottom: 10px;">
-                                <strong>Operational Benefits:</strong> Lower overheads.
-                            </p>
-                            <ul style="padding-left: 20px; margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
-                                <li><strong>Zero Fees:</strong> Open source models</li>
-                                <li>Offline Capable</li>
-                                <li>Lower energy consumption.</li>
-                            </ul>
-                        </div>
-
-                        <div class="megadoc-card" style="text-align: left; background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
-                            <div class="megadoc-icon">🎓</div>
-                            <strong class="megadoc-title" style="color: var(--apple-blue);">Private AI Workshop</strong>
-                            <p class="megadoc-desc" style="font-weight: 600; margin-bottom: 10px;">
-                                We run a 2-hour practical session to get you started with Private AI on your laptop.
-                            </p>
-                            <a href="mailto:haydenmj1@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Contact us for details →</a>
-                        </div>
-
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>NotebookLM Prompt Library</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        <strong>The Tool:</strong> Google's NotebookLM allows you to "ground" AI in your specific documents. We have curated a library of NotebookLM prompts to help you analyse them.
-                    </div>
-
-                    <ul style="list-style: none; padding: 0; margin: 20px 0 30px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
-                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🎧</span>
-                            <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Audio Overviews</strong>
-                            <span style="font-size: 13px; color: var(--apple-text-secondary);">Turn dry reports into engaging "Deep Dive" podcasts.</span>
-                        </li>
-                        <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
-                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕵️</span>
-                            <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Critical Analysis</strong>
-                            <span style="font-size: 13px; color: var(--apple-text-secondary);">Identify blind spots, contradictions, and missing data.</span>
-                        </li>
-                        <li style="background: #fbfbfd; border: 1px solid rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
-                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🏗️</span>
-                            <strong style="display: block; font-size: 14px; margin-bottom: 4px;">Structured Output</strong>
-                            <span style="font-size: 13px; color: var(--apple-text-secondary);">Convert notes into Slide Decks, Briefs, and SOPs.</span>
-                        </li>
-                    </ul>
-
-                    <div style="text-align: center;">
-                        <a href="notebooklm.html" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px; transition: opacity 0.2s;">
-                            Open Prompt Library (click link) ↗
-                        </a>
-                        <p style="margin-top: 10px; font-size: 12px; color: var(--apple-text-secondary);">
-                            Includes 15+ specialised prompts for Research & Strategy
-                        </p>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>AI for Coding Support</summary>
-                <div class="details-content">
-                    <div class="exercise-note">
-                        You can use AI to support coding by <strong>chatting</strong> with it directly paste in your code, errors, or questions or use an <strong>Coding Agent</strong> that connects to your system and can read, write, and run files on your behalf. You can run an Agent with a local model (to keep your data safe) but you need a decent GPU<br><br>
-                        Have a look at these prompts that might help support your coding:
-                        <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener noreferrer">AI Coding Prompt Ideas</a>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>Your AI Road Map</summary>
-                <div class="details-content">
-                    <div style="text-align: center; margin-bottom: 35px; padding: 0 10px;">
-                        <h4 style="margin-top: 0; font-size: 18px; color: var(--apple-text-primary);">No one knows everything about AI, but together we can figure it out faster.</h4>
-                        <p style="color: var(--apple-text-secondary); margin: 5px 0 15px 0;">This is the AI Community Approach.</p>
-                        
-                        <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" style="display: inline-block; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 8px 16px; border-radius: 980px; transition: background 0.2s;">
-                            📄 Read our Paper on the AI Community Approach ↗
-                        </a>
-                    </div>
-
-                    <div class="megadoc-grid">
-                        <div class="megadoc-card">
-                            <div class="megadoc-icon">🧠</div>
-                            <strong class="megadoc-title">Mindset</strong>
-                            <p class="megadoc-desc">Be curious. Ask: "Could this be useful?"</p>
-                        </div>
-                        <div class="megadoc-card">
-                            <div class="megadoc-icon">💬</div>
-                            <strong class="megadoc-title">Conversations</strong>
-                            <p class="megadoc-desc">Shared learning, wins, and fails.</p>
-                        </div>
-                        <div class="megadoc-card">
-                            <div class="megadoc-icon">🧪</div>
-                            <strong class="megadoc-title">Experiments</strong>
-                            <p class="megadoc-desc">Learn by doing. Build expertise.</p>
-                        </div>
-                        <div class="megadoc-card">
-                            <div class="megadoc-icon">🤝</div>
-                            <strong class="megadoc-title">Community</strong>
-                            <p class="megadoc-desc">Turn scattered experiments into shared learning.</p>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-        </section>
-
-        <!-- BRING IT HOME -->
-        <section id="bring-it-home" class="section-card">
-
-            <div style="text-align: center; margin-bottom: 40px;">
-                <p style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 12px;">Next Steps</p>
-                <h2>Loved the Workshop?<br>Bring It Home.</h2>
-                <p style="font-size: 19px; color: var(--apple-text-secondary); max-width: 620px; margin: 0 auto; line-height: 1.6;">
-                    You've seen what AI can do. Now imagine your whole team working this way.
-                </p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-
-                <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" style="background: linear-gradient(145deg, #e8f4ff 0%, #d0e8ff 100%); border: 1px solid rgba(0,113,227,0.15); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; color: var(--apple-text-primary); transition: all 0.3s ease;">
-                    <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #0071e3; margin-bottom: 16px;">📣 Workshop Flyer</span>
-                    <span style="font-size: 44px; margin-bottom: 16px;">📄</span>
-                    <span style="font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2;">Share the Workshop</span>
-                    <p style="font-size: 15px; color: var(--apple-text-secondary); line-height: 1.55; flex-grow: 1; margin-bottom: 28px;">
-                        Download and share this one-pager with your manager or team. We can come to you — it covers everything they need to know about booking an on-site session.
-                    </p>
-                    <span style="background: #0071e3; color: white; font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 980px; align-self: flex-start;">⬇ Download Flyer</span>
-                </a>
-
-                <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" style="background: linear-gradient(145deg, #f0f0ff 0%, #e2e2ff 100%); border: 1px solid rgba(88,86,214,0.15); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; color: var(--apple-text-primary); transition: all 0.3s ease;">
-                    <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5856d6; margin-bottom: 16px;">🎓 Train the Trainer</span>
-                    <span style="font-size: 44px; margin-bottom: 16px;">🏠</span>
-                    <span style="font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2;">We Train Your Trainers</span>
-                    <p style="font-size: 15px; color: var(--apple-text-secondary); line-height: 1.55; flex-grow: 1; margin-bottom: 28px;">
-                        The Matts offer a dedicated Train the Trainer service — we equip your internal champions to deliver this workshop confidently across your organisation.
-                    </p>
-                    <span style="background: #5856d6; color: white; font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 980px; align-self: flex-start;">⬇ Find Out More</span>
-                </a>
 
             </div>
 
+            <!-- ============ TAB 2: PROMPT RECIPES ============ -->
+            <div id="tab-recipes" class="tab-panel" role="tabpanel">
+
+                <details open>
+                    <summary><span style="flex:1;">Role-Specific Document Extraction</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Upload a document and force the AI to only show you the tasks, deadlines, and information relevant to your specific job title.
+                        </div>
+                        <div class="prompt-box" id="role-extraction">Read this Document from the perspective of a [INSERT ROLE HERE e.g. project manager]. Only pull out the information,action items and deadlines that would impact my role.</div>
+                        <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Attach your document to Copilot, paste this prompt, and replace the bracketed text with your actual job title to instantly cut through the noise.</em></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Meta-Prompting: Let AI Write the Prompt</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Leverage the AI's knowledge to design expert prompts for tasks in specific domains e.g. 'Triage Helpdesk Emails in IT'.
+                        </div>
+                        <div class="prompt-box" id="meta-prompt-technique">"You are an expert AI prompt designer. Please design the most effective prompt to: [INSERT SPECIFIC TASK AND DOMAIN]. 
+
+Consider what key elements, criteria, or details matter, what output format is most actionable, and the reasoning steps that are essential."</div>
+                        <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Reverse Engineering (Prompts from Gold-Standard Outputs)</span></summary>
+                    <div class="details-content">
+                        <p style="margin-top:0;"><strong>Concept:</strong> "Meta-Prompting" or Reverse Engineering. Instead of guessing how to prompt, feed the AI the desired output (or a stylistic reference) and ask it to write the prompt for you.</p>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">1. Meeting Notes Template</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this when you have a "Gold Standard" document and you want all future documents to follow that exact structure.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-meeting">"Analyze the meeting notes below. Create a single, reusable prompt that instructs an AI to generate notes using this exact format, style, and structure from a raw transcript.
+
+[PASTE GOLD STANDARD NOTES HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">2. Corporate Tone Persona</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Essential for marketing. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-persona">"Analyze the tone, vocabulary, and sentence structure of the text below. Write a 'Persona Prompt' defining these characteristics so an AI can consistently write new articles in this exact style.
+
+[PASTE BRAND TEXT HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">3. Academic Abstract Summarizer</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this for technical writing where constraints (word count, objectivity) are strict and you want to summarize new content in that voice.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-abstract">"Deconstruct the academic abstract below. Identify the implied word count constraints, formal tone, and structural elements. Write a reusable prompt designed to generate similar abstracts from new content.
+
+[PASTE ABSTRACT HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">4. Image-to-Text Style Transfer</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this to generate a detailed text description of an image, which you can then use to generate new images in that style.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-image">"Act as a professional photographer. Analyze the attached image. Write a detailed text-to-image prompt capturing the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style.
+
+[UPLOAD IMAGE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">5. Website Style &amp; Format</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this to extract design schemas from screenshots or HTML code to produce new sites with a similar look and feel.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-website">"Analyze the visual design, color palette, typography, and layout of the website below. Write a design system prompt that instructs an AI to apply this exact look and feel to new code.
+
+[PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">No More AI Slop? (Style Guide)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
+                        </div>
+                        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
+
+STYLE AND TONE CONSTRAINTS
+Apply these strict rules to the task above:
+* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
+* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
+* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
+* Punctuation &amp; Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
+                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</em></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Meeting Notes</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"</div>
+                        <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Excel Data Analysis</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."</div>
+                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Text Categorisation</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."</div>
+                        <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- ============ TAB 3: CONCEPTS & REFERENCE ============ -->
+            <div id="tab-concepts" class="tab-panel" role="tabpanel">
+
+                <details open>
+                    <summary><span style="flex:1;">Responsible AI (Best Practices)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Human in the Loop:</strong> AI enhances your work, it doesn't replace your judgment. Three pillars to keep in mind.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🤝</span>
+                                <strong>Human-Centric</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Augment, don't replace.</li>
+                                    <li style="margin-bottom: 6px;">Protect critical skills.</li>
+                                    <li>Target repetitive tasks first.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">✅</span>
+                                <strong>Practical Checks</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Always double-check the output.</li>
+                                    <li style="margin-bottom: 6px;">Be transparent: "I used AI for this."</li>
+                                    <li>Use IT-approved tools only.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">⚖️</span>
+                                <strong>Responsibility</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Watch for bias and hallucinations.</li>
+                                    <li style="margin-bottom: 6px;">You own the result, not the AI.</li>
+                                    <li>Use AI in line with your values.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">It's Your Teammate (The Conversation)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Reality:</strong> You rarely get a perfect draft from a colleague first time. Don't expect it from AI either. The magic is in the follow-up.
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; margin: 18px 0;">
+                            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04);">
+                                <div style="font-size: 38px; line-height: 1; margin-bottom: 10px;" aria-hidden="true">🥤</div>
+                                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-text-tertiary); margin-bottom: 6px;">Avoid</div>
+                                <strong style="display:block; font-size: 15px; margin-bottom: 6px;">The Vending Machine</strong>
+                                <p style="margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">Insert prompt &rarr; expect a perfect deliverable in one shot.</p>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; color: var(--apple-text-tertiary);" aria-hidden="true">vs</div>
+                            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04); position: relative;">
+                                <div style="font-size: 38px; line-height: 1; margin-bottom: 10px;" aria-hidden="true">🤝</div>
+                                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 6px;">Adopt</div>
+                                <strong style="display:block; font-size: 15px; margin-bottom: 6px;">The Teammate</strong>
+                                <p style="margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">Iterate together: guide, correct, refine until it lands.</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--apple-bg-page); border-radius: 12px; padding: 18px; margin-bottom: 20px; border: 1px solid var(--apple-border-light);">
+                            <strong style="display: block; margin-bottom: 8px; font-size: 15px;">🚀 The "Teammate" Boilerplate</strong>
+                            <p style="margin-bottom: 12px; font-size: 13px; color: var(--apple-text-secondary);">
+                                Frame the interaction as a guided collaboration:
+                            </p>
+                            <div style="background: white; border-left: 4px solid var(--apple-blue); border-radius: 6px; padding: 12px 14px; font-family: 'SF Mono', Consolas, monospace; font-size: 13px; color: #333;">
+                                "I want you to help me <strong>[INSERT BIG TASK HERE]</strong>, but don't try to solve it all at once. Instead, act as a helpful guide..."
+                            </div>
+                        </div>
+
+                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🤝</span>
+                                <strong style="font-size:15px;">The Mindset</strong>
+                                <p style="margin-top: 8px;">
+                                    Treat Copilot like a clever intern, not a vending machine.
+                                </p>
+                                <p style="margin-top: 8px;">
+                                    If the output isn't right, don't start over. <strong>Just talk to it</strong> and guide it.
+                                </p>
+                            </div>
+                            <div class="inner-card">
+                                <strong style="margin-bottom: 12px; display:block; font-size:14px;">Try these follow-up phrases:</strong>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Actually, can you make it more formal?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "That's good, but what if we tried a friendlier approach?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Can you expand on that second point? It's a bit too brief."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Practical Prompting (The 1-2-3 Method)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Golden Rule:</strong> Better inputs equal better outputs. Follow this 3-step flow for every prompt to get the best results.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">1.</div>
+                                    <strong style="font-size:15px;">Give Context</strong>
+                                    <p style="margin-top:6px; margin-bottom: 12px;">Provide relevant background information (Role, Data, Reports).</p>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 10px; font-size: 20px; display: flex; justify-content: space-around; color: #555;">
+                                    <span title="Role &amp; Background">👤</span>
+                                    <span title="Spreadsheet Data">📊</span>
+                                    <span title="Website/Research">🌐</span>
+                                    <span title="Word Doc/Report">📄</span>
+                                </div>
+                            </div>
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">2.</div>
+                                    <strong style="font-size:15px;">Make Request</strong>
+                                    <p style="margin-top:6px;">Be specific about exactly what you want the AI to do.</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "Review my email for clarity..."
+                                </div>
+                            </div>
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">3.</div>
+                                    <strong style="font-size:15px;">Explain Purpose</strong>
+                                    <p style="margin-top:6px;">Share <em>why</em> you need this (The "So That").</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "...to maximize the chances of a quick response."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Hacks - MegaDoc (Context Booster / External memory)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Concept:</strong> Stop retyping the same background. Keep a Word doc of your org's context and paste it into prompts.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔤</span>
+                                <strong>Acronyms</strong>
+                                <p>e.g. "DCG = Division of Cancer &amp; Genetics"</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">✒️</span>
+                                <strong>Style Guide</strong>
+                                <p>"Formal but warm. UK English. Bullet points."</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">📋</span>
+                                <strong>Key Facts</strong>
+                                <p>Personnel, boilerplate, standard procedures.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🚀</span>
+                                <strong>Project Overview</strong>
+                                <p>Goals, status, blockers.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 6px; color: var(--apple-text-primary);">Try it today:</p>
+                        <p style="font-size: 13px; margin: 0 0 12px; color: var(--apple-text-secondary);">List your top 10 acronyms and one project snapshot. Paste into your next prompt and watch the difference.</p>
+
+                        <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
+[PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
+
+Based on this context, draft an update email to the team about [Your Topic]..."</div>
+                        <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Private AI (Running Models Locally)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>You Are In Charge:</strong> Run AI on your own device. Total privacy, zero fees, no Wi-Fi needed.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🛡️</span>
+                                <strong>Privacy &amp; Control</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Data never leaves your device.</li>
+                                    <li style="margin-bottom: 6px;">Safe for sensitive material.</li>
+                                    <li>Full IP ownership.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">⚡</span>
+                                <strong>Cost &amp; Efficiency</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Zero fees (open-source models).</li>
+                                    <li style="margin-bottom: 6px;">Works offline.</li>
+                                    <li>Lower energy use.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card" style="background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
+                                <span class="inner-card-icon">🎓</span>
+                                <strong style="color: var(--apple-blue);">Private AI Workshop</strong>
+                                <p style="margin: 8px 0;">A 2-hour session to get you started on your own laptop.</p>
+                                <a href="mailto:haydenmj1@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Contact us for details →</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">NotebookLM Prompt Library</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Tool:</strong> NotebookLM grounds AI in your own documents. Our curated prompt library helps you analyse them.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🎧</span>
+                                <strong>Audio Overviews</strong>
+                                <p>Turn dry reports into engaging "Deep Dive" podcasts.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🕵️</span>
+                                <strong>Critical Analysis</strong>
+                                <p>Identify blind spots, contradictions, and missing data.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🏗️</span>
+                                <strong>Structured Output</strong>
+                                <p>Convert notes into Slide Decks, Briefs, and SOPs.</p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                                Open Prompt Library ↗
+                            </a>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">
+                                Includes 15+ specialised prompts for Research &amp; Strategy
+                            </p>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI for Coding Support</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Two ways to use AI for code:</strong>
+                            <ul style="padding-left: 18px; margin: 10px 0 12px; font-size: 14px; line-height: 1.55;">
+                                <li style="margin-bottom: 6px;"><strong>Chat:</strong> paste in code, errors, or questions.</li>
+                                <li><strong>Coding Agent:</strong> connects to your system and can read, write, and run files. Use a local model + decent GPU to keep data private.</li>
+                            </ul>
+                            <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight:600;">AI Coding Prompt Ideas →</a>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Your AI Road Map</span></summary>
+                    <div class="details-content">
+                        <div style="text-align: center; margin-bottom: 22px;">
+                            <strong style="font-size: 16px; color: var(--apple-text-primary); display:block; margin-bottom:6px;">No one knows everything about AI. Together we figure it out faster.</strong>
+                            <p style="color: var(--apple-text-secondary); margin: 4px 0 12px;">The AI Community Approach.</p>
+                            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 8px 16px; border-radius: 980px;">
+                                📄 Read our Paper on the AI Community Approach ↗
+                            </a>
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🧠</span>
+                                <strong>Mindset</strong>
+                                <p>Be curious. Ask: "Could this be useful?"</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">💬</span>
+                                <strong>Conversations</strong>
+                                <p>Shared learning, wins, and fails.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🧪</span>
+                                <strong>Experiments</strong>
+                                <p>Learn by doing. Build expertise.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🤝</span>
+                                <strong>Community</strong>
+                                <p>Turn scattered experiments into shared learning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
         </section>
 
-        <section class="section-card" style="text-align: center; padding: 40px 50px;">
-            <h3>Contact Information</h3>
-            <p style="color: var(--apple-text-secondary); margin-bottom: 20px;">Questions? Want us to deliver the workshop at your site or Train the Trainer, Feel free to contact us:</p>
-            <p style="margin-bottom: 0;">
-                Dr. Matt Mort & Matt Hayden: <a href="mailto:thematts@cardiff.ac.uk" class="contact-link">thematts@cardiff.ac.uk</a><br>
-            
+        <!-- ============ TAKE IT HOME ============ -->
+        <section id="take-home" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Take it Home</div>
+                    <h2>Bring 'AI in Research' to your team</h2>
+                </div>
+                <p>Two ways to share what you've learnt today.</p>
+            </div>
+
+            <div class="take-home-grid">
+                <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 3v5h5"/>
+                            <path d="M9 13h6"/>
+                            <path d="M9 17h4"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Workshop Flyer</span>
+                        <span class="take-home-title">Share with your manager</span>
+                        <span class="take-home-desc">One-pager covering everything they need to book us on-site.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" rel="noopener" class="take-home-card purple">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9l9-5 9 5-9 5-9-5z"/>
+                            <path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/>
+                            <path d="M21 9v5"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Train the Trainer</span>
+                        <span class="take-home-title">We train your trainers</span>
+                        <span class="take-home-desc">Equip your internal champions to deliver this workshop.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="section-card contact-strip">
+            <h3>Questions?</h3>
+            <p>Want us to deliver the workshop at your site or train your trainers?</p>
+            <div class="contact-emails">
+                <span>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a></span>
+                <span>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a></span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">
+                    Read our paper: AI The Community Approach ↗
+                </a>
             </p>
-        </section>
+        </footer>
+
     </div>
 
-    <footer>
-        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
-        <p style="margin-top: 12px;">
-            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" class="contact-link">
-                Read our paper: AI The Community Approach ↗
-            </a>
-        </p>
-    </footer>
+    <script>
+        // ===== Tab switcher =====
+        (function () {
+            var buttons = document.querySelectorAll('.tab-btn');
+            var panels = document.querySelectorAll('.tab-panel');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var target = btn.getAttribute('data-tab');
+                    buttons.forEach(function (b) {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    panels.forEach(function (p) { p.classList.remove('active'); });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    var panel = document.getElementById('tab-' + target);
+                    if (panel) { panel.classList.add('active'); }
+                });
+            });
+        })();
 
+        // ===== Copy to clipboard =====
+        function copyToClipboard(id) {
+            var el = document.getElementById(id);
+            if (!el) { return; }
+            var text = el.innerText;
+            var btn = document.querySelector("button[onclick=\"copyToClipboard('" + id + "')\"]");
+            var done = function () {
+                if (!btn) { return; }
+                var original = btn.innerText;
+                btn.innerText = 'Copied';
+                btn.classList.add('success');
+                setTimeout(function () {
+                    btn.innerText = original;
+                    btn.classList.remove('success');
+                }, 1800);
+            };
+
+            // Modern clipboard API with fallback for older Edge or restricted contexts
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+            } else {
+                fallbackCopy(text);
+                done();
+            }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+    </script>
 </body>
 </html>
