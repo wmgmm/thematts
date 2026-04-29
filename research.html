@@ -979,6 +979,93 @@
 
         footer a { color: var(--apple-text-secondary); }
 
+        /* --- Copilot prompts to try --- */
+        .prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 734px) {
+            .prompt-grid { grid-template-columns: 1fr; }
+        }
+
+        .prompt-card {
+            background: var(--apple-bg-subtle);
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-medium);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .prompt-card:hover {
+            box-shadow: var(--shadow-card);
+            border-color: #d8d8de;
+        }
+
+        .prompt-card h3 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .prompt-card .prompt-text {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--apple-text-secondary);
+            font-style: italic;
+            flex: 1;
+        }
+
+        .prompt-card .topic-token {
+            display: inline-block;
+            background: rgba(0, 113, 227, 0.10);
+            color: var(--apple-blue);
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12.5px;
+            padding: 1px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            align-self: flex-start;
+            background: var(--apple-blue);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-button);
+            padding: 8px 18px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+        }
+
+        .copy-btn:hover { background: var(--apple-blue-hover); }
+        .copy-btn.success { background: var(--accent-green); }
+
+        .prompts-intro {
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-left: 4px solid var(--apple-blue);
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 0 0 20px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2c3e50;
+        }
+
         /* --- Reverse engineering subsections --- */
         .sub-recipe {
             margin-top: 20px;
@@ -1077,6 +1164,7 @@
         <div class="nav-content">
             <span class="nav-brand">The Matts</span>
             <a href="#library">Copilot Exercises</a>
+            <a href="#copilot-prompts">Prompts to Try</a>
             <a href="#take-home">Take Home</a>
         </div>
     </nav>
@@ -1085,7 +1173,7 @@
 
         <header class="hero">
             <h1>The Matts Workshop</h1>
-            <p class="subtitle">AI in Research</p>
+            <p class="subtitle">Digital Productivity &amp; AI in Research</p>
         </header>
 
         <!-- ============ LIBRARY (TABBED) ============ -->
@@ -1668,6 +1756,155 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
             </div>
         </section>
 
+        <!-- ============ COPILOT PROMPTS TO TRY ============ -->
+        <section id="copilot-prompts" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Have a go</div>
+                    <h2>Copilot prompts that might support research</h2>
+                </div>
+                <p>AI might be useful to support your research. Just remember responsible AI use.</p>
+            </div>
+
+            <p class="prompts-intro">
+                AI is improving rapidly, but Copilot is not a dedicated research tool, so specialist tools may perform better for serious work. Treat these prompts as starting points, not finished answers. Copy one, paste it into Copilot, swap <span class="topic-token">[insert topic]</span> for whatever you are working on, and iterate from the response. The point is to experiment.
+            </p>
+
+            <div class="prompt-grid">
+                <article class="prompt-card">
+                    <h3>Review Literature</h3>
+                    <p class="prompt-text">"Review the current literature on <span class="topic-token">[insert topic]</span>, identifying key themes and foundational papers."</p>
+                    <button class="copy-btn" type="button" data-prompt="Review the current literature on [insert topic], identifying key themes and foundational papers.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Write a Draft</h3>
+                    <p class="prompt-text">"Write a preliminary draft for a research paper on <span class="topic-token">[insert topic]</span>, structuring it with an introduction, methodology, and discussion."</p>
+                    <button class="copy-btn" type="button" data-prompt="Write a preliminary draft for a research paper on [insert topic], structuring it with an introduction, methodology, and discussion.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Generate Diagram</h3>
+                    <p class="prompt-text">"Generate a conceptual diagram illustrating the primary mechanisms of <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Generate a conceptual diagram illustrating the primary mechanisms of [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Systematic Review</h3>
+                    <p class="prompt-text">"Conduct a systematic review of <span class="topic-token">[insert topic]</span>, compiling methodologies and outcomes from the last five years of literature."</p>
+                    <button class="copy-btn" type="button" data-prompt="Conduct a systematic review of [insert topic], compiling methodologies and outcomes from the last five years of literature.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Search Papers</h3>
+                    <p class="prompt-text">"Search for recent peer-reviewed papers concerning <span class="topic-token">[insert topic]</span> and summarize their abstracts."</p>
+                    <button class="copy-btn" type="button" data-prompt="Search for recent peer-reviewed papers concerning [insert topic] and summarize their abstracts.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Extract Data</h3>
+                    <p class="prompt-text">"Extract statistical data and p-values regarding <span class="topic-token">[insert topic]</span> from the attached documents and format them into a table."</p>
+                    <button class="copy-btn" type="button" data-prompt="Extract statistical data and p-values regarding [insert topic] from the attached documents and format them into a table.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Review my Writing</h3>
+                    <p class="prompt-text">"Review my writing on <span class="topic-token">[insert topic]</span> for academic tone, clarity, and structural coherence."</p>
+                    <button class="copy-btn" type="button" data-prompt="Review my writing on [insert topic] for academic tone, clarity, and structural coherence.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Write a Report</h3>
+                    <p class="prompt-text">"Write a comprehensive, formally structured report detailing the findings on <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Write a comprehensive, formally structured report detailing the findings on [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Analyse Data</h3>
+                    <p class="prompt-text">"Analyse the provided dataset on <span class="topic-token">[insert topic]</span>, identifying key trends and outliers."</p>
+                    <button class="copy-btn" type="button" data-prompt="Analyse the provided dataset on [insert topic], identifying key trends and outliers.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Find Datasets</h3>
+                    <p class="prompt-text">"Find publicly available datasets related to <span class="topic-token">[insert topic]</span> for secondary analysis."</p>
+                    <button class="copy-btn" type="button" data-prompt="Find publicly available datasets related to [insert topic] for secondary analysis.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Find Grants</h3>
+                    <p class="prompt-text">"Find active research grants and funding opportunities applicable to <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Find active research grants and funding opportunities applicable to [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Create Poster</h3>
+                    <p class="prompt-text">"Create an academic conference poster layout summarizing research on <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Create an academic conference poster layout summarizing research on [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Convert a File</h3>
+                    <p class="prompt-text">"Convert this document about <span class="topic-token">[insert topic]</span> from a PDF into a formatted Word file."</p>
+                    <button class="copy-btn" type="button" data-prompt="Convert this document about [insert topic] from a PDF into a formatted Word file.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Search Patents</h3>
+                    <p class="prompt-text">"Search for existing patents and intellectual property filings related to <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Search for existing patents and intellectual property filings related to [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Paraphrase Text</h3>
+                    <p class="prompt-text">"Paraphrase the following text about <span class="topic-token">[insert topic]</span> to improve flow and eliminate jargon."</p>
+                    <button class="copy-btn" type="button" data-prompt="Paraphrase the following text about [insert topic] to improve flow and eliminate jargon.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Clean my Data</h3>
+                    <p class="prompt-text">"Clean my data on <span class="topic-token">[insert topic]</span> by removing duplicates and standardizing formatting."</p>
+                    <button class="copy-btn" type="button" data-prompt="Clean my data on [insert topic] by removing duplicates and standardizing formatting.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Write Grant Letter</h3>
+                    <p class="prompt-text">"Write a persuasive grant letter requesting funding for research on <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Write a persuasive grant letter requesting funding for research on [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Solve Equations</h3>
+                    <p class="prompt-text">"Solve the following mathematical equations related to the theoretical model of <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Solve the following mathematical equations related to the theoretical model of [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Scrape Data</h3>
+                    <p class="prompt-text">"Scrape data from the specified websites regarding <span class="topic-token">[insert topic]</span> and compile it into a spreadsheet."</p>
+                    <button class="copy-btn" type="button" data-prompt="Scrape data from the specified websites regarding [insert topic] and compile it into a spreadsheet.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Extract Images</h3>
+                    <p class="prompt-text">"Extract all charts and images from this report on <span class="topic-token">[insert topic]</span> and save them as high-resolution files."</p>
+                    <button class="copy-btn" type="button" data-prompt="Extract all charts and images from this report on [insert topic] and save them as high-resolution files.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Find Courses</h3>
+                    <p class="prompt-text">"Find advanced academic courses and training programs focusing on <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Find advanced academic courses and training programs focusing on [insert topic].">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>Find Jobs</h3>
+                    <p class="prompt-text">"Find current academic and industry job openings that require expertise in <span class="topic-token">[insert topic]</span>."</p>
+                    <button class="copy-btn" type="button" data-prompt="Find current academic and industry job openings that require expertise in [insert topic].">Copy prompt</button>
+                </article>
+            </div>
+        </section>
+
         <!-- ============ TAKE IT HOME ============ -->
         <section id="take-home" class="section-card">
             <div class="section-header">
@@ -1781,6 +2018,31 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                 done();
             }
         }
+
+        // ===== Prompt cards: copy on click =====
+        (function () {
+            var buttons = document.querySelectorAll('.copy-btn[data-prompt]');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var text = btn.getAttribute('data-prompt');
+                    var original = btn.innerText;
+                    var done = function () {
+                        btn.innerText = 'Copied';
+                        btn.classList.add('success');
+                        setTimeout(function () {
+                            btn.innerText = original;
+                            btn.classList.remove('success');
+                        }, 1500);
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+                    } else {
+                        fallbackCopy(text);
+                        done();
+                    }
+                });
+            });
+        })();
 
         function fallbackCopy(text) {
             var ta = document.createElement('textarea');
