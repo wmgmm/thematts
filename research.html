@@ -74,8 +74,11 @@
 
         .nav-content {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 16px;
         }
 
         .nav-brand {
@@ -99,8 +102,8 @@
             color: var(--apple-blue);
         }
 
-        @media (max-width: 600px) {
-            .nav-content { gap: 18px; }
+        @media (max-width: 720px) {
+            .nav-content { gap: 14px; }
             .nav-brand { display: none; }
             .global-nav a { font-size: 12px; }
         }
@@ -549,6 +552,62 @@
             margin-top: 2px;
         }
 
+        /* --- Download card variant (for GitHub data files) --- */
+        .download-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: var(--apple-text-primary);
+            padding: 10px 18px 10px 12px;
+            border: 1px solid var(--apple-border);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .download-card:hover {
+            background: #FAFAFA;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .download-card-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f4f8;
+            color: var(--accent-green);
+            border-radius: 6px;
+            font-size: 18px;
+        }
+
+        .download-card-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .download-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+        }
+
+        .download-url {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin-top: 2px;
+        }
+
         .instruction-text {
             font-size: 15px;
             color: var(--apple-text-primary);
@@ -991,6 +1050,14 @@
             .prompt-grid { grid-template-columns: 1fr; }
         }
 
+        /* Three-column variant for ML routes */
+        .prompt-grid.cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        @media (max-width: 900px) {
+            .prompt-grid.cols-3 { grid-template-columns: 1fr; }
+        }
+
         .prompt-card {
             background: var(--apple-bg-subtle);
             border: 1px solid var(--apple-border);
@@ -1034,6 +1101,30 @@
             padding: 1px 8px;
             border-radius: 6px;
             white-space: nowrap;
+        }
+
+        /* Level badge for ML routes */
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            align-self: flex-start;
+        }
+        .level-badge.quick { background: rgba(255, 138, 31, 0.14); color: #b85c00; }
+        .level-badge.careful { background: rgba(52, 199, 89, 0.12); color: #1f7d3a; }
+        .level-badge.code { background: rgba(94, 92, 230, 0.14); color: #4338ca; }
+
+        .prompt-meta {
+            font-size: 12.5px;
+            color: var(--apple-text-tertiary);
+            margin: 0;
+            line-height: 1.5;
         }
 
         .copy-btn {
@@ -1105,6 +1196,15 @@
             font-size: 13px;
         }
 
+        /* Warning variant of callout (amber) */
+        .callout.warning {
+            background: #fff8e6;
+            border-color: #ffe0a8;
+            border-left-color: #ff8a1f;
+        }
+        .callout.warning strong { color: #8a4d00; }
+        .callout.warning .callout-body { color: #4a3500; }
+
         .sample-data {
             margin-top: 22px;
             padding: 18px;
@@ -1165,6 +1265,8 @@
             <span class="nav-brand">The Matts</span>
             <a href="#library">Copilot Exercises</a>
             <a href="#copilot-prompts">Prompts to Try</a>
+            <a href="#data-analysis">Data Analysis</a>
+            <a href="#machine-learning">Machine Learning</a>
             <a href="#take-home">Take Home</a>
         </div>
     </nav>
@@ -1901,6 +2003,138 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                     <h3>Find Jobs</h3>
                     <p class="prompt-text">"Find current academic and industry job openings that require expertise in <span class="topic-token">[insert topic]</span>."</p>
                     <button class="copy-btn" type="button" data-prompt="Find current academic and industry job openings that require expertise in [insert topic].">Copy prompt</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ DATA ANALYSIS WITH COPILOT ============ -->
+        <section id="data-analysis" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Hands-on practice</div>
+                    <h2>Try Copilot for data analysis</h2>
+                </div>
+                <p>Run these prompts on a sample staff dataset.</p>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://github.com/YOUR-USERNAME/workshop-files/raw/main/staff.xlsx" target="_blank" rel="noopener" class="download-card">
+                    <span class="download-card-icon" aria-hidden="true">📊</span>
+                    <span class="download-card-text">
+                        <span class="download-label">Download sample data</span>
+                        <span class="download-url">staff.xlsx&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    Upload <strong>staff.xlsx</strong> to Copilot, then try these prompts in order. Start a <strong>"New Chat"</strong> between runs to keep results clean.
+                </div>
+            </div>
+
+            <div class="callout warning">
+                <strong>Check the output</strong>
+                <div class="callout-body">
+                    Copilot gives quick insights from spreadsheet data, and it can be wrong. Skill level changes the best route: a quick prompt for orientation, Python or R for serious analysis, a dedicated stats tool for publication. Validate any number you intend to act on, especially for publication or formal reporting. Use these prompts as a starting point, not a finished answer.
+                </div>
+            </div>
+
+            <div class="prompt-grid">
+                <article class="prompt-card">
+                    <h3>1. Quick overview</h3>
+                    <p class="prompt-text">"Summarise this dataset in 5 bullet points."</p>
+                    <button class="copy-btn" type="button" data-prompt="Summarise this dataset in 5 bullet points.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>2. Sentiment analysis</h3>
+                    <p class="prompt-text">"Analyse the sentiment of the 'Favourite Phrase' column."</p>
+                    <button class="copy-btn" type="button" data-prompt="Analyse the sentiment of the 'Favourite Phrase' column.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>3. Themes &amp; topics</h3>
+                    <p class="prompt-text">"Identify common themes in the 'Favourite Phrase' column."</p>
+                    <button class="copy-btn" type="button" data-prompt="Identify common themes in the 'Favourite Phrase' column.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>4. Duplicate detection</h3>
+                    <p class="prompt-text">"Identify any repeated phrases or patterns in the data."</p>
+                    <button class="copy-btn" type="button" data-prompt="Identify any repeated phrases or patterns in the data.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>5. Narrative insight</h3>
+                    <p class="prompt-text">"Explain what this dataset tells us about organisational culture."</p>
+                    <button class="copy-btn" type="button" data-prompt="Explain what this dataset tells us about organisational culture.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>6. Executive summary</h3>
+                    <p class="prompt-text">"Create a short executive summary of key insights from this dataset."</p>
+                    <button class="copy-btn" type="button" data-prompt="Create a short executive summary of key insights from this dataset.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <h3>7. Recommendations</h3>
+                    <p class="prompt-text">"Based on this data, suggest 3 actions a leadership team should consider."</p>
+                    <button class="copy-btn" type="button" data-prompt="Based on this data, suggest 3 actions a leadership team should consider.">Copy prompt</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ MACHINE LEARNING WITH COPILOT ============ -->
+        <section id="machine-learning" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Hands-on practice</div>
+                    <h2>Try Copilot for machine learning</h2>
+                </div>
+                <p>Three routes to the same task. The right one depends on your use case.</p>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://github.com/YOUR-USERNAME/workshop-files/raw/main/housing_price_dataset.xlsx" target="_blank" rel="noopener" class="download-card">
+                    <span class="download-card-icon" aria-hidden="true">🏠</span>
+                    <span class="download-card-text">
+                        <span class="download-label">Download sample data</span>
+                        <span class="download-url">housing_price_dataset.xlsx&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    The task: predict house price from house size. Upload the file, then pick one of the three routes below.
+                </div>
+            </div>
+
+            <div class="callout warning">
+                <strong>The competence gap</strong>
+                <div class="callout-body">
+                    Copilot can build a model that looks plausible and produce a confident answer. It can also build a model that fails on new data. Without ML experience, you may not spot the difference. Use case decides the route: a quick prompt for exploration, a guided walkthrough for results that matter, code for control and reproducibility. Sanity-check the equation against the chart, and validate with a specialist or colleague before you act on the result.
+                </div>
+            </div>
+
+            <div class="prompt-grid cols-3">
+                <article class="prompt-card">
+                    <span class="level-badge quick">⚡ Route 1 / Quick</span>
+                    <h3>Direct prediction</h3>
+                    <p class="prompt-text">"Predict house price based on uploaded data."</p>
+                    <p class="prompt-meta">Fast answer in one shot. You need to verify it before acting. Useful for orientation or a sanity check, not for results that matter.</p>
+                    <button class="copy-btn" type="button" data-prompt="Predict house price based on uploaded data.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <span class="level-badge careful">🎓 Route 2 / Responsible</span>
+                    <h3>Guided walkthrough</h3>
+                    <p class="prompt-text">"I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step."</p>
+                    <p class="prompt-meta">Step-by-step in a free visual ML tool, no code required. Better for important results where you want to see and trust the model.</p>
+                    <button class="copy-btn" type="button" data-prompt="I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step.">Copy prompt</button>
+                </article>
+
+                <article class="prompt-card">
+                    <span class="level-badge code">💻 Route 3 / Code</span>
+                    <h3>Generate a script</h3>
+                    <p class="prompt-text">"Write a machine learning script to predict house prices based on uploaded data."</p>
+                    <p class="prompt-meta">Reproducible Python code you can read, audit, and edit. Best for moving the work into a real pipeline.</p>
+                    <button class="copy-btn" type="button" data-prompt="Write a machine learning script to predict house prices based on uploaded data.">Copy prompt</button>
                 </article>
             </div>
         </section>
