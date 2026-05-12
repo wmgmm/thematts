@@ -596,12 +596,14 @@
         }
 
         .download-label {
+            display: block;
             font-size: 14px;
             font-weight: 600;
             color: var(--apple-text-primary);
         }
 
         .download-url {
+            display: block;
             font-size: 13px;
             font-weight: 600;
             color: var(--apple-blue);
@@ -2018,7 +2020,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
             </div>
 
             <div class="library-instructions">
-                <a href="https://github.com/YOUR-USERNAME/workshop-files/raw/main/staff.xlsx" target="_blank" rel="noopener" class="download-card">
+                <a href="staff.xlsx" download class="download-card">
                     <span class="download-card-icon" aria-hidden="true">📊</span>
                     <span class="download-card-text">
                         <span class="download-label">Download sample data</span>
@@ -2093,7 +2095,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
             </div>
 
             <div class="library-instructions">
-                <a href="https://github.com/YOUR-USERNAME/workshop-files/raw/main/housing_price_dataset.xlsx" target="_blank" rel="noopener" class="download-card">
+                <a href="housing_price_dataset.xlsx" download class="download-card">
                     <span class="download-card-icon" aria-hidden="true">🏠</span>
                     <span class="download-card-text">
                         <span class="download-label">Download sample data</span>
@@ -2122,7 +2124,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                 </article>
 
                 <article class="prompt-card">
-                    <span class="level-badge careful">🎓 Route 2 / Learning</span>
+                    <span class="level-badge careful">🎓 Route 2 / Learning+Validation</span>
                     <h3>Guided walkthrough</h3>
                     <p class="prompt-text">"I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step."</p>
                     <p class="prompt-meta">Step-by-step in a free visual ML tool, no code required. Better for important results where you want to see and trust the model.</p>
