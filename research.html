@@ -1129,6 +1129,33 @@
             line-height: 1.5;
         }
 
+        /* Skill / Risk / Goal strip for ML routes (light grey) */
+        .route-dims {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 5px 12px;
+            background: var(--apple-bg-page);
+            border: 1px solid var(--apple-border-light);
+            border-radius: 10px;
+            padding: 11px 13px;
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.4;
+            align-self: stretch;
+        }
+        .route-dims dt {
+            font-weight: 700;
+            color: var(--apple-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 10px;
+            align-self: center;
+        }
+        .route-dims dd {
+            margin: 0;
+            color: var(--apple-text-secondary);
+        }
+
         .copy-btn {
             align-self: flex-start;
             background: var(--apple-blue);
@@ -1268,7 +1295,6 @@
             <a href="#library">Copilot Exercises</a>
             <a href="#copilot-prompts">Prompts to Try</a>
             <a href="#data-analysis">Data Analysis</a>
-            <a href="#machine-learning">Machine Learning</a>
             <a href="#take-home">Take Home</a>
         </div>
     </nav>
@@ -1303,7 +1329,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">4</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">5</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
@@ -1331,7 +1357,6 @@
                         </div>
                         <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
                         <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Drop in your own scenario, or upload a document instead, e.g. a draft grant section or new lab protocol.</em></p>
 
                         <div style="margin-top:18px; padding-top:14px; border-top: 1px solid var(--apple-border-light);">
                             <strong style="font-size:13px; color:var(--apple-text-primary); display:block; margin-bottom:8px;">💡 You could experiment with alternative versions of the Devil's Advocate prompt.</strong>
@@ -1343,7 +1368,77 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">03</span><span style="flex:1;">Second Pair of Eyes (Critical Peer Review)</span></summary>
+                    <summary><span class="ex-num">03</span><span style="flex:1;">Machine Learning (Three Routes to One Task)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: predict house price from house size, three ways. Align your AI use to your skill level, risk and goals. Responsible AI is individual, and you own the output.
+                        </div>
+
+                        <div class="library-instructions">
+                            <a href="housing_price_dataset.xlsx" download class="download-card">
+                                <span class="download-card-icon" aria-hidden="true">🏠</span>
+                                <span class="download-card-text">
+                                    <span class="download-label">Download sample data</span>
+                                    <span class="download-url">housing_price_dataset.xlsx&nbsp;↗</span>
+                                </span>
+                            </a>
+                            <div class="instruction-text">
+                                The task: predict house price from house size. Upload the file, then pick one of the three routes below.
+                            </div>
+                        </div>
+
+                        <div class="callout warning">
+                            <strong>The skills gap</strong>
+                            <div class="callout-body">
+                                Copilot can build a model that looks plausible and gives a confident answer. It can also build a model that fails on new data, and without ML experience you may miss the difference. Your skill level, the risk, and your goal set the route: a quick prompt for exploration, a guided walkthrough for results that matter, code for control and reproducibility. Sanity-check the equation against the chart, and validate with a specialist or colleague before you act on the result.
+                            </div>
+                        </div>
+
+                        <div class="prompt-grid cols-3">
+                            <article class="prompt-card">
+                                <span class="level-badge quick">⚡ Route 1 / Quick</span>
+                                <h3>Direct prediction</h3>
+                                <p class="prompt-text">"Predict house price based on uploaded data."</p>
+                                <p class="prompt-meta">Fast answer in one shot. You need to verify it before acting. Useful for orientation or a sanity check, not for results that matter.</p>
+                                <dl class="route-dims">
+                                    <dt>Skill</dt><dd>none needed</dd>
+                                    <dt>Risk</dt><dd>low stakes, you verify</dd>
+                                    <dt>Goal</dt><dd>explore, sanity-check</dd>
+                                </dl>
+                                <button class="copy-btn" type="button" data-prompt="Predict house price based on uploaded data.">Copy prompt</button>
+                            </article>
+
+                            <article class="prompt-card">
+                                <span class="level-badge careful">🎓 Route 2 / Learning+Validation</span>
+                                <h3>Guided walkthrough</h3>
+                                <p class="prompt-text">"I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step."</p>
+                                <p class="prompt-meta">Step-by-step in a free visual ML tool, no code required. Better for important results where you want to see and trust the model.</p>
+                                <dl class="route-dims">
+                                    <dt>Skill</dt><dd>some, visual tool</dd>
+                                    <dt>Risk</dt><dd>results that matter</dd>
+                                    <dt>Goal</dt><dd>see and trust the model</dd>
+                                </dl>
+                                <button class="copy-btn" type="button" data-prompt="I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step.">Copy prompt</button>
+                            </article>
+
+                            <article class="prompt-card">
+                                <span class="level-badge code">💻 Route 3 / Code</span>
+                                <h3>Generate a script</h3>
+                                <p class="prompt-text">"Write a machine learning script to predict house prices based on uploaded data."</p>
+                                <p class="prompt-meta">Reproducible Python code you can read, audit, and edit. Best for moving the work into a real pipeline.</p>
+                                <dl class="route-dims">
+                                    <dt>Skill</dt><dd>reads Python</dd>
+                                    <dt>Risk</dt><dd>high control</dd>
+                                    <dt>Goal</dt><dd>reproduce, move to a pipeline</dd>
+                                </dl>
+                                <button class="copy-btn" type="button" data-prompt="Write a machine learning script to predict house prices based on uploaded data.">Copy prompt</button>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">04</span><span style="flex:1;">Second Pair of Eyes (Critical Peer Review)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Interrogate a paper, methods section, or draft for overreach, hidden assumptions, and missing context.
@@ -1372,7 +1467,7 @@ Here is the paper or extract: [paste text or upload document]"</div>
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">04</span><span style="flex:1;">Breaking Down Large Tasks (Risk Assessment)</span></summary>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Breaking Down Large Tasks (Risk Assessment)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Break a large or uncertain project into stakeholders, milestones, risks, and mitigations.
@@ -2080,63 +2175,6 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                     <h3>7. Recommendations</h3>
                     <p class="prompt-text">"Based on this data, suggest 3 actions a leadership team should consider."</p>
                     <button class="copy-btn" type="button" data-prompt="Based on this data, suggest 3 actions a leadership team should consider.">Copy prompt</button>
-                </article>
-            </div>
-        </section>
-
-        <!-- ============ MACHINE LEARNING WITH COPILOT ============ -->
-        <section id="machine-learning" class="section-card">
-            <div class="section-header">
-                <div>
-                    <div class="eyebrow">Hands-on practice</div>
-                    <h2>Try Copilot for machine learning</h2>
-                </div>
-                <p>Three routes to the same task. The right one depends on your use case.</p>
-            </div>
-
-            <div class="library-instructions">
-                <a href="housing_price_dataset.xlsx" download class="download-card">
-                    <span class="download-card-icon" aria-hidden="true">🏠</span>
-                    <span class="download-card-text">
-                        <span class="download-label">Download sample data</span>
-                        <span class="download-url">housing_price_dataset.xlsx&nbsp;↗</span>
-                    </span>
-                </a>
-                <div class="instruction-text">
-                    The task: predict house price from house size. Upload the file, then pick one of the three routes below.
-                </div>
-            </div>
-
-            <div class="callout warning">
-                <strong>The competence gap</strong>
-                <div class="callout-body">
-                    Copilot can build a model that looks plausible and produce a confident answer. It can also build a model that fails on new data. Without ML experience, you may not spot the difference. Use case decides the route: a quick prompt for exploration, a guided walkthrough for results that matter, code for control and reproducibility. Sanity-check the equation against the chart, and validate with a specialist or colleague before you act on the result.
-                </div>
-            </div>
-
-            <div class="prompt-grid cols-3">
-                <article class="prompt-card">
-                    <span class="level-badge quick">⚡ Route 1 / Quick</span>
-                    <h3>Direct prediction</h3>
-                    <p class="prompt-text">"Predict house price based on uploaded data."</p>
-                    <p class="prompt-meta">Fast answer in one shot. You need to verify it before acting. Useful for orientation or a sanity check, not for results that matter.</p>
-                    <button class="copy-btn" type="button" data-prompt="Predict house price based on uploaded data.">Copy prompt</button>
-                </article>
-
-                <article class="prompt-card">
-                    <span class="level-badge careful">🎓 Route 2 / Learning+Validation</span>
-                    <h3>Guided walkthrough</h3>
-                    <p class="prompt-text">"I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step."</p>
-                    <p class="prompt-meta">Step-by-step in a free visual ML tool, no code required. Better for important results where you want to see and trust the model.</p>
-                    <button class="copy-btn" type="button" data-prompt="I'm new to Orange Data Mining. Walk me through predicting house price from the attached data, step by step.">Copy prompt</button>
-                </article>
-
-                <article class="prompt-card">
-                    <span class="level-badge code">💻 Route 3 / Code</span>
-                    <h3>Generate a script</h3>
-                    <p class="prompt-text">"Write a machine learning script to predict house prices based on uploaded data."</p>
-                    <p class="prompt-meta">Reproducible Python code you can read, audit, and edit. Best for moving the work into a real pipeline.</p>
-                    <button class="copy-btn" type="button" data-prompt="Write a machine learning script to predict house prices based on uploaded data.">Copy prompt</button>
                 </article>
             </div>
         </section>
