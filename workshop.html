@@ -1063,6 +1063,15 @@
             .activity-title { font-size: 19px; }
         }
 
+        /* --- Essentials section: compact spacing --- */
+        #essentials { padding-top: 26px; padding-bottom: 28px; }
+        #essentials .section-header { margin-bottom: 12px; }
+        #essentials .sub-recipe { margin-top: 16px; padding-top: 14px; }
+        #essentials .inner-grid { margin: 12px 0 0; gap: 12px; }
+        #essentials .inner-card { padding: 16px 18px; }
+        #essentials .inner-card-icon { display: inline; font-size: 18px; margin: 0 6px 0 0; vertical-align: -2px; }
+        #essentials .inner-card strong { display: inline; }
+
         /* Print-friendly */
         @media print {
             .global-nav, .activity-card, .take-home-grid { break-inside: avoid; }
@@ -1078,6 +1087,7 @@
             <span class="nav-brand">The Matts</span>
             <a href="#activities">Sprint</a>
             <a href="#library">Copilot Exercises</a>
+            <a href="#essentials">Essentials</a>
             <a href="#take-home">Take Home</a>
         </div>
     </nav>
@@ -1140,7 +1150,7 @@
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">9</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">6</span></button>
             </div>
 
             <!-- ============ TAB 1: EXERCISES ============ -->
@@ -1500,45 +1510,6 @@ If the feedback doesn't fit these, label it 'Other'."</div>
             <div id="tab-concepts" class="tab-panel" role="tabpanel">
 
                 <details open>
-                    <summary><span style="flex:1;">Responsible AI (Best Practices)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            <strong>The Human in the Loop:</strong> AI enhances your work, it doesn't replace your judgment. Three pillars to keep in mind.
-                        </div>
-
-                        <div class="inner-grid">
-                            <div class="inner-card">
-                                <span class="inner-card-icon">🤝</span>
-                                <strong>Human-Centric</strong>
-                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
-                                    <li style="margin-bottom: 6px;">Augment, don't replace.</li>
-                                    <li style="margin-bottom: 6px;">Protect critical skills.</li>
-                                    <li>Target repetitive tasks first.</li>
-                                </ul>
-                            </div>
-                            <div class="inner-card">
-                                <span class="inner-card-icon">✅</span>
-                                <strong>Practical Checks</strong>
-                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
-                                    <li style="margin-bottom: 6px;">Always double-check the output.</li>
-                                    <li style="margin-bottom: 6px;">Be transparent: "I used AI for this."</li>
-                                    <li>Use IT-approved tools only.</li>
-                                </ul>
-                            </div>
-                            <div class="inner-card">
-                                <span class="inner-card-icon">⚖️</span>
-                                <strong>Responsibility</strong>
-                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
-                                    <li style="margin-bottom: 6px;">Watch for bias and hallucinations.</li>
-                                    <li style="margin-bottom: 6px;">You own the result, not the AI.</li>
-                                    <li>Use AI in line with your values.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details>
                     <summary><span style="flex:1;">It's Your Teammate (The Conversation)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
@@ -1770,42 +1741,80 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                     </div>
                 </details>
 
-                <details>
-                    <summary><span style="flex:1;">Your AI Road Map</span></summary>
-                    <div class="details-content">
-                        <div style="text-align: center; margin-bottom: 22px;">
-                            <strong style="font-size: 16px; color: var(--apple-text-primary); display:block; margin-bottom:6px;">No one knows everything about AI. Together we figure it out faster.</strong>
-                            <p style="color: var(--apple-text-secondary); margin: 4px 0 12px;">The AI Community Approach.</p>
-                            <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 8px 16px; border-radius: 980px;">
-                                📄 Read our Paper on the AI Community Approach ↗
-                            </a>
-                        </div>
+            </div>
+        </section>
 
-                        <div class="inner-grid">
-                            <div class="inner-card">
-                                <span class="inner-card-icon">🧠</span>
-                                <strong>Mindset</strong>
-                                <p>Be curious. Ask: "Could this be useful?"</p>
-                            </div>
-                            <div class="inner-card">
-                                <span class="inner-card-icon">💬</span>
-                                <strong>Conversations</strong>
-                                <p>Shared learning, wins, and fails.</p>
-                            </div>
-                            <div class="inner-card">
-                                <span class="inner-card-icon">🧪</span>
-                                <strong>Experiments</strong>
-                                <p>Learn by doing. Build expertise.</p>
-                            </div>
-                            <div class="inner-card">
-                                <span class="inner-card-icon">🤝</span>
-                                <strong>Community</strong>
-                                <p>Turn scattered experiments into shared learning.</p>
-                            </div>
-                        </div>
+        <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->
+        <section id="essentials" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Before you go</div>
+                    <h2>Responsible AI &amp; Your AI Road Map</h2>
+                </div>
+            </div>
+
+            <div class="sub-recipe">
+                <div class="inner-grid">
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🤝</span>
+                        <strong>Human-Centric</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Augment, don't replace.</li>
+                            <li style="margin-bottom: 6px;">Protect critical skills.</li>
+                            <li>Target repetitive tasks first.</li>
+                        </ul>
                     </div>
-                </details>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">✅</span>
+                        <strong>Practical Checks</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Always double-check the output.</li>
+                            <li style="margin-bottom: 6px;">Be transparent: "I used AI for this."</li>
+                            <li>Use IT-approved tools only.</li>
+                        </ul>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">⚖️</span>
+                        <strong>Responsibility</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Watch for bias and hallucinations.</li>
+                            <li style="margin-bottom: 6px;">You own the result, not the AI.</li>
+                            <li>Use AI in line with your values.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
+            <div class="sub-recipe">
+                <div style="text-align: center; margin-bottom: 14px;">
+                    <strong style="font-size: 15px; color: var(--apple-text-primary);">No one knows everything about AI. The AI Community Approach.</strong>
+                    <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" style="display: inline-block; margin-left: 10px; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 6px 14px; border-radius: 980px;">
+                        📄 Read our paper ↗
+                    </a>
+                </div>
+
+                <div class="inner-grid">
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🧠</span>
+                        <strong>Mindset</strong>
+                        <p>Be curious. Ask: "Could this be useful?"</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">💬</span>
+                        <strong>Conversations</strong>
+                        <p>Shared learning, wins, and fails.</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🧪</span>
+                        <strong>Experiments</strong>
+                        <p>Learn by doing. Build expertise.</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🤝</span>
+                        <strong>Community</strong>
+                        <p>Share solutions and stay agile, together.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
