@@ -1254,10 +1254,10 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
           
 
                 <details>
-    <summary><span class="ex-num">09</span><span style="flex:1;">Build your first Agent: Document Simplifier</span></summary>
+    <summary><span class="ex-num">09</span><span style="flex:1;">Build your first Agent: ELI5 a Document</span></summary>
     <div class="details-content">
         <div class="exercise-note" style="margin-bottom: 18px;">
-            <strong>The idea:</strong> An agent that rewrites dense documents in plain English – ideal for policies, reports and guidance notes.
+            <strong>The idea:</strong> An agent that explains any documents like you are 5 – ideal for policies, reports and guidance notes.
         </div>
         <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
             <li style="margin-bottom: 10px;">
@@ -1266,7 +1266,7 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
             <li style="margin-bottom: 10px;">
                 <strong>Enter Description then submit</strong> – In the "Describe" tab, paste the following and hit the submit arrow:
                 <div style="position: relative; margin-top: 8px;">
-                    <pre id="plain-english-prompt" style="background: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px; padding: 14px 44px 14px 16px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; line-height: 1.5; white-space: pre-wrap; margin: 0; color: #1d1d1f;">You are Plain English Pal. Start every chat by asking: "Upload a document and I'll rewrite it in plain English." Rewrite to a reading age of 12: short sentences, no jargon, keep all key facts. Enable the code interpreter / file generation capability so you can output a 1-page maximum PDF explaining the document.</pre>
+                    <pre id="plain-english-prompt" style="background: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px; padding: 14px 44px 14px 16px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; line-height: 1.5; white-space: pre-wrap; margin: 0; color: #1d1d1f;">You are ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</pre>
                     <button onclick="navigator.clipboard.writeText(document.getElementById('plain-english-prompt').textContent).then(() => { this.textContent = 'Copied ✓'; setTimeout(() => this.textContent = 'Copy', 2000); })"
                         style="position: absolute; top: 8px; right: 8px; background: var(--apple-blue); color: #fff; border: none; border-radius: 6px; padding: 4px 12px; font-size: 12px; cursor: pointer;">Copy</button>
                 </div>
