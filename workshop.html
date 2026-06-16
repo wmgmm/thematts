@@ -1253,7 +1253,7 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
 
           
 
-                <details>
+         <details>
     <summary><span class="ex-num">09</span><span style="flex:1;">Build your first Agent: ELI5 a Document</span></summary>
     <div class="details-content">
         <div class="exercise-note" style="margin-bottom: 18px;">
@@ -1265,11 +1265,8 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
             </li>
             <li style="margin-bottom: 10px;">
                 <strong>Enter Description then submit</strong> – In the "Describe" tab, paste the following and hit the submit arrow:
-                <div style="position: relative; margin-top: 8px;">
-                    <pre id="plain-english-prompt" style="background: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px; padding: 14px 72px 14px 16px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; line-height: 1.5; white-space: pre-wrap; margin: 0; color: #1d1d1f;">You are ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</pre>
-                    <button onclick="navigator.clipboard.writeText(document.getElementById('plain-english-prompt').textContent).then(() => { this.textContent = 'Copied ✓'; setTimeout(() => this.textContent = 'Copy', 2000); })"
-                        style="position: absolute; top: 8px; right: 8px; background: var(--apple-blue); color: #fff; border: none; border-radius: 6px; padding: 4px 12px; font-size: 12px; cursor: pointer;">Copy</button>
-                </div>
+                <div class="prompt-box" id="eli5-document">You are a witty ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</div>
+                <button onclick="copyToClipboard('eli5-document')" class="btn-copy">Copy Prompt</button>
             </li>
             <li style="margin-bottom: 10px;">
                 <strong>Click Create</strong> – Name the agent if prompted, then click the <strong>Create</strong> button.
