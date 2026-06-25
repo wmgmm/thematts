@@ -1449,9 +1449,20 @@ If the feedback doesn't fit these, label it 'Other'."</div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 20px;">
+            <h4>Try these two prompts</h4>
+            <p style="margin:0 0 6px; font-size:13px; color:var(--apple-text-secondary);"><em>Upload your sources to a notebook first, then paste a prompt into the chat box.</em></p>
+
+            <div class="exercise-note" style="margin-top:14px;"><strong>1. Executive Briefing</strong> &mdash; turn a pile of documents into a manager-ready summary.</div>
+            <div class="prompt-box" id="nblm-briefing">"Act as a senior analyst. Read all of my uploaded sources and produce an executive briefing for a busy manager. Include: a three-sentence situation summary; five key findings ranked by importance, each with a source citation; the main options with their trade-offs; and two recommended next actions. Flag any important questions the sources do not answer."</div>
+            <button onclick="copyToClipboard('nblm-briefing')" class="btn-copy">Copy Prompt</button>
+
+            <div class="exercise-note" style="margin-top:20px;"><strong>2. Critical Reviewer</strong> &mdash; surface contradictions, gaps and unsupported claims across your sources.</div>
+            <div class="prompt-box" id="nblm-critique">"Review all of my uploaded sources together and act as a critical reviewer. Identify any contradictions or disagreements between the sources, note important gaps or missing evidence, and list the assumptions that are not supported by the documents. Cite the specific source for each point."</div>
+            <button onclick="copyToClipboard('nblm-critique')" class="btn-copy">Copy Prompt</button>
+
+            <div style="text-align: center; margin-top: 24px;">
                 <a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
-                    Open Prompt Library ↗
+                    Open NotebookLM Prompt Library ↗
                 </a>
                 <p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">
                     Includes 15+ specialised prompts for Research &amp; Strategy
