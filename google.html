@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - AI in the Workplace Part 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Apple-inspired Design System --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #6e6e73;
+            --apple-text-tertiary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --apple-bg-subtle: #fbfbfd;
+            --apple-border: #e5e5ea;
+            --apple-border-light: rgba(0, 0, 0, 0.06);
+            --accent-blue: #0071e3;
+            --accent-orange: #ff8a1f;
+            --accent-purple: #5e5ce6;
+            --accent-green: #34c759;
+            --radius-card: 22px;
+            --radius-medium: 14px;
+            --radius-button: 980px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+            --shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+            --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --hero-mesh-base: #0b1220;
+            --border-soft: #e5e7eb;
+            --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47;
+            letter-spacing: -0.022em;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 24px 22px 40px;
+        }
+
+        /* --- Sticky Navigation --- */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--apple-border-light);
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-content {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.75;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
+
+        @media (max-width: 600px) {
+            .nav-content { gap: 18px; }
+            .nav-brand { display: none; }
+            .global-nav a { font-size: 12px; }
+        }
+
+        /* --- Hero --- */
+        header.hero {
+            text-align: center;
+            padding: 64px 0 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin: 0 0 14px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: var(--apple-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0 0 8px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 12px;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 20px 0 8px 0;
+        }
+
+        /* --- Section Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-card);
+        }
+
+        @media (max-width: 734px) {
+            .section-card { padding: 24px 20px; }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--apple-text-secondary);
+            font-size: 15px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--apple-blue);
+            margin-bottom: 8px;
+        }
+
+        /* --- Quick Start Steps (compact horizontal) --- */
+        .quick-start {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .quick-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--apple-bg-subtle);
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--apple-border-light);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .step-badge {
+            background-color: var(--apple-text-primary);
+            color: white;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .quick-step a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .quick-step a:hover { text-decoration: underline; }
+
+        /* --- Activity Launchpad (PROMINENT) --- */
+        .launchpad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 820px) {
+            .launchpad { grid-template-columns: 1fr; }
+        }
+
+        .activity-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 24px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: white;
+            min-height: 200px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            transition: filter 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .activity-card.blue {
+            background: linear-gradient(135deg, #0071e3 0%, #0a5fcc 100%);
+        }
+
+        .activity-card.orange {
+            background: linear-gradient(135deg, #ff8a1f 0%, #ff6b00 100%);
+        }
+
+        .activity-card.purple {
+            background: linear-gradient(135deg, #6a64ff 0%, #4f46d8 100%);
+        }
+
+        .activity-card > * { position: relative; z-index: 1; }
+
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .activity-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            opacity: 0.85;
+        }
+
+        .activity-icon {
+            font-size: 32px;
+        }
+
+        .activity-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .activity-desc {
+            font-size: 13px;
+            opacity: 0.92;
+            line-height: 1.45;
+            margin-bottom: 18px;
+        }
+
+        .activity-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.2);
+            border-radius: var(--radius-button);
+            align-self: flex-start;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .activity-card:hover .activity-cta {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* --- Activity Hero (single prominent card) --- */
+        .activity-hero-wrap {
+            margin-bottom: 32px;
+        }
+
+        .activity-hero {
+            display: block;
+            padding: 4px;
+            border-radius: var(--radius-card);
+            text-decoration: none;
+            color: white;
+            background: var(--hero-mesh-base);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .activity-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 22%, rgba(56, 189, 248, 0.55) 0%, transparent 42%),
+                radial-gradient(circle at 82% 18%, rgba(99, 102, 241, 0.50) 0%, transparent 46%),
+                radial-gradient(circle at 70% 88%, rgba(139, 92, 246, 0.42) 0%, transparent 48%),
+                radial-gradient(circle at 8% 90%, rgba(14, 165, 233, 0.35) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .activity-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 18, 32, 0.10) 0%, rgba(11, 18, 32, 0.45) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .activity-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-glass {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 22px;
+            border-radius: calc(var(--radius-card) - 4px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+        }
+
+        .activity-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-icon {
+            width: 36px;
+            height: 36px;
+            color: #E0F2FE;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+        .hero-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hero-eyebrow {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 600;
+            color: #BAE6FD;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0;
+            color: white;
+            letter-spacing: -0.015em;
+        }
+
+        .hero-desc {
+            font-size: 13px;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.72);
+            margin: 0;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 18px;
+            background: var(--apple-blue);
+            color: #ffffff;
+            border-radius: var(--radius-button);
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .activity-hero:hover .hero-cta {
+            background: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+        }
+
+        @media (max-width: 700px) {
+            .hero-glass { flex-wrap: wrap; padding: 16px; gap: 14px; }
+            .hero-content { flex-basis: calc(100% - 56px); }
+            .hero-cta { width: 100%; }
+            .hero-desc { display: none; }
+        }
+
+        /* --- Library Instructions Bar --- */
+        .library-instructions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 14px 18px;
+            background: var(--apple-bg-page);
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        .copilot-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #201F1E;
+            padding: 10px 18px 10px 12px;
+            border: 1px solid #E1DFDD;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            font-family: 'Segoe UI', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .copilot-card:hover {
+            background: #FAF9F8;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .copilot-card:focus-visible {
+            outline: 2px solid #0078D4;
+            outline-offset: 2px;
+        }
+
+        .copilot-logo {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .copilot-card-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .copilot-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #201F1E;
+        }
+
+        .copilot-url {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Inter Tight', sans-serif;
+            color: #0078D4;
+            margin-top: 2px;
+        }
+
+        .instruction-text {
+            font-size: 15px;
+            color: var(--apple-text-primary);
+            line-height: 1.5;
+        }
+
+        .instruction-text strong { color: var(--apple-text-primary); }
+
+        .instruction-tip {
+            font-size: 13px;
+            color: var(--apple-text-secondary);
+            margin-left: 6px;
+        }
+
+        .inline-view-btn {
+            display: inline-block;
+            background: #424245;
+            color: white;
+            padding: 2px 11px;
+            border-radius: var(--radius-button);
+            font-size: 12px;
+            font-weight: 700;
+            vertical-align: 1px;
+            margin: 0 3px;
+        }
+
+        /* --- Tab System --- */
+        .tab-bar {
+            display: flex;
+            gap: 28px;
+            background: transparent;
+            padding: 8px 0 0;
+            margin: 8px 0 28px;
+            border-bottom: 1px solid var(--border-soft);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            position: relative;
+            min-width: 0;
+            padding: 14px 0;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .tab-label-short { display: none; }
+
+        @media (max-width: 640px) {
+            .tab-bar { gap: 18px; }
+            .tab-btn { padding: 12px 0; font-size: 13px; }
+            .tab-label-full { display: none; }
+            .tab-label-short { display: inline; }
+        }
+
+        .tab-btn:hover {
+            color: var(--apple-text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--apple-text-primary);
+            font-weight: 600;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            height: 2px;
+            background: var(--apple-blue);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .tab-count {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--apple-text-tertiary);
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        .tab-btn.active .tab-count {
+            background: transparent;
+            color: var(--apple-text-secondary);
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeIn 0.25s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Details / Accordions --- */
+        details {
+            border-bottom: 1px solid var(--apple-border);
+            transition: background-color 0.2s ease;
+        }
+
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 16px 12px;
+            margin: 0 -12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            outline: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: var(--apple-bg-page);
+            color: var(--apple-blue);
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        summary::-moz-list-bullet { list-style-type: none; }
+
+        .ex-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 8px;
+            background: transparent;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        details[open] .ex-num {
+            background: transparent;
+            color: var(--apple-blue);
+            border-color: var(--apple-blue);
+        }
+
+        summary::after {
+            content: 'View prompt →';
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            background: #424245;
+            padding: 6px 14px;
+            border-radius: var(--radius-button);
+            transition: var(--transition);
+            margin-left: auto;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        details:hover summary::after {
+            background: var(--apple-text-primary);
+            transform: translateX(2px);
+        }
+
+        details[open] summary::after {
+            content: 'Hide prompt';
+            background: #d2d2d7;
+            color: var(--apple-text-primary);
+        }
+
+        details[open]:hover summary::after {
+            background: #c7c7cc;
+            transform: none;
+        }
+
+        details[open] summary { color: var(--apple-blue); }
+
+        .details-content {
+            padding: 0 0 24px 40px;
+            animation: slideDown 0.25s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            .details-content { padding-left: 0; }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .exercise-note strong { color: var(--apple-text-primary); }
+
+        /* --- Prompt Box --- */
+        .prompt-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: var(--radius-medium);
+            font-family: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #2c2c2e;
+            margin: 12px 0 14px 0;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        }
+
+        .btn-copy {
+            background-color: var(--apple-blue);
+            color: white;
+            font-size: 12px;
+            padding: 9px 18px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0, 113, 227, 0.22);
+        }
+
+        .btn-copy:hover {
+            background-color: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.32);
+        }
+
+        .btn-copy.success {
+            background-color: var(--accent-green);
+            box-shadow: 0 2px 6px rgba(52, 199, 89, 0.28);
+        }
+
+        /* --- Inner content blocks --- */
+        .inner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .inner-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .inner-card-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+        .inner-card strong { font-size: 14px; display: block; margin-bottom: 4px; }
+        .inner-card p { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.45; }
+
+        /* --- Take it Home (compact dual CTA) --- */
+        .take-home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .take-home-grid { grid-template-columns: 1fr; }
+        }
+
+        .take-home-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 24px 26px;
+            border-radius: var(--radius-medium);
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+            position: relative;
+        }
+
+        .take-home-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            border-color: #d4d4d8;
+        }
+
+        .take-home-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .take-home-card.purple .take-home-icon {
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 2px;
+        }
+
+        .take-home-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--apple-text-tertiary);
+            display: block;
+        }
+
+        .take-home-card.purple .take-home-tag { color: var(--apple-text-tertiary); }
+
+        .take-home-title {
+            font-size: 17px;
+            font-weight: 600;
+            display: block;
+            letter-spacing: -0.01em;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-desc {
+            font-size: 13.5px;
+            color: var(--apple-text-secondary);
+            display: block;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        .take-home-arrow {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .take-home-card:hover .take-home-arrow {
+            background: var(--apple-text-primary);
+            border-color: var(--apple-text-primary);
+            color: white;
+            transform: translate(2px, -2px);
+        }
+
+        .take-home-card.purple .take-home-arrow { color: var(--apple-text-secondary); }
+
+        /* --- Contact (slim) --- */
+        .contact-strip {
+            text-align: center;
+            padding: 28px 24px;
+        }
+
+        .contact-strip h3 { margin-bottom: 6px; }
+        .contact-strip p { color: var(--apple-text-secondary); margin: 0 0 14px; font-size: 14px; }
+
+        .contact-emails {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+        .contact-link { color: var(--apple-blue); text-decoration: none; font-weight: 600; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 32px 0 24px;
+            color: var(--apple-text-tertiary);
+            font-size: 12px;
+        }
+
+        footer a { color: var(--apple-text-secondary); }
+
+        /* --- Reverse engineering subsections --- */
+        .sub-recipe {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--apple-border-light);
+        }
+
+        .sub-recipe:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        /* --- Bordered callout --- */
+        .callout {
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-left: 4px solid var(--apple-blue);
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #0056b3;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .callout-body {
+            font-style: italic;
+            color: #2c3e50;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .sample-data {
+            margin-top: 22px;
+            padding: 18px;
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            border: 1px solid #dce6f0;
+        }
+
+        .sample-data h4 { color: #333; margin: 0 0 10px; }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 9px 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .sample-textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            background-color: #fff;
+            color: #333;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; letter-spacing: -0.02em; }
+            h2 { font-size: 24px; }
+            header.hero { padding: 40px 0 28px; }
+            .subtitle { letter-spacing: 0.14em; }
+            .activity-card { min-height: 170px; padding: 22px 20px; }
+            .activity-title { font-size: 19px; }
+        }
+
+        /* --- Essentials section: compact spacing --- */
+        #essentials { padding-top: 26px; padding-bottom: 28px; }
+        #essentials .section-header { margin-bottom: 12px; }
+        #essentials .sub-recipe { margin-top: 16px; padding-top: 14px; }
+        #essentials .inner-grid { margin: 12px 0 0; gap: 12px; }
+        #essentials .inner-card { padding: 16px 18px; }
+        #essentials .inner-card-icon { display: inline; font-size: 18px; margin: 0 6px 0 0; vertical-align: -2px; }
+        #essentials .inner-card strong { display: inline; }
+
+        /* Print-friendly */
+        @media print {
+            .global-nav, .activity-card, .take-home-grid { break-inside: avoid; }
+            details { break-inside: avoid; }
+            details[open] summary::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="global-nav">
+        <div class="nav-content">
+            <span class="nav-brand">The Matts</span>
+            <a href="#activities">Sprint</a>
+            <a href="#library">Gemini Exercises</a>
+            <a href="#notebooklm">NotebookLM</a>
+            <a href="#essentials">Essentials</a>
+            <a href="#take-home">Take Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <header class="hero">
+            <h1>The Matts Workshop</h1>
+            <p class="subtitle">AI in the Workplace Part 2</p>
+        </header>
+
+        <!-- ============ ACTIVITY (SINGLE) ============ -->
+        <section id="activities" class="activity-hero-wrap">
+            <a href="https://wmgmm.github.io/sprint/" target="_blank" rel="noopener" class="activity-hero" aria-label="Start the AI Discovery Sprint workshop activity">
+                <div class="hero-glass">
+                    <div class="hero-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3v4"/>
+                            <path d="M12 17v4"/>
+                            <path d="M3 12h4"/>
+                            <path d="M17 12h4"/>
+                            <path d="M5.6 5.6l2.8 2.8"/>
+                            <path d="M15.6 15.6l2.8 2.8"/>
+                            <path d="M5.6 18.4l2.8-2.8"/>
+                            <path d="M15.6 8.4l2.8-2.8"/>
+                        </svg>
+                    </div>
+                    <div class="hero-content">
+                        <span class="hero-eyebrow">Workshop Activity · 5 min</span>
+                        <span class="hero-title">AI Discovery Sprint</span>
+                        <span class="hero-desc">Find your next AI experiment: could this be useful?</span>
+                    </div>
+                    <span class="hero-cta">Start sprint ↗</span>
+                </div>
+            </a>
+        </section>
+
+        <!-- ============ LIBRARY (TABBED) ============ -->
+        <section id="library" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Gemini Prompt Library</div>
+                    <h2>Gemini Exercises &amp; Workplace Prompts</h2>
+                </div>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://gemini.google.com/app" target="_blank" rel="noopener" class="copilot-card">
+                    <img src="gemini-logo.png" alt="" class="copilot-logo">
+                    <span class="copilot-card-text">
+                        <span class="copilot-label">Click to open Gemini</span>
+                        <span class="copilot-url">gemini.google.com&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    Click <strong>"New Chat"</strong> in Gemini between tasks.
+                </div>
+            </div>
+
+            <div class="tab-bar" role="tablist">
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Gemini Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">7</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
+            </div>
+
+            <!-- ============ TAB 1: EXERCISES ============ -->
+            <div id="tab-exercises" class="tab-panel active" role="tabpanel">
+
+                <details open>
+                    <summary><span class="ex-num">01</span><span style="flex:1;">Explain it like I am 5 (ELI5)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Quickly understand complex topics or prepare simple explanations.
+                        </div>
+                        <div class="prompt-box" id="progressive-learning">"Explain [TOPIC] to me like I am 5 (ELI5)"</div>
+                        <button onclick="copyToClipboard('progressive-learning')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Replace [TOPIC] with: "cloud computing", "DNA", "quantum physics", "offside rule in football" etc.</em></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">02</span><span style="flex:1;">Roleplay for Difficult Conversations</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Rehearse performance reviews or conflict resolution in a safe space.
+                        </div>
+                        <div class="prompt-box" id="roleplay-conversation">"Roleplay: You're Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats (Knox, Missy, Phoebe). I'm a witty cat owner trying to calm you down and win you over. Stay in character and wait for my replies."</div>
+                        <button onclick="copyToClipboard('roleplay-conversation')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">03</span><span style="flex:1;">Devil's Advocate (Blind Spots)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Stress-test your challenges, new ideas, or decisions before finalising them.
+                        </div>
+                        <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
+                        <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Add in your own scenario: "I want to move from sales to leadership role", "dealing with a difficult client", provide some useful context as well. You could upload a document instead of typing a scenario e.g. upload your new travel policy</em></p>
+
+                     
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">04</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Tailor communication tone for specific audiences.
+                        </div>
+                        <div class="prompt-box" id="role-prompt-medical">"For a script: You are a medical professional. Reply to the statement 'My haemorrhoids are bothering me'."</div>
+                        <button onclick="copyToClipboard('role-prompt-medical')" class="btn-copy">Copy Prompt</button>
+
+                        <div class="prompt-box" id="role-prompt-comedian" style="margin-top:14px;">"For a script: You are a comedian. Reply to the statement 'My haemorrhoids are bothering me'."</div>
+                        <button onclick="copyToClipboard('role-prompt-comedian')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Format &amp; Structure</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
+                        </div>
+                        <div class="prompt-box" id="format-prompt-merged">"You run 'Knights of the Round Table Pizza' - a medieval-themed pizza delivery service. Please generate the following three items:
+
+1. Write a catchy jingle for your horse-drawn pizza delivery adverts.
+2. Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance.
+3. Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms."</div>
+                        <button onclick="copyToClipboard('format-prompt-merged')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Self-Evaluation (Mark Your Homework)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Get AI to critique its own work to improve quality before you review it.
+                        </div>
+                        <div class="prompt-box" id="evaluation-prompt">"I need a name for a new pensioner dating app, provide five examples please.
+For each name justify its selection and ensure its not condescending or offensive to the target market, though don't be afraid to be humorous.
+Score each example on a 1-10 scale for Memorability, Distinctiveness and Global potential. Provide a reason for the score."</div>
+                        <button onclick="copyToClipboard('evaluation-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Prompt Chaining</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Combine Role, Tone, Constraints, and Format into one request.
+                        </div>
+                        <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
+Role: Young consumers (15-25).
+Tone: Humorous, but not childish.
+Constraint: Avoid existing UK product names.
+Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
+Examples: CitrusBurst, AquaFizz, SolarPop."</div>
+                        <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- ============ TAB 2: PROMPT RECIPES ============ -->
+            <div id="tab-recipes" class="tab-panel" role="tabpanel">
+
+                <details open>
+                    <summary><span style="flex:1;">Role-Specific Document Extraction</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Upload a document and force the AI to only show you the tasks, deadlines, and information relevant to your specific job title.
+                        </div>
+                        <div class="prompt-box" id="role-extraction">Read this Document from the perspective of a [INSERT ROLE HERE e.g. project manager]. Only pull out the information,action items and deadlines that would impact my role.</div>
+                        <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Attach your document to Gemini, paste this prompt, and replace the bracketed text with your actual job title to instantly cut through the noise.</em></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Meta-Prompting: Let AI Write the Prompt</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Leverage the AI's knowledge to design expert prompts for tasks in specific domains e.g. 'Triage Helpdesk Emails in IT'.
+                        </div>
+                        <div class="prompt-box" id="meta-prompt-technique">"You are an expert AI prompt designer. Please design the most effective prompt to: [INSERT SPECIFIC TASK AND DOMAIN]. 
+
+Consider what key elements, criteria, or details matter, what output format is most actionable, and the reasoning steps that are essential."</div>
+                        <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Reverse Engineering (Prompts from Gold-Standard Outputs)</span></summary>
+                    <div class="details-content">
+                        <p style="margin-top:0;"><strong>Concept:</strong> "Meta-Prompting" or Reverse Engineering. Instead of guessing how to prompt, feed the AI the desired output (or a stylistic reference) and ask it to write the prompt for you.</p>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">1. Meeting Notes Template</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this when you have a "Gold Standard" document and you want all future documents to follow that exact structure.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-meeting">"Analyze the meeting notes below. Create a single, reusable prompt that instructs an AI to generate notes using this exact format, style, and structure from a raw transcript.
+
+[PASTE GOLD STANDARD NOTES HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">2. Corporate Tone Persona</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Essential for marketing. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-persona">"Analyze the tone, vocabulary, and sentence structure of the text below. Write a 'Persona Prompt' defining these characteristics so an AI can consistently write new articles in this exact style.
+
+[PASTE BRAND TEXT HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">3. Academic Abstract Summarizer</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this for technical writing where constraints (word count, objectivity) are strict and you want to summarize new content in that voice.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-abstract">"Deconstruct the academic abstract below. Identify the implied word count constraints, formal tone, and structural elements. Write a reusable prompt designed to generate similar abstracts from new content.
+
+[PASTE ABSTRACT HERE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">4. Image-to-Text Style Transfer</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this to generate a detailed text description of an image, which you can then use to generate new images in that style.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-image">"Act as a professional photographer. Analyze the attached image. Write a detailed text-to-image prompt capturing the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style.
+
+[UPLOAD IMAGE]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copy Prompt</button>
+                        </div>
+
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">5. Website Style &amp; Format</h3>
+                            <div class="exercise-note">
+                                <strong>Application:</strong> Use this to extract design schemas from screenshots or HTML code to produce new sites with a similar look and feel.
+                            </div>
+                            <div class="prompt-box" id="reverse-prompt-website">"Analyze the visual design, color palette, typography, and layout of the website below. Write a design system prompt that instructs an AI to apply this exact look and feel to new code.
+
+[PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
+                            <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">No More AI Slop? (Style Guide)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
+                        </div>
+                        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
+
+STYLE AND TONE CONSTRAINTS
+Apply these strict rules to the task above:
+* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
+* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
+* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
+* Punctuation &amp; Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
+                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</em></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Meeting Notes</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"</div>
+                        <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Excel Data Analysis</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."</div>
+                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">AI Usage Case: Text Categorisation</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."</div>
+                        <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+            </div>
+
+        </section>
+
+        <!-- ============ NOTEBOOKLM ============ -->
+        <section id="notebooklm" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">NotebookLM</div>
+                    <h2>Ground AI in Your Own Documents</h2>
+                </div>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="copilot-card">
+                    <img src="notebooklm-logo.png" alt="" class="copilot-logo">
+                    <span class="copilot-card-text">
+                        <span class="copilot-label">Click to open NotebookLM</span>
+                        <span class="copilot-url">notebooklm.google.com&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    Sign in with your Google account, then create a notebook and add your sources.
+                </div>
+            </div>
+
+            <p style="margin:0 0 4px; color:var(--apple-text-secondary); font-size:15px;">
+                NotebookLM grounds AI in your own documents. Our curated prompt library helps you analyse them.
+            </p>
+
+            <div class="inner-grid">
+                <div class="inner-card">
+                    <span class="inner-card-icon">🎧</span>
+                    <strong>Audio Overviews</strong>
+                    <p>Turn dry reports into engaging "Deep Dive" podcasts.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🕵️</span>
+                    <strong>Critical Analysis</strong>
+                    <p>Identify blind spots, contradictions, and missing data.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🏗️</span>
+                    <strong>Structured Output</strong>
+                    <p>Convert notes into Slide Decks, Briefs, and SOPs.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                    Open Prompt Library ↗
+                </a>
+                <p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">
+                    Includes 15+ specialised prompts for Research &amp; Strategy
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->
+        <section id="essentials" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Before you go</div>
+                    <h2>Responsible AI &amp; Your AI Road Map</h2>
+                </div>
+            </div>
+
+            <div class="sub-recipe">
+                <div class="inner-grid">
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🤝</span>
+                        <strong>Human-Centric</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Augment, don't replace.</li>
+                            <li style="margin-bottom: 6px;">Protect critical skills.</li>
+                            <li>Target repetitive tasks first.</li>
+                        </ul>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">✅</span>
+                        <strong>Practical Checks</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Always double-check the output.</li>
+                            <li style="margin-bottom: 6px;">Be transparent: "I used AI for this."</li>
+                            <li>Use IT-approved tools only.</li>
+                        </ul>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">⚖️</span>
+                        <strong>Responsibility</strong>
+                        <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                            <li style="margin-bottom: 6px;">Watch for bias and hallucinations.</li>
+                            <li style="margin-bottom: 6px;">You own the result, not the AI.</li>
+                            <li>Use AI in line with your values.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-recipe">
+                <div style="text-align: center; margin-bottom: 14px;">
+                    <strong style="font-size: 15px; color: var(--apple-text-primary);">No one knows everything about AI. The AI Community Approach.</strong>
+                    <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" style="display: inline-block; margin-left: 10px; font-size: 13px; font-weight: 600; color: var(--apple-blue); text-decoration: none; background: rgba(0, 113, 227, 0.1); padding: 6px 14px; border-radius: 980px;">
+                        📄 Read our paper ↗
+                    </a>
+                </div>
+
+                <div class="inner-grid">
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🧠</span>
+                        <strong>Mindset</strong>
+                        <p>Be curious. Ask: "Could this be useful?"</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">💬</span>
+                        <strong>Conversations</strong>
+                        <p>Shared learning, wins, and fails.</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🧪</span>
+                        <strong>Experiments</strong>
+                        <p>Learn by doing. Build expertise.</p>
+                    </div>
+                    <div class="inner-card">
+                        <span class="inner-card-icon">🤝</span>
+                        <strong>Community</strong>
+                        <p>Share solutions and stay agile, together.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAKE IT HOME ============ -->
+        <section id="take-home" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Take it Home</div>
+                    <h2>Bring 'AI in the Workplace' to your team</h2>
+                </div>
+                <p>Two ways to share what you've learnt today.</p>
+            </div>
+
+            <div class="take-home-grid">
+                <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 3v5h5"/>
+                            <path d="M9 13h6"/>
+                            <path d="M9 17h4"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Workshop Flyer</span>
+                        <span class="take-home-title">Share with your manager</span>
+                        <span class="take-home-desc">One-pager covering everything they need to book us on-site.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" rel="noopener" class="take-home-card purple">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9l9-5 9 5-9 5-9-5z"/>
+                            <path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/>
+                            <path d="M21 9v5"/>
+                        </svg>
+                    </div>
+                   
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Train the Trainer</span>
+                        <span class="take-home-title">We train your trainers</span>
+                        <span class="take-home-desc">Equip your internal champions to deliver this workshop.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+             <p class="take-home-more">
+                <strong>We cover all aspects of AI</strong>, including M365 Copilot (Upgrade), AI Leadership Workshop, Local AI (on device), AI Art of the Possible, Microsoft Agents, AI in Research, and even a Digital Escape Room.
+            </p>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="section-card contact-strip">
+            <h3>Questions?</h3>
+            <p>Want us to deliver the workshop at your site or train your trainers?</p>
+            <div class="contact-emails">
+                <span>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a></span>
+                <span>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a></span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">
+                    Read our paper: AI The Community Approach ↗
+                </a>
+            </p>
+
+<p style="margin-top: 8px;">
+    <a href="gweithdy.html" class="contact-link">Rhowch gynnig ar y gweithdy yn Gymraeg / Try the Workshop in Welsh ↗</a>. Feedback Welcomed in Review
+</p>
+
+            
+        </footer>
+
+    </div>
+
+    <script>
+        // ===== Tab switcher =====
+        (function () {
+            var buttons = document.querySelectorAll('.tab-btn');
+            var panels = document.querySelectorAll('.tab-panel');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var target = btn.getAttribute('data-tab');
+                    buttons.forEach(function (b) {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    panels.forEach(function (p) { p.classList.remove('active'); });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    var panel = document.getElementById('tab-' + target);
+                    if (panel) { panel.classList.add('active'); }
+                });
+            });
+        })();
+
+        // ===== Copy to clipboard =====
+        function copyToClipboard(id) {
+            var el = document.getElementById(id);
+            if (!el) { return; }
+            var text = el.innerText;
+            var btn = document.querySelector("button[onclick=\"copyToClipboard('" + id + "')\"]");
+            var done = function () {
+                if (!btn) { return; }
+                var original = btn.innerText;
+                btn.innerText = 'Copied';
+                btn.classList.add('success');
+                setTimeout(function () {
+                    btn.innerText = original;
+                    btn.classList.remove('success');
+                }, 1800);
+            };
+
+            // Modern clipboard API with fallback for older Edge or restricted contexts
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+            } else {
+                fallbackCopy(text);
+                done();
+            }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+    </script>
+</body>
+</html>
