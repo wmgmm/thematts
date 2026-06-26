@@ -111,26 +111,53 @@
         .disclaimer svg { flex-shrink: 0; margin-top: 2px; color: var(--text-tertiary); }
         .disclaimer strong { color: var(--text-primary); font-weight: 600; }
 
-        /* ── SIGN-IN CARD ───────────────────────────────────── */
-        .signin-wrap { max-width: 960px; margin: 28px auto 0; padding: 0 24px; text-align: center; }
-        .signin-card {
-            display: inline-flex;
+        /* ── SIGN-IN CARD (matches google.html) ─────────────── */
+        .library-instructions {
+            display: flex;
             align-items: center;
-            gap: 14px;
-            background: var(--surface);
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 14px 18px;
+            background: var(--surface-secondary);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 14px 22px;
-            text-decoration: none;
-            box-shadow: var(--shadow-sm);
-            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
         }
-        .signin-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
-        .signin-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-        .signin-card img { width: 40px; height: 40px; flex-shrink: 0; }
-        .signin-text { text-align: left; }
-        .signin-label { display: block; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
-        .signin-url { display: block; font-size: 0.8125rem; color: var(--accent); margin-top: 2px; }
+
+        .copilot-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #201F1E;
+            padding: 10px 18px 10px 12px;
+            border: 1px solid #E1DFDD;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+        .copilot-card:hover {
+            background: #FAF9F8;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+        .copilot-card:focus-visible { outline: 2px solid #0078D4; outline-offset: 2px; }
+        .copilot-logo { width: 28px; height: 28px; flex-shrink: 0; display: block; }
+        .copilot-card-text { display: flex; flex-direction: column; line-height: 1.25; }
+        .copilot-label { font-size: 0.875rem; font-weight: 600; color: #201F1E; }
+        .copilot-url { font-size: 0.875rem; font-weight: 600; color: #0078D4; margin-top: 2px; }
+
+        .instruction-text {
+            flex: 1;
+            min-width: 260px;
+            font-size: 0.875rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+        .instruction-text strong { color: var(--text-primary); font-weight: 600; }
 
         /* ── CONTROLS ───────────────────────────────────────── */
         .controls-wrap {
@@ -460,27 +487,18 @@
 </header>
 
 
-<div class="signin-wrap">
-    <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="signin-card">
-        <img src="notebooklm-logo.png" alt="">
-        <span class="signin-text">
-            <span class="signin-label">Click to open NotebookLM</span>
-            <span class="signin-url">notebooklm.google.com&nbsp;↗</span>
-        </span>
-    </a>
-</div>
-
-<div style="max-width:960px;margin:0 auto;padding:0 24px;margin-bottom:24px;">
-    <div class="disclaimer" style="display: flex; flex-direction: column; gap: 12px;">
-        
-        <!-- Original Disclaimer -->
-        <div style="display: flex; align-items: flex-start; gap: 8px;">
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-            </svg>
-            <span><strong>Important:</strong> At Cardiff University, NotebookLM is approved for all confidential (C1/C2) data <strong>only when you access it through your CU account</strong> (cardiff.ac.uk). In any other organisation, treat it as a personal learning tool and keep to public, non-confidential information unless that organisation has approved its own NotebookLM setup.</span>
+<div style="max-width:960px;margin:28px auto 0;padding:0 24px 24px;">
+    <div class="library-instructions">
+        <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="copilot-card">
+            <img src="notebooklm-logo.png" alt="" class="copilot-logo">
+            <span class="copilot-card-text">
+                <span class="copilot-label">Click to open NotebookLM</span>
+                <span class="copilot-url">notebooklm.google.com&nbsp;↗</span>
+            </span>
+        </a>
+        <div class="instruction-text">
+            <strong>Important:</strong> At Cardiff University, NotebookLM is approved for all confidential (C1/C2) data <strong>only when you access it through your CU account</strong> (cardiff.ac.uk). In any other organisation, treat it as a personal learning tool and keep to public, non-confidential information unless that organisation has approved its own NotebookLM setup.
         </div>
-
     </div>
 </div>
 
@@ -510,7 +528,7 @@
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
-        <span><strong>Pro Tip:</strong> These prompts work in the chat section, but try using them to create infographics or slides in the <strong>Studio edit panel</strong> &mdash; click the "revise" pencil to customise an infographic, slide deck and more.</span>
+        <span><strong>Pro Tip:</strong> These prompts work in the chat section, but try using them to create infographics or slides in the <strong>Studio edit panel</strong>: click the "revise" pencil to customise an infographic, slide deck and more.</span>
     </div>
 </div>
 
@@ -526,7 +544,7 @@
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            <span><strong>Pro Tip:</strong> You can chain prompts — mix the "SOP" prompt with a look-and-feel prompt, e.g. generate a premium, clean-tech presentation deck featuring high-resolution 3D device mockups with studio lighting and screen reflections.</span>
+            <span><strong>Pro Tip:</strong> You can chain prompts: mix the "SOP" prompt with a look-and-feel prompt, e.g. generate a premium, clean-tech presentation deck featuring high-resolution 3D device mockups with studio lighting and screen reflections.</span>
         </div>
     </div>
 </div>
@@ -825,7 +843,7 @@ function copyPrompt(id, btn) {
             btn.innerHTML = `${copySVG} Copy Prompt`;
         }, 2000);
     }).catch(() => {
-        btn.textContent = 'Failed — try again';
+        btn.textContent = 'Failed, try again';
         setTimeout(() => { btn.innerHTML = `${copySVG} Copy Prompt`; }, 2000);
     });
 }
