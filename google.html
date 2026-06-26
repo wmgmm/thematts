@@ -187,6 +187,38 @@
             margin-bottom: 8px;
         }
 
+        /* --- Data / Confidentiality Banner --- */
+        .data-banner {
+            background: #F0F6FF;
+            border: 1px solid rgba(0, 113, 227, 0.22);
+            border-radius: var(--radius-medium);
+            padding: 18px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .data-banner-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            color: var(--apple-blue);
+            margin-top: 1px;
+        }
+        .data-banner-body { font-size: 14px; line-height: 1.5; color: var(--apple-text-secondary); }
+        .data-banner-lead {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--apple-blue);
+            margin: 0 0 8px;
+        }
+        .data-banner-body p { margin: 0; }
+        .data-banner-body p + p { margin-top: 6px; }
+        .data-banner-body strong { color: var(--apple-text-primary); font-weight: 600; }
+        .data-banner-mark { font-weight: 700; color: var(--apple-blue); }
+
         /* --- Quick Start Steps (compact horizontal) --- */
         .quick-start {
             display: grid;
@@ -1101,6 +1133,19 @@
             <p class="subtitle">AI in the Workplace Part 2</p>
         </header>
 
+        <!-- ============ DATA / CONFIDENTIALITY ============ -->
+        <div class="data-banner" role="note" aria-label="Data confidentiality guidance">
+            <svg class="data-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11v5m0-8h.01"/>
+            </svg>
+            <div class="data-banner-body">
+                <p class="data-banner-lead">Important: confidential (C1/C2) work data</p>
+                <p><span class="data-banner-mark">&#10003; At Cardiff University:</span> Gemini and NotebookLM are approved for confidential (C1/C2) data, but <strong>only when you sign in with your CU account</strong> (cardiff.ac.uk).</p>
+                <p><span class="data-banner-mark">&bull; Anywhere else:</span> treat them as personal learning tools. Keep to public, non-confidential information unless your organisation has approved its own Gemini &amp; NotebookLM setup.</p>
+            </div>
+        </div>
+
         <!-- ============ ACTIVITY (SINGLE) ============ -->
         <section id="activities" class="activity-hero-wrap">
             <a href="https://wmgmm.github.io/sprint/" target="_blank" rel="noopener" class="activity-hero" aria-label="Start the AI Discovery Sprint workshop activity">
@@ -1145,7 +1190,7 @@
                     </span>
                 </a>
                 <div class="instruction-text">
-                    Click <strong>"New Chat"</strong> in Gemini between tasks.
+                    Click <strong>"New Chat"</strong> in Gemini between tasks. Use your <strong>Cardiff University account</strong> for work data.
                 </div>
             </div>
 
@@ -1466,7 +1511,7 @@ If the feedback doesn't fit these, label it 'Other'."</div>
                     </span>
                 </a>
                 <div class="instruction-text">
-                    Sign in with your Google account, then create a notebook and add your sources.
+                    Sign in with your Google account, then create a notebook and add your sources. Use your <strong>Cardiff University account</strong> for work data.
                 </div>
             </div>
 

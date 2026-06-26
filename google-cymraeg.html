@@ -187,6 +187,38 @@
             margin-bottom: 8px;
         }
 
+        /* --- Data / Confidentiality Banner --- */
+        .data-banner {
+            background: #F0F6FF;
+            border: 1px solid rgba(0, 113, 227, 0.22);
+            border-radius: var(--radius-medium);
+            padding: 18px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .data-banner-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            color: var(--apple-blue);
+            margin-top: 1px;
+        }
+        .data-banner-body { font-size: 14px; line-height: 1.5; color: var(--apple-text-secondary); }
+        .data-banner-lead {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--apple-blue);
+            margin: 0 0 8px;
+        }
+        .data-banner-body p { margin: 0; }
+        .data-banner-body p + p { margin-top: 6px; }
+        .data-banner-body strong { color: var(--apple-text-primary); font-weight: 600; }
+        .data-banner-mark { font-weight: 700; color: var(--apple-blue); }
+
         /* --- Quick Start Steps (compact horizontal) --- */
         .quick-start {
             display: grid;
@@ -1101,6 +1133,19 @@
             <p class="subtitle">AI yn y Gweithle Rhan 2</p>
         </header>
 
+        <!-- ============ DATA / CONFIDENTIALITY ============ -->
+        <div class="data-banner" role="note" aria-label="Canllawiau cyfrinachedd data">
+            <svg class="data-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11v5m0-8h.01"/>
+            </svg>
+            <div class="data-banner-body">
+                <p class="data-banner-lead">Pwysig: data gwaith cyfrinachol (C1/C2)</p>
+                <p><span class="data-banner-mark">&#10003; Ym Mhrifysgol Caerdydd:</span> mae Gemini a NotebookLM wedi'u cymeradwyo ar gyfer data cyfrinachol (C1/C2), ond <strong>dim ond pan fyddwch yn mewngofnodi â'ch cyfrif Prifysgol Caerdydd</strong> (cardiff.ac.uk).</p>
+                <p><span class="data-banner-mark">&bull; Yn unrhyw le arall:</span> triniwch nhw fel offer dysgu personol. Cadwch at wybodaeth gyhoeddus, nad yw'n gyfrinachol, oni bai bod eich sefydliad wedi cymeradwyo ei osodiad Gemini a NotebookLM ei hun.</p>
+            </div>
+        </div>
+
         <!-- ============ ACTIVITY (SINGLE) ============ -->
         <section id="activities" class="activity-hero-wrap">
             <a href="https://wmgmm.github.io/sprint/" target="_blank" rel="noopener" class="activity-hero" aria-label="Dechrau gweithgaredd gweithdy'r Sbrint Darganfod AI">
@@ -1145,7 +1190,7 @@
                     </span>
                 </a>
                 <div class="instruction-text">
-                    Cliciwch <strong>"Sgwrs Newydd"</strong> yn Gemini rhwng tasgau.
+                    Cliciwch <strong>"Sgwrs Newydd"</strong> yn Gemini rhwng tasgau. Defnyddiwch eich <strong>cyfrif Prifysgol Caerdydd</strong> ar gyfer data gwaith.
                 </div>
             </div>
 
@@ -1467,7 +1512,7 @@ Os nad yw'r adborth yn ffitio'r rhain, labela ef yn 'Arall'."</div>
                     </span>
                 </a>
                 <div class="instruction-text">
-                    Mewngofnodwch â'ch cyfrif Google, yna crëwch lyfr nodiadau ac ychwanegwch eich ffynonellau.
+                    Mewngofnodwch â'ch cyfrif Google, yna crëwch lyfr nodiadau ac ychwanegwch eich ffynonellau. Defnyddiwch eich <strong>cyfrif Prifysgol Caerdydd</strong> ar gyfer data gwaith.
                 </div>
             </div>
 
