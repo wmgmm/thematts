@@ -82,6 +82,27 @@
         .disclaimer svg { flex-shrink: 0; margin-top: 2px; color: var(--text-tertiary); }
         .disclaimer strong { color: var(--text-primary); font-weight: 600; }
 
+        /* ── SIGN-IN CARD ───────────────────────────────────── */
+        .signin-wrap { max-width: 960px; margin: 28px auto 0; padding: 0 24px; text-align: center; }
+        .signin-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 22px;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        .signin-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+        .signin-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .signin-card img { width: 40px; height: 40px; flex-shrink: 0; }
+        .signin-text { text-align: left; }
+        .signin-label { display: block; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+        .signin-url { display: block; font-size: 0.8125rem; color: var(--accent); margin-top: 2px; }
+
         /* ── CONTROLS ───────────────────────────────────────── */
         .controls-wrap {
             position: sticky;
@@ -402,6 +423,16 @@
 </header>
 
 
+<div class="signin-wrap">
+    <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="signin-card">
+        <img src="notebooklm-logo.png" alt="">
+        <span class="signin-text">
+            <span class="signin-label">Click to open NotebookLM</span>
+            <span class="signin-url">notebooklm.google.com&nbsp;↗</span>
+        </span>
+    </a>
+</div>
+
 <div style="max-width:960px;margin:0 auto;padding:0 24px;margin-bottom:24px;">
     <div class="disclaimer" style="display: flex; flex-direction: column; gap: 12px;">
         
@@ -410,7 +441,7 @@
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
             </svg>
-            <span><strong>Important:</strong> NotebookLM is for <strong>personal use only</strong>. Do not enter confidential information.</span>
+            <span><strong>Important:</strong> At Cardiff University, NotebookLM is approved for all confidential (C1/C2) data <strong>only when you access it through your CU account</strong> (cardiff.ac.uk). In any other organisation, treat it as a personal learning tool and keep to public, non-confidential information unless that organisation has approved its own NotebookLM setup.</span>
         </div>
         
         <!-- Studio/Insert Tip -->
