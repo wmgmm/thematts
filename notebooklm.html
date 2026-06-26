@@ -37,31 +37,60 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── HEADER ─────────────────────────────────────────── */
-        header {
+        /* ── NAV ────────────────────────────────────────────── */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
             background: rgba(255,255,255,0.85);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid var(--border);
-            padding: 40px 24px 36px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-content { display: flex; gap: 32px; align-items: center; }
+        .nav-brand { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
+        .global-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            opacity: 0.75;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+        .global-nav a:hover { opacity: 1; color: var(--accent); }
+        @media (max-width: 600px) {
+            .nav-content { gap: 16px; }
+            .nav-brand { display: none; }
+            .global-nav a { font-size: 0.75rem; }
+        }
+
+        /* ── HEADER / HERO ──────────────────────────────────── */
+        header {
+            padding: 56px 24px 38px;
             text-align: center;
         }
 
         .header-inner { max-width: 720px; margin: 0 auto; }
 
         header h1 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-size: clamp(2rem, 5vw, 2.75rem);
             font-weight: 700;
             letter-spacing: -0.025em;
             color: var(--text-primary);
-            line-height: 1.15;
+            line-height: 1.08;
         }
 
         header .subtitle {
-            margin-top: 8px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
+            margin-top: 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
         }
 
         /* ── DISCLAIMER ─────────────────────────────────────── */
@@ -415,10 +444,18 @@
 </head>
 <body>
 
+<nav class="global-nav">
+    <div class="nav-content">
+        <span class="nav-brand">The Matts</span>
+        <a href="google.html">Workshop</a>
+        <a href="https://notebooklm.google.com" target="_blank" rel="noopener">Open NotebookLM ↗</a>
+    </div>
+</nav>
+
 <header>
     <div class="header-inner">
         <h1>The Matts' NotebookLM Prompt Library</h1>
-        <p class="subtitle">Ready-to-use prompts for analysis, summarisation, and learning</p>
+        <p class="subtitle">Analysis · Summarisation · Learning</p>
     </div>
 </header>
 
@@ -497,8 +534,7 @@
 <footer>
     <p>Workshop resources curated by Dr. Matt Mort and Mr. Matt Hayden. Materials &copy; 2025.</p>
     <p style="margin-top:4px;">
-        <a href="mailto:mortm@cardiff.ac.uk">mortm@cardiff.ac.uk</a> &nbsp;|&nbsp;
-        <a href="mailto:haydenmj1@cardiff.ac.uk">haydenmj1@cardiff.ac.uk</a>
+        <a href="mailto:thematts@cardiff.ac.uk">thematts@cardiff.ac.uk</a>
     </p>
 </footer>
 
