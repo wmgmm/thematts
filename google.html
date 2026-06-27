@@ -1317,15 +1317,27 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                 <details>
                     <summary><span style="flex:1;">Analyse an Excel file</span></summary>
                     <div class="details-content">
-                        <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+                        <div class="exercise-note">
+                            Application: turn a raw spreadsheet into a verified summary, then a chart, in two quick steps.
+                        </div>
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">1. Verified summary</h3>
+                            <div class="prompt-box" id="excel-analysis-prompt">Summarise this Excel file. Use code (Python) to calculate the figures, do not estimate them.
 
-PROVIDE:
-1. OVERVIEW (rows/columns, data type, date range)
-2. KEY STATISTICS (totals, averages, min/max)
-3. TOP INSIGHTS (3-5 interesting findings)
+Give me:
+1. Overview: rows, columns and the date range
+2. Key numbers: totals, averages, highs and lows
+3. Three insights worth knowing
 
-Present in clear business language."</div>
-                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+Then show the totals you used and cross-check them before you answer. Use plain business English.</div>
+                            <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+                        </div>
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">2. Chart the trend</h3>
+                            <div class="prompt-box" id="excel-analysis-chart">Now chart the most important trend in this data, and explain in two bullets what it means for a manager.</div>
+                            <button onclick="copyToClipboard('excel-analysis-chart')" class="btn-copy">Copy Prompt</button>
+                        </div>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Run step 1, then paste step 2 as a follow-up. Asking the AI to calculate in code and cross-check its totals is what stops it inventing numbers.</p>
                     </div>
                 </details>
 
