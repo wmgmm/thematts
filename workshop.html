@@ -1148,7 +1148,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">10</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">11</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
@@ -1378,6 +1378,27 @@ My only skill is pretending to listen in Zoom calls.</textarea>
                         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Challenge your thinking</p>
                         <div class="prompt-box" id="memory-challenge">Remember and save to memory: Challenge my assumptions. Tell me when I am wrong and explain the reasoning. Give me the strongest counter-argument before you agree with me.</div>
                         <button onclick="copyToClipboard('memory-challenge')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">11</span><span style="flex:1;">Treat your chat history as a playbook</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Find prompting habits you repeat</p>
+                        <div class="prompt-box" id="chat-history-habits">Search my chat history from the last 3 months. Find 3 prompting habits I repeat. For each, show the habit, one example from my chat history, and a sharper prompt I can reuse. One line each, no filler.</div>
+                        <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Spot tasks you keep redoing by hand</p>
+                        <div class="prompt-box" id="chat-history-tasks">Read across my chat history and tell me which tasks I keep redoing by hand.</div>
+                        <button onclick="copyToClipboard('chat-history-tasks')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Capture your writing style</p>
+                        <div class="prompt-box" id="chat-history-style">From my chat history, draft a profile of my writing style, then remember and save it to memory.</div>
+                        <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 
