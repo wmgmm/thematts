@@ -1188,6 +1188,7 @@
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Gemini Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">7</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
 
             <!-- ============ TAB 1: EXERCISES ============ -->
@@ -1444,6 +1445,277 @@ When I share two pieces of text, a funder call document and a draft proposal sec
 
 Be precise. Reference the actual words of both documents.</div>
                         <button onclick="copyToClipboard('funder-alignment-checker')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+            </div>
+
+            <div id="tab-concepts" class="tab-panel" role="tabpanel">
+
+                <details open>
+                    <summary><span style="flex:1;">Treat AI like a teammate, not a vending machine</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Reality:</strong> You rarely get a perfect draft from a colleague first time. Don't expect it from AI either. The magic is in the follow-up.
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; margin: 18px 0;">
+                            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04);">
+                                <div style="font-size: 38px; line-height: 1; margin-bottom: 10px;" aria-hidden="true">🥤</div>
+                                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-text-tertiary); margin-bottom: 6px;">Avoid</div>
+                                <strong style="display:block; font-size: 15px; margin-bottom: 6px;">The Vending Machine</strong>
+                                <p style="margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">Insert prompt &rarr; expect a perfect deliverable in one shot.</p>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; color: var(--apple-text-tertiary);" aria-hidden="true">vs</div>
+                            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04); position: relative;">
+                                <div style="font-size: 38px; line-height: 1; margin-bottom: 10px;" aria-hidden="true">🤝</div>
+                                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 6px;">Adopt</div>
+                                <strong style="display:block; font-size: 15px; margin-bottom: 6px;">The Teammate</strong>
+                                <p style="margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">Iterate together: guide, correct, refine until it lands.</p>
+                            </div>
+                        </div>
+
+                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🤝</span>
+                                <strong style="font-size:15px;">The Mindset</strong>
+                                <p style="margin-top: 8px;">
+                                    Treat Gemini like a clever intern, not a vending machine.
+                                </p>
+                                <p style="margin-top: 8px;">
+                                    If the output isn't right, don't start over. <strong>Just talk to it</strong> and guide it.
+                                </p>
+                            </div>
+                            <div class="inner-card">
+                                <strong style="margin-bottom: 12px; display:block; font-size:14px;">Try these follow-up phrases:</strong>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Actually, can you make it more formal?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "That's good, but what if we tried a friendlier approach?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Can you expand on that second point? It's a bit too brief."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Context rot: long chats make more mistakes</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Reality:</strong> as a chat gets long, the AI starts to drift. Start new chats regularly to keep it sharp.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 8px; color: var(--apple-text-primary);">How a conversation degrades:</p>
+                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
+                            <div class="inner-card">
+                                <strong>Message 5</strong>
+                                <p>Sharp, on task.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Message 25</strong>
+                                <p>Starts repeating itself.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Message 45</strong>
+                                <p>Forgets earlier instructions.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Message 70</strong>
+                                <p>Contradicts its own answers.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 8px; color: var(--apple-text-primary);">Three fixes:</p>
+                        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 14px; line-height: 1.6; color: var(--apple-text-secondary);">
+                            <li style="margin-bottom: 6px;"><strong>Start new chats regularly.</strong> Don't wait for things to go wrong: a fresh chat keeps the context short and the model sharp.</li>
+                            <li style="margin-bottom: 6px;"><strong>New topic?</strong> Start a new chat.</li>
+                            <li><strong>Gone off the rails?</strong> Run the handover prompt below, then paste the output into a new chat.</li>
+                        </ul>
+
+                        <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Handover prompt (run in the existing chat, then copy the output into a new chat):</p>
+                        <div class="prompt-box" id="context-rot-handover">Prepare a handover I can paste into a new chat. Rules: 1) five bullets, one line each: decisions, key facts, constraints, open questions, next steps, marking anything unconfirmed; 2) copy anything worth keeping (drafts, wording, lists) verbatim under short headings, no rewriting or merging; 3) end with a two-line brief: the new chat's role and its first task. No sub-bullets, no commentary.</div>
+                        <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Write better prompts: the 1-2-3 method</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Golden Rule:</strong> Better inputs equal better outputs. Follow this 3-step flow for every prompt to get the best results.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">1.</div>
+                                    <strong style="font-size:15px;">Give Context</strong>
+                                    <p style="margin-top:6px; margin-bottom: 12px;">Provide relevant background information (Role, Data, Reports).</p>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 10px; font-size: 20px; display: flex; justify-content: space-around; color: #555;">
+                                    <span title="Role &amp; Background">👤</span>
+                                    <span title="Spreadsheet Data">📊</span>
+                                    <span title="Website/Research">🌐</span>
+                                    <span title="Word Doc/Report">📄</span>
+                                </div>
+                            </div>
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">2.</div>
+                                    <strong style="font-size:15px;">Make Request</strong>
+                                    <p style="margin-top:6px;">Be specific about exactly what you want the AI to do.</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "Review my email for clarity..."
+                                </div>
+                            </div>
+                            <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">3.</div>
+                                    <strong style="font-size:15px;">Explain Purpose</strong>
+                                    <p style="margin-top:6px;">Share <em>why</em> you need this (The "So That").</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "...to maximize the chances of a quick response."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Stop repeating yourself: keep a MegaDoc</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Concept:</strong> Stop retyping the same background. Keep a Word doc of your org's context and paste it into prompts.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔤</span>
+                                <strong>Acronyms</strong>
+                                <p>e.g. "DCG = Division of Cancer &amp; Genetics"</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">✒️</span>
+                                <strong>Style Guide</strong>
+                                <p>"Formal but warm. UK English. Bullet points."</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">📋</span>
+                                <strong>Key Facts</strong>
+                                <p>Personnel, boilerplate, standard procedures.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🚀</span>
+                                <strong>Project Overview</strong>
+                                <p>Goals, status, blockers.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 6px; color: var(--apple-text-primary);">Try it today:</p>
+                        <p style="font-size: 13px; margin: 0 0 12px; color: var(--apple-text-secondary);">List your top 10 acronyms and one project snapshot. Paste into your next prompt and watch the difference.</p>
+
+                        <div class="prompt-box" id="megadoc-prompt">"Here is some context from my MegaDoc:
+[PASTE YOUR ACRONYMS/STYLE GUIDE HERE]
+
+Based on this context, draft an update email to the team about [Your Topic]..."</div>
+                        <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Chat with your own documents (NotebookLM)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Tool:</strong> NotebookLM grounds AI in your own documents. Our curated prompt library helps you analyse them.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🎧</span>
+                                <strong>Audio Overviews</strong>
+                                <p>Turn dry reports into engaging "Deep Dive" podcasts.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🕵️</span>
+                                <strong>Critical Analysis</strong>
+                                <p>Identify blind spots, contradictions, and missing data.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🏗️</span>
+                                <strong>Structured Output</strong>
+                                <p>Convert notes into Slide Decks, Briefs, and SOPs.</p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                                Open NotebookLM Prompt Library ↗
+                            </a>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">
+                                Includes 15+ specialised prompts for Research &amp; Strategy
+                            </p>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Get AI help with code</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Two ways to use AI for code:</strong>
+                            <ul style="padding-left: 18px; margin: 10px 0 12px; font-size: 14px; line-height: 1.55;">
+                                <li style="margin-bottom: 6px;"><strong>Chat:</strong> paste in code, errors, or questions.</li>
+                                <li><strong>Coding Agent:</strong> connects to your system and can read, write, and run files. Use a local model + decent GPU to keep data private.</li>
+                            </ul>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                                Open AI Coding Prompt Library ↗
+                            </a>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Run AI privately on your own device</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>You Are In Charge:</strong> Run AI on your own device. Total privacy, zero fees, no Wi-Fi needed.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🛡️</span>
+                                <strong>Privacy &amp; Control</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Data never leaves your device.</li>
+                                    <li style="margin-bottom: 6px;">Safe for sensitive material.</li>
+                                    <li>Full IP ownership.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">⚡</span>
+                                <strong>Cost &amp; Efficiency</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Zero fees (open-source models).</li>
+                                    <li style="margin-bottom: 6px;">Works offline.</li>
+                                    <li>Lower energy use.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card" style="background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
+                                <span class="inner-card-icon">🎓</span>
+                                <strong style="color: var(--apple-blue);">Private AI Workshop</strong>
+                                <p style="margin: 8px 0;">A 2-hour session to get you started on your own laptop.</p>
+                                <a href="mailto:thematts@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Contact us for details →</a>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
