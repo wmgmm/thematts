@@ -227,9 +227,9 @@
                 </div>
             </div>
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">9</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Anogiadau Gweithle</span><span class="tab-label-short">Anogiadau</span><span class="tab-count">7</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Cysyniadau a Chyfeirnod</span><span class="tab-label-short">Cysyniadau</span><span class="tab-count">6</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">11</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Anogiadau Gweithle</span><span class="tab-label-short">Anogiadau</span><span class="tab-count">10</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Cysyniadau a Chyfeirnod</span><span class="tab-label-short">Cysyniadau</span><span class="tab-count">8</span></button>
             </div>
             <div id="tab-exercises" class="tab-panel active" role="tabpanel">
                 <details open>
@@ -255,7 +255,7 @@
                         <div class="exercise-note">Defnydd: Profi eich heriau, syniadau newydd neu benderfyniadau cyn eu cwblhau.</div>
                         <div class="prompt-box" id="devils-advocate">"Bydd yn eiriolwr y diafol adeiladol. Yn gyntaf, nodi'r gwendidau neu'r mannau dall posibl, yna awgryma safbwyntiau eraill. Bydd yn benodol ac yn heriol ond yn adeiladol. Dyma fy senario: [senario yma]"</div>
                         <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copïo'r Anogiad</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Ychwanegwch eich senario eich hun: "Dwi eisiau symud o werthu i rôl arwain", "delio â chleient anodd", a rhowch gyd-destun defnyddiol hefyd. Gallwch chi uwchlwytho dogfen yn lle teipio senario, e.e. uwchlwytho eich polisi teithio newydd.</em></p>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Ychwanegwch eich senario eich hun: "Dwi eisiau symud o werthu i rôl arwain", "delio â chleient anodd", a rhowch gyd-destun defnyddiol hefyd. Gallwch chi uwchlwytho dogfen yn lle teipio senario, e.e. uwchlwytho eich polisi teithio newydd. Yna arbrofwch gyda thrawsgrifiad cyfarfod, ffeil Excel neu hyd yn oed gyflwyniad PowerPoint.</em></p>
                     </div>
                 </details>
                 <details>
@@ -367,114 +367,104 @@ Paid â siarad â fi cyn fy nghoffi cyntaf.</textarea>
                         </div>
                     </div>
                 </details>
-            </div>
-            <div id="tab-recipes" class="tab-panel" role="tabpanel">
-                <details open>
-                    <summary><span style="flex:1;">Echdynnu Dogfen yn ôl Rôl</span></summary>
+            <details>
+                    <summary><span class="ex-num">10</span><span style="flex:1;">Cof Copilot</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note">Defnydd: Uwchlwytho dogfen a gorfodi'r AI i ddangos dim ond y tasgau, y dyddiadau cau a'r wybodaeth sy'n berthnasol i'ch swydd benodol chi.</div>
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Gosodwch ef unwaith, defnyddiwch ef ym mhobman:</strong> Gall Copilot ddal eich dewisiadau ar draws sgyrsiau. Rydych chi'n gosod rheol unwaith, ac mae Copilot yn ei chymhwyso i bob sgwrs sy'n dilyn. Dim mwy o ail-deipio'r un gosodiad bob tro y byddwch chi'n agor sgwrs newydd.
+                        </div>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">I storio rheol, teipiwch gyfarwyddyd sy'n dechrau gyda <strong>"Cofia a chadwa i'r cof"</strong>. Mae Copilot yn ei chadarnhau ac yn ei chadw. Gallwch chi weld, golygu neu ddileu eitemau wedi'u cadw yng ngosodiadau Copilot.</p>
+
+                        <p style="font-weight: 600; font-size: 15px; margin: 0 0 12px; color: var(--apple-text-primary);">Tri anogiad gwerth eu cadw</p>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Dewisiadau rhanbarthol</p>
+                        <div class="prompt-box" id="memory-regional">cofia a chadwa i'r cof fy mod i'n ffafrio sillafu'r DU, ffynonellau'r DU a chonfensiynau enwi'r DU.</div>
+                        <button onclick="copyToClipboard('memory-regional')" class="btn-copy">Copïo'r Anogiad</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Gonestrwydd am fylchau</p>
+                        <div class="prompt-box" id="memory-honesty">cofia a chadwa i'r cof: Dim dyfalu. Cydnabod ansicrwydd a bylchau gwybodaeth. Nodi terfynau'r dystiolaeth.</div>
+                        <button onclick="copyToClipboard('memory-honesty')" class="btn-copy">Copïo'r Anogiad</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Heria dy feddwl</p>
+                        <div class="prompt-box" id="memory-challenge">cofia a chadwa i'r cof: Heria fy nhybiaethau. Dwed wrtha i pan dwi'n anghywir ac esbonia'r rhesymeg. Rho'r gwrth-ddadl gryfaf i mi cyn i ti gytuno â mi.</div>
+                        <button onclick="copyToClipboard('memory-challenge')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">11</span><span style="flex:1;">Trin eich hanes sgwrsio fel llawlyfr chwarae</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Mae eich sgyrsiau blaenorol yn ddata:</strong> Gall Copilot ddarllen yn ôl dros eich hanes sgwrsio, dod o hyd i'r patrymau rydych chi'n eu hailadrodd, a rhoi anogiad neu dempled y gellir ei ailddefnyddio yn ôl i chi. Mae eich sgyrsiau blaenorol yn dod yn fan cychwyn ar gyfer y dasg nesaf.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Dod o hyd i arferion anogi rydych chi'n eu hailadrodd</p>
+                        <div class="prompt-box" id="chat-history-habits">Chwilia fy hanes sgwrsio o'r 3 mis diwethaf. Dod o hyd i 3 arfer anogi dwi'n eu hailadrodd. Ar gyfer pob un, dangos yr arfer, un enghraifft o fy hanes sgwrsio, ac anogiad craffach y gallaf ei ailddefnyddio. Un llinell yr un, dim llanw.</div>
+                        <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copïo'r Anogiad</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Adnabod tasgau rydych chi'n eu hailwneud â llaw</p>
+                        <div class="prompt-box" id="chat-history-tasks">Darllena ar draws fy hanes sgwrsio a dwed wrtha i pa dasgau dwi'n dal i'w hailwneud â llaw.</div>
+                        <button onclick="copyToClipboard('chat-history-tasks')" class="btn-copy">Copïo'r Anogiad</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Cofnodi eich arddull ysgrifennu</p>
+                        <div class="prompt-box" id="chat-history-style">O fy hanes sgwrsio, drafftia broffil o fy arddull ysgrifennu, yna cofia a chadwa ef i'r cof.</div>
+                        <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+                </div>
+            <div id="tab-recipes" class="tab-panel" role="tabpanel">
+
+                <details open>
+                    <summary><span style="flex:1;">Hidlo dogfen yn ôl eich rôl</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: Uwchlwytho dogfen a thynnu allan dim ond y tasgau, y dyddiadau cau a'r manylion sy'n berthnasol i'ch swydd chi.
+                        </div>
                         <div class="prompt-box" id="role-extraction">Darllena'r Ddogfen hon o safbwynt [RHOWCH RÔL YMA e.e. rheolwr prosiect]. Tynna allan dim ond yr wybodaeth, y camau gweithredu a'r dyddiadau cau a fyddai'n effeithio ar fy rôl.</div>
                         <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copïo'r Anogiad</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Atodwch eich dogfen i Copilot, gludwch yr anogiad hwn, a rhowch eich teitl swydd go iawn yn lle'r testun mewn bachau i dorri drwy'r sŵn ar unwaith.</em></p>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Atodwch eich dogfen i Copilot, gludwch yr anogiad hwn, a rhowch eich teitl swydd go iawn yn lle'r testun mewn bachau i dorri drwy'r sŵn ar unwaith.</p>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Meta-Anogi: Gadael i'r AI Ysgrifennu'r Anogiad</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">Defnydd: Defnyddio gwybodaeth yr AI i ddylunio anogiadau arbenigol ar gyfer tasgau mewn meysydd penodol, e.e. 'Trefnu E-byst Desg Gymorth mewn TG'.</div>
-                        <div class="prompt-box" id="meta-prompt-technique">"Ti yw dylunydd anogiadau AI arbenigol. Dyluna'r anogiad mwyaf effeithiol i: [RHOWCH DASG A MAES PENODOL]. 
-
-Ystyria pa elfennau, meini prawf neu fanylion allweddol sy'n bwysig, pa fformat allbwn sydd fwyaf ymarferol, a'r camau rhesymu sy'n hanfodol."</div>
-                        <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copïo'r Anogiad</button>
-                    </div>
-                </details>
-                <details>
-                    <summary><span style="flex:1;">Gwrthbeiriannu (Anogiadau o Allbynnau Safon Aur)</span></summary>
-                    <div class="details-content">
-                        <p style="margin-top:0;"><strong>Cysyniad:</strong> "Meta-Anogi" neu Wrthbeiriannu. Yn lle dyfalu sut i anogi, rhowch yr allbwn dymunol (neu gyfeirnod arddull) i'r AI a gofyn iddo ysgrifennu'r anogiad i chi.</p>
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">1. Templed Nodiadau Cyfarfod</h3>
-                            <div class="exercise-note"><strong>Defnydd:</strong> Defnyddiwch hyn pan fydd gennych ddogfen "Safon Aur" a'ch bod eisiau i bob dogfen yn y dyfodol ddilyn yr union strwythur hwnnw.</div>
-                            <div class="prompt-box" id="reverse-prompt-meeting">"Dadansodda'r nodiadau cyfarfod isod. Crea un anogiad ailddefnyddiadwy sy'n cyfarwyddo AI i gynhyrchu nodiadau gan ddefnyddio'r union fformat, arddull a strwythur hwn o drawsgrifiad amrwd.
-
-[GLUDWCH Y NODIADAU SAFON AUR YMA]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copïo'r Anogiad</button>
-                        </div>
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">2. Persona Naws Gorfforaethol</h3>
-                            <div class="exercise-note"><strong>Defnydd:</strong> Hanfodol ar gyfer marchnata. Defnyddiwch hyn i echdynnu "Llais" penodol o destun sy'n bodoli fel y gall yr AI ei efelychu'n ddiweddarach.</div>
-                            <div class="prompt-box" id="reverse-prompt-persona">"Dadansodda naws, geirfa a strwythur brawddegau'r testun isod. Ysgrifenna 'Anogiad Persona' sy'n diffinio'r nodweddion hyn fel y gall AI ysgrifennu erthyglau newydd yn yr union arddull hon yn gyson.
-
-[GLUDWCH DESTUN Y BRAND YMA]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copïo'r Anogiad</button>
-                        </div>
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">3. Crynhoydd Crynodeb Academaidd</h3>
-                            <div class="exercise-note"><strong>Defnydd:</strong> Defnyddiwch hyn ar gyfer ysgrifennu technegol lle mae cyfyngiadau (nifer geiriau, gwrthrychedd) yn dynn a'ch bod eisiau crynhoi cynnwys newydd yn y llais hwnnw.</div>
-                            <div class="prompt-box" id="reverse-prompt-abstract">"Dadelfenna'r crynodeb academaidd isod. Nodi'r cyfyngiadau nifer geiriau ymhlyg, y naws ffurfiol a'r elfennau strwythurol. Ysgrifenna anogiad ailddefnyddiadwy wedi'i gynllunio i gynhyrchu crynodebau tebyg o gynnwys newydd.
-
-[GLUDWCH Y CRYNODEB YMA]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copïo'r Anogiad</button>
-                        </div>
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">4. Trosglwyddo Arddull Delwedd-i-Destun</h3>
-                            <div class="exercise-note"><strong>Defnydd:</strong> Defnyddiwch hyn i gynhyrchu disgrifiad testun manwl o ddelwedd, y gallwch chi wedyn ei ddefnyddio i gynhyrchu delweddau newydd yn yr arddull honno.</div>
-                            <div class="prompt-box" id="reverse-prompt-image">"Bydd yn ffotograffydd proffesiynol. Dadansodda'r ddelwedd atodedig. Ysgrifenna anogiad testun-i-ddelwedd manwl sy'n dal y goleuo penodol, y naws, ongl y camera, math y lens a manylion yr amgylchedd i ailgreu'r arddull hon.
-
-[UWCHLWYTHWCH DDELWEDD]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copïo'r Anogiad</button>
-                        </div>
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">5. Arddull a Fformat Gwefan</h3>
-                            <div class="exercise-note"><strong>Defnydd:</strong> Defnyddiwch hyn i echdynnu sgemâu dylunio o sgrinluniau neu god HTML i gynhyrchu gwefannau newydd ag edrychiad a naws tebyg.</div>
-                            <div class="prompt-box" id="reverse-prompt-website">"Dadansodda ddyluniad gweledol, palet lliw, teipograffeg a chynllun y wefan isod. Ysgrifenna anogiad system ddylunio sy'n cyfarwyddo AI i gymhwyso'r union edrychiad a naws hwn i god newydd.
-
-[GLUDWCH URL, HTML, NEU UWCHLWYTHWCH SGRINLUN]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copïo'r Anogiad</button>
-                        </div>
-                    </div>
-                </details>
-                <details>
-                    <summary><span style="flex:1;">Dim Mwy o Sothach AI? (Canllaw Arddull)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">Defnydd: Ychwanegwch hyn at waelod unrhyw anogiad i atal yr AI rhag rwdlan a'i wneud i ysgrifennu testun clir, uniongyrchol a naturiol.</div>
-                        <div class="prompt-box" id="no-more-slop">[RHOWCH DASG YR AI YMA e.e. Ysgrifenna adroddiad ar dueddiadau marchnata modern]
-
-CYFYNGIADAU ARDDULL A NAWS
-Cymhwyso'r rheolau llym hyn at y dasg uchod:
-* Llais: Ysgrifenna ag awdurdod uniongyrchol. Defnyddia'r llais gweithredol yn unig. Hepgor bob sylw-am-y-sylw (paid â dweud "Dyma'r adroddiad").
-* Geiriau gwaharddedig: Dim adferfau. Dim jargon busnes. Tynna bob gair llanw a phwyslais ("iawn", "tu hwnt", "mewn gwirionedd").
-* Dechreuadau gwaharddedig: Paid â dechrau brawddeg ag ymadrodd clirio-gwddf ("Mae'n werth nodi...", "Yn y byd sydd ohoni...") nac â chwestiwn rhethregol.
-* Atalnodi a llif: Paid byth â defnyddio cysylltnod hir; gwahana syniadau â cholon neu atalnod llawn. Osgoi gosodiadau rhethregol, cyferbyniadau deuaidd a brawddegau bratiog.
-* Cymraeg naturiol: Defnyddia Gymraeg naturiol gan dreiglo'n gywir. Osgoi cyfieithu llythrennol o batrymau Saesneg.</div>
-                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copïo'r Anogiad</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Gludwch y bloc cyfyngiadau hwn ar waelod eich anogiadau arferol i wella ansawdd yr allbwn ar unwaith. Sicrhewch eich bod yn rhoi eich tasg go iawn yn lle'r testun mewn bachau ar y brig.</em></p>
-                    </div>
-                </details>
-                <details>
-                    <summary><span style="flex:1;">Achos Defnydd AI: Nodiadau Cyfarfod</span></summary>
+                    <summary><span style="flex:1;">Crynhoi nodiadau cyfarfod</span></summary>
                     <div class="details-content">
                         <div class="prompt-box" id="meeting-notes-prompt">"Crynhoa'r trawsgrifiad cyfarfod canlynol os gweli'n dda. Canolbwyntia ar y prif bwyntiau, y penderfyniadau a wnaed, y camau gweithredu ac unrhyw ddyddiadau cau pwysig. Sicrha fod y crynodeb yn glir ac wedi'i drefnu. Dylai'r crynodeb fod dim hwy na 200 gair:
 [GLUDWCH Y TRAWSGRIFIAD YMA]"</div>
                         <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copïo'r Anogiad</button>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Achos Defnydd AI: Dadansoddi Data Excel</span></summary>
+                    <summary><span style="flex:1;">Dadansoddi ffeil Excel</span></summary>
                     <div class="details-content">
-                        <div class="prompt-box" id="excel-analysis-prompt">"Crynhoa'r ffeil Excel hon:
+                        <div class="exercise-note">
+                            Defnydd: troi taenlen amrwd yn grynodeb wedi'i wirio, ac yna'n siart, mewn dau gam cyflym.
+                        </div>
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">1. Crynodeb wedi'i wirio</h3>
+                            <div class="prompt-box" id="excel-analysis-prompt">Crynhoa'r ffeil Excel hon. Defnyddia god (Python) i gyfrifo'r ffigurau, paid â'u hamcangyfrif.
 
-RHO:
-1. TROSOLWG (rhesi/colofnau, math o ddata, ystod dyddiadau)
-2. YSTADEGAU ALLWEDDOL (cyfansymiau, cyfartaleddau, lleiafswm/uchafswm)
-3. PRIF MEWNWELEDIADAU (3-5 darganfyddiad diddorol)
+Rho i mi:
+1. Trosolwg: rhesi, colofnau ac ystod y dyddiadau
+2. Ffigurau allweddol: cyfansymiau, cyfartaleddau, uchafbwyntiau ac isafbwyntiau
+3. Tri mewnwelediad gwerth eu gwybod
 
-Cyflwyna mewn iaith fusnes glir."</div>
-                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copïo'r Anogiad</button>
+Yna dangos y cyfansymiau a ddefnyddiaist a chroeswirio nhw cyn i ti ateb. Defnyddia Saesneg busnes clir.</div>
+                            <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copïo'r Anogiad</button>
+                        </div>
+                        <div class="sub-recipe">
+                            <h3 style="font-size:17px;">2. Siartio'r duedd</h3>
+                            <div class="prompt-box" id="excel-analysis-chart">Nawr siartia'r duedd bwysicaf yn y data hwn, ac eglura mewn dau bwynt bwled beth mae'n ei olygu i reolwr.</div>
+                            <button onclick="copyToClipboard('excel-analysis-chart')" class="btn-copy">Copïo'r Anogiad</button>
+                        </div>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Rhedwch gam 1, yna gludwch gam 2 fel dilyniant. Gofyn i'r AI gyfrifo mewn cod a chroeswirio ei gyfansymiau yw'r hyn sy'n ei atal rhag dyfeisio rhifau.</p>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Achos Defnydd AI: Categoreiddio Testun</span></summary>
+                    <summary><span style="flex:1;">Categoreiddio testun neu adborth</span></summary>
                     <div class="details-content">
                         <div class="prompt-box" id="categorisation-prompt">"Dadansodda'r golofn [Enw'r golofn Adborth].
 
@@ -487,12 +477,108 @@ Os nad yw'r adborth yn ffitio'r rhain, labela ef yn 'Arall'."</div>
                         <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copïo'r Anogiad</button>
                     </div>
                 </details>
+
+                <details>
+                    <summary><span style="flex:1;">Ailysgrifennu unrhyw beth mewn Saesneg clir</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: gludwch bolisi, papur ymchwil, adroddiad neu drawsgrifiad cyfarfod a chael fersiwn y gall unrhyw un ei deall mewn un darlleniad.
+                        </div>
+                        <div class="prompt-box" id="plain-english-editor">Rwyt ti'n gyfathrebwr arbenigol sy'n ailysgrifennu testun arbenigol ar gyfer cynulleidfa gyffredinol.
+
+Pan fyddaf yn rhannu unrhyw destun, dogfen bolisi, papur ymchwil, adroddiad neu drawsgrifiad cyfarfod, ailysgrifenna ef fel y gall darllenydd heb unrhyw gefndir yn y pwnc ei ddeall mewn un darlleniad. Tynna allan neu eglura'n fyr bob jargon. Byrhau brawddegau. Rho'r arwyddocâd yn y byd go iawn yn gyntaf. Tynna allan ymadroddion gochelgar a'r llais goddefol.
+
+Ar ôl ailysgrifennu, nodi: y tri newid mwyaf arwyddocaol a wnaethost a pham; ac unrhyw dermau technegol y dewisaist eu cadw a pham. Paid â newid yr ystyr na hepgor cynnwys pwysig.</div>
+                        <button onclick="copyToClipboard('plain-english-editor')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Cael gwared ar sothach AI (canllaw arddull)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: Ychwanegwch hyn at waelod unrhyw anogiad i atal yr AI rhag rwdlan a'i wneud i ysgrifennu testun clir, uniongyrchol a naturiol.
+                        </div>
+                        <div class="prompt-box" id="no-more-slop">[RHOWCH DASG YR AI YMA e.e. Ysgrifenna adroddiad ar dueddiadau marchnata modern]
+
+CYFYNGIADAU ARDDULL A NAWS
+Cymhwyso'r rheolau llym hyn at y dasg uchod:
+* Llais: Ysgrifenna ag awdurdod uniongyrchol. Defnyddia'r llais gweithredol yn unig. Hepgor bob sylw-am-y-sylw (e.e. paid â dweud "Dyma'r adroddiad").
+* Geiriau gwaharddedig: Dim adferfau. Dim jargon busnes. Tynna allan bob gair llanw a phwyslais ("iawn", "tu hwnt", "mewn gwirionedd").
+* Dechreuadau gwaharddedig: Paid byth â dechrau brawddeg â Pwy, Beth, Ble, Pryd, Pam, Pa, na Sut.
+* Atalnodi a llif: Paid byth â defnyddio cysylltnod hir; gwahana syniadau â cholon neu atalnod llawn yn lle hynny. Osgoi gosodiadau rhethregol, cyferbyniadau deuaidd a brawddegau bratiog.</div>
+                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copïo'r Anogiad</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Gludwch y bloc cyfyngiadau hwn ar waelod eich anogiadau arferol i wella ansawdd yr allbwn ar unwaith. Sicrhewch eich bod yn rhoi eich tasg go iawn yn lle'r testun mewn bachau ar y brig.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Gadael i'r AI ysgrifennu'r anogiad</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: Cael yr AI i ddylunio anogiad arbenigol ar gyfer tasg yn eich maes chi, e.e. 'trefnu e-byst desg gymorth TG'.
+                        </div>
+                        <div class="prompt-box" id="meta-prompt-technique">"Ti yw dylunydd anogiadau AI arbenigol. Dyluna'r anogiad mwyaf effeithiol i: [RHOWCH DASG A MAES PENODOL].
+
+Ystyria pa elfennau, meini prawf neu fanylion allweddol sy'n bwysig, pa fformat allbwn sydd fwyaf ymarferol, a'r camau rhesymu sy'n hanfodol."</div>
+                        <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Gwrthbeiriannu unrhyw gynnwys sy'n bodoli</span></summary>
+                    <div class="details-content">
+                        <p style="margin-top:0;">Un anogiad ailddefnyddiadwy sy'n clonio edrychiad, naws, llais a strwythur unrhyw ddogfen a uwchlwythwch.</p>
+                        <div class="prompt-box" id="clone-style-prompt">Dadansodda'r enghraifft rwyf wedi'i huwchlwytho: gallai fod yn ddogfen, delwedd, neu wefan. Nodi beth sy'n gwneud ei harddull yn nodedig: ei naws, geirfa, strwythur brawddegau, fformatio a chynllun.
+
+Ysgrifenna un anogiad ailddefnyddiadwy y gallaf ei ddefnyddio eto gyda deunydd newydd i gynhyrchu fersiynau newydd â'r un edrychiad, naws a strwythur. Ar waelod yr anogiad hwnnw, ychwanega'r dalfan [GLUDWCH GYNNWYS NEWYDD YMA] lle bydd y deunydd newydd yn mynd.
+
+Allbynna'r anogiad ailddefnyddiadwy yn unig, dim byd arall.</div>
+                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copïo'r Anogiad</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Uwchlwythwch eich enghraifft, yna rhedwch yr anogiad hwn: enghraifft i mewn &rarr; AI yn dadansoddi'r patrwm &rarr; anogiad ailddefnyddiadwy allan.<br>Yn gweithio ar unrhyw beth â phatrwm: dogfennau, setiau sleidiau (PowerPoint), gwefannau, delweddau, adroddiadau, gweithdrefnau gweithredu safonol, trawsgrifiadau.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Sgorio cynnig grant (panel UKRI)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: asesu drafft grant yn erbyn meini prawf y cyllidwr, gyda sgoriau a'r mannau gwan mwyaf tebygol o achosi gwrthodiad.
+                        </div>
+                        <div class="prompt-box" id="ukri-panel-reviewer">Rwyt ti'n adolygydd cymheiriaid academaidd profiadol sy'n eistedd ar banel cyllido UKRI. Rwyt wedi adolygu cannoedd o gynigion grant ar draws cynghorau ymchwil gan gynnwys ESRC, AHRC, EPSRC ac Innovate UK.
+
+Pan fyddaf yn rhannu adran o gynnig grant neu ddrafft cyflawn â thi, asesa ef fel y byddai adolygydd panel yn ei wneud. Sgoria bob un o'r meini prawf canlynol allan o 5 a rho gyfiawnhad byr am bob sgôr: eglurder a chydlyniad yr achos dros gefnogaeth; ansawdd a dichonoldeb y fethodoleg arfaethedig; cryfder y datganiad effaith a'r llwybrau at effaith; tystiolaeth o hanes a gallu'r tîm; gwerth am arian a chyfiawnhad y gyllideb; ffit â blaenoriaethau'r cyllidwr.
+
+Ar ôl sgorio, darpara: (1) y ddwy neu dair elfen gryfaf y byddai panel yn debygol o'u canmol; (2) y ddwy neu dair elfen wannaf sydd fwyaf tebygol o achosi gwrthodiad; (3) trefn flaenoriaeth awgrymedig ar gyfer adolygu os yw amser yn brin. Bydd yn uniongyrchol. Paid â lleddfu beirniadaeth.</div>
+                        <button onclick="copyToClipboard('ukri-panel-reviewer')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Gwirio cynnig yn erbyn galwad cyllidwr</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Defnydd: gludwch ddogfen galwad cyllidwr a'ch drafft, a gweld lle mae'r cynnig yn cyfateb a lle nad yw'n cyfateb i'r hyn y mae'r cyllidwr yn gofyn amdano.
+                        </div>
+                        <div class="prompt-box" id="funder-alignment-checker">Rwyt ti'n strategydd cyllido ymchwil â gwybodaeth ddofn am gyllidwyr ymchwil y DU a rhyngwladol gan gynnwys cynghorau UKRI, Innovate UK, Horizon Europe, Wellcome Trust, Leverhulme Trust, NIHR, a'r cyllidwyr Cymreig Medr a Health and Care Research Wales.
+
+Pan fyddaf yn rhannu dau ddarn o destun, dogfen galwad cyllidwr ac adran o gynnig drafft, dadansodda pa mor dda y mae'r cynnig yn cyd-fynd â'r hyn y mae'r cyllidwr wir yn chwilio amdano. Darpara: (1) rhestr o flaenoriaethau datganedig a meini prawf asesu'r cyllidwr; (2) ar gyfer pob blaenoriaeth, dyfarniad ar a yw'r cynnig yn mynd i'r afael â hi (yn glir / yn rhannol / dim o gwbl) gyda chyfeiriad at destun y cynnig; (3) iaith y cyllidwr ac ymadroddion allweddol o ddogfen y alwad nad ydynt yn ymddangos yn y cynnig ond a ddylai; (4) awgrymiadau penodol ar gyfer lle gellid mynd i'r afael â phob bwlch.
+
+Bydd yn fanwl gywir. Cyfeiria at union eiriau'r ddwy ddogfen.</div>
+                        <button onclick="copyToClipboard('funder-alignment-checker')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
             </div>
             <div id="tab-concepts" class="tab-panel" role="tabpanel">
+
                 <details open>
-                    <summary><span style="flex:1;">Eich Cydweithiwr Yw E (Y Sgwrs)</span></summary>
+                    <summary><span style="flex:1;">Triniwch AI fel cydweithiwr, nid fel peiriant gwerthu</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note"><strong>Y Realiti:</strong> Anaml y cewch chi ddrafft perffaith gan gydweithiwr y tro cyntaf. Peidiwch â disgwyl hynny gan AI chwaith. Mae'r hud yn y dilyniant.</div>
+                        <div class="exercise-note">
+                            <strong>Y Realiti:</strong> Anaml y cewch chi ddrafft perffaith gan gydweithiwr y tro cyntaf. Peidiwch â disgwyl hynny gan AI chwaith. Mae'r hud yn y dilyniant.
+                        </div>
+
                         <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; margin: 18px 0;">
                             <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04);">
                                 <div style="font-size: 38px; line-height: 1; margin-bottom: 10px;" aria-hidden="true">🥤</div>
@@ -508,59 +594,183 @@ Os nad yw'r adborth yn ffitio'r rhain, labela ef yn 'Arall'."</div>
                                 <p style="margin: 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">Iteru gyda'n gilydd: arwain, cywiro, mireinio nes ei fod yn taro deuddeg.</p>
                             </div>
                         </div>
-                        <div style="background: var(--apple-bg-page); border-radius: 12px; padding: 18px; margin-bottom: 20px; border: 1px solid var(--apple-border-light);">
-                            <strong style="display: block; margin-bottom: 8px; font-size: 15px;">🚀 Y Templed "Cydweithiwr"</strong>
-                            <p style="margin-bottom: 12px; font-size: 13px; color: var(--apple-text-secondary);">Fframio'r rhyngweithio fel cydweithio dan arweiniad:</p>
-                            <div style="background: white; border-left: 4px solid var(--apple-blue); border-radius: 6px; padding: 12px 14px; font-family: 'SF Mono', Consolas, monospace; font-size: 13px; color: #333;">"Dwi eisiau i ti fy helpu i <strong>[RHOWCH DASG FAWR YMA]</strong>, ond paid â cheisio ei datrys i gyd ar unwaith. Yn lle hynny, bydd yn ganllaw defnyddiol..."</div>
-                        </div>
+
                         <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
                             <div class="inner-card">
                                 <span class="inner-card-icon">🤝</span>
                                 <strong style="font-size:15px;">Y Meddylfryd</strong>
-                                <p style="margin-top: 8px;">Triniwch Copilot fel intern clyfar, nid fel peiriant gwerthu.</p>
-                                <p style="margin-top: 8px;">Os nad yw'r allbwn yn iawn, peidiwch â dechrau eto. <strong>Siaradwch ag e</strong> a'i arwain.</p>
+                                <p style="margin-top: 8px;">
+                                    Triniwch Copilot fel intern clyfar, nid fel peiriant gwerthu.
+                                </p>
+                                <p style="margin-top: 8px;">
+                                    Os nad yw'r allbwn yn iawn, peidiwch â dechrau eto. <strong>Siaradwch ag e</strong> a'i arwain.
+                                </p>
                             </div>
                             <div class="inner-card">
                                 <strong style="margin-bottom: 12px; display:block; font-size:14px;">Rhowch gynnig ar yr ymadroddion dilynol hyn:</strong>
-                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">"A dweud y gwir, alli di ei wneud yn fwy ffurfiol?"</div>
-                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">"Mae hwnna'n dda, ond beth am roi cynnig ar ddull mwy cyfeillgar?"</div>
-                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">"Alli di ymhelaethu ar yr ail bwynt? Mae braidd yn fyr."</div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "A dweud y gwir, alli di ei wneud yn fwy ffurfiol?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Mae hwnna'n dda, ond beth am roi cynnig ar ddull mwy cyfeillgar?"
+                                </div>
+                                <div style="background: white; border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                                    "Alli di ymhelaethu ar yr ail bwynt? Mae braidd yn fyr."
+                                </div>
                             </div>
                         </div>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Anogi Ymarferol (Y Dull 1-2-3)</span></summary>
+                    <summary><span style="flex:1;">Pydredd cyd-destun: mae sgyrsiau hir yn gwneud mwy o gamgymeriadau</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note"><strong>Y Rheol Aur:</strong> Mae mewnbynnau gwell yn rhoi allbynnau gwell. Dilynwch y llif 3-cam hwn ar gyfer pob anogiad i gael y canlyniadau gorau.</div>
+                        <div class="exercise-note">
+                            <strong>Y Realiti:</strong> wrth i sgwrs fynd yn hir, mae'r AI yn dechrau crwydro. Dechreuwch sgyrsiau newydd yn rheolaidd i'w gadw'n graff.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 8px; color: var(--apple-text-primary);">Sut mae sgwrs yn dirywio:</p>
+                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
+                            <div class="inner-card">
+                                <strong>Neges 5</strong>
+                                <p>Craff, ar y dasg.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 25</strong>
+                                <p>Yn dechrau ailadrodd ei hun.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 45</strong>
+                                <p>Yn anghofio cyfarwyddiadau cynharach.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 70</strong>
+                                <p>Yn gwrth-ddweud ei atebion ei hun.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 8px; color: var(--apple-text-primary);">Tri datrysiad:</p>
+                        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 14px; line-height: 1.6; color: var(--apple-text-secondary);">
+                            <li style="margin-bottom: 6px;"><strong>Dechreuwch sgyrsiau newydd yn rheolaidd.</strong> Peidiwch ag aros nes i bethau fynd o chwith: mae sgwrs newydd yn cadw'r cyd-destun yn fyr a'r model yn graff.</li>
+                            <li style="margin-bottom: 6px;"><strong>Pwnc newydd?</strong> Dechreuwch sgwrs newydd.</li>
+                            <li><strong>Wedi mynd ar gyfeiliorn?</strong> Rhedwch yr anogiad trosglwyddo isod, yna gludwch yr allbwn i mewn i sgwrs newydd.</li>
+                        </ul>
+
+                        <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Anogiad trosglwyddo (rhedwch yn y sgwrs bresennol, yna copïwch yr allbwn i mewn i sgwrs newydd):</p>
+                        <div class="prompt-box" id="context-rot-handover">Paratoa drosglwyddiad y galla i ei ludo i mewn i sgwrs newydd. Rheolau: 1) pum pwynt bwled, un llinell yr un: penderfyniadau, ffeithiau allweddol, cyfyngiadau, cwestiynau agored, camau nesaf, gan nodi unrhyw beth sydd heb ei gadarnhau; 2) copïa unrhyw beth gwerth ei gadw (drafftiau, geiriad, rhestrau) air am air dan benawdau byr, heb ailysgrifennu na chyfuno; 3) gorffenna gyda briff dwy linell: rôl y sgwrs newydd a'i thasg gyntaf. Dim is-bwyntiau, dim sylwebaeth.</div>
+                        <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copïo'r Anogiad</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Mae dau ben yn well nag un: cael ail farn AI</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Y Realiti:</strong> anaml y mae AI yn sylwi ar ei gamgymeriadau ei hun. Mae wedi'i angori i'w ateb cyntaf. Mae ail farn yn dal yr hyn a gollodd: gofynnwch i offeryn gwahanol (Copilot vs Gemini), neu hyd yn oed dechreuwch sgwrs newydd yn yr un offeryn.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔀</span>
+                                <strong>Gorau: offeryn gwahanol (Copilot vs Gemini)</strong>
+                                <p style="margin-top: 8px;">Gludwch ateb Copilot i mewn i Gemini, neu ateb Gemini i mewn i Copilot, a gofynnwch iddo ei adolygu. Maen nhw wedi'u hadeiladu ar AI gwahanol, felly mae ganddyn nhw fannau dall gwahanol: mae pob un yn dal yr hyn a gollodd y llall.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔄</span>
+                                <strong>Neu: yr un offeryn, sgwrs newydd</strong>
+                                <p style="margin-top: 8px;">Dim ail offeryn? Agorwch sgwrs newydd yn yr un un, gludwch yr allbwn yn unig, a gofynnwch am adolygiad beirniadol. Heb gof o sut y cyrhaeddodd yno, mae'n barnu'r gwaith, nid ei resymeg ei hun.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 6px; color: var(--apple-text-primary);">Anogiad adolygu y gallwch ei ailddefnyddio:</p>
+                        <div class="prompt-box" id="second-opinion-review">Bydd yn ail farn feirniadol. Ni ysgrifennaist ti'r testun isod, felly bydd yn wrthrychol. Gwiria ef am wallau ffeithiol, rhesymu gwan, gwybodaeth goll, ac unrhyw beth sy'n aneglur neu wedi'i orddweud. Rhestra'r problemau penodol rwyt ti'n eu canfod, yna rho fersiwn well. Bydd yn uniongyrchol.
+
+[GLUDWCH YR ALLBWN YMA]</div>
+                        <button onclick="copyToClipboard('second-opinion-review')" class="btn-copy">Copïo'r Anogiad</button>
+
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Pam mae'n gweithio: mae AI yn tueddu i amddiffyn ei ateb cyntaf ac anaml y mae'n hunangywiro heb hwb o'r tu allan. Mae offeryn gwahanol, neu sgwrs lân, yn cael gwared â'r duedd honno.</p>
+                        <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);"><strong>Cadwch yn ddiogel:</strong> defnyddiwch offer a gymeradwywyd gan TG yn unig, a pheidiwch byth â gludo data gwaith cyfrinachol (C1/C2) i mewn i offeryn nad yw wedi'i gymeradwyo.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Ysgrifennwch anogiadau gwell: y dull 1-2-3</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Y Rheol Aur:</strong> Mae mewnbynnau gwell yn rhoi allbynnau gwell. Dilynwch y llif 3-cam hwn ar gyfer pob anogiad i gael y canlyniadau gorau.
+                        </div>
+
                         <div class="inner-grid">
                             <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-                                <div><div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">1.</div><strong style="font-size:15px;">Rhoi Cyd-destun</strong><p style="margin-top:6px; margin-bottom: 12px;">Rhowch wybodaeth gefndir berthnasol (Rôl, Data, Adroddiadau).</p></div>
-                                <div style="background: white; padding: 10px; border-radius: 10px; font-size: 20px; display: flex; justify-content: space-around; color: #555;"><span title="Rôl a Chefndir">👤</span><span title="Data Taenlen">📊</span><span title="Gwefan/Ymchwil">🌐</span><span title="Dogfen Word/Adroddiad">📄</span></div>
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">1.</div>
+                                    <strong style="font-size:15px;">Rhoi Cyd-destun</strong>
+                                    <p style="margin-top:6px; margin-bottom: 12px;">Rhowch wybodaeth gefndir berthnasol (Rôl, Data, Adroddiadau).</p>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 10px; font-size: 20px; display: flex; justify-content: space-around; color: #555;">
+                                    <span title="Rôl a Chefndir">👤</span>
+                                    <span title="Data Taenlen">📊</span>
+                                    <span title="Gwefan/Ymchwil">🌐</span>
+                                    <span title="Dogfen Word/Adroddiad">📄</span>
+                                </div>
                             </div>
                             <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-                                <div><div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">2.</div><strong style="font-size:15px;">Gwneud Cais</strong><p style="margin-top:6px;">Byddwch yn benodol am yn union beth rydych chi eisiau i'r AI ei wneud.</p></div>
-                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">"Adolyga fy e-bost am eglurder..."</div>
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">2.</div>
+                                    <strong style="font-size:15px;">Gwneud Cais</strong>
+                                    <p style="margin-top:6px;">Byddwch yn benodol am yn union beth rydych chi eisiau i'r AI ei wneud.</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "Adolyga fy e-bost am eglurder..."
+                                </div>
                             </div>
                             <div class="inner-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-                                <div><div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">3.</div><strong style="font-size:15px;">Esbonio Pwrpas</strong><p style="margin-top:6px;">Rhannwch <em>pam</em> rydych chi angen hyn (Y "Fel Bod").</p></div>
-                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">"...er mwyn cynyddu'r siawns o gael ymateb cyflym."</div>
+                                <div>
+                                    <div style="font-size: 30px; font-weight: 800; color: var(--apple-text-primary); margin-bottom: 4px;">3.</div>
+                                    <strong style="font-size:15px;">Esbonio Pwrpas</strong>
+                                    <p style="margin-top:6px;">Rhannwch <em>pam</em> rydych chi angen hyn (Y "Fel Bod").</p>
+                                </div>
+                                <div style="background: #fff8d6; border: 1px solid #e6cf8b; color: #5c4b18; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-top: 12px;">
+                                    "...er mwyn cynyddu'r siawns o gael ymateb cyflym."
+                                </div>
                             </div>
                         </div>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Hacs AI - MegaDoc (Hwb Cyd-destun / Cof Allanol)</span></summary>
+                    <summary><span style="flex:1;">Rhowch y gorau i ailadrodd eich hun: cadwch MegaDoc</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note"><strong>Cysyniad:</strong> Rhowch y gorau i aildeipio'r un cefndir. Cadwch ddogfen Word o gyd-destun eich sefydliad a'i gludo i mewn i'ch anogiadau.</div>
-                        <div class="inner-grid">
-                            <div class="inner-card"><span class="inner-card-icon">🔤</span><strong>Acronymau</strong><p>e.e. "DCG = Adran Canser a Geneteg"</p></div>
-                            <div class="inner-card"><span class="inner-card-icon">✒️</span><strong>Canllaw Arddull</strong><p>"Ffurfiol ond cynnes. Cymraeg. Pwyntiau bwled."</p></div>
-                            <div class="inner-card"><span class="inner-card-icon">📋</span><strong>Ffeithiau Allweddol</strong><p>Personél, boilerplate, gweithdrefnau safonol.</p></div>
-                            <div class="inner-card"><span class="inner-card-icon">🚀</span><strong>Trosolwg Prosiect</strong><p>Nodau, statws, rhwystrau.</p></div>
+                        <div class="exercise-note">
+                            <strong>Cysyniad:</strong> Rhowch y gorau i aildeipio'r un cefndir. Cadwch ddogfen Word o gyd-destun eich sefydliad a'i gludo i mewn i'ch anogiadau.
                         </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔤</span>
+                                <strong>Acronymau</strong>
+                                <p>e.e. "DCG = Adran Canser a Geneteg"</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">✒️</span>
+                                <strong>Canllaw Arddull</strong>
+                                <p>"Ffurfiol ond cynnes. Cymraeg. Pwyntiau bwled."</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">📋</span>
+                                <strong>Ffeithiau Allweddol</strong>
+                                <p>Personél, boilerplate, gweithdrefnau safonol.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🚀</span>
+                                <strong>Trosolwg Prosiect</strong>
+                                <p>Nodau, statws, rhwystrau.</p>
+                            </div>
+                        </div>
+
                         <p style="font-weight: 600; font-size: 14px; margin: 16px 0 6px; color: var(--apple-text-primary);">Rhowch gynnig arni heddiw:</p>
                         <p style="font-size: 13px; margin: 0 0 12px; color: var(--apple-text-secondary);">Rhestrwch eich 10 acronym gorau ac un ciplun prosiect. Gludwch i'ch anogiad nesaf a gweld y gwahaniaeth.</p>
+
                         <div class="prompt-box" id="megadoc-prompt">"Dyma rywfaint o gyd-destun o fy MegaDoc:
 [GLUDWCH EICH ACRONYMAU/CANLLAW ARDDULL YMA]
 
@@ -568,41 +778,98 @@ Yn seiliedig ar y cyd-destun hwn, drafftia e-bost diweddaru i'r tîm am [Eich Pw
                         <button onclick="copyToClipboard('megadoc-prompt')" class="btn-copy">Copïo'r Anogiad</button>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">AI Preifat (Rhedeg Modelau'n Lleol)</span></summary>
+                    <summary><span style="flex:1;">Sgwrsiwch â'ch dogfennau eich hun (NotebookLM)</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note"><strong>Chi Sy'n Rheoli:</strong> Rhedwch AI ar eich dyfais eich hun. Preifatrwydd llwyr, dim ffioedd, dim angen Wi-Fi.</div>
+                        <div class="exercise-note">
+                            <strong>Yr Offeryn:</strong> Mae NotebookLM yn seilio AI yn eich dogfennau eich hun. Mae ein llyfrgell anogiadau ddethol yn eich helpu i'w dadansoddi.
+                        </div>
+
                         <div class="inner-grid">
-                            <div class="inner-card"><span class="inner-card-icon">🛡️</span><strong>Preifatrwydd a Rheolaeth</strong><ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;"><li style="margin-bottom: 6px;">Dydy'r data byth yn gadael eich dyfais.</li><li style="margin-bottom: 6px;">Diogel ar gyfer deunydd sensitif.</li><li>Perchnogaeth IP lawn.</li></ul></div>
-                            <div class="inner-card"><span class="inner-card-icon">⚡</span><strong>Cost ac Effeithlonrwydd</strong><ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;"><li style="margin-bottom: 6px;">Dim ffioedd (modelau ffynhonnell agored).</li><li style="margin-bottom: 6px;">Yn gweithio all-lein.</li><li>Defnydd ynni is.</li></ul></div>
-                            <div class="inner-card" style="background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);"><span class="inner-card-icon">🎓</span><strong style="color: var(--apple-blue);">Gweithdy AI Preifat</strong><p style="margin: 8px 0;">Sesiwn 2-awr i'ch rhoi ar ben ffordd ar eich gliniadur eich hun.</p><a href="mailto:haydenmj1@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Cysylltwch â ni am fanylion →</a></div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🎧</span>
+                                <strong>Trosolygon Sain</strong>
+                                <p>Troi adroddiadau sych yn bodlediadau "Deep Dive" difyr.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🕵️</span>
+                                <strong>Dadansoddiad Beirniadol</strong>
+                                <p>Nodi mannau dall, gwrthddywediadau a data coll.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🏗️</span>
+                                <strong>Allbwn Strwythuredig</strong>
+                                <p>Trosi nodiadau'n Setiau Sleidiau, Briffiau ac SOPau.</p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                                Agor Llyfrgell Anogiadau NotebookLM ↗
+                            </a>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">
+                                Yn cynnwys 15+ anogiad arbenigol ar gyfer Ymchwil a Strategaeth
+                            </p>
                         </div>
                     </div>
                 </details>
+
                 <details>
-                    <summary><span style="flex:1;">Llyfrgell Anogiadau NotebookLM</span></summary>
+                    <summary><span style="flex:1;">Cael cymorth AI gyda chod</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note"><strong>Yr Offeryn:</strong> Mae NotebookLM yn seilio AI yn eich dogfennau eich hun. Mae ein llyfrgell anogiadau ddethol yn eich helpu i'w dadansoddi.</div>
-                        <div class="inner-grid">
-                            <div class="inner-card"><span class="inner-card-icon">🎧</span><strong>Trosolygon Sain</strong><p>Troi adroddiadau sych yn bodlediadau "Deep Dive" difyr.</p></div>
-                            <div class="inner-card"><span class="inner-card-icon">🕵️</span><strong>Dadansoddiad Beirniadol</strong><p>Nodi mannau dall, gwrthddywediadau a data coll.</p></div>
-                            <div class="inner-card"><span class="inner-card-icon">🏗️</span><strong>Allbwn Strwythuredig</strong><p>Trosi nodiadau'n Setiau Sleidiau, Briffiau ac SOPau.</p></div>
-                        </div>
-                        <div style="text-align: center; margin-top: 16px;"><a href="notebooklm.html" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">Agor y Llyfrgell Anogiadau ↗</a><p style="margin-top: 8px; font-size: 12px; color: var(--apple-text-secondary);">Yn cynnwys 15+ anogiad arbenigol ar gyfer Ymchwil a Strategaeth</p></div>
-                    </div>
-                </details>
-                <details>
-                    <summary><span style="flex:1;">AI ar gyfer Cymorth Codio</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note"><strong>Dwy ffordd o ddefnyddio AI ar gyfer cod:</strong>
+                        <div class="exercise-note">
+                            <strong>Dwy ffordd o ddefnyddio AI ar gyfer cod:</strong>
                             <ul style="padding-left: 18px; margin: 10px 0 12px; font-size: 14px; line-height: 1.55;">
                                 <li style="margin-bottom: 6px;"><strong>Sgwrs:</strong> gludwch god, gwallau neu gwestiynau.</li>
                                 <li><strong>Asiant Codio:</strong> yn cysylltu â'ch system a gall ddarllen, ysgrifennu a rhedeg ffeiliau. Defnyddiwch fodel lleol + GPU gweddus i gadw data'n breifat.</li>
                             </ul>
-                            <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight:600;">Syniadau Anogiadau Codio AI →</a>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="https://wmgmm.github.io/coding/" target="_blank" rel="noopener" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 11px 22px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                                Agor Llyfrgell Anogiadau Codio AI ↗
+                            </a>
                         </div>
                     </div>
                 </details>
+
+                <details>
+                    <summary><span style="flex:1;">Rhedeg AI yn breifat ar eich dyfais eich hun</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Chi Sy'n Rheoli:</strong> Rhedwch AI ar eich dyfais eich hun. Preifatrwydd llwyr, dim ffioedd, dim angen Wi-Fi.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🛡️</span>
+                                <strong>Preifatrwydd a Rheolaeth</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Dydy'r data byth yn gadael eich dyfais.</li>
+                                    <li style="margin-bottom: 6px;">Diogel ar gyfer deunydd sensitif.</li>
+                                    <li>Perchnogaeth IP lawn.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">⚡</span>
+                                <strong>Cost ac Effeithlonrwydd</strong>
+                                <ul style="padding-left: 18px; margin: 8px 0 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55;">
+                                    <li style="margin-bottom: 6px;">Dim ffioedd (modelau ffynhonnell agored).</li>
+                                    <li style="margin-bottom: 6px;">Yn gweithio all-lein.</li>
+                                    <li>Defnydd ynni is.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card" style="background-color: #f0f8ff; border: 1px solid rgba(0, 113, 227, 0.2);">
+                                <span class="inner-card-icon">🎓</span>
+                                <strong style="color: var(--apple-blue);">Gweithdy AI Preifat</strong>
+                                <p style="margin: 8px 0;">Sesiwn 2-awr i'ch rhoi ar ben ffordd ar eich gliniadur eich hun.</p>
+                                <a href="mailto:thematts@cardiff.ac.uk" style="font-size: 13px; color: var(--apple-blue); text-decoration: none; font-weight: 600;">Cysylltwch â ni am fanylion →</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
             </div>
         </section>
         <section id="essentials" class="section-card">
