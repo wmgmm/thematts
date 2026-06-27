@@ -1148,7 +1148,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">9</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">10</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
@@ -1353,6 +1353,31 @@ My outfit is incomplete without a little bit of fur on it.
 I love the whooshing sound deadlines make as they fly by.
 My only skill is pretending to listen in Zoom calls.</textarea>
                         </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">10</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
+                        </div>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">To store a rule, type an instruction that begins with <strong>"Remember and save to memory"</strong>. Copilot confirms it and keeps it. You can view, edit or delete saved items in Copilot settings.</p>
+
+                        <p style="font-weight: 600; font-size: 15px; margin: 0 0 12px; color: var(--apple-text-primary);">Three prompts worth saving</p>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Regional preferences</p>
+                        <div class="prompt-box" id="memory-regional">Remember and save to memory that I prefer UK spelling, UK sources and UK naming conventions.</div>
+                        <button onclick="copyToClipboard('memory-regional')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Honesty about gaps</p>
+                        <div class="prompt-box" id="memory-honesty">Remember and Save to Memory: No guessing. Acknowledge uncertainty and information gaps. State evidence limits.</div>
+                        <button onclick="copyToClipboard('memory-honesty')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Challenge your thinking</p>
+                        <div class="prompt-box" id="memory-challenge">Remember and Save to Memory: Challenge my assumptions. Tell me when I am wrong and explain the reasoning. Give me the strongest counter-argument before you agree with me.</div>
+                        <button onclick="copyToClipboard('memory-challenge')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 
