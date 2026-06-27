@@ -1391,16 +1391,14 @@ Consider what key elements, criteria, or details matter, what output format is m
                 <details>
                     <summary><span style="flex:1;">Reverse-engineer any existing content</span></summary>
                     <div class="details-content">
-                        <p style="margin-top:0;">One reusable prompt that clones the look, feel, voice and structure of any document.</p>
-                        <div class="prompt-box" id="clone-style-prompt">Analyse the example document below. Identify what makes its style distinctive: its tone of voice, vocabulary, sentence structure, formatting, and layout.
+                        <p style="margin-top:0;">One reusable prompt that clones the look, feel, voice and structure of any document you upload.</p>
+                        <div class="prompt-box" id="clone-style-prompt">Analyse the example I have uploaded: it could be a document, image, or website. Identify what makes its style distinctive: its tone of voice, vocabulary, sentence structure, formatting, and layout.
 
-Write a single reusable prompt that I can use again with new material to produce documents with this same look, feel, and structure. In that prompt, include the placeholder [PASTE NEW CONTENT HERE] where the new material will go.
+Write a single reusable prompt that I can use again with new material to produce new versions with this same look, feel, and structure. At the bottom of that prompt, add the placeholder [PASTE NEW CONTENT HERE] where the new material will go.
 
-Output only the reusable prompt, nothing else.
-
-[PASTE EXAMPLE DOCUMENT HERE]</div>
+Output only the reusable prompt, nothing else.</div>
                         <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Example document &rarr; AI analyses the pattern &rarr; reusable prompt.<br>Works on anything with a pattern: meeting notes, slide decks, websites, reports, SOPs, transcripts.</p>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Upload your example, then run this prompt: example in &rarr; AI analyses the pattern &rarr; reusable prompt out.<br>Works on anything with a pattern: documents, slide decks, websites, images, reports, SOPs, transcripts.</p>
                     </div>
                 </details>
 
