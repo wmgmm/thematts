@@ -1362,22 +1362,80 @@ My only skill is pretending to listen in Zoom calls.</textarea>
             <div id="tab-recipes" class="tab-panel" role="tabpanel">
 
                 <details open>
-                    <summary><span style="flex:1;">Role-Specific Document Extraction</span></summary>
+                    <summary><span style="flex:1;">Filter a document to your role</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
-                            Application: Upload a document and force the AI to only show you the tasks, deadlines, and information relevant to your specific job title.
+                            Application: Upload a document and pull out only the tasks, deadlines, and details relevant to your job.
                         </div>
                         <div class="prompt-box" id="role-extraction">Read this Document from the perspective of a [INSERT ROLE HERE e.g. project manager]. Only pull out the information,action items and deadlines that would impact my role.</div>
                         <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Attach your document to Copilot, paste this prompt, and replace the bracketed text with your actual job title to instantly cut through the noise.</em></p>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Attach your document to Copilot, paste this prompt, and replace the bracketed text with your actual job title to instantly cut through the noise.</p>
                     </div>
                 </details>
 
                 <details>
-                    <summary><span style="flex:1;">Meta-Prompting: Let AI Write the Prompt</span></summary>
+                    <summary><span style="flex:1;">Summarise meeting notes</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
+[INSERT TRANSCRIPT HERE]"</div>
+                        <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Analyse an Excel file</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
+
+PROVIDE:
+1. OVERVIEW (rows/columns, data type, date range)
+2. KEY STATISTICS (totals, averages, min/max)
+3. TOP INSIGHTS (3-5 interesting findings)
+
+Present in clear business language."</div>
+                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Categorise text or feedback</span></summary>
+                    <div class="details-content">
+                        <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
+
+Add a new column named 'Category'.
+
+Classify each row into exactly one of these specific categories:
+'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
+
+If the feedback doesn't fit these, label it 'Other'."</div>
+                        <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Cut the AI slop (style guide)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
-                            Application: Leverage the AI's knowledge to design expert prompts for tasks in specific domains e.g. 'Triage Helpdesk Emails in IT'.
+                            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
+                        </div>
+                        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
+
+STYLE AND TONE CONSTRAINTS
+Apply these strict rules to the task above:
+* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
+* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
+* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
+* Punctuation &amp; Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
+                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Let AI write the prompt</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Get the AI to design an expert prompt for a task in your domain, e.g. 'triage IT helpdesk emails'.
                         </div>
                         <div class="prompt-box" id="meta-prompt-technique">"You are an expert AI prompt designer. Please design the most effective prompt to: [INSERT SPECIFIC TASK AND DOMAIN]. 
 
@@ -1387,7 +1445,7 @@ Consider what key elements, criteria, or details matter, what output format is m
                 </details>
 
                 <details>
-                    <summary><span style="flex:1;">Reverse Engineering (Prompts from Gold-Standard Outputs)</span></summary>
+                    <summary><span style="flex:1;">Reverse-engineer a prompt from a great example</span></summary>
                     <div class="details-content">
                         <p style="margin-top:0;"><strong>Concept:</strong> "Meta-Prompting" or Reverse Engineering. Instead of guessing how to prompt, feed the AI the desired output (or a stylistic reference) and ask it to write the prompt for you.</p>
 
@@ -1445,64 +1503,6 @@ Consider what key elements, criteria, or details matter, what output format is m
 [PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
                             <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
                         </div>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">No More AI Slop? (Style Guide)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Add this to the bottom of any prompt to stop the AI from rambling and make it write clear, direct, and natural-sounding text.
-                        </div>
-                        <div class="prompt-box" id="no-more-slop">[INSERT AI TASK HERE e.g., Write a report on modern marketing trends]
-
-STYLE AND TONE CONSTRAINTS
-Apply these strict rules to the task above:
-* Voice: Speak with direct authority. Use active voice exclusively. Omit all meta-commentary (e.g., do not say "Here is the report").
-* Banned Words: Zero adverbs. No business jargon. Remove all filler and emphasis words ("very," "extremely," "actually").
-* Banned Starters: Never start a sentence with Who, What, Where, When, Why, Which, or How.
-* Punctuation &amp; Flow: Never use em dashes (—); separate ideas with colons or full stops instead. Avoid rhetorical setups, binary contrasts, and choppy fragments.</div>
-                        <button onclick="copyToClipboard('no-more-slop')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Paste this constraint block at the very bottom of your standard prompts to instantly improve the output quality. Ensure you replace the bracketed text at the top with your actual task.</em></p>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">AI Usage Case: Meeting Notes</span></summary>
-                    <div class="details-content">
-                        <div class="prompt-box" id="meeting-notes-prompt">"Please summarize the following meeting transcript. Focus on the key points, decisions made, action items and any important deadlines. Ensure the summary is clear and organised. The summary should be no longer than 200 words:
-[INSERT TRANSCRIPT HERE]"</div>
-                        <button onclick="copyToClipboard('meeting-notes-prompt')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">AI Usage Case: Excel Data Analysis</span></summary>
-                    <div class="details-content">
-                        <div class="prompt-box" id="excel-analysis-prompt">"Summarise this Excel file:
-
-PROVIDE:
-1. OVERVIEW (rows/columns, data type, date range)
-2. KEY STATISTICS (totals, averages, min/max)
-3. TOP INSIGHTS (3-5 interesting findings)
-
-Present in clear business language."</div>
-                        <button onclick="copyToClipboard('excel-analysis-prompt')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">AI Usage Case: Text Categorisation</span></summary>
-                    <div class="details-content">
-                        <div class="prompt-box" id="categorisation-prompt">"Analyze the [Name of Feedback column] column.
-
-Add a new column named 'Category'.
-
-Classify each row into exactly one of these specific categories:
-'Compensation', 'Management', 'Work Environment', 'IT/Tools', or 'Work-Life Balance'.
-
-If the feedback doesn't fit these, label it 'Other'."</div>
-                        <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 
