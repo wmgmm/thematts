@@ -1389,64 +1389,18 @@ Consider what key elements, criteria, or details matter, what output format is m
                 </details>
 
                 <details>
-                    <summary><span style="flex:1;">Reverse-engineer a prompt from a great example</span></summary>
+                    <summary><span style="flex:1;">Reverse-engineer any existing content</span></summary>
                     <div class="details-content">
-                        <p style="margin-top:0;"><strong>Concept:</strong> "Meta-Prompting" or Reverse Engineering. Instead of guessing how to prompt, feed the AI the desired output (or a stylistic reference) and ask it to write the prompt for you.</p>
+                        <p style="margin-top:0;">One reusable prompt that clones the look, feel, voice and structure of any document.</p>
+                        <div class="prompt-box" id="clone-style-prompt">Analyse the example document below. Identify what makes its style distinctive: its tone of voice, vocabulary, sentence structure, formatting, and layout.
 
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">1. Meeting Notes Template</h3>
-                            <div class="exercise-note">
-                                <strong>Application:</strong> Use this when you have a "Gold Standard" document and you want all future documents to follow that exact structure.
-                            </div>
-                            <div class="prompt-box" id="reverse-prompt-meeting">"Analyze the meeting notes below. Create a single, reusable prompt that instructs an AI to generate notes using this exact format, style, and structure from a raw transcript.
+Write a single reusable prompt that I can use again with new material to produce documents with this same look, feel, and structure. In that prompt, include the placeholder [PASTE NEW CONTENT HERE] where the new material will go.
 
-[PASTE GOLD STANDARD NOTES HERE]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-meeting')" class="btn-copy">Copy Prompt</button>
-                        </div>
+Output only the reusable prompt, nothing else.
 
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">2. Corporate Tone Persona</h3>
-                            <div class="exercise-note">
-                                <strong>Application:</strong> Essential for marketing. Use this to extract a specific "Voice" from existing copy so the AI can mimic it later.
-                            </div>
-                            <div class="prompt-box" id="reverse-prompt-persona">"Analyze the tone, vocabulary, and sentence structure of the text below. Write a 'Persona Prompt' defining these characteristics so an AI can consistently write new articles in this exact style.
-
-[PASTE BRAND TEXT HERE]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-persona')" class="btn-copy">Copy Prompt</button>
-                        </div>
-
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">3. Academic Abstract Summarizer</h3>
-                            <div class="exercise-note">
-                                <strong>Application:</strong> Use this for technical writing where constraints (word count, objectivity) are strict and you want to summarize new content in that voice.
-                            </div>
-                            <div class="prompt-box" id="reverse-prompt-abstract">"Deconstruct the academic abstract below. Identify the implied word count constraints, formal tone, and structural elements. Write a reusable prompt designed to generate similar abstracts from new content.
-
-[PASTE ABSTRACT HERE]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-abstract')" class="btn-copy">Copy Prompt</button>
-                        </div>
-
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">4. Image-to-Text Style Transfer</h3>
-                            <div class="exercise-note">
-                                <strong>Application:</strong> Use this to generate a detailed text description of an image, which you can then use to generate new images in that style.
-                            </div>
-                            <div class="prompt-box" id="reverse-prompt-image">"Act as a professional photographer. Analyze the attached image. Write a detailed text-to-image prompt capturing the specific lighting, mood, camera angle, lens type, and environmental details to recreate this style.
-
-[UPLOAD IMAGE]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-image')" class="btn-copy">Copy Prompt</button>
-                        </div>
-
-                        <div class="sub-recipe">
-                            <h3 style="font-size:17px;">5. Website Style &amp; Format</h3>
-                            <div class="exercise-note">
-                                <strong>Application:</strong> Use this to extract design schemas from screenshots or HTML code to produce new sites with a similar look and feel.
-                            </div>
-                            <div class="prompt-box" id="reverse-prompt-website">"Analyze the visual design, color palette, typography, and layout of the website below. Write a design system prompt that instructs an AI to apply this exact look and feel to new code.
-
-[PASTE URL, HTML, OR UPLOAD SCREENSHOT]"</div>
-                            <button onclick="copyToClipboard('reverse-prompt-website')" class="btn-copy">Copy Prompt</button>
-                        </div>
+[PASTE EXAMPLE DOCUMENT HERE]</div>
+                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Example document &rarr; AI analyses the pattern &rarr; reusable prompt.<br>Works on anything with a pattern: meeting notes, slide decks, websites, reports, SOPs, transcripts.</p>
                     </div>
                 </details>
 
