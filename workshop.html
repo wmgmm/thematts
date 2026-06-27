@@ -1150,7 +1150,7 @@
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">9</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">7</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
 
             <!-- ============ TAB 1: EXERCISES ============ -->
@@ -1607,6 +1607,36 @@ Be precise. Reference the actual words of both documents.</div>
                         <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Handover prompt (run in the existing chat, then copy the output into a new chat):</p>
                         <div class="prompt-box" id="context-rot-handover">Prepare a handover I can paste into a new chat. Rules: 1) five bullets, one line each: decisions, key facts, constraints, open questions, next steps, marking anything unconfirmed; 2) copy anything worth keeping (drafts, wording, lists) verbatim under short headings, no rewriting or merging; 3) end with a two-line brief: the new chat's role and its first task. No sub-bullets, no commentary.</div>
                         <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Two heads are better than one: get a second AI opinion</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The Reality:</strong> an AI rarely spots its own mistakes. It is anchored to its first answer. A second opinion, from a different tool or a fresh chat, catches what the first one missed.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔀</span>
+                                <strong>Best: a different model</strong>
+                                <p style="margin-top: 8px;">Paste Copilot's answer into Gemini, or Gemini's into Copilot, and ask it to review. Different models have different blind spots, so each catches the other's misses.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">🔄</span>
+                                <strong>Or: the same model, fresh chat</strong>
+                                <p style="margin-top: 8px;">No second tool? Open a new chat, paste only the output, and ask for a critical review. With no memory of how it got there, it judges the work, not its own reasoning.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 6px; color: var(--apple-text-primary);">A reusable review prompt:</p>
+                        <div class="prompt-box" id="second-opinion-review">Act as a critical second opinion. You did not write the text below, so be objective. Check it for factual errors, weak reasoning, missing information, and anything unclear or overstated. List the specific problems you find, then give an improved version. Be direct.
+
+[PASTE THE OUTPUT HERE]</div>
+                        <button onclick="copyToClipboard('second-opinion-review')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Why it works: models tend to defend their first answer and rarely self-correct without an outside nudge. A different model, or a clean chat, removes that bias.</p>
                     </div>
                 </details>
 
