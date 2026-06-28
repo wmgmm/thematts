@@ -1185,7 +1185,7 @@
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Gemini Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">7</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">13</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">9</span></button>
             </div>
 
             <!-- ============ TAB 1: EXERCISES ============ -->
@@ -1497,6 +1497,35 @@ Be precise. Reference the actual words of both documents.</div>
             <div id="tab-concepts" class="tab-panel" role="tabpanel">
 
                 <details open>
+                    <summary><span style="flex:1;">Chain your tools together</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>The idea:</strong> the output of one tool becomes the input to the next. Each tool does the part it is best at, and you carry the work across them. Experiment, because a short chain often beats one tool trying to do everything.
+                        </div>
+
+                        <div class="inner-grid">
+                            <div class="inner-card">
+                                <span class="inner-card-icon">1&#65039;&#8419;</span>
+                                <strong>Research it</strong>
+                                <p style="margin-top: 8px;">Run the Deep Research prompt in Gemini to gather the evidence and write it up as a report.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">2&#65039;&#8419;</span>
+                                <strong>Ground it</strong>
+                                <p style="margin-top: 8px;">Add that report to NotebookLM as a source, so the next step is anchored to your material, not guesswork.</p>
+                            </div>
+                            <div class="inner-card">
+                                <span class="inner-card-icon">3&#65039;&#8419;</span>
+                                <strong>Shape it</strong>
+                                <p style="margin-top: 8px;">Ask NotebookLM to turn it into a slide deck. One research prompt has become a finished presentation.</p>
+                            </div>
+                        </div>
+
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Why it works: no single tool is best at everything. Passing the work along lets each do its strongest job, and you stay in control at every step.</p>
+                    </div>
+                </details>
+
+                <details>
                     <summary><span style="flex:1;">Treat AI like a teammate, not a vending machine</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
