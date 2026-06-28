@@ -527,9 +527,9 @@
 <div class="controls-wrap">
     <div class="controls">
         <div class="filter-group" role="group" aria-label="Filter prompts by category">
-            <button class="filter-btn active" aria-pressed="true" onclick="filterPrompts('All', this)">All<span class="tab-count">39</span></button>
+            <button class="filter-btn active" aria-pressed="true" onclick="filterPrompts('All', this)">All<span class="tab-count">40</span></button>
             <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Summary', this)">Summary<span class="tab-count">5</span></button>
-            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Analysis', this)">Analysis<span class="tab-count">8</span></button>
+            <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Analysis', this)">Analysis<span class="tab-count">9</span></button>
             <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Content', this)">Content<span class="tab-count">4</span></button>
             <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Learning', this)">Learning<span class="tab-count">5</span></button>
             <button class="filter-btn" aria-pressed="false" onclick="filterPrompts('Style', this)">Style<span class="tab-count">15</span></button>
@@ -643,6 +643,15 @@ const prompts = [
         studioRevise: false,
         description: "Find the blind spots: what your sources fail to address, and the context they leave out.",
         text: "Do not summarise what is in these documents. Instead, analyse them to identify the 'White Space' or missing information. What obvious questions are left unanswered? What opposing viewpoints or variables are completely ignored? List 5 specific blind spots, limitations, or gaps in the provided research, and explain why their absence matters."
+    },
+    {
+        id: 42,
+        title: "Module Gap Analysis",
+        category: "Analysis",
+        badgeClass: "badge-analysis",
+        studioRevise: false,
+        description: "Upload the module handbook and the student feedback report to find the biggest gaps between what a module intends and what students actually experienced.",
+        text: "The [module handbook] sets out the learning outcomes and assessment criteria. The [student feedback report] shows how students actually performed and what they found difficult. Where are the biggest gaps between what the module intends and what students experienced? Cite specific sections from both documents."
     },
     {
         id: 7,

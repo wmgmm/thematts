@@ -1187,7 +1187,7 @@
 
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Gemini Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">7</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">10</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">13</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
 
@@ -1316,6 +1316,25 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                 </details>
 
                 <details>
+                    <summary><span style="flex:1;">Analyse a focus group transcript</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: turn a long focus group recording into the themes and sentiment course leaders need.
+                        </div>
+                        <div class="prompt-box" id="focus-group-transcript">You are a marketing assistant writing up a student focus group for course leaders.
+
+Read the attached transcript of a 60-minute focus group about the new course. Identify the main themes and the overall sentiment towards the course. Stay objective and analytical, as in market research.
+
+Give me a bulleted summary:
+- The top three positive themes
+- The top three negative themes
+
+[ATTACH OR PASTE THE TRANSCRIPT]</div>
+                        <button onclick="copyToClipboard('focus-group-transcript')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
                     <summary><span style="flex:1;">Analyse an Excel file</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
@@ -1354,6 +1373,34 @@ Classify each row into exactly one of these specific categories:
 
 If the feedback doesn't fit these, label it 'Other'."</div>
                         <button onclick="copyToClipboard('categorisation-prompt')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Analyse free-text survey comments</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: read hundreds of open survey comments at once and surface the concerns that come up most.
+                        </div>
+                        <div class="prompt-box" id="survey-freetext-analysis">You are a student support officer reviewing the annual wellbeing survey.
+
+Read all the free-text comments below (over 400 responses) and find the concerns students raise most often. Be empathetic and data-driven, focused on student welfare.
+
+Give me a bulleted list of the top five concerns. For each one, suggest which policy or support area should review it.
+
+[PASTE THE FREE-TEXT COMMENTS]</div>
+                        <button onclick="copyToClipboard('survey-freetext-analysis')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Evidence-based module changes</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: turn a student feedback report into the specific changes a lecturer should make next time.
+                        </div>
+                        <div class="prompt-box" id="module-revisions">Based on the [student feedback report] what are the three most important changes this lecturer should make before running this module again? Be specific about what exactly needs to change and why.</div>
+                        <button onclick="copyToClipboard('module-revisions')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 
