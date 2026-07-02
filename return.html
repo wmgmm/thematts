@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Back to Work with Copilot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Apple-inspired Design System (shared with workshop.html) --- */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #6e6e73;
+            --apple-text-tertiary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --apple-bg-subtle: #fbfbfd;
+            --apple-border: #e5e5ea;
+            --apple-border-light: rgba(0, 0, 0, 0.06);
+            --accent-blue: #0071e3;
+            --accent-orange: #ff8a1f;
+            --accent-purple: #5e5ce6;
+            --accent-green: #34c759;
+            --radius-card: 22px;
+            --radius-medium: 14px;
+            --radius-button: 980px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+            --shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+            --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --hero-mesh-base: #0b1220;
+            --border-soft: #e5e7eb;
+            --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.47;
+            letter-spacing: -0.022em;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 24px 22px 40px;
+        }
+
+        /* --- Sticky Navigation --- */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--apple-border-light);
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-content {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .global-nav a {
+            color: var(--apple-text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.75;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+            color: var(--apple-blue);
+        }
+
+        @media (max-width: 600px) {
+            .nav-content { gap: 18px; }
+            .nav-brand { display: none; }
+            .global-nav a { font-size: 12px; }
+        }
+
+        /* --- Hero --- */
+        header.hero {
+            text-align: center;
+            padding: 64px 0 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin: 0 0 14px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: var(--apple-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin: 0 0 14px;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0 0 8px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 12px;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 20px 0 8px 0;
+        }
+
+        /* --- Section Cards --- */
+        .section-card {
+            background: var(--apple-bg-card);
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-card);
+        }
+
+        @media (max-width: 734px) {
+            .section-card { padding: 24px 20px; }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--apple-text-secondary);
+            font-size: 15px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--apple-blue);
+            margin-bottom: 8px;
+        }
+
+        /* --- Library Instructions Bar --- */
+        .library-instructions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 14px 18px;
+            background: var(--apple-bg-page);
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        .copilot-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #201F1E;
+            padding: 10px 18px 10px 12px;
+            border: 1px solid #E1DFDD;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            font-family: 'Segoe UI', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .copilot-card:hover {
+            background: #FAF9F8;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .copilot-card:focus-visible {
+            outline: 2px solid #0078D4;
+            outline-offset: 2px;
+        }
+
+        .copilot-logo {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .copilot-card-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .copilot-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #201F1E;
+        }
+
+        .copilot-url {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Inter Tight', sans-serif;
+            color: #0078D4;
+            margin-top: 2px;
+        }
+
+        .instruction-text {
+            font-size: 15px;
+            color: var(--apple-text-primary);
+            line-height: 1.5;
+        }
+
+        .instruction-text strong { color: var(--apple-text-primary); }
+
+        /* --- Details / Accordions --- */
+        details {
+            border-bottom: 1px solid var(--apple-border);
+            transition: background-color 0.2s ease;
+        }
+
+        details:last-child { border-bottom: none; }
+
+        summary {
+            padding: 16px 12px;
+            margin: 0 -12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-text-primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            outline: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: var(--apple-bg-page);
+            color: var(--apple-blue);
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        summary::-moz-list-bullet { list-style-type: none; }
+
+        .ex-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 8px;
+            background: transparent;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        details[open] .ex-num {
+            background: transparent;
+            color: var(--apple-blue);
+            border-color: var(--apple-blue);
+        }
+
+        summary::after {
+            content: 'View →';
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            background: #424245;
+            padding: 6px 14px;
+            border-radius: var(--radius-button);
+            transition: var(--transition);
+            margin-left: auto;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        details:hover summary::after {
+            background: var(--apple-text-primary);
+            transform: translateX(2px);
+        }
+
+        details[open] summary::after {
+            content: 'Hide';
+            background: #d2d2d7;
+            color: var(--apple-text-primary);
+        }
+
+        details[open]:hover summary::after {
+            background: #c7c7cc;
+            transform: none;
+        }
+
+        details[open] summary { color: var(--apple-blue); }
+
+        .details-content {
+            padding: 0 0 24px 40px;
+            animation: slideDown 0.25s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            .details-content { padding-left: 0; }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exercise-note {
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .exercise-note strong { color: var(--apple-text-primary); }
+
+        /* --- Prompt Box --- */
+        .prompt-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: var(--radius-medium);
+            font-family: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #2c2c2e;
+            margin: 12px 0 14px 0;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        }
+
+        .btn-copy {
+            background-color: var(--apple-blue);
+            color: white;
+            font-size: 12px;
+            padding: 9px 18px;
+            border-radius: var(--radius-button);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0, 113, 227, 0.22);
+        }
+
+        .btn-copy:hover {
+            background-color: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.32);
+        }
+
+        .btn-copy.success {
+            background-color: var(--accent-green);
+            box-shadow: 0 2px 6px rgba(52, 199, 89, 0.28);
+        }
+
+        /* --- Inner content blocks --- */
+        .inner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .inner-card {
+            background: var(--apple-bg-page);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .inner-card-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+        .inner-card strong { font-size: 14px; display: block; margin-bottom: 4px; }
+        .inner-card p { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.45; }
+
+        /* --- Contact (slim) --- */
+        .contact-strip {
+            text-align: center;
+            padding: 28px 24px;
+        }
+
+        .contact-strip h3 { margin-bottom: 6px; }
+        .contact-strip p { color: var(--apple-text-secondary); margin: 0 0 14px; font-size: 14px; }
+
+        .contact-emails {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+        .contact-link { color: var(--apple-blue); text-decoration: none; font-weight: 600; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 32px 0 24px;
+            color: var(--apple-text-tertiary);
+            font-size: 12px;
+        }
+
+        footer a { color: var(--apple-text-secondary); }
+
+        /* --- Bordered callout --- */
+        .callout {
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-left: 4px solid var(--apple-blue);
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #0056b3;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .callout-body {
+            color: #2c3e50;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; letter-spacing: -0.02em; }
+            h2 { font-size: 24px; }
+            header.hero { padding: 40px 0 28px; }
+            .subtitle { letter-spacing: 0.14em; }
+        }
+
+        /* --- return.html additions --- */
+        .lead {
+            font-size: 18px;
+            line-height: 1.55;
+            color: var(--apple-text-secondary);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .step-body { font-size: 15px; color: var(--apple-text-secondary); line-height: 1.6; }
+        .step-body strong { color: var(--apple-text-primary); }
+
+        .caveat { font-size: 13px; color: var(--apple-text-tertiary); margin: 12px 0 0; line-height: 1.5; }
+
+        /* Set-up panel */
+        .setup-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px 24px;
+            background: var(--apple-bg-page);
+            padding: 24px;
+            border-radius: var(--radius-medium);
+            margin: 4px 0 0;
+        }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field label { font-size: 13px; font-weight: 600; color: var(--apple-text-primary); }
+        .field .hint { font-size: 12px; color: var(--apple-text-tertiary); font-weight: 400; }
+        .field input, .field select {
+            font-family: inherit;
+            font-size: 14px;
+            padding: 9px 12px;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--apple-text-primary);
+            width: 100%;
+        }
+        .field input:focus, .field select:focus {
+            outline: 2px solid var(--apple-blue);
+            outline-offset: 1px;
+            border-color: var(--apple-blue);
+        }
+        .month-pair { display: flex; gap: 8px; }
+        .month-pair select:first-child { flex: 2; }
+        .month-pair select:last-child { flex: 1; }
+
+        /* Toggles */
+        .toggle-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px;
+            margin: 24px 0 4px;
+        }
+        .toggle-block { flex: 1; min-width: 250px; }
+        .toggle-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--apple-text-tertiary);
+            margin-bottom: 8px;
+        }
+        .segmented {
+            display: inline-flex;
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-button);
+            padding: 3px;
+            gap: 3px;
+        }
+        .seg-btn {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--apple-text-secondary);
+            padding: 8px 16px;
+            border-radius: var(--radius-button);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .seg-btn:hover { color: var(--apple-text-primary); }
+        .seg-btn.active {
+            background: var(--apple-blue);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(0,113,227,0.22);
+        }
+        .toggle-explain { font-size: 13px; color: var(--apple-text-secondary); margin: 10px 0 0; line-height: 1.5; }
+        .safe-default {
+            font-size: 13px;
+            color: #2c3e50;
+            margin-top: 18px;
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            line-height: 1.5;
+        }
+
+        /* Generated chunk cards */
+        .chunk-card {
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-medium);
+            padding: 18px 20px;
+            margin: 14px 0;
+            background: var(--apple-bg-subtle);
+        }
+        .chunk-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        .chunk-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--apple-blue);
+        }
+        .chunk-when { font-size: 13px; color: var(--apple-text-secondary); font-weight: 600; }
+        .chunk-note { font-size: 12.5px; color: var(--apple-text-tertiary); margin: 10px 0 0; line-height: 1.5; }
+        .chunk-empty { font-size: 14px; color: var(--apple-text-secondary); margin: 0 0 6px; }
+
+        .is-hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <nav class="global-nav">
+        <div class="nav-content">
+            <span class="nav-brand">The Matts</span>
+            <a href="#why">Why</a>
+            <a href="#setup">Set up</a>
+            <a href="#run">Run it</a>
+            <a href="#brainstorm">Brainstorm</a>
+            <a href="#safety">Safety</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <p class="subtitle">Guided Copilot Exercise</p>
+            <h1>Back to work: the six-month catch-up</h1>
+            <p class="lead">You have been away for a while, and half a year of email, Teams and documents is waiting. One giant prompt will not read it all. This walks you through it calmly, one manageable piece at a time, using the upgraded Microsoft 365 Copilot that can see your work data.</p>
+        </header>
+
+        <div class="library-instructions">
+            <a href="https://m365copilot.com/" target="_blank" rel="noopener" class="copilot-card">
+                <img src="CopilotLogo.png" alt="" class="copilot-logo">
+                <span class="copilot-card-text">
+                    <span class="copilot-label">Click to open Copilot</span>
+                    <span class="copilot-url">m365copilot.com&nbsp;↗</span>
+                </span>
+            </a>
+            <div class="instruction-text">
+                Use the <strong>upgraded Microsoft 365 Copilot</strong> that can see your email, Teams and work files. Start a <strong>New Chat</strong> for every run.
+            </div>
+        </div>
+
+        <!-- WHY -->
+        <section id="why" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">The idea</div>
+                    <h2>Why one big prompt fails</h2>
+                </div>
+            </div>
+            <p class="step-body">It feels natural to type "summarise everything I missed and tell me what to do". It rarely works. Copilot does not read your whole mailbox at once, it searches it and works from a slice of what it finds. Ask for too much and the quiet, important things slip through. Here is what is really going on, in plain terms.</p>
+            <div class="inner-grid">
+                <div class="inner-card">
+                    <span class="inner-card-icon">📥</span>
+                    <strong>It only reads the top of the pile</strong>
+                    <p>Search hands back a limited set of matches, ranked by relevance, not by date. A quiet one-to-one message where a task was handed to you can be dropped entirely.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🧠</span>
+                    <strong>Even a big memory blurs</strong>
+                    <p>Modern models hold a lot at once, but pour six months of email and transcripts in together and the detail smears. Precise answers need a smaller pile.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🎲</span>
+                    <strong>Ask twice, get two answers</strong>
+                    <p>AI is not a calculator. The same prompt run twice gives slightly different results, so a single pass can silently miss a real task.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">⏳</span>
+                    <strong>Your oldest data may be expiring</strong>
+                    <p>Some organisations delete old Teams chats or email on a schedule (many do not). If yours does, your earliest month is the most at risk, so do it first and check with IT if unsure.</p>
+                </div>
+            </div>
+            <p class="step-body" style="margin-top:16px;">The fix is two habits: <strong>chunk</strong> the job into pieces small enough to read properly, and <strong>verify</strong> by running the important pieces twice and merging them. The rest of this page builds that workflow around your details.</p>
+        </section>
+
+        <!-- SET UP -->
+        <section id="setup" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 1</div>
+                    <h2>Set up your run</h2>
+                    <p>Fill these in and every prompt below fills itself in with your details. Nothing is sent anywhere, it all stays in your browser.</p>
+                </div>
+            </div>
+
+            <div class="setup-panel">
+                <div class="field">
+                    <label for="startMonth">Leave started</label>
+                    <div class="month-pair">
+                        <select id="startMonth" aria-label="Leave start month"></select>
+                        <select id="startYear" aria-label="Leave start year"></select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="endMonth">Back at work</label>
+                    <div class="month-pair">
+                        <select id="endMonth" aria-label="Return month"></select>
+                        <select id="endYear" aria-label="Return year"></select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="role">Your role <span class="hint">optional, adds context</span></label>
+                    <input type="text" id="role" placeholder="e.g. Head of Delivery" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="topics">Focus topics <span class="hint">optional, comma separated</span></label>
+                    <input type="text" id="topics" placeholder="e.g. Project Orion, the budget review" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="toggle-row">
+                <div class="toggle-block">
+                    <span class="toggle-label">Chunk by</span>
+                    <div class="segmented" data-group="chunkBy">
+                        <button type="button" class="seg-btn active" data-val="time">Time (by month)</button>
+                        <button type="button" class="seg-btn" data-val="topic">Topic (by focus area)</button>
+                    </div>
+                    <p class="toggle-explain" id="explain-chunk">One card per month across your leave, oldest first. Best when you are not sure what you missed.</p>
+                </div>
+                <div class="toggle-block">
+                    <span class="toggle-label">How thorough</span>
+                    <div class="segmented" data-group="rigour">
+                        <button type="button" class="seg-btn active" data-val="dual">Run twice + merge</button>
+                        <button type="button" class="seg-btn" data-val="single">Run once</button>
+                    </div>
+                    <p class="toggle-explain" id="explain-rigour">Run each chunk twice in fresh chats, then merge the two tables. Slower, but it catches what one pass drops.</p>
+                </div>
+            </div>
+            <p class="safe-default"><strong>Not sure?</strong> Leave it on <strong>Time</strong> and <strong>Run twice + merge</strong>. That is the safe default: thorough, and it double-checks itself.</p>
+        </section>
+
+        <!-- PICK YOUR MODE -->
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 2</div>
+                    <h2>Pick your mode</h2>
+                    <p>Copilot lets you choose how hard it thinks. Match the mode to the job.</p>
+                </div>
+            </div>
+            <div class="inner-grid">
+                <div class="inner-card">
+                    <span class="inner-card-icon">🔎</span>
+                    <strong>Extract with the deep thinker</strong>
+                    <p>For the month-by-month searches, pick the deepest thinking mode (in Copilot this is GPT-5.4 Think Deeper). It is slower, but it actually reads what it finds, so it misses less.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">⚡</span>
+                    <strong>Merge with the fast one</strong>
+                    <p>For merging two tables you already have, switch to a fast Instant mode. The data is in front of it, so speed beats depth.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🧼</span>
+                    <strong>Fresh chat every run</strong>
+                    <p>Start a New Chat for each run and each month. Copilot's memory can carry parts of one answer into the next, which quietly muddles a careful catch-up.</p>
+                </div>
+            </div>
+            <p class="caveat">Model names change often. If you do not see these exact names, the rule still holds: deepest mode to dig, fastest mode to merge.</p>
+        </section>
+
+        <!-- RUN IT / EXTRACT -->
+        <section id="run" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 3</div>
+                    <h2>Extract, one chunk at a time</h2>
+                    <p>Each card below is a ready-to-copy prompt for a single chunk. Work through them in order.</p>
+                </div>
+            </div>
+            <div class="callout">
+                <strong>Order matters</strong>
+                <div class="callout-body" id="order-note">Start with your oldest month and work forwards. If your organisation deletes old data on a schedule, the earliest month is the first to disappear.</div>
+            </div>
+            <div id="chunk-list"><!-- generated by JS --></div>
+        </section>
+
+        <!-- MERGE (dual only) -->
+        <section id="merge" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 4</div>
+                    <h2>Merge and verify</h2>
+                    <p>You ran each chunk twice. Now let Copilot combine the two tables into one you can trust.</p>
+                </div>
+            </div>
+            <p class="step-body">Open a fresh chat and switch to the fast Instant mode. Paste both tables into the prompt below where shown. Because the tables are already there, this step is quick.</p>
+            <div class="prompt-box" id="merge-box"><!-- filled by JS --></div>
+            <button class="btn-copy" onclick="copyToClipboard('merge-box')">Copy prompt</button>
+        </section>
+
+        <!-- AGGREGATE / NOTEBOOK -->
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 5</div>
+                    <h2>Build your catch-up Notebook</h2>
+                    <p>Gather everything you have checked into one Copilot Notebook, so the last steps work from that clean set instead of your whole network.</p>
+                </div>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://m365.cloud.microsoft/notebooks" target="_blank" rel="noopener" class="copilot-card">
+                    <img src="CopilotLogo.png" alt="" class="copilot-logo">
+                    <span class="copilot-card-text">
+                        <span class="copilot-label">Open Copilot Notebooks</span>
+                        <span class="copilot-url">m365.cloud.microsoft/notebooks&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">Make <strong>one</strong> notebook for your whole return.</div>
+            </div>
+
+            <ol style="padding-left: 20px; line-height: 1.6; font-size: 15px; margin: 0; color: var(--apple-text-secondary);">
+                <li style="margin-bottom: 10px;">Create one new notebook for your return (call it something like "Back to work").</li>
+                <li style="margin-bottom: 10px;">Paste each verified, merged table into it as a <strong>Copilot Page</strong>, so your whole timeline lives in one place.</li>
+                <li style="margin-bottom: 10px;">Add the key files you missed as <strong>references</strong> (Word, PowerPoint, Excel, PDF or OneNote). Adding a file directly guarantees Copilot uses it. If you point it at a whole SharePoint folder instead, it uses up to the 300 most relevant files.</li>
+            </ol>
+
+            <div class="callout" style="margin-top:18px;">
+                <strong>Why this matters</strong>
+                <div class="callout-body">Once your material is in the notebook, Copilot answers only from what you added. That is what removes the guesswork: no trawling the wider network, no drifting onto unrelated projects.</div>
+            </div>
+
+            <details style="margin-top:20px;">
+                <summary><span style="flex:1;">Optional: find the exact files you missed</span></summary>
+                <div class="details-content">
+                    <div class="exercise-note">Not sure which files to add? Ask full Copilot to find the documents that changed while you were away, then add the important ones to your notebook. These search your whole Microsoft 365, so run them in a normal Copilot chat, not inside the notebook.</div>
+                    <h4>Everything in a timeframe</h4>
+                    <div class="prompt-box" id="filesearch-general"><!-- filled by JS --></div>
+                    <button class="btn-copy" onclick="copyToClipboard('filesearch-general')">Copy prompt</button>
+                    <h4>Files for one topic</h4>
+                    <div class="prompt-box" id="filesearch-topic"><!-- filled by JS --></div>
+                    <button class="btn-copy" onclick="copyToClipboard('filesearch-topic')">Copy prompt</button>
+                    <div class="inner-grid" style="margin-top:18px;">
+                        <div class="inner-card">
+                            <span class="inner-card-icon">📎</span>
+                            <strong>Email attachments count too</strong>
+                            <p>Copilot now surfaces files that were only sent through Outlook, alongside your SharePoint and OneDrive results.</p>
+                        </div>
+                        <div class="inner-card">
+                            <span class="inner-card-icon">➡️</span>
+                            <strong>Point it at the right place</strong>
+                            <p>Type <strong>/</strong> in the prompt box to reference a specific file, or a particular SharePoint site, so Copilot looks exactly where you expect.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- BRAINSTORM -->
+        <section id="brainstorm" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 6</div>
+                    <h2>Brainstorm your first weeks back</h2>
+                    <p>Now you have a checked picture of what you missed, turn it into a plan for the days ahead.</p>
+                </div>
+            </div>
+            <p class="step-body">Run this as a chat <strong>inside your catch-up Notebook</strong>, so it works only from your verified tables and the files you added, and cites them.</p>
+            <div class="prompt-box" id="brainstorm-box"><!-- filled by JS --></div>
+            <button class="btn-copy" onclick="copyToClipboard('brainstorm-box')">Copy prompt</button>
+        </section>
+
+        <!-- POWER-UPS -->
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Step 7</div>
+                    <h2>Turn it into something you can use</h2>
+                    <p>Your notebook is now a private, checked workspace. Ask it to reshape that into whatever helps you most.</p>
+                </div>
+            </div>
+            <p class="step-body">Use <strong>Quick Create</strong> in the notebook to draft a Word "return plan" or a PowerPoint update for your manager straight from your data. Three more that fit easing back in:</p>
+            <div class="inner-grid">
+                <div class="inner-card">
+                    <span class="inner-card-icon">🎧</span>
+                    <strong>Audio overview</strong>
+                    <p>Ask for a podcast-style summary of your notebook and listen to your catch-up on the commute, no reading required.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🗺️</span>
+                    <strong>Mind map</strong>
+                    <p>Turn the projects, gaps and people into a visual map so you can see the whole picture at a glance.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">📊</span>
+                    <strong>Excel action tracker</strong>
+                    <p>Have the Excel agent draft a task list from your notebook, so the plan becomes something you can work through.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAFETY -->
+        <section id="safety" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Good habits</div>
+                    <h2>Stay safe, go at your pace</h2>
+                </div>
+            </div>
+            <div class="inner-grid">
+                <div class="inner-card">
+                    <span class="inner-card-icon">✅</span>
+                    <strong>Keep yourself in the loop</strong>
+                    <p>Every row has a source link. Open a few and read the original before you act on anything that matters.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🔒</span>
+                    <strong>Keep work data in Copilot</strong>
+                    <p>For anything confidential, stay in Microsoft 365 Copilot rather than pasting it into a public chatbot.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🧭</span>
+                    <strong>Fresh chat, oldest first</strong>
+                    <p>New chat for each run, and start with your earliest month so nothing ages out before you reach it.</p>
+                </div>
+                <div class="inner-card">
+                    <span class="inner-card-icon">🌱</span>
+                    <strong>Go at your pace</strong>
+                    <p>This is a catch-up, not a race. One or two chunks a day is fine. It is completely normal to still be finding your feet.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-card contact-strip">
+            <h3>Questions?</h3>
+            <p>Want us to deliver the workshop at your site or train your trainers?</p>
+            <div class="contact-emails">
+                <span>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a></span>
+                <span>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a></span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">Read our paper: AI The Community Approach ↗</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        /* --- Clipboard (shared with workshop.html) --- */
+        function copyToClipboard(id) {
+            var el = document.getElementById(id);
+            if (!el) { return; }
+            var text = el.innerText;
+            var btn = document.querySelector("button[onclick=\"copyToClipboard('" + id + "')\"]");
+            var done = function () {
+                if (!btn) { return; }
+                var original = btn.innerText;
+                btn.innerText = 'Copied';
+                btn.classList.add('success');
+                setTimeout(function () {
+                    btn.innerText = original;
+                    btn.classList.remove('success');
+                }, 1800);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+            } else {
+                fallbackCopy(text);
+                done();
+            }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        /* --- Interactive prompt builder --- */
+        (function () {
+            var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            var YEARS = [2024, 2025, 2026, 2027];
+            var state = { chunkBy: 'time', rigour: 'dual' };
+
+            function esc(s) {
+                return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            function fillSelect(el, options, values, selected) {
+                for (var i = 0; i < options.length; i++) {
+                    var o = document.createElement('option');
+                    o.value = values[i];
+                    o.textContent = options[i];
+                    if (values[i] === selected) { o.selected = true; }
+                    el.appendChild(o);
+                }
+            }
+
+            function readState() {
+                var sm = parseInt(document.getElementById('startMonth').value, 10);
+                var sy = parseInt(document.getElementById('startYear').value, 10);
+                var em = parseInt(document.getElementById('endMonth').value, 10);
+                var ey = parseInt(document.getElementById('endYear').value, 10);
+                var role = document.getElementById('role').value.trim();
+                var raw = document.getElementById('topics').value.trim();
+                var topics = raw ? raw.split(',').map(function (t) { return t.trim(); }).filter(Boolean) : [];
+                return {
+                    sm: sm, sy: sy, em: em, ey: ey, role: role, topics: topics,
+                    leaveStart: MONTHS[sm] + ' ' + sy,
+                    leaveEnd: MONTHS[em] + ' ' + ey
+                };
+            }
+
+            function roleCtx(s) { return s.role ? ' (I work as ' + s.role + ')' : ''; }
+
+            function monthSpan(s) {
+                var start = s.sy * 12 + s.sm, end = s.ey * 12 + s.em, list = [];
+                if (end < start) { return list; }
+                for (var m = start; m <= end && list.length < 24; m++) {
+                    list.push({ y: Math.floor(m / 12), mi: m % 12 });
+                }
+                return list;
+            }
+
+            function lastDay(y, mi) { return new Date(y, mi + 1, 0).getDate(); }
+
+            function buildExtractTime(s, mo) {
+                var label = MONTHS[mo.mi] + ' ' + mo.y;
+                var startD = '1 ' + label;
+                var endD = lastDay(mo.y, mo.mi) + ' ' + label;
+                var focus = s.topics.length
+                    ? '\n4. Focus areas: give extra attention to anything touching ' + s.topics.join(', ') + '.'
+                    : '';
+                return 'Act as my Chief of Staff. I am returning from an extended leave' + roleCtx(s) +
+                    ', and I am triaging my backlog one month at a time. From my Microsoft 365 work data (emails, Teams messages, meeting transcripts and shared documents), analyse only the period from ' + startD + ' to ' + endD + '.\n\n' +
+                    'Focus only on these outcomes, so I can see the impact of my absence and find gaps in what got done:\n' +
+                    '1. Open decisions and missed tasks: any tasks, approvals or action items assigned to me or my projects that were left unfinished or unresolved.\n' +
+                    '2. Project impact and gaps: the main developments, changes of direction or blockers in my main projects during this month.\n' +
+                    '3. Stakeholder alignment: important messages or requests from my manager, project leads or clients.' + focus + '\n\n' +
+                    'Do not give a chatty summary. Reply only as a table with these columns: Date | Category (Task, Impact or Stakeholder) | Summary | Key people | Recommended next step | Source link. Cite every source so I can check it.';
+            }
+
+            function buildExtractTopic(s, topic) {
+                return 'Act as my Chief of Staff. I am returning from an extended leave' + roleCtx(s) +
+                    ', and I am catching up one area at a time. From my Microsoft 365 work data (emails, Teams messages, meeting transcripts and shared documents) between ' + s.leaveStart + ' and ' + s.leaveEnd + ', analyse only what relates to: ' + topic + '.\n\n' +
+                    'Focus only on these outcomes:\n' +
+                    '1. Open decisions and missed tasks left unfinished on ' + topic + '.\n' +
+                    '2. Project impact and gaps: the main developments, changes of direction or blockers for ' + topic + '.\n' +
+                    '3. Stakeholder alignment: important messages or requests about ' + topic + ' from my manager, project leads or clients.\n\n' +
+                    'Do not give a chatty summary. Reply only as a table with these columns: Date | Category (Task, Impact or Stakeholder) | Summary | Key people | Recommended next step | Source link. Cite every source so I can check it.';
+            }
+
+            function buildMerge(s) {
+                var noun = state.chunkBy === 'time' ? 'a single month of my leave' : 'one focus area';
+                return 'I am giving you two AI-generated tables (Run A and Run B) covering my Microsoft 365 work data for ' + noun + '. Both used the same instructions to find open tasks, project impacts and stakeholder updates, but because the AI is not perfectly repeatable they may differ, miss things or disagree.\n\n' +
+                    '[Paste Run A table here]\n\n' +
+                    '[Paste Run B table here]\n\n' +
+                    'Act as an analytical auditor. Cross-check Run A against Run B and merge them into one master table, using these rules:\n' +
+                    '1. Consolidate: if the same task or impact appears in both runs, combine them into one clear entry.\n' +
+                    '2. Include everything: if a detail appears in only one run, keep it.\n' +
+                    '3. Flag contradictions: if the two runs disagree on a fact, date or decision, flag it in a new column called "Check this".\n' +
+                    '4. Keep every source citation so I can review the original.\n\n' +
+                    'Output the final merged table.';
+            }
+
+            function buildFileGeneral(s) {
+                return 'Search my Microsoft 365 for all documents, spreadsheets and presentations that were shared with me or heavily edited between ' + s.leaveStart + ' and ' + s.leaveEnd + '. Ignore conversational emails and Teams chats. Output a table with these columns: File name | Primary author | One-sentence summary | Source link.';
+            }
+
+            function buildFileTopic(s) {
+                var topic = s.topics.length ? s.topics.join(' / ') : '[your project or topic]';
+                return 'Find all files, documents and attachments about ' + topic + ' that were shared or updated between ' + s.leaveStart + ' and ' + s.leaveEnd + '. Give me a bulleted list of the most important ones, each with a short note on what the document is for and a direct source link to open it.';
+            }
+
+            function buildBrainstorm(s) {
+                var focus = s.topics.length ? '\n\nGive extra weight to anything touching: ' + s.topics.join(', ') + '.' : '';
+                return 'Using the verified, merged tables I have gathered in this Copilot Notebook, act as a strategic advisor. I have triaged my backlog and now I want to understand the bigger picture of my time away and plan my return. Please analyse the data and give me:\n' +
+                    '1. Structural gaps: any long-running work or core responsibilities that stalled, lost momentum or were dropped while I was away. Where is the business most exposed?\n' +
+                    '2. People to realign with: from the unresolved tasks and stakeholder updates, the five people I should meet first, with a one-line reason for each.\n' +
+                    '3. A 14-day plan: a practical two-week plan to tackle the highest-risk gaps first, prioritising anything revenue-related, compliance-related or highly visible.\n' +
+                    '4. A return note: a short, warm, professional message to my team saying I am back, acknowledging the main changes, and proposing next steps.' + focus;
+            }
+
+            function chunkNote() {
+                return state.rigour === 'dual'
+                    ? 'Run this in two fresh chats. Save the two tables as Run A and Run B, then combine them in Step 4.'
+                    : 'Run once in a fresh chat, save the table, then move to the next chunk.';
+            }
+
+            function cardHtml(id, tag, when, body) {
+                return '<div class="chunk-card">' +
+                    '<div class="chunk-head"><span class="chunk-tag">' + esc(tag) + '</span><span class="chunk-when">' + esc(when) + '</span></div>' +
+                    '<div class="prompt-box" id="' + id + '">' + esc(body) + '</div>' +
+                    '<button class="btn-copy" onclick="copyToClipboard(\'' + id + '\')">Copy prompt</button>' +
+                    '<p class="chunk-note">' + chunkNote() + '</p>' +
+                    '</div>';
+            }
+
+            function renderChunks(s) {
+                var host = document.getElementById('chunk-list');
+                var html = '';
+                if (state.chunkBy === 'time') {
+                    var months = monthSpan(s);
+                    if (!months.length) {
+                        host.innerHTML = '<p class="chunk-empty">Check your dates: the return month is before the leave start.</p>';
+                        return;
+                    }
+                    months.forEach(function (mo, i) {
+                        var label = MONTHS[mo.mi] + ' ' + mo.y + (i === 0 ? ' · do this one first' : '');
+                        html += cardHtml('chunk-' + i, 'Chunk ' + (i + 1) + ' of ' + months.length, label, buildExtractTime(s, mo));
+                    });
+                } else {
+                    if (!s.topics.length) {
+                        html += '<p class="chunk-empty">Add one or more focus topics in Set up (separated by commas) to get a card per topic. Here is the shape of one:</p>';
+                        html += cardHtml('chunk-0', 'Example', 'your focus area', buildExtractTopic(s, '[name a focus area, e.g. Project Orion]'));
+                    } else {
+                        s.topics.forEach(function (t, i) {
+                            html += cardHtml('chunk-' + i, 'Area ' + (i + 1) + ' of ' + s.topics.length, t, buildExtractTopic(s, t));
+                        });
+                    }
+                }
+                host.innerHTML = html;
+            }
+
+            function applyToggleVisibility() {
+                document.getElementById('merge').classList.toggle('is-hidden', state.rigour !== 'dual');
+                document.getElementById('explain-chunk').textContent = state.chunkBy === 'time'
+                    ? 'One card per month across your leave, oldest first. Best when you are not sure what you missed.'
+                    : 'One card per focus topic you name above. Faster and targeted, best when you know the few things that matter.';
+                document.getElementById('explain-rigour').textContent = state.rigour === 'dual'
+                    ? 'Run each chunk twice in fresh chats, then merge the two tables. Slower, but it catches what one pass drops.'
+                    : 'Run each chunk once. Quicker, fine for a short leave or a first look, but more likely to miss something.';
+                document.getElementById('order-note').textContent = state.chunkBy === 'time'
+                    ? 'Start with your oldest month and work forwards. If your organisation deletes old data on a schedule, the earliest month is the first to disappear.'
+                    : 'Work through your focus areas in priority order. Do the one with the most at stake first.';
+            }
+
+            function render() {
+                var s = readState();
+                renderChunks(s);
+                document.getElementById('merge-box').innerText = buildMerge(s);
+                document.getElementById('brainstorm-box').innerText = buildBrainstorm(s);
+                document.getElementById('filesearch-general').innerText = buildFileGeneral(s);
+                document.getElementById('filesearch-topic').innerText = buildFileTopic(s);
+                applyToggleVisibility();
+            }
+
+            function init() {
+                fillSelect(document.getElementById('startMonth'), MONTHS, MONTHS.map(function (_, i) { return i; }), 0);
+                fillSelect(document.getElementById('endMonth'), MONTHS, MONTHS.map(function (_, i) { return i; }), 5);
+                var yearLabels = YEARS.map(String);
+                fillSelect(document.getElementById('startYear'), yearLabels, YEARS, 2026);
+                fillSelect(document.getElementById('endYear'), yearLabels, YEARS, 2026);
+
+                document.querySelectorAll('.segmented').forEach(function (grp) {
+                    var group = grp.getAttribute('data-group');
+                    grp.querySelectorAll('.seg-btn').forEach(function (btn) {
+                        btn.addEventListener('click', function () {
+                            grp.querySelectorAll('.seg-btn').forEach(function (b) { b.classList.remove('active'); });
+                            btn.classList.add('active');
+                            state[group] = btn.getAttribute('data-val');
+                            render();
+                        });
+                    });
+                });
+
+                ['startMonth', 'startYear', 'endMonth', 'endYear'].forEach(function (id) {
+                    document.getElementById(id).addEventListener('change', render);
+                });
+                ['role', 'topics'].forEach(function (id) {
+                    document.getElementById(id).addEventListener('input', render);
+                });
+
+                render();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>
