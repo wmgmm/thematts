@@ -1150,7 +1150,7 @@
 
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">11</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">13</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">14</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
 
@@ -1416,6 +1416,19 @@ My only skill is pretending to listen in Zoom calls.</textarea>
             <div id="tab-recipes" class="tab-panel" role="tabpanel">
 
                 <details open>
+                    <summary><span style="flex:1;">Let the AI Interview You</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Your expertise lives in your head, and writing it out from scratch is hard work. This prompt flips the job: instead of you drafting, the AI asks short questions, gathers what it needs, then writes the document for you. Naming a clear deliverable keeps it on task, and telling it not to invent details stops it filling gaps with guesses.
+                        </div>
+                        <div class="prompt-box" id="ai-interview">"I am working on [INSERT TASK OR CHALLENGE]. The context is only in my head, so don't assume or invent details.
+Interview me: ask short questions, one at a time, around 5 to 8 in total. If a document would help, such as a policy, past example, or raw data, ask me for it as part of the interview.
+When you're done, produce a [INSERT DELIVERABLE TYPE]."</div>
+                        <button onclick="copyToClipboard('ai-interview')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
                     <summary><span style="flex:1;">Filter a document to your role</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
