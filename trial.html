@@ -559,7 +559,7 @@
             <strong>The Goal:</strong> We want to catch items you might have opened on your phone but haven't actually answered. We will swap the "Unread" filter for a "Time" filter to ensure nothing slips through the cracks.
         </p>
         
-        <div class="prompt-box" id="ex2-triage">"Review my emails and Teams chats from the last 3 workdays. Ignore newsletters, ads, and automated notifications. Focus on messages from colleagues. Find the top 3 items that have a deadline or a question I haven’t answered yet, ranked by urgency. For each item, show:
+        <div class="prompt-box" id="ex2-triage">"Act as my chief of staff. Review my emails and Teams chats from the last 3 workdays. Ignore newsletters, ads, and automated notifications. Focus on messages from colleagues. Find the top 3 items that have a deadline or a question I haven’t answered yet, ranked by urgency. For each item, show:
 
 Message summary
 Link to the original message
@@ -569,7 +569,7 @@ Present the results in a simple list."</div>
         <button onclick="copyToClipboard('ex2-triage')" class="btn-copy">Copy Prompt</button>
         
         <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
-            <strong>Why this is better:</strong> If you ask for "Unread," Copilot ignores that important email you opened while queuing for coffee. By asking for "Last 3 days" + "Haven't replied," you catch the work you effectively "read and forgot."
+            <strong>Why this is better:</strong> If you ask for "Unread," Copilot ignores that important email you opened while queuing for coffee. By asking for "Last 3 days" + "Haven't replied," you catch the work you effectively "read and forgot." The role matters too: "chief of staff" tells Copilot whose priorities to rank by, so it filters for what you need to decide, not what is merely recent.
         </p>
     </div>
 </details>
@@ -757,7 +757,7 @@ Present the results in a simple list."</div>
                 <summary>Email Triage (Past 7 Days)</summary>
                 <div class="details-content">
                     <p class="exercise-note">A daily starter: turns a week of inbox noise into three clear piles, with anything urgent or schedulable flagged.</p>
-                    <div class="prompt-box" id="more-triage7">"Review all emails from the past 7 days. Sort into Critical, Action Needed, and Can Wait. Highlight anything that needs scheduling or immediate attention."</div>
+                    <div class="prompt-box" id="more-triage7">"Act as my chief of staff. Review all emails from the past 7 days. Sort into Critical, Action Needed, and Can Wait. Highlight anything that needs scheduling or immediate attention."</div>
                     <button onclick="copyToClipboard('more-triage7')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -817,7 +817,7 @@ Present the results in a simple list."</div>
                 <summary>Meeting Prep</summary>
                 <div class="details-content">
                     <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
-                    <div class="prompt-box" id="more-meetprep">"I have a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
+                    <div class="prompt-box" id="more-meetprep">"Act as my chief of staff preparing me for a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
                     <button onclick="copyToClipboard('more-meetprep')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -844,7 +844,7 @@ Present the results in a simple list."</div>
                 <summary>One-to-One Prep</summary>
                 <div class="details-content">
                     <p class="exercise-note">From a Cardiff colleague. Run it before the meeting and walk in knowing what is still open between you.</p>
-                    <div class="prompt-box" id="more-onetoone">"I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
+                    <div class="prompt-box" id="more-onetoone">"Act as my chief of staff. I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
                     <button onclick="copyToClipboard('more-onetoone')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
@@ -913,7 +913,7 @@ Present the results in a simple list."</div>
                 <summary>Calendar &amp; Capacity Audit</summary>
                 <div class="details-content">
                     <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
-                    <div class="prompt-box" id="more-calaudit">"Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
+                    <div class="prompt-box" id="more-calaudit">"Act as my executive assistant. Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
                     <button onclick="copyToClipboard('more-calaudit')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
