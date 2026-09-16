@@ -613,7 +613,7 @@
                     <p class="integration-desc">An AI meeting assistant. Add the Facilitator agent to a meeting and it keeps the agenda on track, takes live shared notes and captures tasks as you talk.</p>
 
                     <div class="try-prompt" style="cursor: default;">
-                        <strong>Turn on:</strong> Schedule meeting → Copilot → Facilitator (or add mid-meeting)
+                        <strong>Turn on:</strong> Meeting options → Copilot and other AI → Facilitator (or More actions → Turn on Facilitator mid-meeting)
                     </div>
                 </div>
 
@@ -660,7 +660,7 @@
                 <div class="integration-card">
                     <span class="integration-icon">📊</span>
                     <span class="integration-title">Excel</span>
-                    <p class="integration-desc">Advanced analysis. Use Python in Excel to visualize data without writing code.</p>
+                    <p class="integration-desc">Advanced analysis. Edit with Copilot can run Python for the analysis Excel formulas cannot do, without you writing code.</p>
                     
                     <div class="try-prompt" onclick="navigator.clipboard.writeText('Analyze this table with Python to visualize the correlation between [Column A] and [Column B] as a heatmap.')">
                         <strong>Analyze:</strong> "Visualize correlation (Python)"
@@ -673,7 +673,7 @@
                     <p class="integration-desc">Now the default Copilot experience in the apps. Give it a goal and it plans, executes and checks multi-step edits on your open file, not just a first draft.</p>
 
                     <div class="try-prompt" onclick="navigator.clipboard.writeText('Build a monthly budget tracker in this workbook: expense categories, a summary dashboard and a chart of spend by category. Show me your plan first.')">
-                        <strong>Delegate:</strong> "Build a budget tracker, plan first"
+                        <strong>Delegate:</strong> "Build a budget tracker, plan first" (choose Allow editing, not Chat only)
                     </div>
                 </div>
 
@@ -704,7 +704,7 @@
                     <button onclick="copyToClipboard('ex1-roast')" class="btn-copy">Copy Prompt</button>
                     
                     <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
-                        <strong>Note:</strong> This demonstrates <strong>Graph Connection</strong> (reading your calendar), it's best if you have <strong>GPT-5 Enabled</strong>.
+                        <strong>Note:</strong> This demonstrates <strong>Graph Connection</strong> (reading your calendar). The model picker (top right) can stay on <strong>Auto</strong>; pick <strong>Think deeper</strong> for a better roast.
                     </p>
                 </div>
             </details>
@@ -745,7 +745,7 @@ Present the results in a simple list."</div>
                     </p>
 
                     <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 10px; background-color: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                        <strong>💡 Pro Tip:</strong> As seen in the menu, the forward slash <strong>/</strong> isn't just for People. You can anchor to <strong>Files, Meetings, Chats, and Sites</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
+                        <strong>💡 Pro Tip:</strong> As seen in the menu, the forward slash <strong>/</strong> isn't just for People. You can anchor to <strong>Files, Emails, Meetings, Chats, Sites and SharePoint lists</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
                     </p>
                 </div>
             </details>
@@ -832,7 +832,7 @@ Present the results in a simple list."</div>
     <summary>Exercise 6 – Meet Your Specialists (Built-in Agents)</summary>
     <div class="details-content">
         <p class="exercise-note">
-            <strong>Copilot is a generalist, but these Agents are specialists.</strong> Microsoft has built these three dedicated tools to handle complex tasks that standard Copilot might find too heavy.
+            <strong>Copilot is a generalist, but these Agents are specialists.</strong> Microsoft has built these three dedicated tools to handle complex tasks that standard Copilot might find too heavy. If a Launch button lands on the wrong agent, open the Agents list in Copilot and search by name.
         </p>
 
         <div style="display: grid; gap: 15px; margin-top: 20px;">
@@ -988,6 +988,42 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
+                <summary>Devil's Advocate (Your critical friend)</summary>
+                <div class="details-content">
+                    <p class="exercise-note">Copilot argues against the ideas you have been pushing, using only objections and risks that people have actually raised. Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data.</p>
+                    <div class="prompt-box" id="more-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
+                    <button onclick="copyToClipboard('more-devils-advocate')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>One-to-One Prep</summary>
+                <div class="details-content">
+                    <p class="exercise-note">From a Cardiff colleague. Run it before the meeting and walk in knowing what is still open between you.</p>
+                    <div class="prompt-box" id="more-onetoone">"I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
+                    <button onclick="copyToClipboard('more-onetoone')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Partnership Evidence Pack</summary>
+                <div class="details-content">
+                    <p class="exercise-note">From a Cardiff colleague, who says it turns several hours of admin into one request: disparate evidence across emails, meetings, files and chats becomes one coherent summary.</p>
+                    <div class="prompt-box" id="more-evidencepack">"Search my emails, meetings, files and chats for evidence related to [partnership or programme] during [date range]. Group the findings into achievements, opportunities, risks, stakeholder engagement, funding activity and actions. Identify gaps and produce an executive-ready summary."</div>
+                    <button onclick="copyToClipboard('more-evidencepack')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Rewrite for the Audience</summary>
+                <div class="details-content">
+                    <p class="exercise-note">From a Cardiff colleague. Works on a pasted draft in Chat, or on selected text in Word. Different versions for different readers, without losing your own voice.</p>
+                    <div class="prompt-box" id="more-audience">"Rewrite this for [audience]. Keep my voice. Make it less corporate and soften anything that could read as criticism."</div>
+                    <button onclick="copyToClipboard('more-audience')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
                 <summary>Pricing History</summary>
                 <div class="details-content">
                     <p class="exercise-note">Turns unstructured email history into structured data (a price trend analysis) without you opening a single PDF.</p>
@@ -1001,7 +1037,7 @@ Present the results in a simple list."</div>
             <details>
                 <summary>Root Cause (Excel)</summary>
                 <div class="details-content">
-                    <p class="exercise-note">Uses the Python in Excel integration to perform clustering analysis that standard Excel formulas cannot do.</p>
+                    <p class="exercise-note">Edit with Copilot runs Python behind the scenes, so it can do clustering analysis that standard Excel formulas cannot.</p>
                     <div class="prompt-box" id="more-rootcause">"Analyze this xlsx file. Use Python to cluster this date [ADD SOME SIMPLE CONTEXT]"</div>
                     <button onclick="copyToClipboard('more-rootcause')" class="btn-copy">Copy Prompt</button>
                 </div>
@@ -1030,7 +1066,7 @@ Present the results in a simple list."</div>
            
 
             <details>
-                <summary>Calendar &amp; Capacity Audit (Cowork)</summary>
+                <summary>Calendar &amp; Capacity Audit</summary>
                 <div class="details-content">
                     <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
                     <div class="prompt-box" id="more-calaudit">"Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
@@ -1039,7 +1075,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Meeting Recap Deck (Cowork)</summary>
+                <summary>Meeting Recap Deck</summary>
                 <div class="details-content">
                     <p class="exercise-note">Chains Teams transcripts, shared files and PowerPoint generation into one workflow: a week of project meetings becomes an executive deck, checked with you before it builds.</p>
                     <div class="prompt-box" id="more-recapdeck">"Create a comprehensive executive PowerPoint deck summarizing the key outcomes, strategic decisions, and identified risks from all project-related meetings I attended over the last seven days. Access the Work IQ semantic index to pull the relevant meeting transcripts from Teams and retrieve any supporting PDF or Excel files that were shared within those specific meeting chats. Before building the presentation, present a list of the meetings you intend to include and ask me to define the intended audience (e.g., executive leadership, internal engineering team, or external client) so you can accurately adjust the required level of detail. Once I approve the meeting list and audience persona, build a PowerPoint deck utilizing our corporate SharePoint master template. Structure the deck to include a title slide with the date range, one summary slide per major workstream grouping related meetings, a dedicated slide for 'Key Decisions Made' with assigned personnel owners, and a final 'Open Items &amp; Next Steps' slide mapping due dates. Save the finalized deck to my OneDrive in the '/Presentations/Recaps/' folder and send me a direct Teams notification link when the task is complete."</div>
@@ -1048,9 +1084,9 @@ Present the results in a simple list."</div>
             </details>
 
     <details>
-    <summary>Work vs Web Mode</summary>
+    <summary>Work IQ On or Off</summary>
     <div class="details-content">
-        <p class="exercise-note">Choose the right mode for your question to ensure data safety.</p>
+        <p class="exercise-note">Copilot Chat is now one chat. The <strong>Work IQ</strong> button (top left) decides whether it can see your work data. It is on by default.</p>
         
         <div class="info-grid">
             
@@ -1061,10 +1097,10 @@ Present the results in a simple list."</div>
                     <span style="font-size: 32px;">🛡️</span>
                 </div>
                 
-                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work Mode</strong>
+                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work IQ On</strong>
                 
                 <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
-                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> Your internal data (Emails, Teams, OneDrive, SharePoint).</p>
+                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> Your work data (Emails, Teams, OneDrive, SharePoint), plus the web if web search is on.</p>
                     <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: #34c759; font-weight: 600;">Total.</span> Your data never leaves the tenant and is never used to train models.</p>
                 </div>
                 
@@ -1080,15 +1116,15 @@ Present the results in a simple list."</div>
                     <span style="font-size: 32px;">🌐</span>
                 </div>
                 
-                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Web Mode</strong>
+                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work IQ Off</strong>
                 
                 <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
-                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> The Public Internet (News, Stocks, Wikipedia).</p>
+                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> The public internet and general knowledge only. Nothing from your inbox or files.</p>
                     <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: var(--apple-blue); font-weight: 600;">Total.</span> Your data never leaves the tenant and is never used to train models.</p>
                 </div>
                 
                 <div style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); padding: 12px; border-radius: 12px; font-size: 12px; font-family: 'SF Mono', Menlo, monospace; margin-top: 20px;">
-                    "What are the top AI trends for 2025?"
+                    "What are the top AI trends for 2026?"
                 </div>
             </div>
 
@@ -1097,9 +1133,9 @@ Present the results in a simple list."</div>
         <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-top: 20px; display: flex; gap: 15px; align-items: start;">
             <div style="font-size: 24px;">💡</div>
             <div>
-                <strong style="display: block; font-size: 14px; margin-bottom: 4px; color: var(--apple-text-primary);">The "Web Content" Toggle</strong>
+                <strong style="display: block; font-size: 14px; margin-bottom: 4px; color: var(--apple-text-primary);">The Web Search Toggle</strong>
                 <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">
-                    Found inside Work Mode. When switched <strong>ON</strong>, it allows Work Mode to "peek" at Google/Bing to add outside context (like stock prices) to your internal answer.
+                    Under <strong>Settings → Personalisation → Advanced</strong>. Switch it <strong>off</strong> when you want an answer grounded in your work data only, with no outside context mixed in.
                 </p>
             </div>
         </div>
@@ -1113,13 +1149,12 @@ Present the results in a simple list."</div>
             <h3>Questions?</h3>
             <p>We're here to help:</p>
             <div class="contact-emails">
-                <span>Dr. Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a></span>
-                <span>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a></span>
+                <span><a href="mailto:thematts@cardiff.ac.uk" class="contact-link">thematts@cardiff.ac.uk</a></span>
             </div>
         </section>
 
         <footer>
-        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2025.</p>
+        <p>Workshop facilitated by Dr. Matt Mort and Mr. Matt Hayden. Materials © 2026.</p>
         <p style="margin-top: 8px;">
             <a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">
                 Read our paper: AI The Community Approach ↗
