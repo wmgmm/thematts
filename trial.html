@@ -29,9 +29,6 @@
             --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --border-soft: #e5e7eb;
             --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-            --copilot-purple: #6264a7;
-            --copilot-purple-hover: #52548f;
-            --copilot-gradient: linear-gradient(135deg, #6264a7 0%, #464775 100%);
         }
 
         * { box-sizing: border-box; }
@@ -95,7 +92,7 @@
 
         .global-nav a:hover {
             opacity: 1;
-            color: var(--copilot-purple);
+            color: var(--apple-blue);
         }
 
         @media (max-width: 600px) {
@@ -128,14 +125,6 @@
             margin: 0;
         }
 
-        .hero-intro {
-            color: var(--apple-text-secondary);
-            max-width: 650px;
-            margin: 18px auto 26px;
-            font-size: 17px;
-            line-height: 1.5;
-        }
-
         h2 {
             font-size: 30px;
             line-height: 1.15;
@@ -153,7 +142,7 @@
         h4 {
             font-size: 15px;
             font-weight: 600;
-            color: var(--copilot-purple);
+            color: var(--apple-blue);
             margin: 20px 0 8px 0;
         }
 
@@ -190,50 +179,85 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: var(--copilot-purple);
+            color: var(--apple-blue);
             margin-bottom: 8px;
         }
 
-        /* --- Quick Launch Buttons --- */
-        .quick-launch {
+        /* --- Copilot card and instructions bar --- */
+        .library-instructions {
             display: flex;
+            align-items: center;
+            gap: 18px;
             flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin: 0 0 10px;
+            padding: 14px 18px;
+            background: var(--apple-bg-page);
+            border-radius: 12px;
+            margin-bottom: 22px;
         }
 
-        .launch-btn {
+        .copilot-card {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--copilot-gradient);
-            color: white;
+            gap: 12px;
+            background: #ffffff;
+            color: #201F1E;
+            padding: 10px 18px 10px 12px;
+            border: 1px solid #E1DFDD;
+            border-radius: 4px;
             text-decoration: none;
-            padding: 14px 24px;
-            border-radius: var(--radius-button);
-            font-size: 15px;
-            font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(98, 100, 167, 0.3);
+            flex-shrink: 0;
+            line-height: 1.3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            font-family: 'Segoe UI', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .launch-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(98, 100, 167, 0.4);
+        .copilot-card:hover {
+            background: #FAF9F8;
+            border-color: #C7C6C4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
         }
 
-        .launch-btn-secondary {
-            background: var(--apple-bg-card);
+        .copilot-card:focus-visible {
+            outline: 2px solid #0078D4;
+            outline-offset: 2px;
+        }
+
+        .copilot-logo {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .copilot-card-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .copilot-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #201F1E;
+        }
+
+        .copilot-url {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Inter Tight', sans-serif;
+            color: #0078D4;
+            margin-top: 2px;
+        }
+
+        .instruction-text {
+            font-size: 15px;
             color: var(--apple-text-primary);
-            box-shadow: none;
-            border: 1px solid rgba(0,0,0,0.1);
+            line-height: 1.5;
         }
 
-        .launch-btn-secondary:hover {
-            background: white;
-            box-shadow: var(--shadow-hover);
-        }
+        .instruction-text strong { color: var(--apple-text-primary); }
 
         /* --- Details / Accordions --- */
         details {
@@ -262,14 +286,14 @@
 
         summary:hover {
             background-color: var(--apple-bg-page);
-            color: var(--copilot-purple);
+            color: var(--apple-blue);
         }
 
         summary::-webkit-details-marker { display: none; }
         summary::-moz-list-bullet { list-style-type: none; }
 
         summary::after {
-            content: 'View \2192';
+            content: 'View prompt \2192';
             font-size: 12px;
             font-weight: 700;
             color: white;
@@ -288,7 +312,7 @@
         }
 
         details[open] summary::after {
-            content: 'Hide';
+            content: 'Hide prompt';
             background: #d2d2d7;
             color: var(--apple-text-primary);
         }
@@ -298,11 +322,39 @@
             transform: none;
         }
 
-        details[open] summary { color: var(--copilot-purple); }
+        details[open] summary { color: var(--apple-blue); }
+
+        .ex-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 8px;
+            background: transparent;
+            color: var(--apple-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        details[open] .ex-num {
+            background: transparent;
+            color: var(--apple-blue);
+            border-color: var(--apple-blue);
+        }
 
         .details-content {
-            padding: 0 0 24px 0;
+            padding: 0 0 24px 40px;
             animation: slideDown 0.25s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            .details-content { padding-left: 0; }
         }
 
         @keyframes slideDown {
@@ -336,7 +388,7 @@
 
         /* --- Buttons --- */
         .btn-copy {
-            background-color: var(--copilot-purple);
+            background-color: var(--apple-blue);
             color: white;
             font-size: 12px;
             padding: 9px 18px;
@@ -346,13 +398,13 @@
             font-weight: 600;
             transition: var(--transition);
             font-family: inherit;
-            box-shadow: 0 2px 6px rgba(98, 100, 167, 0.22);
+            box-shadow: 0 2px 6px rgba(0, 113, 227, 0.22);
         }
 
         .btn-copy:hover {
-            background-color: var(--copilot-purple-hover);
+            background-color: var(--apple-blue-hover);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(98, 100, 167, 0.32);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.32);
         }
 
         .btn-copy.success {
@@ -360,28 +412,22 @@
             box-shadow: 0 2px 6px rgba(52, 199, 89, 0.28);
         }
 
-        /* --- Info Cards Grid --- */
-        .info-grid {
+        /* --- Inner cards --- */
+        .inner-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
         }
 
-        .info-card {
+        .inner-card {
             background: var(--apple-bg-page);
             padding: 20px;
-            border-radius: var(--radius-medium);
-            text-align: center;
+            border-radius: 12px;
         }
 
-        .info-card-left {
-            text-align: left;
-        }
-
-        .info-icon { font-size: 28px; margin-bottom: 10px; }
-        .info-title { font-size: 15px; display: block; margin-bottom: 5px; color: var(--apple-text-primary); font-weight: 600; }
-        .info-desc { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.4; }
+        .inner-card > strong { font-size: 14px; display: block; margin-bottom: 4px; }
+        .inner-card p { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.45; }
 
         /* --- Contact --- */
         .contact-strip {
@@ -413,18 +459,11 @@
 
         footer a { color: var(--apple-text-secondary); }
 
-        /* --- Utilities --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @media (max-width: 600px) {
             h1 { font-size: 32px; letter-spacing: -0.02em; }
             h2 { font-size: 24px; }
             header.hero { padding: 40px 0 28px; }
             .subtitle { letter-spacing: 0.14em; }
-            .quick-launch { flex-direction: column; align-items: center; }
         }
 
         /* Print-friendly */
@@ -478,7 +517,6 @@
     <nav class="global-nav">
         <div class="nav-content">
             <span class="nav-brand">The Matts</span>
-            <a href="#getting-started">Get Started</a>
             <a href="#exercises">Exercises</a>
             <a href="#more-examples">More Examples</a>
         </div>
@@ -488,56 +526,30 @@
         <header class="hero">
             <h1>M365 Copilot Trial</h1>
             <p class="subtitle">Digital Productivity &amp; AI in the Workplace</p>
-            <p class="hero-intro">
-                Your M365 Copilot licence gives you AI assistance across Teams, Outlook, Word, Excel, PowerPoint and more. Here's how to begin.
-            </p>
-            <div class="quick-launch">
-                <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener" class="launch-btn">
-                    💬 Open M365 Copilot
-                </a>
-                <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" rel="noopener" class="launch-btn launch-btn-secondary">
-                    📚 Prompt Gallery
-                </a>
-            </div>
         </header>
 
-        <section id="getting-started" class="section-card">
-            <div class="section-header">
-                <div>
-                    <div class="eyebrow">Start Here</div>
-                    <h2>Getting Started</h2>
-                </div>
-            </div>
-
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="info-icon">🔑</div>
-                    <strong class="info-title">Sign In</strong>
-                    <p class="info-desc">Use your work Microsoft account to access M365 Copilot features</p>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">💬</div>
-                    <strong class="info-title">Start Chatting</strong>
-                    <p class="info-desc">Ask questions, catch up on emails, prepare for meetings</p>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">📱</div>
-                    <strong class="info-title">Use In Apps</strong>
-                    <p class="info-desc">Look for the Copilot icon in Teams, Outlook, Word, Excel</p>
-                </div>
-            </div>
-
-        </section>
         <section id="exercises" class="section-card">
             <div class="section-header">
                 <div>
-                    <div class="eyebrow">Hands-On</div>
+                    <div class="eyebrow">M365 Copilot</div>
                     <h2>Exercises</h2>
                 </div>
-                <p>Hands-on activities to explore M365 Copilot's capabilities.</p>
+            </div>
+
+            <div class="library-instructions">
+                <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener" class="copilot-card">
+                    <img src="CopilotLogo.png" alt="" class="copilot-logo">
+                    <span class="copilot-card-text">
+                        <span class="copilot-label">Click to open Copilot</span>
+                        <span class="copilot-url">m365.cloud.microsoft/chat&nbsp;↗</span>
+                    </span>
+                </a>
+                <div class="instruction-text">
+                    Click <strong>"New Chat"</strong> in Copilot between tasks.
+                </div>
             </div>
 <details open>
-                <summary>Exercise 1 – My First M365 Prompt (The Roast)</summary>
+                <summary><span class="ex-num">01</span><span style="flex:1;">My First M365 Prompt (The Roast)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">
                         <strong>Test the Connection:</strong> Let's verify Copilot can see your specific data by asking for a "Roast". If it mocks you for that specific 8am meeting next Tuesday, you know it's working.
@@ -547,13 +559,13 @@
                     
                     <button onclick="copyToClipboard('ex1-roast')" class="btn-copy">Copy Prompt</button>
                     
-                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
                         <strong>Note:</strong> This demonstrates <strong>Graph Connection</strong> (reading your calendar). The model picker (top right) can stay on <strong>Auto</strong>; pick <strong>Think deeper</strong> for a better roast.
                     </p>
                 </div>
             </details>
     <details>
-    <summary>Exercise 2 – The "Triage Assistant - Email+Teams"</summary>
+    <summary><span class="ex-num">02</span><span style="flex:1;">The Triage Assistant (Email + Teams)</span></summary>
     <div class="details-content">
         <p class="exercise-note">
             <strong>The Goal:</strong> We want to catch items you might have opened on your phone but haven't actually answered. We will swap the "Unread" filter for a "Time" filter to ensure nothing slips through the cracks.
@@ -568,13 +580,13 @@ Present the results in a simple list."</div>
         
         <button onclick="copyToClipboard('ex2-triage')" class="btn-copy">Copy Prompt</button>
         
-        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
+        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
             <strong>Why this is better:</strong> If you ask for "Unread," Copilot ignores that important email you opened while queuing for coffee. By asking for "Last 3 days" + "Haven't replied," you catch the work you effectively "read and forgot." The role matters too: "chief of staff" tells Copilot whose priorities to rank by, so it filters for what you need to decide, not what is merely recent.
         </p>
     </div>
 </details>
    <details>
-                <summary>Exercise 3 – The "Catch Up" Challenge (Targeted)</summary>
+                <summary><span class="ex-num">03</span><span style="flex:1;">The Catch Up Challenge (Targeted)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">
                         <strong>The "Pro" Way:</strong> In Exercise 2, we did a broad search. Now, let's be precise. Use the <strong>/ (Slash)</strong> to anchor Copilot. Replace <em>[Manager Name]</em> with your actual boss or a close colleague.
@@ -584,46 +596,42 @@ Present the results in a simple list."</div>
                     
                     <button onclick="copyToClipboard('ex3-targeted')" class="btn-copy">Copy Prompt</button>
                     
-                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 15px;">
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
                         <strong>Why use the / ?</strong> Typing a name normally is just a <strong>fuzzy search</strong> (looking for the text). Using <strong>/</strong> creates a <strong>hard link</strong> to the specific user profile, ensuring Copilot ignores accidental name matches and looks at the correct source.
                     </p>
 
-                    <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 10px; background-color: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                        <strong>💡 Pro Tip:</strong> As seen in the menu, the forward slash <strong>/</strong> isn't just for People. You can anchor to <strong>Files, Emails, Meetings, Chats, Sites and SharePoint lists</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
+                    <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>Pro Tip:</strong> As seen in the menu, the forward slash <strong>/</strong> isn't just for People. You can anchor to <strong>Files, Emails, Meetings, Chats, Sites and SharePoint lists</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
                     </p>
                 </div>
             </details>
             
 <details>
-    <summary>Exercise 4 – Word Integrations</summary>
+    <summary><span class="ex-num">04</span><span style="flex:1;">Word Integrations</span></summary>
     <div class="details-content">
         <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">
             Open a blank Word document to complete these tasks.
         </p>
         
-        <h4>Exercise 4a: Rough text to meeting agenda</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4a: Rough text to meeting agenda</p>
         
-        <p style="font-size: 13px; margin-bottom: 5px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
-        <div style="background-color: #f5f5f7; border: 1px dashed #d1d1d6; padding: 10px; border-radius: 8px; font-size: 13px; font-style: italic; margin-bottom: 15px; color: #333;">
-            “Team meeting regarding Project Skylark launch date is Friday November 24th at 10am and attendees are Sarah, Mike, and Dave. First we need to review the Q3 bug report which should take 15 mins led by Sarah. Then strictly 30 mins to discuss the marketing budget for the holiday season led by Mike. After that Dave wants to demo the new login feature 15 mins. Finally we need 10 mins for open Q&A. Action items from last time were verify server costs and book the conference room.”
-        </div>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
+        <div class="prompt-box">“Team meeting regarding Project Skylark launch date is Friday November 24th at 10am and attendees are Sarah, Mike, and Dave. First we need to review the Q3 bug report which should take 15 mins led by Sarah. Then strictly 30 mins to discuss the marketing budget for the holiday season led by Mike. After that Dave wants to demo the new login feature 15 mins. Finally we need 10 mins for open Q&A. Action items from last time were verify server costs and book the conference room.”</div>
 
-        <p style="font-size: 13px; margin-bottom: 5px;">
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">
             <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
         </p>
         <div class="prompt-box" id="ex4-prompt1">"Convert this text into a professional Meeting Agenda. Create a table for the schedule with columns for Topic, Time, and Owner. Put the Action Items in a separate bulleted list at the bottom."</div>
         <button onclick="copyToClipboard('ex4-prompt1')" class="btn-copy">Copy Prompt</button>
 
-        <div style="margin: 25px 0; border-top: 1px solid #eaeaea;"></div>
+        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
 
-        <h4>Exercise 4b: Rough text to Invoice</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4b: Rough text to Invoice</p>
 
-        <p style="font-size: 13px; margin-bottom: 5px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
-        <div style="background-color: #f5f5f7; border: 1px dashed #d1d1d6; padding: 10px; border-radius: 8px; font-size: 13px; font-style: italic; margin-bottom: 15px; color: #333;">
-            “Hi team, here are the billable hours for Project Falcon for last month. On Oct 3rd I did 4 hours of Server Maintenance at a rate of £150/hr. Then on the 5th of October, Sarah did 6 hours of UI Design which we bill at £120. On Oct 12, I did another 2 hours of Server Maint. Finally on Oct 20th, Dave did 10 hours of Backend coding at our premium rate of £200/hr. Please process payment net 30. Cheers Steve”
-        </div>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
+        <div class="prompt-box">“Hi team, here are the billable hours for Project Falcon for last month. On Oct 3rd I did 4 hours of Server Maintenance at a rate of £150/hr. Then on the 5th of October, Sarah did 6 hours of UI Design which we bill at £120. On Oct 12, I did another 2 hours of Server Maint. Finally on Oct 20th, Dave did 10 hours of Backend coding at our premium rate of £200/hr. Please process payment net 30. Cheers Steve”</div>
 
-        <p style="font-size: 13px; margin-bottom: 5px;">
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">
             <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
         </p>
         <div class="prompt-box" id="ex4-prompt2">"Convert this text into a formal Invoice Table. Create columns for: Date, Description, Staff Member, Hours, Rate, and Total Cost. Calculate the Total Cost for each row automatically. Format the table: Bold the header row, shade it light blue, and align all money columns to the right. Add a final row summing up the Grand Total."</div>
@@ -632,86 +640,86 @@ Present the results in a simple list."</div>
     </div>
 </details>
     <details>
-    <summary>Exercise 5 – Excel Integration</summary>
+    <summary><span class="ex-num">05</span><span style="flex:1;">Excel Integration</span></summary>
     <div class="details-content">
         <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
         
-        <h4>Step 1: Create Data</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 1: Create Data</p>
         <div class="prompt-box" id="ex3-prompt1">"Create a table of 50 fictitious employees with columns for Name, Department, Salary, and Hire Date."</div>
         <button onclick="copyToClipboard('ex3-prompt1')" class="btn-copy">Copy Prompt</button>
         <p style="margin-top: 10px; font-size: 13px; color: var(--apple-text-secondary);">
-            Optional: If you struggled to create the sample data above, <a href="staff.xlsx" download style="color: #007aff; text-decoration: none;">download the staff.xlsx file instead</a>.
+            Optional: If you struggled to create the sample data above, <a href="staff.xlsx" download style="color: var(--apple-blue); text-decoration: none;">download the staff.xlsx file instead</a>.
         </p>
 
-        <h4>Step 2: Calculate Years of Service</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 2: Calculate Years of Service</p>
         <div class="prompt-box" id="ex3-prompt2">"Add a new column that calculates 'Years of Service' based on the Hire Date and today's date."</div>
         <button onclick="copyToClipboard('ex3-prompt2')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 3: Add Bonus Column</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 3: Add Bonus Column</p>
         <div class="prompt-box" id="ex3-prompt3">"Add a column called 'Bonus'. If the Department is Sales, the bonus is 10% of Salary. For everyone else, it is 5%."</div>
         <button onclick="copyToClipboard('ex3-prompt3')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 4: Generate Emails</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 4: Generate Emails</p>
         <div class="prompt-box" id="ex3-prompt4">"Add a column called 'Email' that combines the first letter of their name and their full last name @company.com, all in lowercase."</div>
         <button onclick="copyToClipboard('ex3-prompt4')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 5: Department Summary</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 5: Department Summary</p>
         <div class="prompt-box" id="ex3-prompt5">"Create a new sheet showing the total salary cost breakdown by Department."</div>
         <button onclick="copyToClipboard('ex3-prompt5')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 6: Highlight Top Earners</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 6: Highlight Top Earners</p>
         <div class="prompt-box" id="ex3-prompt6">"Highlight the top 10% of earners in Red."</div>
         <button onclick="copyToClipboard('ex3-prompt6')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 7: Data Labels</h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 7: Data Labels</p>
         <div class="prompt-box" id="ex3-prompt7">"Add data labels to the line so I can see the exact number for each year."</div>
         <button onclick="copyToClipboard('ex3-prompt7')" class="btn-copy">Copy Prompt</button>
 
-        <h4>Step 8: Bonus – Topic Discovery with the downloaded <a href="staff.xlsx" download style="color: #007aff; text-decoration: none;">staff.xlsx file</a></h4>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 8: Bonus, topic discovery with the downloaded staff.xlsx file</p>
         <div class="prompt-box" id="ex3-prompt8">"For column [Favourite Phrase], create a new column called [Key Theme]. In [Key Theme], extract one funny high-level keyword that represents the main idea of each phrase"</div>
         <button onclick="copyToClipboard('ex3-prompt8')" class="btn-copy">Copy Prompt</button>
     </div>
 </details>
             <details>
-    <summary>Exercise 6 – Meet Your Specialists (Built-in Agents)</summary>
+    <summary><span class="ex-num">06</span><span style="flex:1;">Meet Your Specialists (Built-in Agents)</span></summary>
     <div class="details-content">
         <p class="exercise-note">
             <strong>Copilot is a generalist, but these Agents are specialists.</strong> Microsoft has built these three dedicated tools to handle complex tasks that standard Copilot might find too heavy. If a Launch button lands on the wrong agent, open the Agents list in Copilot and search by name.
         </p>
 
-        <div style="display: grid; gap: 15px; margin-top: 20px;">
+        <div class="inner-grid" style="grid-template-columns: 1fr;">
             
-            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
-                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">1. Researcher</div>
+            <div class="inner-card">
+                <strong>1. Researcher</strong>
                 <p style="font-size: 13px; margin-bottom: 10px;">
                     <strong>The Deep Thinker.</strong> Unlike standard chat, this agent takes its time. It searches both the Web and your internal files to write a full report with citations.
                 </p>
-                <a href="https://m365.cloud.microsoft/chat/?titleId=P_552e6eda-fc18-7fb9-0ef6-1bf2de3393e4" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Researcher</a>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_552e6eda-fc18-7fb9-0ef6-1bf2de3393e4" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Researcher</a>
                 <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
                     <em>Try: "Research the latest trends in [Industry] and compare them to our internal strategy documents."</em>
                 </p>
             </div>
 
-            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
-                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">2. Analyst</div>
+            <div class="inner-card">
+                <strong>2. Analyst</strong>
                 <p style="font-size: 13px; margin-bottom: 10px;">
                     <strong>The Data Scientist.</strong> Upload a CSV or Excel file, and this agent writes and runs real Python code to clean data, find anomalies, and generate charts.
-                 <p style="margin-top: 10px; font-size: 13px; color: var(--apple-text-secondary);">
-            Optional: If you need a file to play around with try this <a href="staff.xlsx" download style="color: #007aff; text-decoration: none;">download the staff.xlsx file instead</a>.
-        </p>
                 </p>
-                <a href="https://m365.cloud.microsoft/chat/?titleId=P_8cfc4e6f-267e-db15-c6e7-3fc47a54f61e" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Analyst</a>
+                <p style="margin-bottom: 10px;">
+                    Optional: If you need a file to play around with, <a href="staff.xlsx" download style="color: var(--apple-blue); text-decoration: none;">download the staff.xlsx file</a>.
+                </p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_8cfc4e6f-267e-db15-c6e7-3fc47a54f61e" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Analyst</a>
                 <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
                     <em>Try: Upload a spreadsheet and ask "Visualize the top cost drivers in this data."</em>
                 </p>
             </div>
 
-            <div style="border: 1px solid var(--apple-border); border-radius: 8px; padding: 15px; background-color: rgba(255,255,255,0.5);">
-                <div style="font-weight: 600; color: var(--copilot-purple); margin-bottom: 5px;">3. Prompt Coach</div>
+            <div class="inner-card">
+                <strong>3. Prompt Coach</strong>
                 <p style="font-size: 13px; margin-bottom: 10px;">
                     <strong>The Teacher.</strong> Not sure how to ask? Paste your draft prompt here, and this agent will critique it and rewrite it to be more effective.
                 </p>
-                <a href="https://m365.cloud.microsoft/chat/?titleId=P_f0ff38f1-4d81-a9b7-dbf1-b161328daa1f" target="_blank" style="display: inline-block; padding: 6px 12px; font-size: 13px; background-color: var(--copilot-purple); color: white; border-radius: 4px; text-decoration: none;">Launch Coach</a>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_f0ff38f1-4d81-a9b7-dbf1-b161328daa1f" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Coach</a>
                 <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
                     <em>Try: "Help me improve a prompt to summarize a meeting."</em>
                 </p>
@@ -721,15 +729,15 @@ Present the results in a simple list."</div>
     </div>
 </details>
             <details>
-    <summary>Exercise 7 – Choose Your Own Adventure (Explore & Share)</summary>
+    <summary><span class="ex-num">07</span><span style="flex:1;">Choose Your Own Adventure (Explore &amp; Share)</span></summary>
     <div class="details-content">
         <p class="exercise-note">
             <strong>Part A: Exploration.</strong> You don't master Copilot by reading a manual; you master it by trying, failing, and tweaking.
         </p>
 
-        <ol style="font-size: 15px; line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
-            <li><strong>Get Inspired:</strong> Check the <a href="sprint.html" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">AI Discovery Sprint</a> for general ideas.</li>
-            <li><strong>Get Templates:</strong> Browse Microsoft's official <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" style="color: var(--copilot-purple); font-weight: 600;">Prompt Library</a>.</li>
+        <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 20px;">
+            <li><strong>Get Inspired:</strong> Check the <a href="sprint.html" target="_blank" style="color: var(--apple-blue); font-weight: 600;">AI Discovery Sprint</a> for general ideas.</li>
+            <li><strong>Get Templates:</strong> Browse Microsoft's official <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" style="color: var(--apple-blue); font-weight: 600;">Prompt Library</a>.</li>
             <li><strong>The Golden Rule:</strong> Pick a prompt, <em>modify</em> it to fit your style, and see what works.</li>
         </ol>
         
@@ -747,14 +755,13 @@ Present the results in a simple list."</div>
         <section id="more-examples" class="section-card">
             <div class="section-header">
                 <div>
-                    <div class="eyebrow">Go Further</div>
+                    <div class="eyebrow">Workplace Prompts</div>
                     <h2>More M365 Copilot Examples</h2>
                 </div>
-                <p>Advanced prompts that combine multiple M365 data sources.</p>
             </div>
 
             <details>
-                <summary>Email Triage (Past 7 Days)</summary>
+                <summary><span style="flex:1;">Email Triage (Past 7 Days)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">A daily starter: turns a week of inbox noise into three clear piles, with anything urgent or schedulable flagged.</p>
                     <div class="prompt-box" id="more-triage7">"Act as my chief of staff. Review all emails from the past 7 days. Sort into Critical, Action Needed, and Can Wait. Highlight anything that needs scheduling or immediate attention."</div>
@@ -763,7 +770,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Find a Meeting Time</summary>
+                <summary><span style="flex:1;">Find a Meeting Time</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Uses the / anchor so Copilot checks the real calendars of the people you pick, not just yours.</p>
                     <div class="prompt-box" id="more-meetingtime">"Suggest a few time options for a meeting with /[Person]."</div>
@@ -772,22 +779,22 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Task Lists (Daily &amp; Project)</summary>
+                <summary><span style="flex:1;">Task Lists (Daily &amp; Project)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Two flavours: a personal daily list ranked by urgency and importance, and a project list ordered by deadlines and dependencies.</p>
 
-                    <h4>Daily</h4>
+                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Daily</p>
                     <div class="prompt-box" id="more-tasklist-daily">"Create a daily task list prioritising urgent and important items."</div>
                     <button onclick="copyToClipboard('more-tasklist-daily')" class="btn-copy">Copy Prompt</button>
 
-                    <h4>Project</h4>
+                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Project</p>
                     <div class="prompt-box" id="more-tasklist-project">"Create a prioritised task list for [project] based on deadlines and dependencies."</div>
                     <button onclick="copyToClipboard('more-tasklist-project')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
             <details>
-                <summary>Client Relationship Recap</summary>
+                <summary><span style="flex:1;">Client Relationship Recap</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Pulls every touchpoint with a client into one briefing, so you walk into the next meeting knowing what was promised and what is still open.</p>
                     <div class="prompt-box" id="more-clientrecap">"Provide a detailed summary of the recent interactions we've had with [client name], including dates, participants, topics discussed and outcomes. Highlight any commitments made or pending issues that need to be addressed in the upcoming meeting."</div>
@@ -796,7 +803,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Conflict Resolution</summary>
+                <summary><span style="flex:1;">Conflict Resolution</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Uses semantic search to find conflict (not just keywords), saving you hours of cross-referencing threads.</p>
                     <div class="prompt-box" id="more-conflict">"Search my recent Teams chats and emails with [Person A] and [Person B] from the last 2 weeks. List every instance where they gave conflicting instructions on [Project Name] and summarize the discrepancy in a table."</div>
@@ -805,7 +812,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Audit Trail</summary>
+                <summary><span style="flex:1;">Audit Trail</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Acts as a forensic tool, finding the exact metadata of a past action to use as evidence in a new action.</p>
                     <div class="prompt-box" id="more-audit">"I need to prove we sent the deliverables. Find the specific email where I sent the final [Project] PDF to [Client Name] last month, and draft a follow-up email that references the date and time of that original message."</div>
@@ -814,7 +821,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Meeting Prep</summary>
+                <summary><span style="flex:1;">Meeting Prep</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
                     <div class="prompt-box" id="more-meetprep">"Act as my chief of staff preparing me for a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
@@ -823,7 +830,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Commitment Tracking</summary>
+                <summary><span style="flex:1;">Commitment Tracking</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Connects two data points: the promise made in a transcript and the lack of a confirmation signal in the chat.</p>
                     <div class="prompt-box" id="more-commitment">"Scan all meeting transcripts from [Project Alpha] series in the last month. List every action item assigned to me that does not yet have a corresponding 'Done' or 'Completed' status update in the chat."</div>
@@ -832,7 +839,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Devil's Advocate (Your critical friend)</summary>
+                <summary><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Copilot argues against the ideas you have been pushing, using only objections and risks that people have actually raised. Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data.</p>
                     <div class="prompt-box" id="more-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
@@ -841,7 +848,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>One-to-One Prep</summary>
+                <summary><span style="flex:1;">One-to-One Prep</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">From a Cardiff colleague. Run it before the meeting and walk in knowing what is still open between you.</p>
                     <div class="prompt-box" id="more-onetoone">"Act as my chief of staff. I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
@@ -850,7 +857,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Partnership Evidence Pack</summary>
+                <summary><span style="flex:1;">Partnership Evidence Pack</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">From a Cardiff colleague, who says it turns several hours of admin into one request: disparate evidence across emails, meetings, files and chats becomes one coherent summary.</p>
                     <div class="prompt-box" id="more-evidencepack">"Search my emails, meetings, files and chats for evidence related to [partnership or programme] during [date range]. Group the findings into achievements, opportunities, risks, stakeholder engagement, funding activity and actions. Identify gaps and produce an executive-ready summary."</div>
@@ -859,7 +866,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Rewrite for the Audience</summary>
+                <summary><span style="flex:1;">Rewrite for the Audience</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">From a Cardiff colleague. Works on a pasted draft in Chat, or on selected text in Word. Different versions for different readers, without losing your own voice.</p>
                     <div class="prompt-box" id="more-audience">"Rewrite this for [audience]. Keep my voice. Make it less corporate and soften anything that could read as criticism."</div>
@@ -868,7 +875,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Pricing History</summary>
+                <summary><span style="flex:1;">Pricing History</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Turns unstructured email history into structured data (a price trend analysis) without you opening a single PDF.</p>
                     <div class="prompt-box" id="more-pricing">"Check my email history for quotes received from [Vendor X] over the last two years. Extract the total price and line-item cost for [Service Y] from each email and plot the price increase trend."</div>
@@ -879,7 +886,7 @@ Present the results in a simple list."</div>
    
 
             <details>
-                <summary>Root Cause (Excel)</summary>
+                <summary><span style="flex:1;">Root Cause (Excel)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Edit with Copilot runs Python behind the scenes, so it can do clustering analysis that standard Excel formulas cannot.</p>
                     <div class="prompt-box" id="more-rootcause">"Analyze this xlsx file. Use Python to cluster this date [ADD SOME SIMPLE CONTEXT]"</div>
@@ -888,7 +895,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Slide Mirroring (PowerPoint)</summary>
+                <summary><span style="flex:1;">Slide Mirroring (PowerPoint)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Solves the biggest pain point of AI slides (bad formatting) by forcing it to "clone" the style of an existing, approved slide.</p>
                     <div class="prompt-box" id="more-slides">"Create a new slide for 'Q4 Strategy' that mirrors the exact layout, font size, and visual style of slide 3 in /[Q3_Review.pptx], but populate it with the bullet points from /[Q4_Memo.docx]."</div>
@@ -899,7 +906,7 @@ Present the results in a simple list."</div>
            
 
             <details>
-                <summary>Knowledge Transfer (Teams)</summary>
+                <summary><span style="flex:1;">Knowledge Transfer (Teams)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Uses "Graph Signal" (activity/popularity) to determine what is "important" rather than just giving you a list of everything.</p>
                     <div class="prompt-box" id="more-knowledge">"I am onboarding a New Hire to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
@@ -910,7 +917,7 @@ Present the results in a simple list."</div>
            
 
             <details>
-                <summary>Calendar &amp; Capacity Audit</summary>
+                <summary><span style="flex:1;">Calendar &amp; Capacity Audit</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
                     <div class="prompt-box" id="more-calaudit">"Act as my executive assistant. Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
@@ -919,7 +926,7 @@ Present the results in a simple list."</div>
             </details>
 
             <details>
-                <summary>Meeting Recap Deck</summary>
+                <summary><span style="flex:1;">Meeting Recap Deck</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Chains Teams transcripts, shared files and PowerPoint generation into one workflow: a week of project meetings becomes an executive deck, checked with you before it builds.</p>
                     <div class="prompt-box" id="more-recapdeck">"Create a comprehensive executive PowerPoint deck summarizing the key outcomes, strategic decisions, and identified risks from all project-related meetings I attended over the last seven days. Access the Work IQ semantic index to pull the relevant meeting transcripts from Teams and retrieve any supporting PDF or Excel files that were shared within those specific meeting chats. Before building the presentation, present a list of the meetings you intend to include and ask me to define the intended audience (e.g., executive leadership, internal engineering team, or external client) so you can accurately adjust the required level of detail. Once I approve the meeting list and audience persona, build a PowerPoint deck utilizing our corporate SharePoint master template. Structure the deck to include a title slide with the date range, one summary slide per major workstream grouping related meetings, a dedicated slide for 'Key Decisions Made' with assigned personnel owners, and a final 'Open Items &amp; Next Steps' slide mapping due dates. Save the finalized deck to my OneDrive in the '/Presentations/Recaps/' folder and send me a direct Teams notification link when the task is complete."</div>
@@ -928,60 +935,30 @@ Present the results in a simple list."</div>
             </details>
 
     <details>
-    <summary>Work IQ On or Off</summary>
+    <summary><span style="flex:1;">Work IQ On or Off</span></summary>
     <div class="details-content">
         <p class="exercise-note">Copilot Chat is now one chat. The <strong>Work IQ</strong> button (top left) decides whether it can see your work data. It is on by default.</p>
         
-        <div class="info-grid">
-            
-            <div class="info-card info-card-left" style="position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: #34c759;"></div>
-                
-                <div style="margin-top: 10px; margin-bottom: 15px;">
-                    <span style="font-size: 32px;">🛡️</span>
-                </div>
-                
-                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work IQ On</strong>
-                
-                <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
-                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> Your work data (Emails, Teams, OneDrive, SharePoint), plus the web if web search is on.</p>
-                    <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: #34c759; font-weight: 600;">Total.</span> Your data never leaves the tenant and is never used to train models.</p>
-                </div>
-                
-                <div style="background: rgba(52, 199, 89, 0.1); color: #004d1a; padding: 12px; border-radius: 12px; font-size: 12px; font-family: 'SF Mono', Menlo, monospace; margin-top: 20px;">
-                    "Catch me up on the Alpha Project email thread."
-                </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch; margin: 18px 0;">
+            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; box-shadow: 0 1px 2px rgba(15,23,42,0.04);">
+                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-blue); margin-bottom: 6px;">Default</div>
+                <strong style="display:block; font-size: 15px; margin-bottom: 8px;">Work IQ On</strong>
+                <p style="margin: 0 0 8px 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;"><strong>Scope:</strong> Your work data (Emails, Teams, OneDrive, SharePoint), plus the web if web search is on.</p>
+                <p style="margin: 0 0 14px 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;"><strong>Privacy:</strong> Total. Your data never leaves the tenant and is never used to train models.</p>
+                <div class="prompt-box" style="margin: 0; font-size: 12px; padding: 12px 14px;">"Catch me up on the Alpha Project email thread."</div>
             </div>
-
-            <div class="info-card info-card-left" style="position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--apple-blue);"></div>
-                
-                <div style="margin-top: 10px; margin-bottom: 15px;">
-                    <span style="font-size: 32px;">🌐</span>
-                </div>
-                
-                <strong class="info-title" style="font-size: 18px; margin-bottom: 8px;">Work IQ Off</strong>
-                
-                <div style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.6; flex-grow: 1;">
-                    <p style="margin: 0 0 10px 0;"><strong>Scope:</strong> The public internet and general knowledge only. Nothing from your inbox or files.</p>
-                    <p style="margin: 0;"><strong>Privacy:</strong> <span style="color: var(--apple-blue); font-weight: 600;">Total.</span> Your data never leaves the tenant and is never used to train models.</p>
-                </div>
-                
-                <div style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); padding: 12px; border-radius: 12px; font-size: 12px; font-family: 'SF Mono', Menlo, monospace; margin-top: 20px;">
-                    "What are the top AI trends for 2026?"
-                </div>
+            <div style="background: #ffffff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); padding: 20px; box-shadow: 0 1px 2px rgba(15,23,42,0.04);">
+                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--apple-text-tertiary); margin-bottom: 6px;">Switch off</div>
+                <strong style="display:block; font-size: 15px; margin-bottom: 8px;">Work IQ Off</strong>
+                <p style="margin: 0 0 8px 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;"><strong>Scope:</strong> The public internet and general knowledge only. Nothing from your inbox or files.</p>
+                <p style="margin: 0 0 14px 0; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;"><strong>Privacy:</strong> Total. Your data never leaves the tenant and is never used to train models.</p>
+                <div class="prompt-box" style="margin: 0; font-size: 12px; padding: 12px 14px;">"What are the top AI trends for 2026?"</div>
             </div>
-
         </div>
 
-        <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-top: 20px; display: flex; gap: 15px; align-items: start;">
-            <div style="font-size: 24px;">💡</div>
-            <div>
-                <strong style="display: block; font-size: 14px; margin-bottom: 4px; color: var(--apple-text-primary);">The Web Search Toggle</strong>
-                <p style="font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.5;">
-                    Under <strong>Settings → Personalisation → Advanced</strong>. Switch it <strong>off</strong> when you want an answer grounded in your work data only, with no outside context mixed in.
-                </p>
-            </div>
+        <div class="inner-card" style="margin-top: 16px;">
+            <strong>The Web Search Toggle</strong>
+            <p>Under <strong>Settings → Personalisation → Advanced</strong>. Switch it <strong>off</strong> when you want an answer grounded in your work data only, with no outside context mixed in.</p>
         </div>
     </div>
 </details>
