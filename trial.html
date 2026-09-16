@@ -235,64 +235,6 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* --- Integration Grid --- */
-        .integration-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .integration-card {
-            background: var(--apple-bg-subtle);
-            border-radius: 18px;
-            padding: 30px;
-            border: 1px solid var(--apple-border-light);
-            transition: var(--transition);
-        }
-
-        .integration-card:hover {
-            transform: scale(1.02);
-            background: #fff;
-            box-shadow: var(--shadow-hover);
-        }
-
-        .integration-icon {
-            font-size: 36px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .integration-title {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .integration-desc {
-            font-size: 14px;
-            color: var(--apple-text-secondary);
-            margin-bottom: 15px;
-        }
-
-        .try-prompt {
-            font-size: 13px;
-            font-family: "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
-            background: rgba(98, 100, 167, 0.08);
-            color: var(--copilot-purple);
-            padding: 10px 14px;
-            border-radius: 10px;
-            display: block;
-            margin-top: 12px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .try-prompt:hover {
-            background: rgba(98, 100, 167, 0.15);
-        }
-
         /* --- Details / Accordions --- */
         details {
             border-bottom: 1px solid var(--apple-border);
@@ -487,7 +429,7 @@
 
         /* Print-friendly */
         @media print {
-            .global-nav, .integration-grid { break-inside: avoid; }
+            .global-nav { break-inside: avoid; }
             details { break-inside: avoid; }
             details[open] summary::after { display: none; }
         }
@@ -537,7 +479,6 @@
         <div class="nav-content">
             <span class="nav-brand">The Matts</span>
             <a href="#getting-started">Get Started</a>
-            <a href="#integrations">App Integrations</a>
             <a href="#exercises">Exercises</a>
             <a href="#more-examples">More Examples</a>
         </div>
@@ -587,103 +528,6 @@
             </div>
 
         </section>
-<section id="integrations" class="section-card">
-            <div class="section-header">
-                <div>
-                    <div class="eyebrow">Copilot in Your Apps</div>
-                    <h2>App Integrations</h2>
-                </div>
-                <p>Use M365 Copilot directly in certain Microsoft Apps. Use the <strong>/ (Forward Slash)</strong> to anchor your prompts to specific files, people, meetings, sharepoints etc.</p>
-            </div>
-
-            <div class="integration-grid">
-                <div class="integration-card">
-                    <span class="integration-icon">🎥</span>
-                    <span class="integration-title">Meetings (Teams)</span>
-                    <p class="integration-desc">The ultimate time saver. Turn an hour-long meeting transcript into a 30-second action plan.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Review the transcript of /[Meeting Name] and list 3 unresolved issues we need to discuss next time, along with any tasks assigned to me.')">
-                        <strong>Recap:</strong> "List unresolved issues & tasks from /[Meeting]"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">📋</span>
-                    <span class="integration-title">Facilitator (Teams Meetings)</span>
-                    <p class="integration-desc">An AI meeting assistant. Add the Facilitator agent to a meeting and it keeps the agenda on track, takes live shared notes and captures tasks as you talk.</p>
-
-                    <div class="try-prompt" style="cursor: default;">
-                        <strong>Turn on:</strong> Meeting options → Copilot and other AI → Facilitator (or More actions → Turn on Facilitator mid-meeting)
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">💬</span>
-                    <span class="integration-title">M365 Copilot Chat</span>
-                    <p class="integration-desc">Your central brain. It connects the dots between your files, emails, and chats.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a briefing note on [Project Name] by synthesizing the key points from /[File: Strategy Doc] and my recent emails with /[Person: Project Lead].')">
-                        <strong>Synthesis:</strong> "Combine /[File] + Emails into a note"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">👥</span>
-                    <span class="integration-title">Teams Chats</span>
-                    <p class="integration-desc">Don't scroll back. Just ask Copilot to catch you up on the noise you missed.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Catch me up on this chat thread. Summarize the main discussion points from the last 2 days and highlight any questions asked of me.')">
-                        <strong>Catch Up:</strong> "Summarize this thread & find questions"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">📧</span>
-                    <span class="integration-title">Outlook</span>
-                    <p class="integration-desc">Reply with context. Use a file to ground your email response instantly.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a reply to /[Person] confirming my attendance and suggesting we discuss the points raised in /[File: Agenda.docx].')">
-                        <strong>Smart Reply:</strong> "Reply + suggest agenda from /[File]"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">📝</span>
-                    <span class="integration-title">Word</span>
-                    <p class="integration-desc">Never start with a blank page. Create new content based on your existing data.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Draft a project proposal based on the data in /[File: Budget.xlsx] and the structure of /[File: Template.docx].')">
-                        <strong>Draft:</strong> "Proposal from /[Data] + /[Template]"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">📊</span>
-                    <span class="integration-title">Excel</span>
-                    <p class="integration-desc">Advanced analysis. Edit with Copilot can run Python for the analysis Excel formulas cannot do, without you writing code.</p>
-                    
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Analyze this table with Python to visualize the correlation between [Column A] and [Column B] as a heatmap.')">
-                        <strong>Analyze:</strong> "Visualize correlation (Python)"
-                    </div>
-                </div>
-
-                <div class="integration-card">
-                    <span class="integration-icon">🤖</span>
-                    <span class="integration-title">Agent Mode (Word · Excel · PowerPoint)</span>
-                    <p class="integration-desc">Now the default Copilot experience in the apps. Give it a goal and it plans, executes and checks multi-step edits on your open file, not just a first draft.</p>
-
-                    <div class="try-prompt" onclick="navigator.clipboard.writeText('Build a monthly budget tracker in this workbook: expense categories, a summary dashboard and a chart of spend by category. Show me your plan first.')">
-                        <strong>Delegate:</strong> "Build a budget tracker, plan first" (choose Allow editing, not Chat only)
-                    </div>
-                </div>
-
-            </div>
-
-            <p style="text-align: center; margin-top: 25px; font-size: 13px; color: var(--apple-text-secondary);">
-                <em>Click any prompt to copy it to your clipboard. Replace [Brackets] with your specific context.</em>
-            </p>
-        </section>
-    
         <section id="exercises" class="section-card">
             <div class="section-header">
                 <div>
