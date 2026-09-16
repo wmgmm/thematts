@@ -596,7 +596,39 @@ Present the results in a simple list."</div>
                         <strong>The "Pro" Way:</strong> In Exercise 2, we did a broad search. Now, let's be precise. Use the <strong>/ (Slash)</strong> to anchor Copilot to one person: pick a colleague or external contact you work with often, so you walk into the next meeting knowing what was promised and what is still open.
                     </p>
 
-                    <div class="prompt-box" id="ex3-recap">"Provide a detailed summary of the recent interactions we've had with /[Person], including dates, participants, topics discussed and outcomes. Highlight any commitments made or pending issues that need to be addressed in the upcoming meeting."</div>
+                    <div class="prompt-box" id="ex3-recap">"Act as my Chief of Staff.
+
+Review my interactions with [PERSON] across emails, Teams, meetings, chats and shared documents from the last 90 days.
+
+Identify only what is important, actionable or unresolved.
+
+Output:
+
+## Relationship Snapshot
+A brief summary of what we are actively working on together.
+
+## Open Loops
+Only commitments, actions, decisions or requests that still need attention.
+- Owner
+- Action
+- Status (Waiting on me / Waiting on them / Shared)
+
+## Risks or Blockers
+Maximum 3.
+
+## Upcoming Conversations
+Only meetings that require preparation because there is unresolved work.
+
+## Recommended Next Steps
+The 3 highest-value actions for me.
+
+Rules:
+- Prioritise significance over activity.
+- Ignore attendee lists, routine updates, FYIs and completed work.
+- Merge repeated discussions into one item.
+- Do not report actions unless there is evidence they remain open.
+- If nothing significant is outstanding, say so.
+- Keep the response concise and practical."</div>
                     
                     <button onclick="copyToClipboard('ex3-recap')" class="btn-copy">Copy Prompt</button>
                     
