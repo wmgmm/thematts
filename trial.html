@@ -548,19 +548,19 @@
                     Click <strong>"New Chat"</strong> in Copilot between tasks.
                 </div>
             </div>
-<details open>
-                <summary><span class="ex-num">01</span><span style="flex:1;">My First M365 Prompt (The Roast)</span></summary>
+            <details open>
+                <summary><span class="ex-num">01</span><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">
-                        <strong>Test the Connection:</strong> Let's verify Copilot can see your specific data by asking for a "Roast". If it mocks you for that specific 8am meeting next Tuesday, you know it's working.
+                        <strong>Test the Connection:</strong> Copilot argues against the ideas you have been pushing, using only objections and risks that people have actually raised in your emails, meetings and chats. If it quotes a real colleague back at you, you know it is working.
                     </p>
-                    
-                    <div class="prompt-box" id="ex1-roast">"For a script: Analyze my actual calendar for the next 7 days with specifics and roast it."</div>
-                    
-                    <button onclick="copyToClipboard('ex1-roast')" class="btn-copy">Copy Prompt</button>
-                    
+
+                    <div class="prompt-box" id="ex1-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
+
+                    <button onclick="copyToClipboard('ex1-devils-advocate')" class="btn-copy">Copy Prompt</button>
+
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>Note:</strong> This demonstrates <strong>Graph Connection</strong> (reading your calendar). The model picker (top right) can stay on <strong>Auto</strong>; pick <strong>Think deeper</strong> for a better roast.
+                        <strong>Note:</strong> Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data. The model picker (top right) can stay on <strong>Auto</strong>; pick <strong>Think deeper</strong> for a stronger argument.
                     </p>
                 </div>
             </details>
@@ -806,6 +806,14 @@ Present the results in a simple list."</div>
                 </div>
             </details>
             <details>
+                <summary><span style="flex:1;">Roast My Calendar</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">A quick test that Copilot can see your data. If it mocks you for that specific 8am meeting next Tuesday, the connection is working.</p>
+                    <div class="prompt-box" id="more-roast">"For a script: Analyze my actual calendar for the next 7 days with specifics and roast it."</div>
+                    <button onclick="copyToClipboard('more-roast')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+            <details>
                 <summary><span style="flex:1;">Meeting Prep</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
@@ -840,16 +848,6 @@ Present the results in a simple list."</div>
                     <button onclick="copyToClipboard('more-evidencepack')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-
-            <details>
-                <summary><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Copilot argues against the ideas you have been pushing, using only objections and risks that people have actually raised. Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data.</p>
-                    <div class="prompt-box" id="more-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
-                    <button onclick="copyToClipboard('more-devils-advocate')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-
             <details>
                 <summary><span style="flex:1;">Knowledge Transfer (Teams)</span></summary>
                 <div class="details-content">
