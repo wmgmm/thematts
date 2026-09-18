@@ -548,108 +548,105 @@
                     Click <strong>"New Chat"</strong> in Copilot between tasks.
                 </div>
             </div>
+            <p class="exercise-note" style="margin-bottom: 18px;">
+                <strong>AI isn't magic: you direct it.</strong> Copilot can search your emails, Teams, meetings, transcripts, calendar and documents, but pointing it in the right direction helps. Type <strong>/</strong> to ground a prompt in specific people or documents. The <strong>Work IQ</strong> button (top left) can be switched off.
+            </p>
+
             <details open>
-                <summary><span class="ex-num">01</span><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
+                <summary><span class="ex-num">01</span><span style="flex:1;">Catch Me Up</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">
-                        <strong>Test the Connection:</strong> Copilot argues against the ideas you have been pushing, using only objections and risks that people have actually raised in your emails, meetings and chats. If it quotes a real colleague back at you, you know it is working.
-                    </p>
+                    <p class="exercise-note">One briefing across email and Teams.</p>
 
-                    <div class="prompt-box" id="ex1-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
+                    <div class="prompt-box" id="ex1-catchup">"Catch me up on the last five working days across my emails, Teams chats and channel messages. Group related updates and show decisions, requests, deadlines and anything waiting on me. Rank by urgency, mark uncertainty and cite every item."</div>
 
-                    <button onclick="copyToClipboard('ex1-devils-advocate')" class="btn-copy">Copy Prompt</button>
+                    <button onclick="copyToClipboard('ex1-catchup')" class="btn-copy">Copy Prompt</button>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>Note:</strong> Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data. The model picker (top right) can stay on <strong>Auto</strong>; pick <strong>Think deeper</strong> for a stronger argument.
+                        <strong>The point:</strong> one coherent briefing, not three app summaries.
+                    </p>
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>Break big tasks into smaller bits.</strong> "Catch me up on everything from the last year" is too much scope, weaker focus, harder to verify. Start with five working days, focus on decisions and requests, New Chats are your friend, and extend the timeframe only if needed.
                     </p>
                 </div>
             </details>
-    <details>
-    <summary><span class="ex-num">02</span><span style="flex:1;">The Triage Assistant (Email + Teams)</span></summary>
-    <div class="details-content">
-        <p class="exercise-note">
-            <strong>The Goal:</strong> We want to catch items you might have opened on your phone but haven't actually answered. We will swap the "Unread" filter for a "Time" filter to ensure nothing slips through the cracks.
-        </p>
-        
-        <div class="prompt-box" id="ex2-triage">"Act as my chief of staff. Review my emails and Teams chats from the last 3 workdays. Ignore newsletters, ads, and automated notifications. Focus on messages from colleagues. Find the top 3 items that have a deadline or a question I haven’t answered yet, ranked by urgency. For each item, show:
-
-Message summary
-Link to the original message
-
-Present the results in a simple list."</div>
-        
-        <button onclick="copyToClipboard('ex2-triage')" class="btn-copy">Copy Prompt</button>
-        
-        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-            <strong>Why this is better:</strong> If you ask for "Unread," Copilot ignores that important email you opened while queuing for coffee. By asking for "Last 3 days" + "Haven't replied," you catch the work you effectively "read and forgot." The role matters too: "chief of staff" tells Copilot whose priorities to rank by, so it filters for what you need to decide, not what is merely recent.
-        </p>
-
-        <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">
-            <strong>Keep it small:</strong> Copilot reads a sample, not your whole inbox. Ask it to review five years and you get a confident summary of nothing. Three days, three items, then the next question.
-        </p>
-    </div>
-</details>
-   <details>
-                <summary><span class="ex-num">03</span><span style="flex:1;">Client Relationship Recap</span></summary>
+            <details>
+                <summary><span class="ex-num">02</span><span style="flex:1;">Which Messages Need Me?</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">
-                        <strong>The "Pro" Way:</strong> In Exercise 2, we did a broad search. Now, let's be precise. Use the <strong>/ (Slash)</strong> to anchor Copilot to one person: pick a colleague or external contact you work with often, so you walk into the next meeting knowing what was promised and what is still open.
-                    </p>
+                    <p class="exercise-note">Turn noise into a short action queue.</p>
 
-                    <div class="prompt-box" id="ex3-recap">"Act as my Chief of Staff.
+                    <div class="prompt-box" id="ex2-needme">"Review my unread emails from the last seven days. Show only those likely to need my reply or action. Add relevant context from Teams chats and documents, explain why each matters and suggest the next step. Cite every item and do not infer urgency without evidence."</div>
 
-Review my interactions with /[PERSON] across emails, Teams, meetings, chats and shared documents from the last 90 days.
+                    <button onclick="copyToClipboard('ex2-needme')" class="btn-copy">Copy Prompt</button>
 
-Identify only what is important, actionable or unresolved.
-
-Output:
-
-## Relationship Snapshot
-A brief summary of what we are actively working on together.
-
-## Open Loops
-Only commitments, actions, decisions or requests that still need attention.
-- Owner
-- Action
-- Status (Waiting on me / Waiting on them / Shared)
-
-## Risks or Blockers
-Maximum 3.
-
-## Upcoming Conversations
-Only meetings that require preparation because there is unresolved work.
-
-## Recommended Next Steps
-The 3 highest-value actions for me.
-
-Rules:
-- Prioritise significance over activity.
-- Ignore attendee lists, routine updates, FYIs and completed work.
-- Merge repeated discussions into one item.
-- Do not report actions unless there is evidence they remain open.
-- If nothing significant is outstanding, say so.
-- Keep the response concise and practical."</div>
-                    
-                    <button onclick="copyToClipboard('ex3-recap')" class="btn-copy">Copy Prompt</button>
-                    
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>Why use the / ?</strong> Typing a name normally is just a <strong>fuzzy search</strong> (looking for the text). Using <strong>/</strong> creates a <strong>hard link</strong> to the specific user profile, ensuring Copilot ignores accidental name matches and looks at the correct source.
-                    </p>
-
-                    <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>Pro Tip:</strong> As seen in the menu, the forward slash <strong>/</strong> isn't just for People. You can anchor to <strong>Files, Emails, Meetings, Chats, Sites and SharePoint lists</strong>. This forces Copilot to ignore the noise and focus strictly on the data source you select.
+                        <strong>The point:</strong> focus on messages that need a decision or response.
                     </p>
                 </div>
             </details>
-            
-<details>
-    <summary><span class="ex-num">04</span><span style="flex:1;">Word Integrations</span></summary>
+            <details>
+                <summary><span class="ex-num">03</span><span style="flex:1;">Brief My Next Meeting</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Walk in knowing the latest position.</p>
+
+                    <div class="prompt-box" id="ex3-brief">"Find my next upcoming work meeting with enough related context to brief me. Use the invite, prior meetings, emails, Teams chats and files to show the purpose, latest position, my previous commitments, unresolved questions and three points to raise. Cite every claim and mark gaps."</div>
+
+                    <button onclick="copyToClipboard('ex3-brief')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>The point:</strong> a personalised pre-read assembled from your work.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary><span class="ex-num">04</span><span style="flex:1;">Devil's Advocate</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Your constructive critical friend.</p>
+
+                    <div class="prompt-box" id="ex4-devils-advocate">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities and previous objections found in the source material. Focus on what has been stated, not inferred. End with three changes I should make before raising these ideas again."</div>
+
+                    <button onclick="copyToClipboard('ex4-devils-advocate')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>The point:</strong> if it quotes a real objection, Work IQ is working. Turn web search off first (Settings → Personalisation → Advanced) so the counterarguments come from your own data.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary><span class="ex-num">05</span><span style="flex:1;">Build My Personal Jira Board</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Create a working Excel board from your digital exhaust.</p>
+
+                    <div class="prompt-box" id="ex5-jira">"You are an elite Chief of Staff, productivity analyst and Kanban designer. Create an Excel workbook from my accessible Microsoft 365 work data from the last 30 days. Build a Jira-style board with Incoming, To Do, In Progress, Waiting on Others, Review Needed and Completed Recently. For each item include title, description, source, date identified, due date, owner, priority and evidence link. Add a summary sheet with top priorities, overdue work, upcoming deadlines, risks and workload charts. Use only evidenced information, mark uncertainty and save the workbook to my OneDrive."</div>
+
+                    <button onclick="copyToClipboard('ex5-jira')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>Where to run it:</strong> in Copilot Chat with the <strong>Excel</strong> agent selected (Agents list), so it can build and save the workbook. The point: a personal operating system you can keep and edit.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary><span class="ex-num">06</span><span style="flex:1;">Contradiction Radar</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Find where the organisation no longer agrees with itself.</p>
+
+                    <div class="prompt-box" id="ex6-contradiction">"Across my emails, Teams chats, meetings and files from the last 60 days, find up to five conflicts, changed decisions or superseded instructions about dates, owners, scope or status. Show the competing versions, source and date, likely operational impact and what I should clarify. Do not choose a correct version without evidence. Cite every claim."</div>
+
+                    <button onclick="copyToClipboard('ex6-contradiction')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>The point:</strong> turn version confusion into a clarification list.
+                    </p>
+                </div>
+            </details>
+            <details>
+    <summary><span class="ex-num">07</span><span style="flex:1;">Word Integrations</span></summary>
     <div class="details-content">
         <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">
             Open a blank Word document to complete these tasks.
         </p>
         
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4a: Rough text to meeting agenda</p>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 7a: Rough text to meeting agenda</p>
         
         <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
         <div class="prompt-box">“Team meeting regarding Project Skylark launch date is Friday November 24th at 10am and attendees are Sarah, Mike, and Dave. First we need to review the Q3 bug report which should take 15 mins led by Sarah. Then strictly 30 mins to discuss the marketing budget for the holiday season led by Mike. After that Dave wants to demo the new login feature 15 mins. Finally we need 10 mins for open Q&A. Action items from last time were verify server costs and book the conference room.”</div>
@@ -662,7 +659,7 @@ Rules:
 
         <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
 
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4b: Rough text to Invoice</p>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 7b: Rough text to Invoice</p>
 
         <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
         <div class="prompt-box">“Hi team, here are the billable hours for Project Falcon for last month. On Oct 3rd I did 4 hours of Server Maintenance at a rate of £150/hr. Then on the 5th of October, Sarah did 6 hours of UI Design which we bill at £120. On Oct 12, I did another 2 hours of Server Maint. Finally on Oct 20th, Dave did 10 hours of Backend coding at our premium rate of £200/hr. Please process payment net 30. Cheers Steve”</div>
@@ -676,7 +673,7 @@ Rules:
     </div>
 </details>
     <details>
-    <summary><span class="ex-num">05</span><span style="flex:1;">Excel Integration</span></summary>
+    <summary><span class="ex-num">08</span><span style="flex:1;">Excel Integration</span></summary>
     <div class="details-content">
         <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
         
@@ -717,7 +714,7 @@ Rules:
     </div>
 </details>
             <details>
-    <summary><span class="ex-num">06</span><span style="flex:1;">Meet Your Specialists (Built-in Agents)</span></summary>
+    <summary><span class="ex-num">09</span><span style="flex:1;">Meet Your Specialists (Built-in Agents)</span></summary>
     <div class="details-content">
         <p class="exercise-note">
             <strong>Copilot is a generalist, but these Agents are specialists.</strong> Microsoft has built these three dedicated tools to handle complex tasks that standard Copilot might find too heavy. If a Launch button lands on the wrong agent, open the Agents list in Copilot and search by name.
@@ -765,7 +762,7 @@ Rules:
     </div>
 </details>
             <details>
-    <summary><span class="ex-num">07</span><span style="flex:1;">Choose Your Own Adventure (Explore &amp; Share)</span></summary>
+    <summary><span class="ex-num">10</span><span style="flex:1;">Choose Your Own Adventure (Explore &amp; Share)</span></summary>
     <div class="details-content">
         <p class="exercise-note">
             <strong>Part A: Exploration.</strong> You don't master Copilot by reading a manual; you master it by trying, failing, and tweaking.
