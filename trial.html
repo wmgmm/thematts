@@ -634,34 +634,101 @@
             <details>
     <summary><span class="ex-num">06</span><span style="flex:1;">Word Integrations</span></summary>
     <div class="details-content">
-        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">
-            Open a blank Word document to complete these tasks.
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 12px;">
+            Open Word. Download the follow-along document, or build it yourself: copy each grey block below into a blank document. Click the <strong>Copilot</strong> icon on the Home ribbon to open the pane and leave <strong>Allow editing</strong> on, so Copilot can change the document, not just talk about it. Prompts are in red, as in the document.
         </p>
-        
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6a: Rough text to meeting agenda</p>
-        
+        <a href="Copilot_Word_Follow_Along.docx" download style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin: 4px 0 16px;">Download the follow-along Word document</a>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6a: Formatting, the kitchen sink</p>
         <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
-        <div class="prompt-box">“Team meeting regarding Project Skylark launch date is Friday November 24th at 10am and attendees are Sarah, Mike, and Dave. First we need to review the Q3 bug report which should take 15 mins led by Sarah. Then strictly 30 mins to discuss the marketing budget for the holiday season led by Mike. After that Dave wants to demo the new login feature 15 mins. Finally we need 10 mins for open Q&A. Action items from last time were verify server costs and book the conference room.”</div>
-
-        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">
-            <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
-        </p>
-        <div class="prompt-box" id="ex4-prompt1">"Convert this text into a professional Meeting Agenda. Create a table for the schedule with columns for Topic, Time, and Owner. Put the Action Items in a separate bulleted list at the bottom."</div>
-        <button onclick="copyToClipboard('ex4-prompt1')" class="btn-copy">Copy Prompt</button>
-
+        <div class="prompt-box" id="ex6-data1">All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.</div>
+        <button onclick="copyToClipboard('ex6-data1')" class="btn-copy">Copy</button>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 2:</strong> In the Copilot pane, send this prompt:</p>
+        <div class="prompt-box" id="ex6-prompt1" style="color:#EE0000;">Without changing, rewriting, summarising, or removing any of the text, transform this document into an eye-catching showcase of Microsoft Word formatting features. Keep every instance of the sentence exactly as written. Use a wide variety of formatting techniques including:
+• Multiple heading styles
+• Columns
+• Borders and shading
+• Drop caps
+• Pull quotes
+• Text boxes and callouts
+• Bulleted and numbered layouts where possible
+• Tables created from portions of the text
+• WordArt-style headings
+• Different fonts, colours, sizes and emphasis
+• Page breaks and section breaks
+• Headers and footers
+• Page numbering
+• Highlighting and themes
+• A cover page
+• SmartArt where appropriate</div>
+        <button onclick="copyToClipboard('ex6-prompt1')" class="btn-copy">Copy Prompt</button>
         <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6b: Rough text to Invoice</p>
-
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6b: Text to tables</p>
         <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
-        <div class="prompt-box">“Hi team, here are the billable hours for Project Falcon for last month. On Oct 3rd I did 4 hours of Server Maintenance at a rate of £150/hr. Then on the 5th of October, Sarah did 6 hours of UI Design which we bill at £120. On Oct 12, I did another 2 hours of Server Maint. Finally on Oct 20th, Dave did 10 hours of Backend coding at our premium rate of £200/hr. Please process payment net 30. Cheers Steve”</div>
+        <div class="prompt-box" id="ex6-data2">Sustainability Programme Update
 
-        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">
-            <strong>Step 2:</strong> Highlight the text in Word, press <strong>Alt + i</strong>, and use this prompt:
+Over the past six months, several initiatives have been launched to reduce energy consumption across company sites. Building A completed an LED lighting upgrade in February, reducing electricity usage by an estimated 18%. Building B introduced smart heating controls in March, with early monitoring suggesting savings of approximately 12%. Building C completed a staff awareness campaign in April, resulting in increased reporting of energy waste and equipment left running outside working hours.
+
+The next phase focuses on further improvements. Building A will install solar panels by 30 November, with the work being led by Emma Carter. Building B will replace older refrigeration units by 15 December, under the direction of Raj Patel. Building C will introduce occupancy-based lighting controls by 31 January, managed by Hannah Green.
+
+Several challenges have been identified. Delays in supplier delivery could affect the solar panel installation and have been classified as a high risk. Budget constraints may delay the refrigeration replacement programme and have been classified as a medium risk. Limited contractor availability could affect installation schedules for occupancy sensors and has also been classified as a medium risk.</div>
+        <button onclick="copyToClipboard('ex6-data2')" class="btn-copy">Copy</button>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 2:</strong> In the Copilot pane, send this prompt:</p>
+        <div class="prompt-box" id="ex6-prompt2" style="color:#EE0000;">Turn this text into a table (below the text)</div>
+        <button onclick="copyToClipboard('ex6-prompt2')" class="btn-copy">Copy Prompt</button>
+        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6c: The quality reviewer</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 1:</strong> Copy and paste this text into your document:</p>
+        <div class="prompt-box" id="ex6-data3">Proposal for the Customer Experience Improvement Programme
+
+Purpose
+The purpose of this programme is to significantly improve customer satisfaction while reducing operational costs and increasing efficiency across all service teams.
+
+Background
+Customer feedback has consistently shown that service quality has declined over the last two years. Several customers have indicated that response times are slower than expected, and satisfaction scores are believed to be below industry averages.
+Research shows that organisations using AI-assisted customer service achieve a 90% improvement in customer satisfaction and a 75% reduction in operating costs. Therefore, implementing AI tools across the organisation will solve many of the issues currently experienced by customers.
+The programme is expected to improve customer satisfaction while simultaneously reducing staffing requirements.
+
+Proposed Approach
+The organisation will deploy a new AI customer support platform across all departments.
+The implementation will begin in November and conclude in December.
+All customer-facing staff will receive comprehensive training before the system goes live. The training programme will consist of a two-hour online session.
+The new system is expected to eliminate most routine queries and substantially reduce waiting times.
+
+Benefits
+Expected benefits include:
+• Higher customer satisfaction
+• Lower costs
+• Faster response times
+• Increased staff productivity
+• Better decision making
+• Improved staff morale
+The project is expected to deliver annual savings of approximately £2 million.
+
+Risks
+There are no significant risks associated with this programme.
+Any issues encountered during implementation can be resolved through normal project management processes.
+
+Resource Requirements
+The project will require support from all customer service teams.
+Additional staffing requirements are not anticipated.
+The implementation budget will be confirmed at a later date.
+
+Recommendation
+It is recommended that the programme is approved immediately so implementation can begin.</div>
+        <button onclick="copyToClipboard('ex6-data3')" class="btn-copy">Copy</button>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Step 2:</strong> In the Copilot pane, send this prompt:</p>
+        <div class="prompt-box" id="ex6-prompt3" style="color:#EE0000;">Review this document as an independent quality assurance reviewer. Identify:
+• Missing information
+• Unclear wording
+• Unsupported claims
+• Risks that have not been considered
+• Contradictions or inconsistencies
+• Questions that a senior stakeholder would ask before approving this proposal
+Present your findings in a structured table.</div>
+        <button onclick="copyToClipboard('ex6-prompt3')" class="btn-copy">Copy Prompt</button>
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 18px;">
+            Copilot may change more than you asked. Turn on Track Changes before you send, and read the whole document after.
         </p>
-        <div class="prompt-box" id="ex4-prompt2">"Convert this text into a formal Invoice Table. Create columns for: Date, Description, Staff Member, Hours, Rate, and Total Cost. Calculate the Total Cost for each row automatically. Format the table: Bold the header row, shade it light blue, and align all money columns to the right. Add a final row summing up the Grand Total."</div>
-        <button onclick="copyToClipboard('ex4-prompt2')" class="btn-copy">Copy Prompt</button>
-
     </div>
 </details>
     <details>
