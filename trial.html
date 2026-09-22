@@ -734,42 +734,38 @@ Present your findings in a structured table.</div>
     <details>
     <summary><span class="ex-num">07</span><span style="flex:1;">Excel Integration</span></summary>
     <div class="details-content">
-        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 15px;">Open Excel and try these prompts in sequence:</p>
-        
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 1: Create Data</p>
-        <div class="prompt-box" id="ex3-prompt1">"Create a table of 50 fictitious employees with columns for Name, Department, Salary, and Hire Date."</div>
-        <button onclick="copyToClipboard('ex3-prompt1')" class="btn-copy">Copy Prompt</button>
-        <p style="margin-top: 10px; font-size: 13px; color: var(--apple-text-secondary);">
-            Optional: If you struggled to create the sample data above, <a href="staff.xlsx" download style="color: var(--apple-blue); text-decoration: none;">download the staff.xlsx file instead</a>.
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 12px;">
+            Download the raw data workbook and open it in Excel. Click the <strong>Copilot</strong> icon on the Home ribbon to open the pane and leave <strong>Allow editing</strong> on, so Copilot can work in the sheet. Send the prompts in order; each builds on the last. Prompts are in red.
         </p>
+        <a href="Copilot_Excel_Raw_Data.xlsx" download style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin: 4px 0 16px;">Download the raw data workbook</a>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 7a: Ask Copilot to find the story</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">In the Copilot pane, send this prompt:</p>
+        <div class="prompt-box" id="ex7-prompt1" style="color:#EE0000;">Identify the three most important patterns, changes or anomalies in this data. For each one, identify the supporting columns and explain why it may matter. Clearly distinguish evidence from possible explanations.</div>
+        <button onclick="copyToClipboard('ex7-prompt1')" class="btn-copy">Copy Prompt</button>
+        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 7b: Create a one-page dashboard</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;">Same workbook. Send this prompt:</p>
+        <div class="prompt-box" id="ex7-prompt2" style="color:#EE0000;">Create a one-page dashboard on a new worksheet showing:
 
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 2: Calculate Years of Service</p>
-        <div class="prompt-box" id="ex3-prompt2">"Add a new column that calculates 'Years of Service' based on the Hire Date and today's date."</div>
-        <button onclick="copyToClipboard('ex3-prompt2')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 3: Add Bonus Column</p>
-        <div class="prompt-box" id="ex3-prompt3">"Add a column called 'Bonus'. If the Department is Sales, the bonus is 10% of Salary. For everyone else, it is 5%."</div>
-        <button onclick="copyToClipboard('ex3-prompt3')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 4: Generate Emails</p>
-        <div class="prompt-box" id="ex3-prompt4">"Add a column called 'Email' that combines the first letter of their name and their full last name @company.com, all in lowercase."</div>
-        <button onclick="copyToClipboard('ex3-prompt4')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 5: Department Summary</p>
-        <div class="prompt-box" id="ex3-prompt5">"Create a new sheet showing the total salary cost breakdown by Department."</div>
-        <button onclick="copyToClipboard('ex3-prompt5')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 6: Highlight Top Earners</p>
-        <div class="prompt-box" id="ex3-prompt6">"Highlight the top 10% of earners in Red."</div>
-        <button onclick="copyToClipboard('ex3-prompt6')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 7: Data Labels</p>
-        <div class="prompt-box" id="ex3-prompt7">"Add data labels to the line so I can see the exact number for each year."</div>
-        <button onclick="copyToClipboard('ex3-prompt7')" class="btn-copy">Copy Prompt</button>
-
-        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Step 8: Bonus, topic discovery with the downloaded staff.xlsx file</p>
-        <div class="prompt-box" id="ex3-prompt8">"For column [Favourite Phrase], create a new column called [Key Theme]. In [Key Theme], extract one funny high-level keyword that represents the main idea of each phrase"</div>
-        <button onclick="copyToClipboard('ex3-prompt8')" class="btn-copy">Copy Prompt</button>
+total requests;
+total actual cost;
+average satisfaction score;
+monthly requests as a line chart;
+actual versus planned cost by department;
+the three most important observations.
+ Keep the design clean, consistent and suitable for a management briefing.</div>
+        <button onclick="copyToClipboard('ex7-prompt2')" class="btn-copy">Copy Prompt</button>
+        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 7c: Create and critique a chart</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Part 1:</strong> send this prompt:</p>
+        <div class="prompt-box" id="ex7-prompt3a" style="color:#EE0000;">Create the clearest chart showing monthly Actual cost compared with Planned cost. Include an informative title, axis labels and a legend.</div>
+        <button onclick="copyToClipboard('ex7-prompt3a')" class="btn-copy">Copy Prompt</button>
+        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><strong>Part 2:</strong> when the chart appears, send this:</p>
+        <div class="prompt-box" id="ex7-prompt3b" style="color:#EE0000;">Critique this chart. Is the chart type appropriate? Identify anything that could be misleading, cluttered or difficult to interpret, then improve it.</div>
+        <button onclick="copyToClipboard('ex7-prompt3b')" class="btn-copy">Copy Prompt</button>
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 18px;">
+            Copilot may change more than you asked. Check the numbers it quotes against the sheet before you trust the story.
+        </p>
     </div>
 </details>
             <details>
