@@ -845,20 +845,11 @@ the three most important observations.
             </div>
 
             <details>
-                <summary><span style="flex:1;">Email Triage (Past 7 Days)</span></summary>
+                <summary><span style="flex:1;">Calendar &amp; Capacity Audit</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">A daily starter: turns a week of inbox noise into three clear piles, with anything urgent or schedulable flagged.</p>
-                    <div class="prompt-box" id="more-triage7">"Act as my chief of staff. Review all emails from the past 7 days. Sort into Critical, Action Needed, and Can Wait. Highlight anything that needs scheduling or immediate attention."</div>
-                    <button onclick="copyToClipboard('more-triage7')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-
-            <details>
-                <summary><span style="flex:1;">One-to-One Prep</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">From a Cardiff colleague. Run it before the meeting and walk in knowing what is still open between you.</p>
-                    <div class="prompt-box" id="more-onetoone">"Act as my chief of staff. I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
-                    <button onclick="copyToClipboard('more-onetoone')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
+                    <div class="prompt-box" id="more-calaudit">"Act as my executive assistant. Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
+                    <button onclick="copyToClipboard('more-calaudit')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
@@ -872,62 +863,14 @@ the three most important observations.
             </details>
 
             <details>
-                <summary><span style="flex:1;">Task Lists (Daily &amp; Project)</span></summary>
+                <summary><span style="flex:1;">Commitment Tracking</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Two flavours: a personal daily list ranked by urgency and importance, and a project list ordered by deadlines and dependencies.</p>
-
-                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Daily</p>
-                    <div class="prompt-box" id="more-tasklist-daily">"Create a daily task list prioritising urgent and important items."</div>
-                    <button onclick="copyToClipboard('more-tasklist-daily')" class="btn-copy">Copy Prompt</button>
-
-                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Project</p>
-                    <div class="prompt-box" id="more-tasklist-project">"Create a prioritised task list for [project] based on deadlines and dependencies."</div>
-                    <button onclick="copyToClipboard('more-tasklist-project')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Meeting Prep</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
-                    <div class="prompt-box" id="more-meetprep">"Act as my chief of staff preparing me for a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
-                    <button onclick="copyToClipboard('more-meetprep')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">Connects two data points: the promise made in a transcript and the lack of a confirmation signal in the chat.</p>
+                    <div class="prompt-box" id="more-commitment">"Scan all meeting transcripts from [Project Alpha] series in the last month. List every action item assigned to me that does not yet have a corresponding 'Done' or 'Completed' status update in the chat."</div>
+                    <button onclick="copyToClipboard('more-commitment')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
-            <details>
-                <summary><span style="flex:1;">Calendar &amp; Capacity Audit</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
-                    <div class="prompt-box" id="more-calaudit">"Act as my executive assistant. Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
-                    <button onclick="copyToClipboard('more-calaudit')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-
-            <details>
-                <summary><span style="flex:1;">Audit Trail</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Acts as a forensic tool, finding the exact metadata of a past action to use as evidence in a new action.</p>
-                    <div class="prompt-box" id="more-audit">"I need to prove we sent the deliverables. Find the specific email where I sent the final [Project] PDF to [Client Name] last month, and draft a follow-up email that references the date and time of that original message."</div>
-                    <button onclick="copyToClipboard('more-audit')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-
-            <details>
-                <summary><span style="flex:1;">Partnership Evidence Pack</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">From a Cardiff colleague, who says it turns several hours of admin into one request: disparate evidence across emails, meetings, files and chats becomes one coherent summary.</p>
-                    <div class="prompt-box" id="more-evidencepack">"Search my emails, meetings, files and chats for evidence related to [partnership or programme] during [date range]. Group the findings into achievements, opportunities, risks, stakeholder engagement, funding activity and actions. Identify gaps and produce an executive-ready summary."</div>
-                    <button onclick="copyToClipboard('more-evidencepack')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Knowledge Transfer (Teams)</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Uses "Graph Signal" (activity/popularity) to determine what is "important" rather than just giving you a list of everything.</p>
-                    <div class="prompt-box" id="more-knowledge">"I am onboarding a New Hire to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
-                    <button onclick="copyToClipboard('more-knowledge')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
             <details>
                 <summary><span style="flex:1;">Contradiction Radar</span></summary>
                 <div class="details-content">
@@ -943,8 +886,6 @@ the three most important observations.
                 </div>
             </details>
 
-           
-
             <details>
                 <summary><span style="flex:1;">Conflict Resolution</span></summary>
                 <div class="details-content">
@@ -955,11 +896,56 @@ the three most important observations.
             </details>
 
             <details>
-                <summary><span style="flex:1;">Commitment Tracking</span></summary>
+                <summary><span style="flex:1;">Audit Trail</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Connects two data points: the promise made in a transcript and the lack of a confirmation signal in the chat.</p>
-                    <div class="prompt-box" id="more-commitment">"Scan all meeting transcripts from [Project Alpha] series in the last month. List every action item assigned to me that does not yet have a corresponding 'Done' or 'Completed' status update in the chat."</div>
-                    <button onclick="copyToClipboard('more-commitment')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">Acts as a forensic tool, finding the exact metadata of a past action to use as evidence in a new action.</p>
+                    <div class="prompt-box" id="more-audit">"I need to prove we sent the deliverables. Find the specific email where I sent the final [Project] PDF to [Client Name] last month, and draft a follow-up email that references the date and time of that original message."</div>
+                    <button onclick="copyToClipboard('more-audit')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Knowledge Transfer (Teams)</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Uses "Graph Signal" (activity/popularity) to determine what is "important" rather than just giving you a list of everything.</p>
+                    <div class="prompt-box" id="more-knowledge">"I am onboarding a New Hire to [Project X]. Create a 'Read Me' list by finding the 5 most active documents and the 3 most important decision threads from our team channel in the last 6 months."</div>
+                    <button onclick="copyToClipboard('more-knowledge')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Partnership Evidence Pack</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">From a Cardiff colleague, who says it turns several hours of admin into one request: disparate evidence across emails, meetings, files and chats becomes one coherent summary.</p>
+                    <div class="prompt-box" id="more-evidencepack">"Search my emails, meetings, files and chats for evidence related to [partnership or programme] during [date range]. Group the findings into achievements, opportunities, risks, stakeholder engagement, funding activity and actions. Identify gaps and produce an executive-ready summary."</div>
+                    <button onclick="copyToClipboard('more-evidencepack')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Pricing History</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Turns unstructured email history into structured data (a price trend analysis) without you opening a single PDF.</p>
+                    <div class="prompt-box" id="more-pricing">"Check my email history for quotes received from [Vendor X] over the last two years. Extract the total price and line-item cost for [Service Y] from each email and plot the price increase trend."</div>
+                    <button onclick="copyToClipboard('more-pricing')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Meeting Recap Deck</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Chains Teams transcripts, shared files and PowerPoint generation into one workflow: a week of project meetings becomes an executive deck, checked with you before it builds.</p>
+                    <div class="prompt-box" id="more-recapdeck">"Create a comprehensive executive PowerPoint deck summarizing the key outcomes, strategic decisions, and identified risks from all project-related meetings I attended over the last seven days. Access the Work IQ semantic index to pull the relevant meeting transcripts from Teams and retrieve any supporting PDF or Excel files that were shared within those specific meeting chats. Before building the presentation, present a list of the meetings you intend to include and ask me to define the intended audience (e.g., executive leadership, internal engineering team, or external client) so you can accurately adjust the required level of detail. Once I approve the meeting list and audience persona, build a PowerPoint deck utilizing our corporate SharePoint master template. Structure the deck to include a title slide with the date range, one summary slide per major workstream grouping related meetings, a dedicated slide for 'Key Decisions Made' with assigned personnel owners, and a final 'Open Items &amp; Next Steps' slide mapping due dates. Save the finalized deck to my OneDrive in the '/Presentations/Recaps/' folder and send me a direct Teams notification link when the task is complete."</div>
+                    <button onclick="copyToClipboard('more-recapdeck')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Slide Mirroring (PowerPoint)</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Solves the biggest pain point of AI slides (bad formatting) by forcing it to "clone" the style of an existing, approved slide.</p>
+                    <div class="prompt-box" id="more-slides">"Create a new slide for 'Q4 Strategy' that mirrors the exact layout, font size, and visual style of slide 3 in /[Q3_Review.pptx], but populate it with the bullet points from /[Q4_Memo.docx]."</div>
+                    <button onclick="copyToClipboard('more-slides')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
@@ -982,37 +968,48 @@ the three most important observations.
             </details>
 
             <details>
-                <summary><span style="flex:1;">Slide Mirroring (PowerPoint)</span></summary>
+                <summary><span style="flex:1;">Email Triage (Past 7 Days)</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Solves the biggest pain point of AI slides (bad formatting) by forcing it to "clone" the style of an existing, approved slide.</p>
-                    <div class="prompt-box" id="more-slides">"Create a new slide for 'Q4 Strategy' that mirrors the exact layout, font size, and visual style of slide 3 in /[Q3_Review.pptx], but populate it with the bullet points from /[Q4_Memo.docx]."</div>
-                    <button onclick="copyToClipboard('more-slides')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">A daily starter: turns a week of inbox noise into three clear piles, with anything urgent or schedulable flagged.</p>
+                    <div class="prompt-box" id="more-triage7">"Act as my chief of staff. Review all emails from the past 7 days. Sort into Critical, Action Needed, and Can Wait. Highlight anything that needs scheduling or immediate attention."</div>
+                    <button onclick="copyToClipboard('more-triage7')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-
-           
 
             <details>
-                <summary><span style="flex:1;">Pricing History</span></summary>
+                <summary><span style="flex:1;">Meeting Prep</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Turns unstructured email history into structured data (a price trend analysis) without you opening a single PDF.</p>
-                    <div class="prompt-box" id="more-pricing">"Check my email history for quotes received from [Vendor X] over the last two years. Extract the total price and line-item cost for [Service Y] from each email and plot the price increase trend."</div>
-                    <button onclick="copyToClipboard('more-pricing')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">Filters specifically for incoming attachments from a specific person, ignoring your own internal noise.</p>
+                    <div class="prompt-box" id="more-meetprep">"Act as my chief of staff preparing me for a meeting with [Customer/Stakeholder] tomorrow. Surface the last 3 files they shared with me via email or Teams, and summarize the 'Next Steps' slide or section from each."</div>
+                    <button onclick="copyToClipboard('more-meetprep')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
-
-   
 
             <details>
-                <summary><span style="flex:1;">Meeting Recap Deck</span></summary>
+                <summary><span style="flex:1;">One-to-One Prep</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Chains Teams transcripts, shared files and PowerPoint generation into one workflow: a week of project meetings becomes an executive deck, checked with you before it builds.</p>
-                    <div class="prompt-box" id="more-recapdeck">"Create a comprehensive executive PowerPoint deck summarizing the key outcomes, strategic decisions, and identified risks from all project-related meetings I attended over the last seven days. Access the Work IQ semantic index to pull the relevant meeting transcripts from Teams and retrieve any supporting PDF or Excel files that were shared within those specific meeting chats. Before building the presentation, present a list of the meetings you intend to include and ask me to define the intended audience (e.g., executive leadership, internal engineering team, or external client) so you can accurately adjust the required level of detail. Once I approve the meeting list and audience persona, build a PowerPoint deck utilizing our corporate SharePoint master template. Structure the deck to include a title slide with the date range, one summary slide per major workstream grouping related meetings, a dedicated slide for 'Key Decisions Made' with assigned personnel owners, and a final 'Open Items &amp; Next Steps' slide mapping due dates. Save the finalized deck to my OneDrive in the '/Presentations/Recaps/' folder and send me a direct Teams notification link when the task is complete."</div>
-                    <button onclick="copyToClipboard('more-recapdeck')" class="btn-copy">Copy Prompt</button>
+                    <p class="exercise-note">From a Cardiff colleague. Run it before the meeting and walk in knowing what is still open between you.</p>
+                    <div class="prompt-box" id="more-onetoone">"Act as my chief of staff. I have a one-to-one with /[Person] this morning. Identify the key issues we need to discuss and any outstanding email or chat threads between us that still need a reply."</div>
+                    <button onclick="copyToClipboard('more-onetoone')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
-    <details>
+            <details>
+                <summary><span style="flex:1;">Task Lists (Daily &amp; Project)</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Two flavours: a personal daily list ranked by urgency and importance, and a project list ordered by deadlines and dependencies.</p>
+
+                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Daily</p>
+                    <div class="prompt-box" id="more-tasklist-daily">"Create a daily task list prioritising urgent and important items."</div>
+                    <button onclick="copyToClipboard('more-tasklist-daily')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Project</p>
+                    <div class="prompt-box" id="more-tasklist-project">"Create a prioritised task list for [project] based on deadlines and dependencies."</div>
+                    <button onclick="copyToClipboard('more-tasklist-project')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
     <summary><span style="flex:1;">Work IQ On or Off</span></summary>
     <div class="details-content">
         <p class="exercise-note">Copilot Chat is now one chat. The <strong>Work IQ</strong> button (top left) decides whether it can see your work data. It is on by default.</p>
