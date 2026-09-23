@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Where does the human go?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0071e3; --ink: #1d1d1f; --grey: #6e6e73; --grey3: #86868b;
+            --page: #f5f5f7; --card: #ffffff; --line: #e5e5ea;
+            --green: #34c759; --amber: #ff9f0a; --red: #e4251b;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+            --font: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --pad: clamp(10px, 1.4vh, 16px);
+            --gap: clamp(8px, 1.1vh, 12px);
+            --fs: clamp(12px, 1.7vh, 14px);
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0; font-family: var(--font); background: var(--page); color: var(--ink);
+            -webkit-font-smoothing: antialiased; letter-spacing: -0.015em; font-size: var(--fs); line-height: 1.35;
+            height: 100dvh; overflow: hidden; display: grid; grid-template-rows: auto auto 1fr;
+        }
+        button { font-family: inherit; }
+        [hidden] { display: none !important; }
+
+        .top { display: flex; align-items: center; gap: 14px; padding: calc(var(--pad) * 0.7) var(--pad) 0; }
+        .brand { font-size: clamp(15px, 2.4vh, 20px); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+        .brand small { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey3); margin-top: 1px; }
+        .how { color: var(--grey); font-size: var(--fs); margin-left: 8px; }
+        .how strong { color: var(--ink); }
+        .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+        .badge { background: #e8e8ed; color: var(--grey); font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 980px; }
+        .badge.done { background: #e9f9ee; color: #1d6b34; }
+        .ghost { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 980px; cursor: pointer; text-decoration: none; transition: all 0.2s var(--ease); }
+        .ghost:hover { border-color: var(--grey3); }
+
+        main { grid-row: 3; display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 280px); grid-auto-rows: minmax(0, 1fr); gap: var(--gap); padding: 0 var(--pad) var(--pad); min-height: 0; }
+        main.reveal-mode { grid-template-columns: 1fr; }
+        .strip { display: flex; align-items: flex-start; gap: 10px; padding: var(--gap) var(--pad) var(--gap); }
+        .strip .label { padding-top: 8px; white-space: nowrap; }
+        .panel { background: var(--card); border-radius: clamp(14px, 2.4vh, 20px); box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); padding: var(--pad); min-height: 0; display: flex; flex-direction: column; gap: var(--gap); }
+        .label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); }
+        .primary { border: 0; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 980px; cursor: pointer; transition: all 0.2s var(--ease); animation: enter 0.3s var(--ease); }
+        .primary:hover { background: #0077ed; transform: translateY(-1px); }
+
+        /* Strip of tasks */
+        .tray { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; min-height: 34px; }
+        .cardx { background: #fff; border: 1.5px solid var(--line); border-radius: 980px; padding: 6px 12px 6px 8px; cursor: pointer; user-select: none; transition: all 0.25s var(--ease); animation: enter 0.3s var(--ease); white-space: nowrap; }
+        .cardx:hover { border-color: #b8b8bd; transform: translateY(-1px); }
+        .cardx.selected { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.18); transform: translateY(-2px); }
+        .cardx .t { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: clamp(12px, 1.6vh, 13.5px); line-height: 1.2; }
+        .cardx .t span.ic { font-size: 16px; flex-shrink: 0; }
+        .tray-empty { color: var(--grey3); font-size: var(--fs); padding: 8px 4px; }
+
+        /* Zones */
+        .zones { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); min-height: 0; }
+        .zone { background: var(--card); border-radius: clamp(14px, 2.4vh, 20px); box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); border: 2px solid transparent; display: flex; flex-direction: column; min-height: 0; cursor: pointer; transition: all 0.3s var(--ease); }
+        .zone.target { border-color: var(--blue); background: rgba(0,113,227,0.04); box-shadow: 0 0 0 4px rgba(0,113,227,0.15); }
+        .zone .zh { padding: calc(var(--pad) * 0.8) 10px 6px; }
+        .zone .zn { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: clamp(11.5px, 1.7vh, 13.5px); line-height: 1.15; }
+        .zone .num { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .zone .zd { color: var(--grey); font-size: clamp(10.5px, 1.45vh, 12px); margin-top: 4px; line-height: 1.3; }
+        .zone .drop { flex: 1; min-height: 0; overflow: auto; padding: 0 8px 8px; display: flex; flex-direction: column; gap: 6px; scrollbar-width: thin; }
+        .zone .drop .cardx { padding: 6px 10px 6px 8px; border-radius: 12px; white-space: normal; }
+        .zone .drop .cardx.active { border-color: var(--ink); }
+        .zone .hintdrop { margin: auto; color: var(--grey3); font-size: 12px; text-align: center; padding: 10px; }
+        .zone.target .hintdrop { color: var(--blue); font-weight: 700; }
+
+        /* Side panel while sorting */
+        .side .nt { font-weight: 700; font-size: clamp(14px, 2.2vh, 18px); line-height: 1.2; animation: enter 0.3s var(--ease); }
+        .side .idle { color: var(--grey); font-size: var(--fs); line-height: 1.45; }
+        .side .idle b { color: var(--ink); }
+        .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        .fact { background: var(--page); border-radius: 10px; padding: 6px 8px; }
+        .fact .k { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey3); }
+        .fact .v { font-size: 12.5px; font-weight: 700; margin-top: 2px; }
+        .fact.hi .v { color: var(--red); }
+        .fact .f { font-size: 10px; color: var(--grey3); }
+
+        /* Reveal */
+        .reveal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: var(--gap); min-height: 0; }
+        .rc { background: var(--card); border-radius: clamp(14px, 2.4vh, 20px); box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); padding: clamp(10px, 2vh, 14px) 14px 12px; display: flex; flex-direction: column; gap: clamp(6px, 1.4vh, 10px); min-height: 0; animation: enter 0.4s var(--ease); }
+        .rc .rt { font-weight: 700; font-size: clamp(12px, 2.2vh, 17px); line-height: 1.2; }
+        .rc .zp { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #fff; background: var(--ink); border-radius: 980px; padding: 3px 10px 3px 4px; align-self: flex-start; }
+        .rc .zp .num { width: 18px; height: 18px; border-radius: 50%; background: #fff; color: var(--ink); font-size: 10px; display: inline-flex; align-items: center; justify-content: center; }
+        .rc .body { flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 6px; scrollbar-width: thin; }
+        .rc .main { font-size: clamp(11px, 2vh, 15.5px); line-height: 1.4; color: var(--ink); }
+        .rc .line { background: var(--page); border-radius: 10px; padding: clamp(4px, 1vh, 7px) 9px; font-size: clamp(10.5px, 1.75vh, 13.5px); color: var(--grey); line-height: 1.35; }
+        .rc .line b { color: var(--ink); }
+        .rc .line.warn { background: #fdecea; color: #7a1a12; } .rc .line.warn b { color: #a8180f; }
+        .rc .line.ok { background: #e9f9ee; color: #1d6b34; }
+        .rc .whatif { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; font-size: 10px; color: var(--grey3); }
+        .rc .chip { border: 1px solid var(--line); background: #fff; border-radius: 980px; padding: 2px 8px; font-size: 10.5px; font-weight: 600; cursor: pointer; color: var(--ink); }
+        .rc .chip.hi { border-color: var(--red); color: var(--red); }
+        .rc .move { align-self: flex-start; }
+
+        @keyframes enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+        @media (max-width: 1000px) {
+            body { height: auto; overflow: auto; }
+            main, main.reveal-mode { grid-template-columns: 1fr; }
+            .zones { grid-template-columns: 1fr 1fr; }
+            .zone { min-height: 150px; }
+            .reveal { grid-template-columns: 1fr; }
+            .top { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="brand">Where does the human go?<small>Five tasks, five places for a person, no right answers</small></div>
+        <div class="how" id="how"><strong>Click a task, then click a zone.</strong> Place all five, then reveal what each placement makes you responsible for.</div>
+        <div class="right">
+            <span class="badge" id="counter"></span>
+            <button class="primary" type="button" id="reveal-btn" hidden>Reveal what you own</button>
+            <button class="ghost" type="button" id="reset">Reset</button>
+            <a class="ghost" href="governance.html#exercises">Exercises</a>
+        </div>
+    </div>
+
+    <div class="strip" id="strip">
+        <div class="label">Tasks to place</div>
+        <div class="tray" id="tray"></div>
+    </div>
+
+    <main id="main">
+        <section class="zones" id="zones"></section>
+        <section class="panel side" id="side"></section>
+        <section class="reveal" id="reveal" hidden></section>
+    </main>
+
+    <script>
+    (function () {
+        // ---------- Content. Edit here. ----------
+        // stakes: sens = personal or sensitive data in play; undo = how hard a mistake is to reverse; vol = how many go out.
+        var ZONES = [
+            { key: 1, name: 'No AI', desc: 'People do the task the way they do now.' },
+            { key: 2, name: 'People do it, AI helps', desc: 'A person does the task and owns the result. AI suggests.' },
+            { key: 3, name: 'In the loop', desc: 'AI drafts or proposes. A person approves every one before it happens.' },
+            { key: 4, name: 'On the loop', desc: 'AI runs on its own. A person watches, samples and can stop it.' },
+            { key: 5, name: 'Out of the loop', desc: 'AI does it. No human.' }
+        ];
+        var CARDS = [
+            { id: 'minutes', icon: '📝', title: 'Meeting summary and actions', desc: 'Transcript in; summary, actions and an email to attendees out. Today\'s task.', sens: 'low', undo: 'easy', vol: 'many',
+              notes: ['Someone still writes the minutes by hand. Safe, slow, and the reason half of them never get written.',
+                      'AI drafts, you write. You keep the bottleneck and lose nothing else. A fair place to start.',
+                      'You read every draft before it goes. You were in the room, so you catch the wrong owner and the undecided item. This is today\'s Run B.',
+                      'Drafts go out and you spot-check a few a week. Fine for routine meetings, if the instructions ban salaries and health details and someone actually reads the sample.',
+                      'In 2024 a transcription bot emailed a meeting summary to an investor, with hours of the firm\'s private talk from after he left. The deal died. Nobody was watching the send.'] },
+            { id: 'ecs', icon: '🩺', title: 'Extenuating circumstances replies', desc: 'A student sends evidence. A reply gives the decision and next steps.', sens: 'high', undo: 'hard', vol: 'few',
+              notes: ['A person reads, decides and writes. Slow, and a student in difficulty gets a person.',
+                      'AI helps you write a clearer reply. The decision and the words stay yours, and the student gets a person.',
+                      'AI proposes, you approve every one. Only works if the approver knows the case. Ticking a box is not the involvement the law means.',
+                      'Replies go out and you sample a few. A health detail in, a decision out, hard to undo. The one you did not sample is the one that goes wrong.',
+                      'UK data law says a decision with a serious effect on a person needs real human involvement. A deferral decided and sent by a model alone is that case, and nobody will be able to explain it.'] },
+            { id: 'sift', icon: '📋', title: 'First sift of job applications', desc: 'Hundreds of applications in, a shortlist for the panel out.', sens: 'high', undo: 'hard', vol: 'many',
+              notes: ['The panel reads every application. Slow, and the bias is at least the panel\'s own.',
+                      'AI highlights where each criterion is met, the panel decides. Useful, and the bias stays where you can see it.',
+                      'A person approves every name on the shortlist. The bias is in the names that never reached it. Who tested it against last year\'s shortlist?',
+                      'Rejections go out and HR samples a slice. Equality law does not sample. A rejected candidate can ask how the decision was made.',
+                      'Amazon trained a CV-screening model on ten years of its own hires. It learnt to mark down CVs with the word "women\'s". They scrapped it in 2018. Your sift learns from your history too.'] },
+            { id: 'complaints', icon: '📧', title: 'Replies to customer complaints', desc: 'Angry emails in. Apologies, refunds and goodwill gestures out.', sens: 'low', undo: 'hard', vol: 'many',
+              notes: ['The team answers every complaint by hand. Nobody promises what the company cannot deliver, and the queue is the queue.',
+                      'AI softens the tone, a person decides the goodwill gesture. Slow on a bad day, and every promise is a person\'s.',
+                      'You approve every reply. You catch the one offering a refund policy that does not exist. The queue is long and you are tired by three o\'clock.',
+                      'Replies go out and you watch a dashboard. Cap what the agent may offer without a person, and make sure the alert reaches someone who can stop it.',
+                      'Air Canada\'s chatbot invented a bereavement refund policy. In 2024 a tribunal made the airline honour it. Air Canada argued the chatbot was responsible for its own words. It lost.'] },
+            { id: 'thermostat', icon: '🌡️', title: 'Heating in a large building', desc: 'Weather, occupancy and history in. Temperature changes out.', sens: 'low', undo: 'easy', vol: 'many',
+              notes: ['Facilities sets the heating from a schedule. Cheap, cold on Monday mornings, and nobody has to think about AI.',
+                      'AI recommends, operators adjust. Google ran its data centres this way in 2016 and cut cooling energy by forty per cent. Operators found acting on every recommendation exhausting.',
+                      'You approve every one-degree change. You are exhausted and the building is still cold. Approval is not a check when there is nothing to judge.',
+                      'It runs, operators watch, and every action passes fixed safety limits first. Google has run its cooling like this since 2018. The right level for the stakes.',
+                      'Works nearly all the time, bills are low, people are happy. Low risk. The one per cent is a broken sensor in January.'] }
+        ];
+        // Spare scenarios, not shown. Swap one in by moving it into CARDS.
+        var SPARE_CARDS = [
+            { id: 'webpage', icon: '🌐', title: 'Public page on a fee change', desc: 'Everyone can read it. Screenshots last forever.', sens: 'low', undo: 'hard', vol: 'many',
+              notes: ['Reasonable for the page itself. AI can still draft the internal briefing behind it.',
+                      'Comms writes it, AI tightens it. The normal way, and slow only when there are many pages.',
+                      'One approver is thin for a page the whole world screenshots. Which second reader signs?',
+                      'A wrong date or a made-up figure becomes news before the sample is read. Hard to undo means check before, not after.',
+                      'A fee figure the model invented, live on the site until a student posts it. Nobody in the building knew it had been published.'] },
+            { id: 'rooms', icon: '🗓️', title: 'Room bookings from emails', desc: 'Requests arrive by email. An agent books and confirms.', sens: 'low', undo: 'easy', vol: 'many',
+              notes: ['Over-cautious for the stakes. If the fear is double booking, that is a check the agent can run, not a reason to stop.',
+                      'People doing every booking by hand with AI help is the job you have now. What is that costing?',
+                      'Approving every confirmation is more work than making the booking. This becomes sampling by fatigue.',
+                      'A booking is cheap to undo. Accept it. Name the person who hears when it goes wrong, and cap what the agent may book.',
+                      'Works most weeks. Then it books the council chamber for a bake sale, twice, and nobody notices until the Vice-Chancellor arrives. Cheap to fix, but someone should still see the log.'] },
+            { id: 'feedback', icon: '🎓', title: 'Feedback on formative essays', desc: 'Comments that help a student improve before the real thing.', sens: 'low', undo: 'easy', vol: 'many',
+              notes: ['A fair choice for a school that values the marker\'s voice. Say so to students; they will use AI on the essay anyway.',
+                      'Students are owed a human judgement. AI helps you write it faster and more consistently; it does not decide.',
+                      'The marker approves every comment before it goes out. Watch for the moment you stop reading and start approving.',
+                      'Formative, so the harm of a poor comment is small. But students will know, and trust in feedback is hard to win back.',
+                      'Feedback nobody wrote and nobody read, sent under a marker\'s name. The first student to notice tells everyone, and the marker cannot defend a word of it.'] },
+            { id: 'welsh', icon: '🏴', title: 'Staff notice into Welsh', desc: 'Notices go out in both languages on the same day.', sens: 'low', undo: 'hard', vol: 'many',
+              notes: ['Understandable, and the backlog is the cost. A machine draft plus a Welsh-reading checker is the usual compromise.',
+                      'The translator works faster with a draft. Standards stay with a person who reads Welsh.',
+                      'Fine if the approver reads Welsh. An approver who does not is a rubber stamp with extra steps.',
+                      'Errors are public and cultural, not private. Who samples, and can they read Welsh?',
+                      'Machine Welsh on every notice with nobody checking. The complaints go to the Welsh Language Commissioner, and the goodwill takes years to rebuild.'] },
+            { id: 'invoices', icon: '💷', title: 'Chasing overdue invoices', desc: 'Reminders escalate over weeks. Some debtors are students.', sens: 'high', undo: 'hard', vol: 'many',
+              notes: ['Defensible where debtors are students. Consider AI for the internal list and a person for the email.',
+                      'Finance writes, AI drafts. Safe and slow, and the backlog is why you are looking at this.',
+                      'Every chaser approved before it goes. Fine at low volume, a full-time job at high volume.',
+                      'Volume is high and one wrong email to a struggling student is real harm. Cap the amount and the tone an agent may use alone.',
+                      'Escalating debt letters to students with nobody watching. The one that reaches a student in crisis is the one that makes the news.'] },
+            { id: 'reference', icon: '✉️', title: 'Reference for a former student', desc: 'A named person, lasting consequences, your signature.', sens: 'high', undo: 'hard', vol: 'few',
+              notes: ['Many people land here. If you use AI at all, keep it to structure and never paste the student\'s record.',
+                      'AI helps with structure. The judgement, and the signature, are yours.',
+                      'Your name is at the bottom, so you are approving every word anyway. The check is the job.',
+                      'Personal data about a named person, sent on your behalf while you glance at a dashboard. Not a job for autopilot.',
+                      'A reference you never read, sent under your name, about a person you taught. There is no version of this that survives the first complaint.'] },
+            { id: 'xray', icon: '🩻', title: 'Flagging X-rays for priority', desc: 'AI flags likely anomalies so urgent scans are read first.', sens: 'high', undo: 'hard', vol: 'many',
+              notes: ['Radiologists read in arrival order. Safe and known, and the urgent scan waits its turn behind the routine ones. That is a risk too.',
+                      'Radiologists read in order and the AI only suggests. Nothing risked, nothing gained; the backlog is unchanged.',
+                      'A person approves every flag before the queue moves. The backlog grows and the AI is waiting on you. It defeats the purpose.',
+                      'The AI sorts. A radiologist audits its confidence each week and retunes the threshold. This is how it is meant to work, and the audit is the job.',
+                      'The model updates overnight and starts missing severe cases because of a new watermark. Nobody notices for a week. A third-party change with no monitoring.'] }
+        ];
+        var STAKE_DEFS = {
+            sens: { k: 'Sensitivity', lo: 'low', hi: 'high', f: 'personal or sensitive data' },
+            undo: { k: 'Undo', lo: 'easy', hi: 'hard', f: 'how hard a mistake is to reverse' },
+            vol: { k: 'Volume', lo: 'few', hi: 'many', f: 'how many go out' }
+        };
+        // Lines generated from the card's current stakes and its zone. Plain words, toolkit category in bold.
+        function stakeLines(zone, s) {
+            var L = [];
+            var hi = function (k) { return s[k] === STAKE_DEFS[k].hi; };
+            if (zone === 4) {
+                if (hi('sens')) L.push({ c: 'warn', t: '<b>Data and legal.</b> A sample protects the average case, not the person whose case was not sampled.' });
+                if (hi('undo')) L.push({ c: 'warn', t: '<b>Contestability.</b> Hard to undo means the sample finds the mistake after it has happened. Who puts it right?' });
+                if (hi('vol')) L.push({ c: 'ok', t: '<b>Honest about volume.</b> At this scale a person cannot read every one. Name the sample size and the owner.' });
+                else L.push({ c: '', t: '<b>Volume is low.</b> A person could read every one. Sampling here is a choice of convenience, so say so.' });
+                if (!hi('sens') && !hi('undo')) L.push({ c: 'ok', t: '<b>Proportionate</b> for most teams: low sensitivity, easy to correct.' });
+            }
+            if (zone === 3) {
+                if (hi('vol')) L.push({ c: 'warn', t: '<b>People.</b> Reading every one at this volume is a full-time job. It becomes sampling by fatigue; better to decide that on purpose.' });
+                if (hi('undo')) L.push({ c: '', t: '<b>Accountability.</b> One reader for something hard to undo. Who is the second signature?' });
+                if (hi('sens')) L.push({ c: '', t: '<b>Data and legal.</b> The reader must be someone allowed to see the data and able to spot what should not be there.' });
+                if (!hi('vol')) L.push({ c: 'ok', t: '<b>Sustainable.</b> Low volume means a real read every time, and the reader\'s name goes on it.' });
+            }
+            if (zone === 2) {
+                if (hi('vol') && !hi('sens') && !hi('undo')) L.push({ c: 'warn', t: '<b>Cost.</b> People writing every word of low-stakes volume is the bottleneck you had before. Is the caution buying anything?' });
+                if (hi('sens') || hi('undo')) L.push({ c: 'ok', t: '<b>Proportionate.</b> A person owns the judgement where the stakes are high. Write down what AI may and may not touch.' });
+                if (!hi('vol') && !hi('sens') && !hi('undo')) L.push({ c: '', t: '<b>Fine, and small.</b> Low volume, low stakes: the gain from going further is small too.' });
+            }
+            if (zone === 5) {
+                L.push({ c: 'warn', t: '<b>Accountability.</b> Nobody is watching, so nobody answers. If this goes live, someone still has to own it and read the log.' });
+                if (hi('sens')) L.push({ c: 'warn', t: '<b>Data and legal.</b> Sensitive data handled and sent with no person in the chain. Explain that to the ICO.' });
+                if (hi('undo')) L.push({ c: 'warn', t: '<b>Contestability.</b> Hard to undo and nobody to stop it. The first mistake is the one you will be asked about.' });
+                if (!hi('sens') && !hi('undo')) L.push({ c: 'ok', t: '<b>Proportionate</b> for a low-stakes, reversible task, if there is an alert, an override and a person who hears it.' });
+                if (hi('vol')) L.push({ c: '', t: '<b>Third-party change.</b> At this volume a model update or a bad input scales fast. Retest after any change.' });
+            }
+            if (zone === 1) {
+                if (!hi('sens') && !hi('undo')) L.push({ c: 'warn', t: '<b>Decision or habit?</b> Ruling AI out of a low-stakes, reversible task is fine if it is a decision with a review date, not a reflex.' });
+                if (hi('sens') || hi('undo')) L.push({ c: 'ok', t: '<b>Defensible.</b> Record why, keep the human route documented, and set a date to look again.' });
+                if (hi('vol')) L.push({ c: '', t: '<b>Cost.</b> The manual route at this volume is the price of the decision. Name it in the register too.' });
+            }
+            if (zone === 3 || zone === 4) L.push({ c: '', t: '<b>Whose name is on it?</b> Before this goes live, one person answers for the outcome and one confirms the data may be used.' });
+            return L;
+        }
+
+        // ---------- State ----------
+        var placement = {}; // id -> zone key
+        var stakes = {};    // id -> {sens, undo, vol}
+        CARDS.forEach(function (c) { stakes[c.id] = { sens: c.sens, undo: c.undo, vol: c.vol }; });
+        var selected = null; // id being held
+        var focus = null;    // id shown in the side panel
+        var revealed = false;
+
+        function parseHash() {
+            var m = location.hash.match(/p=([0-5]{5})/);
+            if (m) CARDS.forEach(function (c, i) { var z = +m[1][i]; if (z) placement[c.id] = z; });
+            if (/r=1/.test(location.hash) && allPlaced()) revealed = true;
+        }
+        function writeHash() {
+            var h = '#p=' + CARDS.map(function (c) { return placement[c.id] || 0; }).join('') + (revealed ? '&r=1' : '');
+            if (location.hash !== h) history.replaceState(null, '', h);
+        }
+        function allPlaced() { return CARDS.every(function (c) { return placement[c.id]; }); }
+        function byId(id) { return CARDS.filter(function (x) { return x.id === id; })[0]; }
+
+        function card(c, placed) {
+            var d = document.createElement('div');
+            d.className = 'cardx' + (selected === c.id ? ' selected' : '') + (placed && focus === c.id ? ' active' : '');
+            d.dataset.id = c.id;
+            d.innerHTML = '<div class="t"><span class="ic"></span><span></span></div>';
+            d.querySelector('.ic').textContent = c.icon;
+            d.querySelector('.t span:last-child').textContent = c.title;
+            d.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (selected && selected !== c.id && placed) { return; }
+                selected = (selected === c.id) ? null : c.id;
+                focus = c.id;
+                render();
+            });
+            return d;
+        }
+
+        function buildZones() {
+            var el = document.getElementById('zones');
+            ZONES.forEach(function (z) {
+                var d = document.createElement('div');
+                d.className = 'zone'; d.dataset.zone = z.key;
+                d.innerHTML = '<div class="zh"><div class="zn"><span class="num">' + z.key + '</span><span></span></div><div class="zd"></div></div><div class="drop"></div>';
+                d.querySelector('.zn span:last-child').textContent = z.name;
+                d.querySelector('.zd').textContent = z.desc;
+                d.addEventListener('click', function () {
+                    if (!selected) return;
+                    placement[selected] = z.key;
+                    focus = selected; selected = null;
+                    render();
+                });
+                el.appendChild(d);
+            });
+        }
+
+        function render() {
+            var done = allPlaced();
+            var main = document.getElementById('main');
+            document.getElementById('strip').hidden = revealed;
+            document.getElementById('zones').hidden = revealed;
+            document.getElementById('side').hidden = revealed;
+            document.getElementById('reveal').hidden = !revealed;
+            main.classList.toggle('reveal-mode', revealed);
+            var rb = document.getElementById('reveal-btn');
+            rb.hidden = !done; rb.textContent = revealed ? 'Back to the board' : 'Reveal what you own';
+            document.getElementById('how').innerHTML = revealed
+                ? '<strong>What each placement makes you responsible for.</strong> Red is a risk you have accepted, green is why it is defensible. Flip a stake to ask what if.'
+                : '<strong>Click a task, then click a zone.</strong> Place all five, then reveal what each placement makes you responsible for.';
+
+            var tray = document.getElementById('tray'); tray.innerHTML = '';
+            var left = CARDS.filter(function (c) { return !placement[c.id]; });
+            if (!left.length) { tray.innerHTML = '<div class="tray-empty">Click a task in a zone to move it, or reveal.</div>'; }
+            left.forEach(function (c) { tray.appendChild(card(c, false)); });
+
+            document.querySelectorAll('.zone').forEach(function (zel) {
+                var z = +zel.dataset.zone;
+                zel.classList.toggle('target', !!selected);
+                var drop = zel.querySelector('.drop'); drop.innerHTML = '';
+                var here = CARDS.filter(function (c) { return placement[c.id] === z; });
+                if (!here.length) { var h = document.createElement('div'); h.className = 'hintdrop'; h.textContent = selected ? 'Put it here' : 'Empty'; drop.appendChild(h); }
+                here.forEach(function (c) { drop.appendChild(card(c, true)); });
+            });
+
+            var n = Object.keys(placement).length;
+            var b = document.getElementById('counter'); b.textContent = n < CARDS.length ? (CARDS.length - n) + ' to place' : 'All placed';
+            b.classList.toggle('done', done);
+
+            renderSide();
+            if (revealed) renderReveal();
+            writeHash();
+        }
+
+        function facts(c, clickable, onFlip) {
+            var st = document.createElement('div'); st.className = clickable ? 'whatif' : 'facts';
+            if (clickable) { var l = document.createElement('span'); l.textContent = 'Flip a stake:'; st.appendChild(l); }
+            ['sens', 'undo', 'vol'].forEach(function (k) {
+                var def = STAKE_DEFS[k]; var v = stakes[c.id][k]; var hi = v === def.hi;
+                if (clickable) {
+                    var ch = document.createElement('button'); ch.type = 'button'; ch.className = 'chip' + (hi ? ' hi' : '');
+                    ch.textContent = def.k.toLowerCase() + ' ' + v; ch.title = 'What if ' + def.k.toLowerCase() + ' were ' + (hi ? def.lo : def.hi) + '?';
+                    ch.addEventListener('click', function () { stakes[c.id][k] = hi ? def.lo : def.hi; onFlip(); });
+                    st.appendChild(ch);
+                } else {
+                    var f = document.createElement('div'); f.className = 'fact' + (hi ? ' hi' : '');
+                    f.innerHTML = '<div class="k"></div><div class="v"></div><div class="f"></div>';
+                    f.querySelector('.k').textContent = def.k; f.querySelector('.v').textContent = v; f.querySelector('.f').textContent = def.f;
+                    st.appendChild(f);
+                }
+            });
+            return st;
+        }
+
+        function renderSide() {
+            var el = document.getElementById('side'); el.innerHTML = '';
+            var c = byId(focus);
+            var lab = document.createElement('div'); lab.className = 'label'; lab.textContent = c ? 'The task' : 'How this works'; el.appendChild(lab);
+            if (!c) {
+                var idle = document.createElement('div'); idle.className = 'idle';
+                idle.innerHTML = 'Five real tasks. Five places a person can sit, from <b>no AI at all</b> on the left to <b>no human at all</b> on the right.<br><br>Click a task to see its stakes, then click the zone your table agrees on.';
+                el.appendChild(idle); return;
+            }
+            var t = document.createElement('div'); t.className = 'nt'; t.textContent = c.icon + ' ' + c.title; el.appendChild(t);
+            var d = document.createElement('div'); d.className = 'idle'; d.textContent = c.desc; el.appendChild(d);
+            el.appendChild(facts(c, false));
+            var q = document.createElement('div'); q.className = 'idle';
+            var z = placement[c.id];
+            q.innerHTML = z ? ('In <b>' + ZONES[z - 1].name + '</b>. Click it again to move it.') : (selected === c.id ? '<b>Held.</b> Click a zone.' : 'Where would you put it, and why?');
+            el.appendChild(q);
+        }
+
+        function renderReveal() {
+            var el = document.getElementById('reveal'); el.innerHTML = '';
+            CARDS.forEach(function (c) {
+                var z = placement[c.id];
+                var d = document.createElement('div'); d.className = 'rc';
+                d.innerHTML = '<div class="rt"></div><span class="zp"><span class="num">' + z + '</span><span></span></span><div class="body"></div>';
+                d.querySelector('.rt').textContent = c.icon + ' ' + c.title;
+                d.querySelector('.zp span:last-child').textContent = ZONES[z - 1].name;
+                var body = d.querySelector('.body');
+                var m = document.createElement('div'); m.className = 'main'; m.textContent = c.notes[z - 1]; body.appendChild(m);
+                stakeLines(z, stakes[c.id]).forEach(function (l) { var x = document.createElement('div'); x.className = 'line ' + l.c; x.innerHTML = l.t; body.appendChild(x); });
+                d.appendChild(facts(c, true, renderReveal));
+                el.appendChild(d);
+            });
+        }
+
+        document.getElementById('reveal-btn').addEventListener('click', function () { revealed = !revealed; selected = null; render(); });
+        document.getElementById('reset').addEventListener('click', function () {
+            placement = {}; selected = null; focus = null; revealed = false;
+            CARDS.forEach(function (c) { stakes[c.id] = { sens: c.sens, undo: c.undo, vol: c.vol }; });
+            render();
+        });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { selected = null; render(); } });
+        document.body.addEventListener('click', function (e) { if (selected && !e.target.closest('.cardx') && !e.target.closest('.zone')) { selected = null; render(); } });
+
+        window.whereState = function () { return { placement: placement, stakes: stakes, revealed: revealed }; };
+        parseHash(); buildZones(); render();
+    })();
+    </script>
+</body>
+</html>
