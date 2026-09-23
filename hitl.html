@@ -8,234 +8,212 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Design tokens shared with governance.html and trial.html */
         :root {
-            --apple-blue: #0071e3;
-            --apple-text-primary: #1d1d1f;
-            --apple-text-secondary: #6e6e73;
-            --apple-text-tertiary: #86868b;
-            --apple-bg-page: #f5f5f7;
-            --apple-bg-card: #ffffff;
-            --apple-border: #e5e5ea;
-            --apple-border-light: rgba(0, 0, 0, 0.06);
-            --accent-green: #34c759;
-            --accent-amber: #ff9f0a;
-            --accent-red: #e4251b;
-            --radius-card: 22px;
-            --radius-medium: 14px;
-            --radius-button: 980px;
-            --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
-            --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --blue: #0071e3; --ink: #1d1d1f; --grey: #6e6e73; --grey3: #86868b;
+            --page: #f5f5f7; --card: #ffffff; --line: #e5e5ea;
+            --green: #34c759; --amber: #ff9f0a; --red: #e4251b;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+            --font: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --pad: clamp(10px, 1.4vh, 18px);
+            --gap: clamp(8px, 1.2vh, 14px);
+            --fs: clamp(12px, 1.75vh, 14px);
         }
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html, body { height: 100%; }
         body {
-            font-family: var(--font-stack);
-            background-color: var(--apple-bg-page);
-            color: var(--apple-text-primary);
-            margin: 0; padding: 0;
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.47; letter-spacing: -0.022em;
+            margin: 0; font-family: var(--font); background: var(--page); color: var(--ink);
+            -webkit-font-smoothing: antialiased; letter-spacing: -0.015em; font-size: var(--fs); line-height: 1.35;
+            height: 100dvh; overflow: hidden; display: grid; grid-template-rows: auto auto 1fr;
         }
-        .container { max-width: 1080px; margin: 0 auto; padding: 24px 22px 40px; }
-        .global-nav {
-            position: sticky; top: 0; z-index: 9999;
-            background-color: rgba(255,255,255,0.85);
-            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--apple-border-light);
-            height: 52px; display: flex; align-items: center; justify-content: center;
-        }
-        .nav-content { display: flex; gap: 32px; align-items: center; }
-        .nav-brand { font-size: 13px; font-weight: 600; color: var(--apple-text-primary); text-decoration: none; }
-        .global-nav a { color: var(--apple-text-primary); text-decoration: none; font-size: 13px; opacity: 0.75; }
-        .global-nav a:hover { opacity: 1; color: var(--apple-blue); }
-        header.hero { text-align: center; padding: 56px 0 32px; }
-        h1 { font-size: 44px; line-height: 1.05; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 14px; }
-        .subtitle { font-size: 12px; font-weight: 500; color: var(--apple-text-tertiary); text-transform: uppercase; letter-spacing: 0.18em; margin: 0; }
-        h2 { font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 8px; }
-        h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
-        .section-card { background: var(--apple-bg-card); border-radius: var(--radius-card); padding: 30px 36px; margin-bottom: 24px; box-shadow: var(--shadow-card); }
-        @media (max-width: 734px) { .section-card { padding: 22px 18px; } h1 { font-size: 32px; } }
-        .eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--apple-blue); margin-bottom: 8px; }
-        .muted { color: var(--apple-text-secondary); font-size: 14px; line-height: 1.5; }
+        button { font-family: inherit; }
 
-        /* Task pills */
-        .pills { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 10px; }
-        .pill {
-            font-family: inherit; font-size: 13px; font-weight: 600; color: var(--apple-text-primary);
-            background: var(--apple-bg-page); border: 1px solid var(--apple-border); border-radius: var(--radius-button);
-            padding: 9px 16px; cursor: pointer; transition: var(--transition);
-        }
-        .pill:hover { border-color: var(--apple-text-tertiary); }
-        .pill[aria-pressed="true"] { background: var(--apple-text-primary); color: #fff; border-color: var(--apple-text-primary); }
-        .pill.preset[aria-pressed="true"] { background: var(--apple-blue); border-color: var(--apple-blue); }
+        /* Top bar */
+        .top { display: flex; align-items: center; gap: 14px; padding: calc(var(--pad) * 0.7) var(--pad) 0; }
+        .brand { font-size: clamp(15px, 2.4vh, 20px); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+        .brand small { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey3); margin-top: 1px; }
+        .seg { display: flex; background: #e8e8ed; border-radius: 980px; padding: 3px; margin: 0 auto; }
+        .seg button { border: 0; background: transparent; color: var(--ink); font-size: var(--fs); font-weight: 600; padding: 6px 14px; border-radius: 980px; cursor: pointer; transition: all 0.25s var(--ease); white-space: nowrap; }
+        .seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+        .top .right { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+        .legend { display: flex; gap: 6px; align-items: center; margin-left: 18px; }
+        .legend .lvl { padding: 4px 10px; }
+        .ghost { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 980px; cursor: pointer; transition: all 0.2s var(--ease); text-decoration: none; }
+        .ghost:hover { border-color: var(--grey3); }
+        .stakes { padding: 4px var(--pad) 0; font-size: var(--fs); color: var(--grey); min-height: 1.4em; }
+        .stakes strong { color: var(--ink); }
 
-        /* Palette */
-        .palette { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 16px 0 10px; }
-        .palette-label { font-size: 13px; color: var(--apple-text-secondary); margin-right: 4px; }
-        .token {
-            display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px;
-            border-radius: var(--radius-button); font-size: 13px; font-weight: 600; cursor: grab; user-select: none;
-            border: 1px solid var(--apple-border); background: #fff; transition: var(--transition);
-        }
-        .token:active { cursor: grabbing; }
-        .token .dot { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .token.H .dot { background: var(--accent-red); }
-        .token.A .dot { background: #48484a; }
-        .token.N .dot { background: transparent; border: 2px dashed #c7c7cc; }
-        .token .dot svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .token.N .dot svg { stroke: #c7c7cc; }
+        /* Main */
+        main { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--gap); padding: var(--gap) var(--pad) var(--pad); min-height: 0; }
+        .panel { background: var(--card); border-radius: clamp(14px, 2.4vh, 22px); box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); padding: var(--pad); min-height: 0; display: flex; flex-direction: column; gap: var(--gap); }
+        .label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); }
+        .hint { font-size: var(--fs); color: var(--grey); }
+
+        /* Tokens */
+        .tokens { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .token { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border-radius: 980px; font-weight: 600; font-size: var(--fs); cursor: pointer; user-select: none; border: 2px solid var(--line); background: #fff; transition: all 0.25s var(--ease); }
+        .token:hover { border-color: var(--grey3); transform: translateY(-1px); }
+        .token.selected { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.18); transform: translateY(-2px); }
+        .dot { width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .dot svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .H .dot { background: var(--red); }
+        .A .dot { background: #48484a; }
+        .N .dot { background: transparent; border: 2px dashed #c7c7cc; }
+        .N .dot svg { stroke: #b0b0b5; }
 
         /* Pipeline */
-        .pipeline { display: grid; grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr; gap: 6px; align-items: stretch; margin: 12px 0 18px; }
+        .pipeline { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr; gap: 6px; align-items: stretch; }
         .arrow { display: flex; align-items: center; justify-content: center; color: #c7c7cc; font-size: 18px; }
-        .slot {
-            font-family: inherit; text-align: center; background: var(--apple-bg-page); border: 2px solid transparent;
-            border-radius: var(--radius-medium); padding: 16px 10px 14px; cursor: pointer; transition: var(--transition); min-height: 150px;
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px;
-        }
-        .slot:hover { border-color: var(--apple-border); }
-        .slot:focus-visible { outline: 2px solid var(--apple-blue); outline-offset: 2px; }
-        .slot.over { border-color: var(--apple-blue); background: #eef5ff; }
-        .slot .stage { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--apple-text-secondary); }
-        .slot .big { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: var(--transition); }
-        .slot .big svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .slot[data-value="H"] .big { background: var(--accent-red); }
+        .slot { border: 2px solid transparent; background: var(--page); border-radius: clamp(12px, 2vh, 18px); cursor: pointer; padding: var(--gap) 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(6px, 1.2vh, 12px); transition: all 0.3s var(--ease); min-height: 0; }
+        .slot:hover { border-color: var(--line); }
+        .slot:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+        .slot.target { border-color: var(--blue); background: rgba(0,113,227,0.05); box-shadow: 0 0 0 4px rgba(0,113,227,0.15); transform: scale(1.02); }
+        .slot.over { border-color: var(--blue); background: #eef5ff; }
+        .slot .stage { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); text-align: center; }
+        .slot .big { width: clamp(44px, 9vh, 76px); height: clamp(44px, 9vh, 76px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s var(--ease); }
+        .slot .big svg { width: 48%; height: 48%; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .slot[data-value="H"] .big { background: var(--red); }
         .slot[data-value="A"] .big { background: #48484a; }
         .slot[data-value="N"] .big { background: transparent; border: 2px dashed #c7c7cc; }
         .slot[data-value="N"] .big svg { stroke: #c7c7cc; }
-        .slot .who { font-size: 15px; font-weight: 600; }
-        .slot .hint { font-size: 11px; color: var(--apple-text-tertiary); }
-        @media (max-width: 640px) {
-            .pipeline { grid-template-columns: 1fr 1fr; }
-            .arrow { display: none; }
-        }
+        .slot .who { font-size: clamp(13px, 2vh, 17px); font-weight: 700; }
+        .slot .sub { font-size: 11px; color: var(--grey3); text-align: center; }
+        .pop { animation: pop 0.4s var(--ease); }
+        @keyframes pop { 0% { transform: scale(0.8); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+        .presets { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+        .presets .pill { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 980px; cursor: pointer; transition: all 0.2s var(--ease); }
+        .presets .pill:hover { border-color: var(--grey3); }
+        .presets .pill[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+        .empty { display: none; color: var(--red); font-weight: 600; font-size: var(--fs); }
+        .empty.show { display: block; }
 
         /* Results */
-        .results { transition: opacity 0.25s ease; }
-        .results.off { opacity: 0.35; pointer-events: none; }
-        .pattern-name { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
-        .bars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 18px 0 22px; }
-        .bar { background: var(--apple-bg-page); border-radius: 12px; padding: 14px 16px; }
-        .bar .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--apple-text-secondary); display: flex; justify-content: space-between; }
-        .bar .track { height: 8px; background: #e5e5ea; border-radius: 4px; margin-top: 10px; overflow: hidden; }
-        .bar .fill { height: 100%; width: 0; background: var(--apple-text-primary); border-radius: 4px; transition: width 0.35s ease; }
-        .bar .note { font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px; min-height: 1.2em; }
-        .risk-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
-        .risk { display: grid; grid-template-columns: 170px 92px 1fr; gap: 14px; align-items: start; padding: 12px 14px; border-radius: 12px; background: var(--apple-bg-page); }
-        .risk .name { font-weight: 600; font-size: 14px; }
-        .risk .name small { display: block; font-weight: 400; font-size: 12px; color: var(--apple-text-secondary); }
-        .level { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-button); color: #fff; text-align: center; min-width: 78px; }
-        .level.l0 { background: var(--accent-green); }
-        .level.l1 { background: var(--accent-amber); }
-        .level.l2 { background: var(--accent-red); }
-        .risk .why { font-size: 13px; color: var(--apple-text-secondary); line-height: 1.45; }
-        @media (max-width: 640px) { .risk { grid-template-columns: 1fr; gap: 6px; } }
-        .verdict { margin-top: 18px; padding: 16px 18px; border-radius: 12px; font-size: 15px; font-weight: 600; }
+        .results { transition: opacity 0.3s var(--ease); }
+        .results.off { opacity: 0.3; }
+        .pattern { font-size: clamp(16px, 2.8vh, 24px); font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+        .pattern.enter { animation: enter 0.4s var(--ease); }
+        @keyframes enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+        .desc { margin: 2px 0 0; color: var(--grey); font-size: var(--fs); }
+        .bars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .bar { background: var(--page); border-radius: 12px; padding: 8px 10px; }
+        .bar .t { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey); }
+        .bar .t b { color: var(--ink); font-size: 12px; }
+        .bar .track { height: 6px; background: #e5e5ea; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+        .bar .fill { height: 100%; width: 0; background: var(--ink); border-radius: 3px; transition: width 0.5s var(--ease); }
+        .risks { flex: 1; min-height: 0; display: grid; grid-template-rows: repeat(5, 1fr); gap: 6px; }
+        .risk { display: grid; grid-template-columns: minmax(96px, 0.55fr) 92px minmax(0, 2fr); gap: 10px; align-items: center; background: var(--page); border-radius: 12px; padding: 4px 12px; min-height: 0; }
+        .risk .n { font-weight: 700; font-size: var(--fs); line-height: 1.15; }
+        .risk .n small { display: block; font-weight: 400; font-size: 10.5px; color: var(--grey3); }
+        .lvl { font-size: 11px; font-weight: 700; padding: 4px 0; border-radius: 980px; color: #fff; text-align: center; transition: background 0.3s var(--ease); }
+        .lvl.l0 { background: var(--green); } .lvl.l1 { background: var(--amber); } .lvl.l2 { background: var(--red); }
+        .lvl.pop { animation: pop 0.45s var(--ease); }
+        .risk .w { font-size: clamp(11px, 1.6vh, 13px); color: var(--grey); line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+        .verdict { border-radius: 12px; padding: 8px 14px; font-weight: 700; font-size: var(--fs); transition: background 0.4s var(--ease), color 0.4s var(--ease); display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
         .verdict.ok { background: #e9f9ee; color: #1d6b34; }
         .verdict.over { background: #fdecea; color: #a8180f; }
-        .verdict span { display: block; font-weight: 400; font-size: 13px; margin-top: 4px; }
-        .owner { margin-top: 12px; font-size: 14px; }
-        .owner strong { color: var(--apple-text-primary); }
-        .empty-msg { display: none; margin: 8px 0 0; font-size: 14px; color: var(--accent-red); font-weight: 600; }
-        .empty-msg.show { display: block; }
+        .verdict small { display: block; font-weight: 400; font-size: 12px; margin-top: 1px; }
+        .verdict .owner { font-size: 12px; font-weight: 500; text-align: right; opacity: 0.85; }
+        .verdict .owner b { display: block; font-weight: 700; }
 
-        details { border-top: 1px solid var(--apple-border); margin-top: 20px; }
-        summary { cursor: pointer; padding: 14px 0; font-weight: 600; font-size: 15px; list-style: none; }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; float: right; color: var(--apple-text-secondary); }
-        details[open] summary::after { content: '\2013'; }
-        details ul { margin: 0 0 14px; padding-left: 20px; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55; }
-        footer { text-align: center; padding: 24px 0 16px; color: var(--apple-text-tertiary); font-size: 12px; }
-        footer a { color: var(--apple-text-secondary); }
+        /* Overlay */
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+        .overlay.show { display: flex; }
+        .sheet { background: #fff; border-radius: 20px; max-width: 720px; max-height: 88vh; overflow: auto; padding: 24px 28px; box-shadow: 0 24px 60px rgba(0,0,0,0.25); animation: enter 0.3s var(--ease); }
+        .sheet h2 { margin: 0 0 6px; font-size: 20px; }
+        .sheet ul { margin: 10px 0 0; padding-left: 20px; color: var(--grey); font-size: 13px; line-height: 1.5; }
+        .sheet li { margin-bottom: 6px; }
+        .sheet li strong { color: var(--ink); }
+
+        @media (max-width: 900px) {
+            body { height: auto; overflow: auto; }
+            main { grid-template-columns: 1fr; }
+            .pipeline { grid-template-columns: 1fr 1fr; }
+            .arrow { display: none; }
+            .slot { min-height: 130px; }
+            .risks { grid-template-rows: none; }
+            .risk { grid-template-columns: 1fr; gap: 4px; padding: 8px 12px; }
+            .seg { margin: 0; flex-wrap: wrap; }
+            .top { flex-wrap: wrap; }
+        }
     </style>
 </head>
 <body>
-    <nav class="global-nav">
-        <div class="nav-content">
-            <a class="nav-brand" href="governance.html">The Matts</a>
-            <a href="governance.html#exercises">Back to the exercises</a>
+    <div class="top">
+        <div class="brand">Place the human<small>Where the person sits changes the risk</small></div>
+        <div class="legend" aria-label="Risk colours"><span class="lvl l0">Low risk</span><span class="lvl l1">Medium risk</span><span class="lvl l2">High risk</span></div>
+        <div class="right">
+            <button class="ghost" type="button" id="how-btn">How is this scored?</button>
+            <a class="ghost" href="governance.html#exercises">Exercises</a>
         </div>
-    </nav>
+    </div>
+    <div class="stakes" id="stakes"><strong>Today's task:</strong> a meeting transcript becomes a summary, an action table and an email to attendees. Internal, low sensitivity, easy to correct. The pasted transcript can carry a line aimed at the agent.</div>
 
-    <div class="container">
-        <header class="hero">
-            <h1>Place the human</h1>
-            <p class="subtitle">Where the person sits changes the risk</p>
-        </header>
-
-        <section class="section-card">
-            <div class="eyebrow">1. Pick the task</div>
-            <div class="pills" id="tasks" role="group" aria-label="Task"></div>
-            <p class="muted" id="stakes" style="margin:0;"></p>
-        </section>
-
-        <section class="section-card">
-            <div class="eyebrow">2. Place the tokens</div>
-            <p class="muted" style="margin:0 0 4px;">Drag a token onto a stage, or click a stage to cycle Human, AI, Nobody. Four stages: who writes the brief, who drafts, who checks, who signs it off and sends it.</p>
-            <div class="palette" aria-label="Tokens to drag">
-                <span class="palette-label">Drag:</span>
-                <span class="token H" draggable="true" data-token="H"><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Human</span>
-                <span class="token A" draggable="true" data-token="A"><span class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>AI</span>
-                <span class="token N" draggable="true" data-token="N"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></span>Nobody</span>
+    <main>
+        <section class="panel">
+            <div>
+                <div class="label">Pick a token, then click a stage</div>
+                <div class="tokens" id="tokens">
+                    <span class="token H" draggable="true" data-token="H" role="button" tabindex="0"><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Human</span>
+                    <span class="token A" draggable="true" data-token="A" role="button" tabindex="0"><span class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>AI</span>
+                    <span class="token N" draggable="true" data-token="N" role="button" tabindex="0"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></span>Nobody</span>
+                    <span class="hint">or click a stage to cycle, or drag.</span>
+                </div>
             </div>
             <div class="pipeline" id="pipeline"></div>
-            <p class="empty-msg" id="empty-msg">Nothing gets produced: someone or something has to draft it. Put Human or AI in Draft.</p>
-            <div class="eyebrow" style="margin-top:14px;">Or load a layout from today</div>
-            <div class="pills" id="presets" role="group" aria-label="Presets"></div>
-        </section>
-
-        <section class="section-card results" id="results">
-            <div class="eyebrow">3. What that layout does</div>
-            <p class="pattern-name" id="pattern-name"></p>
-            <p class="muted" id="pattern-desc" style="margin:0;"></p>
-
-            <div class="bars">
-                <div class="bar"><div class="label"><span>Speed</span><span id="v-speed"></span></div><div class="track"><div class="fill" id="b-speed"></div></div><div class="note" id="n-speed"></div></div>
-                <div class="bar"><div class="label"><span>Errors caught</span><span id="v-errors"></span></div><div class="track"><div class="fill" id="b-errors"></div></div><div class="note" id="n-errors"></div></div>
-                <div class="bar"><div class="label"><span>Human effort</span><span id="v-effort"></span></div><div class="track"><div class="fill" id="b-effort"></div></div><div class="note" id="n-effort"></div></div>
+            <p class="empty" id="empty">Nothing gets produced: put Human or AI in Draft.</p>
+            <div>
+                <div class="label" style="margin-bottom:6px;">Load a layout from today</div>
+                <div class="presets" id="presets"></div>
             </div>
-
-            <ul class="risk-list" id="risks"></ul>
-
-            <div class="verdict" id="verdict"></div>
-            <p class="owner" id="owner"></p>
-
-            <details>
-                <summary>How this is scored</summary>
-                <ul>
-                    <li><strong>This is a teaching model, not a measurement.</strong> The live runs in Exercise 05 are the measurement. The rules below are fixed and simple so you can argue with them.</li>
-                    <li><strong>Speed</strong> starts at 100. A human costs 10 at the brief, 45 at the draft, 20 at the check and 10 at sign off. An AI costs 5 per stage. Nobody costs nothing.</li>
-                    <li><strong>Errors caught</strong> starts at 55 for an AI draft or 70 for a human draft, then adds 15 for a human brief (the rules are written down), 5 for an AI brief, 25 for a human check, 12 for an AI check (format and consistency, not truth) and 5 for a human sign off. If an AI drafted and an AI checked and the only human is at the end without a written brief, that final 5 is lost: the human skims because two agents already "checked".</li>
-                    <li><strong>Human effort</strong> counts 1 for the brief, 4 for drafting, 2 for checking, 1 for signing, out of 8. Six or more is flagged as fatigue.</li>
-                    <li><strong>Accountability</strong> is Low if a human signs off, Medium if a human checked or drafted but nobody signed, otherwise High.</li>
-                    <li><strong>Data and legal</strong> starts at the task's sensitivity, drops a level if a person reads it before it leaves and another if the brief is human-written, and is High whenever an AI drafted and no person reads it.</li>
-                    <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the input is to pasted instructions, and drops a level for a human read before send and for a human brief.</li>
-                    <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse when the task is hard to undo.</li>
-                    <li><strong>People</strong> is High on the fatigue flag, Medium when a human both checks and signs off or on the rubber-stamp flag, otherwise Low.</li>
-                    <li><strong>Appetite</strong>: over appetite if any row is High, or if there are more Medium rows than the task allows (meeting notes 3, the student reply 1, the public page 1).</li>
-                </ul>
-            </details>
         </section>
 
-        <footer>
-            <p>Part of the <a href="governance.html">AI Governance workshop</a>. Dr. Matt Mort and Mr. Matt Hayden. Materials © 2026.</p>
-        </footer>
+        <section class="panel results" id="results">
+            <div>
+                <div class="label">What that layout does. Green is low risk, red is high.</div>
+                <p class="pattern" id="pattern-name"></p>
+                <p class="desc" id="pattern-desc"></p>
+            </div>
+            <div class="bars">
+                <div class="bar"><div class="t"><span>Speed</span><b id="v-speed"></b></div><div class="track"><div class="fill" id="b-speed"></div></div></div>
+                <div class="bar"><div class="t"><span>Errors caught</span><b id="v-errors"></b></div><div class="track"><div class="fill" id="b-errors"></div></div></div>
+                <div class="bar"><div class="t"><span>Human effort</span><b id="v-effort"></b></div><div class="track"><div class="fill" id="b-effort"></div></div></div>
+            </div>
+            <div class="risks" id="risks"></div>
+            <div class="verdict" id="verdict"></div>
+        </section>
+    </main>
+
+    <div class="overlay" id="overlay">
+        <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="how-title">
+            <h2 id="how-title">How this is scored</h2>
+            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live runs in Exercise 05 are the measurement. The rules are fixed and simple so you can argue with them.</p>
+            <ul>
+                <li><strong>Speed</strong> starts at 100. A human costs 10 at the brief, 45 at the draft, 20 at the check and 10 at sign off. An AI costs 5 per stage. Nobody costs nothing.</li>
+                <li><strong>Errors caught</strong> starts at 55 for an AI draft or 70 for a human draft, then adds 15 for a human brief (the rules are written down), 5 for an AI brief, 25 for a human check, 12 for an AI check (format and consistency, not truth) and 5 for a human sign off. If an AI drafted and an AI checked and the only human is at the end without a written brief, that final 5 is lost: the human skims because two agents already "checked".</li>
+                <li><strong>Human effort</strong> counts 1 for the brief, 4 for drafting, 2 for checking, 1 for signing, out of 8. Six or more is flagged as fatigue.</li>
+                <li><strong>Accountability</strong> is Low if a human signs off, Medium if a human checked or drafted but nobody signed, otherwise High.</li>
+                <li><strong>Data and legal</strong> starts at the task's sensitivity, drops a level if a person reads it before it leaves and another if the brief is human-written, and is High whenever an AI drafted and no person reads it.</li>
+                <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the input is to pasted instructions, and drops a level for a human read before send and for a human brief.</li>
+                <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse when the task is hard to undo.</li>
+                <li><strong>People</strong> is Medium when most of the work sits with people (fatigue), when a human both checks and signs off, or on the rubber-stamp flag, otherwise Low. Nothing here is High: people problems show up as slowness and skipped checks, which the other rows then catch.</li>
+                <li><strong>Appetite</strong>: over appetite if any row is High, or if more than three rows are Medium.</li>
+            </ul>
+            <p style="margin:16px 0 0; text-align:right;"><button class="ghost" type="button" id="how-close">Close</button></p>
+        </div>
     </div>
 
     <script>
     (function () {
         var TASKS = {
-            meeting: { label: 'Meeting notes to attendees', sens: 1, inj: 2, rev: 'high', allowMed: 3,
+            meeting: { label: 'Meeting notes', sens: 1, inj: 2, rev: 'high', allowMed: 3,
                 stakes: 'Today\'s task. Internal audience, low sensitivity, easy to correct with a follow-up. The input is a pasted transcript, which can carry instructions aimed at the agent.',
                 dataBase: 'Meeting notes rarely carry much sensitive detail, but salaries and personal news do come up.',
                 secBase: 'A pasted transcript can carry a line aimed at the agent.' },
-            student: { label: 'Reply to a student about extenuating circumstances', sens: 3, inj: 1, rev: 'low', allowMed: 1,
+            student: { label: 'Student reply', sens: 3, inj: 1, rev: 'low', allowMed: 1,
                 stakes: 'One recipient, a health detail in the input, a decision the student will act on. Hard to undo once sent, and the university is answerable for it.',
                 dataBase: 'The input holds a health detail about a named student.',
                 secBase: 'Low exposure: the input is a form and a record, not a pasted document.' },
-            public: { label: 'Public web page about a policy change', sens: 2, inj: 1, rev: 'very low', allowMed: 1,
+            public: { label: 'Public web page', sens: 2, inj: 1, rev: 'very low', allowMed: 1,
                 stakes: 'Everyone can read it and screenshots last forever. Internal detail that should not be public, a wrong date or a made-up figure all become news.',
                 dataBase: 'Internal detail could reach the public.',
                 secBase: 'Low exposure: the source material is internal documents.' }
@@ -248,6 +226,7 @@
         ];
         var NAMES = { H: 'Human', A: 'AI', N: 'Nobody' };
         var PRESETS = [
+            { key: 'human', label: 'Start: all human', slots: 'HHHH' },
             { key: 'A', label: 'Run A: check at the end', slots: 'NAAH' },
             { key: 'B', label: 'Run B: check in the middle', slots: 'NAHA' },
             { key: 'C', label: 'Run C: brief first', slots: 'HAAH' },
@@ -328,7 +307,7 @@
 
             // People
             var p, pWhy;
-            if (fatigue) { p = 2; pWhy = 'Too much of the work sits with people. On a busy day the checks get skipped.'; }
+            if (fatigue) { p = 1; pWhy = 'Most of the work sits with people. Safe and slow, and on a busy day the checks get skipped.'; }
             else if (doubleRead) { p = 1; pWhy = 'Two human reads of every item. Right for high stakes, and it will not survive a busy week on routine work.'; }
             else if (rubber) { p = 1; pWhy = 'Two agents already "checked", so the human at the end skims. That is rubber stamping.'; }
             else { p = 0; pWhy = 'Human effort is spread thinly enough for the checks to stay real.'; }
@@ -371,9 +350,11 @@
             if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI drafts and it leaves. Nothing stands between the model and the recipient.' };
             return { name: 'Your layout', desc: 'Not one of today\'s named patterns. Read the rows.' };
         }
-
         // ---- state and UI ----
-        var state = { task: 'meeting', slots: { B: 'N', D: 'A', C: 'A', S: 'H' } };
+        var state = { task: 'meeting', slots: { B: 'H', D: 'H', C: 'H', S: 'H' } };
+        var selectedToken = null;
+        var lastLevels = {};
+        var lastPattern = '';
 
         function parseHash() {
             var h = location.hash.replace(/^#/, '');
@@ -386,27 +367,30 @@
         }
         function writeHash() {
             var s = state.slots;
-            var h = '#t=' + state.task + '&s=' + s.B + s.D + s.C + s.S;
+            var h = '#s=' + s.B + s.D + s.C + s.S;
             if (location.hash !== h) history.replaceState(null, '', h);
         }
         function slotString() { var s = state.slots; return s.B + s.D + s.C + s.S; }
-
-        function buildTasks() {
-            var el = document.getElementById('tasks');
-            Object.keys(TASKS).forEach(function (k) {
-                var b = document.createElement('button');
-                b.className = 'pill'; b.type = 'button'; b.textContent = TASKS[k].label; b.dataset.task = k;
-                b.addEventListener('click', function () { state.task = k; render(); });
-                el.appendChild(b);
-            });
+        function setSlot(key, v) {
+            var changed = state.slots[key] !== v;
+            state.slots[key] = v;
+            render();
+            if (changed) { var b = document.querySelector('.slot[data-stage="' + key + '"] .big'); b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
         }
+        function selectToken(tok) {
+            selectedToken = (selectedToken === tok) ? null : tok;
+            document.querySelectorAll('.token').forEach(function (t) { t.classList.toggle('selected', t.dataset.token === selectedToken); });
+            document.querySelectorAll('.slot').forEach(function (s) { s.classList.toggle('target', !!selectedToken); });
+        }
+
         function buildPresets() {
             var el = document.getElementById('presets');
             PRESETS.forEach(function (p) {
                 var b = document.createElement('button');
-                b.className = 'pill preset'; b.type = 'button'; b.textContent = p.label; b.dataset.preset = p.key;
+                b.className = 'pill'; b.type = 'button'; b.textContent = p.label; b.dataset.preset = p.key;
                 b.addEventListener('click', function () {
                     state.slots = { B: p.slots[0], D: p.slots[1], C: p.slots[2], S: p.slots[3] }; render();
+                    document.querySelectorAll('.slot .big').forEach(function (x) { x.classList.remove('pop'); void x.offsetWidth; x.classList.add('pop'); });
                 });
                 el.appendChild(b);
             });
@@ -416,22 +400,25 @@
             STAGES.forEach(function (st, i) {
                 var b = document.createElement('button');
                 b.className = 'slot'; b.type = 'button'; b.dataset.stage = st.key;
-                b.innerHTML = '<span class="stage">' + st.label + '</span><span class="big"></span><span class="who"></span><span class="hint">' + st.hint + '</span>';
+                b.innerHTML = '<span class="stage">' + st.label + '</span><span class="big"></span><span class="who"></span><span class="sub">' + st.hint + '</span>';
                 b.addEventListener('click', function () {
+                    if (selectedToken) { var t = selectedToken; selectToken(null); setSlot(st.key, t); return; }
                     var order = ['H', 'A', 'N'];
-                    state.slots[st.key] = order[(order.indexOf(state.slots[st.key]) + 1) % 3]; render();
+                    setSlot(st.key, order[(order.indexOf(state.slots[st.key]) + 1) % 3]);
                 });
                 b.addEventListener('dragover', function (e) { e.preventDefault(); b.classList.add('over'); });
                 b.addEventListener('dragleave', function () { b.classList.remove('over'); });
                 b.addEventListener('drop', function (e) {
                     e.preventDefault(); b.classList.remove('over');
                     var tok = e.dataTransfer.getData('text/plain');
-                    if (/^[HAN]$/.test(tok)) { state.slots[st.key] = tok; render(); }
+                    if (/^[HAN]$/.test(tok)) { selectToken(null); setSlot(st.key, tok); }
                 });
                 el.appendChild(b);
                 if (i < STAGES.length - 1) { var a = document.createElement('div'); a.className = 'arrow'; a.textContent = '→'; el.appendChild(a); }
             });
             document.querySelectorAll('.token').forEach(function (tk) {
+                tk.addEventListener('click', function () { selectToken(tk.dataset.token); });
+                tk.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectToken(tk.dataset.token); } });
                 tk.addEventListener('dragstart', function (e) {
                     e.dataTransfer.setData('text/plain', tk.dataset.token);
                     e.dataTransfer.effectAllowed = 'copy';
@@ -440,8 +427,6 @@
         }
 
         function render() {
-            document.querySelectorAll('#tasks .pill').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.task === state.task ? 'true' : 'false'); });
-            document.getElementById('stakes').textContent = TASKS[state.task].stakes;
             var ss = slotString();
             document.querySelectorAll('#presets .pill').forEach(function (b) {
                 var p = PRESETS.filter(function (x) { return x.key === b.dataset.preset; })[0];
@@ -457,34 +442,45 @@
 
             var r = score(state.task, state.slots);
             var res = document.getElementById('results');
-            var em = document.getElementById('empty-msg');
+            var em = document.getElementById('empty');
             if (!r.produced) { res.classList.add('off'); em.classList.add('show'); writeHash(); return; }
             res.classList.remove('off'); em.classList.remove('show');
 
-            document.getElementById('pattern-name').textContent = r.pattern.name;
+            var pn = document.getElementById('pattern-name');
+            if (pn.textContent !== r.pattern.name) { pn.classList.remove('enter'); void pn.offsetWidth; pn.classList.add('enter'); }
+            pn.textContent = r.pattern.name;
             document.getElementById('pattern-desc').textContent = r.pattern.desc;
-            setBar('speed', r.speed, r.speed >= 70 ? 'Quick enough to use every day.' : (r.speed >= 40 ? 'A pause for a person somewhere.' : 'People do most of the work.'));
-            setBar('errors', r.errors, r.errors > 75 ? 'Most of the planted traps would be caught.' : (r.errors >= 50 ? 'Some traps get through.' : 'Most traps reach the recipient.'));
-            setBar('effort', Math.round(r.effort / 8 * 100), r.effort + ' of 8. ' + (r.flags.indexOf('fatigue') >= 0 ? 'Fatigue flag.' : (r.flags.indexOf('double') >= 0 ? 'Two human reads.' : (r.flags.indexOf('rubber') >= 0 ? 'Rubber-stamp flag.' : 'Sustainable.'))));
+            setBar('speed', r.speed, r.speed);
+            setBar('errors', r.errors, r.errors);
+            setBar('effort', Math.round(r.effort / 8 * 100), r.effort + ' of 8');
 
-            var list = document.getElementById('risks'); list.innerHTML = '';
+            var list = document.getElementById('risks');
+            if (!list.children.length) {
+                r.rows.forEach(function (row) {
+                    var d = document.createElement('div'); d.className = 'risk'; d.dataset.key = row.key;
+                    d.innerHTML = '<div class="n">' + row.name + '<small>' + row.sub + '</small></div><div class="lvl"></div><div class="w"></div>';
+                    list.appendChild(d);
+                });
+            }
             r.rows.forEach(function (row) {
-                var li = document.createElement('li'); li.className = 'risk';
-                li.innerHTML = '<div class="name">' + row.name + '<small>' + row.sub + '</small></div><div><span class="level l' + row.level + '">' + lvl(row.level) + '</span></div><div class="why"></div>';
-                li.querySelector('.why').textContent = row.why;
-                list.appendChild(li);
+                var d = list.querySelector('[data-key="' + row.key + '"]');
+                var l = d.querySelector('.lvl');
+                l.className = 'lvl l' + row.level; l.textContent = ['Low risk', 'Medium risk', 'High risk'][row.level];
+                if (lastLevels[row.key] !== undefined && lastLevels[row.key] !== row.level) { void l.offsetWidth; l.classList.add('pop'); }
+                lastLevels[row.key] = row.level;
+                d.querySelector('.w').textContent = row.why;
             });
             var v = document.getElementById('verdict');
             v.className = 'verdict ' + (r.over ? 'over' : 'ok');
-            v.innerHTML = ''; v.appendChild(document.createTextNode(r.verdict));
-            var sp = document.createElement('span'); sp.textContent = r.verdictWhy; v.appendChild(sp);
-            var o = document.getElementById('owner'); o.innerHTML = 'Whose name is on it? <strong></strong>'; o.querySelector('strong').textContent = r.owner;
+            v.innerHTML = '<div></div><div class="owner">Whose name is on it?<b></b></div>';
+            var left = v.firstChild; left.appendChild(document.createTextNode(r.verdict));
+            var sm = document.createElement('small'); sm.textContent = r.verdictWhy; left.appendChild(sm);
+            v.querySelector('.owner b').textContent = r.owner;
             writeHash();
         }
-        function setBar(k, val, note) {
-            document.getElementById('v-' + k).textContent = val;
+        function setBar(k, val, text) {
+            document.getElementById('v-' + k).textContent = text;
             document.getElementById('b-' + k).style.width = val + '%';
-            document.getElementById('n-' + k).textContent = note;
         }
 
         window.hitlScore = function (taskKey, slots) {
@@ -492,8 +488,14 @@
             return score(taskKey, s);
         };
 
+        var ov = document.getElementById('overlay');
+        document.getElementById('how-btn').addEventListener('click', function () { ov.classList.add('show'); });
+        document.getElementById('how-close').addEventListener('click', function () { ov.classList.remove('show'); });
+        ov.addEventListener('click', function (e) { if (e.target === ov) ov.classList.remove('show'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { ov.classList.remove('show'); selectToken(null); } });
+
         parseHash();
-        buildTasks(); buildPresets(); buildPipeline();
+        buildPresets(); buildPipeline();
         window.addEventListener('hashchange', function () { parseHash(); render(); });
         render();
     })();
