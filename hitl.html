@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Matts - Place the Human</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Design tokens shared with governance.html and trial.html */
+        :root {
+            --apple-blue: #0071e3;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #6e6e73;
+            --apple-text-tertiary: #86868b;
+            --apple-bg-page: #f5f5f7;
+            --apple-bg-card: #ffffff;
+            --apple-border: #e5e5ea;
+            --apple-border-light: rgba(0, 0, 0, 0.06);
+            --accent-green: #34c759;
+            --accent-amber: #ff9f0a;
+            --accent-red: #e4251b;
+            --radius-card: 22px;
+            --radius-medium: 14px;
+            --radius-button: 980px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+            --font-stack: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--apple-bg-page);
+            color: var(--apple-text-primary);
+            margin: 0; padding: 0;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.47; letter-spacing: -0.022em;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 24px 22px 40px; }
+        .global-nav {
+            position: sticky; top: 0; z-index: 9999;
+            background-color: rgba(255,255,255,0.85);
+            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--apple-border-light);
+            height: 52px; display: flex; align-items: center; justify-content: center;
+        }
+        .nav-content { display: flex; gap: 32px; align-items: center; }
+        .nav-brand { font-size: 13px; font-weight: 600; color: var(--apple-text-primary); text-decoration: none; }
+        .global-nav a { color: var(--apple-text-primary); text-decoration: none; font-size: 13px; opacity: 0.75; }
+        .global-nav a:hover { opacity: 1; color: var(--apple-blue); }
+        header.hero { text-align: center; padding: 56px 0 32px; }
+        h1 { font-size: 44px; line-height: 1.05; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 14px; }
+        .subtitle { font-size: 12px; font-weight: 500; color: var(--apple-text-tertiary); text-transform: uppercase; letter-spacing: 0.18em; margin: 0; }
+        h2 { font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 8px; }
+        h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+        .section-card { background: var(--apple-bg-card); border-radius: var(--radius-card); padding: 30px 36px; margin-bottom: 24px; box-shadow: var(--shadow-card); }
+        @media (max-width: 734px) { .section-card { padding: 22px 18px; } h1 { font-size: 32px; } }
+        .eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--apple-blue); margin-bottom: 8px; }
+        .muted { color: var(--apple-text-secondary); font-size: 14px; line-height: 1.5; }
+
+        /* Task pills */
+        .pills { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 10px; }
+        .pill {
+            font-family: inherit; font-size: 13px; font-weight: 600; color: var(--apple-text-primary);
+            background: var(--apple-bg-page); border: 1px solid var(--apple-border); border-radius: var(--radius-button);
+            padding: 9px 16px; cursor: pointer; transition: var(--transition);
+        }
+        .pill:hover { border-color: var(--apple-text-tertiary); }
+        .pill[aria-pressed="true"] { background: var(--apple-text-primary); color: #fff; border-color: var(--apple-text-primary); }
+        .pill.preset[aria-pressed="true"] { background: var(--apple-blue); border-color: var(--apple-blue); }
+
+        /* Palette */
+        .palette { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 16px 0 10px; }
+        .palette-label { font-size: 13px; color: var(--apple-text-secondary); margin-right: 4px; }
+        .token {
+            display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px;
+            border-radius: var(--radius-button); font-size: 13px; font-weight: 600; cursor: grab; user-select: none;
+            border: 1px solid var(--apple-border); background: #fff; transition: var(--transition);
+        }
+        .token:active { cursor: grabbing; }
+        .token .dot { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .token.H .dot { background: var(--accent-red); }
+        .token.A .dot { background: #48484a; }
+        .token.N .dot { background: transparent; border: 2px dashed #c7c7cc; }
+        .token .dot svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .token.N .dot svg { stroke: #c7c7cc; }
+
+        /* Pipeline */
+        .pipeline { display: grid; grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr; gap: 6px; align-items: stretch; margin: 12px 0 18px; }
+        .arrow { display: flex; align-items: center; justify-content: center; color: #c7c7cc; font-size: 18px; }
+        .slot {
+            font-family: inherit; text-align: center; background: var(--apple-bg-page); border: 2px solid transparent;
+            border-radius: var(--radius-medium); padding: 16px 10px 14px; cursor: pointer; transition: var(--transition); min-height: 150px;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px;
+        }
+        .slot:hover { border-color: var(--apple-border); }
+        .slot:focus-visible { outline: 2px solid var(--apple-blue); outline-offset: 2px; }
+        .slot.over { border-color: var(--apple-blue); background: #eef5ff; }
+        .slot .stage { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--apple-text-secondary); }
+        .slot .big { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: var(--transition); }
+        .slot .big svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .slot[data-value="H"] .big { background: var(--accent-red); }
+        .slot[data-value="A"] .big { background: #48484a; }
+        .slot[data-value="N"] .big { background: transparent; border: 2px dashed #c7c7cc; }
+        .slot[data-value="N"] .big svg { stroke: #c7c7cc; }
+        .slot .who { font-size: 15px; font-weight: 600; }
+        .slot .hint { font-size: 11px; color: var(--apple-text-tertiary); }
+        @media (max-width: 640px) {
+            .pipeline { grid-template-columns: 1fr 1fr; }
+            .arrow { display: none; }
+        }
+
+        /* Results */
+        .results { transition: opacity 0.25s ease; }
+        .results.off { opacity: 0.35; pointer-events: none; }
+        .pattern-name { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+        .bars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 18px 0 22px; }
+        .bar { background: var(--apple-bg-page); border-radius: 12px; padding: 14px 16px; }
+        .bar .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--apple-text-secondary); display: flex; justify-content: space-between; }
+        .bar .track { height: 8px; background: #e5e5ea; border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .bar .fill { height: 100%; width: 0; background: var(--apple-text-primary); border-radius: 4px; transition: width 0.35s ease; }
+        .bar .note { font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px; min-height: 1.2em; }
+        .risk-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+        .risk { display: grid; grid-template-columns: 170px 92px 1fr; gap: 14px; align-items: start; padding: 12px 14px; border-radius: 12px; background: var(--apple-bg-page); }
+        .risk .name { font-weight: 600; font-size: 14px; }
+        .risk .name small { display: block; font-weight: 400; font-size: 12px; color: var(--apple-text-secondary); }
+        .level { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-button); color: #fff; text-align: center; min-width: 78px; }
+        .level.l0 { background: var(--accent-green); }
+        .level.l1 { background: var(--accent-amber); }
+        .level.l2 { background: var(--accent-red); }
+        .risk .why { font-size: 13px; color: var(--apple-text-secondary); line-height: 1.45; }
+        @media (max-width: 640px) { .risk { grid-template-columns: 1fr; gap: 6px; } }
+        .verdict { margin-top: 18px; padding: 16px 18px; border-radius: 12px; font-size: 15px; font-weight: 600; }
+        .verdict.ok { background: #e9f9ee; color: #1d6b34; }
+        .verdict.over { background: #fdecea; color: #a8180f; }
+        .verdict span { display: block; font-weight: 400; font-size: 13px; margin-top: 4px; }
+        .owner { margin-top: 12px; font-size: 14px; }
+        .owner strong { color: var(--apple-text-primary); }
+        .empty-msg { display: none; margin: 8px 0 0; font-size: 14px; color: var(--accent-red); font-weight: 600; }
+        .empty-msg.show { display: block; }
+
+        details { border-top: 1px solid var(--apple-border); margin-top: 20px; }
+        summary { cursor: pointer; padding: 14px 0; font-weight: 600; font-size: 15px; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; float: right; color: var(--apple-text-secondary); }
+        details[open] summary::after { content: '\2013'; }
+        details ul { margin: 0 0 14px; padding-left: 20px; font-size: 13px; color: var(--apple-text-secondary); line-height: 1.55; }
+        footer { text-align: center; padding: 24px 0 16px; color: var(--apple-text-tertiary); font-size: 12px; }
+        footer a { color: var(--apple-text-secondary); }
+    </style>
+</head>
+<body>
+    <nav class="global-nav">
+        <div class="nav-content">
+            <a class="nav-brand" href="governance.html">The Matts</a>
+            <a href="governance.html#exercises">Back to the exercises</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <h1>Place the human</h1>
+            <p class="subtitle">Where the person sits changes the risk</p>
+        </header>
+
+        <section class="section-card">
+            <div class="eyebrow">1. Pick the task</div>
+            <div class="pills" id="tasks" role="group" aria-label="Task"></div>
+            <p class="muted" id="stakes" style="margin:0;"></p>
+        </section>
+
+        <section class="section-card">
+            <div class="eyebrow">2. Place the tokens</div>
+            <p class="muted" style="margin:0 0 4px;">Drag a token onto a stage, or click a stage to cycle Human, AI, Nobody. Four stages: who writes the brief, who drafts, who checks, who signs it off and sends it.</p>
+            <div class="palette" aria-label="Tokens to drag">
+                <span class="palette-label">Drag:</span>
+                <span class="token H" draggable="true" data-token="H"><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Human</span>
+                <span class="token A" draggable="true" data-token="A"><span class="dot"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>AI</span>
+                <span class="token N" draggable="true" data-token="N"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></span>Nobody</span>
+            </div>
+            <div class="pipeline" id="pipeline"></div>
+            <p class="empty-msg" id="empty-msg">Nothing gets produced: someone or something has to draft it. Put Human or AI in Draft.</p>
+            <div class="eyebrow" style="margin-top:14px;">Or load a layout from today</div>
+            <div class="pills" id="presets" role="group" aria-label="Presets"></div>
+        </section>
+
+        <section class="section-card results" id="results">
+            <div class="eyebrow">3. What that layout does</div>
+            <p class="pattern-name" id="pattern-name"></p>
+            <p class="muted" id="pattern-desc" style="margin:0;"></p>
+
+            <div class="bars">
+                <div class="bar"><div class="label"><span>Speed</span><span id="v-speed"></span></div><div class="track"><div class="fill" id="b-speed"></div></div><div class="note" id="n-speed"></div></div>
+                <div class="bar"><div class="label"><span>Errors caught</span><span id="v-errors"></span></div><div class="track"><div class="fill" id="b-errors"></div></div><div class="note" id="n-errors"></div></div>
+                <div class="bar"><div class="label"><span>Human effort</span><span id="v-effort"></span></div><div class="track"><div class="fill" id="b-effort"></div></div><div class="note" id="n-effort"></div></div>
+            </div>
+
+            <ul class="risk-list" id="risks"></ul>
+
+            <div class="verdict" id="verdict"></div>
+            <p class="owner" id="owner"></p>
+
+            <details>
+                <summary>How this is scored</summary>
+                <ul>
+                    <li><strong>This is a teaching model, not a measurement.</strong> The live runs in Exercise 05 are the measurement. The rules below are fixed and simple so you can argue with them.</li>
+                    <li><strong>Speed</strong> starts at 100. A human costs 10 at the brief, 45 at the draft, 20 at the check and 10 at sign off. An AI costs 5 per stage. Nobody costs nothing.</li>
+                    <li><strong>Errors caught</strong> starts at 55 for an AI draft or 70 for a human draft, then adds 15 for a human brief (the rules are written down), 5 for an AI brief, 25 for a human check, 12 for an AI check (format and consistency, not truth) and 5 for a human sign off. If an AI drafted and an AI checked and the only human is at the end without a written brief, that final 5 is lost: the human skims because two agents already "checked".</li>
+                    <li><strong>Human effort</strong> counts 1 for the brief, 4 for drafting, 2 for checking, 1 for signing, out of 8. Six or more is flagged as fatigue.</li>
+                    <li><strong>Accountability</strong> is Low if a human signs off, Medium if a human checked or drafted but nobody signed, otherwise High.</li>
+                    <li><strong>Data and legal</strong> starts at the task's sensitivity, drops a level if a person reads it before it leaves and another if the brief is human-written, and is High whenever an AI drafted and no person reads it.</li>
+                    <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the input is to pasted instructions, and drops a level for a human read before send and for a human brief.</li>
+                    <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse when the task is hard to undo.</li>
+                    <li><strong>People</strong> is High on the fatigue flag, Medium when a human both checks and signs off or on the rubber-stamp flag, otherwise Low.</li>
+                    <li><strong>Appetite</strong>: over appetite if any row is High, or if there are more Medium rows than the task allows (meeting notes 3, the student reply 1, the public page 1).</li>
+                </ul>
+            </details>
+        </section>
+
+        <footer>
+            <p>Part of the <a href="governance.html">AI Governance workshop</a>. Dr. Matt Mort and Mr. Matt Hayden. Materials © 2026.</p>
+        </footer>
+    </div>
+
+    <script>
+    (function () {
+        var TASKS = {
+            meeting: { label: 'Meeting notes to attendees', sens: 1, inj: 2, rev: 'high', allowMed: 3,
+                stakes: 'Today\'s task. Internal audience, low sensitivity, easy to correct with a follow-up. The input is a pasted transcript, which can carry instructions aimed at the agent.',
+                dataBase: 'Meeting notes rarely carry much sensitive detail, but salaries and personal news do come up.',
+                secBase: 'A pasted transcript can carry a line aimed at the agent.' },
+            student: { label: 'Reply to a student about extenuating circumstances', sens: 3, inj: 1, rev: 'low', allowMed: 1,
+                stakes: 'One recipient, a health detail in the input, a decision the student will act on. Hard to undo once sent, and the university is answerable for it.',
+                dataBase: 'The input holds a health detail about a named student.',
+                secBase: 'Low exposure: the input is a form and a record, not a pasted document.' },
+            public: { label: 'Public web page about a policy change', sens: 2, inj: 1, rev: 'very low', allowMed: 1,
+                stakes: 'Everyone can read it and screenshots last forever. Internal detail that should not be public, a wrong date or a made-up figure all become news.',
+                dataBase: 'Internal detail could reach the public.',
+                secBase: 'Low exposure: the source material is internal documents.' }
+        };
+        var STAGES = [
+            { key: 'B', label: 'Write the brief', hint: 'set the standard' },
+            { key: 'D', label: 'Draft', hint: 'do the work' },
+            { key: 'C', label: 'Check', hint: 'against the standard' },
+            { key: 'S', label: 'Sign off and send', hint: 'name on it' }
+        ];
+        var NAMES = { H: 'Human', A: 'AI', N: 'Nobody' };
+        var PRESETS = [
+            { key: 'A', label: 'Run A: check at the end', slots: 'NAAH' },
+            { key: 'B', label: 'Run B: check in the middle', slots: 'NAHA' },
+            { key: 'C', label: 'Run C: brief first', slots: 'HAAH' },
+            { key: 'belt', label: 'Conveyor belt (Exercise 03)', slots: 'NAAN' },
+            { key: 'proof', label: 'Human drafts, AI checks', slots: 'NHAH' }
+        ];
+        var ICON = {
+            H: '<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+            A: '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>',
+            N: '<svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>'
+        };
+
+        function clamp(v) { return Math.max(0, Math.min(2, v)); }
+        function lvl(n) { return ['Low', 'Medium', 'High'][n]; }
+
+        function score(taskKey, s) {
+            var t = TASKS[taskKey];
+            var B = s.B, D = s.D, C = s.C, S = s.S;
+            var out = { produced: D !== 'N', flags: [] };
+            if (!out.produced) { return out; }
+
+            var speed = 100;
+            [['B', 10], ['D', 45], ['C', 20], ['S', 10]].forEach(function (p) {
+                if (s[p[0]] === 'H') speed -= p[1]; else if (s[p[0]] === 'A') speed -= 5;
+            });
+            out.speed = speed;
+
+            var humanReads = (C === 'H' || S === 'H');
+            var rubber = (D === 'A' && C === 'A' && S === 'H' && B !== 'H');
+            if (rubber) out.flags.push('rubber');
+            var errors = (D === 'A') ? 55 : 70;
+            if (B === 'H') errors += 15; else if (B === 'A') errors += 5;
+            if (C === 'H') errors += 25; else if (C === 'A') errors += 12;
+            if (S === 'H' && !rubber) errors += 5;
+            out.errors = Math.min(100, errors);
+
+            var effort = (B === 'H' ? 1 : 0) + (D === 'H' ? 4 : 0) + (C === 'H' ? 2 : 0) + (S === 'H' ? 1 : 0);
+            out.effort = effort;
+            var fatigue = (effort >= 6);
+            var doubleRead = (C === 'H' && S === 'H');
+            if (fatigue) out.flags.push('fatigue');
+            if (doubleRead) out.flags.push('double');
+
+            var rows = [];
+            // Accountability
+            var acc, accWhy;
+            if (S === 'H') { acc = 0; accWhy = 'A person signs it off. Their name is on it.'; }
+            else if (C === 'H') { acc = 1; accWhy = 'The person who checked it answers for it, but nobody signed it off before it left.'; }
+            else if (D === 'H') { acc = 1; accWhy = 'The person who drafted it answers for it by default, but nobody signed off what left.'; }
+            else { acc = 2; accWhy = 'No person read or signed it. Nobody answers for it.'; }
+            rows.push({ key: 'acc', name: 'Accountability', sub: 'whose name is on it', level: acc, why: accWhy });
+
+            // Data and legal
+            var data = clamp(t.sens - 1), dataWhy = [t.dataBase];
+            if (humanReads) { data -= 1; dataWhy.push('A person reads it before it leaves.'); }
+            if (B === 'H') { data -= 1; dataWhy.push('The never-include rule is written in the brief.'); }
+            if (D === 'A' && !humanReads) { data = 2; dataWhy.push('AI drafted it and no person reads it before it leaves.'); }
+            data = clamp(data);
+            rows.push({ key: 'data', name: 'Data and legal', sub: 'sensitive detail leaks', level: data, why: dataWhy.join(' ') });
+
+            // Security
+            var anyAI = (B === 'A' || D === 'A' || C === 'A' || S === 'A');
+            var sec, secWhy;
+            if (!anyAI) { sec = 0; secWhy = 'No AI stage, so there is nothing for a pasted instruction to hijack.'; }
+            else {
+                sec = t.inj; var w = [t.secBase];
+                if (humanReads) { sec -= 1; w.push('A person reads before send.'); }
+                if (B === 'H') { sec -= 1; w.push('The brief tells the agent to report instructions, not follow them.'); }
+                sec = clamp(sec); secWhy = w.join(' ');
+            }
+            rows.push({ key: 'sec', name: 'Security', sub: 'the input tells the agent what to do', level: sec, why: secWhy });
+
+            // Quality
+            var q = out.errors < 50 ? 2 : (out.errors <= 75 ? 1 : 0);
+            var qWhy = 'Errors caught scores ' + out.errors + ' out of 100.';
+            if ((t.rev === 'low' || t.rev === 'very low') && q === 1) { q = 2; qWhy += ' A mistake here is hard to undo, so Medium becomes High.'; }
+            rows.push({ key: 'qual', name: 'Quality', sub: 'invented owners and wrong dates get through', level: q, why: qWhy });
+
+            // People
+            var p, pWhy;
+            if (fatigue) { p = 2; pWhy = 'Too much of the work sits with people. On a busy day the checks get skipped.'; }
+            else if (doubleRead) { p = 1; pWhy = 'Two human reads of every item. Right for high stakes, and it will not survive a busy week on routine work.'; }
+            else if (rubber) { p = 1; pWhy = 'Two agents already "checked", so the human at the end skims. That is rubber stamping.'; }
+            else { p = 0; pWhy = 'Human effort is spread thinly enough for the checks to stay real.'; }
+            rows.push({ key: 'people', name: 'People', sub: 'fatigue and rubber stamping', level: p, why: pWhy });
+
+            out.rows = rows;
+            var highs = rows.filter(function (r) { return r.level === 2; });
+            var meds = rows.filter(function (r) { return r.level === 1; });
+            out.over = highs.length > 0 || meds.length > t.allowMed;
+            if (!out.over) {
+                out.verdict = 'Within appetite for this task.';
+                out.verdictWhy = 'No High rows and ' + meds.length + ' Medium (this task allows ' + t.allowMed + ').';
+            } else {
+                out.verdict = 'Over appetite for this task.';
+                var reasons = [];
+                if (highs.length) reasons.push('High: ' + highs.map(function (r) { return r.name; }).join(', '));
+                if (meds.length > t.allowMed) reasons.push(meds.length + ' Medium rows where this task allows ' + t.allowMed);
+                out.verdictWhy = reasons.join('. ') + '.';
+            }
+
+            if (S === 'H') out.owner = 'The person at Sign off and send.';
+            else if (C === 'H') out.owner = 'Nobody signed. The checker is the last person who touched it.';
+            else if (D === 'H') out.owner = 'Nobody signed. The person who drafted it, by default.';
+            else out.owner = 'Nobody.';
+
+            out.pattern = pattern(s);
+            return out;
+        }
+
+        function pattern(s) {
+            var B = s.B, D = s.D, C = s.C, S = s.S;
+            if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Brief first (Run C)', desc: 'A person writes the rules down before anything runs, two agents do the work, a person signs.' };
+            if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Check at the end (Run A)', desc: 'Two agents, one signature. Fast, and the signature is where the risk hides.' };
+            if (D === 'A' && C === 'H' && S === 'A') return { name: 'Check in the middle (Run B)', desc: 'AI drafts, a person reads and fixes, an agent\'s PASS releases it.' };
+            if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI drafts, a person checks and the same or another person signs. Safe and tiring.' };
+            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 03)', desc: 'Two agents agree and nobody reads a word.' };
+            if (D === 'H' && C === 'A') return { name: 'Human drafts, AI checks', desc: 'The AI is a proof-reader. Good at format and consistency, blind to what was said in the room.' };
+            if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How it worked before. Accountable and slow.' };
+            if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No checker, so the person at the end is the only check.' };
+            if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI drafts and it leaves. Nothing stands between the model and the recipient.' };
+            return { name: 'Your layout', desc: 'Not one of today\'s named patterns. Read the rows.' };
+        }
+
+        // ---- state and UI ----
+        var state = { task: 'meeting', slots: { B: 'N', D: 'A', C: 'A', S: 'H' } };
+
+        function parseHash() {
+            var h = location.hash.replace(/^#/, '');
+            if (!h) return;
+            h.split('&').forEach(function (kv) {
+                var p = kv.split('=');
+                if (p[0] === 't' && TASKS[p[1]]) state.task = p[1];
+                if (p[0] === 's' && /^[HAN]{4}$/.test(p[1])) { state.slots = { B: p[1][0], D: p[1][1], C: p[1][2], S: p[1][3] }; }
+            });
+        }
+        function writeHash() {
+            var s = state.slots;
+            var h = '#t=' + state.task + '&s=' + s.B + s.D + s.C + s.S;
+            if (location.hash !== h) history.replaceState(null, '', h);
+        }
+        function slotString() { var s = state.slots; return s.B + s.D + s.C + s.S; }
+
+        function buildTasks() {
+            var el = document.getElementById('tasks');
+            Object.keys(TASKS).forEach(function (k) {
+                var b = document.createElement('button');
+                b.className = 'pill'; b.type = 'button'; b.textContent = TASKS[k].label; b.dataset.task = k;
+                b.addEventListener('click', function () { state.task = k; render(); });
+                el.appendChild(b);
+            });
+        }
+        function buildPresets() {
+            var el = document.getElementById('presets');
+            PRESETS.forEach(function (p) {
+                var b = document.createElement('button');
+                b.className = 'pill preset'; b.type = 'button'; b.textContent = p.label; b.dataset.preset = p.key;
+                b.addEventListener('click', function () {
+                    state.slots = { B: p.slots[0], D: p.slots[1], C: p.slots[2], S: p.slots[3] }; render();
+                });
+                el.appendChild(b);
+            });
+        }
+        function buildPipeline() {
+            var el = document.getElementById('pipeline');
+            STAGES.forEach(function (st, i) {
+                var b = document.createElement('button');
+                b.className = 'slot'; b.type = 'button'; b.dataset.stage = st.key;
+                b.innerHTML = '<span class="stage">' + st.label + '</span><span class="big"></span><span class="who"></span><span class="hint">' + st.hint + '</span>';
+                b.addEventListener('click', function () {
+                    var order = ['H', 'A', 'N'];
+                    state.slots[st.key] = order[(order.indexOf(state.slots[st.key]) + 1) % 3]; render();
+                });
+                b.addEventListener('dragover', function (e) { e.preventDefault(); b.classList.add('over'); });
+                b.addEventListener('dragleave', function () { b.classList.remove('over'); });
+                b.addEventListener('drop', function (e) {
+                    e.preventDefault(); b.classList.remove('over');
+                    var tok = e.dataTransfer.getData('text/plain');
+                    if (/^[HAN]$/.test(tok)) { state.slots[st.key] = tok; render(); }
+                });
+                el.appendChild(b);
+                if (i < STAGES.length - 1) { var a = document.createElement('div'); a.className = 'arrow'; a.textContent = '→'; el.appendChild(a); }
+            });
+            document.querySelectorAll('.token').forEach(function (tk) {
+                tk.addEventListener('dragstart', function (e) {
+                    e.dataTransfer.setData('text/plain', tk.dataset.token);
+                    e.dataTransfer.effectAllowed = 'copy';
+                });
+            });
+        }
+
+        function render() {
+            document.querySelectorAll('#tasks .pill').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.task === state.task ? 'true' : 'false'); });
+            document.getElementById('stakes').textContent = TASKS[state.task].stakes;
+            var ss = slotString();
+            document.querySelectorAll('#presets .pill').forEach(function (b) {
+                var p = PRESETS.filter(function (x) { return x.key === b.dataset.preset; })[0];
+                b.setAttribute('aria-pressed', p.slots === ss ? 'true' : 'false');
+            });
+            document.querySelectorAll('.slot').forEach(function (b) {
+                var v = state.slots[b.dataset.stage];
+                b.dataset.value = v;
+                b.querySelector('.big').innerHTML = ICON[v];
+                b.querySelector('.who').textContent = NAMES[v];
+                b.setAttribute('aria-label', STAGES.filter(function (s) { return s.key === b.dataset.stage; })[0].label + ': ' + NAMES[v] + '. Click to change.');
+            });
+
+            var r = score(state.task, state.slots);
+            var res = document.getElementById('results');
+            var em = document.getElementById('empty-msg');
+            if (!r.produced) { res.classList.add('off'); em.classList.add('show'); writeHash(); return; }
+            res.classList.remove('off'); em.classList.remove('show');
+
+            document.getElementById('pattern-name').textContent = r.pattern.name;
+            document.getElementById('pattern-desc').textContent = r.pattern.desc;
+            setBar('speed', r.speed, r.speed >= 70 ? 'Quick enough to use every day.' : (r.speed >= 40 ? 'A pause for a person somewhere.' : 'People do most of the work.'));
+            setBar('errors', r.errors, r.errors > 75 ? 'Most of the planted traps would be caught.' : (r.errors >= 50 ? 'Some traps get through.' : 'Most traps reach the recipient.'));
+            setBar('effort', Math.round(r.effort / 8 * 100), r.effort + ' of 8. ' + (r.flags.indexOf('fatigue') >= 0 ? 'Fatigue flag.' : (r.flags.indexOf('double') >= 0 ? 'Two human reads.' : (r.flags.indexOf('rubber') >= 0 ? 'Rubber-stamp flag.' : 'Sustainable.'))));
+
+            var list = document.getElementById('risks'); list.innerHTML = '';
+            r.rows.forEach(function (row) {
+                var li = document.createElement('li'); li.className = 'risk';
+                li.innerHTML = '<div class="name">' + row.name + '<small>' + row.sub + '</small></div><div><span class="level l' + row.level + '">' + lvl(row.level) + '</span></div><div class="why"></div>';
+                li.querySelector('.why').textContent = row.why;
+                list.appendChild(li);
+            });
+            var v = document.getElementById('verdict');
+            v.className = 'verdict ' + (r.over ? 'over' : 'ok');
+            v.innerHTML = ''; v.appendChild(document.createTextNode(r.verdict));
+            var sp = document.createElement('span'); sp.textContent = r.verdictWhy; v.appendChild(sp);
+            var o = document.getElementById('owner'); o.innerHTML = 'Whose name is on it? <strong></strong>'; o.querySelector('strong').textContent = r.owner;
+            writeHash();
+        }
+        function setBar(k, val, note) {
+            document.getElementById('v-' + k).textContent = val;
+            document.getElementById('b-' + k).style.width = val + '%';
+            document.getElementById('n-' + k).textContent = note;
+        }
+
+        window.hitlScore = function (taskKey, slots) {
+            var s = typeof slots === 'string' ? { B: slots[0], D: slots[1], C: slots[2], S: slots[3] } : slots;
+            return score(taskKey, s);
+        };
+
+        parseHash();
+        buildTasks(); buildPresets(); buildPipeline();
+        window.addEventListener('hashchange', function () { parseHash(); render(); });
+        render();
+    })();
+    </script>
+</body>
+</html>
