@@ -135,8 +135,9 @@
         .inner-card-icon { font-size: 26px; margin-bottom: 8px; display: block; }
         .inner-card strong { font-size: 14px; display: block; margin-bottom: 4px; }
         .inner-card p { font-size: 13px; color: var(--apple-text-secondary); margin: 0; line-height: 1.45; }
-        .take-home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        @media (max-width: 700px) { .take-home-grid { grid-template-columns: 1fr; } }
+        .take-home-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+        @media (max-width: 1000px) { .take-home-grid { grid-template-columns: 1fr; } }
+        .take-home-content { padding-right: 30px; }
         .take-home-card { display: flex; align-items: flex-start; gap: 18px; padding: 24px 26px; border-radius: var(--radius-medium); text-decoration: none; color: var(--apple-text-primary); transition: var(--transition); border: 1px solid var(--border-soft); background: #ffffff; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); position: relative; }
         .take-home-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08); border-color: #d4d4d8; }
         .take-home-icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #F4F4F5; color: var(--apple-text-primary); }
@@ -1147,21 +1148,26 @@ Yn seiliedig ar y cyd-destun hwn, drafftia e-bost diweddaru i'r tîm am [Eich Pw
                     <div class="eyebrow">Ewch ag Ef Adref</div>
                     <h2>Dewch ag 'AI yn y Gweithle' i'ch tîm</h2>
                 </div>
-                <p>Dwy ffordd o rannu'r hyn yr ydych wedi'i ddysgu heddiw.</p>
+                <p>Rhannwch yr hyn a ddysgoch heddiw, neu archebwch ein gweithdy nesaf.</p>
             </div>
             <div class="take-home-grid">
                 <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
                     <div class="take-home-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div>
-                    <div class="take-home-content"><span class="take-home-tag">Taflen Gweithdy</span><span class="take-home-title">Rhannwch â'ch rheolwr</span><span class="take-home-desc">Un dudalen sy’n cwmpasu popeth y mae arno ei angen i'n harchebu ni ar y safle.</span></div>
+                    <div class="take-home-content"><span class="take-home-tag">Taflen Gweithdy</span><span class="take-home-title">AI yn y Gweithle</span><span class="take-home-desc">Rhannwch â'ch rheolwr: un dudalen gyda phopeth sydd ei angen i'n harchebu ni ar y safle.</span></div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a href="TheMatts_Governance_Workshop_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <div class="take-home-content"><span class="take-home-tag">Gweithdy Newydd</span><span class="take-home-title">Llywodraethu AI yn y Gweithle</span><span class="take-home-desc">Symud o arbrofion i lifoedd gwaith.</span></div>
                     <span class="take-home-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" rel="noopener" class="take-home-card purple">
                     <div class="take-home-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/><path d="M21 9v5"/></svg></div>
-                    <div class="take-home-content"><span class="take-home-tag">Hyfforddi'r Hyfforddwr</span><span class="take-home-title">Rydym yn hyfforddi eich hyfforddwyr</span><span class="take-home-desc">Rhoi’r adnoddau i’ch hwyluswyr mewnol i gyflwyno'r gweithdy hwn.</span></div>
+                    <div class="take-home-content"><span class="take-home-tag">Hyfforddi'r Hyfforddwr</span><span class="take-home-title">Rydym yn hyfforddi eich hyfforddwyr</span><span class="take-home-desc">Rhoi’r adnoddau i’ch hwyluswyr mewnol i gyflwyno hyfforddiant AI.</span></div>
                     <span class="take-home-arrow" aria-hidden="true">↗</span>
                 </a>
             </div>
-            <p class="take-home-more"><strong>Rydym yn ymdrin â phob agwedd ar AI</strong>, gan gynnwys M365 Copilot (Uwchraddio), Gweithdy Arweinyddiaeth AI, AI Lleol (ar ddyfais), AI: Celfyddyd y Posibl, Asiantau Microsoft, AI mewn Ymchwil, a hyd yn oed Ystafell Ddianc Ddigidol.</p>
+            <p class="take-home-more"><strong>Rydym yn ymdrin â phob agwedd ar AI</strong>, gan gynnwys M365 Copilot (Uwchraddio), Gweithdy Arweinyddiaeth AI, Llywodraethu AI, AI Lleol (ar ddyfais), AI: Celfyddyd y Posibl, Asiantau Microsoft, AI mewn Ymchwil, a hyd yn oed Ystafell Ddianc Ddigidol.</p>
         </section>
         <section id="contact" class="section-card contact-strip">
             <h3>Cwestiynau?</h3>

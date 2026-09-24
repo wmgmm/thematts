@@ -472,6 +472,130 @@
             details { break-inside: avoid; }
             details[open] summary::after { display: none; }
         }
+        /* --- Take it Home (same as workshop.html) --- */
+        .take-home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 1000px) {
+            .take-home-grid { grid-template-columns: 1fr; }
+        }
+
+        .take-home-content { padding-right: 30px; }
+
+        .take-home-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 24px 26px;
+            border-radius: var(--radius-medium);
+            text-decoration: none;
+            color: var(--apple-text-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+            position: relative;
+        }
+
+        .take-home-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            border-color: #d4d4d8;
+        }
+
+        .take-home-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .take-home-card.purple .take-home-icon {
+            background: #F4F4F5;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 2px;
+        }
+
+        .take-home-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--apple-text-tertiary);
+            display: block;
+        }
+
+        .take-home-card.purple .take-home-tag { color: var(--apple-text-tertiary); }
+
+        .take-home-title {
+            font-size: 17px;
+            font-weight: 600;
+            display: block;
+            letter-spacing: -0.01em;
+            color: var(--apple-text-primary);
+        }
+
+        .take-home-desc {
+            font-size: 13.5px;
+            color: var(--apple-text-secondary);
+            display: block;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        .take-home-arrow {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .take-home-card:hover .take-home-arrow {
+            background: var(--apple-text-primary);
+            border-color: var(--apple-text-primary);
+            color: white;
+            transform: translate(2px, -2px);
+        }
+
+        .take-home-card.purple .take-home-arrow { color: var(--apple-text-secondary); }
+
+        .take-home-more { font-size: 14px; color: var(--apple-text-secondary); margin: 18px 0 0; line-height: 1.55; }
+        .take-home-more strong { color: var(--apple-text-primary); }
     </style>
     <script>
         function copyToClipboard(id) {
@@ -519,6 +643,7 @@
             <span class="nav-brand">The Matts</span>
             <a href="#exercises">Exercises</a>
             <a href="#more-examples">More Examples</a>
+            <a href="#take-home">Take Home</a>
         </div>
     </nav>
 
@@ -1071,6 +1196,70 @@ the three most important observations.
 </section>
 
 
+
+        <section id="take-home" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Take it Home</div>
+                    <h2>Bring 'AI in the Workplace' to your team</h2>
+                </div>
+                <p>Share what you've learnt today, or book our next workshop.</p>
+            </div>
+
+            <div class="take-home-grid">
+                <a href="CU_AI_in_the_workplace_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 3v5h5"/>
+                            <path d="M9 13h6"/>
+                            <path d="M9 17h4"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Workshop Flyer</span>
+                        <span class="take-home-title">AI in the Workplace</span>
+                        <span class="take-home-desc">Share with your manager: a one-pager with everything they need to book us on-site.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="TheMatts_Governance_Workshop_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">New Workshop</span>
+                        <span class="take-home-title">AI Governance in the Workplace</span>
+                        <span class="take-home-desc">Moving from experiments to workflows.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="TheMatts_TrainTheTrainer_v2.pdf" target="_blank" rel="noopener" class="take-home-card purple">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9l9-5 9 5-9 5-9-5z"/>
+                            <path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/>
+                            <path d="M21 9v5"/>
+                        </svg>
+                    </div>
+                   
+                    <div class="take-home-content">
+                        <span class="take-home-tag">Train the Trainer</span>
+                        <span class="take-home-title">We train your trainers</span>
+                        <span class="take-home-desc">Equip your internal champions to deliver AI training.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+             <p class="take-home-more">
+                <strong>We cover all aspects of AI</strong>, including M365 Copilot (Upgrade), AI Leadership Workshop, AI Governance, Local AI (on device), AI Art of the Possible, Microsoft Agents, AI in Research, and even a Digital Escape Room.
+            </p>
+        </section>
 
         <section id="contact" class="section-card contact-strip">
             <h3>Questions?</h3>
