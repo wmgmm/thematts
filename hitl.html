@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="pipeline" id="pipeline"></div>
-            <p class="empty" id="empty">Nothing gets produced: put Human or AI in Draft.</p>
+            <p class="empty" id="empty">Nothing gets produced: put Human or AI in Generate.</p>
             <div>
                 <div class="label" style="margin-bottom:6px;">Load a layout from today</div>
                 <div class="presets" id="presets"></div>
@@ -328,9 +328,9 @@
                 out.verdictWhy = reasons.join('. ') + '.';
             }
 
-            if (S === 'H') out.owner = 'The person at Sign off and send.';
-            else if (C === 'H') out.owner = 'Nobody signed. The checker is the last person who touched it.';
-            else if (D === 'H') out.owner = 'Nobody signed. The person who drafted it, by default.';
+            if (S === 'H') out.owner = 'The person at human review.';
+            else if (C === 'H') out.owner = 'Nobody reviewed it. The person who evaluated it is the last to touch it.';
+            else if (D === 'H') out.owner = 'Nobody reviewed it. The person who wrote it, by default.';
             else out.owner = 'Nobody.';
 
             out.pattern = pattern(s);
@@ -339,13 +339,13 @@
 
         function pattern(s) {
             var B = s.B, D = s.D, C = s.C, S = s.S;
-            if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Matrix reviewed first', desc: 'A person reads the skills matrix before any question exists, two agents do the work, a person reviews the pool. The cheapest safe design, and not today\'s.' };
+            if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Matrix reviewed first', desc: 'A person reads the skills matrix before any question exists, two agents do the work, a person reviews the pool. Not today\'s design. Ask yourself: is a few minutes at the matrix worth it for a hiring decision?' };
             if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Today\'s design: human review after the pool', desc: 'AI maps, generates and evaluates; a person passes each pooled question into the bank or drops it. Fast, and the review is where the risk hides: people skim what two machines have already passed, and a dropped question teaches the AI nothing.' };
             if (D === 'A' && C === 'H' && S === 'A') return { name: 'Person evaluates, PASS is final', desc: 'AI generates, a person evaluates every draft, and their PASS puts it straight in the bank. Careful, and it becomes skimming by the twentieth question.' };
             if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI generates, a person evaluates and a person reviews again before the bank. Safe and tiring.' };
             if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 05)', desc: 'Two agents agree and nobody reads a word. Amazon trained a CV screener on ten years of its own hires; it learnt to mark down CVs with the word "women\'s" and was scrapped in 2018. Nobody had read what it learnt.' };
             if (D === 'H' && C === 'A') return { name: 'Human writes, AI evaluates', desc: 'A person writes the questions and the Evaluator checks them. Good at format and open-endedness, and it will pass a question that is fair on its face and biased in effect.' };
-            if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How hiring panels write questions today. Accountable, slow, and inconsistent between panels.' };
+            if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How hiring panels write questions today. Accountable, slow, and inconsistent between panels. Green here is not risk-free: panels have biases of their own, and this page does not score them.' };
             if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No Evaluator, so the human review is the only check.' };
             if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI generates and it goes straight to the panel. Air Canada\'s chatbot invented a refund policy; in 2024 a tribunal made the airline honour it. A question asked cannot be unasked either.' };
             return { name: 'Your layout', desc: 'Not one of today\'s named patterns. Read the rows.' };
