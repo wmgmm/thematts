@@ -186,7 +186,7 @@
     <div class="overlay" id="overlay">
         <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="how-title">
             <h2 id="how-title">How this is scored</h2>
-            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live runs in Exercise 05 are the measurement. The rules are fixed and simple so you can argue with them.</p>
+            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live runs in Exercise 06 are the measurement. The rules are fixed and simple so you can argue with them.</p>
             <ul>
                 <li><strong>Speed</strong> starts at 100. A human costs 10 at the brief, 45 at the draft, 20 at the check and 10 at sign off. An AI costs 5 per stage. Nobody costs nothing.</li>
                 <li><strong>Errors caught</strong> starts at 55 for an AI draft or 70 for a human draft, then adds 15 for a human brief (the rules are written down), 5 for an AI brief, 25 for a human check, 12 for an AI check (format and consistency, not truth) and 5 for a human sign off. If an AI drafted and an AI checked and the only human is at the end without a written brief, that final 5 is lost: the human skims because two agents already "checked".</li>
@@ -230,7 +230,7 @@
             { key: 'A', label: 'Run A: check at the end', slots: 'NAAH' },
             { key: 'B', label: 'Run B: check in the middle', slots: 'NAHA' },
             { key: 'C', label: 'Run C: brief first', slots: 'HAAH' },
-            { key: 'belt', label: 'Conveyor belt (Exercise 03)', slots: 'NAAN' },
+            { key: 'belt', label: 'Conveyor belt (Exercise 04)', slots: 'NAAN' },
             { key: 'proof', label: 'Human drafts, AI checks', slots: 'NHAH' }
         ];
         var ICON = {
@@ -343,7 +343,7 @@
             if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Check at the end (Run A)', desc: 'Two agents, one signature. Fast, and the signature is where the risk hides: people skim what two machines have already passed.' };
             if (D === 'A' && C === 'H' && S === 'A') return { name: 'Check in the middle (Run B)', desc: 'AI drafts, a person reads and fixes, an agent\'s PASS releases it.' };
             if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI drafts, a person checks and the same or another person signs. Safe and tiring.' };
-            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 03)', desc: 'Two agents agree and nobody reads a word. In 2024 a meeting bot emailed a summary to an investor with hours of the firm\'s private talk in it. The deal died.' };
+            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 04)', desc: 'Two agents agree and nobody reads a word. In 2024 a meeting bot emailed a summary to an investor with hours of the firm\'s private talk in it. The deal died.' };
             if (D === 'H' && C === 'A') return { name: 'Human drafts, AI checks', desc: 'The AI is a proof-reader. Good at format and consistency, blind to what was said in the room. The way most people already use it.' };
             if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How it worked before. Accountable and slow.' };
             if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No checker, so the person at the end is the only check.' };
