@@ -232,16 +232,16 @@
             var L = [];
             var hi = function (k) { return s[k] === STAKE_DEFS[k].hi; };
             if (zone === 4) {
-                if (hi('sens')) L.push({ c: 'warn', t: '<b>Data and legal.</b> A sample protects the average case, not the person whose case was not sampled.' });
-                if (hi('undo')) L.push({ c: 'warn', t: '<b>Contestability.</b> Hard to undo means the sample finds the mistake after it has happened. Who puts it right?' });
+                if (hi('sens')) L.push({ c: 'warn', t: '<b>Personal data and the law.</b> A sample protects the average case, not the person whose case was not sampled.' });
+                if (hi('undo')) L.push({ c: 'warn', t: '<b>Putting it right.</b> Hard to undo means the sample finds the mistake after it has happened. Who puts it right, and how does the person affected ask?' });
                 if (hi('vol')) L.push({ c: 'ok', t: '<b>Honest about volume.</b> At this scale a person cannot read every one. Name the sample size and the owner.' });
                 else L.push({ c: '', t: '<b>Volume is low.</b> A person could read every one. Sampling here is a choice of convenience, so say so.' });
                 if (!hi('sens') && !hi('undo')) L.push({ c: 'ok', t: '<b>Proportionate</b> for most teams: low sensitivity, easy to correct.' });
             }
             if (zone === 3) {
                 if (hi('vol')) L.push({ c: 'warn', t: '<b>People.</b> Reading every one at this volume is a full-time job. It becomes sampling by fatigue; better to decide that on purpose.' });
-                if (hi('undo')) L.push({ c: '', t: '<b>Accountability.</b> One reader for something hard to undo. Who is the second signature?' });
-                if (hi('sens')) L.push({ c: '', t: '<b>Data and legal.</b> The reader must be someone allowed to see the data and able to spot what should not be there.' });
+                if (hi('undo')) L.push({ c: '', t: '<b>Second signature.</b> One reader for something hard to undo. Who else signs before it leaves?' });
+                if (hi('sens')) L.push({ c: '', t: '<b>Personal data and the law.</b> The approver must be someone allowed to see the data and able to spot what should not be there.' });
                 if (!hi('vol')) L.push({ c: 'ok', t: '<b>Sustainable.</b> Low volume means a real read every time, and the reader\'s name goes on it.' });
             }
             if (zone === 2) {
@@ -250,11 +250,11 @@
                 if (!hi('vol') && !hi('sens') && !hi('undo')) L.push({ c: '', t: '<b>Fine, and small.</b> Low volume, low stakes: the gain from going further is small too.' });
             }
             if (zone === 5) {
-                L.push({ c: 'warn', t: '<b>Accountability.</b> Nobody is watching, so nobody answers. If this goes live, someone still has to own it and read the log.' });
-                if (hi('sens')) L.push({ c: 'warn', t: '<b>Data and legal.</b> Sensitive data handled and sent with no person in the chain. Explain that to the ICO.' });
-                if (hi('undo')) L.push({ c: 'warn', t: '<b>Contestability.</b> Hard to undo and nobody to stop it. The first mistake is the one you will be asked about.' });
+                L.push({ c: 'warn', t: '<b>Whose name is on it.</b> Nobody is watching, so nobody answers. If this goes live, someone still has to own it and read the log.' });
+                if (hi('sens')) L.push({ c: 'warn', t: '<b>Personal data and the law.</b> Sensitive data handled and sent with no person in the chain. Explain that to the regulator.' });
+                if (hi('undo')) L.push({ c: 'warn', t: '<b>Putting it right.</b> Hard to undo and nobody to stop it. The first mistake is the one you will be asked about.' });
                 if (!hi('sens') && !hi('undo')) L.push({ c: 'ok', t: '<b>Proportionate</b> for a low-stakes, reversible task, if there is an alert, an override and a person who hears it.' });
-                if (hi('vol')) L.push({ c: '', t: '<b>Third-party change.</b> At this volume a model update or a bad input scales fast. Retest after any change.' });
+                if (hi('vol')) L.push({ c: '', t: '<b>When the supplier changes something.</b> At this volume a model update or a bad input scales fast. Retest after any change.' });
             }
             if (zone === 1) {
                 if (!hi('sens') && !hi('undo')) L.push({ c: 'warn', t: '<b>Decision or habit?</b> Ruling AI out of a low-stakes, reversible task is fine if it is a decision with a review date, not a reflex.' });
@@ -331,7 +331,7 @@
             var rb = document.getElementById('reveal-btn');
             rb.hidden = !done; rb.textContent = revealed ? 'Back to the board' : 'Reveal what you own';
             document.getElementById('how').innerHTML = revealed
-                ? '<strong>What each placement makes you responsible for.</strong> Red is a risk you have accepted, green is why it is defensible. Flip a stake to ask what if.'
+                ? '<strong>' + summary() + '</strong> Red is a risk you have accepted, green is why it is defensible. Flip a stake to ask what if.'
                 : '<strong>Click a task, then click a zone.</strong> Place all five, then reveal what each placement makes you responsible for.';
 
             var tray = document.getElementById('tray'); tray.innerHTML = '';
@@ -355,6 +355,17 @@
             renderSide();
             if (revealed) renderReveal();
             writeHash();
+        }
+
+        function summary() {
+            var n = [0, 0, 0, 0, 0, 0];
+            CARDS.forEach(function (c) { n[placement[c.id]]++; });
+            var parts = [];
+            if (n[5]) parts.push(n[5] + (n[5] === 1 ? ' task' : ' tasks') + ' with nobody watching');
+            if (n[4]) parts.push(n[4] + ' running with a person sampling');
+            if (n[3]) parts.push(n[3] + ' approved one by one');
+            if (n[1] + n[2]) parts.push((n[1] + n[2]) + ' kept with people');
+            return 'You have ' + parts.join(', ') + '.';
         }
 
         function facts(c, clickable, onFlip) {
@@ -383,7 +394,7 @@
             var lab = document.createElement('div'); lab.className = 'label'; lab.textContent = c ? 'The task' : 'How this works'; el.appendChild(lab);
             if (!c) {
                 var idle = document.createElement('div'); idle.className = 'idle';
-                idle.innerHTML = 'Five real tasks. Five places a person can sit, from <b>no AI at all</b> on the left to <b>no human at all</b> on the right.<br><br>Click a task to see its stakes, then click the zone your table agrees on.';
+                idle.innerHTML = 'Five real tasks. Five places a person can sit, from <b>no AI at all</b> on the left to <b>no human at all</b> on the right.<br><br>Click a task to see its stakes, then click the zone your table agrees on.<br><br><b>Governance in one line:</b> knowing who decided what, on what evidence, and who answers for it. Every zone is an answer to that.';
                 el.appendChild(idle); return;
             }
             var t = document.createElement('div'); t.className = 'nt'; t.textContent = c.icon + ' ' + c.title; el.appendChild(t);
