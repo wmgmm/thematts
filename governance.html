@@ -560,7 +560,7 @@
                 <strong style="color:var(--apple-text-primary);">Your data is safe here.</strong> Sign in with your work account and look for the green shield. Copilot with Enterprise Data Protection is approved for confidential and highly confidential (C1/C2) work data and nothing is used to train models. Today's job description and CV are invented, so paste freely.
             </p>
             <p style="font-size:14px; color:var(--apple-text-secondary); line-height:1.55; margin:10px 0 0;">
-                <strong style="color:var(--apple-text-primary);">The reference frame</strong> is the UK Government's <a href="https://www.gov.uk/government/publications/ai-risk-management-toolkit/ai-risk-management-toolkit-guidance" target="_blank" rel="noopener" class="contact-link">AI Risk Management Toolkit ↗</a>. It asks four things of any AI in a service: what could go wrong, how likely and how bad, what you will do about it, and whose name is on it. The exercises answer all four with your own hands.
+                <strong style="color:var(--apple-text-primary);">The reference frame</strong> is the UK Government's <a href="https://www.gov.uk/government/publications/ai-risk-management-toolkit/ai-risk-management-toolkit-guidance" target="_blank" rel="noopener" class="contact-link">AI Risk Management Toolkit ↗</a>. It asks five things of any AI in a service: what could go wrong, how likely and how bad, what you will do about it, whose name is on it, and how you will keep checking. The exercises answer all five with your own hands.
             </p>
         </section>
 
@@ -646,7 +646,7 @@ References available on request.</div>
             <details open>
                 <summary><span class="ex-num">01</span><span style="flex:1;">Tool check</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Before anything is built: is this the right tool for this data? Ask five questions of the job description, then the CV, then a task of your own. About five minutes.</p>
+                    <p class="exercise-note">Before anything is built: is this the right tool for this data? Ask five questions of the job description, then the CV, then a task of your own, then set your risk appetite. About seven minutes.</p>
 
                     <p><strong>Step 1:</strong> Open Copilot and look for the green shield at the top of the chat. It means your work data stays protected and is not used for training. Answer the five questions for the job description, then again for the CV. Say the answers out loud at the table.</p>
 
@@ -660,8 +660,10 @@ References available on request.</div>
 
                     <p style="margin-top:14px;"><strong>Step 2:</strong> Now the same five for one task from your own work. If any answer is no or do not know, write the task down for Exercise 08. It does not get built today.</p>
 
+                    <p style="margin-top:12px;"><strong>Step 3:</strong> Set the risk appetite before anything is built: how much you are willing to let go wrong. The toolkit has five levels, from Averse (none at all) through Minimal, Cautious and Open to Eager (a lot, for an exceptional benefit). Pick one for fairness in this hiring task and write it down. Exercise 06 turns it into things you can count.</p>
+
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the check takes two minutes, and it turns on the data and where it goes, not on how clever the tool is. Ask yourself: if this went wrong, who would be harmed, and how badly? That sets how much checking it needs.
+                        <strong>What to notice:</strong> the check takes two minutes, and it turns on the data and where it goes, not on how clever the tool is. Ask yourself: if this went wrong, who would be harmed, and how badly? That sets how much checking it needs. Ask yourself too: who is missing from this table? The toolkit wants a mixed team: someone leading on governance, a senior leader who sets the appetite, data, security and legal people, someone who knows the work, and the people who will use it.
                     </p>
                 </div>
             </details>
@@ -805,7 +807,7 @@ Attempt: 1</div>
                     </div>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> three tests with known answers show whether the Evaluator catches what you already know is there, which live runs cannot. Three is a start, not proof: run them again and a verdict may change. If Test 3 passed, your fairness line is not doing its job, and only a person reading will catch that. Keep the three tests; they are the start of a test set someone owns.
+                        <strong>What to notice:</strong> three tests with known answers show whether the Evaluator catches what you already know is there, which live runs cannot. Three is a start, not proof: run them again and a verdict may change. If Test 3 passed, your fairness line is not doing its job, and only a person reading will catch that. Keep the three tests; they are the start of a test set someone owns. Ask yourself: who wrote these tests, and did the same person build the agent? The toolkit suggests testing by people independent of the builders, because builders share its blind spots and are slow to find fault in their own work.
                     </p>
                 </div>
             </details>
@@ -861,7 +863,7 @@ Attempt: 1</div>
                     <p><strong>Step 4:</strong> Load <strong>Conveyor belt</strong>: that was Exercise 04 up to the pool. Read "Whose name is on it?". Then write one line: in today's design, what do you expect to reach the pool that a person at the matrix would have stopped?</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> speed goes up as people leave the chain, and the risk rows change colour one at a time. Ask yourself: is the person where the risk enters, or only where it comes out, and could they say no? Today's design has nobody at the matrix. The page's numbers are a teaching model, argued over in five minutes; the live run next is the measurement.
+                        <strong>What to notice:</strong> speed goes up as people leave the chain, and the risk rows change colour one at a time. Ask yourself: is the person where the risk enters, or only where it comes out, could they say no, and do they know enough to spot what is wrong? Today's design has nobody at the matrix. The page's numbers are a teaching model, argued over in five minutes; the live run next is the measurement.
                     </p>
                     <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">
                         <strong>Also there:</strong> <a href="where.html" class="contact-link">Where does the human go?</a> asks the same question across five real tasks, from no AI to no human, as a table sort with real cases in the reveal. Good for a mixed table with time to argue.
@@ -874,7 +876,7 @@ Attempt: 1</div>
                 <div class="details-content">
                     <p class="exercise-note">Agree what good looks like, then run the whole workflow on both paths with you as the human review: pass into the bank, or fail and drop, with no feedback to the AI. Count what reaches the pool, what you drop, and how long it takes. About twenty-five minutes.</p>
 
-                    <p><strong>Step 1:</strong> Before the first run, write the acceptance criteria down. Not "good questions": things you can count. Copy the list and change any line your table disagrees with.</p>
+                    <p><strong>Step 1:</strong> Before the first run, write the acceptance criteria down. Not "good questions": things you can count. This is your risk appetite from Exercise 01 turned into limits you can check; the toolkit calls them defined acceptable limits. Copy the list and change any line your table disagrees with.</p>
                     <div class="prompt-box" id="ex6-criteria">Acceptance criteria, question bank
 1. Every question in the final bank passes all six rubric lines when a person reads it, not only when the Evaluator says so.
 2. No question built on age, health, family, nationality, religion, disability or a career break reaches the AI question pool.
@@ -1010,24 +1012,22 @@ Date | Path | Version | Score /10 | What reached the pool that should not have |
                 <div class="details-content">
                     <p class="exercise-note">Hunt for risks with the checklist, put the top three in the register with a name on each, answer the four accountability questions, and write down how you will keep checking. Then let Copilot draft the register and check its work. About fifteen minutes.</p>
 
-                    <p><strong>Step 1:</strong> Risk hunt. Go through the twelve headings below with your notes from Exercises 04, 06 and 07. Tick every one that showed up, even nearly.</p>
+                    <p><strong>Step 1:</strong> Risk hunt. Go through the toolkit's nine categories below with your notes from Exercises 04, 06 and 07. Tick every one that showed up, even nearly.</p>
 
                     <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Bias and fairness</strong><p>A question that treats some candidates worse.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Privacy and data</strong><p>The CV's personal detail where it should not be.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Security</strong><p>The CV told the agents what to do.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Safety</strong><p>Could someone be harmed by a question asked?</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Transparency</strong><p>Can you say why a question is in the bank, and why one was dropped?</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Accountability</strong><p>Is there a name on each banked question?</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Accuracy and reliability</strong><p>Invented systems, two runs differ, loops that tidy rather than fix.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Legal compliance</strong><p>Equality law, data protection, recruitment policy.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Fairness</strong><p>A question that treats some candidates worse, or leans on something that stands in for age, health or background.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Legal and regulatory compliance</strong><p>Equality law, data protection for the CV's personal detail, recruitment policy.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Transparency and explainability</strong><p>Does the candidate know AI helped? Can you say why a question is in the bank, and why one was dropped?</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Accountability and governance</strong><p>Is there a name on each banked question, and on the matrix?</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Contestability and redress</strong><p>Could a candidate challenge a question, and who would put it right?</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Technical robustness</strong><p>Invented systems, two runs differ, loops that tidy rather than fix.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Security</strong><p>The CV told the agents what to do. The toolkit calls this prompt injection.</p></div>
                         <div class="inner-card" style="padding:12px 14px;"><strong>Financial</strong><p>A bad hire, a tribunal, rework.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Reputational</strong><p>A candidate posts the question they were asked.</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Environmental</strong><p>Is the compute worth eight questions?</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Human rights and wellbeing</strong><p>Effect on the candidate, who may not know AI was used or how to challenge it, and on the panel that trusts the bank.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Environment and people</strong><p>Could a question distress a candidate, or wear down a panel that trusts the bank? Is the compute worth eight questions?</p></div>
                     </div>
+                    <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">Reputation is not on the list: the toolkit treats it as a result of the others. Score it under how bad in Step 2.</p>
 
-                    <p style="margin-top:14px;"><strong>Step 2:</strong> Scroll to the <a href="#register" class="contact-link">Risk register</a> below. Two rows are done. Add your top three from the hunt: what went wrong or nearly did, how likely on 1 to 5, how bad on 1 to 5, what you would do about it, and who owns that.</p>
+                    <p style="margin-top:14px;"><strong>Step 2:</strong> Scroll to the <a href="#register" class="contact-link">Risk register</a> below. Two rows are done. Add your top three from the hunt: what went wrong or nearly did, how likely on 1 to 5 (1 rare, under 1 in 20; 3 possible; 5 almost certain, over 4 in 5), how bad on 1 to 5 (1 negligible, 3 moderate, 5 catastrophic), which of the four treatments you choose (stop it, reduce it, hand it on, live with it), what you would do about it, and who owns that.</p>
 
                     <p><strong>Step 3:</strong> Who is accountable? Four questions, four real roles, no "the team". Copy the block and fill it in.</p>
                     <div class="prompt-box" id="ex8-accountable">Who passes a question at human review before it is asked of a candidate?
@@ -1044,12 +1044,13 @@ Users reporting issues: where panels and candidates report, who reads it
 System behaviour changed: what counts as a change (model, instructions, matrix, process), who tells you when the supplier changes the model, and the rule that it is retested first
 Issues log owner:
 Retest trigger:
-Non-AI route if switched off:</div>
+Non-AI route if switched off:
+Incident plan: what happens the day a bad question is asked of a candidate, and who acts first:</div>
                     <button onclick="copyToClipboard('ex8-assurance')" class="btn-copy">Copy Assurance Plan</button>
 
                     <p style="margin-top:18px;"><strong>Step 5:</strong> The stretch. In a <strong>New chat</strong> with plain Copilot, no agent, paste the prompt below with your notes and issues log under it. Read the five rows it drafts.</p>
 
-                    <div class="prompt-box" id="ex8-register-prompt">"Below are my notes from testing a three-agent Copilot workflow that builds interview questions from a job description and a CV, with a person passing or dropping questions at human review. Draft five risk register rows from them. For each row give: the risk heading from this list (bias and fairness, privacy and data, security, safety, transparency, accountability, accuracy and reliability, legal compliance, financial, reputational, environmental, human rights and wellbeing), what could go wrong in one plain sentence, likelihood 1 to 5, impact 1 to 5, the score, one treatment (stop it, reduce it, hand it on, or live with it) and the role that should own it. Use only what is in my notes. After the table, list every assumption you had to make.
+                    <div class="prompt-box" id="ex8-register-prompt">"Below are my notes from testing a three-agent Copilot workflow that builds interview questions from a job description and a CV, with a person passing or dropping questions at human review. Draft five risk register rows from them. For each row give: the risk category from this list (fairness, legal and regulatory compliance, transparency and explainability, accountability and governance, contestability and redress, technical robustness, security, financial, environment and people), what could go wrong in one plain sentence, likelihood 1 to 5 (1 rare, 5 almost certain), impact 1 to 5 (1 negligible, 5 catastrophic), the score, one treatment (stop it, reduce it, hand it on, or live with it) and the role that should own it. Use only what is in my notes. After the table, list every assumption you had to make.
 
 My notes:
 "</div>
@@ -1087,9 +1088,10 @@ My notes:
                 </thead>
                 <tbody>
                     <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Risk identification</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">What could go wrong?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The CV route in 06, the risk hunt in 08</td></tr>
-                    <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Risk appetite, from Averse to Eager</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">How much are we willing to let go wrong?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Deciding where the human review sits</td></tr>
+                    <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Risk appetite, from Averse to Eager</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">How much are we willing to let go wrong?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Exercise 01 Step 3, then the criteria in 06. Where the human review sits is a treatment chosen to stay inside it</td></tr>
+                    <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">AI risk management team</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Who needs to be in the room?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Who is missing from your table, in 01</td></tr>
                     <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Likelihood times impact, 1 to 5 each</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">How likely, how bad?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The register rows</td></tr>
-                    <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Treatment: avoid, limit, transfer, accept</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Stop it, reduce it, hand it on, live with it</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The Evaluator, the critique loop, the human review</td></tr>
+                    <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Treatment: avoid, limit, transfer, accept</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Stop it, reduce it, hand it on, live with it</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The Evaluator, the critique loop and the human review all reduce it. Leaving the CV out would stop it</td></tr>
                     <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Accountable owner</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Whose name is on it?</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The four questions in 08, and Exercise 04</td></tr>
                     <tr><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Monitoring: there is no final version</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">Keep checking after it goes live</td><td style="padding:8px 10px; border-bottom:1px solid var(--apple-border-light);">The post-mortem in 07, the assurance plan in 08</td></tr>
                     <tr><td style="padding:8px 10px;">Nine risk categories</td><td style="padding:8px 10px;">The places to look</td><td style="padding:8px 10px;">The category column below</td></tr>
