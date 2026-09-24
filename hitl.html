@@ -186,7 +186,7 @@
     <div class="overlay" id="overlay">
         <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="how-title">
             <h2 id="how-title">How this is scored</h2>
-            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live run in Exercise 06 is the measurement. The rules are fixed and simple so you can argue with them.</p>
+            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live run in Exercise 07 is the measurement. The rules are fixed and simple so you can argue with them.</p>
             <ul>
                 <li><strong>Speed</strong> starts at 100. A human costs 10 at the matrix, 45 at generating, 20 at evaluating and 10 at review. An AI costs 5 per stage. Nobody costs nothing.</li>
                 <li><strong>Errors caught</strong> starts at 55 for an AI-written question or 70 for a human-written one, then adds 15 for a human-read matrix, 5 for an AI matrix, 25 for a human evaluation, 12 for an AI evaluation (format and open-endedness, not fairness in effect) and 5 for human review before the bank. If AI generated and AI evaluated and the only human is the review with no one at the matrix, that final 5 is lost: the person skims because two agents already passed it.</li>
@@ -230,7 +230,7 @@
             { key: 'A', label: 'Today\'s design: human review after the pool', slots: 'NAAH' },
             { key: 'C', label: 'Matrix reviewed first', slots: 'HAAH' },
             { key: 'B', label: 'Person evaluates, PASS is final', slots: 'NAHA' },
-            { key: 'belt', label: 'Conveyor belt (Exercise 04)', slots: 'NAAN' },
+            { key: 'belt', label: 'Conveyor belt (Exercise 05)', slots: 'NAAN' },
             { key: 'proof', label: 'Human writes, AI evaluates', slots: 'NHAH' }
         ];
         var ICON = {
@@ -343,7 +343,7 @@
             if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Today\'s design: human review after the pool', desc: 'AI maps, generates and evaluates; a person passes each pooled question into the bank or drops it. Fast, and the review is where the risk hides: people skim what two machines have already passed, and a dropped question teaches the AI nothing.' };
             if (D === 'A' && C === 'H' && S === 'A') return { name: 'Person evaluates, PASS is final', desc: 'AI generates, a person evaluates every draft, and their PASS puts it straight in the bank. Careful, and it becomes skimming by the twentieth question.' };
             if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI generates, a person evaluates and a person reviews again before the bank. Safe and tiring.' };
-            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 04)', desc: 'Two agents agree and nobody reads a word. Amazon trained a CV screener on ten years of its own hires; it learnt to mark down CVs with the word "women\'s" and was scrapped in 2018. Nobody had read what it learnt.' };
+            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 05)', desc: 'Two agents agree and nobody reads a word. Amazon trained a CV screener on ten years of its own hires; it learnt to mark down CVs with the word "women\'s" and was scrapped in 2018. Nobody had read what it learnt.' };
             if (D === 'H' && C === 'A') return { name: 'Human writes, AI evaluates', desc: 'A person writes the questions and the Evaluator checks them. Good at format and open-endedness, and it will pass a question that is fair on its face and biased in effect.' };
             if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How hiring panels write questions today. Accountable, slow, and inconsistent between panels.' };
             if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No Evaluator, so the human review is the only check.' };
