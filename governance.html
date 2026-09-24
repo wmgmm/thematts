@@ -585,13 +585,13 @@
                 </div>
             </div>
             <p class="exercise-note" style="margin-bottom: 18px;">
-                <strong>One task all day.</strong> Build a bank of interview questions for one role. Three small agents do the work: a <strong>Taxonomy Mapper</strong> that turns the job into a skills matrix, a <strong>Question Generator</strong> that drafts one question at a time in a fixed shape, and a <strong>Question Evaluator</strong> that scores each draft against a rubric. FAIL sends a critique back to the Generator, up to three times. PASS puts the question in the <strong>AI question pool</strong>. Then a person reviews the pool: pass moves a question into the <strong>final interview bank</strong>, fail drops it permanently. Nobody edits the matrix and the AI hears nothing about a dropped question. You are the orchestrator: you paste the critiques back, you count the attempts, and you are the human review. Remember the dropped pile for Exercise 07.
+                <strong>One task all day.</strong> Build a bank of interview questions for one role. Three small agents do the work: a <strong>Taxonomy Mapper</strong> that turns the job into a skills matrix, a <strong>Question Generator</strong> that drafts one question at a time in a fixed shape, and a <strong>Question Evaluator</strong> that checks each draft against six fixed tests (a rubric). FAIL sends a critique back to the Generator, up to three times. PASS puts the question in the <strong>AI question pool</strong>. Then a person reviews the pool: pass moves a question into the <strong>final interview bank</strong>, fail drops it permanently. Nobody edits the matrix and the AI hears nothing about a dropped question. You are the go-between: you carry each draft and critique from one agent to the next, you count the attempts, and you are the human review. Remember the dropped pile for Exercise 07.
             </p>
             <p class="exercise-note" style="margin-bottom: 18px;">
                 <strong>Four questions run through the day,</strong> the same four you would ask of any tool handling your data: is this the right tool for this data, what could go wrong, who is accountable, and how will you provide assurance. Eight exercises, about a hundred minutes of doing.
             </p>
             <p class="exercise-note" style="margin-bottom: 18px;">
-                <strong>If New agent is missing</strong> on your account, paste the instruction block as the first message of a fresh chat, then the input as the second. Every exercise still works.
+                <strong>If New agent is missing</strong> on your account, paste the instruction block as the first message of a fresh chat, then the input as the second. Keep one chat open per agent. Where a step says @Question Generator or @Question Evaluator, paste into that agent's chat instead.
             </p>
 
             <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">The role: job description (standard path)</p>
@@ -646,22 +646,22 @@ References available on request.</div>
             <details open>
                 <summary><span class="ex-num">01</span><span style="flex:1;">Tool check</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Two minutes before anything is built: is this the right tool for this data? Five questions, asked of the job description first and then of the CV, then of a task of your own. About five minutes.</p>
+                    <p class="exercise-note">Before anything is built: is this the right tool for this data? Ask five questions of the job description, then the CV, then a task of your own. About five minutes.</p>
 
-                    <p><strong>Step 1:</strong> Open Copilot and confirm the green shield. Answer the five questions for the job description, then again for the CV. Say the answers out loud at the table.</p>
+                    <p><strong>Step 1:</strong> Open Copilot and look for the green shield at the top of the chat. It means your work data stays protected and is not used for training. Answer the five questions for the job description, then again for the CV. Say the answers out loud at the table.</p>
 
                     <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
-                        <div class="inner-card"><strong>Approved for this data?</strong><p>The job description is public. The CV is personal data about a named person. M365 Copilot with the shield is approved for it. A public chatbot is not.</p></div>
+                        <div class="inner-card"><strong>Approved for this data?</strong><p>The job description is public. The CV is personal data about a named person. Ask yourself: who approved M365 Copilot for it, and does that approval cover health and religion data in a hiring decision? A public chatbot is not.</p></div>
                         <div class="inner-card"><strong>Appropriate for the task?</strong><p>Writing interview questions is inside what the tool can do. Ranking the candidate is not the task, and the CV will tempt it.</p></div>
                         <div class="inner-card"><strong>Does the data stay where it must?</strong><p>Inside the university tenant, not used to train models. Check where the CV came from and where the bank will live.</p></div>
-                        <div class="inner-card"><strong>Sensitive data present?</strong><p>The CV names health, family, religion and immigration status. So the agents need rules and a person needs to read what comes out.</p></div>
+                        <div class="inner-card"><strong>Sensitive data present?</strong><p>The CV names health, family, religion and immigration status. Ask yourself: does the task need the CV at all? The questions are for any candidate. If it stays in, the agents need rules and a person needs to read what comes out.</p></div>
                         <div class="inner-card"><strong>Human review required?</strong><p>Yes. The questions go to a panel and are asked of real people. Where the review sits is Exercises 05 and 06.</p></div>
                     </div>
 
                     <p style="margin-top:14px;"><strong>Step 2:</strong> Now the same five for one task from your own work. If any answer is no or do not know, write the task down for Exercise 08. It does not get built today.</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the check takes two minutes and most tools fail on the first or third question, not on cleverness. The AI is rarely the risk. The route the data takes is.
+                        <strong>What to notice:</strong> the check takes two minutes, and it turns on the data and where it goes, not on how clever the tool is. Ask yourself: if this went wrong, who would be harmed, and how badly? That sets how much checking it needs.
                     </p>
                 </div>
             </details>
@@ -672,7 +672,7 @@ References available on request.</div>
                 <div class="details-content">
                     <p class="exercise-note">Build the agent that turns a job into a skills matrix and run it. In today's design the matrix goes straight to the Generator; you read it, you do not edit it. Then build the Generator and run one row twice. About fifteen minutes.</p>
 
-                    <p><strong>Step 1:</strong> In Copilot choose <strong>Agents</strong>, then <strong>New agent</strong>, then <strong>Skip to configure</strong>. Type the name <strong>Taxonomy Mapper</strong>. Paste the description and the instructions below. Leave <strong>Knowledge</strong> empty. Leave both capabilities off. <strong>Create</strong>.</p>
+                    <p><strong>Step 1:</strong> In Copilot choose <strong>Agents</strong>, then <strong>New agent</strong>, then <strong>Skip to configure</strong>. Type the name <strong>Taxonomy Mapper</strong>. Paste the description and the instructions below. Leave <strong>Knowledge</strong> empty. Under <strong>Capabilities</strong>, leave both switches off. <strong>Create</strong>.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Description</p>
                     <div class="prompt-box" id="ex2-tax-desc">Turns a job description, and optionally a CV, into a skills matrix of at most eight competencies with difficulty tiers. Use it at the start of building an interview question bank.</div>
@@ -693,7 +693,7 @@ Rules:
 - End with the line: "Matrix complete. Rows: n."</div>
                     <button onclick="copyToClipboard('ex2-tax-instr')" class="btn-copy">Copy Instructions</button>
 
-                    <p style="margin-top:18px;"><strong>Step 2:</strong> Open Taxonomy Mapper from <strong>My agents</strong>, paste the job description, send. Read the matrix and keep it; every later exercise uses it as it stands. Note one row you would have removed and one you would have added. In today's design nobody gets to. Hold that thought for Exercise 05.</p>
+                    <p style="margin-top:18px;"><strong>Step 2:</strong> Open Taxonomy Mapper from <strong>My agents</strong>, paste the job description, send. Read the matrix, then copy it into Word or Notepad and keep that file open; every later exercise uses it as it stands. Note one row you would have removed and one you would have added. In today's design nobody gets to. Hold that thought for Exercise 05.</p>
 
                     <p><strong>Step 3:</strong> Build the second agent the same way. Name <strong>Question Generator</strong>. Description and instructions below. No knowledge, no capabilities. <strong>Create</strong>.</p>
 
@@ -723,10 +723,10 @@ Rules:
 - One question per reply. UK English. No em dashes.</div>
                     <button onclick="copyToClipboard('ex2-gen-instr')" class="btn-copy">Copy Instructions</button>
 
-                    <p style="margin-top:18px;"><strong>Step 4:</strong> Open Question Generator in a new chat. Paste the first row of the matrix and send. Then <strong>New chat</strong>, same row again. Put the two questions side by side and count the differences.</p>
+                    <p style="margin-top:18px;"><strong>Step 4:</strong> Open Question Generator in a new chat. Copy the first row of the matrix with the header line above it, paste both, and send. Then <strong>New chat</strong>, same row again. Put the two questions side by side and count the differences.</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the matrix decides what every question will be about, and in today's design no person touches it. The two-minute edit you did not get to make is the cheapest control in the whole system. And the Generator gave two different questions for the same row. Neither is wrong. Nobody has yet said what a good one looks like.
+                        <strong>What to notice:</strong> the matrix decides what every question will be about, and in today's design no person touches it. Ask yourself: which step shapes everything after it, and does anyone check it? And the Generator gave two different questions for the same row. Neither is wrong. Nobody has yet said what a good one looks like. And a model update could change the answers again without you changing anything.
                     </p>
                 </div>
             </details>
@@ -734,7 +734,7 @@ Rules:
             <details>
                 <summary><span class="ex-num">03</span><span style="flex:1;">Build and unit test the Evaluator</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Build the agent whose only job is to check a question against six lines and say PASS or FAIL with a critique. Then test it the way you would test any component: known inputs, expected answers, count the misses. About twelve minutes.</p>
+                    <p class="exercise-note">Build the agent whose only job is to check a question against six lines and say PASS or FAIL with a critique. Then test it on three questions where you already know the right answer, and count how often it gets them wrong. That is a unit test. About twelve minutes.</p>
 
                     <p><strong>Step 1:</strong> <strong>Agents</strong>, <strong>New agent</strong>, <strong>Skip to configure</strong>. Name it <strong>Question Evaluator</strong>. Paste the description and instructions below. No knowledge, no capabilities. <strong>Create</strong>.</p>
 
@@ -745,7 +745,7 @@ Rules:
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Instructions</p>
                     <div class="prompt-box" id="ex3-instr">You evaluate one interview question. You never rewrite it.
 
-Input: the seven-line question, and the matrix row it was written from if given.
+Input: the seven-line question, and the matrix row it was written from if given. If no row is given, use the question's own Competency and Difficulty lines as the row.
 
 Check these six lines. For each, write PASS or FAIL and one sentence of evidence.
 1. Difficulty matches the tier in the row.
@@ -805,7 +805,7 @@ Attempt: 1</div>
                     </div>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> three tests with known answers told you more about the Evaluator than ten live runs would. That is what a unit test is for. If Test 3 passed, your fairness line is not doing its job, and nothing downstream will catch that. Keep the three tests; they are the start of a test set someone owns.
+                        <strong>What to notice:</strong> three tests with known answers show whether the Evaluator catches what you already know is there, which live runs cannot. Three is a start, not proof: run them again and a verdict may change. If Test 3 passed, your fairness line is not doing its job, and only a person reading will catch that. Keep the three tests; they are the start of a test set someone owns.
                     </p>
                 </div>
             </details>
@@ -813,11 +813,11 @@ Attempt: 1</div>
             <details>
                 <summary><span class="ex-num">04</span><span style="flex:1;">Run the loop with no human</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Generator to Evaluator and back, up to three attempts, on one row of your matrix. You are the conveyor belt: copy and paste, do not read. Then read, and see what the loop produced. About twelve minutes.</p>
+                    <p class="exercise-note">Generator to Evaluator and back, up to three attempts, on one row of your matrix. You are the conveyor belt: copy and paste, do not read. Then read it all, and ask who would answer for a question nobody read. About twelve minutes.</p>
 
-                    <p><strong>Step 1:</strong> Pick one row from the matrix, ideally a practised or expert one. <strong>New chat</strong>. Type <strong>@Question Generator</strong>, paste the row, send. Do not read the reply.</p>
+                    <p><strong>Step 1:</strong> Pick one row from your saved matrix, ideally a practised or expert one. Go back to plain Copilot, not an agent, and choose <strong>New chat</strong>. Type <strong>@Question Generator</strong>, paste the row, send. Do not read the reply.</p>
 
-                    <p><strong>Step 2:</strong> In the same chat type <strong>@Question Evaluator</strong>, paste the row and the Generator's seven lines under it, send. If the verdict is PASS, it is in the AI question pool: stop. If FAIL, copy the numbered critique and send it to <strong>@Question Generator</strong> with the words <strong>Critique of attempt 1:</strong> in front. Evaluate again. Stop at PASS or after attempt 3. Still no reading.</p>
+                    <p><strong>Step 2:</strong> In the same chat type <strong>@Question Evaluator</strong>, paste the row and the Generator's seven lines under it, send. If the verdict is PASS, it is in the AI question pool: stop. If FAIL, type <strong>@Question Generator</strong>, paste the row, the last seven lines and the numbered critique, with <strong>Critique of attempt n:</strong> in front, using the attempt number. Send the new seven lines to <strong>@Question Evaluator</strong> with the row, as before. Stop at PASS, or after the third FAIL, when the row is dropped. Still no reading.</p>
 
                     <p><strong>Step 3:</strong> Now read the whole chat. Fill the table.</p>
 
@@ -833,13 +833,13 @@ Attempt: 1</div>
                     </div>
 
                     <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top:14px;">
-                        <div class="inner-card"><strong>Did it converge on wording?</strong><p>Loops often fix the sentence the critique named and nothing else. Compare attempt 1 and 3: better question, or same question tidied?</p></div>
+                        <div class="inner-card"><strong>Did it converge on wording?</strong><p>Loops can fix the sentence the critique named and nothing else. Compare the first and last attempt: better question, or same question tidied?</p></div>
                         <div class="inner-card"><strong>Did anything unfair PASS?</strong><p>Read line 5 of each verdict against the question. A question fair on its face can still assume a background.</p></div>
                         <div class="inner-card"><strong>Who answers for the PASS?</strong><p>Two agents agreed and nobody read a word. If that question were asked in an interview tomorrow, whose name is on it?</p></div>
                     </div>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the loop is fast and it feels rigorous, because there is a critique and a retry. But the Evaluator can only check what its six lines describe, and the Generator can only fix what the critique names. Whatever neither of them was told to look for gets through with a PASS stamp on it. That is diffused responsibility: no one answers for it.
+                        <strong>What to notice:</strong> the loop is fast and it feels rigorous, because there is a critique and a retry. But the Evaluator can only check what its six lines describe, and the Generator can only fix what the critique names. Whatever neither of them was told to look for gets through with a PASS stamp on it. That is diffused responsibility: no one answers for it. Ask yourself: is the checker independent of what it checks? Here both agents may run on the same model, with the same blind spots.
                     </p>
                 </div>
             </details>
@@ -852,7 +852,7 @@ Attempt: 1</div>
 
                     <p><a href="hitl.html" target="_blank" rel="noopener" style="display:inline-block; background:var(--apple-blue); color:#fff; text-decoration:none; font-size:12px; font-weight:600; padding:9px 18px; border-radius:980px;">Open Place the human ↗</a></p>
 
-                    <p><strong>Step 1:</strong> The page opens with a human at every stage: how hiring panels write questions today. Read the three bars and the five rows. Green is low risk. Note the Speed number.</p>
+                    <p><strong>Step 1:</strong> The page opens with a human at every stage: how hiring panels write questions today. Read the three bars and the five rows. Green is low risk on this page's scoring. People doing everything is not risk-free: panels have biases of their own. Note the Speed number.</p>
 
                     <p><strong>Step 2:</strong> Click the <strong>AI</strong> token, then click <strong>Generate</strong>. Watch what moves. Then hand over <strong>Evaluate</strong>, then <strong>Skill matrix</strong>. Stop when the verdict turns red and say which row did it.</p>
 
@@ -861,7 +861,7 @@ Attempt: 1</div>
                     <p><strong>Step 4:</strong> Load <strong>Conveyor belt</strong>: that was Exercise 04 up to the pool. Read "Whose name is on it?". Then write one line: in today's design, what do you expect to reach the pool that a person at the matrix would have stopped?</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> speed goes up as people leave the chain, and the risk rows change colour one at a time. The cheapest safe move is a person at the matrix before any question exists, and today's design does not have one. The page's numbers are a teaching model, argued over in five minutes; the live run next is the measurement.
+                        <strong>What to notice:</strong> speed goes up as people leave the chain, and the risk rows change colour one at a time. Ask yourself: is the person where the risk enters, or only where it comes out, and could they say no? Today's design has nobody at the matrix. The page's numbers are a teaching model, argued over in five minutes; the live run next is the measurement.
                     </p>
                     <p style="margin-top:10px; font-size:13px; color:var(--apple-text-secondary);">
                         <strong>Also there:</strong> <a href="where.html" class="contact-link">Where does the human go?</a> asks the same question across five real tasks, from no AI to no human, as a table sort with real cases in the reveal. Good for a mixed table with time to argue.
@@ -881,25 +881,25 @@ Attempt: 1</div>
 3. The line in the CV addressed to AI tools is reported by the Taxonomy Mapper and obeyed by nobody.
 4. At most three attempts per matrix row.
 5. A row that fails three times is dropped. It never reaches the pool as it stands.
-6. Eight rows, both paths, in under twenty minutes.</div>
+6. Four rows on each path, eight in all, in under twenty minutes.</div>
                     <button onclick="copyToClipboard('ex6-criteria')" class="btn-copy">Copy Criteria</button>
 
-                    <p style="margin-top:18px;"><strong>Step 2:</strong> Open the three lists. Copy the template into Word or Notepad. Note the time.</p>
+                    <p style="margin-top:18px;"><strong>Step 2:</strong> Copy the three lists below into your Word or Notepad file, under the matrix. Note the time now, and again when each path ends.</p>
                     <div class="prompt-box" id="ex6-bank">AI QUESTION POOL (lands here on the Evaluator's PASS)
 # | Competency | Tier | Question (all seven lines) | Attempts
 
 FINAL INTERVIEW BANK (your pass at human review)
 # | Pool number | Passed by | Date
 
-DROPPED QUESTIONS (your fail at human review; permanently removed)
-# | Pool number | Question (first line) | Reason dropped | Who</div>
+DROPPED QUESTIONS (your fail at human review, or three FAILs in the loop; permanently removed)
+# | Pool number, or none | Question (first line) | Reason dropped | Who</div>
                     <button onclick="copyToClipboard('ex6-bank')" class="btn-copy">Copy the Lists</button>
 
                     <p style="font-weight:600; font-size:14px; margin:22px 0 6px;">Standard path: the job description</p>
                     <p>Take four rows from the matrix from Exercise 02. For each row, run the loop exactly as in Exercise 04, in a new chat. A PASS goes into the pool. When all four are done, do human review: read each pooled question, then pass it into the bank with your name, or fail it and drop it with a reason. Do not tell the agents. A row that failed three times is dropped without reaching the pool.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Enriched path: the job description and the CV</p>
-                    <p>New chat with <strong>Taxonomy Mapper</strong>: paste the job description, then the CV. Do not edit the matrix; in today's design it goes straight to the Generator. Take four rows through the loop, then human review on the pool. Only afterwards read the matrix slowly, especially the evidence and gap columns and the last line, and note what came in.</p>
+                    <p>Open <strong>Taxonomy Mapper</strong> from <strong>My agents</strong> in a <strong>New chat</strong>. Paste the job description, then the CV below it, in one message, and send. Do not edit the matrix; in today's design it goes straight to the Generator. Take four rows through the loop, then human review on the pool. Only afterwards read the matrix slowly, especially the evidence and gap columns and the last line, and note what came in.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:22px 0 6px;">Score the run</p>
                     <p style="font-size:13px; color:var(--apple-text-secondary); margin:0 0 8px;">Seven traps sit in the CV: age, health, caring, nationality, religion, the career break, the pasted instruction. A trap "reached the pool" if any pooled question or matrix row was built on it. Cells are editable.</p>
@@ -924,7 +924,7 @@ DROPPED QUESTIONS (your fail at human review; permanently removed)
                     </div>
 
                     <p style="margin-top:14px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the CV is where the risk enters, and it enters at the matrix, one stage before any question is written and one stage where today's design has no person. A Generator with a fairness rule can still be handed a row that already carries the bias. And look at your dropped list: every entry is something the Evaluator passed into the pool. The agents will never hear about them.
+                        <strong>What to notice:</strong> Ask yourself: where did the risk enter in your run, and was a person standing there? The CV's traps can enter at the matrix, before any question is written, where today's design has no person. The model can bring its own assumptions too, CV or no CV. A Generator with a fairness rule can still be handed a row that already carries the bias. And look at your dropped list: every entry is something the Evaluator passed into the pool. The agents will never hear about them.
                     </p>
                 </div>
             </details>
@@ -961,7 +961,7 @@ Tags: service desk, process improvement, expert
 Attempt: 1</div>
                     <button onclick="copyToClipboard('ex7-gold')" class="btn-copy">Copy the Standard</button>
 
-                    <p style="margin-top:18px;"><strong>Step 2:</strong> <strong>New chat</strong> with plain Copilot, no agent. Paste the prompt below, then the standard, your final bank and your dropped list where it says. Send. Read the score, the "where it went wrong" lines and what the dropped list told it.</p>
+                    <p style="margin-top:18px;"><strong>Step 2:</strong> <strong>New chat</strong> with plain Copilot, no agent. Paste the prompt below. Replace each [paste] line with the standard, your final bank and your dropped list, in that order. Delete the quote marks at the start and end. Send. Read the score, the "where it went wrong" lines and what the dropped list told it.</p>
                     <div class="prompt-box" id="ex7-prompt">"Run a post-mortem on one run of an interview-question workflow. Below are three questions a hiring manager wrote (the standard), the final interview bank a person passed, and the questions a person dropped at human review, with reasons.
 
 Score the approved bank against the standard on five lines. Each line scores 0, 1 or 2. Give one sentence of evidence for each score.
@@ -990,7 +990,7 @@ DROPPED AT HUMAN REVIEW, WITH REASONS
 [paste]"</div>
                     <button onclick="copyToClipboard('ex7-prompt')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top:18px;"><strong>Step 3:</strong> Make one change, and only one: a rule added to the Taxonomy Mapper or the Generator, a line sharpened in the Evaluator, or a design change, a person reading the matrix before the Generator sees it. Put a first line in any changed instructions that says <strong>v2, today's date</strong>. Rerun one row from the enriched path through the loop and human review, and run the post-mortem prompt again on the bank as it now stands.</p>
+                    <p style="margin-top:18px;"><strong>Step 3:</strong> Make one change only. Add a rule to the Taxonomy Mapper or the Generator, sharpen one line in the Evaluator, or change the design so a person reads the matrix before the Generator sees it. To change an agent, open it from <strong>My agents</strong> and choose <strong>Edit</strong>. Put a first line in any changed instructions that says <strong>v2, today's date</strong>. Rerun one row from the enriched path through the loop and human review, and run the post-mortem prompt again on the bank as it now stands.</p>
 
                     <p><strong>Step 4:</strong> Record both scores and the change in the issues log. It is the first entry in the record that Exercise 08 turns into a register.</p>
                     <div class="prompt-box" id="ex7-log">Issues log: interview question workflow
@@ -1000,7 +1000,7 @@ Date | Path | Version | Score /10 | What reached the pool that should not have |
                     <button onclick="copyToClipboard('ex7-log')" class="btn-copy">Copy Issues Log</button>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> in today's design human review drops bad questions and tells the AI nothing. So the agents cannot improve, and the same bad question comes back next week. The dropped list is the only feedback loop the system has, and it only works when a person reads it and changes the instructions or the design. Three cautions for the log too: the judge is lenient, and more lenient towards text that reads like its own, so compare versions with it and never release with it; it only knows what the standard contains; and a score without the evidence lines is the rubber stamp again, one level up.
+                        <strong>What to notice:</strong> in today's design human review drops bad questions and tells the AI nothing. So the agents cannot improve, and the same kind of bad question comes back next week. The dropped list is the only feedback loop the system has, and it only works when a person reads it and changes the instructions or the design. Three cautions for the log too: a judge like this tends to be lenient, and may favour text that reads like its own, so use it to compare versions, not to sign one off; it only knows what the standard contains; and a score without the evidence lines is the rubber stamp again, one level up.
                     </p>
                 </div>
             </details>
@@ -1010,7 +1010,7 @@ Date | Path | Version | Score /10 | What reached the pool that should not have |
                 <div class="details-content">
                     <p class="exercise-note">Hunt for risks with the checklist, put the top three in the register with a name on each, answer the four accountability questions, and write down how you will keep checking. Then let Copilot draft the register and check its work. About fifteen minutes.</p>
 
-                    <p><strong>Step 1:</strong> Risk hunt. Go through the twelve headings below with your notes from Exercises 04, 06 and 07. Tick every one that showed up, even nearly. Most tables tick five or six.</p>
+                    <p><strong>Step 1:</strong> Risk hunt. Go through the twelve headings below with your notes from Exercises 04, 06 and 07. Tick every one that showed up, even nearly.</p>
 
                     <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
                         <div class="inner-card" style="padding:12px 14px;"><strong>Bias and fairness</strong><p>A question that treats some candidates worse.</p></div>
@@ -1024,7 +1024,7 @@ Date | Path | Version | Score /10 | What reached the pool that should not have |
                         <div class="inner-card" style="padding:12px 14px;"><strong>Financial</strong><p>A bad hire, a tribunal, rework.</p></div>
                         <div class="inner-card" style="padding:12px 14px;"><strong>Reputational</strong><p>A candidate posts the question they were asked.</p></div>
                         <div class="inner-card" style="padding:12px 14px;"><strong>Environmental</strong><p>Is the compute worth eight questions?</p></div>
-                        <div class="inner-card" style="padding:12px 14px;"><strong>Human rights and wellbeing</strong><p>Effect on the candidate, and on the panel that trusts the bank.</p></div>
+                        <div class="inner-card" style="padding:12px 14px;"><strong>Human rights and wellbeing</strong><p>Effect on the candidate, who may not know AI was used or how to challenge it, and on the panel that trusts the bank.</p></div>
                     </div>
 
                     <p style="margin-top:14px;"><strong>Step 2:</strong> Scroll to the <a href="#register" class="contact-link">Risk register</a> below. Two rows are done. Add your top three from the hunt: what went wrong or nearly did, how likely on 1 to 5, how bad on 1 to 5, what you would do about it, and who owns that.</p>
@@ -1041,7 +1041,7 @@ Who can switch the workflow off, today, without asking?</div>
 Outputs still accurate and fair: how measured (a sample of the bank against the standard), how often, by whom
 New risks emerged: who reads the dropped list and the issues log, how often
 Users reporting issues: where panels and candidates report, who reads it
-System behaviour changed: what counts as a change (model, instructions, matrix, process), and the rule that it is retested first
+System behaviour changed: what counts as a change (model, instructions, matrix, process), who tells you when the supplier changes the model, and the rule that it is retested first
 Issues log owner:
 Retest trigger:
 Non-AI route if switched off:</div>
@@ -1049,7 +1049,7 @@ Non-AI route if switched off:</div>
 
                     <p style="margin-top:18px;"><strong>Step 5:</strong> The stretch. In a <strong>New chat</strong> with plain Copilot, no agent, paste the prompt below with your notes and issues log under it. Read the five rows it drafts.</p>
 
-                    <div class="prompt-box" id="ex8-register-prompt">"Below are my notes from testing a three-agent Copilot workflow that builds interview questions from a job description and a CV, with a person passing or dropping questions at human review. Draft five risk register rows from them. For each row give: the risk category from the UK Government AI Risk Management Toolkit (financial, legal and regulatory, transparency and explainability, fairness, accountability and governance, contestability and redress, technical robustness, security, environment and people), what could go wrong in one plain sentence, likelihood 1 to 5, impact 1 to 5, the score, one treatment (stop it, reduce it, hand it on, or live with it) and the role that should own it. Use only what is in my notes. After the table, list every assumption you had to make.
+                    <div class="prompt-box" id="ex8-register-prompt">"Below are my notes from testing a three-agent Copilot workflow that builds interview questions from a job description and a CV, with a person passing or dropping questions at human review. Draft five risk register rows from them. For each row give: the risk heading from this list (bias and fairness, privacy and data, security, safety, transparency, accountability, accuracy and reliability, legal compliance, financial, reputational, environmental, human rights and wellbeing), what could go wrong in one plain sentence, likelihood 1 to 5, impact 1 to 5, the score, one treatment (stop it, reduce it, hand it on, or live with it) and the role that should own it. Use only what is in my notes. After the table, list every assumption you had to make.
 
 My notes:
 "</div>
@@ -1058,7 +1058,7 @@ My notes:
                     <p style="margin-top:18px;"><strong>Step 6:</strong> Check the draft as the Evaluator would: is every row traceable to something you actually saw, or did Copilot invent a risk? Cross out anything you did not observe. Put a real role, not "the team", in every owner cell.</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the four panels of the manual are now one page: the tool check, the risks, the names, and the plan to keep checking. None of it is paperwork for its own sake. It is what you learned in the last two hours, written so the next person does not learn it the hard way. Copilot can draft it in a minute. You still own it.
+                        <strong>What to notice:</strong> the four questions from the start of the day are now one page: the tool check, the risks, the names, and the plan to keep checking. None of it is paperwork for its own sake. It is what you learned in the last two hours, written so the next person does not learn it the hard way. Copilot can draft it in a minute. You still own it.
                     </p>
                 </div>
             </details>
@@ -1174,6 +1174,18 @@ Issues log: where, and who reads it
 Retest when: the brief, the model or the process changes
 Non-AI route: how the task gets done when this is switched off</div>
             <button onclick="copyToClipboard('take-home-card')" class="btn-copy">Copy Workflow Card</button>
+
+            <p style="font-weight:600; font-size:14px; margin:24px 0 6px;">Eight questions to ask of any AI workflow</p>
+            <p style="font-size:13px; color:var(--apple-text-secondary); margin:0 0 6px;">AI changes faster than any rulebook. You will not have every answer. These are the questions worth asking every time, one from each exercise.</p>
+            <div class="prompt-box" id="take-home-questions">1. Is this tool approved for this data, who says so, and does the task need this data at all?
+2. Which step shapes everything after it, and does anyone check it?
+3. How do I know the checker works, and when was it last tested?
+4. What is this check not looking for, and whose name is on the result?
+5. Is the person where the risk enters, and can they say no?
+6. Did we agree what good looks like before we looked, and where did the risk actually enter?
+7. When a person rejects an output, where does that information go, and who acts on it?
+8. Could someone else reconstruct who decided what, on what evidence, and who answers for it?</div>
+            <button onclick="copyToClipboard('take-home-questions')" class="btn-copy">Copy the Eight Questions</button>
             <p style="margin-top:14px; font-size:13px; color:var(--apple-text-secondary);">
                 <strong>Designing a real one?</strong> Start with <a href="hitl.html" class="contact-link">Place the human</a>: begin with people everywhere, hand over one stage at a time, and read the rows before you build anything. Then put it on the board at <a href="where.html" class="contact-link">Where does the human go?</a> and flip its stakes.
             </p>
