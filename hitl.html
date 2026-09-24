@@ -146,7 +146,7 @@
             <a class="ghost" href="governance.html#exercises">Exercises</a>
         </div>
     </div>
-    <div class="stakes" id="stakes"><strong>Today's task:</strong> a meeting transcript becomes a summary, an action table and an email to attendees. Internal, low sensitivity, easy to correct. <strong>The governance question:</strong> who decided what, on what evidence, and who answers for it.</div>
+    <div class="stakes" id="stakes"><strong>Today's task:</strong> interview questions for one role, from a job description and a CV. Personal data in, questions asked of real people out, hard to undo. <strong>The governance question:</strong> who decided what, on what evidence, and who answers for it.</div>
 
     <main>
         <section class="panel">
@@ -186,17 +186,17 @@
     <div class="overlay" id="overlay">
         <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="how-title">
             <h2 id="how-title">How this is scored</h2>
-            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live runs in Exercise 06 are the measurement. The rules are fixed and simple so you can argue with them.</p>
+            <p class="hint" style="margin:0;"><strong style="color:var(--ink);">A teaching model, not a measurement.</strong> The live run in Exercise 06 is the measurement. The rules are fixed and simple so you can argue with them.</p>
             <ul>
-                <li><strong>Speed</strong> starts at 100. A human costs 10 at the brief, 45 at the draft, 20 at the check and 10 at sign off. An AI costs 5 per stage. Nobody costs nothing.</li>
-                <li><strong>Errors caught</strong> starts at 55 for an AI draft or 70 for a human draft, then adds 15 for a human brief (the rules are written down), 5 for an AI brief, 25 for a human check, 12 for an AI check (format and consistency, not truth) and 5 for a human sign off. If an AI drafted and an AI checked and the only human is at the end without a written brief, that final 5 is lost: the human skims because two agents already "checked".</li>
-                <li><strong>Human effort</strong> counts 1 for the brief, 4 for drafting, 2 for checking, 1 for signing, out of 8. Six or more is flagged as fatigue.</li>
-                <li><strong>Accountability</strong> is Low if a human signs off, Medium if a human checked or drafted but nobody signed, otherwise High.</li>
-                <li><strong>Data and legal</strong> starts at the task's sensitivity, drops a level if a person reads it before it leaves and another if the brief is human-written, and is High whenever an AI drafted and no person reads it.</li>
-                <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the input is to pasted instructions, and drops a level for a human read before send and for a human brief.</li>
-                <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse when the task is hard to undo.</li>
+                <li><strong>Speed</strong> starts at 100. A human costs 10 at the matrix, 45 at generating, 20 at evaluating and 10 at review. An AI costs 5 per stage. Nobody costs nothing.</li>
+                <li><strong>Errors caught</strong> starts at 55 for an AI-written question or 70 for a human-written one, then adds 15 for a human-read matrix, 5 for an AI matrix, 25 for a human evaluation, 12 for an AI evaluation (format and open-endedness, not fairness in effect) and 5 for human review before the bank. If AI generated and AI evaluated and the only human is the review with no one at the matrix, that final 5 is lost: the person skims because two agents already passed it.</li>
+                <li><strong>Human effort</strong> counts 1 for the matrix, 4 for writing, 2 for evaluating, 1 for review, out of 8. Six or more is flagged as fatigue.</li>
+                <li><strong>Accountability</strong> is Low if a human reviews before the bank, Medium if a human evaluated or wrote but nobody reviewed, otherwise High.</li>
+                <li><strong>Data and legal</strong> starts high, because the CV is personal data. It drops a level if a person reads the question before a candidate does and another if a person read the matrix, and is High whenever AI wrote it and no person reads it.</li>
+                <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the CV route is to a planted line, and drops a level for a human read before the bank and for a human at the matrix.</li>
+                <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse because a question asked cannot be unasked.</li>
                 <li><strong>People</strong> is Medium when most of the work sits with people (fatigue), when a human both checks and signs off, or on the rubber-stamp flag, otherwise Low. Nothing here is High: people problems show up as slowness and skipped checks, which the other rows then catch.</li>
-                <li><strong>Acceptable or too risky</strong>: too risky if any row is High, or if more than three rows are Medium.</li>
+                <li><strong>Acceptable or too risky</strong>: too risky if any row is High, or if more than one row is Medium. Hiring earns the stricter line.</li>
             </ul>
             <p style="margin:16px 0 0; text-align:right;"><button class="ghost" type="button" id="how-close">Close</button></p>
         </div>
@@ -205,10 +205,10 @@
     <script>
     (function () {
         var TASKS = {
-            meeting: { label: 'Meeting notes', sens: 1, inj: 2, rev: 'high', allowMed: 3,
-                stakes: 'Today\'s task. Internal audience, low sensitivity, easy to correct with a follow-up. The input is a pasted transcript, which can carry instructions aimed at the agent.',
-                dataBase: 'Meeting notes rarely carry much sensitive detail, but salaries and personal news do come up.',
-                secBase: 'A pasted transcript can carry a line aimed at the agent.' },
+            meeting: { label: 'Interview questions', sens: 3, inj: 2, rev: 'low', allowMed: 1,
+                stakes: 'Today\'s task. Interview questions from a job description and a CV. The CV is personal data, and a bad question is asked of a real candidate before anyone notices.',
+                dataBase: 'The CV names health, family, religion and immigration status. Any of it in a question is unlawful as well as unkind.',
+                secBase: 'A CV can carry a line aimed at the agents, and this one does.' },
             student: { label: 'Student reply', sens: 3, inj: 1, rev: 'low', allowMed: 1,
                 stakes: 'One recipient, a health detail in the input, a decision the student will act on. Hard to undo once sent, and the university is answerable for it.',
                 dataBase: 'The input holds a health detail about a named student.',
@@ -219,19 +219,19 @@
                 secBase: 'Low exposure: the source material is internal documents.' }
         };
         var STAGES = [
-            { key: 'B', label: 'Write the brief', hint: 'set the standard' },
-            { key: 'D', label: 'Draft', hint: 'do the work' },
-            { key: 'C', label: 'Check', hint: 'against the standard' },
-            { key: 'S', label: 'Sign off and send', hint: 'name on it' }
+            { key: 'B', label: 'Skill matrix', hint: 'which skills, which tiers' },
+            { key: 'D', label: 'Generate', hint: 'write the question' },
+            { key: 'C', label: 'Evaluate', hint: 'PASS or FAIL, critique' },
+            { key: 'S', label: 'Human review', hint: 'pass to bank, or drop' }
         ];
         var NAMES = { H: 'Human', A: 'AI', N: 'Nobody' };
         var PRESETS = [
             { key: 'human', label: 'Start: all human', slots: 'HHHH' },
-            { key: 'A', label: 'Run A: check at the end', slots: 'NAAH' },
-            { key: 'B', label: 'Run B: check in the middle', slots: 'NAHA' },
-            { key: 'C', label: 'Run C: brief first', slots: 'HAAH' },
+            { key: 'A', label: 'Today\'s design: human review after the pool', slots: 'NAAH' },
+            { key: 'C', label: 'Matrix reviewed first', slots: 'HAAH' },
+            { key: 'B', label: 'Person evaluates, PASS is final', slots: 'NAHA' },
             { key: 'belt', label: 'Conveyor belt (Exercise 04)', slots: 'NAAN' },
-            { key: 'proof', label: 'Human drafts, AI checks', slots: 'NHAH' }
+            { key: 'proof', label: 'Human writes, AI evaluates', slots: 'NHAH' }
         ];
         var ICON = {
             H: '<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
@@ -273,43 +273,43 @@
             var rows = [];
             // Accountability
             var acc, accWhy;
-            if (S === 'H') { acc = 0; accWhy = 'A person signs it off. Their name is on it.'; }
-            else if (C === 'H') { acc = 1; accWhy = 'The person who checked it answers for it, but nobody signed it off before it left.'; }
-            else if (D === 'H') { acc = 1; accWhy = 'The person who drafted it answers for it by default, but nobody signed off what left.'; }
-            else { acc = 2; accWhy = 'No person read or signed it. Nobody answers for it.'; }
+            if (S === 'H') { acc = 0; accWhy = 'A person passes it into the bank. Their name is on it.'; }
+            else if (C === 'H') { acc = 1; accWhy = 'The person who evaluated it answers for it, but nobody reviewed what went into the bank.'; }
+            else if (D === 'H') { acc = 1; accWhy = 'The person who wrote it answers for it by default, but nobody reviewed what went into the bank.'; }
+            else { acc = 2; accWhy = 'No person read or reviewed it. Nobody answers for it.'; }
             rows.push({ key: 'acc', name: 'Accountability', sub: 'whose name is on it', level: acc, why: accWhy });
 
             // Data and legal
             var data = clamp(t.sens - 1), dataWhy = [t.dataBase];
-            if (humanReads) { data -= 1; dataWhy.push('A person reads it before it leaves.'); }
-            if (B === 'H') { data -= 1; dataWhy.push('The never-include rule is written in the brief.'); }
-            if (D === 'A' && !humanReads) { data = 2; dataWhy.push('AI drafted it and no person reads it before it leaves.'); }
+            if (humanReads) { data -= 1; dataWhy.push('A person reads it before it reaches a candidate.'); }
+            if (B === 'H') { data -= 1; dataWhy.push('A person read the matrix, so nothing personal got in at the start.'); }
+            if (D === 'A' && !humanReads) { data = 2; dataWhy.push('AI wrote it and no person reads it before a candidate hears it.'); }
             data = clamp(data);
-            rows.push({ key: 'data', name: 'Data and legal', sub: 'sensitive detail leaks', level: data, why: dataWhy.join(' ') });
+            rows.push({ key: 'data', name: 'Data and legal', sub: 'the CV\'s personal detail leaks into a question', level: data, why: dataWhy.join(' ') });
 
             // Security
             var anyAI = (B === 'A' || D === 'A' || C === 'A' || S === 'A');
             var sec, secWhy;
-            if (!anyAI) { sec = 0; secWhy = 'No AI stage, so there is nothing for a pasted instruction to hijack.'; }
+            if (!anyAI) { sec = 0; secWhy = 'No AI stage, so there is nothing for a line in a CV to hijack.'; }
             else {
                 sec = t.inj; var w = [t.secBase];
-                if (humanReads) { sec -= 1; w.push('A person reads before send.'); }
-                if (B === 'H') { sec -= 1; w.push('The brief tells the agent to report instructions, not follow them.'); }
+                if (humanReads) { sec -= 1; w.push('A person reads before it reaches the bank.'); }
+                if (B === 'H') { sec -= 1; w.push('A person read the matrix, where the CV enters, so a planted line was seen.'); }
                 sec = clamp(sec); secWhy = w.join(' ');
             }
-            rows.push({ key: 'sec', name: 'Security', sub: 'the input tells the agent what to do', level: sec, why: secWhy });
+            rows.push({ key: 'sec', name: 'Security', sub: 'the CV tells the agents what to do', level: sec, why: secWhy });
 
             // Quality
             var q = out.errors < 50 ? 2 : (out.errors <= 75 ? 1 : 0);
             var qWhy = 'Errors caught scores ' + out.errors + ' out of 100.';
-            if ((t.rev === 'low' || t.rev === 'very low') && q === 1) { q = 2; qWhy += ' A mistake here is hard to undo, so Medium becomes High.'; }
-            rows.push({ key: 'qual', name: 'Quality', sub: 'invented owners and wrong dates get through', level: q, why: qWhy });
+            if ((t.rev === 'low' || t.rev === 'very low') && q === 1) { q = 2; qWhy += ' A question asked in an interview cannot be unasked, so Medium becomes High.'; }
+            rows.push({ key: 'qual', name: 'Quality', sub: 'unfair or unanswerable questions get through', level: q, why: qWhy });
 
             // People
             var p, pWhy;
             if (fatigue) { p = 1; pWhy = 'Most of the work sits with people. Safe and slow, and on a busy day the checks get skipped.'; }
             else if (doubleRead) { p = 1; pWhy = 'Two human reads of every item. Right for high stakes, and it will not survive a busy week on routine work.'; }
-            else if (rubber) { p = 1; pWhy = 'Two agents already "checked", so the human at the end skims. That is rubber stamping.'; }
+            else if (rubber) { p = 1; pWhy = 'Two agents already passed it, so the human review skims. That is rubber stamping.'; }
             else { p = 0; pWhy = 'Human effort is spread thinly enough for the checks to stay real.'; }
             rows.push({ key: 'people', name: 'People', sub: 'fatigue and rubber stamping', level: p, why: pWhy });
 
@@ -339,15 +339,15 @@
 
         function pattern(s) {
             var B = s.B, D = s.D, C = s.C, S = s.S;
-            if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Brief first (Run C)', desc: 'A person writes the rules down before anything runs, two agents do the work, a person signs.' };
-            if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Check at the end (Run A)', desc: 'Two agents, one signature. Fast, and the signature is where the risk hides: people skim what two machines have already passed.' };
-            if (D === 'A' && C === 'H' && S === 'A') return { name: 'Check in the middle (Run B)', desc: 'AI drafts, a person reads and fixes, an agent\'s PASS releases it.' };
-            if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI drafts, a person checks and the same or another person signs. Safe and tiring.' };
-            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 04)', desc: 'Two agents agree and nobody reads a word. In 2024 a meeting bot emailed a summary to an investor with hours of the firm\'s private talk in it. The deal died.' };
-            if (D === 'H' && C === 'A') return { name: 'Human drafts, AI checks', desc: 'The AI is a proof-reader. Good at format and consistency, blind to what was said in the room. The way most people already use it.' };
-            if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How it worked before. Accountable and slow.' };
-            if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No checker, so the person at the end is the only check.' };
-            if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI drafts and it leaves. Air Canada\'s chatbot invented a refund policy; in 2024 a tribunal made the airline honour it.' };
+            if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Matrix reviewed first', desc: 'A person reads the skills matrix before any question exists, two agents do the work, a person reviews the pool. The cheapest safe design, and not today\'s.' };
+            if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Today\'s design: human review after the pool', desc: 'AI maps, generates and evaluates; a person passes each pooled question into the bank or drops it. Fast, and the review is where the risk hides: people skim what two machines have already passed, and a dropped question teaches the AI nothing.' };
+            if (D === 'A' && C === 'H' && S === 'A') return { name: 'Person evaluates, PASS is final', desc: 'AI generates, a person evaluates every draft, and their PASS puts it straight in the bank. Careful, and it becomes skimming by the twentieth question.' };
+            if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI generates, a person evaluates and a person reviews again before the bank. Safe and tiring.' };
+            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 04)', desc: 'Two agents agree and nobody reads a word. Amazon trained a CV screener on ten years of its own hires; it learnt to mark down CVs with the word "women\'s" and was scrapped in 2018. Nobody had read what it learnt.' };
+            if (D === 'H' && C === 'A') return { name: 'Human writes, AI evaluates', desc: 'A person writes the questions and the Evaluator checks them. Good at format and open-endedness, and it will pass a question that is fair on its face and biased in effect.' };
+            if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How hiring panels write questions today. Accountable, slow, and inconsistent between panels.' };
+            if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No Evaluator, so the human review is the only check.' };
+            if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI generates and it goes straight to the panel. Air Canada\'s chatbot invented a refund policy; in 2024 a tribunal made the airline honour it. A question asked cannot be unasked either.' };
             return { name: 'Your layout', desc: 'Not one of today\'s named patterns. Read the rows.' };
         }
         // ---- state and UI ----
