@@ -834,13 +834,15 @@
         /* --- Take it Home (compact dual CTA) --- */
         .take-home-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 18px;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 1000px) {
             .take-home-grid { grid-template-columns: 1fr; }
         }
+
+        .take-home-content { padding-right: 30px; }
 
         .take-home-card {
             display: flex;
@@ -2197,7 +2199,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                     <div class="eyebrow">Take it Home</div>
                     <h2>Bring 'AI in the Workplace' to your team</h2>
                 </div>
-                <p>Two ways to share what you've learnt today.</p>
+                <p>Share what you've learnt today, or book our next workshop.</p>
             </div>
 
             <div class="take-home-grid">
@@ -2214,6 +2216,21 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                         <span class="take-home-tag">Workshop Flyer</span>
                         <span class="take-home-title">Share with your manager</span>
                         <span class="take-home-desc">One-pager covering everything they need to book us on-site.</span>
+                    </div>
+                    <span class="take-home-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="TheMatts_Governance_Workshop_Flyer.pdf" target="_blank" rel="noopener" class="take-home-card">
+                    <div class="take-home-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="take-home-content">
+                        <span class="take-home-tag">New Workshop</span>
+                        <span class="take-home-title">AI Governance in the Workplace</span>
+                        <span class="take-home-desc">Moving from experiments to workflows: build three AI agents and decide where the human sits.</span>
                     </div>
                     <span class="take-home-arrow" aria-hidden="true">↗</span>
                 </a>
@@ -2236,7 +2253,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
                 </a>
             </div>
              <p class="take-home-more">
-                <strong>We cover all aspects of AI</strong>, including M365 Copilot (Upgrade), AI Leadership Workshop, Local AI (on device), AI Art of the Possible, Microsoft Agents, AI in Research, and even a Digital Escape Room.
+                <strong>We cover all aspects of AI</strong>, including M365 Copilot (Upgrade), AI Leadership Workshop, AI Governance, Local AI (on device), AI Art of the Possible, Microsoft Agents, AI in Research, and even a Digital Escape Room.
             </p>
         </section>
 
