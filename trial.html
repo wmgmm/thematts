@@ -618,16 +618,38 @@
                 </div>
             </details>
             <details>
-                <summary><span class="ex-num">05</span><span style="flex:1;">Build My Personal Jira Board</span></summary>
+                <summary><span class="ex-num">05</span><span style="flex:1;">Data Is Your Asset: Institutional Memory</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Create a working Excel board from your digital exhaust.</p>
+                    <p class="exercise-note">Ask your work data what experience has taught you, not what happened.</p>
 
-                    <div class="prompt-box" id="ex5-jira">"You are an elite Chief of Staff, productivity analyst and Kanban designer. Create an Excel workbook from my accessible Microsoft 365 work data from the last 30 days. Build a Jira-style board with Incoming, To Do, In Progress, Waiting on Others, Review Needed and Completed Recently. For each item include title, description, source, date identified, due date, owner, priority and evidence link. Add a summary sheet with top priorities, overdue work, upcoming deadlines, risks and workload charts. Use only evidenced information, mark uncertainty and save the workbook to my OneDrive."</div>
+                    <div class="prompt-box" id="ex5-memory">"Act as my institutional memory.
+Data is an asset. Search across my emails, Teams chats and channels, meetings and transcripts, documents, notes, tasks and other Microsoft 365 content. Look for patterns from past projects, initiatives, workshops, research activities, change programmes and collaborations. Do not simply summarise what happened. Instead, identify what experience has taught us.
+Answer this question: Do we learn more from winning or from losing?
+Extract evidence from both successful and unsuccessful projects, including delays, misunderstandings, missed opportunities, governance issues, stakeholder challenges, communication gaps, unexpected successes and examples of good practice.
 
-                    <button onclick="copyToClipboard('ex5-jira')" class="btn-copy">Copy Prompt</button>
+Produce: What Experience Says
+A ranked list of the 10 most useful generalised lessons learned that would help someone starting a new project today. For each lesson provide:
+• The lesson (one sentence)
+• Why it matters
+• Evidence pattern observed across projects
+• Early warning signs
+• What to do differently next time
+
+Then create: Project Pre-Mortem
+Based on historical evidence, identify:
+• The 5 things most likely to go wrong in a new project
+• The signals that suggest each risk is emerging
+• Actions to prevent or mitigate the risk
+
+Finish with: If I Only Remember Three Things
+The three highest-value lessons that repeatedly appear across my work.
+
+Focus on transferable insights rather than project-specific details. Surface recurring patterns, not isolated incidents. Challenge assumptions. Highlight uncomfortable truths where evidence supports them."</div>
+
+                    <button onclick="copyToClipboard('ex5-memory')" class="btn-copy">Copy Prompt</button>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>Where to run it:</strong> in Copilot Chat with the <strong>Excel</strong> agent selected (Agents list), so it can build and save the workbook. The point: a personal operating system you can keep and edit.
+                        <strong>The point:</strong> your M365 data holds years of lessons nobody wrote down. Keep Work IQ on and turn web search off (Settings &rarr; Personalisation &rarr; Advanced) so the evidence comes from your own projects. Check the lessons against what you remember: the uncomfortable ones are worth the most.
                     </p>
                 </div>
             </details>
@@ -850,6 +872,15 @@ the three most important observations.
                     <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
                     <div class="prompt-box" id="more-calaudit">"Act as my executive assistant. Execute a comprehensive audit of my Outlook calendar for the upcoming week to optimize my capacity. First, leverage Work IQ to generate an analytical summary detailing the total hours committed to synchronous meetings, identify the days with the highest meeting density, and locate any existing uninterrupted focus blocks of two hours or more. Before making any modifications to my schedule, ask me to define my top three strategic objectives for the week and outline any personal time boundaries I must protect. Additionally, analyze the attendee lists of all my scheduled meetings against our Microsoft Entra ID organizational hierarchy to determine which recurring syncs or peer-level meetings are the lowest risk to reschedule. Once I provide my constraints, present a proposed execution plan that categorizes meetings to accept, recurring meetings to decline or shift to asynchronous Teams updates, and proposes new protected focus blocks. Do not decline any meetings, alter any calendar events, or send cancellation emails until I explicitly approve the specific execution plan."</div>
                     <button onclick="copyToClipboard('more-calaudit')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+
+            <details>
+                <summary><span style="flex:1;">Build My Personal Jira Board</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Create a working Excel board from your digital exhaust. Run it in Copilot Chat with the <strong>Excel</strong> agent selected (Agents list), so it can build and save the workbook.</p>
+                    <div class="prompt-box" id="more-jira">"You are an elite Chief of Staff, productivity analyst and Kanban designer. Create an Excel workbook from my accessible Microsoft 365 work data from the last 30 days. Build a Jira-style board with Incoming, To Do, In Progress, Waiting on Others, Review Needed and Completed Recently. For each item include title, description, source, date identified, due date, owner, priority and evidence link. Add a summary sheet with top priorities, overdue work, upcoming deadlines, risks and workload charts. Use only evidenced information, mark uncertainty and save the workbook to my OneDrive."</div>
+                    <button onclick="copyToClipboard('more-jira')" class="btn-copy">Copy Prompt</button>
                 </div>
             </details>
 
