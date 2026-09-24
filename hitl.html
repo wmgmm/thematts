@@ -146,7 +146,7 @@
             <a class="ghost" href="governance.html#exercises">Exercises</a>
         </div>
     </div>
-    <div class="stakes" id="stakes"><strong>Today's task:</strong> a meeting transcript becomes a summary, an action table and an email to attendees. Internal, low sensitivity, easy to correct. The pasted transcript can carry a line aimed at the agent.</div>
+    <div class="stakes" id="stakes"><strong>Today's task:</strong> a meeting transcript becomes a summary, an action table and an email to attendees. Internal, low sensitivity, easy to correct. <strong>The governance question:</strong> who decided what, on what evidence, and who answers for it.</div>
 
     <main>
         <section class="panel">
@@ -196,7 +196,7 @@
                 <li><strong>Security</strong> is Low with no AI stage. Otherwise it starts at how exposed the input is to pasted instructions, and drops a level for a human read before send and for a human brief.</li>
                 <li><strong>Quality</strong> follows the errors-caught score: under 50 High, 50 to 75 Medium, above 75 Low, one level worse when the task is hard to undo.</li>
                 <li><strong>People</strong> is Medium when most of the work sits with people (fatigue), when a human both checks and signs off, or on the rubber-stamp flag, otherwise Low. Nothing here is High: people problems show up as slowness and skipped checks, which the other rows then catch.</li>
-                <li><strong>Appetite</strong>: over appetite if any row is High, or if more than three rows are Medium.</li>
+                <li><strong>Acceptable or too risky</strong>: too risky if any row is High, or if more than three rows are Medium.</li>
             </ul>
             <p style="margin:16px 0 0; text-align:right;"><button class="ghost" type="button" id="how-close">Close</button></p>
         </div>
@@ -318,10 +318,10 @@
             var meds = rows.filter(function (r) { return r.level === 1; });
             out.over = highs.length > 0 || meds.length > t.allowMed;
             if (!out.over) {
-                out.verdict = 'Within appetite for this task.';
+                out.verdict = 'Acceptable for this task.';
                 out.verdictWhy = 'No High rows and ' + meds.length + ' Medium (this task allows ' + t.allowMed + ').';
             } else {
-                out.verdict = 'Over appetite for this task.';
+                out.verdict = 'Too risky for this task.';
                 var reasons = [];
                 if (highs.length) reasons.push('High: ' + highs.map(function (r) { return r.name; }).join(', '));
                 if (meds.length > t.allowMed) reasons.push(meds.length + ' Medium rows where this task allows ' + t.allowMed);
@@ -340,14 +340,14 @@
         function pattern(s) {
             var B = s.B, D = s.D, C = s.C, S = s.S;
             if (B === 'H' && D === 'A' && C === 'A' && S === 'H') return { name: 'Brief first (Run C)', desc: 'A person writes the rules down before anything runs, two agents do the work, a person signs.' };
-            if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Check at the end (Run A)', desc: 'Two agents, one signature. Fast, and the signature is where the risk hides.' };
+            if (D === 'A' && C === 'A' && S === 'H' && B !== 'H') return { name: 'Check at the end (Run A)', desc: 'Two agents, one signature. Fast, and the signature is where the risk hides: people skim what two machines have already passed.' };
             if (D === 'A' && C === 'H' && S === 'A') return { name: 'Check in the middle (Run B)', desc: 'AI drafts, a person reads and fixes, an agent\'s PASS releases it.' };
             if (D === 'A' && C === 'H' && S === 'H') return { name: 'Read twice', desc: 'AI drafts, a person checks and the same or another person signs. Safe and tiring.' };
-            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 03)', desc: 'Two agents agree and nobody reads a word.' };
-            if (D === 'H' && C === 'A') return { name: 'Human drafts, AI checks', desc: 'The AI is a proof-reader. Good at format and consistency, blind to what was said in the room.' };
+            if (D === 'A' && C === 'A' && S !== 'H' && B !== 'H') return { name: 'Conveyor belt (Exercise 03)', desc: 'Two agents agree and nobody reads a word. In 2024 a meeting bot emailed a summary to an investor with hours of the firm\'s private talk in it. The deal died.' };
+            if (D === 'H' && C === 'A') return { name: 'Human drafts, AI checks', desc: 'The AI is a proof-reader. Good at format and consistency, blind to what was said in the room. The way most people already use it.' };
             if (D === 'H' && C === 'H') return { name: 'All human', desc: 'How it worked before. Accountable and slow.' };
             if (D === 'A' && C === 'N' && S === 'H') return { name: 'Trust but read', desc: 'No checker, so the person at the end is the only check.' };
-            if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI drafts and it leaves. Nothing stands between the model and the recipient.' };
+            if (D === 'A' && C === 'N' && S !== 'H') return { name: 'Fire and forget', desc: 'AI drafts and it leaves. Air Canada\'s chatbot invented a refund policy; in 2024 a tribunal made the airline honour it.' };
             return { name: 'Your layout', desc: 'Not one of today\'s named patterns. Read the rows.' };
         }
         // ---- state and UI ----
