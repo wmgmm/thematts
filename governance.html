@@ -585,18 +585,18 @@
                 </div>
             </div>
             <p class="exercise-note" style="margin-bottom: 18px;">
-                <strong>One task all day.</strong> A departmental meeting transcript becomes a summary, an action list and an email to attendees. Two agents do the work: a <strong>Minute Taker</strong> that drafts and a <strong>Checker</strong> that reviews. The task never changes. What moves is where the person sits.
+                <strong>One task all day.</strong> A departmental meeting transcript becomes a summary, an action list and an email to attendees. Two agents do the work: a <strong>Meeting Notes Generator</strong> that drafts and a <strong>Checker</strong> that reviews. The task never changes. What moves is where the person sits.
             </p>
             <p class="exercise-note" style="margin-bottom: 18px;">
                 <strong>If New agent is missing</strong> on your account, paste the instruction block as the first message of a fresh chat, then paste the transcript as the second. Every exercise still works.
             </p>
 
             <details open>
-                <summary><span class="ex-num">01</span><span style="flex:1;">Build the Minute Taker</span></summary>
+                <summary><span class="ex-num">01</span><span style="flex:1;">Build the Meeting Notes Generator</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Build a small agent with instructions only, no files, no knowledge sources. Run it twice on the same clean transcript and compare the two answers. About ten minutes.</p>
 
-                    <p><strong>Step 1:</strong> In Copilot choose <strong>Agents</strong>, then <strong>New agent</strong>, then <strong>Skip to configure</strong>. Type the name <strong>Minute Taker</strong>. Paste the description and the instructions below into their boxes. Leave <strong>Knowledge</strong> empty. Leave both capabilities off.</p>
+                    <p><strong>Step 1:</strong> In Copilot choose <strong>Agents</strong>, then <strong>New agent</strong>, then <strong>Skip to configure</strong>. Type the name <strong>Meeting Notes Generator</strong>. Paste the description and the instructions below into their boxes. Leave <strong>Knowledge</strong> empty. Leave both capabilities off.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Description</p>
                     <div class="prompt-box" id="ex1-desc">Turns a pasted meeting transcript into a short summary, an action list and a draft email to attendees. Use it when someone pastes a transcript or meeting notes.</div>
@@ -679,7 +679,7 @@ Output a table with the columns Check, Result (PASS, FAIL or UNVERIFIED) and Evi
 Do not fix anything. Do not add advice beyond the checks. UK English.</div>
                     <button onclick="copyToClipboard('ex2-instr')" class="btn-copy">Copy Instructions</button>
 
-                    <p style="margin-top:18px;"><strong>Step 2:</strong> Open the Checker in a new chat. Paste only the Minute Taker's reply from Exercise 01, nothing else, and send. Read the verdict.</p>
+                    <p style="margin-top:18px;"><strong>Step 2:</strong> Open the Checker in a new chat. Paste only the Meeting Notes Generator's reply from Exercise 01, nothing else, and send. Read the verdict.</p>
 
                     <p><strong>Step 3:</strong> <strong>New chat</strong>. This time paste Transcript A first, then the same reply underneath it, and send. Compare the two verdicts, especially check 2.</p>
 
@@ -694,7 +694,7 @@ Do not fix anything. Do not add advice beyond the checks. UK English.</div>
                 <div class="details-content">
                     <p class="exercise-note">Run both agents back to back in one chat on a harder transcript. You are the conveyor belt: copy and paste, but do not read. Then score what got through. About ten minutes.</p>
 
-                    <p><strong>Step 1:</strong> Start a <strong>New chat</strong> in Copilot. Type <strong>@Minute Taker</strong>, pick it from the list, paste Transcript B after it and send. Do not read the reply.</p>
+                    <p><strong>Step 1:</strong> Start a <strong>New chat</strong> in Copilot. Type <strong>@Meeting Notes Generator</strong>, pick it from the list, paste Transcript B after it and send. Do not read the reply.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Transcript B: hard cases</p>
                     <div class="prompt-box" id="ex3-transcript-b">Student Experience Working Group, Wednesday 14 October 2026, 10:00, Room 2.14
@@ -727,19 +727,19 @@ Sam Lewis: I can do it, I did the last one.
 Priya Patel: Sort it out between you, by the end of the month please. Anything else? Rhian mentioned the printing budget was agreed. Actually no, it was not, that is still with the Head of School. Next meeting Wednesday 11 November. Thanks all.</div>
                     <button onclick="copyToClipboard('ex3-transcript-b')" class="btn-copy">Copy Transcript B</button>
 
-                    <p style="margin-top:18px;"><strong>Step 2:</strong> In the same chat type <strong>@Checker</strong>, then paste Transcript B and the Minute Taker's reply after it, and send. Still no reading. Copy the Checker's verdict into your notes.</p>
+                    <p style="margin-top:18px;"><strong>Step 2:</strong> In the same chat type <strong>@Checker</strong>, then paste Transcript B and the Meeting Notes Generator's reply after it, and send. Still no reading. Copy the Checker's verdict into your notes.</p>
 
                     <p><strong>Step 3:</strong> Now read everything. Transcript B has four traps. Score how many reached the final email, and how many the Checker caught.</p>
 
                     <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
                         <div class="inner-card"><strong>Not decided</strong><p>The January date change was left for an email. Did it become an action or a decision?</p></div>
-                        <div class="inner-card"><strong>No owner</strong><p>"Someone needs to chase the caterers." Who did the Minute Taker pick?</p></div>
+                        <div class="inner-card"><strong>No owner</strong><p>"Someone needs to chase the caterers." Who did the Meeting Notes Generator pick?</p></div>
                         <div class="inner-card"><strong>Date clash</strong><p>Analysis due on the 20th of a survey that closes on the 23rd. Was that flagged?</p></div>
                         <div class="inner-card"><strong>Two Sams</strong><p>Who owns the intranet update, Sam Lewis or Sam Ahmed?</p></div>
                     </div>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> when the Minute Taker writes an assumption confidently, the Checker often inherits it. Two agents agreed, and nobody in the room read a word. If that email had gone out, whose name is on the mistake? This is what the toolkit calls an accountability risk. In plain words: no one answers for it.
+                        <strong>What to notice:</strong> when the Meeting Notes Generator writes an assumption confidently, the Checker often inherits it. Two agents agreed, and nobody in the room read a word. If that email had gone out, whose name is on the mistake? This is what the toolkit calls an accountability risk. In plain words: no one answers for it.
                     </p>
                 </div>
             </details>
@@ -805,13 +805,13 @@ Priya Patel: Next meeting Wednesday 9 December. Thanks all.</div>
                     <button onclick="copyToClipboard('ex4-transcript-c')" class="btn-copy">Copy Transcript C</button>
 
                     <p style="font-weight:600; font-size:14px; margin:22px 0 6px;">Run A: check at the end</p>
-                    <p>New chat. <strong>@Minute Taker</strong> with Transcript C. Then <strong>@Checker</strong> with the transcript and the draft. Only now read everything and decide: send, fix or stop. Count every edit you would make before sending.</p>
+                    <p>New chat. <strong>@Meeting Notes Generator</strong> with Transcript C. Then <strong>@Checker</strong> with the transcript and the draft. Only now read everything and decide: send, fix or stop. Count every edit you would make before sending.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Run B: check in the middle</p>
-                    <p>New chat. <strong>@Minute Taker</strong> with Transcript C. Read the draft and fix it yourself in a reply, or ask the agent to fix named problems. Then <strong>@Checker</strong> with the transcript and your corrected draft. Send if it passes.</p>
+                    <p>New chat. <strong>@Meeting Notes Generator</strong> with Transcript C. Read the draft and fix it yourself in a reply, or ask the agent to fix named problems. Then <strong>@Checker</strong> with the transcript and your corrected draft. Send if it passes.</p>
 
                     <p style="font-weight:600; font-size:14px; margin:18px 0 6px;">Run C: brief first, check at the end</p>
-                    <p>Open the Minute Taker from <strong>My agents</strong>, choose <strong>Edit</strong>, and add the rules below to the end of its Instructions. Save. Then run A again from a new chat. Reading the brief before the work starts is also a human in the loop.</p>
+                    <p>Open the Meeting Notes Generator from <strong>My agents</strong>, choose <strong>Edit</strong>, and add the rules below to the end of its Instructions. Save. Then run A again from a new chat. Reading the brief before the work starts is also a human in the loop.</p>
 
                     <div class="prompt-box" id="ex4-rules">Rules:
 - Use only what is in the transcript. Do not add background, context or assumptions.
