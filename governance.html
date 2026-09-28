@@ -520,6 +520,7 @@
             <a href="#plain-words">Plain words</a>
             <a href="#exercises">Exercises</a>
             <a href="#register">Risk register</a>
+            <a href="#prompt-testing">Prompt testing</a>
             <a href="#take-home">Take home</a>
         </div>
     </nav>
@@ -663,7 +664,7 @@ References available on request.</div>
                     <p style="margin-top:12px;"><strong>Step 3:</strong> Set the risk appetite before anything is built: how much you are willing to let go wrong. The toolkit has five levels, from Averse (none at all) through Minimal, Cautious and Open to Eager (a lot, for an exceptional benefit). Pick one for fairness in this hiring task and write it down. Exercise 07 turns it into things you can count.</p>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
-                        <strong>What to notice:</strong> the check takes two minutes, and it turns on the data and where it goes, not on how clever the tool is. Ask yourself: if this went wrong, who would be harmed, and how badly? That sets how much checking it needs. Ask yourself too: who is missing from this table? The toolkit wants a mixed team: someone leading on governance, a senior leader who sets the appetite, data, security and legal people, someone who knows the work, and the people who will use it.
+                        <strong>What to notice:</strong> the check takes two minutes, and it turns on the data and where it goes, not on how clever the tool is. Ask yourself: if this went wrong, who would be harmed, and how badly? That sets how much checking it needs. This is proportionate governance: heavy checks where the harm is serious, light ones where it is not, so low-risk work is not slowed down. Ask yourself too: who is missing from this table? The toolkit wants a mixed team: someone leading on governance, a senior leader who sets the appetite, data, security and legal people, someone who knows the work, and the people who will use it.
                     </p>
                 </div>
             </details>
@@ -1155,6 +1156,47 @@ My notes:
 
             <p style="margin-top:16px; font-size:13px; color:var(--apple-text-secondary);">
                 <strong>The nine categories</strong>, so you know where to look: financial; legal and regulatory compliance; transparency and explainability; fairness; accountability and governance; contestability and redress; technical robustness; security; environment and people.
+            </p>
+        </section>
+
+        <section id="prompt-testing" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Prompt testing</div>
+                    <h2>A prompt is a component. Test it like one.</h2>
+                </div>
+            </div>
+
+            <p style="font-size:14px; color:var(--apple-text-secondary); line-height:1.55; margin:0 0 16px;">
+                Most prompts are tried two or three times, then put to use because the answer &ldquo;looked fine&rdquo;. Nobody can then say how well the prompt works, or if it still works after Copilot is updated.
+            </p>
+
+            <p style="font-size:14px; line-height:1.55; margin:0 0 16px;">
+                <strong>The governance view:</strong> AI governance is knowing who decided what, on what evidence, and who answers for it. For a prompt, the evidence is a written list of what &ldquo;good&rdquo; means, a few test examples, and a score anyone can rerun and compare.
+            </p>
+
+            <p style="font-size:13px; color:var(--apple-text-secondary); line-height:1.55; margin:16px 0;">
+                <strong>Where this comes from:</strong> people who build AI tools test their prompts all the time, using code and many examples. You do not need code to use the idea. Here is a simple version for Copilot. If you did the exercises, you have met each step already: the Evaluator&rsquo;s six lines and its three tests in 04, and one change then a rerun in 08.
+            </p>
+
+            <h3 style="margin-top:8px;">Try it in Copilot</h3>
+            <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <div class="inner-card">
+                    <strong>1. Write down what good looks like</strong>
+                    <p>Five or six lines in a Word or Notepad file, each one you can answer yes or no, such as &ldquo;asks one question only&rdquo; or &ldquo;never mentions age&rdquo;. &ldquo;A good answer&rdquo; is not a line.</p>
+                </div>
+                <div class="inner-card">
+                    <strong>2. Keep a few test examples</strong>
+                    <p>Save five example requests in the same file: three ordinary, one borderline, and one that tries to trick it. Each time you change the prompt, try each one in a <strong>New chat</strong> and check the reply against your list.</p>
+                </div>
+                <div class="inner-card">
+                    <strong>3. Change one thing, then check again</strong>
+                    <p>If a check keeps failing, add it to the prompt in plain words (for an agent: <strong>My agents</strong>, <strong>Edit</strong>). Run the five again, tick the checklist, and note the date, what you changed and how many passed.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:14px; font-size:13px; color:var(--apple-text-secondary);">
+                Want the longer version? The <a href="https://wmgmm.github.io/ai_governance/prompt_evaluation/index.html" target="_blank" rel="noopener" class="contact-link">prompt evaluation module ↗</a> has a ten-minute read for non-coders, plus the code.
             </p>
         </section>
 
