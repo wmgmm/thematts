@@ -761,6 +761,16 @@
         .section-card.part-strip-2 { background: #eef8f1; border-top: 4px solid #34a853; }
         .section-card.part-strip-3 { background: #fefaec; border-top: 4px solid #fbbc05; }
         .section-card.part-strip-4 { background: #fdf0ee; border-top: 4px solid #ea4335; }
+        .part-5 { background: #e8eaf6; color: #3949ab; }
+        .section-card.part-strip-5 { background: #eef0fb; border-top: 4px solid #3949ab; }
+        /* Part 5: Copy button inside the prompt box on the right; below it on phones */
+        .wf-prompt-wrap { position: relative; }
+        .wf-prompt-wrap .prompt-box { padding-right: 150px; margin-bottom: 0; }
+        .wf-prompt-wrap .btn-copy { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); }
+        @media (max-width: 600px) {
+            .wf-prompt-wrap .prompt-box { padding-right: 16px; }
+            .wf-prompt-wrap .btn-copy { position: static; transform: none; margin-top: 10px; }
+        }
         .section-header > .part-pill { align-self: flex-start; margin-top: 4px; }
         .pill-academic { background: #f3e8fd; color: #8430ce; }
         .pill-profservices { background: #e4f7fb; color: #007b83; }
@@ -2185,6 +2195,51 @@ Cynhwysa lithryddion rhyngweithiol sy'n caniatáu i'r defnyddiwr addasu'r 'Cymed
 Ychwanega ddisgrifiadau testun byr sy'n esbonio beth y mae gwyriad safonol yn ei olygu’n go iawn mewn Saesneg plaen, gan ddiweddaru hyn mewn modd ddynamig os yn bosibl. Dylai'r dyluniad fod yn lân, yn ddiddorol, yn hygyrch, a heb fod yn gofyn am unrhyw asedau allanol heblaw am Tailwind trwy CDN.</div>
             <button onclick="copyToClipboard('canvas-concept-app')" class="btn-copy">Copïo'r Prompt</button>
 
+        </section>
+
+        <!-- ============ EXPERIMENTS TO WORKFLOWS (Part 5, further learning) ============ -->
+        <!-- Skill and practice files from Ben Rouse (2 Oct 2026), kept as supplied in skills/. Skills reach
+             Workspace accounts 13 Oct to mid-November 2026 per the Workspace Updates blog (30 Sep 2026). -->
+        <section id="workflows" class="section-card part-strip-5">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Dysgu pellach</div>
+                    <h2>O Arbrofion i Lifoedd Gwaith</h2>
+                </div>
+                <span class="part-pill part-5">Rhan 5</span>
+            </div>
+
+            <p style="margin:0 0 4px;">Arbrawf yw prompt sy'n gweithio unwaith. Cadwch y cyfarwyddiadau fel <strong>sgil</strong> ac mae'n gam tuag at rywbeth y gallwch ei ailadrodd. Dim ond ffeil destun o gyfarwyddiadau yw sgil (o'r enw SKILL.md), felly gallwch lawrlwytho un, ei ddefnyddio a'i rannu. Mae'r sgil enghreifftiol hwn yn eich helpu i droi eich dogfennau eich hun, fel cynigion, llawlyfrau, adroddiadau adborth a dogfennau polisi, yn gynorthwyydd AI arbenigol y gallwch ddychwelyd ato dro ar ôl tro.</p>
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin:16px 0 4px; padding:14px 18px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; width:fit-content; max-width:100%;">
+                <img src="skills/img/skill_md_icon.svg" alt="" style="width:40px; height:50px; display:block;">
+                <div><strong style="display:block; font-size:15px;">SKILL.md</strong><span style="font-size:12px; color:var(--apple-text-secondary);">Sgil enghreifftiol: creu eich cynorthwyydd Gemini eich hun</span></div>
+                <a href="skills/SKILL.md" download="SKILL.md" style="display:inline-block; background-color:var(--apple-blue); color:white; padding:9px 18px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Lawrlwytho</a>
+            </div>
+
+            <h4 style="margin-top:20px;">Rhowch gynnig arni heddiw</h4>
+            <div class="quick-start" style="margin-top:10px;">
+                <div class="quick-step"><span class="step-badge">1</span> Lawrlwythwch y ffeil sgil uchod</div>
+                <div class="quick-step"><span class="step-badge">2</span> Mewn Sgwrs Newydd, atodwch y SKILL.md ac un ffeil ymarfer</div>
+                <div class="quick-step"><span class="step-badge">3</span> Anfonwch y prompt a dilynwch ei gamau</div>
+            </div>
+            <div class="wf-prompt-wrap">
+                <div class="prompt-box" id="workflows-prompt">Dilyna'r SKILL.md sydd ynghlwm gam wrth gam, gan ddefnyddio'r ffeiliau eraill a atodais fel deunydd ffynhonnell.</div>
+                <button onclick="copyToClipboard('workflows-prompt')" class="btn-copy">Copïo'r Prompt</button>
+            </div>
+            <p style="margin:16px 0 0; font-size:13px; color:var(--apple-text-secondary);"><strong>Ffeiliau dychmygol i ymarfer â nhw</strong>, neu defnyddiwch eich dogfennau eich hun ar eich cyfrif gwaith:</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 4px;">
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Llawlyfr y modiwl<a href="skills/examples/module-review/01_Module_Handbook_SOC2310.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Lawrlwytho</a></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Adborth myfyrwyr<a href="skills/examples/module-review/03_Student_Feedback_Report_2022-23.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Lawrlwytho</a></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Nodiadau myfyriol y darlithydd<a href="skills/examples/module-review/05_Lecturer_Reflection_Notes.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Lawrlwytho</a></div>
+            </div>
+
+            <h4 style="margin-top:24px;">Ar y ffordd: sgiliau yn rhan o Gemini</h4>
+            <p style="margin:0 0 6px;">Mae AI yn newid drwy'r amser, ac mae'r dull uchod yn gweithio am y tro. Mae sgiliau'n disodli Gems a byddant yn rhan o Gemini: byddwch yn lanlwytho sgil unwaith, yn <strong>Settings</strong> ac yna <strong>Skills</strong>, ac yn ei ddefnyddio mewn unrhyw sgwrs drwy deipio <strong>/</strong>. Bydd eich Gems presennol yn dal i weithio, a byddant yn cael eu trosi ar eich rhan.</p>
+            <div class="inner-grid">
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">1</span>Settings, yna Skills</p><img src="skills/img/skills-settings.png" alt="Tudalen Skills yn Settings Gemini, gyda'r botymau Create with Gemini, Create manually ac Upload." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">2</span>Lanlwythwch ffeil sgil</p><img src="skills/img/skills-upload.png" alt="Ffenestr Upload a skill: llusgwch neu dewiswch ffeil SKILL.md." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">3</span>Teipiwch / mewn unrhyw sgwrs i'w ddefnyddio</p><img src="skills/img/skills-slash.png" alt="Blwch sgwrsio Gemini gyda / wedi'i deipio a sgil yn cael ei gynnig yn y rhestr." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+            </div>
         </section>
 
         <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->

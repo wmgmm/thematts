@@ -761,6 +761,16 @@
         .section-card.part-strip-2 { background: #eef8f1; border-top: 4px solid #34a853; }
         .section-card.part-strip-3 { background: #fefaec; border-top: 4px solid #fbbc05; }
         .section-card.part-strip-4 { background: #fdf0ee; border-top: 4px solid #ea4335; }
+        .part-5 { background: #e8eaf6; color: #3949ab; }
+        .section-card.part-strip-5 { background: #eef0fb; border-top: 4px solid #3949ab; }
+        /* Part 5: Copy button inside the prompt box on the right; below it on phones */
+        .wf-prompt-wrap { position: relative; }
+        .wf-prompt-wrap .prompt-box { padding-right: 150px; margin-bottom: 0; }
+        .wf-prompt-wrap .btn-copy { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); }
+        @media (max-width: 600px) {
+            .wf-prompt-wrap .prompt-box { padding-right: 16px; }
+            .wf-prompt-wrap .btn-copy { position: static; transform: none; margin-top: 10px; }
+        }
         .section-header > .part-pill { align-self: flex-start; margin-top: 4px; }
         .pill-academic { background: #f3e8fd; color: #8430ce; }
         .pill-profservices { background: #e4f7fb; color: #007b83; }
@@ -2185,6 +2195,51 @@ Include interactive sliders allowing the user to adjust the 'Mean' and 'Standard
 Add short text descriptions explaining what standard deviation actually means in plain English, updating dynamically if possible. The design should be clean, engaging, accessible, and require no external assets other than Tailwind via CDN.</div>
             <button onclick="copyToClipboard('canvas-concept-app')" class="btn-copy">Copy Prompt</button>
 
+        </section>
+
+        <!-- ============ EXPERIMENTS TO WORKFLOWS (Part 5, further learning) ============ -->
+        <!-- Skill and practice files from Ben Rouse (2 Oct 2026), kept as supplied in skills/. Skills reach
+             Workspace accounts 13 Oct to mid-November 2026 per the Workspace Updates blog (30 Sep 2026). -->
+        <section id="workflows" class="section-card part-strip-5">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Further learning</div>
+                    <h2>Experiments to Workflows</h2>
+                </div>
+                <span class="part-pill part-5">Part 5</span>
+            </div>
+
+            <p style="margin:0 0 4px;">A prompt that works once is an experiment. Save the instructions as a <strong>skill</strong> and it becomes a step towards something more repeatable. A skill is just a text file of instructions (called SKILL.md), so you can download one, use it and share it. This example skill helps you turn your own documents, such as proposals, handbooks, feedback reports and policy documents, into a specialist AI assistant you can return to again and again.</p>
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin:16px 0 4px; padding:14px 18px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; width:fit-content; max-width:100%;">
+                <img src="skills/img/skill_md_icon.svg" alt="" style="width:40px; height:50px; display:block;">
+                <div><strong style="display:block; font-size:15px;">SKILL.md</strong><span style="font-size:12px; color:var(--apple-text-secondary);">Example skill: build your own Gemini assistant</span></div>
+                <a href="skills/SKILL.md" download="SKILL.md" style="display:inline-block; background-color:var(--apple-blue); color:white; padding:9px 18px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Download</a>
+            </div>
+
+            <h4 style="margin-top:20px;">Try it today</h4>
+            <div class="quick-start" style="margin-top:10px;">
+                <div class="quick-step"><span class="step-badge">1</span> Download the skill file above</div>
+                <div class="quick-step"><span class="step-badge">2</span> In a New Chat, attach the SKILL.md and one practice file</div>
+                <div class="quick-step"><span class="step-badge">3</span> Send the prompt and follow its steps</div>
+            </div>
+            <div class="wf-prompt-wrap">
+                <div class="prompt-box" id="workflows-prompt">Follow the attached SKILL.md step by step, using the other files I have attached as the source material.</div>
+                <button onclick="copyToClipboard('workflows-prompt')" class="btn-copy">Copy Prompt</button>
+            </div>
+            <p style="margin:16px 0 0; font-size:13px; color:var(--apple-text-secondary);"><strong>Made up files to practise with</strong>, or use your own documents on your work account:</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 4px;">
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Module handbook<a href="skills/examples/module-review/01_Module_Handbook_SOC2310.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Download</a></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Student feedback<a href="skills/examples/module-review/03_Student_Feedback_Report_2022-23.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Download</a></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fff; border:1px solid #e5e5ea; border-radius:12px; font-size:13px; font-weight:600;"><img src="skills/img/doc_icon.svg" alt="" style="width:26px; height:32px; display:block;">Lecturer reflections<a href="skills/examples/module-review/05_Lecturer_Reflection_Notes.docx" download style="display:inline-block; background-color:var(--apple-blue); color:white; padding:7px 14px; border-radius:980px; text-decoration:none; font-weight:600; font-size:12px;">Download</a></div>
+            </div>
+
+            <h4 style="margin-top:24px;">Coming soon: skills built into Gemini</h4>
+            <p style="margin:0 0 6px;">AI is always changing, and the approach above works for now. Skills are replacing Gems and will be built into Gemini: you will upload a skill once, in <strong>Settings</strong> then <strong>Skills</strong>, and use it in any chat by typing <strong>/</strong>. Your existing Gems will keep working and will be converted for you.</p>
+            <div class="inner-grid">
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">1</span>Settings, then Skills</p><img src="skills/img/skills-settings.png" alt="Gemini Settings, Skills page with the buttons Create with Gemini, Create manually and Upload." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">2</span>Upload a skill file</p><img src="skills/img/skills-upload.png" alt="The Upload a skill window: drag or select a SKILL.md file." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+                <div class="inner-card"><p style="margin:0 0 10px; display:flex; align-items:center; gap:8px; color:var(--apple-text-primary); font-weight:600;"><span class="step-badge">3</span>Type / in any chat to use it</p><img src="skills/img/skills-slash.png" alt="A Gemini chat box with / typed and a skill offered in the list." style="width:100%; height:auto; border-radius:8px; display:block; margin-bottom:0;"></div>
+            </div>
         </section>
 
         <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->
