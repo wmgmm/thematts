@@ -596,6 +596,13 @@
 
         .take-home-more { font-size: 14px; color: var(--apple-text-secondary); margin: 18px 0 0; line-height: 1.55; }
         .take-home-more strong { color: var(--apple-text-primary); }
+        /* Exercise 6: each Word task is one panel; Step 1 then Step 2 */
+        .ex6-task { background: #f5f5f7; border-radius: 14px; padding: 16px 20px 18px; margin: 0 0 18px; }
+        .ex6-task > p:first-child { margin-top: 0 !important; }
+        .ex6-task .prompt-box { background: #fff; }
+        .ex6-task .ex6-data { max-height: 11em; overflow: auto; }
+        .ex6-then { font-size: 13px; color: var(--apple-text-secondary); margin: 16px 0 10px 4px; }
+        .btn-copy.btn-copy-outline { background: #fff; color: var(--apple-blue); box-shadow: inset 0 0 0 1px var(--apple-blue); }
     </style>
     <script>
         function copyToClipboard(id) {
@@ -682,7 +689,7 @@
                 <div class="details-content">
                     <p class="exercise-note">One briefing across email and Teams.</p>
 
-                    <div class="prompt-box" id="ex1-catchup">"Catch me up on the last five working days across my emails, Teams chats and channel messages. Group related updates and show decisions, requests, deadlines and anything waiting on me. Rank by urgency, mark uncertainty and cite every item. Output in ASD-STE100."</div>
+                    <div class="prompt-box" id="ex1-catchup">"Catch me up on the last five working days across my emails, Teams chats and channel messages. Group related updates and show decisions, requests, deadlines and anything waiting on me. Rank by urgency, mark uncertainty and cite every item. Output in a user centric ASD-STE100 style."</div>
 
                     <button onclick="copyToClipboard('ex1-catchup')" class="btn-copy">Copy Prompt</button>
 
@@ -699,7 +706,7 @@
                 <div class="details-content">
                     <p class="exercise-note">Turn noise into a short action queue.</p>
 
-                    <div class="prompt-box" id="ex2-needme">"Review my unread emails from the last seven days. Show only those likely to need my reply or action. Add relevant context from Teams chats and documents, explain why each matters and suggest the next step. Cite every item and do not infer urgency without evidence. Output in ASD-STE100."</div>
+                    <div class="prompt-box" id="ex2-needme">"Review my unread emails from the last seven days. Show only those likely to need my reply or action. Add relevant context from Teams chats and documents, explain why each matters and suggest the next step. Cite every item and do not infer urgency without evidence. Output in a user centric ASD-STE100 style."</div>
 
                     <button onclick="copyToClipboard('ex2-needme')" class="btn-copy">Copy Prompt</button>
 
@@ -716,7 +723,7 @@
                 <div class="details-content">
                     <p class="exercise-note">Walk in knowing the latest position.</p>
 
-                    <div class="prompt-box" id="ex3-brief">"Find my next upcoming work meeting with enough related context to brief me. Use the invite, prior meetings, emails, Teams chats and files to show the purpose, latest position, my previous commitments, unresolved questions and three points to raise. Cite every claim and mark gaps. Output in ASD-STE100."</div>
+                    <div class="prompt-box" id="ex3-brief">"Find my next upcoming work meeting with enough related context to brief me. Use the invite, prior meetings, emails, Teams chats and files to show the purpose, latest position, my previous commitments, unresolved questions and three points to raise. Cite every claim and mark gaps. Output in a user centric ASD-STE100 style."</div>
 
                     <button onclick="copyToClipboard('ex3-brief')" class="btn-copy">Copy Prompt</button>
 
@@ -786,10 +793,12 @@ Focus on transferable insights rather than project-specific details. Surface rec
         <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 12px;">
             Open Word. For each part below, paste the grey text into a new blank document, then click the <strong>Copilot</strong> icon on the Home ribbon to open the pane. Leave <strong>Allow editing</strong> on, so Copilot can change the document, not just talk about it.
         </p>
+        <div class="ex6-task">
         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6a: Formatting, the kitchen sink</p>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
-        <div class="prompt-box" id="ex6-data1">All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.</div>
-        <button onclick="copyToClipboard('ex6-data1')" class="btn-copy">Copy</button>
+        <div class="prompt-box ex6-data" id="ex6-data1">All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.</div>
+        <button onclick="copyToClipboard('ex6-data1')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
         <div class="prompt-box" id="ex6-prompt1" style="color:#EE0000;">Without changing, rewriting, summarising, or removing any of the text, transform this document into an eye-catching showcase of Microsoft Word formatting features. Keep every instance of the sentence exactly as written. Use a wide variety of formatting techniques including:
 • Multiple heading styles
@@ -808,25 +817,28 @@ Focus on transferable insights rather than project-specific details. Surface rec
 • Highlighting and themes
 • A cover page
 • SmartArt where appropriate</div>
-        <button onclick="copyToClipboard('ex6-prompt1')" class="btn-copy">Copy Prompt</button>
-        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
+        <button onclick="copyToClipboard('ex6-prompt1')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6b: Text to tables</p>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
-        <div class="prompt-box" id="ex6-data2">Sustainability Programme Update
+        <div class="prompt-box ex6-data" id="ex6-data2">Sustainability Programme Update
 
 Over the past six months, several initiatives have been launched to reduce energy consumption across company sites. Building A completed an LED lighting upgrade in February, reducing electricity usage by an estimated 18%. Building B introduced smart heating controls in March, with early monitoring suggesting savings of approximately 12%. Building C completed a staff awareness campaign in April, resulting in increased reporting of energy waste and equipment left running outside working hours.
 
 The next phase focuses on further improvements. Building A will install solar panels by 30 November, with the work being led by Emma Carter. Building B will replace older refrigeration units by 15 December, under the direction of Raj Patel. Building C will introduce occupancy-based lighting controls by 31 January, managed by Hannah Green.
 
 Several challenges have been identified. Delays in supplier delivery could affect the solar panel installation and have been classified as a high risk. Budget constraints may delay the refrigeration replacement programme and have been classified as a medium risk. Limited contractor availability could affect installation schedules for occupancy sensors and has also been classified as a medium risk.</div>
-        <button onclick="copyToClipboard('ex6-data2')" class="btn-copy">Copy</button>
+        <button onclick="copyToClipboard('ex6-data2')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
         <div class="prompt-box" id="ex6-prompt2" style="color:#EE0000;">Turn this text into a table (below the text)</div>
-        <button onclick="copyToClipboard('ex6-prompt2')" class="btn-copy">Copy Prompt</button>
-        <div style="margin: 25px 0; border-top: 1px solid var(--apple-border-light);"></div>
+        <button onclick="copyToClipboard('ex6-prompt2')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 6c: The quality reviewer</p>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
-        <div class="prompt-box" id="ex6-data3">Proposal for the Customer Experience Improvement Programme
+        <div class="prompt-box ex6-data" id="ex6-data3">Proposal for the Customer Experience Improvement Programme
 
 Purpose
 The purpose of this programme is to significantly improve customer satisfaction while reducing operational costs and increasing efficiency across all service teams.
@@ -863,7 +875,8 @@ The implementation budget will be confirmed at a later date.
 
 Recommendation
 It is recommended that the programme is approved immediately so implementation can begin.</div>
-        <button onclick="copyToClipboard('ex6-data3')" class="btn-copy">Copy</button>
+        <button onclick="copyToClipboard('ex6-data3')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
         <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
         <div class="prompt-box" id="ex6-prompt3" style="color:#EE0000;">Review this document as an independent quality assurance reviewer. Identify:
 • Missing information
@@ -873,7 +886,8 @@ It is recommended that the programme is approved immediately so implementation c
 • Contradictions or inconsistencies
 • Questions that a senior stakeholder would ask before approving this proposal
 Present your findings in a structured table.</div>
-        <button onclick="copyToClipboard('ex6-prompt3')" class="btn-copy">Copy Prompt</button>
+        <button onclick="copyToClipboard('ex6-prompt3')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
         <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 18px;">
             Copilot may change more than you asked. Turn on Track Changes before you send, and read the whole document after.
         </p>
@@ -1010,7 +1024,7 @@ the three most important observations.
     <div class="details-content">
                     <p class="exercise-note">See who is involved in a project and what each person still needs.</p>
 
-                    <div class="prompt-box" id="bonus-stakeholder-map">"Choose one active project or initiative from my recent Microsoft 365 work. Using emails, meetings, Teams conversations and shared documents, create a stakeholder map showing each persona's evidenced involvement, recorded concerns, decisions requested and outstanding contributions. Separate facts from inference. Do not assess personalities or performance. Output in ASD-STE100. Cite every entry."</div>
+                    <div class="prompt-box" id="bonus-stakeholder-map">"Choose one active project or initiative from my recent Microsoft 365 work. Using emails, meetings, Teams conversations and shared documents, create a stakeholder map showing each persona's evidenced involvement, recorded concerns, decisions requested and outstanding contributions. Separate facts from inference. Do not assess personalities or performance. Output in a user centric ASD-STE100 style. Cite every entry."</div>
                     <button onclick="copyToClipboard('bonus-stakeholder-map')" class="btn-copy">Copy Prompt</button>
                     <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 08.</span></p>
     </div>
@@ -1020,7 +1034,7 @@ the three most important observations.
     <div class="details-content">
                     <p class="exercise-note">Turn scattered project knowledge into something another colleague can use.</p>
 
-                    <div class="prompt-box" id="bonus-handover">"Identify one active workstream where I hold useful context. Create a concise handover covering its purpose, current position, important decisions, key documents, upcoming dates, unresolved questions, dependencies and confirmed commitments. Include a 'start here' reading list. Mark anything uncertain and cite every claim. Output in ASD-STE100."</div>
+                    <div class="prompt-box" id="bonus-handover">"Identify one active workstream where I hold useful context. Create a concise handover covering its purpose, current position, important decisions, key documents, upcoming dates, unresolved questions, dependencies and confirmed commitments. Include a 'start here' reading list. Mark anything uncertain and cite every claim. Output in a user centric ASD-STE100 style."</div>
                     <button onclick="copyToClipboard('bonus-handover')" class="btn-copy">Copy Prompt</button>
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Outcome:</strong> a reusable handover or continuity note.</p>
                     <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 08.</span></p>
