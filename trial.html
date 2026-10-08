@@ -689,7 +689,7 @@
                 <div class="details-content">
                     <p class="exercise-note">One briefing across email and Teams.</p>
 
-                    <div class="prompt-box" id="ex1-catchup">"Catch me up on the last five working days across my emails, Teams chats and channel messages. Group related updates and show decisions, requests, deadlines and anything waiting on me. Rank by urgency, mark uncertainty and cite every item. Output in a user centric ASD-STE100 style."</div>
+                    <div class="prompt-box" id="ex1-catchup">"Catch me up on the last five working days across my emails, Teams chats and channel messages. Group related updates and show decisions, requests, deadlines and anything waiting on me. Rank by urgency, mark uncertainty and cite every item. Apply about 80% of ASD-STE100: keep it short and plain, but keep formatting and citations."</div>
 
                     <button onclick="copyToClipboard('ex1-catchup')" class="btn-copy">Copy Prompt</button>
 
@@ -706,7 +706,7 @@
                 <div class="details-content">
                     <p class="exercise-note">Turn noise into a short action queue.</p>
 
-                    <div class="prompt-box" id="ex2-needme">"Review my unread emails from the last seven days. Show only those likely to need my reply or action. Add relevant context from Teams chats and documents, explain why each matters and suggest the next step. Cite every item and do not infer urgency without evidence. Output in a user centric ASD-STE100 style."</div>
+                    <div class="prompt-box" id="ex2-needme">"Review my unread emails from the last seven days. Show only those likely to need my reply or action. Add relevant context from Teams chats and documents, explain why each matters and suggest the next step. Cite every item and do not infer urgency without evidence."</div>
 
                     <button onclick="copyToClipboard('ex2-needme')" class="btn-copy">Copy Prompt</button>
 
@@ -723,7 +723,7 @@
                 <div class="details-content">
                     <p class="exercise-note">Walk in knowing the latest position.</p>
 
-                    <div class="prompt-box" id="ex3-brief">"Find my next upcoming work meeting with enough related context to brief me. Use the invite, prior meetings, emails, Teams chats and files to show the purpose, latest position, my previous commitments, unresolved questions and three points to raise. Cite every claim and mark gaps. Output in a user centric ASD-STE100 style."</div>
+                    <div class="prompt-box" id="ex3-brief">"Find my next upcoming work meeting with enough related context to brief me. Use the invite, prior meetings, emails, Teams chats and files to show the purpose, latest position, my previous commitments, unresolved questions and three points to raise. Cite every claim and mark gaps."</div>
 
                     <button onclick="copyToClipboard('ex3-brief')" class="btn-copy">Copy Prompt</button>
 
@@ -1030,7 +1030,7 @@ the three most important observations.
     <div class="details-content">
                     <p class="exercise-note">See who is involved in a project and what each person still needs.</p>
 
-                    <div class="prompt-box" id="bonus-stakeholder-map">"Choose one active project or initiative from my recent Microsoft 365 work. Using emails, meetings, Teams conversations and shared documents, create a stakeholder map showing each persona's evidenced involvement, recorded concerns, decisions requested and outstanding contributions. Separate facts from inference. Do not assess personalities or performance. Output in a user centric ASD-STE100 style. Cite every entry."</div>
+                    <div class="prompt-box" id="bonus-stakeholder-map">"Choose one active project or initiative from my recent Microsoft 365 work. Using emails, meetings, Teams conversations and shared documents, create a stakeholder map showing each persona's evidenced involvement, recorded concerns, decisions requested and outstanding contributions. Separate facts from inference. Do not assess personalities or performance. Cite every entry."</div>
                     <button onclick="copyToClipboard('bonus-stakeholder-map')" class="btn-copy">Copy Prompt</button>
                     <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 08.</span></p>
     </div>
@@ -1040,7 +1040,7 @@ the three most important observations.
     <div class="details-content">
                     <p class="exercise-note">Turn scattered project knowledge into something another colleague can use.</p>
 
-                    <div class="prompt-box" id="bonus-handover">"Identify one active workstream where I hold useful context. Create a concise handover covering its purpose, current position, important decisions, key documents, upcoming dates, unresolved questions, dependencies and confirmed commitments. Include a 'start here' reading list. Mark anything uncertain and cite every claim. Output in a user centric ASD-STE100 style."</div>
+                    <div class="prompt-box" id="bonus-handover">"Identify one active workstream where I hold useful context. Create a concise handover covering its purpose, current position, important decisions, key documents, upcoming dates, unresolved questions, dependencies and confirmed commitments. Include a 'start here' reading list. Mark anything uncertain and cite every claim. Apply about 80% of ASD-STE100: keep it short and plain, but keep formatting and citations."</div>
                     <button onclick="copyToClipboard('bonus-handover')" class="btn-copy">Copy Prompt</button>
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Outcome:</strong> a reusable handover or continuity note.</p>
                     <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 08.</span></p>
@@ -1054,7 +1054,7 @@ the three most important observations.
                         <li>Choose a prompt that works well for you, for example <strong>B2 Build the Perfect Handover</strong>.</li>
                         <li>In Copilot, click <img src="copilot-new-agent-icon.png" alt="" style="width:18px; height:auto; vertical-align:-3px;"> <strong>New agent</strong>.</li>
                         <li>Paste the prompt into the <strong>Describe</strong> box and send. Copilot writes the agent's instructions.</li>
-                        <li>Optional: add sources, such as key files or a SharePoint site, so the agent always works from them.</li>
+                        <li>Optional: add knowledge sources so the agent always works from them. A source can be a <strong>SharePoint</strong> site, folder or list, key files, Teams chats and meetings, Outlook email, or a public website. For example, point a policy helper at your team's SharePoint site, or a project agent at the project folder.</li>
                         <li>Name the agent and click <strong>Create</strong>. It appears under <strong>Agents</strong> on the left.<br><img src="copilot-agents-sidebar.png" alt="The Agents list in the Copilot sidebar, showing an agent called Training Module Builder." style="display:block; max-width:240px; width:100%; border:1px solid var(--apple-border-light); border-radius:10px; margin:8px 0 4px;"></li>
                     </ol>
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Longer instructions can live in a text file called <strong>SKILL.md</strong>. Paste it into the Describe box in the same way.</p>
