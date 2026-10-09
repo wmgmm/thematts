@@ -1095,9 +1095,10 @@ the three most important observations.
     <div class="details-content">
                     <!-- Workflows agent facts: Microsoft support "Get started with Workflows in Microsoft 365 Copilot" and
                          Frontier write-ups (2026): personal productivity flows only; cannot be shared, edited or run in
-                         Power Automate; limited Microsoft 365 connectors. The Teams screenshot is blurred: real names. -->
-                    <p style="margin:0 0 10px;"><span style="display:inline-block; background:#fef7e0; color:#b06000; font-size:11px; font-weight:700; letter-spacing:0.04em; padding:3px 10px; border-radius:980px;">EXPERIMENTAL</span> <span style="font-size:13px; color:var(--apple-text-secondary);">An early-access Frontier agent: try it, expect rough edges.</span></p>
+                         Power Automate; limited Microsoft 365 connectors. -->
+                    <p style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><img src="experimental-icon.png" alt="" style="width:32px; height:auto; border-radius:6px; flex-shrink:0;"><span><strong style="font-size:13px;">Experimental.</strong> <span style="font-size:13px; color:var(--apple-text-secondary);">An early-access Frontier agent: try it, expect rough edges.</span></span></p>
                     <p class="exercise-note">Describe a routine in plain words and the Workflows agent runs it for you on a schedule. Use it for your own productivity, not for team or workplace processes.</p>
+                    <p style="margin:0 0 14px;"><a href="https://m365.cloud.microsoft/chat/?titleId=P_91fe45e4-9413-b0e6-dad9-c855b4952367" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px;"><img src="workflows-icon.png" alt="" style="width:18px; height:auto; display:block; background:#fff; border-radius:4px; padding:1px;">Launch Workflows</a></p>
                     <div class="quick-start" style="margin: 0 0 14px;">
                         <div class="quick-step"><span class="step-badge">1</span> Trigger: each weekday morning</div>
                         <div class="quick-step"><span class="step-badge">2</span> Copilot: review your unread email</div>
@@ -1105,9 +1106,7 @@ the three most important observations.
                     </div>
                     <div class="prompt-box" id="bonus-workflows">Each weekday morning, review all unread emails from default inbox from the last 24 hours, and identify anything important I may have missed. Focus on messages that are high priority, time-sensitive, or require action. Organize the results into three sections: Needs Response, For Your Information, and Other Important Emails. For each message, include the sender, subject, a brief summary, any due dates or deadlines, and next steps. Send to myself on Teams</div>
                     <button onclick="copyToClipboard('bonus-workflows')" class="btn-copy">Copy Prompt</button>
-                    <p style="margin-top:14px;"><a href="https://m365.cloud.microsoft/chat/?titleId=P_91fe45e4-9413-b0e6-dad9-c855b4952367" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px;"><img src="workflows-icon.png" alt="" style="width:18px; height:auto; display:block; background:#fff; border-radius:4px; padding:1px;">Launch Workflows</a></p>
-                    <img src="workflows-teams-result.png" alt="The result in Teams: a Workflows message with the sections Needs Response, For Your Information and Other Important Emails. Names are blurred." style="display: block; max-width: 640px; width: 100%; border: 1px solid var(--apple-border-light); border-radius: 12px; margin: 14px 0 4px;">
-                    <p style="font-size: 12px; color: var(--apple-text-secondary); margin: 0 0 10px;">The summary arrives in Teams each weekday morning.</p>
+                    <img src="workflows-prompt.png" alt="The Workflows (Frontier) agent with the morning email briefing prompt typed in, ready to send." style="display: block; max-width: 640px; width: 100%; border: 1px solid var(--apple-border-light); border-radius: 12px; margin: 14px 0 10px;">
                     <p style="font-size: 13px; color: var(--apple-text-secondary);">Workflows is a Frontier (early access) agent, so it is cutting edge and will change. You cannot share these workflows or edit them in Power Automate yet.</p>
     </div>
 </details>
