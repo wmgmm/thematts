@@ -1134,6 +1134,76 @@ the three most important observations.
             </div>
 
             <details>
+                <summary><span style="flex:1;">What Have I Promised?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Find promises in chats, emails and meetings that never reached your task list.</p>
+                    <div class="prompt-box" id="more-commitments">Find commitments assigned to me, accepted by me or reasonably implied by my replies during the past 30 days. Include formal tasks and informal asks in email, Teams and meetings. Show: commitment, evidence, promised or implied date, current status, who may be waiting, and the smallest useful next step.</div>
+                    <button onclick="copyToClipboard('more-commitments')" class="btn-copy">Copy Prompt</button>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">Requests That Quietly Died</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Find requests you sent that never got a real reply, and draft the follow-up.</p>
+                    <div class="prompt-box" id="more-deadrequests">Review requests I sent during the past 14 days. Deduplicate by conversation and use my latest sent message as the reference point. Find requests for decisions, information or deliverables that received no substantive reply afterwards. Ignore automated responses. Rank by demonstrated impact, not message age, and draft a short follow-up.</div>
+                    <button onclick="copyToClipboard('more-deadrequests')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">What Is Holding My Work Up?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Find what is stuck, and whether it is waiting on you or on others.</p>
+                    <div class="prompt-box" id="more-blockers">Find the five most consequential blockers across my current work. For each, create a dependency chain: what is blocked, the last completed step, the missing input or decision, who or what it depends on, evidence of urgency, and the next unblock action. Separate “waiting on me” from “waiting on others”.</div>
+                    <button onclick="copyToClipboard('more-blockers')" class="btn-copy">Copy Prompt</button>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">How Was This Decided?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Trace a decision across meetings, emails and chats.</p>
+                    <div class="prompt-box" id="more-decisions">Reconstruct the decision history for [topic/project]. For each decision show: first proposal, competing alternatives, final decision, rationale recorded at the time, owner, reversibility, review point and any later contradiction. Cite the earliest and latest supporting sources. Mark reconstructed rationale as inference.</div>
+                    <button onclick="copyToClipboard('more-decisions')" class="btn-copy">Copy Prompt</button>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">Rebuild a Project Timeline</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">A dated timeline when nobody remembers it. An order number or code helps.</p>
+                    <div class="prompt-box" id="more-projecthistory">Reconstruct the history of [project] as a dated timeline. Start with [project contact/order number/distinctive identifier]. Include changes in scope, decisions, handovers, major risks, promised outcomes and unresolved questions. For conflicting accounts, show both sources rather than choosing one.</div>
+                    <button onclick="copyToClipboard('more-projecthistory')" class="btn-copy">Copy Prompt</button>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">Why Did This Go Wrong?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Find the root cause, one evidenced step at a time.</p>
+                    <div class="prompt-box" id="more-5whys">Investigate [problem] using an evidence-gated 5 Whys. For each “why”, search the accessible work record and cite evidence. Allow branching causes. Distinguish observed fact, participant explanation and inference. If a link lacks evidence, stop that branch and state what information is missing. Finish with competing root-cause hypotheses, not a single asserted cause.</div>
+                    <button onclick="copyToClipboard('more-5whys')" class="btn-copy">Copy Prompt</button>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">Am I Saying Too Much or Too Little?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">See where you over-explain and where people need more from you.</p>
+                    <div class="prompt-box" id="more-commsaudit">Review my communications from the past four weeks. Identify one topic or audience where I repeatedly provide unnecessary detail and one important topic or audience receiving too little clarity. Show the evidence pattern, possible alternative explanations and one safe behaviour to test next week.</div>
+                    <button onclick="copyToClipboard('more-commsaudit')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Copilot sees recorded work, not intentions.</p>
+                </div>
+            </details>
+            <details>
+                <summary><span style="flex:1;">Who Needs More of My Time?</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Spot key working relationships getting too little attention.</p>
+                    <div class="prompt-box" id="more-relationships">Identify important working relationships that may be receiving less attention than my current projects require. Base importance only on active shared work, upcoming decisions and recorded dependencies. Don’t assess anyone’s performance or personality. Show the evidence, uncertainty and one low-effort reconnection action.</div>
+                    <button onclick="copyToClipboard('more-relationships')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">For reflection only, not judgement.</p>
+                </div>
+            </details>
+            <details>
                 <summary><span style="flex:1;">Calendar &amp; Capacity Audit</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">An agentic workflow: Copilot audits your week with Work IQ, checks meeting attendees against the org hierarchy, and proposes a plan to reclaim focus time. Nothing is changed until you approve the plan.</p>
@@ -1291,76 +1361,6 @@ the three most important observations.
                     <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Project</p>
                     <div class="prompt-box" id="more-tasklist-project">"Create a prioritised task list for [project] based on deadlines and dependencies."</div>
                     <button onclick="copyToClipboard('more-tasklist-project')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">What Have I Promised?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Find promises in chats, emails and meetings that never reached your task list.</p>
-                    <div class="prompt-box" id="more-commitments">Find commitments assigned to me, accepted by me or reasonably implied by my replies during the past 30 days. Include formal tasks and informal asks in email, Teams and meetings. Show: commitment, evidence, promised or implied date, current status, who may be waiting, and the smallest useful next step.</div>
-                    <button onclick="copyToClipboard('more-commitments')" class="btn-copy">Copy Prompt</button>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Requests That Quietly Died</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Find requests you sent that never got a real reply, and draft the follow-up.</p>
-                    <div class="prompt-box" id="more-deadrequests">Review requests I sent during the past 14 days. Deduplicate by conversation and use my latest sent message as the reference point. Find requests for decisions, information or deliverables that received no substantive reply afterwards. Ignore automated responses. Rank by demonstrated impact, not message age, and draft a short follow-up.</div>
-                    <button onclick="copyToClipboard('more-deadrequests')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">What Is Holding My Work Up?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Find what is stuck, and whether it is waiting on you or on others.</p>
-                    <div class="prompt-box" id="more-blockers">Find the five most consequential blockers across my current work. For each, create a dependency chain: what is blocked, the last completed step, the missing input or decision, who or what it depends on, evidence of urgency, and the next unblock action. Separate “waiting on me” from “waiting on others”.</div>
-                    <button onclick="copyToClipboard('more-blockers')" class="btn-copy">Copy Prompt</button>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">How Was This Decided?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Trace a decision across meetings, emails and chats.</p>
-                    <div class="prompt-box" id="more-decisions">Reconstruct the decision history for [topic/project]. For each decision show: first proposal, competing alternatives, final decision, rationale recorded at the time, owner, reversibility, review point and any later contradiction. Cite the earliest and latest supporting sources. Mark reconstructed rationale as inference.</div>
-                    <button onclick="copyToClipboard('more-decisions')" class="btn-copy">Copy Prompt</button>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Rebuild a Project Timeline</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">A dated timeline when nobody remembers it. An order number or code helps.</p>
-                    <div class="prompt-box" id="more-projecthistory">Reconstruct the history of [project] as a dated timeline. Start with [project contact/order number/distinctive identifier]. Include changes in scope, decisions, handovers, major risks, promised outcomes and unresolved questions. For conflicting accounts, show both sources rather than choosing one.</div>
-                    <button onclick="copyToClipboard('more-projecthistory')" class="btn-copy">Copy Prompt</button>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Why Did This Go Wrong?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Find the root cause, one evidenced step at a time.</p>
-                    <div class="prompt-box" id="more-5whys">Investigate [problem] using an evidence-gated 5 Whys. For each “why”, search the accessible work record and cite evidence. Allow branching causes. Distinguish observed fact, participant explanation and inference. If a link lacks evidence, stop that branch and state what information is missing. Finish with competing root-cause hypotheses, not a single asserted cause.</div>
-                    <button onclick="copyToClipboard('more-5whys')" class="btn-copy">Copy Prompt</button>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 10.</span></p>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Am I Saying Too Much or Too Little?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">See where you over-explain and where people need more from you.</p>
-                    <div class="prompt-box" id="more-commsaudit">Review my communications from the past four weeks. Identify one topic or audience where I repeatedly provide unnecessary detail and one important topic or audience receiving too little clarity. Show the evidence pattern, possible alternative explanations and one safe behaviour to test next week.</div>
-                    <button onclick="copyToClipboard('more-commsaudit')" class="btn-copy">Copy Prompt</button>
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Copilot sees recorded work, not intentions.</p>
-                </div>
-            </details>
-            <details>
-                <summary><span style="flex:1;">Who Needs More of My Time?</span></summary>
-                <div class="details-content">
-                    <p class="exercise-note">Spot key working relationships getting too little attention.</p>
-                    <div class="prompt-box" id="more-relationships">Identify important working relationships that may be receiving less attention than my current projects require. Base importance only on active shared work, upcoming decisions and recorded dependencies. Don’t assess anyone’s performance or personality. Show the evidence, uncertainty and one low-effort reconnection action.</div>
-                    <button onclick="copyToClipboard('more-relationships')" class="btn-copy">Copy Prompt</button>
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">For reflection only, not judgement.</p>
                 </div>
             </details>
 
