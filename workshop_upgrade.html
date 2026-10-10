@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Matts - Workshop Resources</title>
+    <title>The Matts - Workshop Resources: Copilot Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1081,6 +1081,12 @@
             details { break-inside: avoid; }
             details[open] summary::after { display: none; }
         }
+        .ex6-task { background: #f5f5f7; border-radius: 14px; padding: 16px 20px 18px; margin: 0 0 18px; }
+        .ex6-task > p:first-child { margin-top: 0 !important; }
+        .ex6-task .prompt-box { background: #fff; }
+        .ex6-task .ex6-data { max-height: 11em; overflow: auto; }
+        .ex6-then { font-size: 13px; color: var(--apple-text-secondary); margin: 16px 0 10px 4px; }
+        .btn-copy.btn-copy-outline { background: #fff; color: var(--apple-blue); box-shadow: inset 0 0 0 1px var(--apple-blue); }
     </style>
 </head>
 <body>
@@ -1099,7 +1105,7 @@
 
         <header class="hero">
             <h1>The Matts Workshop</h1>
-            <p class="subtitle">Digital Productivity &amp; AI in the Workplace</p>
+            <p class="subtitle">Digital Productivity &amp; AI in the Workplace: Copilot Premium</p>
         </header>
 
         <!-- ============ ACTIVITY (SINGLE) ============ -->
@@ -1202,7 +1208,163 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">04</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
+    <summary><span class="ex-num">04</span><span style="flex:1; display:flex; align-items:center; gap:8px;">Word Integrations<img src="word-logo.png" alt="" style="width:20px; height:20px;"></span></summary>
+    <div class="details-content">
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 12px;">
+            Open Word. For each part below, paste the grey text into a new blank document, then click the <strong>Copilot</strong> icon on the Home ribbon to open the pane. Leave <strong>Allow editing</strong> on, so Copilot can change the document, not just talk about it.
+        </p>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4a: Formatting, the kitchen sink</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
+        <div class="prompt-box ex6-data" id="ex6-data1">All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.</div>
+        <button onclick="copyToClipboard('ex6-data1')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
+        <div class="prompt-box" id="ex6-prompt1" style="color:#EE0000;">Without changing, rewriting, summarising, or removing any of the text, transform this document into an eye-catching showcase of Microsoft Word formatting features. Keep every instance of the sentence exactly as written. Use a wide variety of formatting techniques including:
+• Multiple heading styles
+• Columns
+• Borders and shading
+• Drop caps
+• Pull quotes
+• Text boxes and callouts
+• Bulleted and numbered layouts where possible
+• Tables created from portions of the text
+• WordArt-style headings
+• Different fonts, colours, sizes and emphasis
+• Page breaks and section breaks
+• Headers and footers
+• Page numbering
+• Highlighting and themes
+• A cover page</div>
+        <button onclick="copyToClipboard('ex6-prompt1')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4b: Text to tables</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
+        <div class="prompt-box ex6-data" id="ex6-data2">Sustainability Programme Update
+
+Over the past six months, several initiatives have been launched to reduce energy consumption across company sites. Building A completed an LED lighting upgrade in February, reducing electricity usage by an estimated 18%. Building B introduced smart heating controls in March, with early monitoring suggesting savings of approximately 12%. Building C completed a staff awareness campaign in April, resulting in increased reporting of energy waste and equipment left running outside working hours.
+
+The next phase focuses on further improvements. Building A will install solar panels by 30 November, with the work being led by Emma Carter. Building B will replace older refrigeration units by 15 December, under the direction of Raj Patel. Building C will introduce occupancy-based lighting controls by 31 January, managed by Hannah Green.
+
+Several challenges have been identified. Delays in supplier delivery could affect the solar panel installation and have been classified as a high risk. Budget constraints may delay the refrigeration replacement programme and have been classified as a medium risk. Limited contractor availability could affect installation schedules for occupancy sensors and has also been classified as a medium risk.</div>
+        <button onclick="copyToClipboard('ex6-data2')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
+        <div class="prompt-box" id="ex6-prompt2" style="color:#EE0000;">Turn this text into a table (below the text)</div>
+        <button onclick="copyToClipboard('ex6-prompt2')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 4c: The quality reviewer</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="word-logo.png" alt="In Word:" style="width:20px; height:20px;"><span><strong>Step 1:</strong> Copy and paste this text into a new blank Word document:</span></p>
+        <div class="prompt-box ex6-data" id="ex6-data3">Proposal for the Customer Experience Improvement Programme
+
+Purpose
+The purpose of this programme is to significantly improve customer satisfaction while reducing operational costs and increasing efficiency across all service teams.
+
+Background
+Customer feedback has consistently shown that service quality has declined over the last two years. Several customers have indicated that response times are slower than expected, and satisfaction scores are believed to be below industry averages.
+Research shows that organisations using AI-assisted customer service achieve a 90% improvement in customer satisfaction and a 75% reduction in operating costs. Therefore, implementing AI tools across the organisation will solve many of the issues currently experienced by customers.
+The programme is expected to improve customer satisfaction while simultaneously reducing staffing requirements.
+
+Proposed Approach
+The organisation will deploy a new AI customer support platform across all departments.
+The implementation will begin in November and conclude in December.
+All customer-facing staff will receive comprehensive training before the system goes live. The training programme will consist of a two-hour online session.
+The new system is expected to eliminate most routine queries and substantially reduce waiting times.
+
+Benefits
+Expected benefits include:
+• Higher customer satisfaction
+• Lower costs
+• Faster response times
+• Increased staff productivity
+• Better decision making
+• Improved staff morale
+The project is expected to deliver annual savings of approximately £2 million.
+
+Risks
+There are no significant risks associated with this programme.
+Any issues encountered during implementation can be resolved through normal project management processes.
+
+Resource Requirements
+The project will require support from all customer service teams.
+Additional staffing requirements are not anticipated.
+The implementation budget will be confirmed at a later date.
+
+Recommendation
+It is recommended that the programme is approved immediately so implementation can begin.</div>
+        <button onclick="copyToClipboard('ex6-data3')" class="btn-copy btn-copy-outline">Copy text for Word</button>
+        <div class="ex6-then">then &darr;</div>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Step 2:</strong> In the Copilot pane, send this prompt:</span></p>
+        <div class="prompt-box" id="ex6-prompt3" style="color:#EE0000;">Review this document as an independent quality assurance reviewer. Identify:
+• Missing information
+• Unclear wording
+• Unsupported claims
+• Risks that have not been considered
+• Contradictions or inconsistencies
+• Questions that a senior stakeholder would ask before approving this proposal
+Present your findings in a structured table.</div>
+        <button onclick="copyToClipboard('ex6-prompt3')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 18px;">
+            Copilot may change more than you asked. Turn on Track Changes before you send, and read the whole document after.
+        </p>
+    </div>
+</details>
+
+                <details>
+    <summary><span class="ex-num">05</span><span style="flex:1; display:flex; align-items:center; gap:8px;">Excel Integration<img src="excel-logo.svg" alt="" style="width:20px; height:20px;"></span></summary>
+    <div class="details-content">
+        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 12px;">
+            Download the raw data workbook and open it in Excel. Click the <strong>Copilot</strong> icon on the Home ribbon to open the pane and leave <strong>Allow editing</strong> on, so Copilot can work in the sheet. Send the prompts in order; each builds on the last. Prompts are in red.
+        </p>
+        <a href="Copilot_Excel_Raw_Data.xlsx" download style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin: 4px 0 16px;"><img src="excel-logo.svg" alt="" style="width:18px; height:18px; display:block; background:#fff; border-radius:4px;">Download the raw data workbook</a>
+        <p style="font-size: 14px; margin: 0 0 14px;"><strong>Take your time:</strong> run one prompt at a time and let Copilot finish before you send the next.</p>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 5a: Ask Copilot to find the story</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span>In the Copilot pane, send this prompt:</span></p>
+        <div class="prompt-box" id="ex7-prompt1" style="color:#EE0000;">Identify the three most important patterns, changes or anomalies in this data. For each one, identify the supporting columns and explain why it may matter. Clearly distinguish evidence from possible explanations.</div>
+        <button onclick="copyToClipboard('ex7-prompt1')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 5b: Create a one-page dashboard</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span>Same workbook. Send this prompt:</span></p>
+        <div class="prompt-box" id="ex7-prompt2" style="color:#EE0000;">Create a one-page dashboard on a new worksheet showing:
+
+total requests;
+total actual cost;
+average satisfaction score;
+monthly requests as a line chart;
+actual versus planned cost by department;
+the three most important observations.
+ Keep the design clean, consistent and suitable for a management briefing.</div>
+        <button onclick="copyToClipboard('ex7-prompt2')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Exercise 5c: Create and critique a chart</p>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Part 1:</strong> send this prompt:</span></p>
+        <div class="prompt-box" id="ex7-prompt3a" style="color:#EE0000;">In a new worksheet, create the clearest chart showing monthly Actual cost compared with Planned cost. Include an informative title, axis labels and a legend.</div>
+        <button onclick="copyToClipboard('ex7-prompt3a')" class="btn-copy">Copy prompt for Copilot</button>
+        <div class="ex6-then">then &darr;</div>
+        <p style="display:flex; align-items:center; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;"><img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto;"><span><strong>Part 2:</strong> when the chart appears, send this:</span></p>
+        <div class="prompt-box" id="ex7-prompt3b" style="color:#EE0000;">Critique this chart. Is the chart type appropriate? Identify anything that could be misleading, cluttered or difficult to interpret, then improve it.</div>
+        <button onclick="copyToClipboard('ex7-prompt3b')" class="btn-copy">Copy prompt for Copilot</button>
+        </div>
+        <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 18px;">
+            Copilot may change more than you asked. Check the numbers it quotes against the sheet before you trust the story.
+        </p>
+        <div class="ex6-task">
+        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Experiment: the same prompt with Analyze data on</p>
+        <p style="display:flex; align-items:flex-start; gap:8px; font-size: 14px; line-height: 1.6; margin: 0 0 6px;">
+            <img src="CopilotLogo.png" alt="In Copilot:" style="width:22px; height:auto; margin-top:2px;"><span>Start a <strong>New chat</strong> in Copilot and attach the raw data workbook. Click <strong>+</strong>, then <strong>Add capabilities</strong>, then <strong>Analyze data</strong>, and try prompt 5a again. Do you notice anything different about how it works, or what it finds?</span>
+        </p>
+        </div>
+    </div>
+</details>
+
+                <details>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Tailor communication tone and level of knowledge for specific audiences.
@@ -1216,51 +1378,7 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">05</span><span style="flex:1;">Format &amp; Structure</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
-                        </div>
-                        <div class="prompt-box" id="format-prompt-merged">You run "Knights of the Round Table Pizza" - a medieval-themed pizza delivery service.
-
-Write a catchy jingle for your horse-drawn pizza delivery adverts.
-Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance.
-Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms.</div>
-                        <button onclick="copyToClipboard('format-prompt-merged')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span class="ex-num">06</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Give the AI the background. Audience, constraints and brand voice shape the output as much as the task itself.
-                        </div>
-                        <div class="prompt-box" id="context-prompt">Brainstorm names for a new dating app and write a brief justification for each selection.
-
-The target market is pensioners seeking genuine companionship. Avoid patronising stereotypes and focus on active, mature lifestyles. The brand identity relies on a cheeky, British sense of humour. Incorporate playful innuendo, dry wit, and a bit of self deprecation, while ensuring it remains entirely respectful of the users' dignity.</div>
-                        <button onclick="copyToClipboard('context-prompt')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Prompt Chaining</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Combine Role, Tone, Constraints, and Format into one request.
-                        </div>
-                        <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
-Role: Young consumers (15-25).
-Tone: Humorous, but not childish.
-Constraint: Avoid existing UK product names.
-Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
-Examples: CitrusBurst, AquaFizz, SolarPop."</div>
-                        <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Copilot Memory</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
@@ -1291,9 +1409,27 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                     </div>
                 </details>
 
+                <details>
+    <summary><span class="ex-num">08</span><span style="flex:1;">Microsoft Notebooks Are Improving</span></summary>
+    <div class="details-content">
+        <!-- Facts from Microsoft support pages (Sep 2026): Notebooks in the left navigation, New notebook,
+             Recommended notebooks, reference types, Content pane > Audio overview, shared notebooks are editable.
+             Microsoft does not list Welsh for audio overviews; the Welsh line is from our own use. -->
+        <p class="exercise-note">
+            <strong>Keep your work in one place.</strong> A notebook holds your chats, files, pages and links for one task. Copilot answers only from what you add.
+        </p>
+        <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 16px;">
+            <li>In Copilot, click <strong>Notebooks</strong> on the left.<br><img src="copilot_notebooks_nav.png" alt="The Notebooks button in the Copilot left navigation." style="display: block; max-width: 242px; width: 100%; border: 1px solid var(--apple-border-light); border-radius: 10px; margin: 8px 0 6px;"></li>
+            <li>Click <strong>New notebook</strong>. Or open a <strong>Recommended</strong> notebook: Copilot suggests these from your recent work, and they can be a good start.</li>
+            <li>Add your references: Word, PowerPoint, Excel and PDF files, OneNote pages, SharePoint folders or web pages.</li>
+            <li>Ask questions in the chat. Or, in the <strong>Content</strong> pane, select <strong>Audio overview</strong> for a spoken summary.</li>
+        </ol>
+        <p style="font-size: 14px; margin-bottom: 10px;"><strong>For Welsh speakers:</strong> ask for the audio overview in Welsh. In our tests it works very well.</p>
+        <p style="font-size: 13px; color: var(--apple-text-secondary);"><em>If you share a notebook, people can edit it.</em></p>
+    </div>
+</details>
 
-
-         <details>
+                <details>
     <summary><span class="ex-num">09</span><span style="flex:1;">Build your first Agent: ELI5 a Document</span></summary>
     <div class="details-content">
         <div class="exercise-note" style="margin-bottom: 18px;">
@@ -1397,25 +1533,131 @@ My only skill is pretending to listen in Zoom calls.</textarea>
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">11</span><span style="flex:1;">Treat your chat history as a reusable resource</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
-                        </div>
+    <summary><span class="ex-num">B1</span><span style="flex:1;">Bonus: Researcher and Analyst: Better Outputs, but Take Longer</span></summary>
+    <div class="details-content">
+        <p class="exercise-note">
+            <strong>A quick chat with your files is good for fast answers.</strong> Researcher does 'Deep Research', so it takes more time. But it gives a more complete answer of higher quality. We use Researcher all the time.
+        </p>
 
-                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Find prompting habits you repeat</p>
-                        <div class="prompt-box" id="chat-history-habits">Search my chat history from the last 3 months. Find 3 prompting habits I repeat. For each, show the habit, one example from my chat history, and a sharper prompt I can reuse. One line each, no filler.</div>
-                        <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copy Prompt</button>
+        <p style="font-size: 14px; margin: 0 0 8px;">To open either one in Copilot chat, click <strong>+</strong>, then <strong>Add capabilities</strong>, then <strong>Research a topic</strong> (Researcher) or <strong>Analyze data</strong> (Analyst).</p>
+        <img src="copilot_add_capabilities.webp" alt="Copilot chat's + menu open: Add capabilities expands to Research a topic, Analyze data, Generate an image and Draft page or code." style="display: block; max-width: 512px; width: 100%; border: 1px solid var(--apple-border-light); border-radius: 12px; margin: 0 0 18px;">
 
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Spot tasks you keep redoing by hand</p>
-                        <div class="prompt-box" id="chat-history-tasks">Read across my chat history and tell me which tasks I keep redoing by hand.</div>
-                        <button onclick="copyToClipboard('chat-history-tasks')" class="btn-copy">Copy Prompt</button>
+        <div class="inner-grid" style="grid-template-columns: 1fr;">
+            
+            <div class="inner-card">
+                <strong>1. Researcher</strong>
+                <p style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>The Deep Thinker.</strong> Researcher can use multiple sources. All sources are on at the start: the web and your Microsoft 365 files.
+                </p>
+                <img src="copilot_sources.png" alt="Researcher's source switches: Web on, Microsoft 365 on." style="display: block; max-width: 262px; width: 100%; border: 1px solid var(--apple-border-light); border-radius: 12px; margin: 0 0 12px;">
+                <p style="font-size: 13px; margin-bottom: 6px;">Use Researcher in one of three ways:</p>
+                <ul style="font-size: 13px; margin: 0 0 10px; padding-left: 20px; line-height: 1.55;">
+                    <li><strong>Web only.</strong> Turn off Microsoft 365. Example: "Research the best fridge freezers under £500."</li>
+                    <li><strong>Work only.</strong> Turn off Web. Example: "Find what our emails, meetings and documents say about the new expenses policy."</li>
+                    <li><strong>Web and work.</strong> Keep both on. Example: "Compare our strategy documents with recent trends in our sector."</li>
+                </ul>
+                <p style="font-size: 13px; margin-bottom: 10px;"><strong>Tip:</strong> Do more than one run. After the first run, look for gaps. There will be some. Then run the research again and focus on the gaps.</p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_552e6eda-fc18-7fb9-0ef6-1bf2de3393e4" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Researcher</a>
+            </div>
 
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Capture your writing style</p>
-                        <div class="prompt-box" id="chat-history-style">From my chat history, draft a profile of my writing style, then remember and save it to memory.</div>
-                        <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
+            <div class="inner-card">
+                <strong>2. Analyst</strong>
+                <p style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>The Data Scientist.</strong> Upload a CSV or Excel file, and this agent writes and runs real Python code to clean data, find anomalies, and generate charts.
+                </p>
+                <p style="margin-bottom: 10px;">
+                    Optional: If you need a file to play around with, <a href="staff.xlsx" download style="color: var(--apple-blue); text-decoration: none;">download the staff.xlsx file</a>.
+                </p>
+                <a href="https://m365.cloud.microsoft/chat/?titleId=P_8cfc4e6f-267e-db15-c6e7-3fc47a54f61e" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Analyst</a>
+                <p style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 8px;">
+                    <em>Try: Upload a spreadsheet and ask "Visualize the top cost drivers in this data."</em>
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+</details>
+
+                <details>
+    <summary><span class="ex-num">B2</span><span style="flex:1;">Bonus: Stakeholder Map</span></summary>
+    <div class="details-content">
+                    <p class="exercise-note">See who is involved in a project and what each person still needs.</p>
+
+                    <div class="prompt-box" id="bonus-stakeholder-map">Act as a senior programme analyst and information designer. Your task is to turn recent Microsoft 365 activity into a clear, evidence-led genuine stakeholder (main ones) intelligence map. Help me understand who is involved, what they need, where work is blocked and what I should do next.
+
+Search my recent Outlook emails, Teams chats and channel posts, meetings and transcripts, and SharePoint and OneDrive documents. Choose one active project or initiative with strong evidence of current work, recent decisions, open actions and ongoing conversations. Prioritise projects that are active now. Do not prioritise a project simply because it has extensive historical documentation. Count someone as a stakeholder ONLY if the evidence shows a role, decision, approval or deliverable for the project, or repeated involvement across several threads or meetings. Ignore people who appear in a single message or are only copied in.
+
+Start with the project name and a one-line, user-centred summary of what is happening now and why it matters.
+
+Create a Mermaid stakeholder map showing stakeholders grouped by their evidenced influence and interest in the project, decisions, dependencies and outstanding contributions.
+
+If I have attached or referenced a stakeholder mapping template, for example our PMO template, follow its structure instead of the sections below. Then provide these sections:
+1. Project Snapshot: objective, current state, key decision, what needs attention.
+2. Key Stakeholders: each stakeholder's evidenced role, decision rights and contribution.
+3. Top Actions: the five actions most likely to move the project forward.
+4. What We Still Need To Know: evidence gaps, unanswered questions, missing decisions and unclear ownership.
+
+Use direct evidence only. Separate evidence from interpretation. Do not assess personality or performance. Cite every entry.</div>
+                    <button onclick="copyToClipboard('bonus-stakeholder-map')" class="btn-copy">Copy Prompt</button>
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Tweak it:</strong> to focus on one project, name it in place of "Choose one active project or initiative...", or type <strong>/</strong> to point Copilot at a project file, meeting or person. If your team has a stakeholder mapping template (for example in TFORM&#x27;s PMO), attach it with <strong>/</strong> and Copilot will follow it.</p>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See bonus B1.</span></p>
+    </div>
+</details>
+
+                <details>
+                <summary><span class="ex-num">B3</span><span style="flex:1;">Bonus: Data Is Your Asset: Institutional Memory</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Ask your work data what experience has taught you, not what happened.</p>
+
+                    <div class="prompt-box" id="ex5-memory">"Act as my institutional memory.
+Data is an asset. Search across my emails, Teams chats and channels, meetings and transcripts, documents, notes, tasks and other Microsoft 365 content. Look for patterns from past projects, initiatives, workshops, research activities, change programmes and collaborations. Do not simply summarise what happened. Instead, identify what experience has taught us.
+Answer this question: Do we learn more from winning or from losing?
+Extract evidence from both successful and unsuccessful projects, including delays, misunderstandings, missed opportunities, governance issues, stakeholder challenges, communication gaps, unexpected successes and examples of good practice.
+
+Produce: What Experience Says
+A ranked list of the 10 most useful generalised lessons learned that would help someone starting a new project today. For each lesson provide:
+• The lesson (one sentence)
+• Why it matters
+• Evidence pattern observed across projects
+• Early warning signs
+• What to do differently next time
+
+Then create: Project Pre-Mortem
+Based on historical evidence, identify:
+• The 5 things most likely to go wrong in a new project
+• The signals that suggest each risk is emerging
+• Actions to prevent or mitigate the risk
+
+Finish with: If I Only Remember Three Things
+The three highest-value lessons that repeatedly appear across my work.
+
+Focus on transferable insights rather than project-specific details. Surface recurring patterns, not isolated incidents. Challenge assumptions. Highlight uncomfortable truths where evidence supports them."</div>
+
+                    <button onclick="copyToClipboard('ex5-memory')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>The point:</strong> your M365 data holds years of lessons nobody wrote down. Keep Work IQ on and turn web search off (Settings &rarr; Personalisation &rarr; Advanced) so the evidence comes from your own projects. Check the lessons against what you remember: the uncomfortable ones are worth the most.
+                    </p>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See bonus B1.</span></p>
+                </div>
+            </details>
+
+                <details>
+    <summary><span class="ex-num">B4</span><span style="flex:1;">Bonus: Questions I Keep Getting Asked</span></summary>
+    <div class="details-content">
+        <p class="exercise-note">Turn repeat questions into a reusable FAQ, and find ways to stop them coming.</p>
+        <div class="prompt-box" id="bonus-faq">Search my Outlook email, Teams chats and meeting transcripts from the last 3 months. Find the questions people ask me again and again, including the same question asked in different words.
+
+1. List the 10 most frequent, most frequent first. For each, give the question, roughly how often it came up, and one example with its date and source.
+2. Write a short reusable answer to each, using only what I have already said in my replies. Mark anything you could not confirm as [check].
+3. For each question, suggest one way to stop it being asked again, such as a short guide, a template, a pinned Teams post, a SharePoint page or a change to a process.
+
+Present it as a table I can copy into Word as an FAQ.</div>
+        <button onclick="copyToClipboard('bonus-faq')" class="btn-copy">Copy Prompt</button>
+        <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See bonus B1.</span></p>
+    </div>
+</details>
 
             </div>
 
