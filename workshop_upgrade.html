@@ -2182,22 +2182,10 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
             <div class="section-header">
                 <div>
                     <div class="eyebrow">Bonus</div>
-                    <h2>Bonus Exercises</h2>
+                    <h2>Bonus Exercises For Copilot Premium</h2>
                 </div>
             </div>
 
-            <div class="library-instructions">
-                <a href="https://m365copilot.com/" target="_blank" rel="noopener" class="copilot-card">
-                    <img src="CopilotLogo.png" alt="" class="copilot-logo">
-                    <span class="copilot-card-text">
-                        <span class="copilot-label">Click to open Copilot</span>
-                        <span class="copilot-url">m365copilot.com&nbsp;↗</span>
-                    </span>
-                </a>
-                <div class="instruction-text">
-                    Click <strong>"New Chat"</strong> in Copilot between tasks.
-                </div>
-            </div>
 
             <details>
     <summary><span class="ex-num">B1</span><span style="flex:1;">Bonus: Stakeholder Map</span></summary>
@@ -2334,107 +2322,19 @@ Present it as a table I can copy into Word as an FAQ.</div>
             </details>
 
             <details>
-    <summary><span class="ex-num">B7</span><span style="flex:1;">Bonus: Build your first Agent: ELI5 a Document</span></summary>
+    <summary><span class="ex-num">B7</span><span style="flex:1;">Bonus: My First Agent: Experiments to Workflows</span></summary>
     <div class="details-content">
-        <div class="exercise-note" style="margin-bottom: 18px;">
-            <strong>The idea:</strong> An agent that explains any documents like you are 5 – ideal for policies, reports and guidance notes.
-        </div>
-        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-            <li style="margin-bottom: 10px;">
-                <strong>Open Copilot</strong> – go to <a href="https://m365copilot.com" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Enter Description then submit</strong> – In the "Describe" tab, paste the following and hit the submit arrow:
-                <div class="prompt-box" id="eli5-document">You are a witty ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</div>
-                <button onclick="copyToClipboard('eli5-document')" class="btn-copy">Copy Prompt</button>
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Click Create</strong> – Name the agent if prompted, then click the <strong>Create</strong> button.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Click Go to Agent</strong> – Wait for the success message, then click the blue 'Go to Agent' button.
-            </li>
-            <li>
-                <strong>Test it</strong> – Upload a dense document e.g. a policy or committee report, and compare the output against the original.
-            </li>
-        </ol>
+                    <p class="exercise-note">When a prompt works well for you, turn it into an agent. Then you can use it again in one click, and share it.</p>
+                    <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 12px;">
+                        <li>Choose a prompt that works well for you, for example <strong>B1 Stakeholder Map</strong>.</li>
+                        <li>In Copilot, click <img src="copilot-new-agent-icon.png" alt="" style="width:18px; height:auto; vertical-align:-3px;"> <strong>New agent</strong>.</li>
+                        <li>Paste the prompt into the <strong>Describe</strong> box and send. Copilot writes the agent's instructions.</li>
+                        <li>Optional: add knowledge sources so the agent always works from them. A source can be a <strong>SharePoint</strong> site, folder or list, key files, Teams chats and meetings, Outlook email, or a public website. For example, point a policy helper at your team's SharePoint site, or a project agent at the project folder.</li>
+                        <li>Name the agent and click <strong>Create</strong>. It appears under <strong>Agents</strong> on the left.<br><img src="copilot-agents-sidebar.png" alt="The Agents list in the Copilot sidebar, showing an agent called Training Module Builder." style="display:block; max-width:240px; width:100%; border:1px solid var(--apple-border-light); border-radius:10px; margin:8px 0 4px;"></li>
+                    </ol>
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Longer instructions can live in a text file called <strong>SKILL.md</strong>. Paste it into the Describe box in the same way.</p>
     </div>
 </details>
-
-            <details>
-                    <summary><span class="ex-num">B8</span><span style="flex:1;">Bonus: Build a New Agent: Sentence Categoriser</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>New Agent Task:</strong> In this exercise, you will build a <strong>new agent</strong> designed for a completely different task: analyzing text data and generating visual word clouds using Python.
-                        </div>
-
-                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-                            <li style="margin-bottom: 10px;">
-                                <strong>Open Copilot</strong> – Go to <a href="https://m365copilot.com" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu to start a fresh agent.
-                            </li>
-                            <li style="margin-bottom: 16px;">
-                                <strong>Describe the Agent</strong> – Ensure you are on the <strong>Describe</strong> tab. Copy and paste the description below into the chat box and hit the submit arrow:
-                                <div class="callout" style="margin-top:10px;">
-                                    <strong>📋 Copy this Prompt:</strong>
-                                    <div class="callout-body">
-                                        "The user will provide sentences (via attached .xlsx or pasted below). For each sentence, assign only one broad, high-level parent category as a SINGLE word (e.g., generalize 'Spreadsheet' to Work, 'Tacos' to Food).  Use CONSISTANT category names and avoid splitting similar concepts into separate categories. REVIEW YOUR CATEGORIES FOR CONSISTANCY ONCE YOU HAVE BEEN THROUGH THE FULL LIST.
-                                        <br><br>
-                                        DO ALL OF THE FOLLOWING 3 THINGS AUTOMATICALLY:<br>
-                                        1, Output a table with columns: Sentence, Category.<br>
-                                        2, Calculate topic frequency by counting how many sentences fall under each category.<br>
-                                        3, Write and Execute Python code to generate and DISPLAY on screen a word cloud where each category's size is proportional to its topic frequency."
-                                    </div>
-                                </div>
-                            </li>
-                            <li style="margin-bottom: 10px;">
-                                <strong>Configure Settings</strong> – Switch to the <strong>Configure</strong> tab (next to Describe). Name your agent <strong>"Sentence Categorizer"</strong>.
-                            </li>
-                            <li style="margin-bottom: 10px;">
-                                <strong>Enable Code Generation</strong> – Scroll down to the "Capabilities" section. Toggle the slider for <strong>"Create documents, charts, and code"</strong> to the <strong>On</strong> position (it will turn blue).
-                            </li>
-                            <li style="margin-bottom: 10px;">
-                                <strong>Create Agent</strong> – Click the <strong>Create</strong> button and wait for the success message.
-                            </li>
-                            <li>
-                                <strong>Test it</strong> – Click "Go to agent". Use the sample data below (either upload the file or copy the text) to see it generate a category table and a word cloud image.
-                            </li>
-                        </ol>
-
-                        <div class="sample-data">
-                            <h4>📂 Sample Data for Testing</h4>
-                            <p style="margin-bottom: 12px; color: #555; font-size: 14px;">
-                                You can either download the Excel file called <em>sentences.xlsx</em> to upload to your agent, or copy the text below directly into the Agent's chat.
-                            </p>
-                            <div style="margin-bottom: 14px;">
-                                <a href="sentences.xlsx" download class="download-btn">⬇️ Download sentences.xlsx</a>
-                            </div>
-                            <div style="margin-bottom: 8px; font-weight: 600; color: #444; font-size: 13px;">Or copy these sentences:</div>
-                            <textarea class="sample-textarea" readonly>I survived another meeting that should have been an email.
-My therapist has a wet nose and a wagging tail.
-I apologize for what I said when I was hungry.
-There is no 'we' in fries.
-I run like the winded.
-My head says gym, but my heart says tacos.
-Excel is my love language.
-I earn a salary just so my cat can have a better life.
-It's raining in Cardiff... again.
-I need a six-month holiday, twice a year.
-Be the person your dog thinks you are.
-Stressed is just desserts spelled backwards.
-Please do not 'reply all' to my existence.
-My favorite cardio is running out of patience.
-A balanced diet is a slice of pizza in each hand.
-Sent from my iPhone (not really, I'm at my desk).
-I thought they said 'extra fries', not 'exercise'.
-Llanfairpwllgwyngyll... never mind, just meet me at the pub.
-My boss told me to have a good day, so I went home.
-Traffic was stopped by a flock of sheep on the road.
-My outfit is incomplete without a little bit of fur on it.
-I love the whooshing sound deadlines make as they fly by.
-My only skill is pretending to listen in Zoom calls.</textarea>
-                        </div>
-                    </div>
-                </details>
         </section>
 
         <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->
