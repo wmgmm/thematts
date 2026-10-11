@@ -1401,6 +1401,11 @@ the three most important observations.
                     <li><strong>Work only.</strong> Turn off Web. Example: "Find what our emails, meetings and documents say about the new expenses policy."</li>
                     <li><strong>Web and work.</strong> Keep both on. Example: "Compare our strategy documents with recent trends in our sector."</li>
                 </ul>
+                <p style="font-size: 13px; margin-bottom: 6px;"><strong>Which to use:</strong></p>
+                <ul style="font-size: 13px; margin: 0 0 10px; padding-left: 20px; line-height: 1.55;">
+                    <li>Use Copilot Chat for one or two known documents.</li>
+                    <li>Use Researcher for case law, cross-source analysis or complex technical research.</li>
+                </ul>
                 <p style="font-size: 13px; margin-bottom: 10px;"><strong>Tip:</strong> Do more than one run. After the first run, look for gaps. There will be some. Then run the research again and focus on the gaps.</p>
                 <a href="https://m365.cloud.microsoft/chat/?titleId=P_552e6eda-fc18-7fb9-0ef6-1bf2de3393e4" target="_blank" style="display: inline-block; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin-top: 8px;">Launch Researcher</a>
             </div>
@@ -2188,7 +2193,26 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
 
 
             <details>
-    <summary><span class="ex-num">B1</span><span style="flex:1;">Bonus: Stakeholder Map</span></summary>
+                <summary><span class="ex-num">B1</span><span style="flex:1;">Bonus: Point Copilot with /</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Type <strong>/</strong> to select the exact file, email, meeting, chat, folder or SharePoint source. This is safer than asking Copilot to guess which document you mean.</p>
+                    <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 12px;">
+                        <li>In a new chat, type <strong>/</strong> and pick a document, email or meeting you know well.</li>
+                        <li>Paste the prompt after it and send.</li>
+                    </ol>
+
+                    <div class="prompt-box" id="bonus-slash">Summarise this source: the key decisions, the actions and who owns them, and anything still unresolved. Cite where each point comes from.</div>
+
+                    <button onclick="copyToClipboard('bonus-slash')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">
+                        <strong>The point:</strong> you choose the source, so you can check every answer against it.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+    <summary><span class="ex-num">B2</span><span style="flex:1;">Bonus: Stakeholder Map</span></summary>
     <div class="details-content">
                     <p class="exercise-note">See who is involved in a project and what each person still needs.</p>
 
@@ -2214,7 +2238,7 @@ Use direct evidence only. Separate evidence from interpretation. Do not assess p
 </details>
 
             <details>
-                <summary><span class="ex-num">B2</span><span style="flex:1;">Bonus: Data Is Your Asset: Institutional Memory</span></summary>
+                <summary><span class="ex-num">B3</span><span style="flex:1;">Bonus: Data Is Your Asset: Institutional Memory</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Ask your work data what experience has taught you, not what happened.</p>
 
@@ -2252,7 +2276,7 @@ Focus on transferable insights rather than project-specific details. Surface rec
             </details>
 
             <details>
-    <summary><span class="ex-num">B3</span><span style="flex:1;">Bonus: Questions I Keep Getting Asked</span></summary>
+    <summary><span class="ex-num">B4</span><span style="flex:1;">Bonus: Questions I Keep Getting Asked</span></summary>
     <div class="details-content">
         <p class="exercise-note">Turn repeat questions into a reusable FAQ, and find ways to stop them coming.</p>
         <div class="prompt-box" id="bonus-faq">Search my Outlook email, Teams chats and meeting transcripts from the last 3 months. Find the questions people ask me again and again, including the same question asked in different words.
@@ -2268,7 +2292,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
 </details>
 
             <details>
-                <summary><span class="ex-num">B4</span><span style="flex:1;">Bonus: Catch Me Up</span></summary>
+                <summary><span class="ex-num">B5</span><span style="flex:1;">Bonus: Catch Me Up</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">One briefing across email and Teams.</p>
 
@@ -2286,7 +2310,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
             </details>
 
             <details>
-                <summary><span class="ex-num">B5</span><span style="flex:1;">Bonus: Which Messages Need Me?</span></summary>
+                <summary><span class="ex-num">B6</span><span style="flex:1;">Bonus: Which Messages Need Me?</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Turn noise into a short action queue.</p>
 
@@ -2304,7 +2328,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
             </details>
 
             <details>
-                <summary><span class="ex-num">B6</span><span style="flex:1;">Bonus: Brief My Next Meeting</span></summary>
+                <summary><span class="ex-num">B7</span><span style="flex:1;">Bonus: Brief My Next Meeting</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Walk in knowing the latest position.</p>
 
@@ -2322,11 +2346,11 @@ Present it as a table I can copy into Word as an FAQ.</div>
             </details>
 
             <details>
-    <summary><span class="ex-num">B7</span><span style="flex:1;">Bonus: My First Agent: Experiments to Workflows</span></summary>
+    <summary><span class="ex-num">B8</span><span style="flex:1;">Bonus: My First Agent: Experiments to Workflows</span></summary>
     <div class="details-content">
                     <p class="exercise-note">When a prompt works well for you, turn it into an agent. Then you can use it again in one click, and share it.</p>
                     <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 12px;">
-                        <li>Choose a prompt that works well for you, for example <strong>B1 Stakeholder Map</strong>.</li>
+                        <li>Choose a prompt that works well for you, for example <strong>B2 Stakeholder Map</strong>.</li>
                         <li>In Copilot, click <img src="copilot-new-agent-icon.png" alt="" style="width:18px; height:auto; vertical-align:-3px;"> <strong>New agent</strong>.</li>
                         <li>Paste the prompt into the <strong>Describe</strong> box and send. Copilot writes the agent's instructions.</li>
                         <li>Optional: add knowledge sources so the agent always works from them. A source can be a <strong>SharePoint</strong> site, folder or list, key files, Teams chats and meetings, Outlook email, or a public website. For example, point a policy helper at your team's SharePoint site, or a project agent at the project folder.</li>
@@ -2335,6 +2359,244 @@ Present it as a table I can copy into Word as an FAQ.</div>
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Longer instructions can live in a text file called <strong>SKILL.md</strong>. Paste it into the Describe box in the same way.</p>
     </div>
 </details>
+        </section>
+
+        <!-- ============ PATENT EXAMINER PROMPTS ============ -->
+        <section id="patent" class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="eyebrow">Patent Examiners</div>
+                    <h2>Prompts For Patent Examination</h2>
+                </div>
+            </div>
+            <p class="exercise-note" style="margin-bottom: 18px;">Where a prompt shows <strong>/[document]</strong>, delete it and type <strong>/</strong> to pick the source (see bonus B1). Fill in anything else in [square brackets]. Use Copilot Chat for one or two known documents. Use Researcher for case law, cross-source analysis or complex technical research.</p>
+
+            <details>
+                <summary><span class="ex-num">P1</span><span style="flex:1;">Exact Legal or Scientific Summary</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use for applications, prior-art documents, judgments, technical papers and examination guidance.</p>
+
+                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse /[document].
+
+Produce a concise examiner’s summary under these headings:
+
+1. Document details: title, author or issuing body, date, version and jurisdiction.
+2. Purpose and central proposition.
+3. Technical or legal problem addressed.
+4. Material facts, findings or disclosures.
+5. Key definitions and claim-relevant terminology.
+6. Limitations, qualifications, assumptions and unresolved points.
+7. Potential relevance to novelty, inventive step, sufficiency, clarity or excluded matter. Label this section “Examiner inference”.
+
+Separate:
+- what the source expressly states;
+- what can reasonably be inferred; and
+- what the source does not establish.
+
+Cite the page, paragraph, claim, section or figure for every material statement. Quote only where exact wording matters. Verify quotations, dates, identifiers and numerical values against the source.
+
+Do not introduce outside knowledge, invented detail or unsupported conclusions. If the document is incomplete, unreadable or ambiguous, identify the precise gap.</div>
+
+                    <button onclick="copyToClipboard('patent-1')" class="btn-copy">Copy Prompt</button>
+
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P2</span><span style="flex:1;">Claim-by-Claim Technical Analysis</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use before searching or comparing a claim with prior art.</p>
+
+                    <div class="prompt-box" id="patent-2">Analyse the claims in /[patent application] against the description and drawings.
+
+For each independent claim:
+
+- break the claim into numbered technical features;
+- identify the stated or apparent technical problem;
+- map each feature to its supporting paragraph, page, drawing or example;
+- distinguish essential features from limitations that appear optional or conventional;
+- identify unclear terms, functional language, parameters and possible breadth issues;
+- note any feature for which support, enablement or technical effect is uncertain;
+- identify likely search concepts, synonyms, broader technical expressions and relevant classification concepts.
+
+Then provide:
+A. A claim chart.
+B. The apparent inventive concept, clearly labelled as an inference.
+C. Evidence gaps requiring examiner judgement.
+D. Questions that should be resolved before relying on the analysis.
+
+Use only the referenced application. Do not decide patentability and do not invent support that is not present.</div>
+
+                    <button onclick="copyToClipboard('patent-2')" class="btn-copy">Copy Prompt</button>
+
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P3</span><span style="flex:1;">Argument and Rebuttal Analysis</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use to prepare for re-examination, hearings or a further report without surrendering examiner judgement.</p>
+
+                    <div class="prompt-box" id="patent-3">Analyse /[examiner report or objection] and /[applicant response].
+
+Create an issue-by-issue argument map with:
+
+- issue or objection;
+- applicable legal or technical test stated in the sources;
+- examiner’s argument;
+- applicant’s response;
+- evidence or authority relied upon by each side;
+- assumptions or unsupported steps;
+- strongest reasonable rebuttal to each position;
+- likely reply to that rebuttal;
+- point of genuine disagreement;
+- evidence needed to resolve it.
+
+Distinguish quotations, source facts and your analysis. Cite the exact paragraph, claim, document passage or legal authority supporting each entry.
+
+Do not predict the outcome as fact. Where you assess relative strength, label it “provisional assessment” and explain the evidence driving it. Do not improve either party’s case by adding facts or authorities that are absent from the supplied material.</div>
+
+                    <button onclick="copyToClipboard('patent-3')" class="btn-copy">Copy Prompt</button>
+
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P4</span><span style="flex:1;">Find Relevant Work Documents</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use when relevant evidence may be spread across the case file, correspondence and internal discussions.</p>
+
+                    <div class="prompt-box" id="patent-4">With Work IQ on, search my accessible Microsoft 365 work sources for material concerning:
+
+Matter: [application number, invention, party or technical concept]
+Date range: [date range]
+Relevant identifiers and synonyms: [terms]
+
+Search files, SharePoint and OneDrive content, emails, Teams chats, meetings and available connected sources.
+
+Return only sources that materially address the matter. For each result give:
+
+- exact title or subject;
+- source type;
+- author or sender;
+- date and version, where available;
+- direct link or citation;
+- one-sentence explanation of relevance;
+- the exact passage or location supporting that relevance;
+- status: primary source, working document, duplicate, superseded or uncertain.
+
+Group duplicates and identify the newest version, but do not assume the newest is authoritative without evidence.
+
+State which sources were searched, any access or date limitations, and what you did not find. Do not invent documents, links, contents or document status.</div>
+
+                    <button onclick="copyToClipboard('patent-4')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P5</span><span style="flex:1;">Patent Case-Law Retrieval and Analysis</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use Researcher rather than standard chat.</p>
+
+                    <div class="prompt-box" id="patent-5">Use Researcher to find current case law relevant to:
+
+Legal question: [question]
+Jurisdiction: [UK / EPC / other]
+Cut-off date: [date]
+Technical context: [brief context]
+
+Prioritise primary and official sources, including:
+- UK Supreme Court;
+- Find Case Law from The National Archives;
+- UKIPO decisions and current practice notices;
+- EPO Enlarged Board and Boards of Appeal decisions;
+- legislation and official examination guidelines.
+
+Return only authorities whose full text or official record you can retrieve.
+
+For each authority provide:
+- full case name;
+- neutral citation or official decision number;
+- court or board;
+- decision date;
+- direct official link;
+- legal proposition for which it is relevant;
+- exact paragraph numbers supporting that proposition;
+- material factual or procedural distinction;
+- later treatment or current status, but only if verified from a cited source.
+
+Separate binding authority, persuasive authority, examination guidance and commentary.
+
+Do not create or complete a citation from memory. If an authority, quotation, paragraph or status cannot be verified, mark it “unverified” and do not rely on it. End with search limitations, apparent gaps and suggested checks in the official database.</div>
+
+                    <button onclick="copyToClipboard('patent-5')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Find Case Law does not hold every decision, so absence from one search is not proof that no authority exists.</p>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P6</span><span style="flex:1;">Prior-Art Lead Generation</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Use to widen vocabulary and discover leads.</p>
+
+                    <div class="prompt-box" id="patent-6">Use Researcher to identify potential prior-art leads for the following claimed subject matter:
+
+Priority or search cut-off date: [date]
+Technical field: [field]
+Critical matter or feature combination: [features]
+Known terminology, synonyms and classifications: [terms]
+Known applicants, inventors or documents: [if any]
+
+Search public patent literature and credible non-patent technical literature. Treat this as lead generation, not a complete patent search.
+
+For each lead provide:
+- publication number, DOI or stable identifier;
+- title, applicant or author;
+- publication date and, separately, priority date where relevant;
+- direct source link;
+- exact passage, claim, abstract, figure or example matching each feature;
+- features apparently present;
+- features not established;
+- provisional relevance: possible X, possible Y, background or uncertain;
+- reason the document merits examiner review.
+
+Exclude any result for which identity, date or relevant disclosure cannot be verified. Do not infer disclosure from title similarity alone.
+
+End with the search concepts used, alternative terminology found, date or database limitations, and areas still needing a formal examiner search.</div>
+
+                    <button onclick="copyToClipboard('patent-6')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Copilot does not replace official patent-search tools. Examiner judgement still decides what search is reasonable and necessary.</p>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
+                </div>
+            </details>
+
+            <details>
+                <summary><span class="ex-num">P7</span><span style="flex:1;">Verification Pass</span></summary>
+                <div class="details-content">
+                    <p class="exercise-note">Run this before an examination report, recommendation or hearing note, in the same chat as the answer you are checking.</p>
+
+                    <div class="prompt-box" id="patent-7">Audit your previous response against every cited source.
+
+Create four lists:
+
+1. Verified: claims directly supported by the cited source.
+2. Overstated: claims that go beyond the source.
+3. Unverified: dates, quotations, identifiers, cases, documents or technical assertions that cannot be confirmed.
+4. Missing context: qualifications, exceptions, contrary evidence or jurisdictional limits that could change the analysis.
+
+Correct the response using only verified material. Preserve uncertainty rather than filling gaps. For every quotation, legal authority and patent identifier, confirm that the cited source opens and contains the stated material.</div>
+
+                    <button onclick="copyToClipboard('patent-7')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Copilot can act as reviewer and gap finder, but it cannot certify its own correctness.</p>
+                </div>
+            </details>
+
         </section>
 
         <!-- ============ ESSENTIALS (surfaced from Concepts) ============ -->
