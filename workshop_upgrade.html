@@ -1113,8 +1113,6 @@
             <a href="#activities">Sprint</a>
             <a href="#library"><span class="nav-full">Copilot Exercises</span><span class="nav-short">Exercises</span></a>
             <a href="#patent"><span class="nav-full">Patent Prompts</span><span class="nav-short">Patents</span></a>
-            <a href="#essentials">Essentials</a>
-            <a href="#take-home">Take Home</a>
         </div>
     </nav>
 
@@ -2424,7 +2422,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
                 <div class="details-content">
                     <p class="exercise-note">Use for applications, prior-art documents, judgments, technical papers and examination guidance.</p>
 
-                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse [ATTACHED DOCUMENT].
+                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse <strong>[ATTACHED DOCUMENT]</strong>.
 
 Produce a concise examiner’s summary under these headings:
 
@@ -2455,7 +2453,7 @@ Do not introduce outside knowledge, invented detail or unsupported conclusions. 
                 <div class="details-content">
                     <p class="exercise-note">Use before searching or comparing a claim with prior art.</p>
 
-                    <div class="prompt-box" id="patent-2">Analyse the claims in [ATTACHED PATENT APPLICATION] against the description and drawings.
+                    <div class="prompt-box" id="patent-2">Analyse the claims in <strong>[ATTACHED PATENT APPLICATION]</strong> against the description and drawings.
 
 For each independent claim:
 
@@ -2485,7 +2483,7 @@ Use only the referenced application. Do not decide patentability and do not inve
                 <div class="details-content">
                     <p class="exercise-note">Use to prepare for re-examination, hearings or a further report without surrendering examiner judgement.</p>
 
-                    <div class="prompt-box" id="patent-3">Analyse [ATTACHED EXAMINER REPORT] and [ATTACHED APPLICANT RESPONSE].
+                    <div class="prompt-box" id="patent-3">Analyse <strong>[ATTACHED EXAMINER REPORT]</strong> and <strong>[ATTACHED APPLICANT RESPONSE]</strong>.
 
 Create an issue-by-issue argument map with:
 
@@ -2516,9 +2514,9 @@ Do not predict the outcome as fact. Where you assess relative strength, label it
 
                     <div class="prompt-box" id="patent-4">With Work IQ on, search my accessible Microsoft 365 work sources for material concerning:
 
-Matter: [application number, invention, party or technical concept]
-Date range: [date range]
-Relevant identifiers and synonyms: [terms]
+Matter: <strong>[APPLICATION NUMBER, INVENTION, PARTY OR TECHNICAL CONCEPT]</strong>
+Date range: <strong>[DATE RANGE]</strong>
+Relevant identifiers and synonyms: <strong>[TERMS]</strong>
 
 Search files, SharePoint and OneDrive content, emails, Teams chats, meetings and available connected sources.
 
@@ -2552,10 +2550,10 @@ State which sources were searched, any access or date limitations, and what you 
 
                     <div class="prompt-box" id="patent-5">Use Researcher to find current case law relevant to:
 
-Legal question: [question]
-Jurisdiction: [UK / EPC / other]
-Cut-off date: [date]
-Technical context: [brief context]
+Legal question: <strong>[QUESTION]</strong>
+Jurisdiction: <strong>[UK / EPC / OTHER]</strong>
+Cut-off date: <strong>[DATE]</strong>
+Technical context: <strong>[BRIEF CONTEXT]</strong>
 
 Prioritise primary and official sources, including:
 - UK Supreme Court;
@@ -2595,11 +2593,11 @@ Do not create or complete a citation from memory. If an authority, quotation, pa
 
                     <div class="prompt-box" id="patent-6">Use Researcher to identify potential prior-art leads for the following claimed subject matter:
 
-Priority or search cut-off date: [date]
-Technical field: [field]
-Critical matter or feature combination: [features]
-Known terminology, synonyms and classifications: [terms]
-Known applicants, inventors or documents: [if any]
+Priority or search cut-off date: <strong>[DATE]</strong>
+Technical field: <strong>[FIELD]</strong>
+Critical matter or feature combination: <strong>[FEATURES]</strong>
+Known terminology, synonyms and classifications: <strong>[TERMS]</strong>
+Known applicants, inventors or documents: <strong>[IF ANY]</strong>
 
 Search public patent literature and credible non-patent technical literature. Treat this as lead generation, not a complete patent search.
 
@@ -2626,12 +2624,15 @@ End with the search concepts used, alternative terminology found, date or databa
             </details>
 
             <details>
-                <summary><span class="ex-num">P7</span><span style="flex:1;">Verification Pass: Better in a New Chat</span></summary>
+                <summary><span class="ex-num">P7</span><span style="flex:1;">Verification Pass: Better in a New Chat?</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Run this before an examination report, recommendation or hearing note.</p>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:0; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Experiment:</strong> run this in a new chat and upload the document and the answer you are checking. Researcher will enhance the output here. See exercise 7.</span></p>
+                    <p class="exercise-note">Check an answer before it goes into an examination report, recommendation or hearing note.</p>
+                    <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 12px;">
+                        <li>In the same chat as the answer you are verifying, paste the prompt and send.</li>
+                        <li><strong>Side quest:</strong> click <strong>New Chat</strong>, upload the answer and the sources it cites, and send the prompt again. Does a fresh chat find more?</li>
+                    </ol>
 
-                    <div class="prompt-box" id="patent-7">Audit the attached response against every cited source.
+                    <div class="prompt-box" id="patent-7">Audit your previous response, or the attached response, against every cited source.
 
 Create four lists:
 
@@ -2644,6 +2645,7 @@ Correct the response using only verified material. Preserve uncertainty rather t
 
                     <button onclick="copyToClipboard('patent-7')" class="btn-copy">Copy Prompt</button>
 
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                 </div>
             </details>
 
