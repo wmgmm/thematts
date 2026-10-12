@@ -804,6 +804,25 @@
             box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
         }
 
+
+        /* Paper cards (exercise 02), after the Part 2 site's artifact cards */
+        .paper-cards { display: grid; gap: 10px; margin: 6px 0 18px; }
+        .paper-card { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); padding: 12px 16px; }
+        .paper-card__thumb { flex: 0 0 auto; width: 44px; height: auto; max-height: 62px; border-radius: 4px; border: 1px solid var(--border-soft); }
+        .paper-card__thumb[src$=".svg"] { border: none; }
+        .paper-card__info { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .paper-card__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--apple-text-secondary); }
+        .paper-card__title { font-size: 15px; font-weight: 600; color: var(--apple-text-primary); }
+        .paper-card__note { font-size: 12px; color: var(--apple-text-secondary); }
+        .paper-card__actions { flex: 0 0 auto; display: flex; gap: 8px; }
+        .paper-btn { display: inline-block; padding: 7px 16px; border-radius: 980px; font-size: 12px; font-weight: 600; text-decoration: none; background: var(--apple-blue); color: #fff; border: 1px solid var(--apple-blue); }
+        .paper-btn--ghost { background: transparent; color: var(--apple-text-secondary); border-color: var(--border-soft); }
+        .paper-btn--ghost:hover { color: var(--apple-blue); border-color: var(--apple-blue); }
+        @media (max-width: 600px) {
+            .paper-card { flex-wrap: wrap; }
+            .paper-card__actions { width: 100%; padding-left: 58px; }
+        }
+
         .btn-copy {
             background-color: var(--apple-blue);
             color: white;
@@ -1194,14 +1213,47 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">02</span><span style="flex:1;">Check a Paper's Claims: Chat, then Researcher</span></summary>
+                    <summary><span class="ex-num">02</span><span style="flex:1;">Check a Research Paper's Claims Twice: in Chat, then Researcher</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
-                            Application: Run the same claim analysis twice, once in Copilot Chat and once in Researcher, and compare what each finds.
+                            Application: This prompt analyses a research paper's claims and identifies gaps against online sources.
                         </div>
-                        <a href="LK-99_Superconductor_Paper.pdf" download style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--apple-blue); color: white; padding: 9px 18px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 12px; margin: 4px 0 16px;"><svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true" style="display:block;"><rect width="18" height="18" rx="4" fill="#fff"/><text x="9" y="12.2" text-anchor="middle" font-family="Arial, sans-serif" font-size="6.4" font-weight="700" fill="#d93025">PDF</text></svg>Download the paper PDF</a>
+                        <div class="paper-cards">
+                            <div class="paper-card">
+                                <img class="paper-card__thumb" src="Is_ChatGPT_Full_of_Bullshit_cover.webp" alt="">
+                                <div class="paper-card__info">
+                                    <span class="paper-card__label">Paper 1</span>
+                                    <span class="paper-card__title">Is ChatGPT Full of Bullshit?</span>
+                                    <span class="paper-card__note">Gorrieri (2024), <em>Journal of Ethics and Emerging Technologies</em>.</span>
+                                </div>
+                                <div class="paper-card__actions">
+                                    <a href="Is_ChatGPT_Full_of_Bullshit.pdf" target="_blank" rel="noopener" class="paper-btn paper-btn--ghost">View</a>
+                                    <a href="Is_ChatGPT_Full_of_Bullshit.pdf" download class="paper-btn">Download</a>
+                                </div>
+                            </div>
+                            <div class="paper-card">
+                                <img class="paper-card__thumb" src="LK-99_Superconductor_Paper_cover.webp" alt="">
+                                <div class="paper-card__info">
+                                    <span class="paper-card__label">Paper 2</span>
+                                    <span class="paper-card__title">LK-99: A Room-Temperature Superconductor?</span>
+                                    <span class="paper-card__note">Lee et al. (2023), <em>arXiv</em> 2307.12037.</span>
+                                </div>
+                                <div class="paper-card__actions">
+                                    <a href="LK-99_Superconductor_Paper.pdf" target="_blank" rel="noopener" class="paper-btn paper-btn--ghost">View</a>
+                                    <a href="LK-99_Superconductor_Paper.pdf" download class="paper-btn">Download</a>
+                                </div>
+                            </div>
+                            <div class="paper-card">
+                                <img class="paper-card__thumb" src="doc_icon.svg" alt="">
+                                <div class="paper-card__info">
+                                    <span class="paper-card__label">Your choice</span>
+                                    <span class="paper-card__title">Grab your own research paper</span>
+                                    <span class="paper-card__note">Any paper from your field: upload it with <strong>+</strong> or pick it with <strong>/</strong>.</span>
+                                </div>
+                            </div>
+                        </div>
                         <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px; margin-bottom: 12px;">
-                            <li>In Copilot Chat, click <strong>+</strong> and upload the paper, or pick a paper of your own. Paste the prompt and send.</li>
+                            <li>In Copilot Chat, click <strong>+</strong> and upload your chosen paper. Paste the prompt and send.</li>
                             <li>Click <strong>New Chat</strong> and open <strong>Researcher</strong> (see exercise 7). Click <strong>Sources</strong> and set it to <strong>Web</strong> only. Upload the same paper and send the same prompt.</li>
                             <li>Compare the two: how many sources each found, how well it cited them, and how long it took.</li>
                         </ol>
@@ -1223,7 +1275,6 @@ B. The apparent inventive concept, clearly labelled as an inference.
 C. Evidence gaps requiring examiner judgement.
 D. Questions that should be resolved before relying on the analysis.</div>
                         <button onclick="copyToClipboard('paper-claims')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Paper: Lee, S., Kim, J., Kim, H.-T., Im, S., An, S. and Auh, K. H. (2023). Superconductor Pb<sub>10-x</sub>Cu<sub>x</sub>(PO<sub>4</sub>)<sub>6</sub>O showing levitation at room temperature and atmospheric pressure and mechanism. <em>arXiv</em> 2307.12037. CC BY 4.0.</p>
                     </div>
                 </details>
 
@@ -2409,7 +2460,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
                 </div>
             </div>
             <div class="exercise-note" style="margin-bottom: 18px;">
-                <p style="margin:0 0 6px;">These prompts are templates. Before you send one:</p>
+                <p style="margin:0 0 6px;">These prompts are templates, and you will need to experiment with "HOW" you use them. Before you send one:</p>
                 <ol style="margin:0 0 10px; padding-left:20px; line-height:1.6;">
                     <li><strong>Tweak it.</strong> Replace or delete anything in <strong>[square brackets]</strong> to fit your case.</li>
                     <li><strong>Add your document.</strong> Where it says <strong>[ATTACHED DOCUMENT]</strong>, upload the file, or type <strong>/</strong> to pick it from your files (see bonus B1).</li>
@@ -2512,6 +2563,7 @@ Do not predict the outcome as fact. Where you assess relative strength, label it
                 <div class="details-content">
                     <p class="exercise-note">Use when relevant evidence may be spread across the case file, correspondence and internal discussions.</p>
 
+                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                     <div class="prompt-box" id="patent-4">With Work IQ on, search my accessible Microsoft 365 work sources for material concerning:
 
 Matter: <strong>[APPLICATION NUMBER, INVENTION, PARTY OR TECHNICAL CONCEPT]</strong>
@@ -2537,9 +2589,7 @@ State which sources were searched, any access or date limitations, and what you 
 
                     <button onclick="copyToClipboard('patent-4')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Work IQ</strong> lets Copilot see your work data. It is on by default: check the Work IQ button at the top left of the chat.</p>
 
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                 </div>
             </details>
 
@@ -2548,6 +2598,7 @@ State which sources were searched, any access or date limitations, and what you 
                 <div class="details-content">
                     <p class="exercise-note">Use Researcher rather than standard chat.</p>
 
+                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
                     <div class="prompt-box" id="patent-5">Use Researcher to find current case law relevant to:
 
 Legal question: <strong>[QUESTION]</strong>
@@ -2582,7 +2633,6 @@ Do not create or complete a citation from memory. If an authority, quotation, pa
                     <button onclick="copyToClipboard('patent-5')" class="btn-copy">Copy Prompt</button>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Find Case Law does not hold every decision, so absence from one search is not proof that no authority exists.</p>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
                 </div>
             </details>
 
@@ -2591,6 +2641,7 @@ Do not create or complete a citation from memory. If an authority, quotation, pa
                 <div class="details-content">
                     <p class="exercise-note">Use to widen vocabulary and discover leads.</p>
 
+                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
                     <div class="prompt-box" id="patent-6">Use Researcher to identify potential prior-art leads for the following claimed subject matter:
 
 Priority or search cut-off date: <strong>[DATE]</strong>
@@ -2619,7 +2670,6 @@ End with the search concepts used, alternative terminology found, date or databa
                     <button onclick="copyToClipboard('patent-6')" class="btn-copy">Copy Prompt</button>
 
                     <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Copilot does not replace official patent-search tools. Examiner judgement still decides what search is reasonable and necessary.</p>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Use Researcher:</strong> this prompt needs it. See exercise 7.</span></p>
                 </div>
             </details>
 
@@ -2632,6 +2682,7 @@ End with the search concepts used, alternative terminology found, date or databa
                         <li><strong>Side quest:</strong> click <strong>New Chat</strong>, upload the answer and the sources it cites, and send the prompt again. Does a fresh chat find more?</li>
                     </ol>
 
+                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                     <div class="prompt-box" id="patent-7">Audit your previous response, or the attached response, against every cited source.
 
 Create four lists:
@@ -2645,7 +2696,6 @@ Correct the response using only verified material. Preserve uncertainty rather t
 
                     <button onclick="copyToClipboard('patent-7')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                 </div>
             </details>
 
