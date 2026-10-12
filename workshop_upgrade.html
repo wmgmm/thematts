@@ -2392,14 +2392,14 @@ Present it as a table I can copy into Word as an FAQ.</div>
                     <h2>Prompts For Patent Examination</h2>
                 </div>
             </div>
-            <p class="exercise-note" style="margin-bottom: 18px;">Where a prompt shows <strong>/[document]</strong>, delete it and type <strong>/</strong> to pick the source (see bonus B1). Fill in anything else in [square brackets]. Use Copilot Chat for one or two known documents. Use Researcher for case law, cross-source analysis or complex technical research.</p>
+            <p class="exercise-note" style="margin-bottom: 18px;">Where a prompt shows <strong>/[ATTACHED DOCUMENT]</strong>, delete it and type <strong>/</strong> to pick the source (see bonus B1) or upload the document. Fill in anything else in <strong>[square brackets]</strong>. Use Copilot Chat for one or two known documents. Use Researcher for case law, cross-source analysis or complex technical research. In your field, 'Researcher' will be your new best friend.</p>
 
             <details>
                 <summary><span class="ex-num">P1</span><span style="flex:1;">Exact Legal or Scientific Summary</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Use for applications, prior-art documents, judgments, technical papers and examination guidance.</p>
 
-                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse /[document].
+                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse /[ATTACHED DOCUMENT].
 
 Produce a concise examiner’s summary under these headings:
 
@@ -2430,7 +2430,7 @@ Do not introduce outside knowledge, invented detail or unsupported conclusions. 
                 <div class="details-content">
                     <p class="exercise-note">Use before searching or comparing a claim with prior art.</p>
 
-                    <div class="prompt-box" id="patent-2">Analyse the claims in /[patent application] against the description and drawings.
+                    <div class="prompt-box" id="patent-2">Analyse the claims in /[ATTACHED PATENT APPLICATION] against the description and drawings.
 
 For each independent claim:
 
@@ -2460,7 +2460,7 @@ Use only the referenced application. Do not decide patentability and do not inve
                 <div class="details-content">
                     <p class="exercise-note">Use to prepare for re-examination, hearings or a further report without surrendering examiner judgement.</p>
 
-                    <div class="prompt-box" id="patent-3">Analyse /[examiner report or objection] and /[applicant response].
+                    <div class="prompt-box" id="patent-3">Analyse /[ATTACHED EXAMINER REPORT] and /[ATTACHED APPLICANT RESPONSE].
 
 Create an issue-by-issue argument map with:
 
