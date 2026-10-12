@@ -99,10 +99,26 @@
             color: var(--apple-blue);
         }
 
+        .nav-short { display: none; }
+
         @media (max-width: 600px) {
-            .nav-content { gap: 18px; }
+            .nav-content { gap: 14px; }
             .nav-brand { display: none; }
             .global-nav a { font-size: 12px; }
+            .nav-full { display: none; }
+            .nav-short { display: inline; }
+        }
+
+        .patent-banner {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 9px 18px;
+            border-radius: 980px;
+            background-color: var(--apple-blue);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
         }
 
         /* --- Hero --- */
@@ -1095,7 +1111,8 @@
         <div class="nav-content">
             <span class="nav-brand">The Matts</span>
             <a href="#activities">Sprint</a>
-            <a href="#library">Copilot Exercises</a>
+            <a href="#library"><span class="nav-full">Copilot Exercises</span><span class="nav-short">Exercises</span></a>
+            <a href="#patent"><span class="nav-full">Patent Prompts</span><span class="nav-short">Patents</span></a>
             <a href="#essentials">Essentials</a>
             <a href="#take-home">Take Home</a>
         </div>
@@ -1106,6 +1123,7 @@
         <header class="hero">
             <h1>The Matts Workshop</h1>
             <p class="subtitle">Digital Productivity &amp; AI in the Workplace: Copilot Premium</p>
+            <a href="#patent" class="patent-banner">Patent examiners: jump to your seven prompts</a>
         </header>
 
         <!-- ============ ACTIVITY (SINGLE) ============ -->
@@ -2392,14 +2410,21 @@ Present it as a table I can copy into Word as an FAQ.</div>
                     <h2>Prompts For Patent Examination</h2>
                 </div>
             </div>
-            <p class="exercise-note" style="margin-bottom: 18px;">Where a prompt shows <strong>/[ATTACHED DOCUMENT]</strong>, delete it and type <strong>/</strong> to pick the source (see bonus B1) or upload the document. Fill in anything else in <strong>[square brackets]</strong>. Use Copilot Chat for one or two known documents. Use Researcher for case law, cross-source analysis or complex technical research. In your field, 'Researcher' will be your new best friend.</p>
+            <div class="exercise-note" style="margin-bottom: 18px;">
+                <p style="margin:0 0 6px;">These prompts are templates. Before you send one:</p>
+                <ol style="margin:0 0 10px; padding-left:20px; line-height:1.6;">
+                    <li><strong>Tweak it.</strong> Replace or delete anything in <strong>[square brackets]</strong> to fit your case.</li>
+                    <li><strong>Add your document.</strong> Where it says <strong>[ATTACHED DOCUMENT]</strong>, upload the file, or type <strong>/</strong> to pick it from your files (see bonus B1).</li>
+                </ol>
+                <p style="margin:0;">Use Copilot Chat for one or two known documents. Use Researcher for case law, cross-source analysis or complex technical research. In your field, 'Researcher' will be your new best friend.</p>
+            </div>
 
             <details>
                 <summary><span class="ex-num">P1</span><span style="flex:1;">Exact Legal or Scientific Summary</span></summary>
                 <div class="details-content">
                     <p class="exercise-note">Use for applications, prior-art documents, judgments, technical papers and examination guidance.</p>
 
-                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse /[ATTACHED DOCUMENT].
+                    <div class="prompt-box" id="patent-1">Act as a patent examiner. Analyse [ATTACHED DOCUMENT].
 
 Produce a concise examiner’s summary under these headings:
 
@@ -2430,7 +2455,7 @@ Do not introduce outside knowledge, invented detail or unsupported conclusions. 
                 <div class="details-content">
                     <p class="exercise-note">Use before searching or comparing a claim with prior art.</p>
 
-                    <div class="prompt-box" id="patent-2">Analyse the claims in /[ATTACHED PATENT APPLICATION] against the description and drawings.
+                    <div class="prompt-box" id="patent-2">Analyse the claims in [ATTACHED PATENT APPLICATION] against the description and drawings.
 
 For each independent claim:
 
@@ -2460,7 +2485,7 @@ Use only the referenced application. Do not decide patentability and do not inve
                 <div class="details-content">
                     <p class="exercise-note">Use to prepare for re-examination, hearings or a further report without surrendering examiner judgement.</p>
 
-                    <div class="prompt-box" id="patent-3">Analyse /[ATTACHED EXAMINER REPORT] and /[ATTACHED APPLICANT RESPONSE].
+                    <div class="prompt-box" id="patent-3">Analyse [ATTACHED EXAMINER REPORT] and [ATTACHED APPLICANT RESPONSE].
 
 Create an issue-by-issue argument map with:
 
@@ -2513,6 +2538,8 @@ Group duplicates and identify the newest version, but do not assume the newest i
 State which sources were searched, any access or date limitations, and what you did not find. Do not invent documents, links, contents or document status.</div>
 
                     <button onclick="copyToClipboard('patent-4')" class="btn-copy">Copy Prompt</button>
+
+                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Work IQ</strong> lets Copilot see your work data. It is on by default: check the Work IQ button at the top left of the chat.</p>
 
                     <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
                 </div>
@@ -2599,11 +2626,12 @@ End with the search concepts used, alternative terminology found, date or databa
             </details>
 
             <details>
-                <summary><span class="ex-num">P7</span><span style="flex:1;">Verification Pass: Try It in a New Chat</span></summary>
+                <summary><span class="ex-num">P7</span><span style="flex:1;">Verification Pass: Better in a New Chat</span></summary>
                 <div class="details-content">
-                    <p class="exercise-note">Run this before an examination report, recommendation or hearing note, in the same chat as the answer you are checking.</p>
+                    <p class="exercise-note">Run this before an examination report, recommendation or hearing note.</p>
+                    <p style="display:flex; align-items:center; gap:8px; margin-top:0; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Experiment:</strong> run this in a new chat and upload the document and the answer you are checking. Researcher will enhance the output here. See exercise 7.</span></p>
 
-                    <div class="prompt-box" id="patent-7">Audit your previous response against every cited source.
+                    <div class="prompt-box" id="patent-7">Audit the attached response against every cited source.
 
 Create four lists:
 
@@ -2616,8 +2644,6 @@ Correct the response using only verified material. Preserve uncertainty rather t
 
                     <button onclick="copyToClipboard('patent-7')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Copilot can act as reviewer and gap finder, but it cannot certify its own correctness.</p>
-                    <p style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Experiment:</strong> run this in a new chat and upload the document and the answer you are checking. Researcher will enhance the output here. See exercise 7.</span></p>
                 </div>
             </details>
 
