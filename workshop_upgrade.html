@@ -805,7 +805,7 @@
         }
 
 
-        /* Paper cards (exercise 02), after the Part 2 site's artifact cards */
+        /* Paper cards (exercise 03), after the Part 2 site's artifact cards */
         .paper-cards { display: grid; gap: 10px; margin: 6px 0 18px; }
         .paper-card { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--border-soft); border-radius: var(--radius-medium); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); padding: 12px 16px; }
         .paper-card__thumb { flex: 0 0 auto; width: 44px; height: auto; max-height: 62px; border-radius: 4px; border: 1px solid var(--border-soft); }
@@ -1213,7 +1213,26 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">02</span><span style="flex:1;">Check a Research Paper's Claims Twice: in Chat, then Researcher</span></summary>
+                    <summary><span class="ex-num">02</span><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Stress-test your challenges, new ideas, or decisions before finalising them.
+                        </div>
+                        <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
+                        <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Add in your own scenario: "I want to move from sales to leadership role", "dealing with a difficult client", provide some useful context as well. You could upload a document instead of typing a scenario e.g. upload your new travel policy. Then experiment with a meeting transcript, an Excel file or even a PowerPoint.</em></p>
+
+                        <p style="display:flex; align-items:center; gap:8px; font-weight: 600; font-size: 15px; margin: 22px 0 6px; color: var(--apple-text-primary);"><img src="CopilotLogo.png" alt="" style="width:22px; height:22px;">Microsoft 365 Copilot upgrade only</p>
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 12px;">No scenario needed: Copilot reads your own emails and meetings. To focus it a bit, type <strong>/</strong> and pick a person.</p>
+                        <div class="prompt-box" id="devils-advocate-work">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
+                        <button onclick="copyToClipboard('devils-advocate-work')" class="btn-copy">Copy Prompt</button>
+
+                     
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">03</span><span style="flex:1;">Check a Research Paper's Claims Twice: in Chat, then Researcher</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: This prompt analyses a research paper's claims and identifies gaps against online sources.
@@ -1275,25 +1294,6 @@ B. The apparent inventive concept, clearly labelled as an inference.
 C. Evidence gaps requiring examiner judgement.
 D. Questions that should be resolved before relying on the analysis.</div>
                         <button onclick="copyToClipboard('paper-claims')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span class="ex-num">03</span><span style="flex:1;">Devil's Advocate (Your critical friend)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Stress-test your challenges, new ideas, or decisions before finalising them.
-                        </div>
-                        <div class="prompt-box" id="devils-advocate">"Act as a constructive devil's advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [scenario here]"</div>
-                        <button onclick="copyToClipboard('devils-advocate')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><em>Add in your own scenario: "I want to move from sales to leadership role", "dealing with a difficult client", provide some useful context as well. You could upload a document instead of typing a scenario e.g. upload your new travel policy. Then experiment with a meeting transcript, an Excel file or even a PowerPoint.</em></p>
-
-                        <p style="display:flex; align-items:center; gap:8px; font-weight: 600; font-size: 15px; margin: 22px 0 6px; color: var(--apple-text-primary);"><img src="CopilotLogo.png" alt="" style="width:22px; height:22px;">Microsoft 365 Copilot upgrade only</p>
-                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 12px;">No scenario needed: Copilot reads your own emails and meetings. To focus it a bit, type <strong>/</strong> and pick a person.</p>
-                        <div class="prompt-box" id="devils-advocate-work">"Act as a constructive devil's advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again."</div>
-                        <button onclick="copyToClipboard('devils-advocate-work')" class="btn-copy">Copy Prompt</button>
-
-                     
                     </div>
                 </details>
 
@@ -2460,6 +2460,7 @@ Present it as a table I can copy into Word as an FAQ.</div>
                 </div>
             </div>
             <div class="exercise-note" style="margin-bottom: 18px;">
+                <p style="margin:0 0 6px;"><strong>You are the expert in your work.</strong> Use these prompts to augment what you do.</p>
                 <p style="margin:0 0 6px;">These prompts are templates, and you will need to experiment with "HOW" you use them. Before you send one:</p>
                 <ol style="margin:0 0 10px; padding-left:20px; line-height:1.6;">
                     <li><strong>Tweak it.</strong> Replace or delete anything in <strong>[square brackets]</strong> to fit your case.</li>
@@ -2563,7 +2564,7 @@ Do not predict the outcome as fact. Where you assess relative strength, label it
                 <div class="details-content">
                     <p class="exercise-note">Use when relevant evidence may be spread across the case file, correspondence and internal discussions.</p>
 
-                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher could enhance the output here. It takes longer and uses more energy, but it should give a better answer. See exercise 7.</span></p>
+                    <p style="display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:13px; color:var(--apple-text-secondary);"><img src="researcher-chip.png" alt="Researcher" style="width:118px; height:auto; flex-shrink:0;"><span><strong>Try it:</strong> Researcher will probably enhance the outputs here (see exercise 7).</span></p>
                     <div class="prompt-box" id="patent-4">With Work IQ on, search my accessible Microsoft 365 work sources for material concerning:
 
 Matter: <strong>[APPLICATION NUMBER, INVENTION, PARTY OR TECHNICAL CONCEPT]</strong>
@@ -2632,7 +2633,6 @@ Do not create or complete a citation from memory. If an authority, quotation, pa
 
                     <button onclick="copyToClipboard('patent-5')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Find Case Law does not hold every decision, so absence from one search is not proof that no authority exists.</p>
                 </div>
             </details>
 
@@ -2669,7 +2669,6 @@ End with the search concepts used, alternative terminology found, date or databa
 
                     <button onclick="copyToClipboard('patent-6')" class="btn-copy">Copy Prompt</button>
 
-                    <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Check:</strong> Copilot does not replace official patent-search tools. Examiner judgement still decides what search is reasonable and necessary.</p>
                 </div>
             </details>
 
