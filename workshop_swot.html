@@ -456,9 +456,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
-            padding: 9px 18px;
+            padding: 12px 26px;
+            min-width: 150px; /* both Start buttons the same width */
             background: var(--apple-blue);
             color: #ffffff;
             border-radius: var(--radius-button);
@@ -474,16 +475,17 @@
             box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
         }
 
-        /* SWOT banner: the sprint hero's layout in a warm ember mesh, the complement of the sprint's blue. */
-        .activity-hero--swot { background: #1c0f0a; }
+        /* SWOT banner: the sprint hero's navy base with a rose-to-violet mesh, so it reads red
+           beside the sprint's blue without turning brown on the white and grey page. */
+        .activity-hero--swot { background: var(--hero-mesh-base); }
         .activity-hero--swot::before {
             background:
-                radial-gradient(circle at 16% 24%, rgba(251, 146, 60, 0.55) 0%, transparent 42%),
-                radial-gradient(circle at 84% 20%, rgba(244, 63, 94, 0.45) 0%, transparent 46%),
-                radial-gradient(circle at 72% 90%, rgba(245, 158, 11, 0.42) 0%, transparent 48%),
-                radial-gradient(circle at 6% 92%, rgba(234, 88, 12, 0.35) 0%, transparent 50%);
+                radial-gradient(circle at 18% 22%, rgba(244, 63, 94, 0.55) 0%, transparent 42%),
+                radial-gradient(circle at 82% 18%, rgba(225, 29, 72, 0.45) 0%, transparent 46%),
+                radial-gradient(circle at 70% 88%, rgba(139, 92, 246, 0.38) 0%, transparent 48%),
+                radial-gradient(circle at 8% 90%, rgba(236, 72, 153, 0.32) 0%, transparent 50%);
         }
-        .activity-hero--swot .hero-icon { color: #FFEDD5; }
+        .activity-hero--swot .hero-icon { color: #FFE4E6; }
         .activity-hero--swot .hero-eyebrow { color: #FCA5A5; }
 
         @media (max-width: 700px) {
