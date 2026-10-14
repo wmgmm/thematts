@@ -1090,8 +1090,6 @@
             <span class="nav-brand">The Matts</span>
             <a href="#activities">Sprint</a>
             <a href="#library">Copilot Exercises</a>
-            <a href="#essentials">Essentials</a>
-            <a href="#take-home">Take Home</a>
         </div>
     </nav>
 
@@ -1099,7 +1097,7 @@
 
         <header class="hero">
             <h1>The Matts Workshop</h1>
-            <p class="subtitle">Digital Productivity &amp; AI in the Workplace</p>
+            <p class="subtitle">AI in the Workplace</p>
         </header>
 
         <!-- ============ ACTIVITY (SINGLE) ============ -->
@@ -1234,7 +1232,7 @@ Create an Excel table with three columns: Medieval pizza names, ingredients, and
                     <summary><span class="ex-num">06</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
-                            Application: Give the AI the background. Audience, constraints and brand voice shape the output as much as the task itself.
+                            Application: Audience, constraints and brand voice shape the output as much as the task. Ask the AI to explain its thinking, then give it feedback to improve the result.
                         </div>
                         <div class="prompt-box" id="context-prompt">Brainstorm names for a new dating app and write a brief justification for each selection.
 
@@ -1243,24 +1241,9 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                     </div>
                 </details>
 
-                <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Prompt Chaining</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Combine Role, Tone, Constraints, and Format into one request.
-                        </div>
-                        <div class="prompt-box" id="prompt-chain">"Task: Suggest appealing fizzy drink names.
-Role: Young consumers (15-25).
-Tone: Humorous, but not childish.
-Constraint: Avoid existing UK product names.
-Format: Provide 10 names in a 3-column table: Name, Rating (1-10), Reasoning
-Examples: CitrusBurst, AquaFizz, SolarPop."</div>
-                        <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
 
                 <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Copilot Memory</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
@@ -1288,6 +1271,19 @@ Examples: CitrusBurst, AquaFizz, SolarPop."</div>
                         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Challenge your thinking</p>
                         <div class="prompt-box" id="memory-challenge">Remember and save to memory: Challenge my assumptions. Tell me when I am wrong and explain the reasoning. Give me the strongest counter-argument before you agree with me.</div>
                         <button onclick="copyToClipboard('memory-challenge')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Temporary Chat</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Keep a chat out of your memory:</strong> A temporary chat is not saved to your chat history and does not create memories. Use it for one-off or personal questions you do not want shaping later answers. If you ask about Pokémon cards once, they will not keep popping up in your work chats.
+                        </div>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">To start one, click the temporary chat icon <img src="copilot-temporary-chat-icon.png" alt="Temporary chat icon" style="height: 22px; width: auto; vertical-align: middle;"> in the top right corner of Copilot.</p>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0;"><strong>It is not private.</strong> The chat still follows your organisation's retention policy and may still be accessible to your admin.</p>
                     </div>
                 </details>
 
