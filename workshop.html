@@ -1150,7 +1150,7 @@
 
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">11</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">17</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">16</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">8</span></button>
             </div>
 
@@ -1319,7 +1319,27 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
 
 
                 <details>
-                    <summary><span class="ex-num">B2</span><span style="flex:1;">Treat your chat history as a reusable resource</span></summary>
+                    <summary><span class="ex-num">B2</span><span style="flex:1;">Copy the style of a document you like</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Upload something whose look, feel and wording you want to reuse, and get back one reusable prompt that recreates that style with your own material.
+                        </div>
+                        <div class="prompt-box" id="clone-style-prompt">Analyse the example I have attached (a document or an image). First tell me in one line what you can see in it; if you cannot open it, say so and stop.
+
+Identify what makes its style distinctive: tone of voice, vocabulary, sentence structure, formatting and layout.
+
+Write a single reusable prompt I can run on new material to reproduce that style. At the bottom of it, add the placeholder [PASTE NEW CONTENT HERE] to mark where my new material will go. That placeholder is for later: I do not fill it in now.
+
+Output only the reusable prompt, nothing else.</div>
+                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copy Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Works on anything with a pattern: documents, slide decks, websites, images, reports, standard operating procedures, transcripts. Attach a PDF or an image for best results: export slides to PDF first, and for a website paste the URL and check in the reply that the AI actually opened the page.</p>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Want a worked example of a reusable house style? Open the <a href="https://wmgmm.github.io/notebooklm/?prompt=30" target="_blank" rel="noopener" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Matts Witty Slide Deck prompt &#8599;</a> in the NotebookLM library: a full slide-design system you can copy and adapt to your own material.</p>
+                        <p style="margin-top:8px; font-size:13px; color:var(--apple-text-secondary);">Or the <a href="https://wmgmm.github.io/notebooklm/?prompt=29" target="_blank" rel="noopener" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Cardiff University Slide Design prompt &#8599;</a>: the full University brand system (palette, fonts, layouts) written as one reusable prompt.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B3</span><span style="flex:1;">Treat your chat history as a reusable resource</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
@@ -1595,26 +1615,6 @@ The prompt you write must include:
 
 Output only the finished prompt, with no commentary before or after it.</div>
                         <button onclick="copyToClipboard('meta-prompt-technique')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">Copy the style of a document you like</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Application: Upload something whose look, feel and wording you want to reuse, and get back one reusable prompt that recreates that style with your own material.
-                        </div>
-                        <div class="prompt-box" id="clone-style-prompt">Analyse the example I have attached (a document or an image). First tell me in one line what you can see in it; if you cannot open it, say so and stop.
-
-Identify what makes its style distinctive: tone of voice, vocabulary, sentence structure, formatting and layout.
-
-Write a single reusable prompt I can run on new material to reproduce that style. At the bottom of it, add the placeholder [PASTE NEW CONTENT HERE] to mark where my new material will go. That placeholder is for later: I do not fill it in now.
-
-Output only the reusable prompt, nothing else.</div>
-                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copy Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Works on anything with a pattern: documents, slide decks, websites, images, reports, standard operating procedures, transcripts. Attach a PDF or an image for best results: export slides to PDF first, and for a website paste the URL and check in the reply that the AI actually opened the page.</p>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Want a worked example of a reusable house style? Open the <a href="https://wmgmm.github.io/notebooklm/?prompt=30" target="_blank" rel="noopener" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Matts Witty Slide Deck prompt &#8599;</a> in the NotebookLM library: a full slide-design system you can copy and adapt to your own material.</p>
-                        <p style="margin-top:8px; font-size:13px; color:var(--apple-text-secondary);">Or the <a href="https://wmgmm.github.io/notebooklm/?prompt=29" target="_blank" rel="noopener" style="color:var(--apple-blue); text-decoration:none; font-weight:600;">Cardiff University Slide Design prompt &#8599;</a>: the full University brand system (palette, fonts, layouts) written as one reusable prompt.</p>
                     </div>
                 </details>
 
