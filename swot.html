@@ -80,6 +80,11 @@
                         Back to Resources
                     </a>
                     <span class="w-px h-4 bg-gray-300" aria-hidden="true"></span>
+                    <button onclick="newScenarios()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-gray-200/70 hover:text-gray-900 transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+                        New Scenarios
+                    </button>
+                    <span class="w-px h-4 bg-gray-300" aria-hidden="true"></span>
                     <button onclick="resetWorkshop()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-gray-200/70 hover:text-gray-900 transition-colors">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
                         Reset Board
@@ -229,8 +234,75 @@
                 title: 'Competitive Advantage',
                 icon: '🚀',
                 description: 'A startup uses AI to undercut competitors by 50%, gaining market share but destabilising the industry.'
+            },
+            {
+                id: 'rising-costs',
+                title: 'Rising AI Costs',
+                icon: '💷',
+                description: 'AI licence and usage fees rise 40% at renewal, and finance asks every team to prove the return or lose access.'
+            },
+            {
+                id: 'data-asset',
+                title: 'Data as an Asset',
+                icon: '📊',
+                description: 'A team stops treating its data only as a risk and puts ten years of records to work with AI, then finds them patchy and inconsistent.'
+            },
+            {
+                id: 'uneven-adoption',
+                title: 'Uneven Adoption',
+                icon: '🧩',
+                description: 'Some staff use AI well and responsibly, some never touch it, and some paste confidential files into free tools.'
+            },
+            {
+                id: 'identical-cvs',
+                title: 'Identical CVs',
+                icon: '📄',
+                description: 'Applicants use AI to write their CVs and cover letters, so every application sounds the same and strong candidates are hard to spot.'
+            },
+            {
+                id: 'application-flood',
+                title: 'Application Flood',
+                icon: '📈',
+                description: 'Job adverts now draw five times more applications, many AI-written, and the hiring team cannot read them all.'
+            },
+            {
+                id: 'skipped-apprenticeship',
+                title: 'Skipped Apprenticeship',
+                icon: '🎓',
+                description: 'Junior staff use AI for the routine work they once learned on, so they deliver faster but may never build real expertise.'
+            },
+            {
+                id: 'personalised-emails',
+                title: 'Personalised Emails',
+                icon: '✉️',
+                description: 'No more generic all-staff emails: AI rewrites each one in your chosen language and tailors it to what is useful to you, so no two people get the same message.'
+            },
+            {
+                id: 'hours-back',
+                title: 'Hours Given Back',
+                icon: '⏱️',
+                description: 'AI drafting saves each member of a support team four hours a week, and the team spends it calling the students who need help most.'
+            },
+            {
+                id: 'faster-discovery',
+                title: 'Faster Discovery',
+                icon: '🔬',
+                description: 'Researchers use AI to screen 20,000 papers for a review in a week instead of six months, and spot a link no one had seen.'
             }
         ];
+
+        // Each board shows six scenarios dealt at random from the pool; "New Scenarios" deals again.
+        const DEAL_SIZE = 6;
+        let dealt = [];
+
+        function deal() {
+            const pool = scenarios.map(s => s.id);
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            dealt = pool.slice(0, DEAL_SIZE);
+        }
 
         const categories = ['strengths', 'weaknesses', 'opportunities', 'threats'];
         
@@ -246,6 +318,7 @@
         // --- Functions ---
 
         function init() {
+            deal();
             render();
         }
 
@@ -288,6 +361,15 @@
             }
         }
 
+        function newScenarios() {
+            const placed = Object.values(assignments).flat().length;
+            if (placed && !confirm("Deal six new scenarios? This clears the board.")) return;
+            assignments = { strengths: [], weaknesses: [], opportunities: [], threats: [] };
+            selectedScenarioId = null;
+            deal();
+            render();
+        }
+
         function render() {
             const allAssignedIds = Object.values(assignments).flat();
 
@@ -295,7 +377,7 @@
             const unassignedContainer = document.getElementById('unassigned-container');
             unassignedContainer.innerHTML = '';
             
-            const unassignedScenarios = scenarios.filter(s => !allAssignedIds.includes(s.id));
+            const unassignedScenarios = scenarios.filter(s => dealt.includes(s.id) && !allAssignedIds.includes(s.id));
             
             if (unassignedScenarios.length === 0) {
                 unassignedContainer.innerHTML = `
@@ -355,7 +437,7 @@
             });
 
             // 3. Render Progress
-            const progressPercent = Math.round((allAssignedIds.length / scenarios.length) * 100);
+            const progressPercent = Math.round((allAssignedIds.length / DEAL_SIZE) * 100);
             document.getElementById('progress-bar').style.width = `${progressPercent}%`;
         }
 
