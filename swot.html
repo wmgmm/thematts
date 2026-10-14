@@ -68,16 +68,20 @@
         <!-- On laptops (lg and up) the header and board fill exactly one screen: no scrolling to sort. -->
         <div class="lg:h-screen lg:flex lg:flex-col lg:px-6 lg:py-4">
 
-        <div class="text-center mb-10 mt-4 lg:text-left lg:mb-3 lg:mt-0">
+        <div class="text-center mb-10 mt-4 lg:text-left lg:mb-2 lg:mt-0">
             <div class="lg:flex lg:items-center lg:justify-between lg:gap-6">
                 <h1 class="text-4xl md:text-5xl lg:text-3xl font-bold tracking-tight text-gray-900 mb-3 lg:mb-0">
                     AI Workplace SWOT Analysis
                 </h1>
-                <div class="mt-6 lg:mt-0 flex justify-center gap-4 lg:gap-3 lg:shrink-0">
-                    <a href="workshop.html" class="inline-flex items-center px-5 py-2.5 lg:py-2 rounded-full bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors border border-gray-200">
-                        ← Back to Resources
+                <!-- Quiet toolbar: two equal-weight text buttons, so neither competes with the board. -->
+                <div class="mt-6 lg:mt-0 flex justify-center items-center gap-1 lg:shrink-0 text-sm font-medium text-gray-500">
+                    <a href="workshop.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-gray-200/70 hover:text-gray-900 transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                        Back to Resources
                     </a>
-                    <button onclick="resetWorkshop()" class="inline-flex items-center px-5 py-2.5 lg:py-2 rounded-full bg-[#1d1d1f] text-white text-sm font-medium shadow-sm hover:bg-gray-800 transition-all">
+                    <span class="w-px h-4 bg-gray-300" aria-hidden="true"></span>
+                    <button onclick="resetWorkshop()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-gray-200/70 hover:text-gray-900 transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
                         Reset Board
                     </button>
                 </div>
@@ -87,7 +91,7 @@
             </p>
         </div>
 
-        <div class="lg:flex-1 lg:min-h-0 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-5">
+        <div class="lg:flex-1 lg:min-h-0 lg:grid lg:grid-cols-[1fr_1fr] lg:gap-5">
 
             <div class="mb-10 lg:mb-0 lg:flex lg:flex-col lg:min-h-0">
                 <div class="flex justify-between items-end mb-4 lg:mb-1.5 px-2">
@@ -98,7 +102,7 @@
                     <div id="progress-bar" class="bg-[#0071e3] h-1 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
                 </div>
 
-                <div id="unassigned-container" class="flex flex-wrap gap-4 min-h-[160px] p-6 bg-white rounded-[24px] shadow-sm border border-gray-200/60 items-start transition-all lg:flex-col lg:flex-nowrap lg:items-stretch lg:gap-2 lg:p-3 lg:flex-1 lg:min-h-0 lg:overflow-y-auto">
+                <div id="unassigned-container" class="flex flex-wrap gap-4 min-h-[160px] p-6 bg-white rounded-[24px] shadow-sm border border-gray-200/60 items-start transition-all lg:flex-col lg:flex-nowrap lg:items-stretch lg:gap-1.5 lg:p-2.5 lg:flex-1 lg:min-h-0 lg:overflow-y-auto">
                 </div>
             </div>
 
@@ -182,7 +186,7 @@
         </div>
         
         <footer class="text-center text-gray-400 text-sm mt-20 mb-10">
-            Workshop Materials © 2025
+            Workshop Materials © 2026
         </footer>
 
     </div>
@@ -373,7 +377,7 @@
                     classes += "pointer-events-none opacity-75 scale-[0.99] ";
                 }
             } else {
-                classes += "w-full sm:w-[calc(50%-1rem)] lg:w-full shrink-0 p-5 lg:px-3 lg:py-2 border-gray-200 hover:border-blue-300 hover:shadow-md ";
+                classes += "w-full sm:w-[calc(50%-1rem)] lg:w-full shrink-0 p-5 lg:px-3 lg:py-1.5 border-gray-200 hover:border-blue-300 hover:shadow-md ";
             }
 
             if (isSelected) {
@@ -394,7 +398,7 @@
                     </div>
                 `;
             } else {
-                // On laptops the title runs into the description, so six cards fit one column.
+                // On laptops the icon sits left of the title and description, so six cards fit one column.
                 div.innerHTML = `
                     <div class="flex items-start justify-between mb-2 lg:hidden">
                         <div class="flex items-center gap-3">
@@ -406,7 +410,10 @@
                     <p class="text-gray-500 leading-relaxed text-sm lg:hidden">${scenario.description}</p>
                     <div class="hidden lg:flex items-start gap-2.5">
                         <span class="text-xl leading-none mt-0.5">${scenario.icon}</span>
-                        <p class="text-xs leading-snug text-gray-500 flex-1"><span class="font-semibold text-gray-900">${scenario.title}.</span> ${scenario.description}</p>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-900 text-sm leading-tight">${scenario.title}</h3>
+                            <p class="text-[13px] leading-snug text-gray-600 mt-0.5">${scenario.description}</p>
+                        </div>
                         ${isSelected ? '<div class="h-2 w-2 mt-1 rounded-full bg-blue-500 shrink-0"></div>' : ''}
                     </div>
                 `;
