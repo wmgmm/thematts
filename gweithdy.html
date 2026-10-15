@@ -82,7 +82,7 @@
         .hero-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 600; color: #BAE6FD; display: block; }
         .hero-title { font-size: 18px; font-weight: 600; line-height: 1.2; margin: 0; color: white; letter-spacing: -0.015em; }
         .hero-desc { font-size: 13px; line-height: 1.4; color: rgba(255, 255, 255, 0.72); margin: 0; }
-        .hero-cta { display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; padding: 9px 18px; background: var(--apple-blue); color: #ffffff; border-radius: var(--radius-button); white-space: nowrap; box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35); transition: var(--transition); flex-shrink: 0; }
+        .hero-cta { display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; padding: 12px 26px; min-width: 150px; background: var(--apple-blue); color: #ffffff; border-radius: var(--radius-button); white-space: nowrap; box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35); transition: var(--transition); flex-shrink: 0; }
         .activity-hero:hover .hero-cta { background: var(--apple-blue-hover); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45); }
         @media (max-width: 700px) { .hero-glass { flex-wrap: wrap; padding: 16px; gap: 14px; } .hero-content { flex-basis: calc(100% - 56px); } .hero-cta { width: 100%; } .hero-desc { display: none; } }
         .library-instructions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 14px 18px; background: var(--apple-bg-page); border-radius: 12px; margin-bottom: 22px; }
@@ -114,7 +114,7 @@
         summary:hover { background-color: var(--apple-bg-page); color: var(--apple-blue); }
         summary::-webkit-details-marker { display: none; }
         summary::-moz-list-bullet { list-style-type: none; }
-        .ex-num { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; padding: 0 8px; background: transparent; color: var(--apple-text-secondary); font-size: 12px; font-weight: 600; border: 1px solid var(--border-soft); border-radius: 999px; margin-right: 14px; flex-shrink: 0; transition: var(--transition); }
+        .ex-num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; padding: 0; background: transparent; color: var(--apple-text-secondary); font-size: 12px; font-weight: 600; border: 1px solid var(--border-soft); border-radius: 999px; margin-right: 14px; flex-shrink: 0; transition: var(--transition); }
         details[open] .ex-num { background: transparent; color: var(--apple-blue); border-color: var(--apple-blue); }
         summary::after { content: 'Gweld y prompt →'; font-size: 12px; font-weight: 700; color: white; background: #424245; padding: 6px 14px; border-radius: var(--radius-button); transition: var(--transition); margin-left: auto; flex-shrink: 0; white-space: nowrap; }
         details:hover summary::after { background: var(--apple-text-primary); transform: translateX(2px); }
@@ -182,14 +182,12 @@
             <span class="nav-brand">The Matts</span>
             <a href="#activities">Sbrint</a>
             <a href="#library">Ymarferion Copilot</a>
-            <a href="#essentials">Hanfodion</a>
-            <a href="#take-home">Mynd Adref</a>
         </div>
     </nav>
     <div class="container">
         <header class="hero">
             <h1>Gweithdy Matts</h1>
-            <p class="subtitle">Cynhyrchiant Digidol a Deallusrwydd Artiffisial (AI) yn y Gweithle</p>
+            <p class="subtitle">Deallusrwydd Artiffisial (AI) yn y Gweithle</p>
         </header>
         <section id="activities" class="activity-hero-wrap">
             <a href="https://wmgmm.github.io/sprint/" target="_blank" rel="noopener" class="activity-hero" aria-label="Dechrau gweithgaredd gweithdy'r Sbrint Darganfod AI">
@@ -229,9 +227,9 @@
                 </div>
             </div>
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">11</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Promptiau yn y Gweithle</span><span class="tab-label-short">Promptiau</span><span class="tab-count">17</span></button>
-                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Cysyniadau a Chyfeiriadau</span><span class="tab-label-short">Cysyniadau</span><span class="tab-count">8</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">12</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Promptiau yn y Gweithle</span><span class="tab-label-short">Promptiau</span><span class="tab-count">16</span></button>
+                <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Cysyniadau a Chyfeiriadau</span><span class="tab-label-short">Cysyniadau</span><span class="tab-count">7</span></button>
             </div>
             <div id="tab-exercises" class="tab-panel active" role="tabpanel">
                 <details open>
@@ -285,7 +283,7 @@ Llunia dabl Excel â thair colofn: Enwau canoloesol ar bizzas, cynhwysion, ac am
                 <details>
                     <summary><span class="ex-num">06</span><span style="flex:1;">Cyd-destun (Adnabod Eich Cynulleidfa)</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note">Cais: Rhowch y cefndir i'r AI. Mae'r gynulleidfa, y cyfyngiadau a llais y brand yn siapio'r allbwn gymaint â'r dasg ei hun.</div>
+                        <div class="exercise-note">Cais: Mae'r gynulleidfa, y cyfyngiadau a llais y brand yn siapio'r allbwn gymaint â'r dasg. Gofynnwch i'r AI esbonio ei resymeg, yna rhowch adborth iddo i wella'r canlyniad.</div>
                         <div class="prompt-box" id="context-prompt">Cynhyrcha syniadau am enwau ar gyfer ap canlyn newydd ac ysgrifenna gyfiawnhad byr dros bob dewis.
 
 Y farchnad darged yw pensiynwyr sy'n chwilio am gwmnïaeth ddiffuant. Osgoa ystrydebau nawddoglyd a chanolbwyntia ar ffyrdd o fyw egnïol, aeddfed. Mae hunaniaeth y brand yn dibynnu ar hiwmor Prydeinig, digywilydd. Cynhwysa ensyniadau chwareus, ffraethineb sych ac ychydig o hunan-ddifrïo, gan sicrhau ei fod yn parchu urddas y defnyddwyr yn llwyr.</div>
@@ -293,20 +291,7 @@ Y farchnad darged yw pensiynwyr sy'n chwilio am gwmnïaeth ddiffuant. Osgoa ystr
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Creu Cadwyn o Bromptiau</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">Cais: Cyfuno Rôl, Tôn, Cyfyngiadau, a Fformat yn un cais.</div>
-                        <div class="prompt-box" id="prompt-chain">“Tasg: Awgryma enwau deniadol ar ddiodydd pefriog.
-Rôl: Defnyddwyr ifanc (15-25).
-Tôn: Yn ddoniol, ond nid yn blentynnaidd.
-Cyfyngiad: Osgoa enwau cynnyrch sy'n bodoli eisoes yn y DU.
-Fformat: Rho 10 enw mewn tabl â thair colofn: Enw, Sgôr (1-10), Rhesymeg
-Enghreifftiau: CitrusBurst, AquaFizz, SolarPop."</div>
-                        <button onclick="copyToClipboard('prompt-chain')" class="btn-copy">Copïo'r Prompt</button>
-                    </div>
-                </details>
-                <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Cof Copilot</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Cof Copilot</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Gosodwch ef unwaith, defnyddiwch ef ym mhobman:</strong> Gall Copilot gadw eich dewisiadau ar draws sgyrsiau. Rydych yn gosod rheol unwaith, ac mae Copilot yn ei chymhwyso i bob sgwrs sy'n dilyn. Dim mwy o aildeipio'r un gosodiad pa bryd bynnag y byddwch yn cychwyn sgwrs newydd.
@@ -338,7 +323,20 @@ Enghreifftiau: CitrusBurst, AquaFizz, SolarPop."</div>
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">09</span><span style="flex:1;">Datblygu eich Asiant cyntaf: Defnyddio dull ELI5 ar Ddogfen</span></summary>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Sgwrs Dros Dro</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Cadwch sgwrs allan o'ch cof:</strong> Nid yw sgwrs dros dro yn cael ei chadw yn eich hanes sgwrsio ac nid yw'n creu atgofion. Defnyddiwch hi ar gyfer cwestiynau untro neu bersonol nad ydych am iddynt ddylanwadu ar atebion yn y dyfodol. Os gofynnwch am gardiau Pokémon unwaith, ni fyddant yn dal i ymddangos yn eich sgyrsiau gwaith.
+                        </div>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">I ddechrau un, cliciwch ar eicon y sgwrs dros dro <img src="copilot-temporary-chat-icon.png" alt="Eicon sgwrs dros dro" style="height: 40px; width: auto; vertical-align: middle; margin: 0 4px;"> yn y gornel dde uchaf yn Copilot.</p>
+
+                        <p style="font-size: 14px; line-height: 1.6; margin: 0;"><strong>Nid yw'n breifat.</strong> Mae'r sgwrs yn dal i ddilyn polisi cadw data eich sefydliad, ac efallai y bydd eich gweinyddwr yn dal i allu ei gweld.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B1</span><span style="flex:1;">Datblygu eich Asiant cyntaf: Defnyddio dull ELI5 ar Ddogfen</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;"><strong>Y syniad:</strong> Asiant sy'n egluro unrhyw ddogfennau fel petaech yn bump oed; mae hyn yn ddelfrydol ar gyfer polisïau, adroddiadau a nodiadau canllaw.</div>
                         <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
@@ -354,62 +352,37 @@ Enghreifftiau: CitrusBurst, AquaFizz, SolarPop."</div>
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">10</span><span style="flex:1;">Adeiladu Asiant Newydd: Categorydd Brawddegau</span></summary>
+                    <summary><span class="ex-num">B2</span><span style="flex:1;">Copïo arddull dogfen rydych chi'n ei hoffi</span></summary>
                     <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;"><strong>Tasg Asiant Newydd:</strong> Yn yr ymarfer hwn, byddwch yn adeiladu <strong>asiant newydd</strong> wedi'i gynllunio ar gyfer tasg hollol wahanol – dadansoddi data testun a chynhyrchu cymylau geiriau gweledol gan ddefnyddio Python.</div>
-                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-                            <li style="margin-bottom: 10px;"><strong>Agorwch Copilot</strong> – Ewch i <a href="https://m365copilot.com" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> a chliciwch ar <strong>"Creu asiant"</strong> yn y ddewislen ar y chwith i gychwyn asiant newydd.</li>
-                            <li style="margin-bottom: 16px;"><strong>Disgrifiwch yr Asiant</strong> – Gofalwch eich bod ar y tab <strong>“Disgrifio”</strong>. Copïwch a gludwch y disgrifiad isod i'r blwch sgwrsio a phwyswch ar y saeth cyflwyno:
-                                <div class="callout" style="margin-top:10px;">
-                                    <strong>📋 Copïwch y Prompt hwn:</strong>
-                                    <div class="callout-body">"Bydd y defnyddiwr yn darparu brawddegau (trwy'r .xlsx sydd ynghlwm neu wedi'u gludo isod). Ar gyfer pob brawddeg, dyrannwch un rhiant-gategori eang lefel uchel yn unig fel UN gair (e.e. cyffredinoli 'Taenlen' i Waith, 'Tacos' i Fwyd).  Defnyddiwch enwau CYSON ar gategorïau ac osgowch rannu cysyniadau tebyg yn gategorïau ar wahân. ADOLYGWCH EICH CATEGORÏAU AM GYSONDEB AR ÔL I CHI FOD TRWY'R RHESTR LAWN.<br><br>EWCH ATI I WNEUD POB UN O’R TRI PHETH CANLYNOL YN AWTOMATIG:<br>1, Allbynnwch dabl â cholofnau: Brawddeg, Categori.<br>2, Cyfrifwch amlder y pwnc drwy gyfrif faint o frawddegau sy'n dod o dan bob categori.<br>3, Ysgrifennwch a Gweithredwch god Python i gynhyrchu ac ARDDANGOS cwmwl geiriau ar y sgrin lle mae maint pob categori yn gymesur ag amlder ei bwnc."</div>
-                                </div>
-                            </li>
-                            <li style="margin-bottom: 10px;"><strong>Ffurfweddwch y Gosodiadau</strong> – Newidiwch i'r tab <strong>“Ffurfweddu”</strong> (wrth ymyl Disgrifio). Enwch eich asiant yn <strong>"Gategorydd Brawddegau"</strong>.</li>
-                            <li style="margin-bottom: 10px;"><strong>Galluogwch Gynhyrchu Cod</strong> – Sgroliwch i lawr i'r adran "Galluoedd". Toglwch y llithrydd ar gyfer <strong>"Creu dogfennau, siartiau a chod"</strong> i'r safle <strong>Ymlaen</strong> (bydd yn troi'n las).</li>
-                            <li style="margin-bottom: 10px;"><strong>Crëwch Asiant</strong> – Cliciwch ar y botwm <strong>“Creu”</strong> ac arhoswch am y neges lwyddiant.</li>
-                            <li><strong>Profwch ef</strong> – Cliciwch ar "Ewch i'r asiant". Defnyddiwch y data sampl isod (naill ai lanlwythwch y ffeil neu copïwch y testun) i'w weld yn cynhyrchu tabl categori a delwedd cwmwl geiriau.</li>
-                        </ol>
-                        <div class="sample-data">
-                            <h4>📂 Data Sampl ar gyfer Profi</h4>
-                            <p style="margin-bottom: 12px; color: #555; font-size: 14px;">Gallwch naill ai lawrlwytho'r ffeil Excel o'r enw <em>brawddegau.xlsx</em> i'w lanlwytho i'ch asiant, neu gopïo'r testun isod yn uniongyrchol i sgwrs yr Asiant.</p>
-                            <div style="margin-bottom: 14px;"><a href="brawddegau.xlsx" download class="download-btn">⬇️ Lawrlwytho brawddegau.xlsx</a></div>
-                            <div style="margin-bottom: 8px; font-weight: 600; color: #444; font-size: 13px;">Neu copïwch y brawddegau hyn:</div>
-                            <textarea class="sample-textarea" readonly>Goroesais gyfarfod arall a ddylai fod wedi bod yn e-bost.
-Mae gan fy therapydd drwyn gwlyb a chynffon siglog.
-Mae'n ddrwg gennyf am yr hyn a ddywedais pan oeddwn i'n llwglyd.
-Nid oes yna 'ni' mewn sglodion.
-Rwy'n rhedeg fel un heb wynt.
-Mae fy mhen yn dweud campfa, ond mae fy nghalon yn dweud tacos.
-Excel yw fy iaith gariad.
-Rwy'n ennill cyflog dim ond er mwyn i’m cath gael bywyd gwell.
-Mae hi'n bwrw glaw yng Nghaerdydd ... eto.
-Mae arnaf angen gwyliau chwe mis, ddwywaith y flwyddyn.
-Byddwch yr unigolyn y mae eich ci yn meddwl yr ydych.
-Cofiwch fod Straen yn odli â Sbaen.
-Peidiwch â gwasgu 'ateb i bawb' i'm bodolaeth.
-Yr unig beth sy’n fyr amdanaf yw fy amynedd.
-Mae deiet cytbwys yn dafell o bizza ym mhob llaw.
-Wedi'i hanfon o’m iPhone (nid mewn gwirionedd, rwyf wrth fy nesg).
-Roeddwn i'n meddwl eu bod nhw wedi dweud 'un cornetto’, nid ‘unwaith eto’.
-Llanfairpwllgwyngyll ... dim ots, dewch i gwrdd â fi yn y dafarn.
-Dywedodd fy mhennaeth wrthyf am gael diwrnod da, felly dyma fi’n mynd adref.
-Stopiwyd y traffig gan braidd o ddefaid ar y ffordd.
-Mae fy ngwisg yn ddim byd heb ychydig bach o ffwr arni.
-Rwyf wrth fy modd â’r sŵn y mae terfynau amser yn ei wneud wrth iddynt wibio heibio.
-Fy unig sgìl yw esgus gwrando ar alwadau Zoom.</textarea>
+                        <div class="exercise-note">
+                            Cais: Lanlwythwch rywbeth yr ydych am ailddefnyddio ei edrychiad, ei deimlad a'i eiriad, a chael yn ôl un prompt y gellir ei ailddefnyddio sy'n ail-greu'r arddull honno gyda'ch deunydd eich hun.
                         </div>
+                        <div class="prompt-box" id="clone-style-prompt">Dadansodda’r enghraifft dw i wedi'i hatodi (dogfen neu ddelwedd). Yn gyntaf, dyweda wrthyf mewn un llinell beth y gelli ei weld ynddi; os na elli ei hagor, dyweda hynny a stopia.
+
+Noda beth sy'n gwneud ei harddull yn unigryw: goslef ei llais, ei geirfa, strwythur ei brawddegau, y fformatio, a’r cynllun.
+
+Ysgrifenna un prompt ailddefnyddiadwy y gallaf ei redeg ar ddeunydd newydd i ail-greu’r arddull honno. Ar waelod y prompt hwnnw, ychwanega’r dalfan [GLUDA’R CYNNWYS NEWYDD YMA] i nodi lle bydd y deunydd newydd yn mynd. Ar gyfer nes ymlaen y mae'r dalfan honno: nid wyf yn ei llenwi nawr.
+
+Dw i am i ti allbynnu’r prompt ailddefnyddiadwy’n unig, dim byd arall.</div>
+                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copïo'r Prompt</button>
+                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Mae’n gweithio ar unrhyw beth ac iddo batrwm: dogfennau, deciau sleidiau, gwefannau, delweddau, adroddiadau, gweithdrefnau gweithredu safonol, trawsgrifiadau. Atodwch PDF neu ddelwedd am y canlyniadau gorau: allforiwch sleidiau i PDF yn gyntaf, ac ar gyfer gwefan gludwch yr URL a gwiriwch yn yr ateb fod yr AI wedi agor y dudalen mewn gwirionedd.</p>
                     </div>
                 </details>
+
             <details>
-                    <summary><span class="ex-num">11</span><span style="flex:1;">Trin eich hanes sgwrsio fel adnodd y gellir ei ailddefnyddio</span></summary>
+                    <summary><span class="ex-num">B3</span><span style="flex:1;">Trin eich hanes sgwrsio fel adnodd y gellir ei ailddefnyddio</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Mae eich sgyrsiau blaenorol yn ddata:</strong> Gall Copilot ddarllen yn ôl dros eich hanes sgwrsio, dod o hyd i'r patrymau yr ydych yn eu hailadrodd, a chynnig prompt neu dempled y gellir ei ailddefnyddio. Eich sgyrsiau blaenorol yw'r man cychwyn ar gyfer y dasg nesaf.
                         </div>
 
                         <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Dod o hyd i arferion promptio yr ydych yn eu hailadrodd</p>
-                        <div class="prompt-box" id="chat-history-habits">Archwilia fy hanes sgwrsio o'r tri mis diwethaf. Dere o hyd i dair arfer promptio dw i’n eu hailadrodd. Yn achos pob un, dangosa’r arfer, un enghraifft o’m hanes sgwrsio, a phrompt mwy craff y gallaf ei ailddefnyddio. Un llinell yr un, dim geiriau diangen.</div>
+                        <div class="prompt-box" id="chat-history-habits">Dadansodda fy sgyrsiau Copilot o'r tri mis diwethaf. Dere o hyd i dair arfer promptio dw i'n eu hailadrodd ac y dylwn eu gwella.
+
+Ar gyfer pob un, rho un llinell:
+Arfer | Enghraifft go iawn | Prompt gwell y gellir ei ailddefnyddio
+
+Canolbwyntia ar arferion sy'n effeithio ar y canlyniadau, nid ar ddewisiadau ysgrifennu. Bydd yn onest. Dim geiriau diangen.</div>
                         <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copïo'r Prompt</button>
 
                         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Nodi’r tasgau yr ydych yn eu hailwneud â llaw</p>
@@ -419,6 +392,46 @@ Fy unig sgìl yw esgus gwrando ar alwadau Zoom.</textarea>
                         <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Dod o hyd i’ch arddull ysgrifennu</p>
                         <div class="prompt-box" id="chat-history-style">O’m hanes sgwrsio, llunia broffil o’m harddull ysgrifennu, yna cofia hi a'i chadw ar gof.</div>
                         <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copïo'r Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B4</span><span style="flex:1;">Pydredd cyd-destun: mae sgyrsiau hir yn gwneud mwy o gamgymeriadau</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            <strong>Y Realiti:</strong> wrth i sgwrs fynd yn hir, mae'r AI yn dechrau crwydro. Dechreuwch sgyrsiau newydd yn rheolaidd i'w gadw'n effro.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 8px; color: var(--apple-text-primary);">Y modd mae sgwrs yn dirywio:</p>
+                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
+                            <div class="inner-card">
+                                <strong>Neges 5:</strong>
+                                <p>Yn graff, ar y dasg.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 25:</strong>
+                                <p>Yn dechrau ei ailadrodd ei hun.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 45:</strong>
+                                <p>Yn anghofio cyfarwyddiadau cynharach.</p>
+                            </div>
+                            <div class="inner-card">
+                                <strong>Neges 70:</strong>
+                                <p>Yn gwrth-ddweud ei atebion ei hun.</p>
+                            </div>
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 8px; color: var(--apple-text-primary);">Tri datrysiad:</p>
+                        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 14px; line-height: 1.6; color: var(--apple-text-secondary);">
+                            <li style="margin-bottom: 6px;"><strong>Dechreuwch sgyrsiau newydd yn rheolaidd.</strong> Peidiwch ag aros i bethau fynd o'u lle: mae sgwrs newydd yn cadw'r cyd-destun yn fyr a'r model yn graff.</li>
+                            <li style="margin-bottom: 6px;"><strong>Pwnc newydd?</strong> Dechreuwch sgwrs newydd.</li>
+                            <li><strong>Wedi mynd oddi ar y cledrau?</strong> Rhedwch y prompt trosglwyddo isod, yna gludwch yr allbwn i mewn i sgwrs newydd.</li>
+                        </ul>
+
+                        <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Prompt trosglwyddo (rhedwch y prompt yn y sgwrs bresennol, yna copïwch yr allbwn i sgwrs newydd):</p>
+                        <div class="prompt-box" id="context-rot-handover">Paratoa drosglwyddiad y galla i ei ludo i mewn i sgwrs newydd. Rheolau: 1) pum bwled, un llinell yr un: penderfyniadau, ffeithiau allweddol, cyfyngiadau, cwestiynau agored, y camau nesaf, marcio unrhyw beth heb ei gadarnhau; 2) copïo unrhyw beth sy'n werth ei gadw (drafftiau, geiriad, rhestrau) air am air dan benawdau byr, dim ailysgrifennu neu uno; 3) gorffen gyda briff dwy linell: rôl y sgwrs newydd a'i dasg gyntaf. Dim is-bwyntiau bwled, dim sylwebaeth.</div>
+                        <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copïo'r Prompt</button>
                     </div>
                 </details>
                 </div>
@@ -674,24 +687,6 @@ Dw i am i ti allbynnu’r prompt gorffenedig yn unig, heb sylwebaeth cyn nac ar 
                 </details>
 
                 <details>
-                    <summary><span style="flex:1;">Copïo arddull dogfen rydych chi'n ei hoffi</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            Cais: Lanlwythwch rywbeth yr ydych am ailddefnyddio ei edrychiad, ei deimlad a'i eiriad, a chael yn ôl un prompt y gellir ei ailddefnyddio sy'n ail-greu'r arddull honno gyda'ch deunydd eich hun.
-                        </div>
-                        <div class="prompt-box" id="clone-style-prompt">Dadansodda’r enghraifft dw i wedi'i hatodi (dogfen neu ddelwedd). Yn gyntaf, dyweda wrthyf mewn un llinell beth y gelli ei weld ynddi; os na elli ei hagor, dyweda hynny a stopia.
-
-Noda beth sy'n gwneud ei harddull yn unigryw: goslef ei llais, ei geirfa, strwythur ei brawddegau, y fformatio, a’r cynllun.
-
-Ysgrifenna un prompt ailddefnyddiadwy y gallaf ei redeg ar ddeunydd newydd i ail-greu’r arddull honno. Ar waelod y prompt hwnnw, ychwanega’r dalfan [GLUDA’R CYNNWYS NEWYDD YMA] i nodi lle bydd y deunydd newydd yn mynd. Ar gyfer nes ymlaen y mae'r dalfan honno: nid wyf yn ei llenwi nawr.
-
-Dw i am i ti allbynnu’r prompt ailddefnyddiadwy’n unig, dim byd arall.</div>
-                        <button onclick="copyToClipboard('clone-style-prompt')" class="btn-copy">Copïo'r Prompt</button>
-                        <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);">Mae’n gweithio ar unrhyw beth ac iddo batrwm: dogfennau, deciau sleidiau, gwefannau, delweddau, adroddiadau, gweithdrefnau gweithredu safonol, trawsgrifiadau. Atodwch PDF neu ddelwedd am y canlyniadau gorau: allforiwch sleidiau i PDF yn gyntaf, ac ar gyfer gwefan gludwch yr URL a gwiriwch yn yr ateb fod yr AI wedi agor y dudalen mewn gwirionedd.</p>
-                    </div>
-                </details>
-
-                <details>
                     <summary><span style="flex:1;">Y pre-mortem: dychmygwch ei fod eisoes wedi methu</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
@@ -865,46 +860,6 @@ Darpara’r canlynol:
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span style="flex:1;">Pydredd cyd-destun: mae sgyrsiau hir yn gwneud mwy o gamgymeriadau</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note">
-                            <strong>Y Realiti:</strong> wrth i sgwrs fynd yn hir, mae'r AI yn dechrau crwydro. Dechreuwch sgyrsiau newydd yn rheolaidd i'w gadw'n effro.
-                        </div>
-
-                        <p style="font-weight: 600; font-size: 14px; margin: 16px 0 8px; color: var(--apple-text-primary);">Y modd mae sgwrs yn dirywio:</p>
-                        <div class="inner-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
-                            <div class="inner-card">
-                                <strong>Neges 5:</strong>
-                                <p>Yn graff, ar y dasg.</p>
-                            </div>
-                            <div class="inner-card">
-                                <strong>Neges 25:</strong>
-                                <p>Yn dechrau ei ailadrodd ei hun.</p>
-                            </div>
-                            <div class="inner-card">
-                                <strong>Neges 45:</strong>
-                                <p>Yn anghofio cyfarwyddiadau cynharach.</p>
-                            </div>
-                            <div class="inner-card">
-                                <strong>Neges 70:</strong>
-                                <p>Yn gwrth-ddweud ei atebion ei hun.</p>
-                            </div>
-                        </div>
-
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 8px; color: var(--apple-text-primary);">Tri datrysiad:</p>
-                        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 14px; line-height: 1.6; color: var(--apple-text-secondary);">
-                            <li style="margin-bottom: 6px;"><strong>Dechreuwch sgyrsiau newydd yn rheolaidd.</strong> Peidiwch ag aros i bethau fynd o'u lle: mae sgwrs newydd yn cadw'r cyd-destun yn fyr a'r model yn graff.</li>
-                            <li style="margin-bottom: 6px;"><strong>Pwnc newydd?</strong> Dechreuwch sgwrs newydd.</li>
-                            <li><strong>Wedi mynd oddi ar y cledrau?</strong> Rhedwch y prompt trosglwyddo isod, yna gludwch yr allbwn i mewn i sgwrs newydd.</li>
-                        </ul>
-
-                        <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Prompt trosglwyddo (rhedwch y prompt yn y sgwrs bresennol, yna copïwch yr allbwn i sgwrs newydd):</p>
-                        <div class="prompt-box" id="context-rot-handover">Paratoa drosglwyddiad y galla i ei ludo i mewn i sgwrs newydd. Rheolau: 1) pum bwled, un llinell yr un: penderfyniadau, ffeithiau allweddol, cyfyngiadau, cwestiynau agored, y camau nesaf, marcio unrhyw beth heb ei gadarnhau; 2) copïo unrhyw beth sy'n werth ei gadw (drafftiau, geiriad, rhestrau) air am air dan benawdau byr, dim ailysgrifennu neu uno; 3) gorffen gyda briff dwy linell: rôl y sgwrs newydd a'i dasg gyntaf. Dim is-bwyntiau bwled, dim sylwebaeth.</div>
-                        <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copïo'r Prompt</button>
                     </div>
                 </details>
 
@@ -1173,12 +1128,11 @@ Yn seiliedig ar y cyd-destun hwn, drafftia e-bost diweddaru i'r tîm am [Eich Pw
             <h3>Cwestiynau?</h3>
             <p>A ydych am i ni gyflwyno'r gweithdy ar eich safle neu hyfforddi eich hyfforddwyr?</p>
             <div class="contact-emails">
-                <span>Dr Matt Mort: <a href="mailto:mortm@cardiff.ac.uk" class="contact-link">mortm@cardiff.ac.uk</a></span>
-                <span>Mr. Matt Hayden: <a href="mailto:haydenmj1@cardiff.ac.uk" class="contact-link">haydenmj1@cardiff.ac.uk</a></span>
+                <span><a href="mailto:thematts@cardiff.ac.uk" class="contact-link">thematts@cardiff.ac.uk</a></span>
             </div>
         </section>
         <footer>
-            <p>Gweithdy wedi'i hwyluso gan Dr. Matt Mort a Mr. Matt Hayden. Deunyddiau © 2025.</p>
+            <p>Gweithdy wedi'i hwyluso gan Dr. Matt Mort a Mr. Matt Hayden. Deunyddiau © 2026.</p>
             <p style="margin-top: 8px;"><a href="https://dx.doi.org/10.2139/ssrn.5607191" target="_blank" rel="noopener" class="contact-link">Darllenwch ein papur: AI: Dull y Gymuned ↗</a></p>
         </footer>
     </div>

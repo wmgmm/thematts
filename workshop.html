@@ -1150,7 +1150,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">12</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">13</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">16</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
@@ -1402,6 +1402,71 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
                         <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Handover prompt (run in the existing chat, then copy the output into a new chat):</p>
                         <div class="prompt-box" id="context-rot-handover">Prepare a handover I can paste into a new chat. Rules: 1) five bullets, one line each: decisions, key facts, constraints, open questions, next steps, marking anything unconfirmed; 2) copy anything worth keeping (drafts, wording, lists) verbatim under short headings, no rewriting or merging; 3) end with a two-line brief: the new chat's role and its first task. No sub-bullets, no commentary.</div>
                         <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B5</span><span style="flex:1;">Turn a long document into a hand-drawn infographic</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>The idea:</strong> Give Copilot a document nobody has time to read, and get back one picture that explains it at a glance. We use an Act every Welsh public body works under.
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
+                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Well-being of Future Generations (Wales) Act 2015</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">The full Act, PDF, 62 pages, 1.9 MB. From legislation.gov.uk.</div>
+                            </div>
+                            <a href="Well-being_of_Future_Generations_Wales_Act_2015.pdf" download class="download-btn">Download the Act (PDF)</a>
+                        </div>
+
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Download the Act</strong> using the button above.</li>
+                            <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong> and attach the PDF with the paperclip.</li>
+                            <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong> Fill in the optional details or leave them blank.
+                                <div class="prompt-box" id="infographic-prompt">Create a simple, visually explanatory hand-drawn infographic image.
+<strong>WHAT SHOULD THE INFOGRAPHIC EXPLAIN?</strong>
+Give me whatever you have to work with. You can:
+• describe a subject or idea
+• give me some notes or background
+• upload a document
+• upload a spreadsheet
+<strong>OPTIONAL DETAILS:</strong>
+[Add anything you'd particularly like the infographic to explain or focus on. You can leave this blank.]
+<strong>WHAT TO DO</strong>
+Use your best judgement to work out what matters most from the information provided.
+If useful, search the web to understand the subject, check facts or add helpful context.
+Turn the information into a clear visual story.
+• Focus on the 3–5 ideas that best explain the subject.
+• Don't try to include everything.
+• Explain through pictures wherever possible.
+• Use visual metaphors, people, objects and simple scenes.
+• Keep words to a minimum.
+• Use short, conversational headings.
+• Give the most important idea the strongest visual emphasis.
+• Create a clear visual journey across the page.
+• Leave plenty of white space.
+• Remove anything that doesn't help explain the subject.
+Someone should be able to glance at the infographic and understand the main idea before reading the detail.
+<strong>VISUAL STYLE</strong>
+Create the infographic in a hand-drawn visual-facilitation / sketchnote style.
+<strong>USE:</strong>
+• warm white paper
+• loose black marker outlines
+• natural hand lettering
+• muted red, mustard yellow, dusty blue and soft grey
+• simple, friendly editorial illustrations
+• arrows and lines where they help explain connections
+• strong visual metaphors that make complex ideas easier to understand
+Make it feel like a skilled visual facilitator has taken something complicated and explained it clearly on one sheet of paper.
+Keep it human, spacious and slightly imperfect.
+Avoid dense layouts, tiny text, excessive speech bubbles, decorative clutter, repeated ideas and polished corporate diagrams.
+Above all: explain visually, don't just decorate the words.</div>
+                                <button onclick="copyToClipboard('infographic-prompt')" class="btn-copy">Copy Prompt</button>
+                            </li>
+                            <li><strong>Check it.</strong> Does the picture match the Act? Image tools often misspell words, so read every label before you share it.</li>
+                        </ol>
                     </div>
                 </details>
 
