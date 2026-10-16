@@ -1201,7 +1201,54 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">04</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
+                    <summary><span class="ex-num">04</span><span style="flex:1;">Document to Infographic</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>The idea:</strong> One picture that explains a long document at a glance.
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
+                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Well-being of Future Generations (Wales) Act 2015</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">The full Act, PDF, 62 pages, 1.9 MB. From legislation.gov.uk.</div>
+                            </div>
+                            <a href="Well-being_of_Future_Generations_Wales_Act_2015.pdf" download class="download-btn">Download the Act (PDF)</a>
+                        </div>
+
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Download the PDF of the Act</strong> above, or use one of your own files.</li>
+                            <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong>, click the <strong>+</strong>, then click <strong>Upload document</strong>.</li>
+                            <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong> Fill in the optional details or leave them blank.
+                                <div class="prompt-box" id="infographic-prompt">Create a hand-drawn infographic image that explains the file, link or topic I give you.
+If I give a link, first tell me in one line what the page is about. If you cannot open it, say so and stop.
+
+FOCUS ON: <strong>[OPTIONAL: WHAT TO EMPHASISE, OR LEAVE BLANK]</strong>
+
+CONTENT
+• Pick the 3–5 ideas that best explain the subject. Leave out the rest.
+• Search the web if you need to check facts or add context.
+• Make the most important idea the biggest and boldest.
+• Lay the ideas out as a clear visual journey across one page.
+
+DRAWING
+• Explain through pictures: people, objects, simple scenes and visual metaphors.
+• As few words as possible, with short, conversational headings.
+• Sketchnote style: warm white paper, loose black marker outlines, natural hand lettering.
+• Muted red, mustard yellow, dusty blue and soft grey.
+• Arrows only where they show a connection.
+• Plenty of white space. No tiny text, clutter, piles of speech bubbles or polished corporate diagrams.
+
+Someone should get the main idea at a glance. Explain visually, don't just decorate the words.</div>
+                                <button onclick="copyToClipboard('infographic-prompt')" class="btn-copy">Copy Prompt</button>
+                                <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Hint:</strong> no file? Put a website link or a topic in the FOCUS ON line instead.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Tailor communication tone and level of knowledge for specific audiences.
@@ -1215,7 +1262,7 @@
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">05</span><span style="flex:1;">Format &amp; Structure</span></summary>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Format &amp; Structure</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
@@ -1230,7 +1277,7 @@ Create an Excel table with three columns: Medieval pizza names, ingredients, and
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">06</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Audience, constraints and brand voice shape the output as much as the task. Ask the AI to explain its thinking, then give it feedback to improve the result.
@@ -1242,9 +1289,8 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                     </div>
                 </details>
 
-
                 <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Copilot Memory</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
@@ -1276,7 +1322,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Temporary Chat</span></summary>
+                    <summary><span class="ex-num">09</span><span style="flex:1;">Temporary Chat</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Keep a chat out of your memory:</strong> A temporary chat is not saved to your chat history and does not create memories. Use it for one-off or personal questions you do not want shaping later answers. If you ask about Pokémon cards once, they will not keep popping up in your work chats.
@@ -1287,7 +1333,6 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                         <p style="font-size: 14px; line-height: 1.6; margin: 0;"><strong>It is not private.</strong> The chat still follows your organisation's retention policy and may still be accessible to your admin.</p>
                     </div>
                 </details>
-
 
 
          <details>
@@ -1317,7 +1362,6 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
         </ol>
     </div>
 </details>
-
 
                 <details>
                     <summary><span class="ex-num">B2</span><span style="flex:1;">Copy the style of a document you like</span></summary>
@@ -1402,70 +1446,6 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
                         <p style="font-size: 13px; margin: 0 0 8px; color: var(--apple-text-secondary);">Handover prompt (run in the existing chat, then copy the output into a new chat):</p>
                         <div class="prompt-box" id="context-rot-handover">Prepare a handover I can paste into a new chat. Rules: 1) five bullets, one line each: decisions, key facts, constraints, open questions, next steps, marking anything unconfirmed; 2) copy anything worth keeping (drafts, wording, lists) verbatim under short headings, no rewriting or merging; 3) end with a two-line brief: the new chat's role and its first task. No sub-bullets, no commentary.</div>
                         <button onclick="copyToClipboard('context-rot-handover')" class="btn-copy">Copy Prompt</button>
-                    </div>
-                </details>
-
-                <details>
-                    <summary><span class="ex-num">B5</span><span style="flex:1;">Document to Infographic</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>The idea:</strong> One picture that explains a long document at a glance.
-                        </div>
-
-                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
-                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
-                            <div style="flex: 1; min-width: 200px;">
-                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Well-being of Future Generations (Wales) Act 2015</div>
-                                <div style="font-size: 13px; color: var(--apple-text-secondary);">The full Act, PDF, 62 pages, 1.9 MB. From legislation.gov.uk.</div>
-                            </div>
-                            <a href="Well-being_of_Future_Generations_Wales_Act_2015.pdf" download class="download-btn">Download the Act (PDF)</a>
-                        </div>
-
-                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-                            <li style="margin-bottom: 10px;"><strong>Download the PDF of the Act</strong> above, or use one of your own files.</li>
-                            <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong>, click the <strong>+</strong>, then click <strong>Upload document</strong>.</li>
-                            <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong> Fill in the optional details or leave them blank.
-                                <div class="prompt-box" id="infographic-prompt">Create a simple, visually explanatory hand-drawn infographic image.
-WHAT SHOULD THE INFOGRAPHIC EXPLAIN?
-Give me whatever you have to work with. You can:
-• describe a subject or idea
-• give me some notes or background
-• upload a document
-• upload a spreadsheet
-Optional details:
-<strong>[ADD WHAT TO FOCUS ON, OR LEAVE BLANK]</strong>
-WHAT TO DO
-Use your best judgement to work out what matters most from the information provided.
-If useful, search the web to understand the subject, check facts or add helpful context.
-Turn the information into a clear visual story.
-• Focus on the 3–5 ideas that best explain the subject.
-• Don't try to include everything.
-• Explain through pictures wherever possible.
-• Use visual metaphors, people, objects and simple scenes.
-• Keep words to a minimum.
-• Use short, conversational headings.
-• Give the most important idea the strongest visual emphasis.
-• Create a clear visual journey across the page.
-• Leave plenty of white space.
-• Remove anything that doesn't help explain the subject.
-Someone should be able to glance at the infographic and understand the main idea before reading the detail.
-VISUAL STYLE
-Create the infographic in a hand-drawn visual-facilitation / sketchnote style.
-Use:
-• warm white paper
-• loose black marker outlines
-• natural hand lettering
-• muted red, mustard yellow, dusty blue and soft grey
-• simple, friendly editorial illustrations
-• arrows and lines where they help explain connections
-• strong visual metaphors that make complex ideas easier to understand
-Make it feel like a skilled visual facilitator has taken something complicated and explained it clearly on one sheet of paper.
-Keep it human, spacious and slightly imperfect.
-Avoid dense layouts, tiny text, excessive speech bubbles, decorative clutter, repeated ideas and polished corporate diagrams.
-Above all: explain visually, don't just decorate the words.</div>
-                                <button onclick="copyToClipboard('infographic-prompt')" class="btn-copy">Copy Prompt</button>
-                            </li>
-                        </ol>
                     </div>
                 </details>
 

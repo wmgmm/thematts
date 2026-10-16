@@ -1,0 +1,20 @@
+Create a hand-drawn infographic image that explains the file, link or topic I give you.
+If I give a link, first tell me in one line what the page is about. If you cannot open it, say so and stop.
+
+FOCUS ON: [OPTIONAL: WHAT TO EMPHASISE, OR LEAVE BLANK]
+
+CONTENT
+• Pick the 3–5 ideas that best explain the subject. Leave out the rest.
+• Search the web if you need to check facts or add context.
+• Make the most important idea the biggest and boldest.
+• Lay the ideas out as a clear visual journey across one page.
+
+DRAWING
+• Explain through pictures: people, objects, simple scenes and visual metaphors.
+• As few words as possible, with short, conversational headings.
+• Sketchnote style: warm white paper, loose black marker outlines, natural hand lettering.
+• Muted red, mustard yellow, dusty blue and soft grey.
+• Arrows only where they show a connection.
+• Plenty of white space. No tiny text, clutter, piles of speech bubbles or polished corporate diagrams.
+
+Someone should get the main idea at a glance. Explain visually, don't just decorate the words.
