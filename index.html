@@ -61,6 +61,11 @@
             display:inline-flex; align-items:center; justify-content:center; flex:none; }
         .film-play svg { width:.7rem; height:.7rem; margin-left:2px; fill:#fff; }
         .film-meta { color:rgba(255,255,255,.6); font-weight:500; }
+        .film-links { display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem 1.75rem; margin-top:1rem; font-size:.9rem; font-weight:600; }
+        .film-links[hidden] { display:none; }
+        .film-links a { color:#fff; text-decoration:none; border-bottom:1px solid var(--accent-red); padding-bottom:2px; }
+        .film-links a:hover { color:var(--accent-red); }
+        .film-triggers { display:flex; flex-wrap:wrap; justify-content:center; gap:0 .75rem; }
         dialog.film { padding:0; border:0; background:transparent; width:min(1100px, 92vw); max-width:none; overflow:visible; }
         dialog.film::backdrop { background:rgba(0,0,0,.85); }
         dialog.film video { display:block; width:100%; aspect-ratio:16/9; background:#000; border-radius:1rem; }
@@ -83,10 +88,16 @@
             <p class="text-base md:text-lg text-white font-medium max-w-2xl mx-auto leading-relaxed">
                 Navigating complexity via the community approach.
             </p>
-            <button type="button" class="film-trigger" data-film-open aria-haspopup="dialog">
-                <span class="film-play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
-                Watch the film <span class="film-meta">1 min</span>
-            </button>
+            <div class="film-triggers">
+                <button type="button" class="film-trigger" data-film-open data-src="ai-community-film.mp4" data-poster="ai-community-film-poster.jpg" data-label="The AI Community Approach, a one-minute film" aria-haspopup="dialog">
+                    <span class="film-play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+                    Watch the film <span class="film-meta">1 min</span>
+                </button>
+                <button type="button" class="film-trigger" data-film-open data-src="who-are-the-matts.mp4" data-poster="who-are-the-matts-poster.jpg" data-label="Who are the Matts, a one-minute film" data-links aria-haspopup="dialog">
+                    <span class="film-play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+                    Who are the Matts? <span class="film-meta">1 min</span>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -246,10 +257,12 @@
     <!-- Film lightbox -->
     <dialog id="film" class="film" aria-label="The AI Community Approach, a one-minute film">
         <button type="button" class="film-close" data-film-close>Close <span aria-hidden="true">&times;</span></button>
-        <video id="film-video" controls playsinline preload="none" poster="ai-community-film-poster.jpg">
-            <source src="ai-community-film.mp4" type="video/mp4">
-            <a href="ai-community-film.mp4">Download the film (MP4)</a>
-        </video>
+        <video id="film-video" controls playsinline preload="none"></video>
+        <p class="film-links" data-film-links hidden>
+            <a href="https://profiles.cardiff.ac.uk/staff/mortm" target="_blank" rel="noopener">Dr Matthew Mort</a>
+            <a href="https://profiles.cardiff.ac.uk/staff/haydenmj1" target="_blank" rel="noopener">Matthew Hayden</a>
+            <a href="mailto:thematts@cardiff.ac.uk">thematts@cardiff.ac.uk</a>
+        </p>
     </dialog>
 
     <script>
@@ -258,6 +271,12 @@
             const dlg = document.getElementById('film');
             const vid = document.getElementById('film-video');
             document.querySelectorAll('[data-film-open]').forEach(btn => btn.addEventListener('click', () => {
+                if (vid.getAttribute('src') !== btn.dataset.src) {
+                    vid.poster = btn.dataset.poster;
+                    vid.src = btn.dataset.src;
+                }
+                dlg.setAttribute('aria-label', btn.dataset.label);
+                dlg.querySelector('[data-film-links]').hidden = !('links' in btn.dataset);
                 dlg.showModal();
                 vid.play().catch(() => {});
             }));
