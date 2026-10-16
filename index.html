@@ -49,6 +49,24 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+        /* Film player (lightbox) */
+        .film-trigger { display:inline-flex; align-items:center; gap:.6rem; margin-top:1.1rem;
+            padding:.45rem 1.1rem .45rem .45rem; border-radius:9999px; border:1px solid rgba(255,255,255,.28);
+            color:#fff; font-size:.875rem; font-weight:600; background:rgba(255,255,255,.04);
+            transition:border-color .2s, background-color .2s; cursor:pointer; }
+        .film-trigger:hover { border-color:var(--accent-red); background:rgba(211,55,74,.12); }
+        .film-trigger:focus-visible, .film-close:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+        .film-play { width:1.75rem; height:1.75rem; border-radius:9999px; background:var(--accent-red);
+            display:inline-flex; align-items:center; justify-content:center; flex:none; }
+        .film-play svg { width:.7rem; height:.7rem; margin-left:2px; fill:#fff; }
+        .film-meta { color:rgba(255,255,255,.6); font-weight:500; }
+        dialog.film { padding:0; border:0; background:transparent; width:min(1100px, 92vw); max-width:none; overflow:visible; }
+        dialog.film::backdrop { background:rgba(0,0,0,.85); }
+        dialog.film video { display:block; width:100%; aspect-ratio:16/9; background:#000; border-radius:1rem; }
+        .film-close { position:absolute; top:-2.75rem; right:0; color:#fff; font-size:.875rem; font-weight:600;
+            display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .75rem; border-radius:9999px; cursor:pointer; }
+        .film-close:hover { background:rgba(255,255,255,.12); }
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -65,6 +83,10 @@
             <p class="text-base md:text-lg text-white font-medium max-w-2xl mx-auto leading-relaxed">
                 Navigating complexity via the community approach.
             </p>
+            <button type="button" class="film-trigger" data-film-open aria-haspopup="dialog">
+                <span class="film-play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+                Watch the film <span class="film-meta">1 min</span>
+            </button>
         </div>
     </section>
 
@@ -220,7 +242,30 @@
         </div>
     </footer>
 
+
+    <!-- Film lightbox -->
+    <dialog id="film" class="film" aria-label="The AI Community Approach, a one-minute film">
+        <button type="button" class="film-close" data-film-close>Close <span aria-hidden="true">&times;</span></button>
+        <video id="film-video" controls playsinline preload="none" poster="ai-community-film-poster.jpg">
+            <source src="ai-community-film.mp4" type="video/mp4">
+            <a href="ai-community-film.mp4">Download the film (MP4)</a>
+        </video>
+    </dialog>
+
     <script>
+        // Film lightbox: native <dialog> gives Esc-to-close, an inert page behind and focus return.
+        (() => {
+            const dlg = document.getElementById('film');
+            const vid = document.getElementById('film-video');
+            document.querySelectorAll('[data-film-open]').forEach(btn => btn.addEventListener('click', () => {
+                dlg.showModal();
+                vid.play().catch(() => {});
+            }));
+            dlg.querySelector('[data-film-close]').addEventListener('click', () => dlg.close());
+            dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+            dlg.addEventListener('close', () => vid.pause());
+        })();
+
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
                 root: null,
