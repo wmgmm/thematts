@@ -1,0 +1,16 @@
+Create a Mermaid mind map of the document I give you, so I can check it at a glance.
+
+First, read the whole document.
+
+MIND MAP
+• Centre: the document's main purpose, in a few words.
+• Branches: its 4–6 main themes.
+• Sub-branches: the key points under each theme, five words or fewer.
+• Use only what the document says. Never add facts.
+
+CHECK BRANCHES (add these to the same mind map)
+• GAPS: anything missing or unclear, such as owners, dates, next steps or evidence.
+• CHECK: claims or details that look inconsistent.
+• RISKS: act as a critical friend. Imagine it is a year from now and this document has failed. List the most likely reasons.
+
+Avoid brackets and special characters in the text, as they break the diagram. Give the Mermaid code in one code block starting with "mindmap". Then tell me in three lines what the map shows is strongest, weakest and most at risk.

@@ -1132,7 +1132,7 @@
             <div class="section-header">
                 <div>
                     <div class="eyebrow">Copilot Prompt Library</div>
-                    <h2>Copilot Exercises, Workplace Prompts &amp; Reference</h2>
+                    <h2>Copilot Exercises and Useful Prompts</h2>
                 </div>
             </div>
 
@@ -1150,7 +1150,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">14</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">15</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">16</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
@@ -1499,6 +1499,51 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
                             <li style="margin-bottom: 10px;"><strong>Start a new chat</strong> and paste it in. Carry on from there with a short, sharp context.</li>
                         </ol>
                         <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Hint:</strong> the old chat isn't lost. You can go back to it, but work in the new one.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B5</span><span style="flex:1;">Document to Mind Map</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>The idea:</strong> A one-page map of any document, with its gaps, inconsistencies and risks flagged. Could a map be an effective way to check a document before you sign it off?
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
+                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Well-being of Future Generations (Wales) Act 2015</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">The same Act as exercise 04. A long document shows off a mind map best.</div>
+                            </div>
+                            <a href="Well-being_of_Future_Generations_Wales_Act_2015.pdf" download class="download-btn">Download the Act (PDF)</a>
+                        </div>
+
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Download the Act</strong> above, or use one of your own files.</li>
+                            <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong>, click the <strong>+</strong>, then click <strong>Upload document</strong> and choose the file.</li>
+                            <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong>
+                                <div class="prompt-box" id="mind-map-prompt">Create a Mermaid mind map of the document I give you, so I can check it at a glance.
+
+First, read the whole document.
+
+MIND MAP
+• Centre: the document's main purpose, in a few words.
+• Branches: its 4–6 main themes.
+• Sub-branches: up to 4 key points per theme, five words or fewer.
+• Use only what the document says. Never add facts.
+
+FLAGS
+Attach each flag to the theme it belongs to, not to a separate branch. Start each one with GAP, CHECK or RISK.
+• GAP: something missing or unclear, such as an owner, date, next step or evidence.
+• CHECK: a claim or detail that looks inconsistent.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why?
+Base gaps and checks on a specific part of the document. Up to 2 flags per theme, and only where they are real.
+Show flags as hexagons, like g1{{GAP no owner named}}, so they stand out.
+
+Do not use brackets or special characters in any other text, as they break the diagram. Give the Mermaid code in one code block starting with "mindmap". Then tell me in three lines what the map shows is strongest, weakest and most at risk.</div>
+                                <button onclick="copyToClipboard('mind-map-prompt')" class="btn-copy">Copy Prompt</button>
+                            </li>
+                        </ol>
                     </div>
                 </details>
 
