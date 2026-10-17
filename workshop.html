@@ -1390,7 +1390,11 @@ Output only the reusable prompt, nothing else.</div>
                             <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
                         </div>
 
-                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Find prompting habits you repeat</p>
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Build a full profile of yourself</p>
+                        <div class="prompt-box" id="chat-history-profile">Build a comprehensive profile of me from all accessible memory, past chats, instructions, and relevant files. Cover my personal and professional life, goals, projects, relationships, values, preferences, decision patterns, and how to work with me. Preserve specific examples in writing. Separate facts from your inferences. Flag any outdated information. Flag contradictions and unknowns. Cite your sources and state what you reviewed or could not access. Please prioritise completeness over brevity.</div>
+                        <button onclick="copyToClipboard('chat-history-profile')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Find prompting habits you repeat</p>
                         <div class="prompt-box" id="chat-history-habits">Analyse my last three months of Copilot chats. Find three repeated prompting habits I should improve.
 
 For each, give one line:
