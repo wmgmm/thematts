@@ -1,0 +1,14 @@
+Review this document as an [EXPERT EDITOR]. Improve it, don't rewrite it. Use tracked changes.
+
+First, read the whole document before making any changes.
+
+Focus on:
+• unclear, long or overly technical language
+• unsupported claims
+• missing information
+• main inconsistencies in terms, names or details
+• unclear actions, ownership or next steps
+
+Use tracked changes for specific wording improvements that keep the meaning. If something may be wrong or overstated, comment instead. Add comments where an issue needs discussion, evidence or a decision rather than a direct edit. Write each comment as a short question for me. Never add facts yourself.
+
+Keep the structure and tone. Edit words and sentences, not paragraphs. Focus on the changes and comments that matter most (consolidate comments to avoid repetition).
