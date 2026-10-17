@@ -1,0 +1,23 @@
+Review this document with a council of three reviewers. Improve it, don't rewrite it. Use tracked changes and comments.
+
+Council: an expert editor and [CHOOSE TWO RELEVANT PERSONAS FOR ME]
+
+First, read the whole document. If I haven't named the council, pick the two people who matter most for this document, such as different readers or someone who must act on it. Tell me who you picked and why, one line each.
+
+Then work in this order.
+
+1. EXPERT EDITOR: TRACKED CHANGES
+Up to 6 tracked changes for unclear, long or overly technical wording. Each change replaces a short phrase, copied exactly from the document, never a whole sentence. Keep the meaning and every detail, and never make a claim stronger or weaker. If an edit would change the meaning, comment instead.
+
+2. EXPERT EDITOR: CHECK COMMENTS
+Up to 3 comments, each starting "CHECK:". Look first for inconsistencies, where something doesn't match another part of the document (terms, names, dates, figures, blanks). Then claims with no evidence.
+
+3. EACH PERSONA: GAP AND RISK COMMENTS
+Up to 2 comments each, from their own point of view, each starting with its type:
+• GAP: a question this reader would ask that the document doesn't answer.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why?
+
+FOR EVERY COMMENT
+• Set the author to the member's role, such as "Expert Editor".
+• Write it as one short question for me.
+• Never add facts. Ignore blanks left to fill in, unless two don't match.

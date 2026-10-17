@@ -1151,7 +1151,7 @@
 
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">15</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">16</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">17</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
 
@@ -1251,7 +1251,7 @@ Someone should get the main idea at a glance. Explain visually, don't just decor
                     <summary><span class="ex-num">05</span><span style="flex:1;">Review with Tracked Changes</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>The idea:</strong> When a document is nearly ready, an AI rewrite is overwhelming because you can't see what changed. Ask Copilot to track changes in Word and leave comments instead. Start as an expert editor, then upload the same document again with a different persona to see it from another perspective.
+                            <strong>The idea:</strong> When a document is nearly ready, an AI rewrite is overwhelming because you can't see what changed. Ask Copilot to track changes in Word and leave comments instead. A council of three reviews it: an expert editor and two people who matter for the document, each commenting from their own point of view. Could three perspectives in one upload be an effective way to spot what you missed?
                         </div>
 
                         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
@@ -1267,24 +1267,33 @@ Someone should get the main idea at a glance. Explain visually, don't just decor
                             <li style="margin-bottom: 10px;"><strong>Download the letter</strong> above, or use one of your own Word files.</li>
                                                         <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong>, click the <strong>+</strong>, then click <strong>Upload document</strong> and choose the letter.</li>
                             <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong>
-                                <div class="prompt-box" id="review-prompt">Review this document as an <strong>[EXPERT EDITOR]</strong>. Improve it, don't rewrite it. Use tracked changes.
+                                <div class="prompt-box" id="council-review-prompt">Review this document with a council of three reviewers. Improve it, don't rewrite it. Use tracked changes and comments.
 
-First, read the whole document before making any changes.
+Council: an expert editor and <strong>[CHOOSE TWO RELEVANT PERSONAS FOR ME]</strong>
 
-Focus on:
-• unclear, long or overly technical language
-• unsupported claims
-• missing information
-• main inconsistencies in terms, names or details
-• unclear actions, ownership or next steps
+First, read the whole document. If I haven't named the council, pick the two people who matter most for this document, such as different readers or someone who must act on it. Tell me who you picked and why, one line each.
 
-Use tracked changes for specific wording improvements that keep the meaning. If something may be wrong or overstated, comment instead. Add comments where an issue needs discussion, evidence or a decision rather than a direct edit. Write each comment as a short question for me. Never add facts yourself.
+Then work in this order.
 
-Keep the structure and tone. Edit words and sentences, not paragraphs. Focus on the changes and comments that matter most (consolidate comments to avoid repetition).</div>
-                                <button onclick="copyToClipboard('review-prompt')" class="btn-copy">Copy Prompt</button>
-                                <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Try another perspective:</strong> swap <strong>[EXPERT EDITOR]</strong> for <strong>a student</strong>, <strong>a client</strong> or <strong>a lecturer</strong> to see the document through their eyes.</p>
+1. EXPERT EDITOR: TRACKED CHANGES
+Up to 6 tracked changes for unclear, long or overly technical wording. Each change replaces a short phrase, copied exactly from the document, never a whole sentence. Keep the meaning and every detail, and never make a claim stronger or weaker. If an edit would change the meaning, comment instead.
+
+2. EXPERT EDITOR: CHECK COMMENTS
+Up to 3 comments, each starting "CHECK:". Look first for inconsistencies, where something doesn't match another part of the document (terms, names, dates, figures, blanks). Then claims with no evidence.
+
+3. EACH PERSONA: GAP AND RISK COMMENTS
+Up to 2 comments each, from their own point of view, each starting with its type:
+• GAP: a question this reader would ask that the document doesn't answer.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why?
+
+FOR EVERY COMMENT
+• Set the author to the member's role, such as "Expert Editor".
+• Write it as one short question for me.
+• Never add facts. Ignore blanks left to fill in, unless two don't match.</div>
+                                <button onclick="copyToClipboard('council-review-prompt')" class="btn-copy">Copy Prompt</button>
+                                <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Choose your own council:</strong> swap <strong>[CHOOSE TWO RELEVANT PERSONAS FOR ME]</strong> for, say, <strong>a student and a lecturer</strong>, or <strong>a client and a manager</strong>.</p>
                             </li>
-                                                        <li style="margin-bottom: 10px;"><strong>See the edits.</strong> The document opens with tracked changes and comments. To work on it in Word, click <img src="copilot-open-in-word-button.png" alt="Open in Word button" style="height: 30px; width: auto; vertical-align: middle; margin: 0 4px;"> in the top right.</li>
+                                                        <li style="margin-bottom: 10px;"><strong>See the edits.</strong> The document opens with tracked changes and comments. Each comment shows which council member wrote it, tagged GAP, CHECK or RISK. To work on it in Word, click <img src="copilot-open-in-word-button.png" alt="Open in Word button" style="height: 30px; width: auto; vertical-align: middle; margin: 0 4px;"> in the top right.</li>
                         </ol>
                     </div>
                 </details>
@@ -1612,6 +1621,30 @@ Return exactly three sections:
 
 Only include items that affect my role and ignore everything else. If a section has nothing in it, write "None found". Quote the document's own wording for each deadline.</div>
                         <button onclick="copyToClipboard('role-extraction')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Review a document with tracked changes</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Upload a Word document and get edits you can see, as tracked changes and comments, instead of a full rewrite. Swap <strong>[EXPERT EDITOR]</strong> for any reader, such as a student, a client or a lecturer.
+                        </div>
+                        <div class="prompt-box" id="review-prompt">Review this document as an <strong>[EXPERT EDITOR]</strong>. Improve it, don't rewrite it. Use tracked changes.
+
+First, read the whole document before making any changes.
+
+Focus on:
+• unclear, long or overly technical language
+• unsupported claims
+• missing information
+• main inconsistencies in terms, names or details
+• unclear actions, ownership or next steps
+
+Use tracked changes for specific wording improvements that keep the meaning. If something may be wrong or overstated, comment instead. Add comments where an issue needs discussion, evidence or a decision rather than a direct edit. Write each comment as a short question for me. Never add facts yourself.
+
+Keep the structure and tone. Edit words and sentences, not paragraphs. Focus on the changes and comments that matter most (consolidate comments to avoid repetition).</div>
+                        <button onclick="copyToClipboard('review-prompt')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 

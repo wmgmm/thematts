@@ -1,0 +1,20 @@
+Review this document with a council of three reviewers. Improve it, don't rewrite it. Use Tracked Changes and Comments.
+
+Council: an expert editor and [CHOOSE TWO RELEVANT PERSONAS FOR ME]
+
+First, read the whole document before making any changes.
+
+THE COUNCIL
+If I haven't named them, pick the two people who matter most for this document, such as different readers or someone who must act on it. Tell me who you picked and why, one line each.
+
+TRACKED CHANGES
+The expert editor uses tracked changes for specific wording improvements that keep the meaning: unclear, long or overly technical language. Keep the structure and tone. Edit words and sentences, not paragraphs.
+
+COMMENTS
+Add comments where an issue needs discussion rather than a direct edit.
+Each council member comments from their own point of view. Set each comment's author to that member's role, such as "Expert Editor", so I can see who said what. Start each comment with its type, then write it as a short question for me:
+• GAP: a question a reader would ask that the document doesn't answer, such as a missing detail, owner, date or next step.
+• CHECK: an inconsistency, where something doesn't match another part of the document (terms, names, dates, figures), or a claim with no evidence.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why?
+
+Up to 3 comments per member. If two members raise the same point, keep one comment and say who agrees. Never add facts yourself. If something may be wrong or overstated, comment instead of editing.
