@@ -1150,7 +1150,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">13</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">14</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">16</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
@@ -1248,7 +1248,51 @@ Someone should get the main idea at a glance. Explain visually, don't just decor
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">05</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Review, Don't Rewrite</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>The idea:</strong> AI edits you can see, accept or reject, plus comments that give you things to think about. What would be more effective: reading a full rewrite, or deciding on the 15 changes that matter?
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
+                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Hybrid Working: Guidance for Staff (practice)</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">A short, fictional Word document with deliberate problems to find. 2 pages, 37 KB.</div>
+                            </div>
+                            <a href="Practice_Hybrid_Working_Guidance.docx" download class="download-btn">Download the document (Word)</a>
+                        </div>
+
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Download the practice document</strong> above, or use one of your own Word files.</li>
+                            <li style="margin-bottom: 10px;"><strong>Open it in the Word desktop app</strong> and save it to OneDrive.</li>
+                            <li style="margin-bottom: 10px;"><strong>Click Copilot</strong> on the Home tab, then paste the prompt below and send it.
+                                <div class="prompt-box" id="review-prompt">Review this document as <strong>an expert editor</strong>. Improve it, don't rewrite it. Turn on Track Changes.
+
+First, work out who the reader is and what they need to know or do. Judge everything against that.
+
+Focus on:
+• unclear or overly technical language
+• unsupported claims
+• missing information
+• inconsistent terminology
+• unclear ownership or next steps
+
+Use tracked changes for specific wording improvements. Add comments where an issue needs discussion, evidence or a decision rather than a direct edit. Write each comment as a short question for me. Never add facts yourself.
+
+Keep the structure and tone. Edit words and sentences, not paragraphs. Choose the 15 changes and comments that matter most.
+
+Then tell me in three lines: who you think the reader is, what you changed, and the biggest decision for me.</div>
+                                <button onclick="copyToClipboard('review-prompt')" class="btn-copy">Copy Prompt</button>
+                                <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Try another perspective:</strong> swap <strong>an expert editor</strong> for <strong>a student</strong>, <strong>a client</strong> or <strong>a lecturer</strong> to see the document through their eyes.</p>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Open the Review tab.</strong> Accept or reject each change, and reply to the comments.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Tailor communication tone and level of knowledge for specific audiences.
@@ -1262,7 +1306,7 @@ Someone should get the main idea at a glance. Explain visually, don't just decor
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">06</span><span style="flex:1;">Format &amp; Structure</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Format &amp; Structure</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
@@ -1277,7 +1321,7 @@ Create an Excel table with three columns: Medieval pizza names, ingredients, and
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Audience, constraints and brand voice shape the output as much as the task. Ask the AI to explain its thinking, then give it feedback to improve the result.
@@ -1290,7 +1334,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <summary><span class="ex-num">09</span><span style="flex:1;">Copilot Memory</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
@@ -1322,7 +1366,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">09</span><span style="flex:1;">Temporary Chat</span></summary>
+                    <summary><span class="ex-num">10</span><span style="flex:1;">Temporary Chat</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Keep a chat out of your memory:</strong> A temporary chat is not saved to your chat history and does not create memories. Use it for one-off or personal questions you do not want shaping later answers. If you ask about Pokémon cards once, they will not keep popping up in your work chats.
