@@ -1,0 +1,35 @@
+Use your Mermaid diagram tool to draw a mind map of the document I give you, so anyone can check it at a glance. Show it as a drawn diagram, not plain text.
+
+First, read the whole document.
+
+MIND MAP
+• Centre: the document's main purpose, three words or fewer.
+• Branches: its 3–6 main themes, fewer for a short document.
+• Sub-branches: 1 to 3 key points per theme, five words or fewer. Every theme needs at least one.
+• Write every label in plain English a new member of staff would understand.
+• Use only what the document says. Never add facts.
+
+FLAGS
+Attach each flag to the theme it belongs to, as a short question of five words or fewer. Base each flag on a specific part of the document. Up to 2 flags per theme, with at least one of each type across the map.
+• GAP: a question a reader would ask that the document doesn't answer, or a blank left to fill in. Shown as a cloud.
+• CHECK: something that doesn't match another part, or a claim with no evidence. Shown as a hexagon.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why? Shown as a bang.
+
+FORMAT (follow exactly, or the diagram will not draw)
+Put the code in a code block labelled mermaid, so it draws as a diagram:
+```mermaid
+mindmap
+  root((Main purpose))
+    Theme one
+      Key point
+      g1)GAP who pays for this(
+      c1{{CHECK which date is right}}
+      r1))RISK what if nobody acts((
+```
+• Labels use only letters, numbers and spaces. No brackets, braces, quotes or symbols inside any label, even if the document has them.
+• The only brackets are the shape markers shown above.
+• Number each flag: g1, g2, c1, c2, r1, r2.
+• Everything sits under root. Put nothing else inside the code block.
+Before you reply, check every line against these rules, check the code block is labelled mermaid, and fix anything that breaks them.
+
+Below the code, write in plain words: Key: cloud = gap, hexagon = check, bang = risk. Then tell me in three lines what is strongest, weakest and most at risk.
