@@ -1,0 +1,19 @@
+Create a Mermaid mind map of the document I give you, so anyone can check it at a glance.
+
+First, read the whole document.
+
+MIND MAP
+• Centre: the document's main purpose, three words or fewer, written as root((Your purpose)).
+• Branches: its 3–6 main themes, fewer for a short document.
+• Sub-branches: up to 3 key points per theme, five words or fewer.
+• Write every label in plain English a new member of staff would understand.
+• Use only what the document says. Never add facts.
+
+FLAGS
+Attach each flag to the theme it belongs to. Write each one as a short question, five words or fewer. Base each flag on a specific part of the document.
+• GAP: a question a reader would ask that the document doesn't answer, or a blank left to fill in. Show as a cloud: g1)GAP who pays for this(
+• CHECK: something that doesn't match another part, or a claim with no evidence. Show as a hexagon: c1{{CHECK which figure is right}}
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why? Show as a bang: r1))RISK what if nobody acts((
+Up to 2 flags per theme. Include at least one of each type across the map.
+
+Use no brackets or special characters inside any label, even if the document has them. Give the Mermaid code in one code block starting with "mindmap". Then give a one-line key to the shapes, and tell me in three lines what is strongest, weakest and most at risk.

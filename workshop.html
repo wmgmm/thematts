@@ -1534,20 +1534,35 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
 First, read the whole document.
 
 MIND MAP
-• Centre: the document's main purpose, three words or fewer, written as root((Your purpose)).
-• Branches: its 4–6 main themes.
+• Centre: the document's main purpose, three words or fewer.
+• Branches: its 3–6 main themes, fewer for a short document.
 • Sub-branches: up to 3 key points per theme, five words or fewer.
 • Write every label in plain English a new member of staff would understand.
 • Use only what the document says. Never add facts.
 
 FLAGS
-Attach each flag to the theme it belongs to. Write each one as a short question, five words or fewer.
-• GAP: a question a reader would ask that the document doesn't answer. Show as a cloud: g1)GAP who pays for this(
-• CHECK: something that doesn't match another part, or a claim with no evidence. Show as a hexagon: c1{{CHECK which figure is right}}
-• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why? Show as a bang: r1))RISK what if nobody acts((
-Up to 2 flags per theme. Include at least one of each type across the map.
+Attach each flag to the theme it belongs to, as a short question of five words or fewer. Base each flag on a specific part of the document. Up to 2 flags per theme, with at least one of each type across the map.
+• GAP: a question a reader would ask that the document doesn't answer, or a blank left to fill in. Shown as a cloud.
+• CHECK: something that doesn't match another part, or a claim with no evidence. Shown as a hexagon.
+• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why? Shown as a bang.
 
-Do not use brackets or special characters in any other text. Give the Mermaid code in one code block starting with "mindmap". Then give a one-line key to the shapes, and tell me in three lines what is strongest, weakest and most at risk.</div>
+FORMAT (follow exactly, or the diagram will not draw)
+```
+mindmap
+  root((Main purpose))
+    Theme one
+      Key point
+      g1)GAP who pays for this(
+      c1{{CHECK which date is right}}
+      r1))RISK what if nobody acts((
+```
+• Labels use only letters, numbers and spaces. No brackets, braces, quotes or symbols inside any label, even if the document has them.
+• The only brackets are the shape markers shown above.
+• Number each flag: g1, g2, c1, c2, r1, r2.
+• Everything sits under root. Put nothing else inside the code block.
+Before you reply, check every line against these rules and fix any that break them.
+
+Below the code, write in plain words: Key: cloud = gap, hexagon = check, bang = risk. Then tell me in three lines what is strongest, weakest and most at risk.</div>
                                 <button onclick="copyToClipboard('mind-map-prompt')" class="btn-copy">Copy Prompt</button>
                             </li>
                         </ol>
