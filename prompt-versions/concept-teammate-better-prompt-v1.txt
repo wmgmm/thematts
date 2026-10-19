@@ -1,0 +1,1 @@
+Look at how we got from my original request to this final output. Write the prompt I should have used at the start to get this result first time. Learn from my corrections and feedback, not just the final answer. Keep the prompt simple, reusable and no longer than necessary.
