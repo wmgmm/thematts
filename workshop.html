@@ -1150,7 +1150,7 @@
             </div>
 
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">16</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">15</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">18</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
@@ -1247,57 +1247,9 @@ Someone should get the main idea at a glance. Explain visually, don't just decor
                     </div>
                 </details>
 
-                <details>
-                    <summary><span class="ex-num">05</span><span style="flex:1;">Multi-Persona Review with Tracked Changes</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>The idea:</strong> When a document is nearly ready, an AI rewrite is overwhelming because you can't see what changed. Ask Copilot to track changes in Word and leave comments instead. A council of three different personas reviews it: an expert editor and two people who matter for the document, each commenting from their own point of view. Could three perspectives in one upload be an effective way to spot what you missed?
-                        </div>
-
-                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
-                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
-                            <div style="flex: 1; min-width: 200px;">
-                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Flu vaccination invitation letter (UKHSA template)</div>
-                                <div style="font-size: 13px; color: var(--apple-text-secondary);">A real public letter that parents, teachers and school nurses each read differently.</div>
-                            </div>
-                            <a href="Flu_Vaccination_Invitation_Letter.docx" download class="download-btn">Download the letter (Word)</a>
-                        </div>
-
-                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-                            <li style="margin-bottom: 10px;"><strong>Download the letter</strong> above, or use one of your own Word files.</li>
-                                                        <li style="margin-bottom: 10px;"><strong>Start a new chat in Copilot</strong>, click the <strong>+</strong>, then click <strong>Upload document</strong> and choose the letter.</li>
-                            <li style="margin-bottom: 10px;"><strong>Paste the prompt below and send it.</strong>
-                                <div class="prompt-box" id="council-review-prompt">Review this document with a council of three reviewers. Improve it, don't rewrite it. Use tracked changes and comments.
-
-Council: an expert editor and <strong>[CHOOSE TWO RELEVANT PERSONAS FOR ME]</strong>
-
-First, read the whole document. If I haven't named the council, pick the two people who matter most for this document, such as different readers or someone who must act on it. Tell me who you picked and why, one line each.
-
-Then work in this order.
-
-1. EXPERT EDITOR: TRACKED CHANGES
-Up to 6 tracked changes for unclear, long or overly technical wording. Each change replaces a short phrase, copied exactly from the document, never a whole sentence. Keep the meaning and every detail, and never make a claim stronger or weaker. If an edit would change the meaning, comment instead.
-
-2. EXPERT EDITOR: CHECK COMMENTS
-Up to 3 comments, each starting "CHECK:". Look first for inconsistencies, where something doesn't match another part of the document (terms, names, dates, figures, blanks). Then claims with no evidence.
-
-3. EACH PERSONA: GAP AND RISK COMMENTS
-Up to 2 comments each, from their own point of view, each starting with its type:
-• GAP: a question this reader would ask that the document doesn't answer.
-• RISK: act as a critical friend. Imagine it is a year from now and this document has failed. Why?
-
-FOR EVERY COMMENT
-• Set the author to the member's role, such as "Expert Editor".
-• Write it as one short question for me.
-• Never add facts. Ignore blanks left to fill in, unless two don't match.</div>
-                                <button onclick="copyToClipboard('council-review-prompt')" class="btn-copy">Copy Prompt</button>
-                            </li>
-                        </ol>
-                    </div>
-                </details>
 
                 <details>
-                    <summary><span class="ex-num">06</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Professional Persona (Role Prompting)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Tailor communication tone and level of knowledge for specific audiences. Can the same exact question have more than one right answer?
@@ -1311,7 +1263,7 @@ FOR EVERY COMMENT
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Format &amp; Structure</span></summary>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Format &amp; Structure</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             <strong>Application:</strong> Force the AI to output exactly what you need (Table, SOP, Creative Text) in a single request.
@@ -1326,7 +1278,7 @@ Create an Excel table with three columns: Medieval pizza names, ingredients, and
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Context (Know Your Audience)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Audience, constraints and brand voice shape the output as much as the task. Ask the AI to explain its thinking, then give it feedback to improve the result.
@@ -1339,7 +1291,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">09</span><span style="flex:1;">Copilot Memory</span></summary>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Copilot Memory</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Set it once, use it everywhere:</strong> Copilot can hold your preferences across conversations. You set a rule a single time, and Copilot applies it to every chat that follows. No more re-typing the same setup whenever you open a fresh conversation.
@@ -1371,7 +1323,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">10</span><span style="flex:1;">Temporary Chat</span></summary>
+                    <summary><span class="ex-num">09</span><span style="flex:1;">Temporary Chat</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Keep a chat out of your memory:</strong> A temporary chat is not saved to your chat history and does not create memories. Use it for one-off or personal questions you do not want shaping later answers. If you ask about Pokémon cards once, they will not keep popping up in your work chats.
@@ -1518,7 +1470,7 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
                             <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
                             <div style="flex: 1; min-width: 200px;">
                                 <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Flu vaccination invitation letter (UKHSA template)</div>
-                                <div style="font-size: 13px; color: var(--apple-text-secondary);">The same letter as exercise 05. Then try a long document of your own.</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">A real public letter that parents, teachers and school nurses each read differently. Then try a long document of your own.</div>
                             </div>
                             <a href="Flu_Vaccination_Invitation_Letter.docx" download class="download-btn">Download the letter (Word)</a>
                         </div>
@@ -2422,7 +2374,7 @@ Based on this context, draft an update email to the team about [Your Topic]..."<
         <!-- ============ CONTACT ============ -->
         <section id="contact" class="section-card contact-strip">
             <h3>Questions?</h3>
-            <p>The Matts, Dr. Matt Mort and Mr. Matt Hayden: over 20 years building AI in medical genetics at Cardiff University, now helping everyone build responsible AI capacity that puts people first.</p>
+            <p>Dr. Matt Mort and Mr. Matt Hayden: 20+ years of AI in medical genetics at Cardiff University, building responsible AI that puts people first.</p>
             <p>Want us to deliver the workshop at your site or train your trainers? Email us to book:</p>
             <div class="contact-emails">
                 <span><a href="mailto:thematts@cardiff.ac.uk" class="contact-link">thematts@cardiff.ac.uk</a></span>
