@@ -1385,54 +1385,7 @@ The target market is pensioners seeking genuine companionship. Avoid patronising
 
 
                 <details>
-                    <summary><span class="ex-num">B1</span><span style="flex:1;">Chat with AI like a Teammate (providing feedback)</span></summary>
-                    <div class="details-content">
-                        <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>The idea:</strong> The first answer is rarely the best. Give Copilot feedback, as you would a colleague, and the output improves with each reply. Once you have a good version, ask Copilot for the prompt that would have got you there first time, so next time you chat less. Could a few lines of feedback be more effective than starting again?
-                        </div>
-
-                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-                            <li style="margin-bottom: 10px;"><strong>Ask Copilot for something you need</strong>, such as an email, a summary or a plan.</li>
-                            <li style="margin-bottom: 10px;"><strong>Give it feedback</strong> until it's right, for example: "Can you make it more formal?", "Lead with the decision" or "Expand the second point, it's too brief."</li>
-                            <li style="margin-bottom: 10px;"><strong>When you get the final output, paste the prompt below and send it.</strong>
-                                <div class="prompt-box" id="feedback-better-prompt">Look at how we got from my original request to this final output. Write the prompt I should have used at the start to get this result first time. Learn from my corrections and feedback, not just the final answer. Keep the prompt simple, reusable and no longer than necessary.</div>
-                                <button onclick="copyToClipboard('feedback-better-prompt')" class="btn-copy">Copy Prompt</button>
-                            </li>
-                            <li style="margin-bottom: 10px;"><strong>Save the new prompt</strong> and start with it next time.</li>
-                        </ol>
-                    </div>
-                </details>
-
-         <details>
-    <summary><span class="ex-num">B2</span><span style="flex:1;">Build your first Agent: ELI5 a Document</span></summary>
-    <div class="details-content">
-        <div class="exercise-note" style="margin-bottom: 18px;">
-            <strong>The idea:</strong> An agent that explains any documents like you are 5 – ideal for policies, reports and guidance notes. Which dense document in your area would land better with a simple version alongside it, not instead of it?
-        </div>
-        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
-            <li style="margin-bottom: 10px;">
-                <strong>Open Copilot</strong> – go to <a href="https://m365copilot.com" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Enter Description then submit</strong> – In the "Describe" tab, paste the following and hit the submit arrow:
-                <div class="prompt-box" id="eli5-document">You are a witty ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</div>
-                <button onclick="copyToClipboard('eli5-document')" class="btn-copy">Copy Prompt</button>
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Click Create</strong> – Name the agent if prompted, then click the <strong>Create</strong> button.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <strong>Click Go to Agent</strong> – Wait for the success message, then click the blue 'Go to Agent' button.
-            </li>
-            <li>
-                <strong>Test it</strong> – Upload a dense document e.g. a policy or committee report, and compare the output against the original.
-            </li>
-        </ol>
-    </div>
-</details>
-
-                <details>
-                    <summary><span class="ex-num">B3</span><span style="flex:1;">Copy the style of a document you like</span></summary>
+                    <summary><span class="ex-num">B1</span><span style="flex:1;">Copy the style of a document you like</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             Application: Upload something whose look, feel and wording you want to reuse, and get back one reusable prompt that recreates that style with your own material. Which document of yours already works well, and could reusing its style make your next one more effective?
@@ -1452,37 +1405,26 @@ Output only the reusable prompt, nothing else.</div>
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">B4</span><span style="flex:1;">Treat your chat history as a reusable resource</span></summary>
+                    <summary><span class="ex-num">B2</span><span style="flex:1;">Turn a Good Chat into a Reusable Prompt</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
-                            <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
+                            <strong>The idea:</strong> The first answer is rarely the best. Give Copilot feedback, as you would a colleague, and the output improves with each reply. Once you have a good version, ask Copilot for the prompt that would have got you there first time, so next time you chat less. Could a few lines of feedback be more effective than starting again?
                         </div>
 
-                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Build a full profile of yourself</p>
-                        <div class="prompt-box" id="chat-history-profile">Build a comprehensive profile of me from all accessible memory, past chats, instructions, and relevant files. Cover my personal and professional life, goals, projects, relationships, values, preferences, decision patterns, and how to work with me. Preserve specific examples in writing. Separate facts from your inferences. Flag any outdated information. Flag contradictions and unknowns. Cite your sources and state what you reviewed or could not access. Please prioritise completeness over brevity.</div>
-                        <button onclick="copyToClipboard('chat-history-profile')" class="btn-copy">Copy Prompt</button>
-
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Find prompting habits you repeat</p>
-                        <div class="prompt-box" id="chat-history-habits">Analyse my last three months of Copilot chats. Find three repeated prompting habits I should improve.
-
-For each, give one line:
-Habit | Real example | Better reusable prompt
-
-Focus on habits that affect results, not writing preferences. Be honest. No filler.</div>
-                        <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copy Prompt</button>
-
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Spot tasks you keep redoing by hand</p>
-                        <div class="prompt-box" id="chat-history-tasks">Read across my chat history and tell me which tasks I keep redoing by hand.</div>
-                        <button onclick="copyToClipboard('chat-history-tasks')" class="btn-copy">Copy Prompt</button>
-
-                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Capture your writing style</p>
-                        <div class="prompt-box" id="chat-history-style">From my chat history, draft a profile of my writing style, then remember and save it to memory.</div>
-                        <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copy Prompt</button>
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Ask Copilot for something you need</strong>, such as an email, a summary or a plan.</li>
+                            <li style="margin-bottom: 10px;"><strong>Give it feedback</strong> until it's right, for example: "Can you make it more formal?", "Lead with the decision" or "Expand the second point, it's too brief."</li>
+                            <li style="margin-bottom: 10px;"><strong>When you get the final output, paste the prompt below and send it.</strong>
+                                <div class="prompt-box" id="feedback-better-prompt">Look at how we got from my original request to this final output. Write the prompt I should have used at the start to get this result first time. Learn from my corrections and feedback, not just the final answer. Keep the prompt simple, reusable and no longer than necessary.</div>
+                                <button onclick="copyToClipboard('feedback-better-prompt')" class="btn-copy">Copy Prompt</button>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Save the new prompt</strong> and start with it next time.</li>
+                        </ol>
                     </div>
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">B5</span><span style="flex:1;">Handover Prompt (long chats make more mistakes)</span></summary>
+                    <summary><span class="ex-num">B3</span><span style="flex:1;">Handover Prompt (long chats make more mistakes)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">
                             <strong>The Reality:</strong> as a chat gets long, the AI starts to drift. A handover lets you start a fresh chat without losing your work.
@@ -1529,7 +1471,37 @@ Focus on habits that affect results, not writing preferences. Be honest. No fill
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">B6</span><span style="flex:1;">Document to Mind Map</span></summary>
+                    <summary><span class="ex-num">B4</span><span style="flex:1;">Treat your chat history as a reusable resource</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Your past chats are data:</strong> Copilot can read back over your chat history, find the patterns you repeat, and hand back a reusable prompt or template. Your past chats become the starting point for the next task.
+                        </div>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 0 0 6px;">Build a full profile of yourself</p>
+                        <div class="prompt-box" id="chat-history-profile">Build a comprehensive profile of me from all accessible memory, past chats, instructions, and relevant files. Cover my personal and professional life, goals, projects, relationships, values, preferences, decision patterns, and how to work with me. Preserve specific examples in writing. Separate facts from your inferences. Flag any outdated information. Flag contradictions and unknowns. Cite your sources and state what you reviewed or could not access. Please prioritise completeness over brevity.</div>
+                        <button onclick="copyToClipboard('chat-history-profile')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Find prompting habits you repeat</p>
+                        <div class="prompt-box" id="chat-history-habits">Analyse my last three months of Copilot chats. Find three repeated prompting habits I should improve.
+
+For each, give one line:
+Habit | Real example | Better reusable prompt
+
+Focus on habits that affect results, not writing preferences. Be honest. No filler.</div>
+                        <button onclick="copyToClipboard('chat-history-habits')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Spot tasks you keep redoing by hand</p>
+                        <div class="prompt-box" id="chat-history-tasks">Read across my chat history and tell me which tasks I keep redoing by hand.</div>
+                        <button onclick="copyToClipboard('chat-history-tasks')" class="btn-copy">Copy Prompt</button>
+
+                        <p style="font-weight: 600; font-size: 14px; margin: 18px 0 6px;">Capture your writing style</p>
+                        <div class="prompt-box" id="chat-history-style">From my chat history, draft a profile of my writing style, then remember and save it to memory.</div>
+                        <button onclick="copyToClipboard('chat-history-style')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">B5</span><span style="flex:1;">Document to Mind Map</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>The idea:</strong> A one-page map of any document, with its gaps, inconsistencies and risks flagged. Could a map be an effective way to check a document before you sign it off?
@@ -1595,6 +1567,34 @@ Below the code, write in plain words: Key: cloud = gap, hexagon = check, bang = 
                         </ol>
                     </div>
                 </details>
+
+         <details>
+    <summary><span class="ex-num">B6</span><span style="flex:1;">Build your first Agent: ELI5 a Document</span></summary>
+    <div class="details-content">
+        <div class="exercise-note" style="margin-bottom: 18px;">
+            <strong>The idea:</strong> An agent that explains any documents like you are 5 – ideal for policies, reports and guidance notes. Which dense document in your area would land better with a simple version alongside it, not instead of it?
+        </div>
+        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+            <li style="margin-bottom: 10px;">
+                <strong>Open Copilot</strong> – go to <a href="https://m365copilot.com" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none;">m365copilot.com</a> and click <strong>"Create agent"</strong> in the left-hand menu.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Enter Description then submit</strong> – In the "Describe" tab, paste the following and hit the submit arrow:
+                <div class="prompt-box" id="eli5-document">You are a witty ELI5 Pal. Start every chat by asking: "Upload a document and I'll explain it like you're 5." First give a short ELI5 executive summary: a friendly one-line intro and 3 to 5 simple key points. Then give the full simple version in the chat: reading age of a young child, very short sentences, everyday words, a friendly tone with emojis and clear headings. Use simple analogies and everyday examples to explain the tricky ideas. Keep all key facts, rules and obligations, and explain any word that has to stay. The code interpreter / file generation capability is enabled. At the end, offer the simple version as a 1-page PDF, for example: "Want this as a 1-page PDF to share? Just say the word." Only create the PDF if the user asks.</div>
+                <button onclick="copyToClipboard('eli5-document')" class="btn-copy">Copy Prompt</button>
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Click Create</strong> – Name the agent if prompted, then click the <strong>Create</strong> button.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Click Go to Agent</strong> – Wait for the success message, then click the blue 'Go to Agent' button.
+            </li>
+            <li>
+                <strong>Test it</strong> – Upload a dense document e.g. a policy or committee report, and compare the output against the original.
+            </li>
+        </ol>
+    </div>
+</details>
 
             </div>
 
