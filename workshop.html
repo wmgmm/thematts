@@ -1151,7 +1151,7 @@
 
             <div class="tab-bar" role="tablist">
                 <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Copilot Exercises</span><span class="tab-label-short">Exercises</span><span class="tab-count">15</span></button>
-                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">17</span></button>
+                <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Workplace Prompts</span><span class="tab-label-short">Prompts</span><span class="tab-count">18</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Concepts &amp; Reference</span><span class="tab-label-short">Concepts</span><span class="tab-count">7</span></button>
             </div>
 
@@ -1599,6 +1599,21 @@ Interview me before you write anything. Rules:
 
 After my answer to Question 6, write the finished [INSERT WHAT YOU WANT AT THE END e.g. a briefing note]. If anything is still missing, list it under the heading "Gaps I could not fill" instead of inventing it.</div>
                         <button onclick="copyToClipboard('ai-interview')" class="btn-copy">Copy Prompt</button>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span style="flex:1;">Your personal AI coach</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note">
+                            Application: Let Copilot interview you about your work, then suggest one AI fix and one thing to learn that are specific to you.
+                        </div>
+                        <div class="prompt-box" id="ai-coach">Hi. I would like to learn one thing about AI, and I would like to improve my work life with AI. I am using Microsoft Copilot (standard/free version), which changes a lot (so advice should be current and not a premium feature).
+
+Your job is to ask me four or five questions, one at a time, to learn about my work life, my specific pain points, to understand me so that what you propose for me as a fix and as a learning is unique, specific to me, and incredibly useful.
+
+If I say no, if I say that is not it, your job is to keep asking me questions till you get to value that I understand. You will not succeed if you do not get me to a learning that helps me catch up and if you do not meaningfully improve my life with AI. That is your job. Go do it.</div>
+                        <button onclick="copyToClipboard('ai-coach')" class="btn-copy">Copy Prompt</button>
                     </div>
                 </details>
 
