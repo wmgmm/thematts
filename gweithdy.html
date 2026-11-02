@@ -227,7 +227,7 @@
                 </div>
             </div>
             <div class="tab-bar" role="tablist">
-                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">12</span></button>
+                <button class="tab-btn active" data-tab="exercises" role="tab" aria-controls="tab-exercises" aria-selected="true"><span class="tab-label-full">Ymarferion Copilot</span><span class="tab-label-short">Ymarferion</span><span class="tab-count">13</span></button>
                 <button class="tab-btn" data-tab="recipes" role="tab" aria-controls="tab-recipes" aria-selected="false"><span class="tab-label-full">Promptiau yn y Gweithle</span><span class="tab-label-short">Promptiau</span><span class="tab-count">16</span></button>
                 <button class="tab-btn" data-tab="concepts" role="tab" aria-controls="tab-concepts" aria-selected="false"><span class="tab-label-full">Cysyniadau a Chyfeiriadau</span><span class="tab-label-short">Cysyniadau</span><span class="tab-count">7</span></button>
             </div>
@@ -259,7 +259,54 @@
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">04</span><span style="flex:1;">Persona Proffesiynol (Promptiau Rôl)</span></summary>
+                    <summary><span class="ex-num">04</span><span style="flex:1;">Dogfen i Ffeithlun</span></summary>
+                    <div class="details-content">
+                        <div class="exercise-note" style="margin-bottom: 18px;">
+                            <strong>Y syniad:</strong> Un llun sy'n egluro dogfen hir ar unwaith. Rydym i gyd yn dysgu'n wahanol: pwy fyddai'n deall eich dogfen yn gynt gyda llun ochr yn ochr â hi fel man cychwyn?
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 16px; margin: 0 0 18px; background: var(--apple-bg-page); border-radius: 12px;">
+                            <img src="doc_icon.svg" alt="" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="font-weight: 600; font-size: 14px; color: var(--apple-text-primary);">Deddf Llesiant Cenedlaethau'r Dyfodol (Cymru) 2015</div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">Y Ddeddf lawn (testun Saesneg), PDF, 62 tudalen, 1.9 MB. O legislation.gov.uk.</div>
+                            </div>
+                            <a href="Well-being_of_Future_Generations_Wales_Act_2015.pdf" download class="download-btn">Lawrlwytho'r Ddeddf (PDF)</a>
+                        </div>
+
+                        <ol style="padding-left: 20px; line-height: 1.6; font-size: 14px; margin: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Lawrlwythwch PDF y Ddeddf</strong> uchod, neu defnyddiwch un o'ch ffeiliau eich hun.</li>
+                            <li style="margin-bottom: 10px;"><strong>Dechreuwch sgwrs newydd yn Copilot</strong>, cliciwch ar y <strong>+</strong>, yna cliciwch ar <strong>Lanlwytho dogfen</strong>.</li>
+                            <li style="margin-bottom: 10px;"><strong>Gludwch y prompt isod a'i anfon.</strong> Llenwch y manylion dewisol neu gadewch nhw'n wag.
+                                <div class="prompt-box" id="infographic-prompt">Creua ddelwedd ffeithlun wedi'i llunio â llaw sy'n egluro'r ffeil, y ddolen neu'r pwnc y bydda i'n ei roi i ti.
+Os rhof ddolen, dywed wrtha i yn gyntaf mewn un llinell am beth mae'r dudalen. Os na elli di ei hagor, dywed hynny a stopia.
+
+CANOLBWYNTIO AR: <strong>[DEWISOL: BETH I'W BWYSLEISIO, NEU GAD YN WAG]</strong>
+
+CYNNWYS
+• Dewisa'r 3–5 syniad sy'n egluro'r pwnc orau. Gad y gweddill allan.
+• Chwilia'r we os oes angen gwirio ffeithiau neu ychwanegu cyd-destun.
+• Gwna'r syniad pwysicaf y mwyaf a'r mwyaf trawiadol.
+• Gosod y syniadau fel taith weledol glir ar draws un dudalen.
+
+LLUNIO
+• Eglura drwy luniau: pobl, gwrthrychau, golygfeydd syml a throsiadau gweledol.
+• Cyn lleied o eiriau â phosibl, gyda phenawdau byr, sgyrsiol.
+• Arddull nodiadau braslun: papur gwyn cynnes, amlinelliadau marciwr du llac, llythrennu llaw naturiol.
+• Coch tawel, melyn mwstard, glas llychlyd a llwyd meddal.
+• Saethau dim ond lle maen nhw'n dangos cysylltiad.
+• Digon o le gwyn. Dim testun bach iawn, annibendod, pentyrrau o swigod siarad na diagramau corfforaethol caboledig.
+
+Dylai rhywun ddeall y prif syniad ar unwaith. Eglura'n weledol, paid ag addurno'r geiriau'n unig.</div>
+                                <button onclick="copyToClipboard('infographic-prompt')" class="btn-copy">Copïo'r Prompt</button>
+                                <p style="margin-top:12px; font-size:13px; color:var(--apple-text-secondary);"><strong>Awgrym:</strong> dim ffeil? Rhowch ddolen gwefan neu bwnc yn y llinell CANOLBWYNTIO AR yn lle hynny.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="ex-num">05</span><span style="flex:1;">Persona Proffesiynol (Promptiau Rôl)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">Cais: Teilwra tôn cyfathrebu a lefel gwybodaeth ar gyfer cynulleidfaoedd penodol.</div>
                         <div class="prompt-box" id="role-prompt-medical">Ar gyfer sgript: Rwyt ti’n weithiwr meddygol proffesiynol. Ateba’r datganiad "Mae fy hemoroidau yn fy mhoeni".</div>
@@ -269,7 +316,7 @@
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">05</span><span style="flex:1;">Fformat a Strwythur</span></summary>
+                    <summary><span class="ex-num">06</span><span style="flex:1;">Fformat a Strwythur</span></summary>
                     <div class="details-content">
                         <div class="exercise-note"><strong>Cais:</strong> Gorfodi'r AI i allbynnu'n union yr hyn y mae arnoch ei angen (Tabl, SOP, Testun Creadigol) mewn un cais.</div>
                         <div class="prompt-box" id="format-prompt-merged">Rwyt ti’n rhedeg "Pizza Bord Gron y Marchogion" – gwasanaeth dosbarthu pizzas â thema ganoloesol.
@@ -281,7 +328,7 @@ Llunia dabl Excel â thair colofn: Enwau canoloesol ar bizzas, cynhwysion, ac am
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">06</span><span style="flex:1;">Cyd-destun (Adnabod Eich Cynulleidfa)</span></summary>
+                    <summary><span class="ex-num">07</span><span style="flex:1;">Cyd-destun (Adnabod Eich Cynulleidfa)</span></summary>
                     <div class="details-content">
                         <div class="exercise-note">Cais: Mae'r gynulleidfa, y cyfyngiadau a llais y brand yn siapio'r allbwn gymaint â'r dasg. Gofynnwch i'r AI esbonio ei resymeg, yna rhowch adborth iddo i wella'r canlyniad.</div>
                         <div class="prompt-box" id="context-prompt">Cynhyrcha syniadau am enwau ar gyfer ap canlyn newydd ac ysgrifenna gyfiawnhad byr dros bob dewis.
@@ -291,7 +338,7 @@ Y farchnad darged yw pensiynwyr sy'n chwilio am gwmnïaeth ddiffuant. Osgoa ystr
                     </div>
                 </details>
                 <details>
-                    <summary><span class="ex-num">07</span><span style="flex:1;">Cof Copilot</span></summary>
+                    <summary><span class="ex-num">08</span><span style="flex:1;">Cof Copilot</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Gosodwch ef unwaith, defnyddiwch ef ym mhobman:</strong> Gall Copilot gadw eich dewisiadau ar draws sgyrsiau. Rydych yn gosod rheol unwaith, ac mae Copilot yn ei chymhwyso i bob sgwrs sy'n dilyn. Dim mwy o aildeipio'r un gosodiad pa bryd bynnag y byddwch yn cychwyn sgwrs newydd.
@@ -323,7 +370,7 @@ Y farchnad darged yw pensiynwyr sy'n chwilio am gwmnïaeth ddiffuant. Osgoa ystr
                 </details>
 
                 <details>
-                    <summary><span class="ex-num">08</span><span style="flex:1;">Sgwrs Dros Dro</span></summary>
+                    <summary><span class="ex-num">09</span><span style="flex:1;">Sgwrs Dros Dro</span></summary>
                     <div class="details-content">
                         <div class="exercise-note" style="margin-bottom: 18px;">
                             <strong>Cadwch sgwrs allan o'ch cof:</strong> Nid yw sgwrs dros dro yn cael ei chadw yn eich hanes sgwrsio ac nid yw'n creu atgofion. Defnyddiwch hi ar gyfer cwestiynau untro neu bersonol nad ydych am iddynt ddylanwadu ar atebion yn y dyfodol. Os gofynnwch am gardiau Pokémon unwaith, ni fyddant yn dal i ymddangos yn eich sgyrsiau gwaith.
