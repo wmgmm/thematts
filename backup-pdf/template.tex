@@ -1,0 +1,140 @@
+% Generated into workshop-exercises.tex by build.py. Edit this file, not the output.
+\documentclass[9pt]{extarticle}
+\usepackage[a4paper,top=10mm,bottom=13mm,left=11mm,right=11mm,footskip=6mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{lato}
+\usepackage[scaled=0.9]{inconsolata}
+\usepackage{textcomp}
+\usepackage{microtype}
+\DisableLigatures{encoding=*, family=*}
+\usepackage{xcolor,graphicx,multicol,qrcode,fancyhdr,lastpage}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={AI in the Workplace: Copilot Exercises},pdfauthor={Dr Matt Mort and Mr Matt Hayden, Cardiff University}}
+
+% Copy and paste: real spaces, Unicode mapping, no hyphenation.
+\input glyphtounicode
+\pdfgentounicode=1
+\pdfinterwordspaceon
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{6mm}
+
+\definecolor{ink}{HTML}{1D1D1F}
+\definecolor{muted}{HTML}{4A4F55}
+\definecolor{accent}{HTML}{0071E3}
+\definecolor{tint}{HTML}{F2F7FD}
+\definecolor{rule}{HTML}{C9DDF5}
+\definecolor{gold}{HTML}{FF8A1F}
+\color{ink}
+
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{muted}Dr Matt Mort and Mr Matt Hayden, Cardiff University \quad\textbullet\quad \href{@@URL@@}{@@URL@@}}
+\fancyfoot[R]{\footnotesize\color{muted}Page \thepage\ of \pageref{LastPage}}
+
+% Prompt box: everything inside is the prompt and nothing else.
+\newtcolorbox{pbox}{enhanced,colback=tint,colframe=rule,boxrule=0.4pt,arc=1.5mm,
+  left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=0.8mm,after skip=1.2mm,fontupper=\pboxfont\raggedright}
+\newcommand{\pboxfont}{\normalsize}
+\newcommand{\gap}{\par\vspace{0.5ex}}
+\newcommand{\bul}[1]{\par\hangindent=1em\hangafter=1\textbullet\ #1\par}
+\newcommand{\codeline}[1]{\par{\ttfamily\footnotesize #1}\par}
+
+\newcommand{\exskip}{4.5mm}
+\newcommand{\ex}[2]{\par\vspace{\exskip}\needspace{4\baselineskip}%
+  {\setlength{\fboxsep}{2pt}\colorbox{accent}{\makebox[\widthof{\bfseries\small M365}][c]{\color{white}\bfseries\small\strut #1}}\hspace{1.5mm}{\bfseries\large #2}}\hspace{2.5mm}}
+\newcommand{\note}[1]{{\small\color{muted}#1}\par}
+\newcommand{\sub}[1]{\par\vspace{1.5mm}{\small\bfseries #1}\par}
+\usepackage{needspace,calc}
+
+\newcommand{\band}[2]{%
+  \begin{tcolorbox}[enhanced,colback=ink,colframe=ink,arc=2mm,left=4mm,right=3mm,top=2.5mm,bottom=2.5mm]
+  \begin{minipage}[c]{0.8\linewidth}\color{white}\raggedright
+    {\fontsize{17}{20}\selectfont\bfseries #1}\par\vspace{1.2mm}
+    {\small #2}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.15\linewidth}\raggedleft
+    \colorbox{white}{\qrcode[height=1.75cm]{@@URL@@}}
+  \end{minipage}
+  \end{tcolorbox}\vspace{-1mm}}
+
+\begin{document}
+
+\band{AI in the Workplace: Copilot Exercises}{%
+  Open Copilot at \href{https://m365copilot.com}{\textbf{https://m365copilot.com}}, start a new chat, copy a prompt from a blue box, paste it in and send.\par\vspace{0.6mm}
+  Full workshop, any time, at home or at work: \href{@@URL@@}{\textcolor{gold}{\textbf{@@URL@@}}}}
+
+\ex{01}{Explain it like I am 5}
+\note{Replace [TOPIC], or upload a document, such as a policy, and ask Copilot to explain it.}
+@@progressive-learning@@
+
+\ex{02}{Roleplay a difficult conversation}
+\note{Copilot stays in character. Reply as yourself.}
+@@roleplay-conversation@@
+
+\ex{03}{Devil's advocate}
+\note{Replace [SCENARIO HERE] with your own situation, or upload a document instead.}
+@@devils-advocate@@
+
+\ex{04}{Document to infographic}
+\note{Click \textbf{+}, \textbf{Upload document}, attach any document, then paste. No file? Use a link or topic in FOCUS ON.}
+@@infographic-prompt@@
+
+\ex{05}{Professional persona}
+\note{Try both. Same question, new chat, different right answers.}
+@@role-prompt-medical@@
+@@role-prompt-comedian@@
+
+\ex{06}{Format and structure}
+\note{One prompt, three formats in a single reply.}
+@@format-prompt-merged@@
+
+\ex{07}{Context: know your audience}
+\note{Then ask Copilot to explain its choices, and give it feedback.}
+@@context-prompt@@
+
+\newpage
+\renewcommand{\exskip}{1.5mm}
+
+\band{Memory and Bonus Prompts}{%
+  Full instructions and examples: \href{@@URL@@}{\textcolor{gold}{\textbf{@@URL@@}}}}
+
+\ex{08}{Copilot memory}
+\note{Rules saved to memory apply to every future chat. To view them: three dots (top right), \textbf{Settings}, \textbf{Personalisation}.}
+@@memory-regional@@
+@@memory-honesty@@
+
+\ex{09}{Temporary chat}
+\note{Click the temporary chat icon \raisebox{-0.35\height}{\includegraphics[height=5mm]{../copilot-temporary-chat-icon.png}} (top right). Not saved and creates no memories, but it is not private.}
+\vspace{1.2mm}
+
+\ex{B1}{Copy the style of a document you like}
+\note{Attach a document or image whose style you want to reuse. PDFs work best.}
+@@clone-style-prompt@@
+
+\ex{B2}{Turn a good chat into a reusable prompt}
+\note{Give Copilot feedback until the output is right, then paste this.}
+@@feedback-better-prompt@@
+
+\ex{B3}{Handover: long chats make more mistakes}
+\note{Paste this into the long chat. Copy the reply, start a new chat and paste it in.}
+@@context-rot-handover@@
+
+\ex{B4}{Treat your chat history as a resource}
+\sub{Build a full profile of yourself}
+@@chat-history-profile@@
+\sub{Find prompting habits you repeat}
+@@chat-history-habits@@
+\sub{Spot tasks you keep redoing by hand}
+@@chat-history-tasks@@
+\sub{Capture your writing style}
+@@chat-history-style@@
+
+\ex{M365}{Devil's advocate on your own work}
+\note{Microsoft 365 Copilot licence only. It reads your emails and meetings.}
+@@devils-advocate-work@@
+
+\end{document}

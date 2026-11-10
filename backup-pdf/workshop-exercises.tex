@@ -1,0 +1,212 @@
+% Generated into workshop-exercises.tex by build.py. Edit this file, not the output.
+\documentclass[9pt]{extarticle}
+\usepackage[a4paper,top=10mm,bottom=13mm,left=11mm,right=11mm,footskip=6mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{lato}
+\usepackage[scaled=0.9]{inconsolata}
+\usepackage{textcomp}
+\usepackage{microtype}
+\DisableLigatures{encoding=*, family=*}
+\usepackage{xcolor,graphicx,multicol,qrcode,fancyhdr,lastpage}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={AI in the Workplace: Copilot Exercises},pdfauthor={Dr Matt Mort and Mr Matt Hayden, Cardiff University}}
+
+% Copy and paste: real spaces, Unicode mapping, no hyphenation.
+\input glyphtounicode
+\pdfgentounicode=1
+\pdfinterwordspaceon
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{6mm}
+
+\definecolor{ink}{HTML}{1D1D1F}
+\definecolor{muted}{HTML}{4A4F55}
+\definecolor{accent}{HTML}{0071E3}
+\definecolor{tint}{HTML}{F2F7FD}
+\definecolor{rule}{HTML}{C9DDF5}
+\definecolor{gold}{HTML}{FF8A1F}
+\color{ink}
+
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{muted}Dr Matt Mort and Mr Matt Hayden, Cardiff University \quad\textbullet\quad \href{https://wmgmm.github.io/thematts/workshop.html}{https://wmgmm.github.io/thematts/workshop.html}}
+\fancyfoot[R]{\footnotesize\color{muted}Page \thepage\ of \pageref{LastPage}}
+
+% Prompt box: everything inside is the prompt and nothing else.
+\newtcolorbox{pbox}{enhanced,colback=tint,colframe=rule,boxrule=0.4pt,arc=1.5mm,
+  left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=0.8mm,after skip=1.2mm,fontupper=\pboxfont\raggedright}
+\newcommand{\pboxfont}{\normalsize}
+\newcommand{\gap}{\par\vspace{0.5ex}}
+\newcommand{\bul}[1]{\par\hangindent=1em\hangafter=1\textbullet\ #1\par}
+\newcommand{\codeline}[1]{\par{\ttfamily\footnotesize #1}\par}
+
+\newcommand{\exskip}{4.5mm}
+\newcommand{\ex}[2]{\par\vspace{\exskip}\needspace{4\baselineskip}%
+  {\setlength{\fboxsep}{2pt}\colorbox{accent}{\makebox[\widthof{\bfseries\small M365}][c]{\color{white}\bfseries\small\strut #1}}\hspace{1.5mm}{\bfseries\large #2}}\hspace{2.5mm}}
+\newcommand{\note}[1]{{\small\color{muted}#1}\par}
+\newcommand{\sub}[1]{\par\vspace{1.5mm}{\small\bfseries #1}\par}
+\usepackage{needspace,calc}
+
+\newcommand{\band}[2]{%
+  \begin{tcolorbox}[enhanced,colback=ink,colframe=ink,arc=2mm,left=4mm,right=3mm,top=2.5mm,bottom=2.5mm]
+  \begin{minipage}[c]{0.8\linewidth}\color{white}\raggedright
+    {\fontsize{17}{20}\selectfont\bfseries #1}\par\vspace{1.2mm}
+    {\small #2}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.15\linewidth}\raggedleft
+    \colorbox{white}{\qrcode[height=1.75cm]{https://wmgmm.github.io/thematts/workshop.html}}
+  \end{minipage}
+  \end{tcolorbox}\vspace{-1mm}}
+
+\begin{document}
+
+\band{AI in the Workplace: Copilot Exercises}{%
+  Open Copilot at \href{https://m365copilot.com}{\textbf{https://m365copilot.com}}, start a new chat, copy a prompt from a blue box, paste it in and send.\par\vspace{0.6mm}
+  Full workshop, any time, at home or at work: \href{https://wmgmm.github.io/thematts/workshop.html}{\textcolor{gold}{\textbf{https://wmgmm.github.io/thematts/workshop.html}}}}
+
+\ex{01}{Explain it like I am 5}
+\note{Replace [TOPIC], or upload a document, such as a policy, and ask Copilot to explain it.}
+\begin{pbox}
+\textquotedbl{}Explain [TOPIC] to me like I am 5 (ELI5)\textquotedbl{}\par
+\end{pbox}
+
+\ex{02}{Roleplay a difficult conversation}
+\note{Copilot stays in character. Reply as yourself.}
+\begin{pbox}
+\textquotedbl{}Roleplay: You\textquotesingle{}re Mrs. Grudge, my grumpy neighbour knocking at 2 a.m. to complain about my noisy cats (Knox, Missy, Phoebe). I\textquotesingle{}m a witty cat owner trying to calm you down and win you over. Stay in character and wait for my replies.\textquotedbl{}\par
+\end{pbox}
+
+\ex{03}{Devil's advocate}
+\note{Replace [SCENARIO HERE] with your own situation, or upload a document instead.}
+\begin{pbox}
+\textquotedbl{}Act as a constructive devil\textquotesingle{}s advocate. First identify potential weaknesses or blind spots, then suggest alternative perspectives. Be specific and challenging but constructive. My scenario is: [SCENARIO HERE]\textquotedbl{}\par
+\end{pbox}
+
+\ex{04}{Document to infographic}
+\note{Click \textbf{+}, \textbf{Upload document}, attach any document, then paste. No file? Use a link or topic in FOCUS ON.}
+\begin{pbox}
+Create a hand-{}drawn infographic image that explains the file, link or topic I give you.\par
+If I give a link, first tell me in one line what the page is about. If you cannot open it, say so and stop.\par
+\gap
+FOCUS ON: [OPTIONAL: WHAT TO EMPHASISE, OR LEAVE BLANK]\par
+\gap
+CONTENT\par
+\bul{Pick the 3\textendash{}5 ideas that best explain the subject. Leave out the rest.}
+\bul{Search the web if you need to check facts or add context.}
+\bul{Make the most important idea the biggest and boldest.}
+\bul{Lay the ideas out as a clear visual journey across one page.}
+\gap
+DRAWING\par
+\bul{Explain through pictures: people, objects, simple scenes and visual metaphors.}
+\bul{As few words as possible, with short, conversational headings.}
+\bul{Sketchnote style: warm white paper, loose black marker outlines, natural hand lettering.}
+\bul{Muted red, mustard yellow, dusty blue and soft grey.}
+\bul{Arrows only where they show a connection.}
+\bul{Plenty of white space. No tiny text, clutter, piles of speech bubbles or polished corporate diagrams.}
+\gap
+Someone should get the main idea at a glance. Explain visually, don\textquotesingle{}t just decorate the words.\par
+\end{pbox}
+
+\ex{05}{Professional persona}
+\note{Try both. Same question, new chat, different right answers.}
+\begin{pbox}
+For a script: You are a medical professional. Reply to the statement \textquotedbl{}My haemorrhoids are bothering me\textquotedbl{}.\par
+\end{pbox}
+\begin{pbox}
+For a script: You are a comedian. Reply to the statement \textquotedbl{}My haemorrhoids are bothering me\textquotedbl{}.\par
+\end{pbox}
+
+\ex{06}{Format and structure}
+\note{One prompt, three formats in a single reply.}
+\begin{pbox}
+You run \textquotedbl{}Knights of the Round Table Pizza\textquotedbl{} -{} a medieval-{}themed pizza delivery service.\par
+\gap
+Write a catchy jingle for your horse-{}drawn pizza delivery adverts.\par
+Draft an SOP for training delivery knights on horseback pizza transport and armour maintenance.\par
+Create an Excel table with three columns: Medieval pizza names, ingredients, and delivery times to different kingdoms.\par
+\end{pbox}
+
+\ex{07}{Context: know your audience}
+\note{Then ask Copilot to explain its choices, and give it feedback.}
+\begin{pbox}
+Brainstorm names for a new dating app and write a brief justification for each selection.\par
+\gap
+The target market is pensioners seeking genuine companionship. Avoid patronising stereotypes and focus on active, mature lifestyles. The brand identity relies on a cheeky, British sense of humour. Incorporate playful innuendo, dry wit, and a bit of self deprecation, while ensuring it remains entirely respectful of the users\textquotesingle{} dignity.\par
+\end{pbox}
+
+\newpage
+\renewcommand{\exskip}{1.5mm}
+
+\band{Memory and Bonus Prompts}{%
+  Full instructions and examples: \href{https://wmgmm.github.io/thematts/workshop.html}{\textcolor{gold}{\textbf{https://wmgmm.github.io/thematts/workshop.html}}}}
+
+\ex{08}{Copilot memory}
+\note{Rules saved to memory apply to every future chat. To view them: three dots (top right), \textbf{Settings}, \textbf{Personalisation}.}
+\begin{pbox}
+Remember and save to memory that I prefer UK spelling, UK sources and UK naming conventions.\par
+\end{pbox}
+\begin{pbox}
+Remember and save to memory: For factual or decision-{}relevant answers, distinguish verified facts, inference and assumptions. Cite the source for important claims where possible. If evidence is incomplete, say what is missing. Never invent information, quotations, dates or figures.\par
+\end{pbox}
+
+\ex{09}{Temporary chat}
+\note{Click the temporary chat icon \raisebox{-0.35\height}{\includegraphics[height=5mm]{../copilot-temporary-chat-icon.png}} (top right). Not saved and creates no memories, but it is not private.}
+\vspace{1.2mm}
+
+\ex{B1}{Copy the style of a document you like}
+\note{Attach a document or image whose style you want to reuse. PDFs work best.}
+\begin{pbox}
+Analyse the example I have attached (a document or an image). First tell me in one line what you can see in it; if you cannot open it, say so and stop.\par
+\gap
+Identify what makes its style distinctive: tone of voice, vocabulary, sentence structure, formatting and layout.\par
+\gap
+Write a single reusable prompt I can run on new material to reproduce that style. At the bottom of it, add the placeholder [PASTE NEW CONTENT HERE] to mark where my new material will go. That placeholder is for later: I do not fill it in now.\par
+\gap
+Output only the reusable prompt, nothing else.\par
+\end{pbox}
+
+\ex{B2}{Turn a good chat into a reusable prompt}
+\note{Give Copilot feedback until the output is right, then paste this.}
+\begin{pbox}
+Look at how we got from my original request to this final output. Write the prompt I should have used at the start to get this result first time. Learn from my corrections and feedback, not just the final answer. Keep the prompt simple, reusable and no longer than necessary.\par
+\end{pbox}
+
+\ex{B3}{Handover: long chats make more mistakes}
+\note{Paste this into the long chat. Copy the reply, start a new chat and paste it in.}
+\begin{pbox}
+Prepare a handover I can paste into a new chat. Rules: 1) five bullets, one line each: decisions, key facts, constraints, open questions, next steps, marking anything unconfirmed; 2) copy anything worth keeping (drafts, wording, lists) verbatim under short headings, no rewriting or merging; 3) end with a two-{}line brief: the new chat\textquotesingle{}s role and its first task. No sub-{}bullets, no commentary.\par
+\end{pbox}
+
+\ex{B4}{Treat your chat history as a resource}
+\sub{Build a full profile of yourself}
+\begin{pbox}
+Build a comprehensive profile of me from all accessible memory, past chats, instructions, and relevant files. Cover my personal and professional life, goals, projects, relationships, values, preferences, decision patterns, and how to work with me. Preserve specific examples in writing. Separate facts from your inferences. Flag any outdated information. Flag contradictions and unknowns. Cite your sources and state what you reviewed or could not access. Please prioritise completeness over brevity.\par
+\end{pbox}
+\sub{Find prompting habits you repeat}
+\begin{pbox}
+Analyse my last three months of Copilot chats. Find three repeated prompting habits I should improve.\par
+\gap
+For each, give one line:\par
+Habit \textbar{} Real example \textbar{} Better reusable prompt\par
+\gap
+Focus on habits that affect results, not writing preferences. Be honest. No filler.\par
+\end{pbox}
+\sub{Spot tasks you keep redoing by hand}
+\begin{pbox}
+Read across my chat history and tell me which tasks I keep redoing by hand.\par
+\end{pbox}
+\sub{Capture your writing style}
+\begin{pbox}
+From my chat history, draft a profile of my writing style, then remember and save it to memory.\par
+\end{pbox}
+
+\ex{M365}{Devil's advocate on your own work}
+\note{Microsoft 365 Copilot licence only. It reads your emails and meetings.}
+\begin{pbox}
+\textquotedbl{}Act as a constructive devil\textquotesingle{}s advocate. Review my emails, meeting recaps, chats, and shared documents from the last three months. Identify the ideas and requests I have been pushing. For each one, build the strongest evidence-{}based counterargument using concerns, risks, unanswered questions, competing priorities, and previous objections found in the source material. Focus on what has been stated, not inferred. Be specific, challenging, and constructive. End with three changes I should make before raising these ideas again.\textquotedbl{}\par
+\end{pbox}
+
+\end{document}
